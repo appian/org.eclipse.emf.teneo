@@ -32,8 +32,8 @@ public class JPA2AssociationOverrideAction extends AbstractTestAction {
 
 	private static final String EMPLOYEE_NAME = "Piet Pietersen";
 
-	private static final String EMPLOYEE_VERIFICATION_QUERY =
-			"SELECT COUNT(*) FROM ABC A INNER JOIN EMPLOYEE E ON A.EMPLOYEE_ADDR_ID = E.ID".toLowerCase();
+	private static final String EMPLOYEE_VERIFICATION_QUERY = "SELECT COUNT(*) FROM ABC A INNER JOIN EMPLOYEE E ON A.EMPLOYEE_ADDR_ID = E.ID"
+			.toLowerCase();
 
 	private static final AssociationoverrideFactory FACTORY = AssociationoverrideFactory.eINSTANCE;
 
@@ -42,8 +42,8 @@ public class JPA2AssociationOverrideAction extends AbstractTestAction {
 	private static final String STUDENT_FACULTY = "Biology";
 	private static final String STUDENT_NAME = "Jan Janssen";
 
-	private static final String STUDENT_VERIFICATION_QUERY =
-			"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ID = B.STUDENT_ADDRESS_ID".toLowerCase();
+	private static final String STUDENT_VERIFICATION_QUERY = "SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ID = B.STUDENT_ADDRESS_ID"
+			.toLowerCase();
 
 	static {
 		DEFAULT_ADDRESS.setStreet("Amsterdamseweg 123");
@@ -73,7 +73,7 @@ public class JPA2AssociationOverrideAction extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {

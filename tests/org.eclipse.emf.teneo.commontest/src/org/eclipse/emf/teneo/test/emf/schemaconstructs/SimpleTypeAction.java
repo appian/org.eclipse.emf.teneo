@@ -13,6 +13,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import junit.framework.Assert;
+
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType;
@@ -292,6 +294,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertEquals(p[i], s[i]);
 			cnt++;
 		}
+		Assert.assertTrue(cnt >= 0);
 		assertEquals(p.length, s.length);
 	}
 
@@ -302,6 +305,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertEquals(p[i], s[i]);
 			cnt++;
 		}
+		Assert.assertTrue(cnt >= 0);
 		assertEquals(p.length, s.length);
 	}
 
@@ -312,6 +316,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertEquals(p[i], s[i], 0.001);
 			cnt++;
 		}
+		Assert.assertTrue(cnt >= 0);
 		assertEquals(p.length, s.length);
 	}
 
@@ -322,6 +327,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertEquals(p[i], s[i]);
 			cnt++;
 		}
+		Assert.assertTrue(cnt >= 0);
 		assertEquals(p.length, s.length);
 	}
 

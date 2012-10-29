@@ -43,10 +43,8 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 
 	// The logger
-	protected static final Log log = LogFactory
-			.getLog(HbOneToManyReferenceAnnotator.class);
-	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE
-			.getName();
+	protected static final Log log = LogFactory.getLog(HbOneToManyReferenceAnnotator.class);
+	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE.getName();
 
 	/** Annotate it */
 	@Override
@@ -60,10 +58,8 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 		final boolean doHbCascade = otm == null || otm.getCascade().isEmpty();
 
 		// add an idbag annotation
-		if (getPersistenceOptions().alwaysMapListAsIdBag()
-				&& aReference.getModelEReference().isMany()
-				&& aReference.getOneToMany() == null
-				&& !aReference.getModelEReference().isContainment()) {
+		if (getPersistenceOptions().alwaysMapListAsIdBag() && aReference.getModelEReference().isMany()
+				&& aReference.getOneToMany() == null && !aReference.getModelEReference().isContainment()) {
 			hbReference.setHbIdBag(HbannotationFactory.eINSTANCE.createIdBag());
 			// add a join table
 		}
@@ -80,17 +76,12 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 		// none
 		boolean hasCache = hbReference.getHbCache() != null;
 		if (!hasCache
-				&& defaultCacheStrategy
-						.compareToIgnoreCase(CacheConcurrencyStrategy.NONE
-								.getName()) != 0) {
-			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy
-					.getByName(defaultCacheStrategy);
+				&& defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE.getName()) != 0) {
+			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy.getByName(defaultCacheStrategy);
 			if (ccs == null) {
-				throw new StoreMappingException(
-						"The default cache strategy: "
-								+ defaultCacheStrategy
-								+ " is not one of the allowed values (uppercase) "
-								+ "as defined in the JPA Hibernate Annotation Extensions.");
+				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy
+						+ " is not one of the allowed values (uppercase) "
+						+ "as defined in the JPA Hibernate Annotation Extensions.");
 			}
 
 			log.debug("Setting cache strategy " + defaultCacheStrategy + " on "
@@ -106,34 +97,25 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 				if (getPersistenceOptions().isSetCascadeAllOnContainment()) {
 					option = HbCascadeType.ALL.getName();
 				} else {
-					option = getPersistenceOptions()
-							.getCascadePolicyForContainment();
+					option = getPersistenceOptions().getCascadePolicyForContainment();
 				}
 				// translate a previous default to LOCK, SAVE_UPDAT
 				if (getPersistenceOptions().isSetCascadePersistOnContainment()) {
-					option += HbCascadeType.LOCK.getName() + ", "
-							+ HbCascadeType.SAVE_UPDATE.getName();
+					option += HbCascadeType.LOCK.getName() + ", " + HbCascadeType.SAVE_UPDATE.getName();
 				}
-			} else if (getPersistenceOptions()
-					.isSetCascadePolicyForNonContainment()) {
-				option = getPersistenceOptions()
-						.getCascadePolicyForNonContainment();
+			} else if (getPersistenceOptions().isSetCascadePolicyForNonContainment()) {
+				option = getPersistenceOptions().getCascadePolicyForNonContainment();
 				// translate a previous default to LOCK, SAVE_UPDAT
-				if (getPersistenceOptions()
-						.isSetCascadePersistOnNonContainment()) {
-					option += HbCascadeType.LOCK.getName() + ", "
-							+ HbCascadeType.SAVE_UPDATE.getName();
+				if (getPersistenceOptions().isSetCascadePersistOnNonContainment()) {
+					option += HbCascadeType.LOCK.getName() + ", " + HbCascadeType.SAVE_UPDATE.getName();
 				}
 			} else {
-				option = HbCascadeType.PERSIST.getName() + ", "
-						+ HbCascadeType.MERGE.getName() + ", "
-						+ HbCascadeType.REFRESH.getName() + ", "
-						+ HbCascadeType.LOCK.getName() + ", "
+				option = HbCascadeType.PERSIST.getName() + ", " + HbCascadeType.MERGE.getName() + ", "
+						+ HbCascadeType.REFRESH.getName() + ", " + HbCascadeType.LOCK.getName() + ", "
 						+ HbCascadeType.SAVE_UPDATE.getName();
 			}
 
-			final Cascade hbCascade = HbannotationFactory.eINSTANCE
-					.createCascade();
+			final Cascade hbCascade = HbannotationFactory.eINSTANCE.createCascade();
 			for (HbCascadeType hbCascadeValue : HbCascadeType.values()) {
 				if (option.contains(hbCascadeValue.getName())) {
 					hbCascade.getValue().add(hbCascadeValue);
@@ -145,8 +127,7 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 		}
 	}
 
-	protected void setCascade(List<CascadeType> cascadeList,
-			boolean isContainment) {
+	protected void setCascade(List<CascadeType> cascadeList, boolean isContainment) {
 		if (!cascadeList.isEmpty()) {
 			return;
 		}

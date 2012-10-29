@@ -68,15 +68,20 @@ public class DocumentRootAction extends AbstractTestAction {
 			// try {
 			// final XMLResource xmlResource = new XMLResourceImpl();
 			// xmlResource.getContents().add(dr);
-			// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-			// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+			// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
+			// Boolean.TRUE);
+			// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
+			// Boolean.TRUE);
 			//
 			// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 			//
-			// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-			// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+			// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE,
+			// Boolean.TRUE);
+			// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE,
+			// Boolean.TRUE);
 			//
-			// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_LEXICAL_HANDLER, Boolean.TRUE);
+			// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_LEXICAL_HANDLER,
+			// Boolean.TRUE);
 			// final StringWriter sw = new StringWriter();
 			// xmlResource.save(sw, Collections.EMPTY_MAP);
 			// System.err.println(sw.toString());
@@ -110,16 +115,20 @@ public class DocumentRootAction extends AbstractTestAction {
 	private Resource readResource(String fileName) {
 		// read the xml's
 		final URL url = DocumentRootAction.class.getResource(fileName);
-		final Resource resource = new DocumentrootResourceFactoryImpl().createResource(URI.createURI(url.toString()));
+		final Resource resource = new DocumentrootResourceFactoryImpl().createResource(URI
+				.createURI(url.toString()));
 		// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		//
 		// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		//
-		// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-		// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+		// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE,
+		// Boolean.TRUE);
+		// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE,
+		// Boolean.TRUE);
 		//
-		// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_LEXICAL_HANDLER, Boolean.TRUE);
+		// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_USE_LEXICAL_HANDLER,
+		// Boolean.TRUE);
 		try {
 			resource.load(Collections.EMPTY_MAP);
 			System.err.println(resource.getContents().size());

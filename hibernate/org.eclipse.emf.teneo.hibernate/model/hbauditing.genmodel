@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.hibernate/src" modelPluginID="org.eclipse.emf.teneo.hibernate"
+    modelName="Hbauditing" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>hbauditing.ecore</foreignModel>
+  <genPackages prefix="Teneoauditing" basePackage="org.eclipse.emf.teneo.hibernate.auditing.model"
+      disposableProviderFactory="true" ecorePackage="hbauditing.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hbauditing.ecore#//TeneoAuditKind">
+      <genEnumLiterals ecoreEnumLiteral="hbauditing.ecore#//TeneoAuditKind/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="hbauditing.ecore#//TeneoAuditKind/UPDATE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbauditing.ecore#//TeneoAuditKind/DELETE"/>
+    </genEnums>
+    <genClasses ecoreClass="hbauditing.ecore#//TeneoAuditObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_audit_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_object_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_end"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbauditing.ecore#//TeneoAuditObject/teneo_commit_info"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_audit_kind"/>
+    </genClasses>
+    <genClasses ecoreClass="hbauditing.ecore#//TeneoAuditCommitInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditCommitInfo/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditCommitInfo/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditCommitInfo/user"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditCommitInfo/comment"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.Performer;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Performer</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Performer</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class PerformerImpl extends ResourceRoleImpl implements Performer {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PerformerImpl() {
@@ -39,8 +38,8 @@ public class PerformerImpl extends ResourceRoleImpl implements Performer {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class PerformerImpl extends ResourceRoleImpl implements Performer {
 		return Bpmn2Package.Literals.PERFORMER;
 	}
 
-} //PerformerImpl
+} // PerformerImpl

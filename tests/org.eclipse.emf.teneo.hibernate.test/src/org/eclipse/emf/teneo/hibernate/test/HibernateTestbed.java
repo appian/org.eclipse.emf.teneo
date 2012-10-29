@@ -46,11 +46,9 @@ public class HibernateTestbed extends Testbed {
 	private static final String propFileName;
 
 	/**
-	 * The directory in which the mapping files are generated TODO make
-	 * insesitive to user.dir
+	 * The directory in which the mapping files are generated TODO make insesitive to user.dir
 	 */
-	private static String RUN_BASE_DIR = System.getProperty("user.dir")
-			+ File.separatorChar + "hbm";
+	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "hbm";
 
 	/** Test the rundir */
 	static {
@@ -66,8 +64,7 @@ public class HibernateTestbed extends Testbed {
 			Testbed.setTestBed(new HibernateTestbed());
 
 		} catch (Exception e) {
-			throw new StoreTestException("Exception while checking directory "
-					+ RUN_BASE_DIR, e);
+			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
 		}
 	}
 
@@ -110,26 +107,21 @@ public class HibernateTestbed extends Testbed {
 		try {
 
 			IdentifierCacheHandler.getInstance().clear();
-			final ExtensionManager extensionManager = ExtensionManagerFactory
-					.getInstance().create();
+			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			testCase.setExtensions(extensionManager);
 
-			TestStore store = storeFactory.get(
-					getDbName(testCase, getActiveConfiguration()),
+			TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()),
 					testCase.getEPackages(), null, getActiveConfiguration(),
-					testCase.getExtraConfigurationProperties(),
-					extensionManager);
+					testCase.getExtraConfigurationProperties(), extensionManager);
 
 			// setup store
 			try {
 				store.setUp();
 
-				writeMappingToFile(store.getMappingXML(), testCase,
-						extensionManager);
+				writeMappingToFile(store.getMappingXML(), testCase, extensionManager);
 			} catch (Throwable t) {
 
-				writeMappingToFile(store.getMappingXML(), testCase,
-						extensionManager);
+				writeMappingToFile(store.getMappingXML(), testCase, extensionManager);
 				throw new IllegalStateException(t);
 			}
 
@@ -151,35 +143,33 @@ public class HibernateTestbed extends Testbed {
 		if (mappingXML == null) {
 			return;
 		}
-		
+
 		// System.err.println(mappingXML);
 		final File file = getHBMFile(testCase, getActiveConfiguration());
 		writeMappingToFile(file, mappingXML);
 	}
 
 	/** Write the mapping file for debugging purposes */
-	private void writeMappingToFile(File mappingFile, String mappingXML)
-			throws IOException {
+	private void writeMappingToFile(File mappingFile, String mappingXML) throws IOException {
 		if (mappingFile.exists()) {
 			mappingFile.delete();
 		}
 		mappingFile.createNewFile();
 		final FileWriter fileWriter = new FileWriter(mappingFile);
-		
+
 		fileWriter.write(mappingXML);
 		fileWriter.close();
 	}
 
 	/** Returns the file to which the mapping file is written */
 	protected File getHBMFile(AbstractTest testCase, TestConfiguration cfg) {
-		return new File(getRunTestDir(testCase), testCase.getSimpleName() + "_"
-				+ cfg.getName() + "_" + HbConstants.HBM_FILE_NAME);
+		return new File(getRunTestDir(testCase), testCase.getSimpleName() + "_" + cfg.getName() + "_"
+				+ HbConstants.HBM_FILE_NAME);
 	}
 
 	/** Return the directory in which the mapping file is stored */
 	protected File getRunTestDir(AbstractTest testCase) {
-		File dir = new File(new File(RUN_BASE_DIR), testCase.getTestPackage()
-				.getName());
+		File dir = new File(new File(RUN_BASE_DIR), testCase.getTestPackage().getName());
 		dir.mkdirs();
 		return dir;
 	}

@@ -27,25 +27,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Message Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageEventDefinitionImpl#getOperationRef <em>Operation Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageEventDefinitionImpl#getMessageRef <em>Message Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageEventDefinitionImpl#getOperationRef <em>Operation Ref
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageEventDefinitionImpl#getMessageRef <em>Message Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 		MessageEventDefinition {
 	/**
-	 * The cached value of the '{@link #getOperationRef() <em>Operation Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOperationRef() <em>Operation Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperationRef()
 	 * @generated
 	 * @ordered
@@ -53,9 +53,9 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	protected Operation operationRef;
 
 	/**
-	 * The cached value of the '{@link #getMessageRef() <em>Message Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMessageRef() <em>Message Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessageRef()
 	 * @generated
 	 * @ordered
@@ -63,8 +63,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	protected Message messageRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MessageEventDefinitionImpl() {
@@ -72,8 +72,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -82,8 +82,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation getOperationRef() {
@@ -92,19 +92,16 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 			operationRef = (Operation) eResolveProxy(oldOperationRef);
 			if (operationRef != oldOperationRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.MESSAGE_EVENT_DEFINITION__OPERATION_REF,
-							oldOperationRef, operationRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.MESSAGE_EVENT_DEFINITION__OPERATION_REF, oldOperationRef, operationRef));
 			}
 		}
 		return operationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation basicGetOperationRef() {
@@ -112,8 +109,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOperationRef(Operation newOperationRef) {
@@ -121,13 +118,12 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 		operationRef = newOperationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE_EVENT_DEFINITION__OPERATION_REF,
-					oldOperationRef, operationRef));
+					Bpmn2Package.MESSAGE_EVENT_DEFINITION__OPERATION_REF, oldOperationRef, operationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message getMessageRef() {
@@ -137,16 +133,15 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 			if (messageRef != oldMessageRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.MESSAGE_EVENT_DEFINITION__MESSAGE_REF,
-							oldMessageRef, messageRef));
+							Bpmn2Package.MESSAGE_EVENT_DEFINITION__MESSAGE_REF, oldMessageRef, messageRef));
 			}
 		}
 		return messageRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message basicGetMessageRef() {
@@ -154,8 +149,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMessageRef(Message newMessageRef) {
@@ -163,13 +158,12 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 		messageRef = newMessageRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE_EVENT_DEFINITION__MESSAGE_REF,
-					oldMessageRef, messageRef));
+					Bpmn2Package.MESSAGE_EVENT_DEFINITION__MESSAGE_REF, oldMessageRef, messageRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -188,8 +182,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -206,8 +200,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -224,8 +218,8 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -239,4 +233,4 @@ public class MessageEventDefinitionImpl extends EventDefinitionImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //MessageEventDefinitionImpl
+} // MessageEventDefinitionImpl

@@ -32,24 +32,23 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sub Conversation</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sub Conversation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.SubConversationImpl#getConversationNodes <em>Conversation Nodes</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SubConversationImpl#getConversationNodes <em>Conversation Nodes
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class SubConversationImpl extends ConversationNodeImpl implements
-		SubConversation {
+public class SubConversationImpl extends ConversationNodeImpl implements SubConversation {
 	/**
-	 * The cached value of the '{@link #getConversationNodes() <em>Conversation Nodes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getConversationNodes() <em>Conversation Nodes</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConversationNodes()
 	 * @generated
 	 * @ordered
@@ -57,8 +56,8 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 	protected EList<ConversationNode> conversationNodes;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SubConversationImpl() {
@@ -66,8 +65,8 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,38 +75,36 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationNode> getConversationNodes() {
 		if (conversationNodes == null) {
-			conversationNodes = new EObjectContainmentEList<ConversationNode>(
-					ConversationNode.class, this,
-					Bpmn2Package.SUB_CONVERSATION__CONVERSATION_NODES);
+			conversationNodes = new EObjectContainmentEList<ConversationNode>(ConversationNode.class,
+					this, Bpmn2Package.SUB_CONVERSATION__CONVERSATION_NODES);
 		}
 		return conversationNodes;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.SUB_CONVERSATION__CONVERSATION_NODES:
-			return ((InternalEList<?>) getConversationNodes()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getConversationNodes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,8 +117,8 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -130,16 +127,15 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 		switch (featureID) {
 		case Bpmn2Package.SUB_CONVERSATION__CONVERSATION_NODES:
 			getConversationNodes().clear();
-			getConversationNodes().addAll(
-					(Collection<? extends ConversationNode>) newValue);
+			getConversationNodes().addAll((Collection<? extends ConversationNode>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -153,8 +149,8 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -166,4 +162,4 @@ public class SubConversationImpl extends ConversationNodeImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //SubConversationImpl
+} // SubConversationImpl

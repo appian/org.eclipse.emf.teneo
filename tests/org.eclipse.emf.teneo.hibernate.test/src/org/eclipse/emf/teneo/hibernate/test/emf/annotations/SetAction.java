@@ -48,12 +48,14 @@ public class SetAction extends AbstractTestAction {
 	}
 
 	// set the table/column names to uppercase otherwise this testcase will fail
-	// with hsqldb because hibernate does not escape the order by clause in a query.
+	// with hsqldb because hibernate does not escape the order by clause in a
+	// query.
 	// Caused by: java.sql.SQLException: Column not found: ITEM0_.NAME in
 	// statement [select item0_."item_itemlist_e_id" as item4_1_,
 	// item0_.e_id as e1_1_, item0_.e_id as e1_575_0_, item0_.e_version as
 	// e2_575_0_, item0_."name" as name3_575_0_, item0_."item_itemlist_e_id"
-	// as item4_575_0_ from "testset_item" item0_ where item0_."item_itemlist_e_id"=?
+	// as item4_575_0_ from "testset_item" item0_ where
+	// item0_."item_itemlist_e_id"=?
 	// order by item0_.name desc]
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -112,7 +114,7 @@ public class SetAction extends AbstractTestAction {
 					prevValue = item.getNumber();
 				}
 			}
-			
+
 			// do some actions
 			// remove from a certain position
 			for (int i = 0; i < list.getContainedItem().size(); i++) {
@@ -186,26 +188,26 @@ public class SetAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final ItemList itemList = store.getObject(ItemList.class);
-			
+
 			testLazyCollectionUtils(itemList.getItem());
 			testLazyCollectionUtils(itemList.getJoinedItem());
 			testLazyCollectionUtils(itemList.getContainedItem());
-			
+
 			assertEquals(newCount, itemList.getItem().size());
 
 			// all contained items should have been deleted
 			assertEquals(NO_ITEMS - removedContainedItems, store.getObjects(ContainedItem.class).size());
 
 			store.store(itemList.getItem());
-			
+
 			store.store(itemList);
 			store.commitTransaction();
 		}
 		cleanListItem(store);
 	}
-	
 
-	// delete, this prevents an error in hsqldb when SetAction and ExtraLazySetAction
+	// delete, this prevents an error in hsqldb when SetAction and
+	// ExtraLazySetAction
 	// are both run
 	protected void cleanListItem(TestStore store) {
 		store.beginTransaction();
@@ -217,9 +219,8 @@ public class SetAction extends AbstractTestAction {
 			store.deleteObject(o);
 		}
 		store.deleteObject(itemList);
-		store.commitTransaction();		
+		store.commitTransaction();
 	}
-
 
 	protected void testLazyCollectionUtils(List<?> list) {
 		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
@@ -234,7 +235,7 @@ public class SetAction extends AbstractTestAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 
-		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>)LazyCollectionUtils
+		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>) LazyCollectionUtils
 				.getPagedLoadingIterator(list, 5);
 		iterator.setOrderBy("order by this.name desc");
 		int index = 0;
@@ -247,16 +248,17 @@ public class SetAction extends AbstractTestAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse
+	 * .emf.teneo.extension.ExtensionManager)
 	 */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(EntityNameStrategy.class.getName(), QualifyingEntityNameStrategy.class
-			.getName());
+		extensionManager.registerExtension(EntityNameStrategy.class.getName(),
+				QualifyingEntityNameStrategy.class.getName());
 		super.setExtensions(extensionManager);
 	}
 }

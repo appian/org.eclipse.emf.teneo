@@ -41,7 +41,7 @@ public class CDOHelper {
 
 	/**
 	 * @param instance
-	 *            the instance to set
+	 *          the instance to set
 	 */
 	public static void setInstance(CDOHelper instance) {
 		CDOHelper.instance = instance;
@@ -49,23 +49,26 @@ public class CDOHelper {
 
 	public void registerCDOExtensions(ExtensionManager extensionManager) {
 		MappingUtil.registerHbExtensions(extensionManager);
-		extensionManager.registerExtension(ExtensionUtil.createExtension(MappingContext.class, CDOMappingContext.class,
-				false));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(MappingContext.class,
+				CDOMappingContext.class, false));
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The hibernate.hbm.xml
-	 * is returned as a string. The mapping is not registered or used in any other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The
+	 * hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any other
+	 * way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props) {
 		return generateMapping(epackages, props, ExtensionManagerFactory.getInstance().create());
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The hibernate.hbm.xml
-	 * is returned as a string. The mapping is not registered or used in any other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The
+	 * hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any other
+	 * way by Elver.
 	 */
-	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
+	public String generateMapping(EPackage[] epackages, Properties props,
+			ExtensionManager extensionManager) {
 		props.put(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 		CDOHelper.getInstance().registerCDOExtensions(extensionManager);
 		return MappingUtil.generateMapping(epackages, props, extensionManager);

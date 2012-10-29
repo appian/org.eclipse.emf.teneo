@@ -28,24 +28,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Choreography Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Choreography Task</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ChoreographyTaskImpl#getMessageFlowRef <em>Message Flow Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ChoreographyTaskImpl#getMessageFlowRef <em>Message Flow Ref
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
-		ChoreographyTask {
+public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements ChoreographyTask {
 	/**
-	 * The cached value of the '{@link #getMessageFlowRef() <em>Message Flow Ref</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMessageFlowRef() <em>Message Flow Ref</em>}' reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessageFlowRef()
 	 * @generated
 	 * @ordered
@@ -53,8 +52,8 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 	protected EList<MessageFlow> messageFlowRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ChoreographyTaskImpl() {
@@ -62,8 +61,8 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -72,22 +71,21 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<MessageFlow> getMessageFlowRef() {
 		if (messageFlowRef == null) {
-			messageFlowRef = new EObjectResolvingEList<MessageFlow>(
-					MessageFlow.class, this,
+			messageFlowRef = new EObjectResolvingEList<MessageFlow>(MessageFlow.class, this,
 					Bpmn2Package.CHOREOGRAPHY_TASK__MESSAGE_FLOW_REF);
 		}
 		return messageFlowRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,8 +98,8 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -110,16 +108,15 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 		switch (featureID) {
 		case Bpmn2Package.CHOREOGRAPHY_TASK__MESSAGE_FLOW_REF:
 			getMessageFlowRef().clear();
-			getMessageFlowRef().addAll(
-					(Collection<? extends MessageFlow>) newValue);
+			getMessageFlowRef().addAll((Collection<? extends MessageFlow>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,8 +130,8 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,4 +143,4 @@ public class ChoreographyTaskImpl extends ChoreographyActivityImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //ChoreographyTaskImpl
+} // ChoreographyTaskImpl

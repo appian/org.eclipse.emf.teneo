@@ -20,19 +20,18 @@ import org.eclipse.bpmn2.LoopCharacteristics;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Loop Characteristics</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Loop Characteristics</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class LoopCharacteristicsImpl extends BaseElementImpl implements
 		LoopCharacteristics {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LoopCharacteristicsImpl() {
@@ -40,8 +39,8 @@ public abstract class LoopCharacteristicsImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +48,4 @@ public abstract class LoopCharacteristicsImpl extends BaseElementImpl implements
 		return Bpmn2Package.Literals.LOOP_CHARACTERISTICS;
 	}
 
-} //LoopCharacteristicsImpl
+} // LoopCharacteristicsImpl

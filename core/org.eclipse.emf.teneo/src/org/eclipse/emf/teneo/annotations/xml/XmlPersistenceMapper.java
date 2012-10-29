@@ -49,8 +49,8 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 	 * Sets the InputStream containing the XML mapping.
 	 * 
 	 * @param xmlMapping
-	 *            The InputStream containing the XML persistence mapping. Closed automatically by
-	 *            {@link #applyPersistenceMapping(PAnnotatedModel)}.
+	 *          The InputStream containing the XML persistence mapping. Closed automatically by
+	 *          {@link #applyPersistenceMapping(PAnnotatedModel)} .
 	 */
 	public void setXmlMapping(InputStream xmlMapping) {
 		if (xmlMapping == null) {
@@ -63,9 +63,9 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 	 * Applies the XML persistence mapping to a PAnnotatedModel.
 	 * 
 	 * @throws IllegalStateException
-	 *             if the XML mapping was not configured.
+	 *           if the XML mapping was not configured.
 	 * @throws RuntimeException
-	 *             If there was an error reading or parsing the XML file.
+	 *           If there was an error reading or parsing the XML file.
 	 */
 	public void applyPersistenceMapping(PAnnotatedModel pAnnotatedModel) {
 		if (xmlMapping == null) {
@@ -88,9 +88,9 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 		try {
 			try {
 				saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
-					"http://www.w3.org/2001/XMLSchema");
-				saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", this.getClass()
-					.getResourceAsStream("persistence-mapping.xsd"));
+						"http://www.w3.org/2001/XMLSchema");
+				saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", this
+						.getClass().getResourceAsStream("persistence-mapping.xsd"));
 			} catch (SAXNotRecognizedException s) {
 				log.warn("Properties schemaSource and/or schemaLanguage are not supported, setvalidating=false. "
 						+ "Probably running 1.4 with an old crimson sax parser. Ignoring this and continuing with "
@@ -101,8 +101,8 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 				saxParser = saxParserFactory.newSAXParser();
 			}
 
-			final XmlPersistenceContentHandler xmlContentHandler =
-					extensionManager.getExtension(XmlPersistenceContentHandler.class);
+			final XmlPersistenceContentHandler xmlContentHandler = extensionManager
+					.getExtension(XmlPersistenceContentHandler.class);
 			xmlContentHandler.setPAnnotatedModel(pAnnotatedModel);
 			xmlContentHandler.setPrefix(getPrefix());
 			xmlContentHandler.setSchema(this.getClass().getResourceAsStream("persistence-mapping.xsd"));
@@ -136,7 +136,7 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 
 	/**
 	 * @param extensionManager
-	 *            the extensionManager to set
+	 *          the extensionManager to set
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;

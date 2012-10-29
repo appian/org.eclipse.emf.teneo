@@ -69,8 +69,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 	private EDataTypeAnnotator eDataTypeAnnotator;
 
 	/**
-	 * Adds default annotations to a pamodel, the method is synchronized because globals are set.
-	 * Not necessary because this class should always be used single threaded but okay.
+	 * Adds default annotations to a pamodel, the method is synchronized because globals are set. Not
+	 * necessary because this class should always be used single threaded but okay.
 	 */
 	public synchronized void map(PAnnotatedModel annotatedModel, PersistenceOptions po) {
 
@@ -86,8 +86,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 
 		final EModelResolver eModelResolver = EModelResolver.instance();
 		if (log.isDebugEnabled()) {
-			log.debug("Registering epackages in model resolver, modelresolver instance is: " +
-				eModelResolver.getClass().getName());
+			log.debug("Registering epackages in model resolver, modelresolver instance is: "
+					+ eModelResolver.getClass().getName());
 		}
 		eModelResolver.register(epacks);
 
@@ -99,7 +99,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
-					aclass.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getModelEClass()));
+					aclass
+							.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getModelEClass()));
 				}
 			}
 		}
@@ -108,7 +109,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 		// eSuperTypes
 		// see bugzilla: https://bugs.eclipse.org/bugs/show_bug.cgi?id=205790
 		for (EPackage epack : epacks) {
-			if (epack.getNsURI() != null && epack.getNsURI().compareTo(EcorePackage.eINSTANCE.getNsURI()) == 0) {
+			if (epack.getNsURI() != null
+					&& epack.getNsURI().compareTo(EcorePackage.eINSTANCE.getNsURI()) == 0) {
 				// now find the
 				for (EClassifier eClassifier : epack.getEClassifiers()) {
 					if (eClassifier.eClass() == EcorePackage.eINSTANCE.getEClass()) {
@@ -116,7 +118,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 						for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
 							if (eFeature.getName().compareTo("eSuperTypes") == 0) {
 								if (eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) == null) {
-									EcoreUtil.setAnnotation(eFeature, Constants.ANNOTATION_SOURCE_TENEO_JPA, "value", "@ManyToMany");
+									EcoreUtil.setAnnotation(eFeature, Constants.ANNOTATION_SOURCE_TENEO_JPA, "value",
+											"@ManyToMany");
 									break;
 								}
 							}
@@ -131,7 +134,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 
 		// initialize the strategies so they have the correct information
 		// TODO this should be handled in aware like interfaces
-		final EntityNameStrategy entityNameStrategy = extensionManager.getExtension(EntityNameStrategy.class);
+		final EntityNameStrategy entityNameStrategy = extensionManager
+				.getExtension(EntityNameStrategy.class);
 		entityNameStrategy.setPaModel(annotatedModel); // is maybe already set?
 		final SQLNameStrategy sqlNameStrategy = extensionManager.getExtension(SQLNameStrategy.class);
 		sqlNameStrategy.setPersistenceOptions(po);
@@ -162,8 +166,9 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 	/** Maps one epackage */
 	protected void processPackage(PAnnotatedEPackage aPackage) {
 		if (log.isDebugEnabled()) {
-			log.debug(">>>> Adding default annotations for EPackage " + aPackage.getModelElement().getName());
-	
+			log.debug(">>>> Adding default annotations for EPackage "
+					+ aPackage.getModelElement().getName());
+
 			log.debug("Processing EDataTypes");
 		}
 		for (PAnnotatedEDataType annotatedEDataType : aPackage.getPaEDataTypes()) {
@@ -180,7 +185,7 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 
 	/**
 	 * @param extensionManager
-	 *            the extensionManager to set
+	 *          the extensionManager to set
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;

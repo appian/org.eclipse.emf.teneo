@@ -6,33 +6,31 @@
  */
 package fleet;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Hybrid</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Hybrid</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fleet.Hybrid#isHasRechargePlug <em>Has Recharge Plug</em>}</li>
- *   <li>{@link fleet.Hybrid#getBatteryLife <em>Battery Life</em>}</li>
+ * <li>{@link fleet.Hybrid#isHasRechargePlug <em>Has Recharge Plug</em>}</li>
+ * <li>{@link fleet.Hybrid#getBatteryLife <em>Battery Life</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see fleet.FleetPackage#getHybrid()
  * @model
  * @generated
  */
 public interface Hybrid extends Car, PassengerVehicle {
 	/**
-	 * Returns the value of the '<em><b>Has Recharge Plug</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Has Recharge Plug</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Has Recharge Plug</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Has Recharge Plug</em>' attribute isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Has Recharge Plug</em>' attribute.
 	 * @see #setHasRechargePlug(boolean)
 	 * @see fleet.FleetPackage#getHybrid_HasRechargePlug()
@@ -42,23 +40,24 @@ public interface Hybrid extends Car, PassengerVehicle {
 	boolean isHasRechargePlug();
 
 	/**
-	 * Sets the value of the '{@link fleet.Hybrid#isHasRechargePlug <em>Has Recharge Plug</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Recharge Plug</em>' attribute.
+	 * Sets the value of the '{@link fleet.Hybrid#isHasRechargePlug <em>Has Recharge Plug</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Has Recharge Plug</em>' attribute.
 	 * @see #isHasRechargePlug()
 	 * @generated
 	 */
 	void setHasRechargePlug(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Battery Life</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Battery Life</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Battery Life</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Battery Life</em>' attribute isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Battery Life</em>' attribute.
 	 * @see #setBatteryLife(int)
 	 * @see fleet.FleetPackage#getHybrid_BatteryLife()
@@ -69,9 +68,10 @@ public interface Hybrid extends Car, PassengerVehicle {
 
 	/**
 	 * Sets the value of the '{@link fleet.Hybrid#getBatteryLife <em>Battery Life</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Battery Life</em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Battery Life</em>' attribute.
 	 * @see #getBatteryLife()
 	 * @generated
 	 */

@@ -1,6 +1,5 @@
 package org.eclipse.emf.teneo.hibernate.mapping.internal;
 
-
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**

@@ -60,7 +60,8 @@ public class Bz245167Action extends AbstractTestAction {
 		assertEquals(staticSize, ich.getIdMap().size());
 		assertEquals(staticSize, ich.getVersionMap().size());
 
-		// note that the statPart arraylist needs to be used after the above assertEquals
+		// note that the statPart arraylist needs to be used after the above
+		// assertEquals
 		// otherwise the compiler will optimize them away
 		ich.dumpID();
 		for (Library lib : statPart) {

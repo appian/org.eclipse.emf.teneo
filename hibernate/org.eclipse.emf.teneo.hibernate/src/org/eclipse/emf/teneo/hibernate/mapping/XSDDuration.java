@@ -81,7 +81,7 @@ public class XSDDuration implements UserType {
 	 * Provide a copy of the datatypes. Converts to String and then back to datatype again.
 	 * 
 	 * @param value
-	 *            the value to copy.
+	 *          the value to copy.
 	 * @return the value always.
 	 */
 	public Object deepCopy(Object value) {
@@ -95,9 +95,9 @@ public class XSDDuration implements UserType {
 	 * Are the two objects equal?
 	 * 
 	 * @param x
-	 *            an object to compare.
+	 *          an object to compare.
 	 * @param y
-	 *            an object to compare.
+	 *          an object to compare.
 	 * @return a standard equals test between the objects.
 	 */
 	public boolean equals(Object x, Object y) {
@@ -114,18 +114,19 @@ public class XSDDuration implements UserType {
 	 * Populate the model object property from the ResultSet.
 	 * 
 	 * @param resultSet
-	 *            the non-null ResultSet from which the field will be populated.
+	 *          the non-null ResultSet from which the field will be populated.
 	 * @param names
-	 *            the names of the columns.
+	 *          the names of the columns.
 	 * @param owner
-	 *            the owning object.
+	 *          the owning object.
 	 * @return null if the column's value is null; otherwise, use the EMF factory to construct a new
 	 *         instance of the custom EMF data type from the contents of the String value of the
 	 *         column.
 	 * @throws SQLException
-	 *             if the value cannot be retrieved from the ResultSet.
+	 *           if the value cannot be retrieved from the ResultSet.
 	 */
-	public Object nullSafeGet(ResultSet resultSet, String[] names, SessionImplementor sessionImplementor, Object owner) throws SQLException {
+	public Object nullSafeGet(ResultSet resultSet, String[] names,
+			SessionImplementor sessionImplementor, Object owner) throws SQLException {
 
 		final String data = resultSet.getString(names[0]);
 		if (data == null) {
@@ -138,15 +139,16 @@ public class XSDDuration implements UserType {
 	 * Populate the database statement from the model object property.
 	 * 
 	 * @param statement
-	 *            the non-null Statement to insert the value into.
+	 *          the non-null Statement to insert the value into.
 	 * @param value
-	 *            the object to convert.
+	 *          the object to convert.
 	 * @param index
-	 *            the index into the statement where to insert the converted value.
+	 *          the index into the statement where to insert the converted value.
 	 * @throws SQLException
-	 *             if the converted value cannot be set in the statement.
+	 *           if the converted value cannot be set in the statement.
 	 */
-	public void nullSafeSet(PreparedStatement statement, Object value, int index, SessionImplementor sessionImplementor) throws SQLException {
+	public void nullSafeSet(PreparedStatement statement, Object value, int index,
+			SessionImplementor sessionImplementor) throws SQLException {
 		String pvalue = null;
 		if (value != null) {
 			pvalue = ((Duration) value).toString();
@@ -162,7 +164,7 @@ public class XSDDuration implements UserType {
 	 * No-op implementation.
 	 * 
 	 * @param value
-	 *            the value to dissemble.
+	 *          the value to dissemble.
 	 * @return the value passed in.
 	 */
 	public Serializable disassemble(Object value) {
@@ -176,9 +178,9 @@ public class XSDDuration implements UserType {
 	 * No-op implementation.
 	 * 
 	 * @param cachedValue
-	 *            the value to assemble.
+	 *          the value to assemble.
 	 * @param owner
-	 *            the owning object.
+	 *          the owning object.
 	 * @return the cachedValue passed in.
 	 */
 	public Object assemble(Serializable cachedValue, Object owner) {
@@ -189,11 +191,11 @@ public class XSDDuration implements UserType {
 	 * No-op implementation.
 	 * 
 	 * @param original
-	 *            the value to replace.
+	 *          the value to replace.
 	 * @param target
-	 *            the target object.
+	 *          the target object.
 	 * @param owner
-	 *            the owning object.
+	 *          the owning object.
 	 * @return the original value passed in.
 	 */
 	public Object replace(Object original, Object target, Object owner) {
@@ -204,7 +206,7 @@ public class XSDDuration implements UserType {
 	 * No-op implementation.
 	 * 
 	 * @param x
-	 *            the object to get the hashcode for.
+	 *          the object to get the hashcode for.
 	 * @return x's hashcode.
 	 */
 	public int hashCode(Object x) {

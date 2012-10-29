@@ -44,8 +44,7 @@ import org.hibernate.property.Setter;
  * @version $Revision: 1.10 $
  */
 
-public class EContainerPropertyHandler implements Getter, Setter,
-		ExtensionPoint {
+public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint {
 	/**
 	 * Generated Serial Version UID
 	 */
@@ -86,37 +85,34 @@ public class EContainerPropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
-	 * java.util.Map, org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getForInsert(Object owner, Map mergeMap,
-			SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session)
+			throws HibernateException {
 		return ((EObject) owner).eContainer();
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object,
-	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
 		if (target instanceof MinimalEObjectImpl) {
 			// TODO: externalize this
-			FieldUtil.callMethod(target, "eBasicSetContainer",
-					new Object[] { value });
+			FieldUtil.callMethod(target, "eBasicSetContainer", new Object[] { value });
 		} else {
 			AssertUtil.assertInstanceOfNotNull(target, InternalEObject.class);
 			AssertUtil.assertInstanceOf(value, EObject.class);
 			try {
 				ecField.set(target, value);
 			} catch (Exception e) {
-				throw new HbMapperException(
-						"Exception when setting econtainer for: "
-								+ target.getClass().getName() + " to value: "
-								+ value, e);
+				throw new HbMapperException("Exception when setting econtainer for: "
+						+ target.getClass().getName() + " to value: " + value, e);
 			}
 		}
 	}

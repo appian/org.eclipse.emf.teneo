@@ -26,25 +26,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Participant Association</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Participant Association</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantAssociationImpl#getInnerParticipantRef <em>Inner Participant Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantAssociationImpl#getOuterParticipantRef <em>Outer Participant Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantAssociationImpl#getInnerParticipantRef <em>Inner
+ * Participant Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantAssociationImpl#getOuterParticipantRef <em>Outer
+ * Participant Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ParticipantAssociationImpl extends BaseElementImpl implements
-		ParticipantAssociation {
+public class ParticipantAssociationImpl extends BaseElementImpl implements ParticipantAssociation {
 	/**
-	 * The cached value of the '{@link #getInnerParticipantRef() <em>Inner Participant Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInnerParticipantRef() <em>Inner Participant Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInnerParticipantRef()
 	 * @generated
 	 * @ordered
@@ -52,9 +52,9 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	protected Participant innerParticipantRef;
 
 	/**
-	 * The cached value of the '{@link #getOuterParticipantRef() <em>Outer Participant Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOuterParticipantRef() <em>Outer Participant Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOuterParticipantRef()
 	 * @generated
 	 * @ordered
@@ -62,8 +62,8 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	protected Participant outerParticipantRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ParticipantAssociationImpl() {
@@ -71,8 +71,8 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,8 +81,8 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant getInnerParticipantRef() {
@@ -91,19 +91,17 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 			innerParticipantRef = (Participant) eResolveProxy(oldInnerParticipantRef);
 			if (innerParticipantRef != oldInnerParticipantRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.PARTICIPANT_ASSOCIATION__INNER_PARTICIPANT_REF,
-							oldInnerParticipantRef, innerParticipantRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.PARTICIPANT_ASSOCIATION__INNER_PARTICIPANT_REF, oldInnerParticipantRef,
+							innerParticipantRef));
 			}
 		}
 		return innerParticipantRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant basicGetInnerParticipantRef() {
@@ -111,24 +109,22 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInnerParticipantRef(Participant newInnerParticipantRef) {
 		Participant oldInnerParticipantRef = innerParticipantRef;
 		innerParticipantRef = newInnerParticipantRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Bpmn2Package.PARTICIPANT_ASSOCIATION__INNER_PARTICIPANT_REF,
-					oldInnerParticipantRef, innerParticipantRef));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.PARTICIPANT_ASSOCIATION__INNER_PARTICIPANT_REF, oldInnerParticipantRef,
+					innerParticipantRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant getOuterParticipantRef() {
@@ -137,19 +133,17 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 			outerParticipantRef = (Participant) eResolveProxy(oldOuterParticipantRef);
 			if (outerParticipantRef != oldOuterParticipantRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.PARTICIPANT_ASSOCIATION__OUTER_PARTICIPANT_REF,
-							oldOuterParticipantRef, outerParticipantRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.PARTICIPANT_ASSOCIATION__OUTER_PARTICIPANT_REF, oldOuterParticipantRef,
+							outerParticipantRef));
 			}
 		}
 		return outerParticipantRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant basicGetOuterParticipantRef() {
@@ -157,24 +151,22 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOuterParticipantRef(Participant newOuterParticipantRef) {
 		Participant oldOuterParticipantRef = outerParticipantRef;
 		outerParticipantRef = newOuterParticipantRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Bpmn2Package.PARTICIPANT_ASSOCIATION__OUTER_PARTICIPANT_REF,
-					oldOuterParticipantRef, outerParticipantRef));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.PARTICIPANT_ASSOCIATION__OUTER_PARTICIPANT_REF, oldOuterParticipantRef,
+					outerParticipantRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -193,8 +185,8 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -211,8 +203,8 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -229,8 +221,8 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -244,4 +236,4 @@ public class ParticipantAssociationImpl extends BaseElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //ParticipantAssociationImpl
+} // ParticipantAssociationImpl

@@ -61,8 +61,7 @@ public class MapKeyColumnAction extends AbstractTestAction {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt
-					.executeQuery("select IMAGE_NAME, IMAGE_FILENAME from IMAGE_MAPPING");
+			rs = stmt.executeQuery("select IMAGE_NAME, IMAGE_FILENAME from IMAGE_MAPPING");
 			Assert.assertTrue(rs.next());
 			Assert.assertTrue(rs.next());
 			Assert.assertFalse(rs.next());

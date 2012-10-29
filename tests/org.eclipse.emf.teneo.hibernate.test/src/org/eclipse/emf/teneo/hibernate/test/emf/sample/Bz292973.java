@@ -40,7 +40,8 @@ public class Bz292973 extends AbstractActionTest {
 		@Override
 		public Properties getExtraConfigurationProperties() {
 			final Properties props = super.getExtraConfigurationProperties();
-			props.setProperty(HibernateTestStore.EPACKAGE_INIT_MODE, HibernateTestStore.EPACKAGE_INIT_MODE_SPECIFIED);
+			props.setProperty(HibernateTestStore.EPACKAGE_INIT_MODE,
+					HibernateTestStore.EPACKAGE_INIT_MODE_SPECIFIED);
 			props.setProperty(HibernateTestStore.SPECIFIED_EPACKAGES, LibraryPackage.class.getName());
 			return props;
 		}

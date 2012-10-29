@@ -28,27 +28,26 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resrc Folder</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Resrc Folder</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.ResrcFolderImpl#getFolderMeta <em>Folder Meta</em>}</li>
- *   <li>{@link lobj.impl.ResrcFolderImpl#getResrcFolder <em>Resrc Folder</em>}</li>
- *   <li>{@link lobj.impl.ResrcFolderImpl#getAccessControl <em>Access Control</em>}</li>
- *   <li>{@link lobj.impl.ResrcFolderImpl#isDeleteScheduled <em>Delete Scheduled</em>}</li>
- *   <li>{@link lobj.impl.ResrcFolderImpl#getResrcFile <em>Resrc File</em>}</li>
+ * <li>{@link lobj.impl.ResrcFolderImpl#getFolderMeta <em>Folder Meta</em>}</li>
+ * <li>{@link lobj.impl.ResrcFolderImpl#getResrcFolder <em>Resrc Folder</em>}</li>
+ * <li>{@link lobj.impl.ResrcFolderImpl#getAccessControl <em>Access Control</em>}</li>
+ * <li>{@link lobj.impl.ResrcFolderImpl#isDeleteScheduled <em>Delete Scheduled</em>}</li>
+ * <li>{@link lobj.impl.ResrcFolderImpl#getResrcFile <em>Resrc File</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	/**
 	 * The cached value of the '{@link #getFolderMeta() <em>Folder Meta</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFolderMeta()
 	 * @generated
 	 * @ordered
@@ -56,9 +55,9 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	protected FolderMeta folderMeta;
 
 	/**
-	 * The cached value of the '{@link #getResrcFolder() <em>Resrc Folder</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResrcFolder() <em>Resrc Folder</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResrcFolder()
 	 * @generated
 	 * @ordered
@@ -66,9 +65,9 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	protected EList resrcFolder;
 
 	/**
-	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAccessControl()
 	 * @generated
 	 * @ordered
@@ -77,8 +76,8 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 
 	/**
 	 * The default value of the '{@link #isDeleteScheduled() <em>Delete Scheduled</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isDeleteScheduled()
 	 * @generated
 	 * @ordered
@@ -87,8 +86,8 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 
 	/**
 	 * The cached value of the '{@link #isDeleteScheduled() <em>Delete Scheduled</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isDeleteScheduled()
 	 * @generated
 	 * @ordered
@@ -96,9 +95,9 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	protected boolean deleteScheduled = DELETE_SCHEDULED_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResrcFile() <em>Resrc File</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResrcFile() <em>Resrc File</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResrcFile()
 	 * @generated
 	 * @ordered
@@ -106,8 +105,8 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	protected EList resrcFile;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResrcFolderImpl() {
@@ -115,8 +114,8 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -124,8 +123,8 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FolderMeta getFolderMeta() {
@@ -133,54 +132,62 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetFolderMeta(FolderMeta newFolderMeta, NotificationChain msgs) {
 		FolderMeta oldFolderMeta = folderMeta;
 		folderMeta = newFolderMeta;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LobjPackage.RESRC_FOLDER__FOLDER_META, oldFolderMeta, newFolderMeta);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					LobjPackage.RESRC_FOLDER__FOLDER_META, oldFolderMeta, newFolderMeta);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFolderMeta(FolderMeta newFolderMeta) {
 		if (newFolderMeta != folderMeta) {
 			NotificationChain msgs = null;
 			if (folderMeta != null)
-				msgs = ((InternalEObject)folderMeta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LobjPackage.RESRC_FOLDER__FOLDER_META, null, msgs);
+				msgs = ((InternalEObject) folderMeta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.RESRC_FOLDER__FOLDER_META, null, msgs);
 			if (newFolderMeta != null)
-				msgs = ((InternalEObject)newFolderMeta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LobjPackage.RESRC_FOLDER__FOLDER_META, null, msgs);
+				msgs = ((InternalEObject) newFolderMeta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.RESRC_FOLDER__FOLDER_META, null, msgs);
 			msgs = basicSetFolderMeta(newFolderMeta, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.RESRC_FOLDER__FOLDER_META, newFolderMeta, newFolderMeta));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.RESRC_FOLDER__FOLDER_META,
+					newFolderMeta, newFolderMeta));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getResrcFolder() {
 		if (resrcFolder == null) {
-			resrcFolder = new EObjectContainmentEList(ResrcFolder.class, this, LobjPackage.RESRC_FOLDER__RESRC_FOLDER);
+			resrcFolder = new EObjectContainmentEList(ResrcFolder.class, this,
+					LobjPackage.RESRC_FOLDER__RESRC_FOLDER);
 		}
 		return resrcFolder;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AccessControl getAccessControl() {
@@ -188,42 +195,50 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAccessControl(AccessControl newAccessControl, NotificationChain msgs) {
+	public NotificationChain basicSetAccessControl(AccessControl newAccessControl,
+			NotificationChain msgs) {
 		AccessControl oldAccessControl = accessControl;
 		accessControl = newAccessControl;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, oldAccessControl, newAccessControl);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, oldAccessControl, newAccessControl);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAccessControl(AccessControl newAccessControl) {
 		if (newAccessControl != accessControl) {
 			NotificationChain msgs = null;
 			if (accessControl != null)
-				msgs = ((InternalEObject)accessControl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, null, msgs);
+				msgs = ((InternalEObject) accessControl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, null, msgs);
 			if (newAccessControl != null)
-				msgs = ((InternalEObject)newAccessControl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, null, msgs);
+				msgs = ((InternalEObject) newAccessControl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, null, msgs);
 			msgs = basicSetAccessControl(newAccessControl, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, newAccessControl, newAccessControl));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.RESRC_FOLDER__ACCESS_CONTROL, newAccessControl, newAccessControl));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isDeleteScheduled() {
@@ -231,151 +246,155 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDeleteScheduled(boolean newDeleteScheduled) {
 		boolean oldDeleteScheduled = deleteScheduled;
 		deleteScheduled = newDeleteScheduled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED, oldDeleteScheduled, deleteScheduled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED, oldDeleteScheduled, deleteScheduled));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getResrcFile() {
 		if (resrcFile == null) {
-			resrcFile = new EObjectContainmentEList(ResrcFile.class, this, LobjPackage.RESRC_FOLDER__RESRC_FILE);
+			resrcFile = new EObjectContainmentEList(ResrcFile.class, this,
+					LobjPackage.RESRC_FOLDER__RESRC_FILE);
 		}
 		return resrcFile;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case LobjPackage.RESRC_FOLDER__FOLDER_META:
-				return basicSetFolderMeta(null, msgs);
-			case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
-				return ((InternalEList)getResrcFolder()).basicRemove(otherEnd, msgs);
-			case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
-				return basicSetAccessControl(null, msgs);
-			case LobjPackage.RESRC_FOLDER__RESRC_FILE:
-				return ((InternalEList)getResrcFile()).basicRemove(otherEnd, msgs);
+		case LobjPackage.RESRC_FOLDER__FOLDER_META:
+			return basicSetFolderMeta(null, msgs);
+		case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
+			return ((InternalEList) getResrcFolder()).basicRemove(otherEnd, msgs);
+		case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
+			return basicSetAccessControl(null, msgs);
+		case LobjPackage.RESRC_FOLDER__RESRC_FILE:
+			return ((InternalEList) getResrcFile()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.RESRC_FOLDER__FOLDER_META:
-				return getFolderMeta();
-			case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
-				return getResrcFolder();
-			case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
-				return getAccessControl();
-			case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
-				return isDeleteScheduled() ? Boolean.TRUE : Boolean.FALSE;
-			case LobjPackage.RESRC_FOLDER__RESRC_FILE:
-				return getResrcFile();
+		case LobjPackage.RESRC_FOLDER__FOLDER_META:
+			return getFolderMeta();
+		case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
+			return getResrcFolder();
+		case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
+			return getAccessControl();
+		case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
+			return isDeleteScheduled() ? Boolean.TRUE : Boolean.FALSE;
+		case LobjPackage.RESRC_FOLDER__RESRC_FILE:
+			return getResrcFile();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.RESRC_FOLDER__FOLDER_META:
-				setFolderMeta((FolderMeta)newValue);
-				return;
-			case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
-				getResrcFolder().clear();
-				getResrcFolder().addAll((Collection)newValue);
-				return;
-			case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
-				setAccessControl((AccessControl)newValue);
-				return;
-			case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
-				setDeleteScheduled(((Boolean)newValue).booleanValue());
-				return;
-			case LobjPackage.RESRC_FOLDER__RESRC_FILE:
-				getResrcFile().clear();
-				getResrcFile().addAll((Collection)newValue);
-				return;
+		case LobjPackage.RESRC_FOLDER__FOLDER_META:
+			setFolderMeta((FolderMeta) newValue);
+			return;
+		case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
+			getResrcFolder().clear();
+			getResrcFolder().addAll((Collection) newValue);
+			return;
+		case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
+			setAccessControl((AccessControl) newValue);
+			return;
+		case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
+			setDeleteScheduled(((Boolean) newValue).booleanValue());
+			return;
+		case LobjPackage.RESRC_FOLDER__RESRC_FILE:
+			getResrcFile().clear();
+			getResrcFile().addAll((Collection) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.RESRC_FOLDER__FOLDER_META:
-				setFolderMeta((FolderMeta)null);
-				return;
-			case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
-				getResrcFolder().clear();
-				return;
-			case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
-				setAccessControl((AccessControl)null);
-				return;
-			case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
-				setDeleteScheduled(DELETE_SCHEDULED_EDEFAULT);
-				return;
-			case LobjPackage.RESRC_FOLDER__RESRC_FILE:
-				getResrcFile().clear();
-				return;
+		case LobjPackage.RESRC_FOLDER__FOLDER_META:
+			setFolderMeta((FolderMeta) null);
+			return;
+		case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
+			getResrcFolder().clear();
+			return;
+		case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
+			setAccessControl((AccessControl) null);
+			return;
+		case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
+			setDeleteScheduled(DELETE_SCHEDULED_EDEFAULT);
+			return;
+		case LobjPackage.RESRC_FOLDER__RESRC_FILE:
+			getResrcFile().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.RESRC_FOLDER__FOLDER_META:
-				return folderMeta != null;
-			case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
-				return resrcFolder != null && !resrcFolder.isEmpty();
-			case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
-				return accessControl != null;
-			case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
-				return deleteScheduled != DELETE_SCHEDULED_EDEFAULT;
-			case LobjPackage.RESRC_FOLDER__RESRC_FILE:
-				return resrcFile != null && !resrcFile.isEmpty();
+		case LobjPackage.RESRC_FOLDER__FOLDER_META:
+			return folderMeta != null;
+		case LobjPackage.RESRC_FOLDER__RESRC_FOLDER:
+			return resrcFolder != null && !resrcFolder.isEmpty();
+		case LobjPackage.RESRC_FOLDER__ACCESS_CONTROL:
+			return accessControl != null;
+		case LobjPackage.RESRC_FOLDER__DELETE_SCHEDULED:
+			return deleteScheduled != DELETE_SCHEDULED_EDEFAULT;
+		case LobjPackage.RESRC_FOLDER__RESRC_FILE:
+			return resrcFile != null && !resrcFile.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (deleteScheduled: ");
@@ -384,4 +403,4 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 		return result.toString();
 	}
 
-} //ResrcFolderImpl
+} // ResrcFolderImpl

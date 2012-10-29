@@ -14,24 +14,25 @@ import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Generated Value</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Generated Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getStrategy <em>Strategy</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getGenerator <em>Generator</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getStrategy <em>
+ * Strategy</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getGenerator
+ * <em>Generator</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValue {
 	/**
-	 * The default value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getStrategy() <em>Strategy</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStrategy()
 	 * @generated
 	 * @ordered
@@ -39,9 +40,9 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	protected static final GenerationType STRATEGY_EDEFAULT = GenerationType.AUTO;
 
 	/**
-	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStrategy()
 	 * @generated
 	 * @ordered
@@ -49,9 +50,9 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	protected GenerationType strategy = STRATEGY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGenerator()
 	 * @generated
 	 * @ordered
@@ -59,9 +60,9 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	protected static final String GENERATOR_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGenerator()
 	 * @generated
 	 * @ordered
@@ -69,8 +70,8 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	protected String generator = GENERATOR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GeneratedValueImpl() {
@@ -78,8 +79,8 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -88,8 +89,8 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GenerationType getStrategy() {
@@ -97,20 +98,21 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStrategy(GenerationType newStrategy) {
 		GenerationType oldStrategy = strategy;
 		strategy = newStrategy == null ? STRATEGY_EDEFAULT : newStrategy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.GENERATED_VALUE__STRATEGY, oldStrategy, strategy));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.GENERATED_VALUE__STRATEGY, oldStrategy, strategy));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getGenerator() {
@@ -118,93 +120,95 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGenerator(String newGenerator) {
 		String oldGenerator = generator;
 		generator = newGenerator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.GENERATED_VALUE__GENERATOR, oldGenerator, generator));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.GENERATED_VALUE__GENERATOR, oldGenerator, generator));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__STRATEGY:
-				return getStrategy();
-			case PannotationPackage.GENERATED_VALUE__GENERATOR:
-				return getGenerator();
+		case PannotationPackage.GENERATED_VALUE__STRATEGY:
+			return getStrategy();
+		case PannotationPackage.GENERATED_VALUE__GENERATOR:
+			return getGenerator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__STRATEGY:
-				setStrategy((GenerationType)newValue);
-				return;
-			case PannotationPackage.GENERATED_VALUE__GENERATOR:
-				setGenerator((String)newValue);
-				return;
+		case PannotationPackage.GENERATED_VALUE__STRATEGY:
+			setStrategy((GenerationType) newValue);
+			return;
+		case PannotationPackage.GENERATED_VALUE__GENERATOR:
+			setGenerator((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__STRATEGY:
-				setStrategy(STRATEGY_EDEFAULT);
-				return;
-			case PannotationPackage.GENERATED_VALUE__GENERATOR:
-				setGenerator(GENERATOR_EDEFAULT);
-				return;
+		case PannotationPackage.GENERATED_VALUE__STRATEGY:
+			setStrategy(STRATEGY_EDEFAULT);
+			return;
+		case PannotationPackage.GENERATED_VALUE__GENERATOR:
+			setGenerator(GENERATOR_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__STRATEGY:
-				return strategy != STRATEGY_EDEFAULT;
-			case PannotationPackage.GENERATED_VALUE__GENERATOR:
-				return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
+		case PannotationPackage.GENERATED_VALUE__STRATEGY:
+			return strategy != STRATEGY_EDEFAULT;
+		case PannotationPackage.GENERATED_VALUE__GENERATOR:
+			return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (strategy: ");
@@ -215,4 +219,4 @@ public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValu
 		return result.toString();
 	}
 
-} //GeneratedValueImpl
+} // GeneratedValueImpl

@@ -51,15 +51,15 @@ public class CDOEntityMapper extends EntityMapper {
 			resourceElement.addElement("column").addAttribute("name", "resID_Entity");
 			resourceElement.addElement("column").addAttribute("name", "resID_ID");
 			resourceElement.addElement("column").addAttribute("name", "resID_class");
-			resourceElement
-				.addAttribute("type", "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
+			resourceElement.addAttribute("type",
+					"org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
 			final Element containerElement = entityElement.addElement("property");
 			containerElement.addAttribute("name", "containerID");
 			containerElement.addElement("column").addAttribute("name", "contID_Entity");
 			containerElement.addElement("column").addAttribute("name", "contID_ID");
 			containerElement.addElement("column").addAttribute("name", "contID_class");
 			containerElement.addAttribute("type",
-				"org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
+					"org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
 			final Element containingFeatureElement = entityElement.addElement("property");
 			containingFeatureElement.addAttribute("name", "containingFeatureID");
 			containingFeatureElement.addAttribute("column", "contFeatureID");

@@ -55,8 +55,7 @@ public class FeatureMapper implements ExtensionPoint {
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_OneToOne() };
 
 	/**
-	 * Different Mappers used in the switches below, each Mapper handles a
-	 * specific annotation case
+	 * Different Mappers used in the switches below, each Mapper handles a specific annotation case
 	 */
 	private BasicMapper basicMapper = null;
 
@@ -81,11 +80,10 @@ public class FeatureMapper implements ExtensionPoint {
 	private MappingContext hbmContext = null;
 
 	/**
-	 * Used to signal the end of a class or mapped superclass. public void end()
-	 * { if (nestedBegin <= 0) throw new
-	 * IllegalStateException("Unexpected end"); nestedBegin--; if (idStrategy !=
-	 * null) idStrategy.end(); // can happen in case of featuremap if
-	 * (nestedBegin == 0) idStrategy = null; }
+	 * Used to signal the end of a class or mapped superclass. public void end() { if (nestedBegin <=
+	 * 0) throw new IllegalStateException("Unexpected end"); nestedBegin--; if (idStrategy != null)
+	 * idStrategy.end(); // can happen in case of featuremap if (nestedBegin == 0) idStrategy = null;
+	 * }
 	 */
 
 	/** Find the feature to switch on */
@@ -115,19 +113,15 @@ public class FeatureMapper implements ExtensionPoint {
 	}
 
 	/** Process the eattribute */
-	private void processPAnnotatedEAttribute(
-			PAnnotatedEAttribute pAnnotatedEAttribute) {
+	private void processPAnnotatedEAttribute(PAnnotatedEAttribute pAnnotatedEAttribute) {
 		final EStructuralFeature discrFeature;
 		if (pAnnotatedEAttribute.getAnnotations().isEmpty()) {
-			discrFeature = PamodelPackage.eINSTANCE
-					.getPAnnotatedEAttribute_Basic();
+			discrFeature = PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic();
 		} else {
-			discrFeature = getSwitchFeature(pAnnotatedEAttribute,
-					PAEATTRIBUTE_DISCR_FEATURES);
+			discrFeature = getSwitchFeature(pAnnotatedEAttribute, PAEATTRIBUTE_DISCR_FEATURES);
 		}
 		if (discrFeature == null) {
-			throw new MappingException("Can not map this paElement",
-					pAnnotatedEAttribute);
+			throw new MappingException("Can not map this paElement", pAnnotatedEAttribute);
 		} else {
 			switch (discrFeature.getFeatureID()) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TRANSIENT:
@@ -154,14 +148,12 @@ public class FeatureMapper implements ExtensionPoint {
 	}
 
 	/** Process the ereference */
-	private void processPAnnotatedEReference(
-			PAnnotatedEReference pAnnotatedEReference) {
+	private void processPAnnotatedEReference(PAnnotatedEReference pAnnotatedEReference) {
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) pAnnotatedEReference;
 		final HbAnnotatedEClass hbClass = hbReference.getTransient() == null ? (HbAnnotatedEClass) pAnnotatedEReference
 				.getAReferenceType() : null;
-		if (hbReference.getHbType() != null
-				|| (hbClass != null && hbClass.getHbType() != null)) {
+		if (hbReference.getHbType() != null || (hbClass != null && hbClass.getHbType() != null)) {
 			if (hbReference.getHbType() == null) {
 				hbReference.setHbType(EcoreUtil.copy(hbClass.getHbType()));
 			}
@@ -171,21 +163,17 @@ public class FeatureMapper implements ExtensionPoint {
 
 		final EStructuralFeature discrFeature;
 		if (pAnnotatedEReference.getAnnotations().isEmpty()) {
-			discrFeature = PamodelPackage.eINSTANCE
-					.getPAnnotatedEReference_Embedded();
+			discrFeature = PamodelPackage.eINSTANCE.getPAnnotatedEReference_Embedded();
 		} else {
-			discrFeature = getSwitchFeature(pAnnotatedEReference,
-					PAEREFERENCE_DISCR_FEATURES);
+			discrFeature = getSwitchFeature(pAnnotatedEReference, PAEREFERENCE_DISCR_FEATURES);
 		}
 		if (discrFeature == null) {
-			throw new MappingException("Can not map this paElement",
-					pAnnotatedEReference);
+			throw new MappingException("Can not map this paElement", pAnnotatedEReference);
 		} else {
 			switch (discrFeature.getFeatureID()) {
 			case PamodelPackage.PANNOTATED_EREFERENCE__EXTERNAL:
 				if (pAnnotatedEReference.getModelEReference().isMany()) {
-					manyExternalReferenceMapper
-							.processManyReference(pAnnotatedEReference);
+					manyExternalReferenceMapper.processManyReference(pAnnotatedEReference);
 				} else {
 					basicMapper.processExternalEReference(pAnnotatedEReference);
 				}
@@ -273,7 +261,7 @@ public class FeatureMapper implements ExtensionPoint {
 
 	/**
 	 * @param hbmContext
-	 *            the hbmContext to set
+	 *          the hbmContext to set
 	 */
 	public void setHbmContext(MappingContext hbmContext) {
 		this.hbmContext = hbmContext;
@@ -288,10 +276,9 @@ public class FeatureMapper implements ExtensionPoint {
 
 	/**
 	 * @param manyExternalReferenceMapper
-	 *            the manyExternalReferenceMapper to set
+	 *          the manyExternalReferenceMapper to set
 	 */
-	public void setManyExternalReferenceMapper(
-			ManyExternalReferenceMapper manyExternalReferenceMapper) {
+	public void setManyExternalReferenceMapper(ManyExternalReferenceMapper manyExternalReferenceMapper) {
 		this.manyExternalReferenceMapper = manyExternalReferenceMapper;
 	}
 
@@ -299,8 +286,7 @@ public class FeatureMapper implements ExtensionPoint {
 		return typedEReferenceMapper;
 	}
 
-	public void setTypedEReferenceMapper(
-			TypedEReferenceMapper typedEReferenceMapper) {
+	public void setTypedEReferenceMapper(TypedEReferenceMapper typedEReferenceMapper) {
 		this.typedEReferenceMapper = typedEReferenceMapper;
 	}
 }

@@ -13,23 +13,23 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.BatchSize;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Batch Size</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Batch Size</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.BatchSizeImpl#getSize <em>Size</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.BatchSizeImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -37,9 +37,9 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	protected static final int SIZE_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -47,8 +47,8 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	protected int size = SIZE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BatchSizeImpl() {
@@ -56,8 +56,8 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -66,8 +66,8 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getSize() {
@@ -75,83 +75,85 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSize(int newSize) {
 		int oldSize = size;
 		size = newSize;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.BATCH_SIZE__SIZE, oldSize, size));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.BATCH_SIZE__SIZE,
+					oldSize, size));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.BATCH_SIZE__SIZE:
-				return getSize();
+		case HbannotationPackage.BATCH_SIZE__SIZE:
+			return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.BATCH_SIZE__SIZE:
-				setSize((Integer)newValue);
-				return;
+		case HbannotationPackage.BATCH_SIZE__SIZE:
+			setSize((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.BATCH_SIZE__SIZE:
-				setSize(SIZE_EDEFAULT);
-				return;
+		case HbannotationPackage.BATCH_SIZE__SIZE:
+			setSize(SIZE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.BATCH_SIZE__SIZE:
-				return size != SIZE_EDEFAULT;
+		case HbannotationPackage.BATCH_SIZE__SIZE:
+			return size != SIZE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (size: ");
@@ -160,4 +162,4 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 		return result.toString();
 	}
 
-} //BatchSizeImpl
+} // BatchSizeImpl

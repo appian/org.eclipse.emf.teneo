@@ -27,24 +27,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Category Value</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Category Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.CategoryValueImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.CategoryValueImpl#getCategorizedFlowElements <em>Categorized Flow Elements</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CategoryValueImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CategoryValueImpl#getCategorizedFlowElements <em>Categorized
+ * Flow Elements</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CategoryValueImpl extends BaseElementImpl implements CategoryValue {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -52,9 +52,9 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	protected static final String VALUE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -62,8 +62,8 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	protected String value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CategoryValueImpl() {
@@ -71,8 +71,8 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,8 +81,8 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getValue() {
@@ -90,34 +90,36 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CATEGORY_VALUE__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.CATEGORY_VALUE__VALUE,
+					oldValue, value));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<FlowElement> getCategorizedFlowElements() {
 		// TODO: implement this method to return the 'Categorized Flow Elements' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -132,8 +134,8 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -147,8 +149,8 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -162,16 +164,15 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.CATEGORY_VALUE__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT
-					.equals(value);
+			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		case Bpmn2Package.CATEGORY_VALUE__CATEGORIZED_FLOW_ELEMENTS:
 			return !getCategorizedFlowElements().isEmpty();
 		}
@@ -179,8 +180,8 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,4 +196,4 @@ public class CategoryValueImpl extends BaseElementImpl implements CategoryValue 
 		return result.toString();
 	}
 
-} //CategoryValueImpl
+} // CategoryValueImpl

@@ -48,7 +48,7 @@ public class JuliaAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-// props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
+		// props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
 		return props;
 	}
 

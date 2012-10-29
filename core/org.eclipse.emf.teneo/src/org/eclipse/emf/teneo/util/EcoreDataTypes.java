@@ -53,8 +53,7 @@ public class EcoreDataTypes {
 	// The xml types
 	private static XMLTypePackage xmlTypePackage = XMLTypePackage.eINSTANCE;
 	private static EDataType xmlDateEDataType = xmlTypePackage.getDate();
-	private static EDataType xmlDateTimeEDataType = xmlTypePackage
-			.getDateTime();
+	private static EDataType xmlDateTimeEDataType = xmlTypePackage.getDateTime();
 	private static EDataType xmlTimeEDataType = xmlTypePackage.getTime();
 
 	// The source of the annotations of extended metadata used by emf
@@ -63,33 +62,24 @@ public class EcoreDataTypes {
 	// XML datatype factory instance
 	private final DatatypeFactory dataTypeFactory;
 
-	private static final List<EDataType> PRIMITIVES_ETYPES_LIST = Collections
-			.unmodifiableList(Arrays.asList(new EDataType[] {
-					EcorePackage.eINSTANCE.getEBoolean(),
-					EcorePackage.eINSTANCE.getEByte(),
-					EcorePackage.eINSTANCE.getEChar(),
-					EcorePackage.eINSTANCE.getEDouble(),
-					EcorePackage.eINSTANCE.getEFloat(),
-					EcorePackage.eINSTANCE.getEInt(),
-					EcorePackage.eINSTANCE.getELong(),
+	private static final List<EDataType> PRIMITIVES_ETYPES_LIST = Collections.unmodifiableList(Arrays
+			.asList(new EDataType[] { EcorePackage.eINSTANCE.getEBoolean(),
+					EcorePackage.eINSTANCE.getEByte(), EcorePackage.eINSTANCE.getEChar(),
+					EcorePackage.eINSTANCE.getEDouble(), EcorePackage.eINSTANCE.getEFloat(),
+					EcorePackage.eINSTANCE.getEInt(), EcorePackage.eINSTANCE.getELong(),
 					EcorePackage.eINSTANCE.getEShort(), }));
 
 	private static final List<Class<?>> PRIMITIVE_OBJECT_TYPE_LIST = Collections
-			.unmodifiableList(Arrays.asList(new Class<?>[] {
-					java.lang.Boolean.class, java.lang.Byte.class,
-					java.lang.Double.class, java.lang.Float.class,
-					java.lang.Integer.class, java.lang.Long.class,
-					java.math.BigDecimal.class, java.math.BigInteger.class }));
+			.unmodifiableList(Arrays.asList(new Class<?>[] { java.lang.Boolean.class,
+					java.lang.Byte.class, java.lang.Double.class, java.lang.Float.class,
+					java.lang.Integer.class, java.lang.Long.class, java.math.BigDecimal.class,
+					java.math.BigInteger.class }));
 
-	private static final List<EDataType> WRAPPERS_ETYPES_LIST = Collections
-			.unmodifiableList(Arrays.asList(new EDataType[] {
-					EcorePackage.eINSTANCE.getEBooleanObject(),
-					EcorePackage.eINSTANCE.getEByteObject(),
-					EcorePackage.eINSTANCE.getECharacterObject(),
-					EcorePackage.eINSTANCE.getEDoubleObject(),
-					EcorePackage.eINSTANCE.getEFloatObject(),
-					EcorePackage.eINSTANCE.getEIntegerObject(),
-					EcorePackage.eINSTANCE.getELongObject(),
+	private static final List<EDataType> WRAPPERS_ETYPES_LIST = Collections.unmodifiableList(Arrays
+			.asList(new EDataType[] { EcorePackage.eINSTANCE.getEBooleanObject(),
+					EcorePackage.eINSTANCE.getEByteObject(), EcorePackage.eINSTANCE.getECharacterObject(),
+					EcorePackage.eINSTANCE.getEDoubleObject(), EcorePackage.eINSTANCE.getEFloatObject(),
+					EcorePackage.eINSTANCE.getEIntegerObject(), EcorePackage.eINSTANCE.getELongObject(),
 					EcorePackage.eINSTANCE.getEShortObject(), }));
 
 	public static EcoreDataTypes INSTANCE = new EcoreDataTypes();
@@ -106,19 +96,13 @@ public class EcoreDataTypes {
 	public String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
 		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 		// check on equality on object.class is used for listunion simpleunions
-		final Class<?> instanceClass = eAttribute.getEAttributeType()
-				.getInstanceClass();
+		final Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		if (instanceClass != null && !Object.class.equals(instanceClass)
 				&& !List.class.equals(instanceClass)) {
 			if (instanceClass.isArray()) {
 				// get rid of the [] at the end
-				return eAttribute
-						.getEType()
-						.getInstanceClassName()
-						.substring(
-								0,
-								eAttribute.getEType().getInstanceClassName()
-										.length() - 2);
+				return eAttribute.getEType().getInstanceClassName()
+						.substring(0, eAttribute.getEType().getInstanceClassName().length() - 2);
 			}
 			return instanceClass.getName();
 		}
@@ -131,8 +115,7 @@ public class EcoreDataTypes {
 		// of target
 		// entities this is required for listunion types but is not
 		// according to the ejb3 spec!
-		ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute
-				.getEType());
+		ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
 		if (eclassifiers.size() > 0) {
 			StringBuffer result = new StringBuffer();
 			for (int i = 0; i < eclassifiers.size(); i++) {
@@ -153,11 +136,9 @@ public class EcoreDataTypes {
 		if (eDataType == null) {
 			return result;
 		}
-		final String itemType = getEAnnotationValue(eDataType,
-				ANNOTATION_SOURCE_METADATA, "itemType");
+		final String itemType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "itemType");
 		if (itemType != null) {
-			final EClassifier eClassifier = getEClassifier(
-					eDataType.getEPackage(), itemType);
+			final EClassifier eClassifier = getEClassifier(eDataType.getEPackage(), itemType);
 			if (eClassifier != null) {
 				result.add(eClassifier);
 			}
@@ -165,13 +146,12 @@ public class EcoreDataTypes {
 			return result;
 		}
 
-		final String memberTypes = getEAnnotationValue(eDataType,
-				ANNOTATION_SOURCE_METADATA, "memberTypes");
+		final String memberTypes = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA,
+				"memberTypes");
 		if (memberTypes != null) {
 			String[] mtypes = memberTypes.split(" ");
 			for (String element : mtypes) {
-				final EClassifier eclassifier = getEClassifier(
-						eDataType.getEPackage(), element);
+				final EClassifier eclassifier = getEClassifier(eDataType.getEPackage(), element);
 				if (eclassifier != null) {
 					result.addAll(getItemTypes((EDataType) eclassifier));
 				}
@@ -179,11 +159,9 @@ public class EcoreDataTypes {
 			return result;
 		}
 
-		final String baseType = getEAnnotationValue(eDataType,
-				ANNOTATION_SOURCE_METADATA, "baseType");
+		final String baseType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "baseType");
 		if (baseType != null) {
-			final EClassifier eClassifier = getEClassifier(
-					eDataType.getEPackage(), baseType);
+			final EClassifier eClassifier = getEClassifier(eDataType.getEPackage(), baseType);
 			if (eClassifier != null) {
 				final ArrayList<EClassifier> tmpResult = getItemTypes((EDataType) eClassifier);
 				if (tmpResult.size() > 0) {
@@ -199,18 +177,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * Returns the eclassifier using either the name of the eclassifier or the
-	 * name element
+	 * Returns the eclassifier using either the name of the eclassifier or the name element
 	 */
 	public EClassifier getEClassifier(EPackage epackage, String searchName) {
 		for (EClassifier eclassifier : epackage.getEClassifiers()) {
 			if (eclassifier.getName().compareTo(searchName) == 0) {
 				return eclassifier;
 			}
-			String nameAnnotation = getEAnnotationValue(eclassifier,
-					ANNOTATION_SOURCE_METADATA, "name");
-			if (nameAnnotation != null
-					&& searchName.compareTo(nameAnnotation) == 0) {
+			String nameAnnotation = getEAnnotationValue(eclassifier, ANNOTATION_SOURCE_METADATA, "name");
+			if (nameAnnotation != null && searchName.compareTo(nameAnnotation) == 0) {
 				return eclassifier;
 			}
 		}
@@ -218,8 +193,7 @@ public class EcoreDataTypes {
 	}
 
 	/** Returns the value of an annotation with a certain key */
-	public String getEAnnotationValue(EModelElement eModelElement,
-			String source, String key) {
+	public String getEAnnotationValue(EModelElement eModelElement, String source, String key) {
 		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 		if (eAnnotation == null) {
 			return null;
@@ -231,8 +205,7 @@ public class EcoreDataTypes {
 
 	/** Return a XMLGregorianCalendar on the basis of the date */
 	public XMLGregorianCalendar getXMLGregorianCalendar(Date date) {
-		final XMLGregorianCalendar gregCalendar = dataTypeFactory
-				.newXMLGregorianCalendar();
+		final XMLGregorianCalendar gregCalendar = dataTypeFactory.newXMLGregorianCalendar();
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		gregCalendar.setYear(calendar.get(Calendar.YEAR));
@@ -245,8 +218,7 @@ public class EcoreDataTypes {
 
 	/** Return a XMLGregorianCalendar on datetime level (milliseconds) */
 	public XMLGregorianCalendar getXMLGregorianCalendarDateTime(Date date) {
-		final XMLGregorianCalendar gregCalendar = dataTypeFactory
-				.newXMLGregorianCalendar();
+		final XMLGregorianCalendar gregCalendar = dataTypeFactory.newXMLGregorianCalendar();
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		gregCalendar.setYear(calendar.get(Calendar.YEAR));
@@ -262,16 +234,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns an immutable list of the Ecore EDataType for java
-	 *         primitives.
+	 * @return Returns an immutable list of the Ecore EDataType for java primitives.
 	 */
 	public List<EDataType> getEPrimitives() {
 		return PRIMITIVES_ETYPES_LIST;
 	}
 
 	/**
-	 * @return Returns true if and only if the the given eDataType is the Ecore
-	 *         EDataType for a primitive type.
+	 * @return Returns true if and only if the the given eDataType is the Ecore EDataType for a
+	 *         primitive type.
 	 */
 	public boolean isEPrimitive(EDataType eDataType) {
 		return eDataType != null && isPrimitive(eDataType.getInstanceClass());
@@ -285,16 +256,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns an immutable list of the Ecore EDataType for java
-	 *         primitive wrapper classes.
+	 * @return Returns an immutable list of the Ecore EDataType for java primitive wrapper classes.
 	 */
 	public List<EDataType> getEWrappers() {
 		return WRAPPERS_ETYPES_LIST;
 	}
 
 	/**
-	 * @return Returns true if and only if the the given eDataType is the Ecore
-	 *         EDataType for a primitive wrapper class.
+	 * @return Returns true if and only if the the given eDataType is the Ecore EDataType for a
+	 *         primitive wrapper class.
 	 */
 	public boolean isEWrapper(EDataType eDataType) {
 		return WRAPPERS_ETYPES_LIST.contains(eDataType);
@@ -331,15 +301,14 @@ public class EcoreDataTypes {
 			return true;
 		}
 		/*
-		 * There is some ambiguity around the Java Date class since it can also
-		 * hold time - a conflict with the DateTime class
+		 * There is some ambiguity around the Java Date class since it can also hold time - a conflict
+		 * with the DateTime class
 		 */
 		Class<?> ic = eDataType.getInstanceClass();
 		// do a string comparison to prevent another dependency for this teneo
 		// library.
 		if (eDataType.getInstanceClassName() != null
-				&& eDataType.getInstanceClassName().compareTo(
-						po.getXSDDateClass()) == 0) {
+				&& eDataType.getInstanceClassName().compareTo(po.getXSDDateClass()) == 0) {
 			return true;
 		}
 		return java.util.Date.class == ic || java.util.Calendar.class == ic
@@ -347,17 +316,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return true if and only if the given dataType is a datetime/timestamp
-	 *         datatype.
+	 * @return true if and only if the given dataType is a datetime/timestamp datatype.
 	 */
 	public boolean isETime(EDataType eDataType) {
 		if (eDataType.equals(xmlTimeEDataType)) {
 			return true;
 		}
 		/*
-		 * the InstanceClass for date type can be "Object" for XSD types. I'm
-		 * not sure about ecore itself so I have kept the original check against
-		 * the java classes.
+		 * the InstanceClass for date type can be "Object" for XSD types. I'm not sure about ecore
+		 * itself so I have kept the original check against the java classes.
 		 */
 		Class<?> ic = eDataType.getInstanceClass();
 		// already handled through the first if
@@ -369,17 +336,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return true if and only if the given dataType is a datetime/timestamp
-	 *         datatype.
+	 * @return true if and only if the given dataType is a datetime/timestamp datatype.
 	 */
 	public boolean isEDateTime(EDataType eDataType) {
 		if (eDataType.equals(xmlDateTimeEDataType)) {
 			return true;
 		}
 		/*
-		 * the InstanceClass for date type can be "Object" for XSD types. I'm
-		 * not sure about ecore itself so I have kept the original check against
-		 * the java classes.
+		 * the InstanceClass for date type can be "Object" for XSD types. I'm not sure about ecore
+		 * itself so I have kept the original check against the java classes.
 		 */
 		Class<?> ic = eDataType.getInstanceClass();
 		// already handled through the first if
@@ -391,13 +356,13 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns true if and only if the given type is either a primitive
-	 *         or a wrapper or string or a date.
+	 * @return Returns true if and only if the given type is either a primitive or a wrapper or string
+	 *         or a date.
 	 */
 	public boolean isSimpleType(EDataType eType, PersistenceOptions po) {
 		// TODO move elsewhere
-		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType)
-				|| isEDate(eType, po) || isEDateTime(eType);
+		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType) || isEDate(eType, po)
+				|| isEDateTime(eType);
 	}
 
 	/**
@@ -427,8 +392,7 @@ public class EcoreDataTypes {
 	public boolean isByteArray(EDataType eType) {
 		final Class<?> clazz = eType.getInstanceClass();
 		if (clazz != null) {
-			return (clazz.isArray() && clazz.getComponentType().equals(
-					Byte.TYPE));
+			return (clazz.isArray() && clazz.getComponentType().equals(Byte.TYPE));
 		}
 		return false;
 	}

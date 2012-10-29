@@ -35,17 +35,15 @@ import org.hibernate.property.Setter;
 import org.hibernate.proxy.HibernateProxy;
 
 /**
- * Implements the getter for an EReference field. Normally uses the eget/eset
- * methods with bidirectional relations the handling is a bit different using
- * eInverseRemove and eInverseAdd. This class implements both the getter, setter
- * and propertyaccessor interfaces. When the getGetter and getSetter methods are
- * called it returns itself.
+ * Implements the getter for an EReference field. Normally uses the eget/eset methods with
+ * bidirectional relations the handling is a bit different using eInverseRemove and eInverseAdd.
+ * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter
+ * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.21 $
  */
-public class EReferencePropertyHandler implements Getter, Setter,
-		PropertyAccessor, ExtensionPoint {
+public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 
 	/**
 	 * Serial version id
@@ -69,8 +67,8 @@ public class EReferencePropertyHandler implements Getter, Setter,
 		this.eReference = eReference;
 		final EClass eClass = eReference.getEContainingClass();
 		featureId = eClass.getFeatureID(eReference);
-		isBidirectional = (eReference.getEOpposite() != null && !eReference
-				.getEOpposite().isTransient());
+		isBidirectional = (eReference.getEOpposite() != null && !eReference.getEOpposite()
+				.isTransient());
 		if (log.isDebugEnabled()) {
 			log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
 		}
@@ -83,12 +81,10 @@ public class EReferencePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 * java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -104,12 +100,10 @@ public class EReferencePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 * java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -135,32 +129,30 @@ public class EReferencePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
-	 * java.util.Map, org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getForInsert(Object owner, Map mergeMap,
-			SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session)
+			throws HibernateException {
 		return get(owner);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object,
-	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
 		final Object curValue = get(target);
 
 		if (isId()) {
 			IdentifierCacheHandler.getInstance().setID(target, value);
 		}
 
-		if (isBidirectional
-				|| (target instanceof DynamicEObjectImpl && eReference
-						.isContainment())) {
+		if (isBidirectional || (target instanceof DynamicEObjectImpl && eReference.isContainment())) {
 			// these are handled a bit differently because
 			// the opposite should not be set, this is
 			// done by hb
@@ -175,17 +167,14 @@ public class EReferencePropertyHandler implements Getter, Setter,
 				// opposite
 				if (value == null) { // remove
 					final NotificationChain nots = ((InternalEObject) target)
-							.eInverseRemove((InternalEObject) curValue,
-									featureId, eReference.getEType()
-											.getInstanceClass(), null);
+							.eInverseRemove((InternalEObject) curValue, featureId, eReference.getEType()
+									.getInstanceClass(), null);
 					if (nots != null) {
 						nots.dispatch();
 					}
 				} else {
-					final NotificationChain nots = ((InternalEObject) target)
-							.eInverseAdd((InternalEObject) value, featureId,
-									eReference.getEType().getInstanceClass(),
-									null);
+					final NotificationChain nots = ((InternalEObject) target).eInverseAdd(
+							(InternalEObject) value, featureId, eReference.getEType().getInstanceClass(), null);
 					if (nots != null) {
 						nots.dispatch();
 					}
@@ -200,13 +189,11 @@ public class EReferencePropertyHandler implements Getter, Setter,
 		}
 		final EObject eobj = (EObject) target;
 		Resource res = eobj.eResource();
-		if (value != null && res instanceof HibernateResource
-				&& ((EObject) value).eResource() == null) {
+		if (value != null && res instanceof HibernateResource && ((EObject) value).eResource() == null) {
 			final boolean loading = ((HibernateResource) res).isLoading();
 			try {
 				((HibernateResource) res).setIsLoading(true);
-				((HibernateResource) res).addToContentOrAttach(
-						(InternalEObject) value, eReference);
+				((HibernateResource) res).addToContentOrAttach((InternalEObject) value, eReference);
 			} finally {
 				((HibernateResource) res).setIsLoading(loading);
 			}

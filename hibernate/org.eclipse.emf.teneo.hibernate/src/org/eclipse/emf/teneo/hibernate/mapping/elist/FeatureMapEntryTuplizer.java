@@ -38,7 +38,8 @@ import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.EntityMetamodel;
 
 /**
- * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
+ * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of
+ * Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.15 $
@@ -90,7 +91,8 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 			return hds.getHbContext().createFeatureMapEntryFeatureURIAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_CDATA) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.CDATA);
-		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_COMMENT) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(
+				HbMapperConstants.PROPERTY_MIXED_COMMENT) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.COMMENT);
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_TEXT) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.TEXT);
@@ -102,16 +104,17 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 
 		final String eclassUri = HbUtil.getEClassNameFromFeatureMapMeta(pc);
 		final EClass eClass = hds.getEntityNameStrategy().toEClass(eclassUri);
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass,
+				mappedProperty.getName());
 
 		if (efeature == null) {
-			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName() + "/"
-					+ mappedProperty.getName());
+			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName()
+					+ "/" + mappedProperty.getName());
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + pc.getEntityName() + "/"
-					+ eclassUri + "/" + efeature.getName());
+			log.debug("Creating property accessor for " + mappedProperty.getName() + "/"
+					+ pc.getEntityName() + "/" + eclassUri + "/" + efeature.getName());
 		}
 
 		return hds.getHbContext().createFeatureMapEntryAccessor(efeature);

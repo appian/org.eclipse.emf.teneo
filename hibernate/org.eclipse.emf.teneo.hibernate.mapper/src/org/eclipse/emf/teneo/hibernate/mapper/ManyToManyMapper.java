@@ -27,8 +27,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class ManyToManyMapper extends AbstractAssociationMapper implements
-		ExtensionPoint {
+public class ManyToManyMapper extends AbstractAssociationMapper implements ExtensionPoint {
 
 	/** Logger */
 	private static final Log log = LogFactory.getLog(ManyToManyMapper.class);
@@ -45,8 +44,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		final ManyToMany mtm = hbReference.getManyToMany();
 
 		if (jt == null) {
-			throw new MappingException("Jointable is mandatory "
-					+ StoreUtil.toString(eref));
+			throw new MappingException("Jointable is mandatory " + StoreUtil.toString(eref));
 		}
 
 		final Element collElement = addCollectionElement(hbReference);
@@ -56,19 +54,16 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		}
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
-			addCacheElement(collElement,
-					((HbAnnotatedEReference) paReference).getHbCache());
+			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
 		}
 
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
 
-		boolean isMap = StoreUtil.isMap(eref)
-				&& getHbmContext().isMapEMapAsTrueMap();
+		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 		if (mtm.isIndexed() && hbReference.getHbIdBag() == null) {
 			// now we check if it is a list or a map
-			if (hbReference.getMapKey() != null
-					|| hbReference.getHbMapKey() != null
+			if (hbReference.getMapKey() != null || hbReference.getHbMapKey() != null
 					|| hbReference.getMapKeyManyToMany() != null) {
 				addMapKey(collElement, paReference);
 			} else if (isMap) {
@@ -79,45 +74,37 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		}
 
 		addFetchType(collElement, mtm.getFetch());
-		addCascades(collElement,
-				getCascades(hbReference.getHbCascade(), mtm.getCascade(), false),
+		addCascades(collElement, getCascades(hbReference.getHbCascade(), mtm.getCascade(), false),
 				false);
 
-		final PAnnotatedEClass referedToAClass = hbReference
-				.getAReferenceType();
+		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();
 		String targetName = mtm.getTargetEntity();
 		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(
-					hbReference.getEReferenceType());
+			targetName = getHbmContext().getEntityName(hbReference.getEReferenceType());
 		}
 		log.debug("Target entity-name " + targetName);
 
 		final Element mtmElement;
-		if (referedToAClass.isOnlyMapAsEntity()
-				|| !getHbmContext().forceUseOfInstance(referedToAClass)) {
-			mtmElement = collElement.addElement("many-to-many")
-					.addAttribute("entity-name", targetName)
+		if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
+			mtmElement = collElement.addElement("many-to-many").addAttribute("entity-name", targetName)
 					.addAttribute("unique", "false");
 		} else {
 			mtmElement = collElement
 					.addElement("many-to-many")
-					.addAttribute(
-							"class",
-							getHbmContext().getInstanceClassName(
-									hbReference.getEReferenceType()))
+					.addAttribute("class",
+							getHbmContext().getInstanceClassName(hbReference.getEReferenceType()))
 					.addAttribute("unique", "false");
 		}
 
 		if (hbReference.getNotFound() != null) {
-			mtmElement.addAttribute("not-found", hbReference.getNotFound()
-					.getAction().getName().toLowerCase());
+			mtmElement.addAttribute("not-found", hbReference.getNotFound().getAction().getName()
+					.toLowerCase());
 		}
 
 		addForeignKeyAttribute(mtmElement, hbReference);
 
 		// inverse is not supported by indexed lists
-		if ((!mtm.isIndexed() && hbReference.getHbIdBag() == null && mtm
-				.getMappedBy() != null)) {
+		if ((!mtm.isIndexed() && hbReference.getHbIdBag() == null && mtm.getMappedBy() != null)) {
 			// note inverse is required for many-to-many to work, otherwise
 			// hibernate will insert
 			// both sides of the relation twice.
@@ -129,15 +116,12 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		// check for a special case that mapped by is set on both sides
 		// should always be unequal to null
 		if (hbReference.getModelEReference().getEOpposite() != null) {
-			final PAnnotatedEReference aOpposite = hbReference.getPaModel()
-					.getPAnnotated(
-							hbReference.getModelEReference().getEOpposite());
-			if (aOpposite.getManyToMany() != null
-					&& aOpposite.getManyToMany().getMappedBy() != null
+			final PAnnotatedEReference aOpposite = hbReference.getPaModel().getPAnnotated(
+					hbReference.getModelEReference().getEOpposite());
+			if (aOpposite.getManyToMany() != null && aOpposite.getManyToMany().getMappedBy() != null
 					&& mtm.getMappedBy() != null) {
 				log.error("Mappedby is set on both sides of the many-to-many relation, this does not work, see the efeature: "
-						+ hbReference.getModelElement().toString()
-						+ ". Ignoring the mappedby in this efeature");
+						+ hbReference.getModelElement().toString() + ". Ignoring the mappedby in this efeature");
 				mtm.setMappedBy(null);
 			}
 		}
@@ -145,22 +129,15 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		addJoinTable(hbReference, collElement, keyElement, jt);
 		if (jt.getInverseJoinColumns() != null) {
 			for (JoinColumn joinColumn : jt.getInverseJoinColumns()) {
-				mtmElement
-						.addElement("column")
-						.addAttribute(
-								"name",
-								getHbmContext().trunc(joinColumn,
-										joinColumn.getName()))
-						.addAttribute("not-null",
-								joinColumn.isNullable() ? "false" : "true")
-						.addAttribute("unique",
-								joinColumn.isUnique() ? "true" : "false");
+				mtmElement.addElement("column")
+						.addAttribute("name", getHbmContext().trunc(joinColumn, joinColumn.getName()))
+						.addAttribute("not-null", joinColumn.isNullable() ? "false" : "true")
+						.addAttribute("unique", joinColumn.isUnique() ? "true" : "false");
 			}
 		}
 
 		addAccessor(collElement);
 
-		mapFilter(collElement,
-				((HbAnnotatedETypeElement) paReference).getFilter());
+		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference).getFilter());
 	}
 }

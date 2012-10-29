@@ -89,10 +89,11 @@ public class EDataTypeAction extends AbstractTestAction {
 			final Book book = store.getObject(Book.class);
 			// hsqldb does not support column length, at least not in in-mem mode
 			if (!(store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter)) {
-				assertTrue("The length of the booktitle should not be more than 25: " + book.getTitle().length(), book
-					.getTitle().length() <= 25);
-				assertTrue("Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
-					Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
+				assertTrue("The length of the booktitle should not be more than 25: "
+						+ book.getTitle().length(), book.getTitle().length() <= 25);
+				assertTrue(
+						"Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
+						Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
 			}
 			book.setWeight(new BigDecimal("25.5"));
 			store.store(book);
@@ -106,7 +107,8 @@ public class EDataTypeAction extends AbstractTestAction {
 			try {
 				conn = store.getConnection();
 				stmt = conn.createStatement();
-				final ResultSet rs = stmt.executeQuery("SELECT * FROM mybooktable WHERE titel='' AND gewicht IS NULL");
+				final ResultSet rs = stmt
+						.executeQuery("SELECT * FROM mybooktable WHERE titel='' AND gewicht IS NULL");
 				assertTrue(rs != null); // dummy to get rid of warning
 			} catch (final SQLException s) {
 				throw new StoreTestException("SQL Exception", s);

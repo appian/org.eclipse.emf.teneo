@@ -21,19 +21,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Process Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Process Type</b></em>', and utility methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getProcessType()
  * @model extendedMetaData="name='tProcessType'"
  * @generated
  */
 public enum ProcessType implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +39,8 @@ public enum ProcessType implements Enumerator {
 	NONE(0, "None", "None"),
 
 	/**
-	 * The '<em><b>Public</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Public</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #PUBLIC_VALUE
 	 * @generated
 	 * @ordered
@@ -51,9 +48,8 @@ public enum ProcessType implements Enumerator {
 	PUBLIC(1, "Public", "Public"),
 
 	/**
-	 * The '<em><b>Private</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Private</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #PRIVATE_VALUE
 	 * @generated
 	 * @ordered
@@ -61,13 +57,13 @@ public enum ProcessType implements Enumerator {
 	PRIVATE(2, "Private", "Private");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NONE
 	 * @model name="None"
 	 * @generated
@@ -76,13 +72,13 @@ public enum ProcessType implements Enumerator {
 	public static final int NONE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Public</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Public</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Public</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Public</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PUBLIC
 	 * @model name="Public"
 	 * @generated
@@ -91,13 +87,13 @@ public enum ProcessType implements Enumerator {
 	public static final int PUBLIC_VALUE = 1;
 
 	/**
-	 * The '<em><b>Private</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Private</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Private</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Private</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PRIVATE
 	 * @model name="Private"
 	 * @generated
@@ -106,27 +102,26 @@ public enum ProcessType implements Enumerator {
 	public static final int PRIVATE_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Process Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Process Type</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final ProcessType[] VALUES_ARRAY = new ProcessType[] { NONE,
-			PUBLIC, PRIVATE, };
+	private static final ProcessType[] VALUES_ARRAY = new ProcessType[] { NONE, PUBLIC, PRIVATE, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Process Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Process Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<ProcessType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ProcessType> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Process Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Process Type</b></em>' literal with the specified literal value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ProcessType get(String literal) {
@@ -140,9 +135,9 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Process Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Process Type</b></em>' literal with the specified name. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ProcessType getByName(String name) {
@@ -156,9 +151,9 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Process Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Process Type</b></em>' literal with the specified integer value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ProcessType get(int value) {
@@ -174,30 +169,29 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ProcessType(int value, String name, String literal) {
@@ -207,8 +201,8 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -216,8 +210,8 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -225,8 +219,8 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -234,9 +228,9 @@ public enum ProcessType implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -244,4 +238,4 @@ public enum ProcessType implements Enumerator {
 		return literal;
 	}
 
-} //ProcessType
+} // ProcessType

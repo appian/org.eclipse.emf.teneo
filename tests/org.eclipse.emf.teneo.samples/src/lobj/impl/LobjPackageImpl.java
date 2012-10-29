@@ -72,393 +72,391 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass learningObjectEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass blockEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass hypertextBlockEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass abstractContentEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass hypertextContentEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass blockFolderEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass categoryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass corrBlockEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass courseEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass itemEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass learningUnitEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass luFolderEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass moduleEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass moduleFolderEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resrcFolderEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass themeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass presentationBlockEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass nodeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass themeNodeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass luNodeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resrcFileEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass blockAudiofileEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resrcFiletypeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass accessControlEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass addressEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass affiliationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass authorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass blockMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass blocktypeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass titleMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass courseMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass simpleDidacMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass didacMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass domainEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass editionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass folderMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass luMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass userauthorizationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass noteEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass personEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass publisherEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass publishInfoEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resrcMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass sharednotesEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass coursetypeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass externalMetadataEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass languageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass precognitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass internalRefEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass moduleMetaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass sourceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass authorizationTypesEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass userEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package package URI
+	 * value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory method {@link #init
+	 * init()}, which also performs initialization of the package, or returns the registered package,
+	 * if one already exists. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see lobj.LobjPackage#eNS_URI
 	 * @see #init()
@@ -469,29 +467,33 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon
+	 * which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link LobjPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link LobjPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain
+	 * the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static LobjPackage init() {
-		if (isInited) return (LobjPackage)EPackage.Registry.INSTANCE.getEPackage(LobjPackage.eNS_URI);
+		if (isInited)
+			return (LobjPackage) EPackage.Registry.INSTANCE.getEPackage(LobjPackage.eNS_URI);
 
 		// Obtain or create and register package
-		LobjPackageImpl theLobjPackage = (LobjPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LobjPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new LobjPackageImpl());
+		LobjPackageImpl theLobjPackage = (LobjPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LobjPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new LobjPackageImpl());
 
 		isInited = true;
 
@@ -507,15 +509,14 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 		// Mark meta-data to indicate it can't be changed
 		theLobjPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(LobjPackage.eNS_URI, theLobjPackage);
 		return theLobjPackage;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLearningObject() {
@@ -523,35 +524,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLearningObject_Id() {
-		return (EAttribute)learningObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) learningObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLearningObject_Timestamp() {
-		return (EAttribute)learningObjectEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) learningObjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLearningObject_Synchronized() {
-		return (EAttribute)learningObjectEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) learningObjectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBlock() {
@@ -559,35 +560,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlock_BlockMeta() {
-		return (EReference)blockEClass.getEStructuralFeatures().get(0);
+		return (EReference) blockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlock_ExternalMetadata() {
-		return (EReference)blockEClass.getEStructuralFeatures().get(1);
+		return (EReference) blockEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlock_AccessControl() {
-		return (EReference)blockEClass.getEStructuralFeatures().get(2);
+		return (EReference) blockEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getHypertextBlock() {
@@ -595,17 +596,17 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getHypertextBlock_HypertextContent() {
-		return (EReference)hypertextBlockEClass.getEStructuralFeatures().get(0);
+		return (EReference) hypertextBlockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAbstractContent() {
@@ -613,35 +614,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAbstractContent_Heading() {
-		return (EAttribute)abstractContentEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) abstractContentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAbstractContent_Language() {
-		return (EReference)abstractContentEClass.getEStructuralFeatures().get(1);
+		return (EReference) abstractContentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAbstractContent_Source() {
-		return (EReference)abstractContentEClass.getEStructuralFeatures().get(2);
+		return (EReference) abstractContentEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getHypertextContent() {
@@ -649,35 +650,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHypertextContent_Content() {
-		return (EAttribute)hypertextContentEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) hypertextContentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getHypertextContent_BlockAudiofile() {
-		return (EReference)hypertextContentEClass.getEStructuralFeatures().get(1);
+		return (EReference) hypertextContentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getHypertextContent_ResrcFile() {
-		return (EReference)hypertextContentEClass.getEStructuralFeatures().get(2);
+		return (EReference) hypertextContentEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBlockFolder() {
@@ -685,44 +686,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockFolder_FolderMeta() {
-		return (EReference)blockFolderEClass.getEStructuralFeatures().get(0);
+		return (EReference) blockFolderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockFolder_BlockFolder() {
-		return (EReference)blockFolderEClass.getEStructuralFeatures().get(1);
+		return (EReference) blockFolderEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockFolder_Block() {
-		return (EReference)blockFolderEClass.getEStructuralFeatures().get(2);
+		return (EReference) blockFolderEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockFolder_AccessControl() {
-		return (EReference)blockFolderEClass.getEStructuralFeatures().get(3);
+		return (EReference) blockFolderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCategory() {
@@ -730,26 +731,26 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCategory_TitleMeta() {
-		return (EReference)categoryEClass.getEStructuralFeatures().get(0);
+		return (EReference) categoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCategory_Course() {
-		return (EReference)categoryEClass.getEStructuralFeatures().get(1);
+		return (EReference) categoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCorrBlock() {
@@ -757,35 +758,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrBlock_PresentationBlock() {
-		return (EReference)corrBlockEClass.getEStructuralFeatures().get(0);
+		return (EReference) corrBlockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrBlock_TitleMeta() {
-		return (EReference)corrBlockEClass.getEStructuralFeatures().get(1);
+		return (EReference) corrBlockEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCorrBlock_Id() {
-		return (EAttribute)corrBlockEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) corrBlockEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCourse() {
@@ -793,53 +794,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourse_CourseMeta() {
-		return (EReference)courseEClass.getEStructuralFeatures().get(0);
+		return (EReference) courseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourse_ExternalMetadata() {
-		return (EReference)courseEClass.getEStructuralFeatures().get(1);
+		return (EReference) courseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourse_Coursetype() {
-		return (EReference)courseEClass.getEStructuralFeatures().get(2);
+		return (EReference) courseEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCourse_OutlineAsXml() {
-		return (EAttribute)courseEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) courseEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourse_Module() {
-		return (EReference)courseEClass.getEStructuralFeatures().get(4);
+		return (EReference) courseEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getItem() {
@@ -847,44 +848,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getItem_CorrBlock() {
-		return (EReference)itemEClass.getEStructuralFeatures().get(0);
+		return (EReference) itemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getItem_Childitems() {
-		return (EReference)itemEClass.getEStructuralFeatures().get(1);
+		return (EReference) itemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getItem_LuRef() {
-		return (EAttribute)itemEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) itemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getItem_Id() {
-		return (EAttribute)itemEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) itemEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLearningUnit() {
@@ -892,62 +893,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLearningUnit_LuMeta() {
-		return (EReference)learningUnitEClass.getEStructuralFeatures().get(0);
+		return (EReference) learningUnitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLearningUnit_ExternalMetadata() {
-		return (EReference)learningUnitEClass.getEStructuralFeatures().get(1);
+		return (EReference) learningUnitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLearningUnit_TreeAsXml() {
-		return (EAttribute)learningUnitEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) learningUnitEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLearningUnit_LuFile() {
-		return (EAttribute)learningUnitEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) learningUnitEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLearningUnit_AccessControl() {
-		return (EReference)learningUnitEClass.getEStructuralFeatures().get(4);
+		return (EReference) learningUnitEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLearningUnit_Item() {
-		return (EReference)learningUnitEClass.getEStructuralFeatures().get(5);
+		return (EReference) learningUnitEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLuFolder() {
@@ -955,44 +956,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuFolder_FolderMeta() {
-		return (EReference)luFolderEClass.getEStructuralFeatures().get(0);
+		return (EReference) luFolderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuFolder_LuFolder() {
-		return (EReference)luFolderEClass.getEStructuralFeatures().get(1);
+		return (EReference) luFolderEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuFolder_LearningUnit() {
-		return (EReference)luFolderEClass.getEStructuralFeatures().get(2);
+		return (EReference) luFolderEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuFolder_AccessControl() {
-		return (EReference)luFolderEClass.getEStructuralFeatures().get(3);
+		return (EReference) luFolderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getModule() {
@@ -1000,62 +1001,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModule_ModuleMeta() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(0);
+		return (EReference) moduleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModule_ExternalMetadata() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(1);
+		return (EReference) moduleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModule_RootNode() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
+		return (EReference) moduleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getModule_ModuleFile() {
-		return (EAttribute)moduleEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) moduleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getModule_TreeAsXml() {
-		return (EAttribute)moduleEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) moduleEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModule_AccessControl() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(5);
+		return (EReference) moduleEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getModuleFolder() {
@@ -1063,44 +1064,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleFolder_FolderMeta() {
-		return (EReference)moduleFolderEClass.getEStructuralFeatures().get(0);
+		return (EReference) moduleFolderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleFolder_ModuleFolder() {
-		return (EReference)moduleFolderEClass.getEStructuralFeatures().get(1);
+		return (EReference) moduleFolderEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleFolder_Module() {
-		return (EReference)moduleFolderEClass.getEStructuralFeatures().get(2);
+		return (EReference) moduleFolderEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleFolder_AccessControl() {
-		return (EReference)moduleFolderEClass.getEStructuralFeatures().get(3);
+		return (EReference) moduleFolderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResrcFolder() {
@@ -1108,53 +1109,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFolder_FolderMeta() {
-		return (EReference)resrcFolderEClass.getEStructuralFeatures().get(0);
+		return (EReference) resrcFolderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFolder_ResrcFolder() {
-		return (EReference)resrcFolderEClass.getEStructuralFeatures().get(1);
+		return (EReference) resrcFolderEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFolder_AccessControl() {
-		return (EReference)resrcFolderEClass.getEStructuralFeatures().get(2);
+		return (EReference) resrcFolderEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFolder_DeleteScheduled() {
-		return (EAttribute)resrcFolderEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) resrcFolderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFolder_ResrcFile() {
-		return (EReference)resrcFolderEClass.getEStructuralFeatures().get(4);
+		return (EReference) resrcFolderEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTheme() {
@@ -1162,17 +1163,17 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTheme_SimpleDidacMeta() {
-		return (EReference)themeEClass.getEStructuralFeatures().get(0);
+		return (EReference) themeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPresentationBlock() {
@@ -1180,44 +1181,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPresentationBlock_Lod() {
-		return (EAttribute)presentationBlockEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) presentationBlockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPresentationBlock_Rendering() {
-		return (EAttribute)presentationBlockEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) presentationBlockEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPresentationBlock_Block() {
-		return (EReference)presentationBlockEClass.getEStructuralFeatures().get(2);
+		return (EReference) presentationBlockEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPresentationBlock_Id() {
-		return (EAttribute)presentationBlockEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) presentationBlockEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getNode() {
@@ -1225,26 +1226,26 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNode_Visible() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) nodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNode_Id() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) nodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getThemeNode() {
@@ -1252,26 +1253,26 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThemeNode_Theme() {
-		return (EReference)themeNodeEClass.getEStructuralFeatures().get(0);
+		return (EReference) themeNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThemeNode_Childnodes() {
-		return (EReference)themeNodeEClass.getEStructuralFeatures().get(1);
+		return (EReference) themeNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLuNode() {
@@ -1279,17 +1280,17 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuNode_LearningUnit() {
-		return (EReference)luNodeEClass.getEStructuralFeatures().get(0);
+		return (EReference) luNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResrcFile() {
@@ -1297,98 +1298,98 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFile_File() {
-		return (EAttribute)resrcFileEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) resrcFileEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFile_File_tn() {
-		return (EAttribute)resrcFileEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) resrcFileEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFile_Originalextension() {
-		return (EAttribute)resrcFileEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) resrcFileEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFile_Filesize() {
-		return (EAttribute)resrcFileEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) resrcFileEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFile_ResrcHref() {
-		return (EAttribute)resrcFileEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) resrcFileEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFile_Accesscontrol() {
-		return (EReference)resrcFileEClass.getEStructuralFeatures().get(5);
+		return (EReference) resrcFileEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFile_ResrcFiletype() {
-		return (EReference)resrcFileEClass.getEStructuralFeatures().get(6);
+		return (EReference) resrcFileEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFile_Source() {
-		return (EReference)resrcFileEClass.getEStructuralFeatures().get(7);
+		return (EReference) resrcFileEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFile_HypertextContent() {
-		return (EReference)resrcFileEClass.getEStructuralFeatures().get(8);
+		return (EReference) resrcFileEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResrcFile_ResrcMeta() {
-		return (EReference)resrcFileEClass.getEStructuralFeatures().get(9);
+		return (EReference) resrcFileEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBlockAudiofile() {
@@ -1396,53 +1397,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockAudiofile_File() {
-		return (EAttribute)blockAudiofileEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) blockAudiofileEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockAudiofile_Originalextension() {
-		return (EAttribute)blockAudiofileEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) blockAudiofileEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockAudiofile_Filesize() {
-		return (EAttribute)blockAudiofileEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) blockAudiofileEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockAudiofile_ResrcHref() {
-		return (EAttribute)blockAudiofileEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) blockAudiofileEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockAudiofile_ResrcFiletype() {
-		return (EReference)blockAudiofileEClass.getEStructuralFeatures().get(4);
+		return (EReference) blockAudiofileEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResrcFiletype() {
@@ -1450,71 +1451,71 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_FiletypeExtension() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_FiletypeDesc() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_Image() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_Applet() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_FiletypeImageSmall() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_FiletypeImageBif() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcFiletype_Id() {
-		return (EAttribute)resrcFiletypeEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) resrcFiletypeEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAccessControl() {
@@ -1522,107 +1523,107 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAccessControl_Owner() {
-		return (EReference)accessControlEClass.getEStructuralFeatures().get(0);
+		return (EReference) accessControlEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAccessControl_LastModified() {
-		return (EAttribute)accessControlEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) accessControlEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAccessControl_LastModifiedBy() {
-		return (EReference)accessControlEClass.getEStructuralFeatures().get(2);
+		return (EReference) accessControlEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAccessControl_Status() {
-		return (EAttribute)accessControlEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) accessControlEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAccessControl_LastStatusChange() {
-		return (EAttribute)accessControlEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) accessControlEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAccessControl_LastStatusChangeBy() {
-		return (EReference)accessControlEClass.getEStructuralFeatures().get(5);
+		return (EReference) accessControlEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAccessControl_Sharednotes() {
-		return (EReference)accessControlEClass.getEStructuralFeatures().get(6);
+		return (EReference) accessControlEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAccessControl_Authorizes() {
-		return (EReference)accessControlEClass.getEStructuralFeatures().get(7);
+		return (EReference) accessControlEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAccessControl_EditionHistory() {
-		return (EReference)accessControlEClass.getEStructuralFeatures().get(8);
+		return (EReference) accessControlEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAccessControl_GlobalAccess() {
-		return (EAttribute)accessControlEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) accessControlEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAccessControl_Id() {
-		return (EAttribute)accessControlEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) accessControlEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAddress() {
@@ -1630,98 +1631,98 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Street() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Postcode() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_City() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_State() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Country() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Phone() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Fax() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Email() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Otheraddr() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAddress_Id() {
-		return (EAttribute)addressEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) addressEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAffiliation() {
@@ -1729,62 +1730,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAffiliation_Shortaffil() {
-		return (EAttribute)affiliationEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) affiliationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAffiliation_Jobtitle() {
-		return (EAttribute)affiliationEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) affiliationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAffiliation_Orgname() {
-		return (EAttribute)affiliationEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) affiliationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAffiliation_Orgdiv() {
-		return (EAttribute)affiliationEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) affiliationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAffiliation_Address() {
-		return (EReference)affiliationEClass.getEStructuralFeatures().get(4);
+		return (EReference) affiliationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAffiliation_Id() {
-		return (EAttribute)affiliationEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) affiliationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAuthor() {
@@ -1792,53 +1793,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthor_Credittype() {
-		return (EAttribute)authorEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) authorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAuthor_Person() {
-		return (EReference)authorEClass.getEStructuralFeatures().get(1);
+		return (EReference) authorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAuthor_Address() {
-		return (EReference)authorEClass.getEStructuralFeatures().get(2);
+		return (EReference) authorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthor_Email() {
-		return (EAttribute)authorEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) authorEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthor_Id() {
-		return (EAttribute)authorEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) authorEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBlockMeta() {
@@ -1846,71 +1847,71 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockMeta_Lod() {
-		return (EAttribute)blockMetaEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) blockMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockMeta_Rendering() {
-		return (EAttribute)blockMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) blockMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockMeta_Blocktype() {
-		return (EReference)blockMetaEClass.getEStructuralFeatures().get(2);
+		return (EReference) blockMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockMeta_CreationDate() {
-		return (EAttribute)blockMetaEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) blockMetaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlockMeta_LastModified() {
-		return (EAttribute)blockMetaEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) blockMetaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockMeta_SimpleDidacMeta() {
-		return (EReference)blockMetaEClass.getEStructuralFeatures().get(5);
+		return (EReference) blockMetaEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlockMeta_DefLang() {
-		return (EReference)blockMetaEClass.getEStructuralFeatures().get(6);
+		return (EReference) blockMetaEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBlocktype() {
@@ -1918,62 +1919,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlocktype_Name() {
-		return (EAttribute)blocktypeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) blocktypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlocktype_Description() {
-		return (EAttribute)blocktypeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) blocktypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlocktype_CreationDate() {
-		return (EAttribute)blocktypeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) blocktypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlocktype_StyleRef() {
-		return (EAttribute)blocktypeEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) blocktypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBlocktype_Domains() {
-		return (EReference)blocktypeEClass.getEStructuralFeatures().get(4);
+		return (EReference) blocktypeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBlocktype_Id() {
-		return (EAttribute)blocktypeEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) blocktypeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTitleMeta() {
@@ -1981,35 +1982,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTitleMeta_Language() {
-		return (EReference)titleMetaEClass.getEStructuralFeatures().get(0);
+		return (EReference) titleMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTitleMeta_Title() {
-		return (EAttribute)titleMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) titleMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTitleMeta_Id() {
-		return (EAttribute)titleMetaEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) titleMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCourseMeta() {
@@ -2017,80 +2018,80 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourseMeta_DidacMeta() {
-		return (EReference)courseMetaEClass.getEStructuralFeatures().get(0);
+		return (EReference) courseMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCourseMeta_Hours() {
-		return (EAttribute)courseMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) courseMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCourseMeta_Lvanr() {
-		return (EAttribute)courseMetaEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) courseMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCourseMeta_Columnfilterasxml() {
-		return (EAttribute)courseMetaEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) courseMetaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCourseMeta_Fromext() {
-		return (EAttribute)courseMetaEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) courseMetaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCourseMeta_CreationDate() {
-		return (EAttribute)courseMetaEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) courseMetaEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourseMeta_Lecturer() {
-		return (EReference)courseMetaEClass.getEStructuralFeatures().get(6);
+		return (EReference) courseMetaEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCourseMeta_DefLang() {
-		return (EReference)courseMetaEClass.getEStructuralFeatures().get(7);
+		return (EReference) courseMetaEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSimpleDidacMeta() {
@@ -2098,53 +2099,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSimpleDidacMeta_Language() {
-		return (EReference)simpleDidacMetaEClass.getEStructuralFeatures().get(0);
+		return (EReference) simpleDidacMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSimpleDidacMeta_Title() {
-		return (EAttribute)simpleDidacMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) simpleDidacMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSimpleDidacMeta_Description() {
-		return (EAttribute)simpleDidacMetaEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) simpleDidacMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSimpleDidacMeta_Keywords() {
-		return (EAttribute)simpleDidacMetaEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) simpleDidacMetaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSimpleDidacMeta_Id() {
-		return (EAttribute)simpleDidacMetaEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) simpleDidacMetaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDidacMeta() {
@@ -2152,26 +2153,26 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDidacMeta_Goal() {
-		return (EAttribute)didacMetaEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) didacMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDidacMeta_Precognition() {
-		return (EReference)didacMetaEClass.getEStructuralFeatures().get(1);
+		return (EReference) didacMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDomain() {
@@ -2179,62 +2180,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDomain_Name() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) domainEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDomain_Description() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) domainEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDomain_Blocktypes() {
-		return (EReference)domainEClass.getEStructuralFeatures().get(2);
+		return (EReference) domainEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDomain_CreationDate() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) domainEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDomain_ServerURL() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) domainEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDomain_Id() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) domainEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEdition() {
@@ -2242,71 +2243,71 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_EditionNr() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_EditedBy() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_Version() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_LastVersionNumber() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_Status() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_EditionCreationDate() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEdition_Id() {
-		return (EAttribute)editionEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) editionEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFolderMeta() {
@@ -2314,35 +2315,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFolderMeta_Title() {
-		return (EAttribute)folderMetaEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) folderMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFolderMeta_Description() {
-		return (EAttribute)folderMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) folderMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFolderMeta_CreationDate() {
-		return (EAttribute)folderMetaEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) folderMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLuMeta() {
@@ -2350,62 +2351,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuMeta_DidacMeta() {
-		return (EReference)luMetaEClass.getEStructuralFeatures().get(0);
+		return (EReference) luMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLuMeta_CreationDate() {
-		return (EAttribute)luMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) luMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuMeta_Domain() {
-		return (EReference)luMetaEClass.getEStructuralFeatures().get(2);
+		return (EReference) luMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuMeta_Authors() {
-		return (EReference)luMetaEClass.getEStructuralFeatures().get(3);
+		return (EReference) luMetaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuMeta_PublishInfo() {
-		return (EReference)luMetaEClass.getEStructuralFeatures().get(4);
+		return (EReference) luMetaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLuMeta_DefLang() {
-		return (EReference)luMetaEClass.getEStructuralFeatures().get(5);
+		return (EReference) luMetaEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getUserauthorization() {
@@ -2413,35 +2414,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getUserauthorization_User() {
-		return (EReference)userauthorizationEClass.getEStructuralFeatures().get(0);
+		return (EReference) userauthorizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getUserauthorization_AuthType() {
-		return (EReference)userauthorizationEClass.getEStructuralFeatures().get(1);
+		return (EReference) userauthorizationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUserauthorization_Id() {
-		return (EAttribute)userauthorizationEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) userauthorizationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getNote() {
@@ -2449,44 +2450,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNote_Date() {
-		return (EAttribute)noteEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) noteEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNote_NoteAuthor() {
-		return (EAttribute)noteEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) noteEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNote_Content() {
-		return (EAttribute)noteEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) noteEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNote_Id() {
-		return (EAttribute)noteEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) noteEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPerson() {
@@ -2494,71 +2495,71 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPerson_Honorific() {
-		return (EAttribute)personEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) personEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPerson_Firstname() {
-		return (EAttribute)personEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) personEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPerson_Surname() {
-		return (EAttribute)personEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) personEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPerson_Contrib() {
-		return (EAttribute)personEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) personEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPerson_Affiliations() {
-		return (EReference)personEClass.getEStructuralFeatures().get(4);
+		return (EReference) personEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPerson_Personblurb() {
-		return (EAttribute)personEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) personEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPerson_Id() {
-		return (EAttribute)personEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) personEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPublisher() {
@@ -2566,35 +2567,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublisher_Publishername() {
-		return (EAttribute)publisherEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) publisherEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPublisher_Address() {
-		return (EReference)publisherEClass.getEStructuralFeatures().get(1);
+		return (EReference) publisherEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublisher_Id() {
-		return (EAttribute)publisherEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) publisherEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPublishInfo() {
@@ -2602,62 +2603,62 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublishInfo_Edition() {
-		return (EAttribute)publishInfoEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) publishInfoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublishInfo_Pubdate() {
-		return (EAttribute)publishInfoEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) publishInfoEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPublishInfo_Publisher() {
-		return (EReference)publishInfoEClass.getEStructuralFeatures().get(2);
+		return (EReference) publishInfoEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublishInfo_Pubsnumber() {
-		return (EAttribute)publishInfoEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) publishInfoEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublishInfo_Releaseinfo() {
-		return (EAttribute)publishInfoEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) publishInfoEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPublishInfo_Id() {
-		return (EAttribute)publishInfoEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) publishInfoEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResrcMeta() {
@@ -2665,89 +2666,89 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Filename() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Parameters() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Height() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Width() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_CreationDate() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_LastModified() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Title() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Description() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResrcMeta_Keywords() {
-		return (EAttribute)resrcMetaEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) resrcMetaEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSharednotes() {
@@ -2755,26 +2756,26 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSharednotes_Notes() {
-		return (EReference)sharednotesEClass.getEStructuralFeatures().get(0);
+		return (EReference) sharednotesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSharednotes_Id() {
-		return (EAttribute)sharednotesEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) sharednotesEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCoursetype() {
@@ -2782,44 +2783,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCoursetype_Language() {
-		return (EReference)coursetypeEClass.getEStructuralFeatures().get(0);
+		return (EReference) coursetypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCoursetype_Title() {
-		return (EAttribute)coursetypeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) coursetypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCoursetype_Description() {
-		return (EAttribute)coursetypeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) coursetypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCoursetype_Id() {
-		return (EAttribute)coursetypeEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) coursetypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExternalMetadata() {
@@ -2827,35 +2828,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExternalMetadata_Ref() {
-		return (EAttribute)externalMetadataEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) externalMetadataEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExternalMetadata_File() {
-		return (EAttribute)externalMetadataEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) externalMetadataEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExternalMetadata_Id() {
-		return (EAttribute)externalMetadataEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) externalMetadataEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLanguage() {
@@ -2863,26 +2864,26 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLanguage_Language() {
-		return (EAttribute)languageEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) languageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLanguage_Code() {
-		return (EAttribute)languageEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) languageEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPrecognition() {
@@ -2890,35 +2891,35 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPrecognition_Precog() {
-		return (EAttribute)precognitionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) precognitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPrecognition_InternalRefs() {
-		return (EReference)precognitionEClass.getEStructuralFeatures().get(1);
+		return (EReference) precognitionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPrecognition_Id() {
-		return (EAttribute)precognitionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) precognitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInternalRef() {
@@ -2926,53 +2927,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInternalRef_Language() {
-		return (EReference)internalRefEClass.getEStructuralFeatures().get(0);
+		return (EReference) internalRefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getInternalRef_Ref() {
-		return (EAttribute)internalRefEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) internalRefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getInternalRef_File() {
-		return (EAttribute)internalRefEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) internalRefEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getInternalRef_Reftype() {
-		return (EAttribute)internalRefEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) internalRefEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getInternalRef_Id() {
-		return (EAttribute)internalRefEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) internalRefEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getModuleMeta() {
@@ -2980,53 +2981,53 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleMeta_DidacMeta() {
-		return (EReference)moduleMetaEClass.getEStructuralFeatures().get(0);
+		return (EReference) moduleMetaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getModuleMeta_CreationDate() {
-		return (EAttribute)moduleMetaEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) moduleMetaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleMeta_Authors() {
-		return (EReference)moduleMetaEClass.getEStructuralFeatures().get(2);
+		return (EReference) moduleMetaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleMeta_PublishInfo() {
-		return (EReference)moduleMetaEClass.getEStructuralFeatures().get(3);
+		return (EReference) moduleMetaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getModuleMeta_DefLang() {
-		return (EReference)moduleMetaEClass.getEStructuralFeatures().get(4);
+		return (EReference) moduleMetaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSource() {
@@ -3034,80 +3035,80 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSource_Author() {
-		return (EReference)sourceEClass.getEStructuralFeatures().get(0);
+		return (EReference) sourceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_Title() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_Subtitle() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_PublishedIn() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_PublishedBy() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_PublishDate() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_Pp() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSource_Id() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) sourceEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAuthorizationTypes() {
@@ -3115,44 +3116,44 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthorizationTypes_AuthType() {
-		return (EAttribute)authorizationTypesEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) authorizationTypesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthorizationTypes_AuthTypeDesc() {
-		return (EAttribute)authorizationTypesEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) authorizationTypesEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthorizationTypes_ReadOnly() {
-		return (EAttribute)authorizationTypesEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) authorizationTypesEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAuthorizationTypes_Id() {
-		return (EAttribute)authorizationTypesEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) authorizationTypesEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getUser() {
@@ -3160,282 +3161,282 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Loginname() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Password() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Firstname() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Lastname() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Matriculationnr() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Scn() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Icqnumber() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Icqpassword() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Entryasxml() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Languagenr() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Notificationprofileasxml() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Dossierasxml() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(11);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Photo() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(12);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Onlinestatus() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(13);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Onlinedate() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Datafilter() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Inchatsince() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(16);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Contchatdate() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(17);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Chatroomnr() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(18);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Fromext() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(19);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Lastlogindate() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(20);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Currlogindate() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(21);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Lastcoursematerialnr() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(22);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(22);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Lastcoursematerialviewnr() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(23);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Authenticateldap() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(24);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Photochanged() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(25);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getUser_Authorizations() {
-		return (EReference)userEClass.getEStructuralFeatures().get(26);
+		return (EReference) userEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUser_Id() {
-		return (EAttribute)userEClass.getEStructuralFeatures().get(27);
+		return (EAttribute) userEClass.getEStructuralFeatures().get(27);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LobjFactory getLobjFactory() {
-		return (LobjFactory)getEFactoryInstance();
+		return (LobjFactory) getEFactoryInstance();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the meta-model objects for the package. This method is guarded to have no affect on any
+	 * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -3816,21 +3817,21 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This method is guarded to have
+	 * no affect on any invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -3839,7 +3840,8 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage) EPackage.Registry.INSTANCE
+				.getEPackage(XMLTypePackage.eNS_URI);
 
 		// Add supertypes to classes
 		blockEClass.getESuperTypes().add(this.getLearningObject());
@@ -3868,380 +3870,980 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 		moduleMetaEClass.getESuperTypes().add(this.getLearningObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(learningObjectEClass, LearningObject.class, "LearningObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLearningObject_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, LearningObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLearningObject_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 1, 1, LearningObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLearningObject_Synchronized(), ecorePackage.getEBoolean(), "synchronized", null, 1, 1, LearningObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(learningObjectEClass, LearningObject.class, "LearningObject", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLearningObject_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				LearningObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLearningObject_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 1, 1,
+				LearningObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLearningObject_Synchronized(), ecorePackage.getEBoolean(), "synchronized",
+				null, 1, 1, LearningObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(blockEClass, Block.class, "Block", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBlock_BlockMeta(), this.getBlockMeta(), null, "blockMeta", null, 0, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlock_ExternalMetadata(), this.getExternalMetadata(), null, "externalMetadata", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getBlock_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(blockEClass, Block.class, "Block", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBlock_BlockMeta(), this.getBlockMeta(), null, "blockMeta", null, 0, 1,
+				Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlock_ExternalMetadata(), this.getExternalMetadata(), null,
+				"externalMetadata", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getBlock_AccessControl(), this.getAccessControl(), null, "accessControl", null,
+				0, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hypertextBlockEClass, HypertextBlock.class, "HypertextBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHypertextBlock_HypertextContent(), this.getHypertextContent(), null, "hypertextContent", null, 0, -1, HypertextBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hypertextBlockEClass, HypertextBlock.class, "HypertextBlock", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHypertextBlock_HypertextContent(), this.getHypertextContent(), null,
+				"hypertextContent", null, 0, -1, HypertextBlock.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(abstractContentEClass, AbstractContent.class, "AbstractContent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractContent_Heading(), ecorePackage.getEString(), "heading", null, 0, 1, AbstractContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractContent_Language(), this.getLanguage(), null, "language", null, 0, 1, AbstractContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractContent_Source(), this.getSource(), null, "source", null, 0, 1, AbstractContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractContentEClass, AbstractContent.class, "AbstractContent", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractContent_Heading(), ecorePackage.getEString(), "heading", null, 0, 1,
+				AbstractContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractContent_Language(), this.getLanguage(), null, "language", null, 0, 1,
+				AbstractContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractContent_Source(), this.getSource(), null, "source", null, 0, 1,
+				AbstractContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hypertextContentEClass, HypertextContent.class, "HypertextContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHypertextContent_Content(), ecorePackage.getEString(), "content", null, 0, 1, HypertextContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHypertextContent_BlockAudiofile(), this.getBlockAudiofile(), null, "blockAudiofile", null, 0, 1, HypertextContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHypertextContent_ResrcFile(), this.getResrcFile(), this.getResrcFile_HypertextContent(), "resrcFile", null, 0, -1, HypertextContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hypertextContentEClass, HypertextContent.class, "HypertextContent", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHypertextContent_Content(), ecorePackage.getEString(), "content", null, 0, 1,
+				HypertextContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHypertextContent_BlockAudiofile(), this.getBlockAudiofile(), null,
+				"blockAudiofile", null, 0, 1, HypertextContent.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getHypertextContent_ResrcFile(), this.getResrcFile(),
+				this.getResrcFile_HypertextContent(), "resrcFile", null, 0, -1, HypertextContent.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(blockFolderEClass, BlockFolder.class, "BlockFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBlockFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0, 1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockFolder_BlockFolder(), this.getBlockFolder(), null, "blockFolder", null, 0, -1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockFolder_Block(), this.getBlock(), null, "block", null, 0, -1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockFolder_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(blockFolderEClass, BlockFolder.class, "BlockFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBlockFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0,
+				1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockFolder_BlockFolder(), this.getBlockFolder(), null, "blockFolder", null,
+				0, -1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockFolder_Block(), this.getBlock(), null, "block", null, 0, -1,
+				BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockFolder_AccessControl(), this.getAccessControl(), null, "accessControl",
+				null, 0, 1, BlockFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCategory_TitleMeta(), this.getTitleMeta(), null, "titleMeta", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCategory_Course(), this.getCourse(), null, "course", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCategory_TitleMeta(), this.getTitleMeta(), null, "titleMeta", null, 0, -1,
+				Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCategory_Course(), this.getCourse(), null, "course", null, 0, -1,
+				Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(corrBlockEClass, CorrBlock.class, "CorrBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCorrBlock_PresentationBlock(), this.getPresentationBlock(), null, "presentationBlock", null, 0, -1, CorrBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCorrBlock_TitleMeta(), this.getTitleMeta(), null, "titleMeta", null, 0, -1, CorrBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCorrBlock_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, CorrBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(corrBlockEClass, CorrBlock.class, "CorrBlock", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCorrBlock_PresentationBlock(), this.getPresentationBlock(), null,
+				"presentationBlock", null, 0, -1, CorrBlock.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getCorrBlock_TitleMeta(), this.getTitleMeta(), null, "titleMeta", null, 0, -1,
+				CorrBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCorrBlock_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, CorrBlock.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(courseEClass, Course.class, "Course", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCourse_CourseMeta(), this.getCourseMeta(), null, "courseMeta", null, 0, 1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCourse_ExternalMetadata(), this.getExternalMetadata(), null, "externalMetadata", null, 0, -1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getCourse_Coursetype(), this.getCoursetype(), null, "coursetype", null, 0, 1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCourse_OutlineAsXml(), ecorePackage.getEString(), "outlineAsXml", null, 0, 1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCourse_Module(), this.getModule(), null, "module", null, 0, -1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(courseEClass, Course.class, "Course", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCourse_CourseMeta(), this.getCourseMeta(), null, "courseMeta", null, 0, 1,
+				Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCourse_ExternalMetadata(), this.getExternalMetadata(), null,
+				"externalMetadata", null, 0, -1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getCourse_Coursetype(), this.getCoursetype(), null, "coursetype", null, 0, 1,
+				Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourse_OutlineAsXml(), ecorePackage.getEString(), "outlineAsXml", null, 0, 1,
+				Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCourse_Module(), this.getModule(), null, "module", null, 0, -1, Course.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getItem_CorrBlock(), this.getCorrBlock(), null, "corrBlock", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getItem_Childitems(), this.getItem(), null, "childitems", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getItem_LuRef(), ecorePackage.getEString(), "luRef", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getItem_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getItem_CorrBlock(), this.getCorrBlock(), null, "corrBlock", null, 0, -1,
+				Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_Childitems(), this.getItem(), null, "childitems", null, 0, -1,
+				Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getItem_LuRef(), ecorePackage.getEString(), "luRef", null, 0, 1, Item.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getItem_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Item.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(learningUnitEClass, LearningUnit.class, "LearningUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLearningUnit_LuMeta(), this.getLuMeta(), null, "luMeta", null, 0, 1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLearningUnit_ExternalMetadata(), this.getExternalMetadata(), null, "externalMetadata", null, 0, -1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getLearningUnit_TreeAsXml(), ecorePackage.getEString(), "treeAsXml", null, 0, 1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLearningUnit_LuFile(), ecorePackage.getEString(), "luFile", null, 0, 1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLearningUnit_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLearningUnit_Item(), this.getItem(), null, "item", null, 0, -1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(learningUnitEClass, LearningUnit.class, "LearningUnit", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLearningUnit_LuMeta(), this.getLuMeta(), null, "luMeta", null, 0, 1,
+				LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLearningUnit_ExternalMetadata(), this.getExternalMetadata(), null,
+				"externalMetadata", null, 0, -1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_ORDERED);
+		initEAttribute(getLearningUnit_TreeAsXml(), ecorePackage.getEString(), "treeAsXml", null, 0, 1,
+				LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLearningUnit_LuFile(), ecorePackage.getEString(), "luFile", null, 0, 1,
+				LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLearningUnit_AccessControl(), this.getAccessControl(), null, "accessControl",
+				null, 0, 1, LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLearningUnit_Item(), this.getItem(), null, "item", null, 0, -1,
+				LearningUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(luFolderEClass, LuFolder.class, "LuFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLuFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0, 1, LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuFolder_LuFolder(), this.getLuFolder(), null, "luFolder", null, 0, -1, LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuFolder_LearningUnit(), this.getLearningUnit(), null, "learningUnit", null, 0, -1, LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuFolder_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(luFolderEClass, LuFolder.class, "LuFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLuFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0, 1,
+				LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuFolder_LuFolder(), this.getLuFolder(), null, "luFolder", null, 0, -1,
+				LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuFolder_LearningUnit(), this.getLearningUnit(), null, "learningUnit", null,
+				0, -1, LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuFolder_AccessControl(), this.getAccessControl(), null, "accessControl",
+				null, 0, 1, LuFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModule_ModuleMeta(), this.getModuleMeta(), null, "moduleMeta", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModule_ExternalMetadata(), this.getExternalMetadata(), null, "externalMetadata", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getModule_RootNode(), this.getNode(), null, "rootNode", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModule_ModuleFile(), ecorePackage.getEString(), "moduleFile", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModule_TreeAsXml(), ecorePackage.getEString(), "treeAsXml", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModule_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModule_ModuleMeta(), this.getModuleMeta(), null, "moduleMeta", null, 0, 1,
+				Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_ExternalMetadata(), this.getExternalMetadata(), null,
+				"externalMetadata", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getModule_RootNode(), this.getNode(), null, "rootNode", null, 0, 1,
+				Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModule_ModuleFile(), ecorePackage.getEString(), "moduleFile", null, 0, 1,
+				Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModule_TreeAsXml(), ecorePackage.getEString(), "treeAsXml", null, 0, 1,
+				Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_AccessControl(), this.getAccessControl(), null, "accessControl", null,
+				0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(moduleFolderEClass, ModuleFolder.class, "ModuleFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModuleFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0, 1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModuleFolder_ModuleFolder(), this.getModuleFolder(), null, "moduleFolder", null, 0, -1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModuleFolder_Module(), this.getModule(), null, "module", null, 0, -1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModuleFolder_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(moduleFolderEClass, ModuleFolder.class, "ModuleFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModuleFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0,
+				1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModuleFolder_ModuleFolder(), this.getModuleFolder(), null, "moduleFolder",
+				null, 0, -1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModuleFolder_Module(), this.getModule(), null, "module", null, 0, -1,
+				ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModuleFolder_AccessControl(), this.getAccessControl(), null, "accessControl",
+				null, 0, 1, ModuleFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(resrcFolderEClass, ResrcFolder.class, "ResrcFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResrcFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0, 1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFolder_ResrcFolder(), this.getResrcFolder(), null, "resrcFolder", null, 0, -1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFolder_AccessControl(), this.getAccessControl(), null, "accessControl", null, 0, 1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFolder_DeleteScheduled(), ecorePackage.getEBoolean(), "deleteScheduled", null, 0, 1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFolder_ResrcFile(), this.getResrcFile(), null, "resrcFile", null, 0, -1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(resrcFolderEClass, ResrcFolder.class, "ResrcFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResrcFolder_FolderMeta(), this.getFolderMeta(), null, "folderMeta", null, 0,
+				1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFolder_ResrcFolder(), this.getResrcFolder(), null, "resrcFolder", null,
+				0, -1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFolder_AccessControl(), this.getAccessControl(), null, "accessControl",
+				null, 0, 1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFolder_DeleteScheduled(), ecorePackage.getEBoolean(), "deleteScheduled",
+				null, 0, 1, ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFolder_ResrcFile(), this.getResrcFile(), null, "resrcFile", null, 0, -1,
+				ResrcFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(themeEClass, Theme.class, "Theme", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTheme_SimpleDidacMeta(), this.getSimpleDidacMeta(), null, "simpleDidacMeta", null, 0, -1, Theme.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(themeEClass, Theme.class, "Theme", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTheme_SimpleDidacMeta(), this.getSimpleDidacMeta(), null, "simpleDidacMeta",
+				null, 0, -1, Theme.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(presentationBlockEClass, PresentationBlock.class, "PresentationBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPresentationBlock_Lod(), ecorePackage.getEInt(), "lod", null, 0, 1, PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPresentationBlock_Rendering(), ecorePackage.getEString(), "rendering", null, 0, 1, PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPresentationBlock_Block(), this.getBlock(), null, "block", null, 0, 1, PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPresentationBlock_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(presentationBlockEClass, PresentationBlock.class, "PresentationBlock", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPresentationBlock_Lod(), ecorePackage.getEInt(), "lod", null, 0, 1,
+				PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPresentationBlock_Rendering(), ecorePackage.getEString(), "rendering", null,
+				0, 1, PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPresentationBlock_Block(), this.getBlock(), null, "block", null, 0, 1,
+				PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPresentationBlock_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				PresentationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNode_Visible(), ecorePackage.getEBoolean(), "visible", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNode_Visible(), ecorePackage.getEBoolean(), "visible", null, 0, 1,
+				Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Node.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(themeNodeEClass, ThemeNode.class, "ThemeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getThemeNode_Theme(), this.getTheme(), null, "theme", null, 0, 1, ThemeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getThemeNode_Childnodes(), this.getNode(), null, "childnodes", null, 0, -1, ThemeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(themeNodeEClass, ThemeNode.class, "ThemeNode", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getThemeNode_Theme(), this.getTheme(), null, "theme", null, 0, 1,
+				ThemeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getThemeNode_Childnodes(), this.getNode(), null, "childnodes", null, 0, -1,
+				ThemeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(luNodeEClass, LuNode.class, "LuNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLuNode_LearningUnit(), this.getLearningUnit(), null, "learningUnit", null, 0, 1, LuNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(luNodeEClass, LuNode.class, "LuNode", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLuNode_LearningUnit(), this.getLearningUnit(), null, "learningUnit", null, 0,
+				1, LuNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(resrcFileEClass, ResrcFile.class, "ResrcFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResrcFile_File(), theXMLTypePackage.getBase64Binary(), "file", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFile_File_tn(), theXMLTypePackage.getBase64Binary(), "file_tn", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFile_Originalextension(), ecorePackage.getEString(), "originalextension", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFile_Filesize(), ecorePackage.getEInt(), "filesize", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFile_ResrcHref(), ecorePackage.getEString(), "resrcHref", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFile_Accesscontrol(), this.getAccessControl(), null, "accesscontrol", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFile_ResrcFiletype(), this.getResrcFiletype(), null, "resrcFiletype", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFile_Source(), this.getSource(), null, "source", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFile_HypertextContent(), this.getHypertextContent(), this.getHypertextContent_ResrcFile(), "hypertextContent", null, 0, -1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResrcFile_ResrcMeta(), this.getResrcMeta(), null, "resrcMeta", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(resrcFileEClass, ResrcFile.class, "ResrcFile", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResrcFile_File(), theXMLTypePackage.getBase64Binary(), "file", null, 0, 1,
+				ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFile_File_tn(), theXMLTypePackage.getBase64Binary(), "file_tn", null, 0,
+				1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFile_Originalextension(), ecorePackage.getEString(),
+				"originalextension", null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFile_Filesize(), ecorePackage.getEInt(), "filesize", null, 0, 1,
+				ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFile_ResrcHref(), ecorePackage.getEString(), "resrcHref", null, 0, 1,
+				ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFile_Accesscontrol(), this.getAccessControl(), null, "accesscontrol",
+				null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFile_ResrcFiletype(), this.getResrcFiletype(), null, "resrcFiletype",
+				null, 0, 1, ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFile_Source(), this.getSource(), null, "source", null, 0, 1,
+				ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFile_HypertextContent(), this.getHypertextContent(),
+				this.getHypertextContent_ResrcFile(), "hypertextContent", null, 0, -1, ResrcFile.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResrcFile_ResrcMeta(), this.getResrcMeta(), null, "resrcMeta", null, 0, 1,
+				ResrcFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(blockAudiofileEClass, BlockAudiofile.class, "BlockAudiofile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBlockAudiofile_File(), theXMLTypePackage.getBase64Binary(), "file", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlockAudiofile_Originalextension(), ecorePackage.getEString(), "originalextension", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlockAudiofile_Filesize(), ecorePackage.getEInt(), "filesize", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlockAudiofile_ResrcHref(), ecorePackage.getEString(), "resrcHref", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockAudiofile_ResrcFiletype(), this.getResrcFiletype(), null, "resrcFiletype", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(blockAudiofileEClass, BlockAudiofile.class, "BlockAudiofile", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBlockAudiofile_File(), theXMLTypePackage.getBase64Binary(), "file", null, 0,
+				1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlockAudiofile_Originalextension(), ecorePackage.getEString(),
+				"originalextension", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlockAudiofile_Filesize(), ecorePackage.getEInt(), "filesize", null, 0, 1,
+				BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlockAudiofile_ResrcHref(), ecorePackage.getEString(), "resrcHref", null, 0,
+				1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockAudiofile_ResrcFiletype(), this.getResrcFiletype(), null,
+				"resrcFiletype", null, 0, 1, BlockAudiofile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(resrcFiletypeEClass, ResrcFiletype.class, "ResrcFiletype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResrcFiletype_FiletypeExtension(), ecorePackage.getEString(), "filetypeExtension", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFiletype_FiletypeDesc(), ecorePackage.getEString(), "filetypeDesc", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFiletype_Image(), ecorePackage.getEBoolean(), "image", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFiletype_Applet(), ecorePackage.getEBoolean(), "applet", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFiletype_FiletypeImageSmall(), ecorePackage.getEString(), "filetypeImageSmall", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFiletype_FiletypeImageBif(), ecorePackage.getEString(), "filetypeImageBif", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcFiletype_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(resrcFiletypeEClass, ResrcFiletype.class, "ResrcFiletype", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResrcFiletype_FiletypeExtension(), ecorePackage.getEString(),
+				"filetypeExtension", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFiletype_FiletypeDesc(), ecorePackage.getEString(), "filetypeDesc",
+				null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFiletype_Image(), ecorePackage.getEBoolean(), "image", null, 0, 1,
+				ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFiletype_Applet(), ecorePackage.getEBoolean(), "applet", null, 0, 1,
+				ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFiletype_FiletypeImageSmall(), ecorePackage.getEString(),
+				"filetypeImageSmall", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFiletype_FiletypeImageBif(), ecorePackage.getEString(),
+				"filetypeImageBif", null, 0, 1, ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcFiletype_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				ResrcFiletype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(accessControlEClass, AccessControl.class, "AccessControl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAccessControl_Owner(), this.getUser(), null, "owner", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAccessControl_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAccessControl_LastModifiedBy(), this.getUser(), null, "lastModifiedBy", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAccessControl_Status(), ecorePackage.getEString(), "status", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAccessControl_LastStatusChange(), ecorePackage.getEDate(), "lastStatusChange", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAccessControl_LastStatusChangeBy(), this.getUser(), null, "lastStatusChangeBy", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAccessControl_Sharednotes(), this.getSharednotes(), null, "sharednotes", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAccessControl_Authorizes(), this.getUserauthorization(), null, "authorizes", null, 0, -1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAccessControl_EditionHistory(), this.getEdition(), null, "editionHistory", null, 0, -1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAccessControl_GlobalAccess(), ecorePackage.getEBoolean(), "globalAccess", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAccessControl_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(accessControlEClass, AccessControl.class, "AccessControl", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAccessControl_Owner(), this.getUser(), null, "owner", null, 0, 1,
+				AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAccessControl_LastModified(), ecorePackage.getEDate(), "lastModified", null,
+				0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAccessControl_LastModifiedBy(), this.getUser(), null, "lastModifiedBy", null,
+				0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAccessControl_Status(), ecorePackage.getEString(), "status", null, 0, 1,
+				AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAccessControl_LastStatusChange(), ecorePackage.getEDate(),
+				"lastStatusChange", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAccessControl_LastStatusChangeBy(), this.getUser(), null,
+				"lastStatusChangeBy", null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getAccessControl_Sharednotes(), this.getSharednotes(), null, "sharednotes",
+				null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAccessControl_Authorizes(), this.getUserauthorization(), null, "authorizes",
+				null, 0, -1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAccessControl_EditionHistory(), this.getEdition(), null, "editionHistory",
+				null, 0, -1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAccessControl_GlobalAccess(), ecorePackage.getEBoolean(), "globalAccess",
+				null, 0, 1, AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAccessControl_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				AccessControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAddress_Street(), ecorePackage.getEString(), "street", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Postcode(), ecorePackage.getEString(), "postcode", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_City(), ecorePackage.getEString(), "city", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_State(), ecorePackage.getEString(), "state", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Country(), ecorePackage.getEString(), "country", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Phone(), ecorePackage.getEString(), "phone", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Fax(), ecorePackage.getEString(), "fax", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Email(), ecorePackage.getEString(), "email", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Otheraddr(), ecorePackage.getEString(), "otheraddr", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAddress_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAddress_Street(), ecorePackage.getEString(), "street", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Postcode(), ecorePackage.getEString(), "postcode", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_City(), ecorePackage.getEString(), "city", null, 0, 1, Address.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_State(), ecorePackage.getEString(), "state", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Country(), ecorePackage.getEString(), "country", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Phone(), ecorePackage.getEString(), "phone", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Fax(), ecorePackage.getEString(), "fax", null, 0, 1, Address.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Email(), ecorePackage.getEString(), "email", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Otheraddr(), ecorePackage.getEString(), "otheraddr", null, 0, 1,
+				Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Address.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(affiliationEClass, Affiliation.class, "Affiliation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAffiliation_Shortaffil(), ecorePackage.getEString(), "shortaffil", null, 0, 1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAffiliation_Jobtitle(), ecorePackage.getEString(), "jobtitle", null, 0, 1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAffiliation_Orgname(), ecorePackage.getEString(), "orgname", null, 0, 1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAffiliation_Orgdiv(), ecorePackage.getEString(), "orgdiv", null, 0, 1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAffiliation_Address(), this.getAddress(), null, "address", null, 0, 1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAffiliation_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(affiliationEClass, Affiliation.class, "Affiliation", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAffiliation_Shortaffil(), ecorePackage.getEString(), "shortaffil", null, 0,
+				1, Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAffiliation_Jobtitle(), ecorePackage.getEString(), "jobtitle", null, 0, 1,
+				Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAffiliation_Orgname(), ecorePackage.getEString(), "orgname", null, 0, 1,
+				Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAffiliation_Orgdiv(), ecorePackage.getEString(), "orgdiv", null, 0, 1,
+				Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAffiliation_Address(), this.getAddress(), null, "address", null, 0, 1,
+				Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAffiliation_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				Affiliation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(authorEClass, Author.class, "Author", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAuthor_Credittype(), ecorePackage.getEString(), "credittype", null, 0, 1, Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAuthor_Person(), this.getPerson(), null, "person", null, 0, 1, Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAuthor_Address(), this.getAddress(), null, "address", null, 0, 1, Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAuthor_Email(), ecorePackage.getEString(), "email", null, 0, 1, Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAuthor_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(authorEClass, Author.class, "Author", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAuthor_Credittype(), ecorePackage.getEString(), "credittype", null, 0, 1,
+				Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthor_Person(), this.getPerson(), null, "person", null, 0, 1, Author.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthor_Address(), this.getAddress(), null, "address", null, 0, 1,
+				Author.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthor_Email(), ecorePackage.getEString(), "email", null, 0, 1, Author.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthor_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Author.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(blockMetaEClass, BlockMeta.class, "BlockMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBlockMeta_Lod(), theXMLTypePackage.getInt(), "lod", null, 0, 1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlockMeta_Rendering(), ecorePackage.getEString(), "rendering", null, 0, 1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockMeta_Blocktype(), this.getBlocktype(), null, "blocktype", null, 0, 1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlockMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlockMeta_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0, 1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockMeta_SimpleDidacMeta(), this.getSimpleDidacMeta(), null, "simpleDidacMeta", null, 0, -1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlockMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(blockMetaEClass, BlockMeta.class, "BlockMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBlockMeta_Lod(), theXMLTypePackage.getInt(), "lod", null, 0, 1,
+				BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlockMeta_Rendering(), ecorePackage.getEString(), "rendering", null, 0, 1,
+				BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockMeta_Blocktype(), this.getBlocktype(), null, "blocktype", null, 0, 1,
+				BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlockMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0,
+				1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlockMeta_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0,
+				1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockMeta_SimpleDidacMeta(), this.getSimpleDidacMeta(), null,
+				"simpleDidacMeta", null, 0, -1, BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getBlockMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1,
+				BlockMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(blocktypeEClass, Blocktype.class, "Blocktype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBlocktype_Name(), ecorePackage.getEString(), "name", null, 0, 1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlocktype_Description(), ecorePackage.getEString(), "description", null, 0, 1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlocktype_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlocktype_StyleRef(), ecorePackage.getEString(), "styleRef", null, 0, 1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBlocktype_Domains(), this.getDomain(), this.getDomain_Blocktypes(), "domains", null, 0, -1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBlocktype_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(blocktypeEClass, Blocktype.class, "Blocktype", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBlocktype_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlocktype_Description(), ecorePackage.getEString(), "description", null, 0,
+				1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlocktype_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0,
+				1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlocktype_StyleRef(), ecorePackage.getEString(), "styleRef", null, 0, 1,
+				Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlocktype_Domains(), this.getDomain(), this.getDomain_Blocktypes(),
+				"domains", null, 0, -1, Blocktype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlocktype_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Blocktype.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(titleMetaEClass, TitleMeta.class, "TitleMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTitleMeta_Language(), this.getLanguage(), null, "language", null, 0, 1, TitleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTitleMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1, TitleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTitleMeta_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, TitleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(titleMetaEClass, TitleMeta.class, "TitleMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTitleMeta_Language(), this.getLanguage(), null, "language", null, 0, 1,
+				TitleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTitleMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1,
+				TitleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTitleMeta_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, TitleMeta.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(courseMetaEClass, CourseMeta.class, "CourseMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCourseMeta_DidacMeta(), this.getDidacMeta(), null, "didacMeta", null, 0, -1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCourseMeta_Hours(), ecorePackage.getEInt(), "hours", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCourseMeta_Lvanr(), ecorePackage.getEString(), "lvanr", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCourseMeta_Columnfilterasxml(), theXMLTypePackage.getString(), "columnfilterasxml", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCourseMeta_Fromext(), theXMLTypePackage.getInteger(), "fromext", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCourseMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCourseMeta_Lecturer(), this.getUser(), null, "lecturer", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCourseMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(courseMetaEClass, CourseMeta.class, "CourseMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCourseMeta_DidacMeta(), this.getDidacMeta(), null, "didacMeta", null, 0, -1,
+				CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourseMeta_Hours(), ecorePackage.getEInt(), "hours", null, 0, 1,
+				CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourseMeta_Lvanr(), ecorePackage.getEString(), "lvanr", null, 0, 1,
+				CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourseMeta_Columnfilterasxml(), theXMLTypePackage.getString(),
+				"columnfilterasxml", null, 0, 1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourseMeta_Fromext(), theXMLTypePackage.getInteger(), "fromext", null, 0, 1,
+				CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourseMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0,
+				1, CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCourseMeta_Lecturer(), this.getUser(), null, "lecturer", null, 0, 1,
+				CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCourseMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1,
+				CourseMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(simpleDidacMetaEClass, SimpleDidacMeta.class, "SimpleDidacMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSimpleDidacMeta_Language(), this.getLanguage(), null, "language", null, 0, 1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleDidacMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleDidacMeta_Description(), ecorePackage.getEString(), "description", null, 0, 1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleDidacMeta_Keywords(), ecorePackage.getEString(), "keywords", null, 0, 1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleDidacMeta_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(simpleDidacMetaEClass, SimpleDidacMeta.class, "SimpleDidacMeta", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSimpleDidacMeta_Language(), this.getLanguage(), null, "language", null, 0, 1,
+				SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleDidacMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1,
+				SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleDidacMeta_Description(), ecorePackage.getEString(), "description",
+				null, 0, 1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleDidacMeta_Keywords(), ecorePackage.getEString(), "keywords", null, 0,
+				1, SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleDidacMeta_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				SimpleDidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(didacMetaEClass, DidacMeta.class, "DidacMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDidacMeta_Goal(), ecorePackage.getEString(), "goal", null, 0, 1, DidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDidacMeta_Precognition(), this.getPrecognition(), null, "precognition", null, 0, 1, DidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(didacMetaEClass, DidacMeta.class, "DidacMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDidacMeta_Goal(), ecorePackage.getEString(), "goal", null, 0, 1,
+				DidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDidacMeta_Precognition(), this.getPrecognition(), null, "precognition", null,
+				0, 1, DidacMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDomain_Name(), ecorePackage.getEString(), "name", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDomain_Description(), ecorePackage.getEString(), "description", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDomain_Blocktypes(), this.getBlocktype(), this.getBlocktype_Domains(), "blocktypes", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDomain_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDomain_ServerURL(), ecorePackage.getEString(), "serverURL", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDomain_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDomain_Name(), ecorePackage.getEString(), "name", null, 0, 1, Domain.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomain_Description(), ecorePackage.getEString(), "description", null, 0, 1,
+				Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomain_Blocktypes(), this.getBlocktype(), this.getBlocktype_Domains(),
+				"blocktypes", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomain_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1,
+				Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomain_ServerURL(), ecorePackage.getEString(), "serverURL", null, 0, 1,
+				Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomain_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Domain.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(editionEClass, Edition.class, "Edition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEdition_EditionNr(), ecorePackage.getEString(), "editionNr", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdition_EditedBy(), ecorePackage.getEString(), "editedBy", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdition_Version(), theXMLTypePackage.getBoolean(), "version", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdition_LastVersionNumber(), ecorePackage.getEString(), "lastVersionNumber", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdition_Status(), ecorePackage.getEString(), "status", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdition_EditionCreationDate(), ecorePackage.getEDate(), "editionCreationDate", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdition_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(editionEClass, Edition.class, "Edition", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEdition_EditionNr(), ecorePackage.getEString(), "editionNr", null, 0, 1,
+				Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEdition_EditedBy(), ecorePackage.getEString(), "editedBy", null, 0, 1,
+				Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEdition_Version(), theXMLTypePackage.getBoolean(), "version", null, 0, 1,
+				Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEdition_LastVersionNumber(), ecorePackage.getEString(), "lastVersionNumber",
+				null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEdition_Status(), ecorePackage.getEString(), "status", null, 0, 1,
+				Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEdition_EditionCreationDate(), ecorePackage.getEDate(),
+				"editionCreationDate", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEdition_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Edition.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(folderMetaEClass, FolderMeta.class, "FolderMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFolderMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1, FolderMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFolderMeta_Description(), ecorePackage.getEString(), "description", null, 0, 1, FolderMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFolderMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, FolderMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(folderMetaEClass, FolderMeta.class, "FolderMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFolderMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1,
+				FolderMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFolderMeta_Description(), ecorePackage.getEString(), "description", null, 0,
+				1, FolderMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFolderMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0,
+				1, FolderMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(luMetaEClass, LuMeta.class, "LuMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLuMeta_DidacMeta(), this.getDidacMeta(), null, "didacMeta", null, 0, -1, LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLuMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuMeta_Domain(), this.getDomain(), null, "domain", null, 0, 1, LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuMeta_Authors(), this.getAuthor(), null, "authors", null, 0, -1, LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuMeta_PublishInfo(), this.getPublishInfo(), null, "publishInfo", null, 0, 1, LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLuMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1, LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(luMetaEClass, LuMeta.class, "LuMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLuMeta_DidacMeta(), this.getDidacMeta(), null, "didacMeta", null, 0, -1,
+				LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLuMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1,
+				LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuMeta_Domain(), this.getDomain(), null, "domain", null, 0, 1, LuMeta.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuMeta_Authors(), this.getAuthor(), null, "authors", null, 0, -1,
+				LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuMeta_PublishInfo(), this.getPublishInfo(), null, "publishInfo", null, 0, 1,
+				LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLuMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1,
+				LuMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(userauthorizationEClass, Userauthorization.class, "Userauthorization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUserauthorization_User(), this.getUser(), null, "user", null, 0, 1, Userauthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUserauthorization_AuthType(), this.getAuthorizationTypes(), null, "authType", null, 0, 1, Userauthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUserauthorization_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Userauthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(userauthorizationEClass, Userauthorization.class, "Userauthorization", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUserauthorization_User(), this.getUser(), null, "user", null, 0, 1,
+				Userauthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUserauthorization_AuthType(), this.getAuthorizationTypes(), null, "authType",
+				null, 0, 1, Userauthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUserauthorization_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				Userauthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNote_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNote_NoteAuthor(), ecorePackage.getEString(), "noteAuthor", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNote_Content(), ecorePackage.getEString(), "content", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNote_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNote_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Note.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNote_NoteAuthor(), ecorePackage.getEString(), "noteAuthor", null, 0, 1,
+				Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNote_Content(), ecorePackage.getEString(), "content", null, 0, 1, Note.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNote_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Note.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPerson_Honorific(), ecorePackage.getEString(), "honorific", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Firstname(), ecorePackage.getEString(), "firstname", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Surname(), ecorePackage.getEString(), "surname", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Contrib(), ecorePackage.getEString(), "contrib", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPerson_Affiliations(), this.getAffiliation(), null, "affiliations", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Personblurb(), ecorePackage.getEString(), "personblurb", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPerson_Honorific(), ecorePackage.getEString(), "honorific", null, 0, 1,
+				Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Firstname(), ecorePackage.getEString(), "firstname", null, 0, 1,
+				Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Surname(), ecorePackage.getEString(), "surname", null, 0, 1,
+				Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Contrib(), ecorePackage.getEString(), "contrib", null, 0, 1,
+				Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Affiliations(), this.getAffiliation(), null, "affiliations", null, 0,
+				-1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Personblurb(), ecorePackage.getEString(), "personblurb", null, 0, 1,
+				Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Person.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(publisherEClass, Publisher.class, "Publisher", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPublisher_Publishername(), ecorePackage.getEString(), "publishername", null, 0, 1, Publisher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPublisher_Address(), this.getAddress(), null, "address", null, 0, 1, Publisher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPublisher_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Publisher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(publisherEClass, Publisher.class, "Publisher", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPublisher_Publishername(), ecorePackage.getEString(), "publishername", null,
+				0, 1, Publisher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublisher_Address(), this.getAddress(), null, "address", null, 0, 1,
+				Publisher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublisher_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Publisher.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(publishInfoEClass, PublishInfo.class, "PublishInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPublishInfo_Edition(), ecorePackage.getEString(), "edition", null, 0, 1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPublishInfo_Pubdate(), ecorePackage.getEDate(), "pubdate", null, 0, 1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPublishInfo_Publisher(), this.getPublisher(), null, "publisher", null, 0, 1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPublishInfo_Pubsnumber(), ecorePackage.getEString(), "pubsnumber", null, 0, 1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPublishInfo_Releaseinfo(), ecorePackage.getEString(), "releaseinfo", null, 0, 1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPublishInfo_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(publishInfoEClass, PublishInfo.class, "PublishInfo", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPublishInfo_Edition(), ecorePackage.getEString(), "edition", null, 0, 1,
+				PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishInfo_Pubdate(), ecorePackage.getEDate(), "pubdate", null, 0, 1,
+				PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublishInfo_Publisher(), this.getPublisher(), null, "publisher", null, 0, 1,
+				PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishInfo_Pubsnumber(), ecorePackage.getEString(), "pubsnumber", null, 0,
+				1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishInfo_Releaseinfo(), ecorePackage.getEString(), "releaseinfo", null, 0,
+				1, PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishInfo_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				PublishInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(resrcMetaEClass, ResrcMeta.class, "ResrcMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResrcMeta_Filename(), ecorePackage.getEString(), "filename", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_Parameters(), ecorePackage.getEString(), "parameters", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_Height(), ecorePackage.getEInt(), "height", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_Width(), ecorePackage.getEInt(), "width", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_Description(), ecorePackage.getEString(), "description", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResrcMeta_Keywords(), ecorePackage.getEString(), "keywords", null, 0, 1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(resrcMetaEClass, ResrcMeta.class, "ResrcMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResrcMeta_Filename(), ecorePackage.getEString(), "filename", null, 0, 1,
+				ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_Parameters(), ecorePackage.getEString(), "parameters", null, 0, 1,
+				ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_Height(), ecorePackage.getEInt(), "height", null, 0, 1,
+				ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_Width(), ecorePackage.getEInt(), "width", null, 0, 1,
+				ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0,
+				1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0,
+				1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_Title(), ecorePackage.getEString(), "title", null, 0, 1,
+				ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_Description(), ecorePackage.getEString(), "description", null, 0,
+				1, ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResrcMeta_Keywords(), ecorePackage.getEString(), "keywords", null, 0, 1,
+				ResrcMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sharednotesEClass, Sharednotes.class, "Sharednotes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSharednotes_Notes(), this.getNote(), null, "notes", null, 0, -1, Sharednotes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSharednotes_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Sharednotes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sharednotesEClass, Sharednotes.class, "Sharednotes", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSharednotes_Notes(), this.getNote(), null, "notes", null, 0, -1,
+				Sharednotes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSharednotes_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				Sharednotes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(coursetypeEClass, Coursetype.class, "Coursetype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCoursetype_Language(), this.getLanguage(), null, "language", null, 0, 1, Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCoursetype_Title(), ecorePackage.getEString(), "title", null, 0, 1, Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCoursetype_Description(), ecorePackage.getEString(), "description", null, 0, 1, Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCoursetype_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(coursetypeEClass, Coursetype.class, "Coursetype", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCoursetype_Language(), this.getLanguage(), null, "language", null, 0, 1,
+				Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCoursetype_Title(), ecorePackage.getEString(), "title", null, 0, 1,
+				Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCoursetype_Description(), ecorePackage.getEString(), "description", null, 0,
+				1, Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCoursetype_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				Coursetype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(externalMetadataEClass, ExternalMetadata.class, "ExternalMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getExternalMetadata_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, ExternalMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExternalMetadata_File(), ecorePackage.getEString(), "file", null, 0, 1, ExternalMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExternalMetadata_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, ExternalMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(externalMetadataEClass, ExternalMetadata.class, "ExternalMetadata", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExternalMetadata_Ref(), ecorePackage.getEString(), "ref", null, 0, 1,
+				ExternalMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExternalMetadata_File(), ecorePackage.getEString(), "file", null, 0, 1,
+				ExternalMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExternalMetadata_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				ExternalMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(languageEClass, Language.class, "Language", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLanguage_Language(), ecorePackage.getEString(), "language", null, 0, 1, Language.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLanguage_Code(), theXMLTypePackage.getID(), "code", null, 1, 1, Language.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(languageEClass, Language.class, "Language", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLanguage_Language(), ecorePackage.getEString(), "language", null, 0, 1,
+				Language.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguage_Code(), theXMLTypePackage.getID(), "code", null, 1, 1,
+				Language.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(precognitionEClass, Precognition.class, "Precognition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPrecognition_Precog(), ecorePackage.getEString(), "precog", null, 0, 1, Precognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrecognition_InternalRefs(), this.getInternalRef(), null, "internalRefs", null, 0, -1, Precognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPrecognition_Id(), theXMLTypePackage.getID(), "id", null, 0, 1, Precognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(precognitionEClass, Precognition.class, "Precognition", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPrecognition_Precog(), ecorePackage.getEString(), "precog", null, 0, 1,
+				Precognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrecognition_InternalRefs(), this.getInternalRef(), null, "internalRefs",
+				null, 0, -1, Precognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPrecognition_Id(), theXMLTypePackage.getID(), "id", null, 0, 1,
+				Precognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(internalRefEClass, InternalRef.class, "InternalRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInternalRef_Language(), this.getLanguage(), null, "language", null, 0, 1, InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInternalRef_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInternalRef_File(), ecorePackage.getEString(), "file", null, 0, 1, InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInternalRef_Reftype(), ecorePackage.getEString(), "reftype", null, 0, 1, InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInternalRef_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(internalRefEClass, InternalRef.class, "InternalRef", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInternalRef_Language(), this.getLanguage(), null, "language", null, 0, 1,
+				InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInternalRef_Ref(), ecorePackage.getEString(), "ref", null, 0, 1,
+				InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInternalRef_File(), ecorePackage.getEString(), "file", null, 0, 1,
+				InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInternalRef_Reftype(), ecorePackage.getEString(), "reftype", null, 0, 1,
+				InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInternalRef_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				InternalRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(moduleMetaEClass, ModuleMeta.class, "ModuleMeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModuleMeta_DidacMeta(), this.getDidacMeta(), null, "didacMeta", null, 0, -1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModuleMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModuleMeta_Authors(), this.getAuthor(), null, "authors", null, 0, -1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModuleMeta_PublishInfo(), this.getPublishInfo(), null, "publishInfo", null, 0, 1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModuleMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(moduleMetaEClass, ModuleMeta.class, "ModuleMeta", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModuleMeta_DidacMeta(), this.getDidacMeta(), null, "didacMeta", null, 0, -1,
+				ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModuleMeta_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0,
+				1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModuleMeta_Authors(), this.getAuthor(), null, "authors", null, 0, -1,
+				ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModuleMeta_PublishInfo(), this.getPublishInfo(), null, "publishInfo", null,
+				0, 1, ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModuleMeta_DefLang(), this.getLanguage(), null, "defLang", null, 0, 1,
+				ModuleMeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSource_Author(), this.getAuthor(), null, "author", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_Title(), ecorePackage.getEString(), "title", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_Subtitle(), ecorePackage.getEString(), "subtitle", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_PublishedIn(), ecorePackage.getEString(), "publishedIn", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_PublishedBy(), ecorePackage.getEString(), "publishedBy", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_PublishDate(), theXMLTypePackage.getDate(), "publishDate", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_Pp(), ecorePackage.getEString(), "pp", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSource_Author(), this.getAuthor(), null, "author", null, 0, 1, Source.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_Title(), ecorePackage.getEString(), "title", null, 0, 1, Source.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_Subtitle(), ecorePackage.getEString(), "subtitle", null, 0, 1,
+				Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_PublishedIn(), ecorePackage.getEString(), "publishedIn", null, 0, 1,
+				Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_PublishedBy(), ecorePackage.getEString(), "publishedBy", null, 0, 1,
+				Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_PublishDate(), theXMLTypePackage.getDate(), "publishDate", null, 0, 1,
+				Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_Pp(), ecorePackage.getEString(), "pp", null, 0, 1, Source.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, Source.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(authorizationTypesEClass, AuthorizationTypes.class, "AuthorizationTypes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAuthorizationTypes_AuthType(), ecorePackage.getEString(), "authType", null, 0, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAuthorizationTypes_AuthTypeDesc(), ecorePackage.getEString(), "authTypeDesc", null, 0, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAuthorizationTypes_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", null, 0, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAuthorizationTypes_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(authorizationTypesEClass, AuthorizationTypes.class, "AuthorizationTypes",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAuthorizationTypes_AuthType(), ecorePackage.getEString(), "authType", null,
+				0, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthorizationTypes_AuthTypeDesc(), ecorePackage.getEString(), "authTypeDesc",
+				null, 0, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthorizationTypes_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", null,
+				0, 1, AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthorizationTypes_Id(), theXMLTypePackage.getID(), "id", null, 1, 1,
+				AuthorizationTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUser_Loginname(), theXMLTypePackage.getString(), "loginname", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Firstname(), theXMLTypePackage.getString(), "firstname", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Lastname(), theXMLTypePackage.getString(), "lastname", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Matriculationnr(), theXMLTypePackage.getString(), "matriculationnr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Scn(), theXMLTypePackage.getString(), "scn", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Icqnumber(), theXMLTypePackage.getString(), "icqnumber", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Icqpassword(), theXMLTypePackage.getString(), "icqpassword", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Entryasxml(), theXMLTypePackage.getString(), "entryasxml", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Languagenr(), theXMLTypePackage.getString(), "languagenr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Notificationprofileasxml(), theXMLTypePackage.getString(), "notificationprofileasxml", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Dossierasxml(), theXMLTypePackage.getString(), "dossierasxml", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Photo(), theXMLTypePackage.getBase64Binary(), "photo", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Onlinestatus(), theXMLTypePackage.getString(), "onlinestatus", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Onlinedate(), ecorePackage.getEDate(), "onlinedate", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Datafilter(), theXMLTypePackage.getString(), "datafilter", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Inchatsince(), ecorePackage.getEDate(), "inchatsince", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Contchatdate(), ecorePackage.getEDate(), "contchatdate", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Chatroomnr(), theXMLTypePackage.getInteger(), "chatroomnr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Fromext(), theXMLTypePackage.getInteger(), "fromext", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Lastlogindate(), ecorePackage.getEDate(), "lastlogindate", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Currlogindate(), ecorePackage.getEDate(), "currlogindate", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Lastcoursematerialnr(), theXMLTypePackage.getInteger(), "lastcoursematerialnr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Lastcoursematerialviewnr(), theXMLTypePackage.getInteger(), "lastcoursematerialviewnr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Authenticateldap(), theXMLTypePackage.getInteger(), "authenticateldap", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Photochanged(), theXMLTypePackage.getInteger(), "photochanged", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUser_Authorizations(), this.getAuthorizationTypes(), null, "authorizations", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUser_Loginname(), theXMLTypePackage.getString(), "loginname", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Password(), theXMLTypePackage.getString(), "password", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Firstname(), theXMLTypePackage.getString(), "firstname", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Lastname(), theXMLTypePackage.getString(), "lastname", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Matriculationnr(), theXMLTypePackage.getString(), "matriculationnr",
+				null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Scn(), theXMLTypePackage.getString(), "scn", null, 0, 1, User.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Icqnumber(), theXMLTypePackage.getString(), "icqnumber", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Icqpassword(), theXMLTypePackage.getString(), "icqpassword", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Entryasxml(), theXMLTypePackage.getString(), "entryasxml", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Languagenr(), theXMLTypePackage.getString(), "languagenr", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Notificationprofileasxml(), theXMLTypePackage.getString(),
+				"notificationprofileasxml", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Dossierasxml(), theXMLTypePackage.getString(), "dossierasxml", null, 0,
+				1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Photo(), theXMLTypePackage.getBase64Binary(), "photo", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Onlinestatus(), theXMLTypePackage.getString(), "onlinestatus", null, 0,
+				1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Onlinedate(), ecorePackage.getEDate(), "onlinedate", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Datafilter(), theXMLTypePackage.getString(), "datafilter", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Inchatsince(), ecorePackage.getEDate(), "inchatsince", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Contchatdate(), ecorePackage.getEDate(), "contchatdate", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Chatroomnr(), theXMLTypePackage.getInteger(), "chatroomnr", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Fromext(), theXMLTypePackage.getInteger(), "fromext", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Lastlogindate(), ecorePackage.getEDate(), "lastlogindate", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Currlogindate(), ecorePackage.getEDate(), "currlogindate", null, 0, 1,
+				User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Lastcoursematerialnr(), theXMLTypePackage.getInteger(),
+				"lastcoursematerialnr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Lastcoursematerialviewnr(), theXMLTypePackage.getInteger(),
+				"lastcoursematerialviewnr", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Authenticateldap(), theXMLTypePackage.getInteger(), "authenticateldap",
+				null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Photochanged(), theXMLTypePackage.getInteger(), "photochanged", null, 0,
+				1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUser_Authorizations(), this.getAuthorizationTypes(), null, "authorizations",
+				null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, User.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -4259,2343 +4861,503 @@ public class LobjPackageImpl extends EPackageImpl implements LobjPackage {
 
 	/**
 	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
-		addAnnotation
-		  (learningObjectEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getLearningObject_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (getLearningObject_Timestamp(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (getLearningObject_Synchronized(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (blockEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getBlock_BlockMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getBlock_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getBlock_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (hypertextBlockEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getHypertextBlock_HypertextContent(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (abstractContentEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getAbstractContent_Heading(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAbstractContent_Language(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getAbstractContent_Source(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (hypertextContentEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getHypertextContent_Content(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getHypertextContent_BlockAudiofile(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getHypertextContent_ResrcFile(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (blockFolderEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getBlockFolder_FolderMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getBlockFolder_BlockFolder(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getBlockFolder_Block(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getBlockFolder_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (categoryEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getCategory_TitleMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getCategory_Course(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (corrBlockEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getCorrBlock_PresentationBlock(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getCorrBlock_TitleMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getCorrBlock_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (courseEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getCourse_CourseMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getCourse_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getCourse_Coursetype(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getCourse_Module(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (itemEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getItem_CorrBlock(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getItem_Childitems(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getItem_LuRef(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getItem_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (learningUnitEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getLearningUnit_LuMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getLearningUnit_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getLearningUnit_TreeAsXml(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getLearningUnit_LuFile(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getLearningUnit_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (luFolderEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getLuFolder_FolderMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getLuFolder_LuFolder(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getLuFolder_LearningUnit(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getLuFolder_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (moduleEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getModule_ModuleMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getModule_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getModule_RootNode(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getModule_ModuleFile(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getModule_TreeAsXml(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getModule_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (moduleFolderEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getModuleFolder_FolderMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getModuleFolder_ModuleFolder(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getModuleFolder_Module(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getModuleFolder_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (resrcFolderEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getResrcFolder_FolderMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getResrcFolder_ResrcFolder(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getResrcFolder_AccessControl(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getResrcFolder_DeleteScheduled(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFolder_ResrcFile(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (themeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getTheme_SimpleDidacMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (presentationBlockEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getPresentationBlock_Lod(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPresentationBlock_Rendering(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPresentationBlock_Block(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getPresentationBlock_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (nodeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getNode_Visible(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getNode_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (themeNodeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getThemeNode_Theme(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getThemeNode_Childnodes(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (luNodeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getLuNode_LearningUnit(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (resrcFileEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getResrcFile_File(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFile_File_tn(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFile_Originalextension(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFile_Filesize(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFile_ResrcHref(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFile_Accesscontrol(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getResrcFile_ResrcFiletype(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getResrcFile_Source(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getResrcFile_HypertextContent(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getResrcFile_ResrcMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (blockAudiofileEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getBlockAudiofile_File(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockAudiofile_Originalextension(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockAudiofile_Filesize(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockAudiofile_ResrcHref(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockAudiofile_ResrcFiletype(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (resrcFiletypeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_FiletypeExtension(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_FiletypeDesc(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_Image(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_Applet(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_FiletypeImageSmall(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_FiletypeImageBif(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcFiletype_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (accessControlEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getAccessControl_Owner(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getAccessControl_LastModified(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAccessControl_LastModifiedBy(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getAccessControl_Status(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAccessControl_LastStatusChange(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAccessControl_LastStatusChangeBy(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getAccessControl_Sharednotes(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getAccessControl_Authorizes(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getAccessControl_EditionHistory(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getAccessControl_GlobalAccess(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAccessControl_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (addressEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getAddress_Street(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Postcode(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_City(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_State(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Country(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Phone(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Fax(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Email(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Otheraddr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAddress_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (affiliationEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getAffiliation_Shortaffil(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAffiliation_Jobtitle(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAffiliation_Orgname(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAffiliation_Orgdiv(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAffiliation_Address(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAffiliation_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (authorEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getAuthor_Credittype(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAuthor_Person(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getAuthor_Address(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getAuthor_Email(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAuthor_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (blockMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getBlockMeta_Lod(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockMeta_Rendering(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockMeta_Blocktype(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getBlockMeta_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockMeta_LastModified(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlockMeta_SimpleDidacMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });			
-		addAnnotation
-		  (getBlockMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (blocktypeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getBlocktype_Name(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlocktype_Description(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlocktype_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlocktype_StyleRef(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getBlocktype_Domains(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getBlocktype_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (titleMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getTitleMeta_Language(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getTitleMeta_Title(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getTitleMeta_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (courseMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getCourseMeta_DidacMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getCourseMeta_Hours(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCourseMeta_Lvanr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCourseMeta_Columnfilterasxml(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCourseMeta_Fromext(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCourseMeta_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCourseMeta_Lecturer(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getCourseMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (simpleDidacMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getSimpleDidacMeta_Language(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getSimpleDidacMeta_Title(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSimpleDidacMeta_Description(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSimpleDidacMeta_Keywords(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSimpleDidacMeta_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (didacMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getDidacMeta_Goal(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getDidacMeta_Precognition(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (domainEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getDomain_Name(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getDomain_Description(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getDomain_Blocktypes(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getDomain_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getDomain_ServerURL(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getDomain_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (editionEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getEdition_EditionNr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getEdition_EditedBy(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getEdition_Version(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getEdition_LastVersionNumber(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getEdition_Status(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getEdition_EditionCreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getEdition_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (folderMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getFolderMeta_Title(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getFolderMeta_Description(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getFolderMeta_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (luMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getLuMeta_DidacMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getLuMeta_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getLuMeta_Domain(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getLuMeta_Authors(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getLuMeta_PublishInfo(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getLuMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (userauthorizationEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getUserauthorization_User(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getUserauthorization_AuthType(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getUserauthorization_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (noteEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getNote_Date(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getNote_NoteAuthor(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getNote_Content(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getNote_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (personEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getPerson_Honorific(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPerson_Firstname(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPerson_Surname(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPerson_Contrib(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPerson_Affiliations(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getPerson_Personblurb(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPerson_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (publisherEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getPublisher_Publishername(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPublisher_Address(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getPublisher_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (publishInfoEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getPublishInfo_Edition(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPublishInfo_Pubdate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPublishInfo_Publisher(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getPublishInfo_Pubsnumber(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getPublishInfo_Releaseinfo(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getPublishInfo_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (resrcMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Filename(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Parameters(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Height(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Width(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_LastModified(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Title(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Description(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getResrcMeta_Keywords(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (sharednotesEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getSharednotes_Notes(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getSharednotes_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (coursetypeEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getCoursetype_Language(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getCoursetype_Title(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCoursetype_Description(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getCoursetype_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (externalMetadataEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getExternalMetadata_Ref(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getExternalMetadata_File(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getExternalMetadata_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (languageEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getLanguage_Language(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getLanguage_Code(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (precognitionEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getPrecognition_Precog(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getPrecognition_InternalRefs(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getPrecognition_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (internalRefEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getInternalRef_Language(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getInternalRef_Ref(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getInternalRef_File(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getInternalRef_Reftype(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getInternalRef_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (moduleMetaEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getModuleMeta_DidacMeta(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getModuleMeta_CreationDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getModuleMeta_Authors(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getModuleMeta_PublishInfo(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getModuleMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (sourceEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getSource_Author(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getSource_Title(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSource_Subtitle(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSource_PublishedIn(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSource_PublishedBy(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSource_PublishDate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSource_Pp(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getSource_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (authorizationTypesEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getAuthorizationTypes_AuthType(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAuthorizationTypes_AuthTypeDesc(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAuthorizationTypes_ReadOnly(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getAuthorizationTypes_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });		
-		addAnnotation
-		  (userEClass, 
-		   source, 
-		   new String[] {
-			 "kind", "elementOnly"
-		   });			
-		addAnnotation
-		  (getUser_Loginname(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Password(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Firstname(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Lastname(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Matriculationnr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Scn(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Icqnumber(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Icqpassword(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Entryasxml(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Languagenr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Notificationprofileasxml(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Dossierasxml(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Photo(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });			
-		addAnnotation
-		  (getUser_Onlinestatus(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Onlinedate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Datafilter(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Inchatsince(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Contchatdate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Chatroomnr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Fromext(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Lastlogindate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Currlogindate(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Lastcoursematerialnr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Lastcoursematerialviewnr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Authenticateldap(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Photochanged(), 
-		   source, 
-		   new String[] {
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getUser_Authorizations(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "namespace", "##targetNamespace"
-		   });			
-		addAnnotation
-		  (getUser_Id(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute"
-		   });
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+		addAnnotation(learningObjectEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getLearningObject_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(getLearningObject_Timestamp(), source, new String[] { "kind", "attribute" });
+		addAnnotation(getLearningObject_Synchronized(), source, new String[] { "kind", "attribute" });
+		addAnnotation(blockEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getBlock_BlockMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getBlock_ExternalMetadata(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getBlock_AccessControl(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(hypertextBlockEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getHypertextBlock_HypertextContent(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(abstractContentEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getAbstractContent_Heading(), source, new String[] { "kind", "element" });
+		addAnnotation(getAbstractContent_Language(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getAbstractContent_Source(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(hypertextContentEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getHypertextContent_Content(), source, new String[] { "kind", "element" });
+		addAnnotation(getHypertextContent_BlockAudiofile(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getHypertextContent_ResrcFile(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(blockFolderEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getBlockFolder_FolderMeta(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getBlockFolder_BlockFolder(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getBlockFolder_Block(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getBlockFolder_AccessControl(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(categoryEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getCategory_TitleMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCategory_Course(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(corrBlockEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getCorrBlock_PresentationBlock(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getCorrBlock_TitleMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCorrBlock_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(courseEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getCourse_CourseMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCourse_ExternalMetadata(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getCourse_Coursetype(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCourse_Module(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(itemEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getItem_CorrBlock(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getItem_Childitems(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getItem_LuRef(), source, new String[] { "kind", "element" });
+		addAnnotation(getItem_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(learningUnitEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getLearningUnit_LuMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLearningUnit_ExternalMetadata(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getLearningUnit_TreeAsXml(), source, new String[] { "kind", "element" });
+		addAnnotation(getLearningUnit_LuFile(), source, new String[] { "kind", "element" });
+		addAnnotation(getLearningUnit_AccessControl(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(luFolderEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getLuFolder_FolderMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLuFolder_LuFolder(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLuFolder_LearningUnit(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getLuFolder_AccessControl(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(moduleEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getModule_ModuleMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getModule_ExternalMetadata(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getModule_RootNode(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getModule_ModuleFile(), source, new String[] { "kind", "element" });
+		addAnnotation(getModule_TreeAsXml(), source, new String[] { "kind", "element" });
+		addAnnotation(getModule_AccessControl(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(moduleFolderEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getModuleFolder_FolderMeta(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getModuleFolder_ModuleFolder(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getModuleFolder_Module(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getModuleFolder_AccessControl(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(resrcFolderEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getResrcFolder_FolderMeta(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getResrcFolder_ResrcFolder(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getResrcFolder_AccessControl(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getResrcFolder_DeleteScheduled(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFolder_ResrcFile(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(themeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getTheme_SimpleDidacMeta(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(presentationBlockEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getPresentationBlock_Lod(), source, new String[] { "kind", "element" });
+		addAnnotation(getPresentationBlock_Rendering(), source, new String[] { "kind", "element" });
+		addAnnotation(getPresentationBlock_Block(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getPresentationBlock_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(nodeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getNode_Visible(), source, new String[] { "kind", "element" });
+		addAnnotation(getNode_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(themeNodeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getThemeNode_Theme(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getThemeNode_Childnodes(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(luNodeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getLuNode_LearningUnit(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(resrcFileEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getResrcFile_File(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFile_File_tn(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFile_Originalextension(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFile_Filesize(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFile_ResrcHref(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFile_Accesscontrol(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getResrcFile_ResrcFiletype(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getResrcFile_Source(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getResrcFile_HypertextContent(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getResrcFile_ResrcMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(blockAudiofileEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getBlockAudiofile_File(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockAudiofile_Originalextension(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockAudiofile_Filesize(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockAudiofile_ResrcHref(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockAudiofile_ResrcFiletype(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(resrcFiletypeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getResrcFiletype_FiletypeExtension(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFiletype_FiletypeDesc(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFiletype_Image(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFiletype_Applet(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFiletype_FiletypeImageSmall(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFiletype_FiletypeImageBif(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcFiletype_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(accessControlEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getAccessControl_Owner(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getAccessControl_LastModified(), source, new String[] { "kind", "element" });
+		addAnnotation(getAccessControl_LastModifiedBy(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getAccessControl_Status(), source, new String[] { "kind", "element" });
+		addAnnotation(getAccessControl_LastStatusChange(), source, new String[] { "kind", "element" });
+		addAnnotation(getAccessControl_LastStatusChangeBy(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getAccessControl_Sharednotes(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getAccessControl_Authorizes(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getAccessControl_EditionHistory(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getAccessControl_GlobalAccess(), source, new String[] { "kind", "element" });
+		addAnnotation(getAccessControl_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(addressEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getAddress_Street(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Postcode(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_City(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_State(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Country(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Phone(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Fax(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Email(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Otheraddr(), source, new String[] { "kind", "element" });
+		addAnnotation(getAddress_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(affiliationEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getAffiliation_Shortaffil(), source, new String[] { "kind", "element" });
+		addAnnotation(getAffiliation_Jobtitle(), source, new String[] { "kind", "element" });
+		addAnnotation(getAffiliation_Orgname(), source, new String[] { "kind", "element" });
+		addAnnotation(getAffiliation_Orgdiv(), source, new String[] { "kind", "element" });
+		addAnnotation(getAffiliation_Address(), source, new String[] { "kind", "element" });
+		addAnnotation(getAffiliation_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(authorEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getAuthor_Credittype(), source, new String[] { "kind", "element" });
+		addAnnotation(getAuthor_Person(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getAuthor_Address(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getAuthor_Email(), source, new String[] { "kind", "element" });
+		addAnnotation(getAuthor_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(blockMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getBlockMeta_Lod(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockMeta_Rendering(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockMeta_Blocktype(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getBlockMeta_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockMeta_LastModified(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockMeta_SimpleDidacMeta(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlockMeta_DefLang(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(blocktypeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getBlocktype_Name(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlocktype_Description(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlocktype_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlocktype_StyleRef(), source, new String[] { "kind", "element" });
+		addAnnotation(getBlocktype_Domains(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getBlocktype_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(titleMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getTitleMeta_Language(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getTitleMeta_Title(), source, new String[] { "kind", "element" });
+		addAnnotation(getTitleMeta_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(courseMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getCourseMeta_DidacMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCourseMeta_Hours(), source, new String[] { "kind", "element" });
+		addAnnotation(getCourseMeta_Lvanr(), source, new String[] { "kind", "element" });
+		addAnnotation(getCourseMeta_Columnfilterasxml(), source, new String[] { "kind", "element" });
+		addAnnotation(getCourseMeta_Fromext(), source, new String[] { "kind", "element" });
+		addAnnotation(getCourseMeta_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getCourseMeta_Lecturer(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCourseMeta_DefLang(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(simpleDidacMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getSimpleDidacMeta_Language(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getSimpleDidacMeta_Title(), source, new String[] { "kind", "element" });
+		addAnnotation(getSimpleDidacMeta_Description(), source, new String[] { "kind", "element" });
+		addAnnotation(getSimpleDidacMeta_Keywords(), source, new String[] { "kind", "element" });
+		addAnnotation(getSimpleDidacMeta_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(didacMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getDidacMeta_Goal(), source, new String[] { "kind", "element" });
+		addAnnotation(getDidacMeta_Precognition(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(domainEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getDomain_Name(), source, new String[] { "kind", "element" });
+		addAnnotation(getDomain_Description(), source, new String[] { "kind", "element" });
+		addAnnotation(getDomain_Blocktypes(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getDomain_CreationDate(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getDomain_ServerURL(), source, new String[] { "kind", "element" });
+		addAnnotation(getDomain_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(editionEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getEdition_EditionNr(), source, new String[] { "kind", "element" });
+		addAnnotation(getEdition_EditedBy(), source, new String[] { "kind", "element" });
+		addAnnotation(getEdition_Version(), source, new String[] { "kind", "element" });
+		addAnnotation(getEdition_LastVersionNumber(), source, new String[] { "kind", "element" });
+		addAnnotation(getEdition_Status(), source, new String[] { "kind", "element" });
+		addAnnotation(getEdition_EditionCreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getEdition_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(folderMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getFolderMeta_Title(), source, new String[] { "kind", "element" });
+		addAnnotation(getFolderMeta_Description(), source, new String[] { "kind", "element" });
+		addAnnotation(getFolderMeta_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(luMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getLuMeta_DidacMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLuMeta_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getLuMeta_Domain(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLuMeta_Authors(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLuMeta_PublishInfo(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getLuMeta_DefLang(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(userauthorizationEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getUserauthorization_User(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getUserauthorization_AuthType(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getUserauthorization_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(noteEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getNote_Date(), source, new String[] { "kind", "element" });
+		addAnnotation(getNote_NoteAuthor(), source, new String[] { "kind", "element" });
+		addAnnotation(getNote_Content(), source, new String[] { "kind", "element" });
+		addAnnotation(getNote_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(personEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getPerson_Honorific(), source, new String[] { "kind", "element" });
+		addAnnotation(getPerson_Firstname(), source, new String[] { "kind", "element" });
+		addAnnotation(getPerson_Surname(), source, new String[] { "kind", "element" });
+		addAnnotation(getPerson_Contrib(), source, new String[] { "kind", "element" });
+		addAnnotation(getPerson_Affiliations(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getPerson_Personblurb(), source, new String[] { "kind", "element" });
+		addAnnotation(getPerson_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(publisherEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getPublisher_Publishername(), source, new String[] { "kind", "element" });
+		addAnnotation(getPublisher_Address(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getPublisher_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(publishInfoEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getPublishInfo_Edition(), source, new String[] { "kind", "element" });
+		addAnnotation(getPublishInfo_Pubdate(), source, new String[] { "kind", "element" });
+		addAnnotation(getPublishInfo_Publisher(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getPublishInfo_Pubsnumber(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getPublishInfo_Releaseinfo(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getPublishInfo_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(resrcMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getResrcMeta_Filename(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_Parameters(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_Height(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_Width(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_LastModified(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_Title(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_Description(), source, new String[] { "kind", "element" });
+		addAnnotation(getResrcMeta_Keywords(), source, new String[] { "kind", "element" });
+		addAnnotation(sharednotesEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getSharednotes_Notes(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getSharednotes_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(coursetypeEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getCoursetype_Language(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getCoursetype_Title(), source, new String[] { "kind", "element" });
+		addAnnotation(getCoursetype_Description(), source, new String[] { "kind", "element" });
+		addAnnotation(getCoursetype_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(externalMetadataEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getExternalMetadata_Ref(), source, new String[] { "kind", "element" });
+		addAnnotation(getExternalMetadata_File(), source, new String[] { "kind", "element" });
+		addAnnotation(getExternalMetadata_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(languageEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getLanguage_Language(), source, new String[] { "kind", "element" });
+		addAnnotation(getLanguage_Code(), source, new String[] { "kind", "attribute" });
+		addAnnotation(precognitionEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getPrecognition_Precog(), source, new String[] { "kind", "element" });
+		addAnnotation(getPrecognition_InternalRefs(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getPrecognition_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(internalRefEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getInternalRef_Language(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getInternalRef_Ref(), source, new String[] { "kind", "element" });
+		addAnnotation(getInternalRef_File(), source, new String[] { "kind", "element" });
+		addAnnotation(getInternalRef_Reftype(), source, new String[] { "kind", "element" });
+		addAnnotation(getInternalRef_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(moduleMetaEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getModuleMeta_DidacMeta(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getModuleMeta_CreationDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getModuleMeta_Authors(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getModuleMeta_PublishInfo(), source, new String[] { "kind", "element",
+				"namespace", "##targetNamespace" });
+		addAnnotation(getModuleMeta_DefLang(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(sourceEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getSource_Author(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getSource_Title(), source, new String[] { "kind", "element" });
+		addAnnotation(getSource_Subtitle(), source, new String[] { "kind", "element" });
+		addAnnotation(getSource_PublishedIn(), source, new String[] { "kind", "element" });
+		addAnnotation(getSource_PublishedBy(), source, new String[] { "kind", "element" });
+		addAnnotation(getSource_PublishDate(), source, new String[] { "kind", "element" });
+		addAnnotation(getSource_Pp(), source, new String[] { "kind", "element" });
+		addAnnotation(getSource_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(authorizationTypesEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getAuthorizationTypes_AuthType(), source, new String[] { "kind", "element" });
+		addAnnotation(getAuthorizationTypes_AuthTypeDesc(), source, new String[] { "kind", "element" });
+		addAnnotation(getAuthorizationTypes_ReadOnly(), source, new String[] { "kind", "element" });
+		addAnnotation(getAuthorizationTypes_Id(), source, new String[] { "kind", "attribute" });
+		addAnnotation(userEClass, source, new String[] { "kind", "elementOnly" });
+		addAnnotation(getUser_Loginname(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Password(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Firstname(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Lastname(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Matriculationnr(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Scn(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Icqnumber(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Icqpassword(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Entryasxml(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Languagenr(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Notificationprofileasxml(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Dossierasxml(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Photo(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Onlinestatus(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Onlinedate(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Datafilter(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Inchatsince(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Contchatdate(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Chatroomnr(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Fromext(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Lastlogindate(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Currlogindate(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Lastcoursematerialnr(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Lastcoursematerialviewnr(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Authenticateldap(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Photochanged(), source, new String[] { "kind", "element" });
+		addAnnotation(getUser_Authorizations(), source, new String[] { "kind", "element", "namespace",
+				"##targetNamespace" });
+		addAnnotation(getUser_Id(), source, new String[] { "kind", "attribute" });
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createIndexedAnnotations() {
-		String source = "http://annotation.elver.org/Indexed";									
-		addAnnotation
-		  (getBlock_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getHypertextBlock_HypertextContent(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getAbstractContent_Language(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });							
-		addAnnotation
-		  (getHypertextContent_ResrcFile(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getBlockFolder_BlockFolder(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getBlockFolder_Block(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getCategory_TitleMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getCorrBlock_PresentationBlock(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getCorrBlock_TitleMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });						
-		addAnnotation
-		  (getCourse_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });						
-		addAnnotation
-		  (getItem_CorrBlock(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });								
-		addAnnotation
-		  (getLearningUnit_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });								
-		addAnnotation
-		  (getLuFolder_LuFolder(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getLuFolder_LearningUnit(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });						
-		addAnnotation
-		  (getModule_ExternalMetadata(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });									
-		addAnnotation
-		  (getModuleFolder_ModuleFolder(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getModuleFolder_Module(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });						
-		addAnnotation
-		  (getResrcFolder_ResrcFolder(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getResrcFolder_ResrcFile(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });				
-		addAnnotation
-		  (getTheme_SimpleDidacMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });						
-		addAnnotation
-		  (getPresentationBlock_Block(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });																					
-		addAnnotation
-		  (getResrcFile_HypertextContent(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });																										
-		addAnnotation
-		  (getAccessControl_Authorizes(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getAccessControl_EditionHistory(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });																																			
-		addAnnotation
-		  (getBlockMeta_SimpleDidacMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getBlockMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });								
-		addAnnotation
-		  (getBlocktype_Domains(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getTitleMeta_Language(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });						
-		addAnnotation
-		  (getCourseMeta_DidacMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });									
-		addAnnotation
-		  (getCourseMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });				
-		addAnnotation
-		  (getSimpleDidacMeta_Language(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });													
-		addAnnotation
-		  (getDomain_Blocktypes(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });																			
-		addAnnotation
-		  (getLuMeta_DidacMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getLuMeta_Authors(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });				
-		addAnnotation
-		  (getLuMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });				
-		addAnnotation
-		  (getUserauthorization_User(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });			
-		addAnnotation
-		  (getUserauthorization_AuthType(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });														
-		addAnnotation
-		  (getPerson_Affiliations(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });																											
-		addAnnotation
-		  (getSharednotes_Notes(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getCoursetype_Language(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });															
-		addAnnotation
-		  (getPrecognition_InternalRefs(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });					
-		addAnnotation
-		  (getInternalRef_Language(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });								
-		addAnnotation
-		  (getModuleMeta_DidacMeta(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });				
-		addAnnotation
-		  (getModuleMeta_Authors(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });				
-		addAnnotation
-		  (getModuleMeta_DefLang(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });																																														
-		addAnnotation
-		  (getUser_Authorizations(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });	
+		String source = "http://annotation.elver.org/Indexed";
+		addAnnotation(getBlock_ExternalMetadata(), source, new String[] { "value", "false" });
+		addAnnotation(getHypertextBlock_HypertextContent(), source, new String[] { "value", "false" });
+		addAnnotation(getAbstractContent_Language(), source, new String[] { "value", "false" });
+		addAnnotation(getHypertextContent_ResrcFile(), source, new String[] { "value", "false" });
+		addAnnotation(getBlockFolder_BlockFolder(), source, new String[] { "value", "false" });
+		addAnnotation(getBlockFolder_Block(), source, new String[] { "value", "false" });
+		addAnnotation(getCategory_TitleMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getCorrBlock_PresentationBlock(), source, new String[] { "value", "false" });
+		addAnnotation(getCorrBlock_TitleMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getCourse_ExternalMetadata(), source, new String[] { "value", "false" });
+		addAnnotation(getItem_CorrBlock(), source, new String[] { "value", "false" });
+		addAnnotation(getLearningUnit_ExternalMetadata(), source, new String[] { "value", "false" });
+		addAnnotation(getLuFolder_LuFolder(), source, new String[] { "value", "false" });
+		addAnnotation(getLuFolder_LearningUnit(), source, new String[] { "value", "false" });
+		addAnnotation(getModule_ExternalMetadata(), source, new String[] { "value", "false" });
+		addAnnotation(getModuleFolder_ModuleFolder(), source, new String[] { "value", "false" });
+		addAnnotation(getModuleFolder_Module(), source, new String[] { "value", "false" });
+		addAnnotation(getResrcFolder_ResrcFolder(), source, new String[] { "value", "false" });
+		addAnnotation(getResrcFolder_ResrcFile(), source, new String[] { "value", "false" });
+		addAnnotation(getTheme_SimpleDidacMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getPresentationBlock_Block(), source, new String[] { "value", "false" });
+		addAnnotation(getResrcFile_HypertextContent(), source, new String[] { "value", "false" });
+		addAnnotation(getAccessControl_Authorizes(), source, new String[] { "value", "false" });
+		addAnnotation(getAccessControl_EditionHistory(), source, new String[] { "value", "false" });
+		addAnnotation(getBlockMeta_SimpleDidacMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getBlockMeta_DefLang(), source, new String[] { "value", "false" });
+		addAnnotation(getBlocktype_Domains(), source, new String[] { "value", "false" });
+		addAnnotation(getTitleMeta_Language(), source, new String[] { "value", "false" });
+		addAnnotation(getCourseMeta_DidacMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getCourseMeta_DefLang(), source, new String[] { "value", "false" });
+		addAnnotation(getSimpleDidacMeta_Language(), source, new String[] { "value", "false" });
+		addAnnotation(getDomain_Blocktypes(), source, new String[] { "value", "false" });
+		addAnnotation(getLuMeta_DidacMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getLuMeta_Authors(), source, new String[] { "value", "false" });
+		addAnnotation(getLuMeta_DefLang(), source, new String[] { "value", "false" });
+		addAnnotation(getUserauthorization_User(), source, new String[] { "value", "false" });
+		addAnnotation(getUserauthorization_AuthType(), source, new String[] { "value", "false" });
+		addAnnotation(getPerson_Affiliations(), source, new String[] { "value", "false" });
+		addAnnotation(getSharednotes_Notes(), source, new String[] { "value", "false" });
+		addAnnotation(getCoursetype_Language(), source, new String[] { "value", "false" });
+		addAnnotation(getPrecognition_InternalRefs(), source, new String[] { "value", "false" });
+		addAnnotation(getInternalRef_Language(), source, new String[] { "value", "false" });
+		addAnnotation(getModuleMeta_DidacMeta(), source, new String[] { "value", "false" });
+		addAnnotation(getModuleMeta_Authors(), source, new String[] { "value", "false" });
+		addAnnotation(getModuleMeta_DefLang(), source, new String[] { "value", "false" });
+		addAnnotation(getUser_Authorizations(), source, new String[] { "value", "false" });
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Table</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>http://annotation.elver.org/Table</b>. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createTableAnnotations() {
-		String source = "http://annotation.elver.org/Table";																																																																																																																																																																																																																																																																																																																																																			
-		addAnnotation
-		  (userEClass, 
-		   source, 
-		   new String[] {
-			 "name", "member"
-		   });																														
+		String source = "http://annotation.elver.org/Table";
+		addAnnotation(userEClass, source, new String[] { "name", "member" });
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>http://annotation.elver.org/Column</b>. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createColumnAnnotations() {
-		String source = "http://annotation.elver.org/Column";																																																																																																																																																																																																																																																																																																																																																																	
-		addAnnotation
-		  (getUser_Photo(), 
-		   source, 
-		   new String[] {
-			 "length", "64000"
-		   });																
+		String source = "http://annotation.elver.org/Column";
+		addAnnotation(getUser_Photo(), source, new String[] { "length", "64000" });
 	}
 
-} //LobjPackageImpl
+} // LobjPackageImpl

@@ -16,22 +16,20 @@ package org.eclipse.dd.di.impl;
 
 import org.eclipse.dd.di.DiPackage;
 import org.eclipse.dd.di.Node;
-
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Node</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Node</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class NodeImpl extends DiagramElementImpl implements Node {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected NodeImpl() {
@@ -39,8 +37,8 @@ public abstract class NodeImpl extends DiagramElementImpl implements Node {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +46,4 @@ public abstract class NodeImpl extends DiagramElementImpl implements Node {
 		return DiPackage.Literals.NODE;
 	}
 
-} //NodeImpl
+} // NodeImpl

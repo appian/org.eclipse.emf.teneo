@@ -45,36 +45,36 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Process</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Process</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getLaneSets <em>Lane Sets</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getFlowElements <em>Flow Elements</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getAuditing <em>Auditing</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getMonitoring <em>Monitoring</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getArtifacts <em>Artifacts</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getResources <em>Resources</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getCorrelationSubscriptions <em>Correlation Subscriptions</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getSupports <em>Supports</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getDefinitionalCollaborationRef <em>Definitional Collaboration Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#isIsClosed <em>Is Closed</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#isIsExecutable <em>Is Executable</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getProcessType <em>Process Type</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getLaneSets <em>Lane Sets</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getFlowElements <em>Flow Elements</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getAuditing <em>Auditing</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getMonitoring <em>Monitoring</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getProperties <em>Properties</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getArtifacts <em>Artifacts</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getResources <em>Resources</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getCorrelationSubscriptions <em>Correlation
+ * Subscriptions</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getSupports <em>Supports</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getDefinitionalCollaborationRef <em>Definitional
+ * Collaboration Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#isIsClosed <em>Is Closed</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#isIsExecutable <em>Is Executable</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ProcessImpl#getProcessType <em>Process Type</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ProcessImpl extends CallableElementImpl implements
-		org.eclipse.bpmn2.Process {
+public class ProcessImpl extends CallableElementImpl implements org.eclipse.bpmn2.Process {
 	/**
 	 * The cached value of the '{@link #getLaneSets() <em>Lane Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLaneSets()
 	 * @generated
 	 * @ordered
@@ -82,9 +82,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<LaneSet> laneSets;
 
 	/**
-	 * The cached value of the '{@link #getFlowElements() <em>Flow Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFlowElements() <em>Flow Elements</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFlowElements()
 	 * @generated
 	 * @ordered
@@ -92,9 +92,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<FlowElement> flowElements;
 
 	/**
-	 * The cached value of the '{@link #getAuditing() <em>Auditing</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAuditing() <em>Auditing</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAuditing()
 	 * @generated
 	 * @ordered
@@ -103,8 +103,8 @@ public class ProcessImpl extends CallableElementImpl implements
 
 	/**
 	 * The cached value of the '{@link #getMonitoring() <em>Monitoring</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMonitoring()
 	 * @generated
 	 * @ordered
@@ -112,9 +112,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected Monitoring monitoring;
 
 	/**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProperties()
 	 * @generated
 	 * @ordered
@@ -122,9 +122,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<Property> properties;
 
 	/**
-	 * The cached value of the '{@link #getArtifacts() <em>Artifacts</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getArtifacts() <em>Artifacts</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getArtifacts()
 	 * @generated
 	 * @ordered
@@ -132,9 +132,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<Artifact> artifacts;
 
 	/**
-	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResources()
 	 * @generated
 	 * @ordered
@@ -142,9 +142,10 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<ResourceRole> resources;
 
 	/**
-	 * The cached value of the '{@link #getCorrelationSubscriptions() <em>Correlation Subscriptions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCorrelationSubscriptions()
+	 * <em>Correlation Subscriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getCorrelationSubscriptions()
 	 * @generated
 	 * @ordered
@@ -152,9 +153,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<CorrelationSubscription> correlationSubscriptions;
 
 	/**
-	 * The cached value of the '{@link #getSupports() <em>Supports</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSupports() <em>Supports</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSupports()
 	 * @generated
 	 * @ordered
@@ -162,9 +163,10 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected EList<org.eclipse.bpmn2.Process> supports;
 
 	/**
-	 * The cached value of the '{@link #getDefinitionalCollaborationRef() <em>Definitional Collaboration Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDefinitionalCollaborationRef()
+	 * <em>Definitional Collaboration Ref</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #getDefinitionalCollaborationRef()
 	 * @generated
 	 * @ordered
@@ -172,9 +174,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected Collaboration definitionalCollaborationRef;
 
 	/**
-	 * The default value of the '{@link #isIsClosed() <em>Is Closed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsClosed() <em>Is Closed</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsClosed()
 	 * @generated
 	 * @ordered
@@ -182,9 +184,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected static final boolean IS_CLOSED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsClosed() <em>Is Closed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsClosed() <em>Is Closed</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsClosed()
 	 * @generated
 	 * @ordered
@@ -192,9 +194,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected boolean isClosed = IS_CLOSED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsExecutable() <em>Is Executable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsExecutable() <em>Is Executable</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsExecutable()
 	 * @generated
 	 * @ordered
@@ -202,9 +204,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected static final boolean IS_EXECUTABLE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsExecutable() <em>Is Executable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsExecutable() <em>Is Executable</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsExecutable()
 	 * @generated
 	 * @ordered
@@ -212,9 +214,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected boolean isExecutable = IS_EXECUTABLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getProcessType() <em>Process Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getProcessType() <em>Process Type</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProcessType()
 	 * @generated
 	 * @ordered
@@ -222,9 +224,9 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected static final ProcessType PROCESS_TYPE_EDEFAULT = ProcessType.NONE;
 
 	/**
-	 * The cached value of the '{@link #getProcessType() <em>Process Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProcessType() <em>Process Type</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProcessType()
 	 * @generated
 	 * @ordered
@@ -232,8 +234,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	protected ProcessType processType = PROCESS_TYPE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ProcessImpl() {
@@ -241,8 +243,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -251,35 +253,34 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<LaneSet> getLaneSets() {
 		if (laneSets == null) {
-			laneSets = new EObjectContainmentEList<LaneSet>(LaneSet.class,
-					this, Bpmn2Package.PROCESS__LANE_SETS);
+			laneSets = new EObjectContainmentEList<LaneSet>(LaneSet.class, this,
+					Bpmn2Package.PROCESS__LANE_SETS);
 		}
 		return laneSets;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<FlowElement> getFlowElements() {
 		if (flowElements == null) {
-			flowElements = new EObjectContainmentEList<FlowElement>(
-					FlowElement.class, this,
+			flowElements = new EObjectContainmentEList<FlowElement>(FlowElement.class, this,
 					Bpmn2Package.PROCESS__FLOW_ELEMENTS);
 		}
 		return flowElements;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Auditing getAuditing() {
@@ -287,18 +288,16 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAuditing(Auditing newAuditing,
-			NotificationChain msgs) {
+	public NotificationChain basicSetAuditing(Auditing newAuditing, NotificationChain msgs) {
 		Auditing oldAuditing = auditing;
 		auditing = newAuditing;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Bpmn2Package.PROCESS__AUDITING,
-					oldAuditing, newAuditing);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.PROCESS__AUDITING, oldAuditing, newAuditing);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -308,32 +307,30 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAuditing(Auditing newAuditing) {
 		if (newAuditing != auditing) {
 			NotificationChain msgs = null;
 			if (auditing != null)
-				msgs = ((InternalEObject) auditing)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-								- Bpmn2Package.PROCESS__AUDITING, null, msgs);
+				msgs = ((InternalEObject) auditing).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.PROCESS__AUDITING, null, msgs);
 			if (newAuditing != null)
-				msgs = ((InternalEObject) newAuditing)
-						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-								- Bpmn2Package.PROCESS__AUDITING, null, msgs);
+				msgs = ((InternalEObject) newAuditing).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.PROCESS__AUDITING, null, msgs);
 			msgs = basicSetAuditing(newAuditing, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PROCESS__AUDITING, newAuditing, newAuditing));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PROCESS__AUDITING,
+					newAuditing, newAuditing));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Monitoring getMonitoring() {
@@ -341,18 +338,16 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetMonitoring(Monitoring newMonitoring,
-			NotificationChain msgs) {
+	public NotificationChain basicSetMonitoring(Monitoring newMonitoring, NotificationChain msgs) {
 		Monitoring oldMonitoring = monitoring;
 		monitoring = newMonitoring;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Bpmn2Package.PROCESS__MONITORING,
-					oldMonitoring, newMonitoring);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.PROCESS__MONITORING, oldMonitoring, newMonitoring);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -362,123 +357,114 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMonitoring(Monitoring newMonitoring) {
 		if (newMonitoring != monitoring) {
 			NotificationChain msgs = null;
 			if (monitoring != null)
-				msgs = ((InternalEObject) monitoring).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- Bpmn2Package.PROCESS__MONITORING, null, msgs);
+				msgs = ((InternalEObject) monitoring).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.PROCESS__MONITORING, null, msgs);
 			if (newMonitoring != null)
-				msgs = ((InternalEObject) newMonitoring).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- Bpmn2Package.PROCESS__MONITORING, null, msgs);
+				msgs = ((InternalEObject) newMonitoring).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.PROCESS__MONITORING, null, msgs);
 			msgs = basicSetMonitoring(newMonitoring, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PROCESS__MONITORING, newMonitoring,
-					newMonitoring));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PROCESS__MONITORING,
+					newMonitoring, newMonitoring));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Property> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<Property>(Property.class,
-					this, Bpmn2Package.PROCESS__PROPERTIES);
+			properties = new EObjectContainmentEList<Property>(Property.class, this,
+					Bpmn2Package.PROCESS__PROPERTIES);
 		}
 		return properties;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Artifact> getArtifacts() {
 		if (artifacts == null) {
-			artifacts = new EObjectContainmentEList<Artifact>(Artifact.class,
-					this, Bpmn2Package.PROCESS__ARTIFACTS);
+			artifacts = new EObjectContainmentEList<Artifact>(Artifact.class, this,
+					Bpmn2Package.PROCESS__ARTIFACTS);
 		}
 		return artifacts;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ResourceRole> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentEList<ResourceRole>(
-					ResourceRole.class, this, Bpmn2Package.PROCESS__RESOURCES);
+			resources = new EObjectContainmentEList<ResourceRole>(ResourceRole.class, this,
+					Bpmn2Package.PROCESS__RESOURCES);
 		}
 		return resources;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<CorrelationSubscription> getCorrelationSubscriptions() {
 		if (correlationSubscriptions == null) {
 			correlationSubscriptions = new EObjectContainmentEList<CorrelationSubscription>(
-					CorrelationSubscription.class, this,
-					Bpmn2Package.PROCESS__CORRELATION_SUBSCRIPTIONS);
+					CorrelationSubscription.class, this, Bpmn2Package.PROCESS__CORRELATION_SUBSCRIPTIONS);
 		}
 		return correlationSubscriptions;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<org.eclipse.bpmn2.Process> getSupports() {
 		if (supports == null) {
 			supports = new EObjectResolvingEList<org.eclipse.bpmn2.Process>(
-					org.eclipse.bpmn2.Process.class, this,
-					Bpmn2Package.PROCESS__SUPPORTS);
+					org.eclipse.bpmn2.Process.class, this, Bpmn2Package.PROCESS__SUPPORTS);
 		}
 		return supports;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Collaboration getDefinitionalCollaborationRef() {
-		if (definitionalCollaborationRef != null
-				&& definitionalCollaborationRef.eIsProxy()) {
+		if (definitionalCollaborationRef != null && definitionalCollaborationRef.eIsProxy()) {
 			InternalEObject oldDefinitionalCollaborationRef = (InternalEObject) definitionalCollaborationRef;
 			definitionalCollaborationRef = (Collaboration) eResolveProxy(oldDefinitionalCollaborationRef);
 			if (definitionalCollaborationRef != oldDefinitionalCollaborationRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.PROCESS__DEFINITIONAL_COLLABORATION_REF,
-							oldDefinitionalCollaborationRef,
-							definitionalCollaborationRef));
+							oldDefinitionalCollaborationRef, definitionalCollaborationRef));
 			}
 		}
 		return definitionalCollaborationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Collaboration basicGetDefinitionalCollaborationRef() {
@@ -486,24 +472,22 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setDefinitionalCollaborationRef(
-			Collaboration newDefinitionalCollaborationRef) {
+	public void setDefinitionalCollaborationRef(Collaboration newDefinitionalCollaborationRef) {
 		Collaboration oldDefinitionalCollaborationRef = definitionalCollaborationRef;
 		definitionalCollaborationRef = newDefinitionalCollaborationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PROCESS__DEFINITIONAL_COLLABORATION_REF,
-					oldDefinitionalCollaborationRef,
+					Bpmn2Package.PROCESS__DEFINITIONAL_COLLABORATION_REF, oldDefinitionalCollaborationRef,
 					definitionalCollaborationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsClosed() {
@@ -511,21 +495,21 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsClosed(boolean newIsClosed) {
 		boolean oldIsClosed = isClosed;
 		isClosed = newIsClosed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PROCESS__IS_CLOSED, oldIsClosed, isClosed));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PROCESS__IS_CLOSED,
+					oldIsClosed, isClosed));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsExecutable() {
@@ -533,22 +517,21 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsExecutable(boolean newIsExecutable) {
 		boolean oldIsExecutable = isExecutable;
 		isExecutable = newIsExecutable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PROCESS__IS_EXECUTABLE, oldIsExecutable,
-					isExecutable));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PROCESS__IS_EXECUTABLE,
+					oldIsExecutable, isExecutable));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessType getProcessType() {
@@ -556,58 +539,50 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setProcessType(ProcessType newProcessType) {
 		ProcessType oldProcessType = processType;
-		processType = newProcessType == null ? PROCESS_TYPE_EDEFAULT
-				: newProcessType;
+		processType = newProcessType == null ? PROCESS_TYPE_EDEFAULT : newProcessType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PROCESS__PROCESS_TYPE, oldProcessType,
-					processType));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PROCESS__PROCESS_TYPE,
+					oldProcessType, processType));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.PROCESS__LANE_SETS:
-			return ((InternalEList<?>) getLaneSets()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getLaneSets()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.PROCESS__FLOW_ELEMENTS:
-			return ((InternalEList<?>) getFlowElements()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getFlowElements()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.PROCESS__AUDITING:
 			return basicSetAuditing(null, msgs);
 		case Bpmn2Package.PROCESS__MONITORING:
 			return basicSetMonitoring(null, msgs);
 		case Bpmn2Package.PROCESS__PROPERTIES:
-			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.PROCESS__ARTIFACTS:
-			return ((InternalEList<?>) getArtifacts()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getArtifacts()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.PROCESS__RESOURCES:
-			return ((InternalEList<?>) getResources()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getResources()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.PROCESS__CORRELATION_SUBSCRIPTIONS:
-			return ((InternalEList<?>) getCorrelationSubscriptions())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getCorrelationSubscriptions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -646,8 +621,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -660,8 +635,7 @@ public class ProcessImpl extends CallableElementImpl implements
 			return;
 		case Bpmn2Package.PROCESS__FLOW_ELEMENTS:
 			getFlowElements().clear();
-			getFlowElements().addAll(
-					(Collection<? extends FlowElement>) newValue);
+			getFlowElements().addAll((Collection<? extends FlowElement>) newValue);
 			return;
 		case Bpmn2Package.PROCESS__AUDITING:
 			setAuditing((Auditing) newValue);
@@ -679,18 +653,16 @@ public class ProcessImpl extends CallableElementImpl implements
 			return;
 		case Bpmn2Package.PROCESS__RESOURCES:
 			getResources().clear();
-			getResources()
-					.addAll((Collection<? extends ResourceRole>) newValue);
+			getResources().addAll((Collection<? extends ResourceRole>) newValue);
 			return;
 		case Bpmn2Package.PROCESS__CORRELATION_SUBSCRIPTIONS:
 			getCorrelationSubscriptions().clear();
-			getCorrelationSubscriptions().addAll(
-					(Collection<? extends CorrelationSubscription>) newValue);
+			getCorrelationSubscriptions()
+					.addAll((Collection<? extends CorrelationSubscription>) newValue);
 			return;
 		case Bpmn2Package.PROCESS__SUPPORTS:
 			getSupports().clear();
-			getSupports().addAll(
-					(Collection<? extends org.eclipse.bpmn2.Process>) newValue);
+			getSupports().addAll((Collection<? extends org.eclipse.bpmn2.Process>) newValue);
 			return;
 		case Bpmn2Package.PROCESS__DEFINITIONAL_COLLABORATION_REF:
 			setDefinitionalCollaborationRef((Collaboration) newValue);
@@ -709,8 +681,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -760,8 +732,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -782,8 +754,7 @@ public class ProcessImpl extends CallableElementImpl implements
 		case Bpmn2Package.PROCESS__RESOURCES:
 			return resources != null && !resources.isEmpty();
 		case Bpmn2Package.PROCESS__CORRELATION_SUBSCRIPTIONS:
-			return correlationSubscriptions != null
-					&& !correlationSubscriptions.isEmpty();
+			return correlationSubscriptions != null && !correlationSubscriptions.isEmpty();
 		case Bpmn2Package.PROCESS__SUPPORTS:
 			return supports != null && !supports.isEmpty();
 		case Bpmn2Package.PROCESS__DEFINITIONAL_COLLABORATION_REF:
@@ -799,8 +770,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -819,8 +790,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -839,8 +810,8 @@ public class ProcessImpl extends CallableElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -859,4 +830,4 @@ public class ProcessImpl extends CallableElementImpl implements
 		return result.toString();
 	}
 
-} //ProcessImpl
+} // ProcessImpl

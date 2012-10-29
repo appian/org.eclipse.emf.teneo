@@ -16,25 +16,24 @@ import org.eclipse.emf.ecore.EClass;
 import temporal.mod.TemporalBaseEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Manufacturing Plant</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Manufacturing Plant</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.ManufacturingPlantImpl#getId <em>Id</em>}</li>
- *   <li>{@link fleet.impl.ManufacturingPlantImpl#getName <em>Name</em>}</li>
- *   <li>{@link fleet.impl.ManufacturingPlantImpl#getAddress <em>Address</em>}</li>
- *   <li>{@link fleet.impl.ManufacturingPlantImpl#getTransportFleet <em>Transport Fleet</em>}</li>
+ * <li>{@link fleet.impl.ManufacturingPlantImpl#getId <em>Id</em>}</li>
+ * <li>{@link fleet.impl.ManufacturingPlantImpl#getName <em>Name</em>}</li>
+ * <li>{@link fleet.impl.ManufacturingPlantImpl#getAddress <em>Address</em>}</li>
+ * <li>{@link fleet.impl.ManufacturingPlantImpl#getTransportFleet <em>Transport Fleet</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements ManufacturingPlant {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ManufacturingPlantImpl() {
@@ -42,8 +41,8 @@ public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements M
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -52,8 +51,8 @@ public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements M
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -62,17 +61,17 @@ public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements M
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eGet(FleetPackage.Literals.MANUFACTURING_PLANT__ID, true);
+		return (String) eGet(FleetPackage.Literals.MANUFACTURING_PLANT__ID, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -80,17 +79,17 @@ public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements M
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(FleetPackage.Literals.MANUFACTURING_PLANT__NAME, true);
+		return (String) eGet(FleetPackage.Literals.MANUFACTURING_PLANT__NAME, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -98,17 +97,17 @@ public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements M
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Address getAddress() {
-		return (Address)eGet(FleetPackage.Literals.MANUFACTURING_PLANT__ADDRESS, true);
+		return (Address) eGet(FleetPackage.Literals.MANUFACTURING_PLANT__ADDRESS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAddress(Address newAddress) {
@@ -116,21 +115,21 @@ public class ManufacturingPlantImpl extends TemporalBaseEObjectImpl implements M
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Fleet getTransportFleet() {
-		return (Fleet)eGet(FleetPackage.Literals.MANUFACTURING_PLANT__TRANSPORT_FLEET, true);
+		return (Fleet) eGet(FleetPackage.Literals.MANUFACTURING_PLANT__TRANSPORT_FLEET, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTransportFleet(Fleet newTransportFleet) {
 		eSet(FleetPackage.Literals.MANUFACTURING_PLANT__TRANSPORT_FLEET, newTransportFleet);
 	}
 
-} //ManufacturingPlantImpl
+} // ManufacturingPlantImpl

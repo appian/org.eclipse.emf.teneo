@@ -82,7 +82,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			Library lib = store.getObject(Library.class);		
+			Library lib = store.getObject(Library.class);
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
 			testLazySize(lib.getWriters().get(0).getBooks());
@@ -101,7 +101,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			bk4.setAuthor(w1);
 			bk4.setTitle("bk4");
 			checkIsStillLazy(w1.getBooks());
-			final Library l1 = (Library)w1.eContainer(); 
+			final Library l1 = (Library) w1.eContainer();
 			checkIsStillLazy(l1.getBooks());
 			l1.getBooks().add(0, bk4);
 			checkIsNotLazy(l1.getBooks());
@@ -129,7 +129,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			l1.getWriters().get(0).getBooks().remove(oldBk2);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final Library l1 = store.getObject(Library.class);
@@ -140,7 +140,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			checkIsStillLazy(l1.getBooks());
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final Writer w1 = store.getObject(Writer.class);
@@ -148,7 +148,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			w1.getBooks().clear();
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final Writer w1 = store.getObject(Writer.class);
@@ -156,7 +156,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 		store.checkNumber(Book.class, 2);
-		
+
 		{
 			store.beginTransaction();
 			final Library l1 = store.getObject(Library.class);
@@ -164,7 +164,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 		store.checkNumber(Book.class, 0);
-		
+
 		{
 			store.beginTransaction();
 			final Library lib = store.getObject(Library.class);
@@ -194,23 +194,23 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			final Library library = factory.createLibrary();
 			library.setName("l1");
 			store.beginTransaction();
-			store.store(library);			
+			store.store(library);
 
 			library.getBooks().add(bk1);
 			library.getBooks().add(bk2);
 			library.getBooks().add(bk3);
 			library.getWriters().add(w1);
-			
+
 			library.getBooks().move(0, bk3);
 			library.getBooks().remove(1);
 
 			final Book bk4 = factory.createBook();
 			bk4.setAuthor(w1);
 			bk4.setTitle("bk4");
-			library.getBooks().set(0,bk4);
+			library.getBooks().set(0, bk4);
 			w1.getBooks().remove(bk1);
 			w1.getBooks().remove(bk3);
-			
+
 			store.commitTransaction();
 		}
 		store.checkNumber(Book.class, 2);
@@ -224,8 +224,9 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 	}
 
 	protected void testLazySize(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 		int size = list.size();
@@ -235,15 +236,17 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 	}
 
 	protected void checkIsStillLazy(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}
 
 	protected void checkIsNotLazy(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertTrue(persistentCollection.wasInitialized());
 		assertTrue(persistableEList.isLoaded());
 	}

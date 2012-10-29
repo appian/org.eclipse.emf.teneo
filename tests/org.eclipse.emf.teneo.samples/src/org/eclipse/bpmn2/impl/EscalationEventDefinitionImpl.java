@@ -26,24 +26,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Escalation Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Escalation Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.EscalationEventDefinitionImpl#getEscalationRef <em>Escalation Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.EscalationEventDefinitionImpl#getEscalationRef <em>Escalation
+ * Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class EscalationEventDefinitionImpl extends EventDefinitionImpl
-		implements EscalationEventDefinition {
+public class EscalationEventDefinitionImpl extends EventDefinitionImpl implements
+		EscalationEventDefinition {
 	/**
-	 * The cached value of the '{@link #getEscalationRef() <em>Escalation Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEscalationRef() <em>Escalation Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEscalationRef()
 	 * @generated
 	 * @ordered
@@ -51,8 +51,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	protected Escalation escalationRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EscalationEventDefinitionImpl() {
@@ -60,8 +60,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,8 +70,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Escalation getEscalationRef() {
@@ -80,19 +80,17 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 			escalationRef = (Escalation) eResolveProxy(oldEscalationRef);
 			if (escalationRef != oldEscalationRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.ESCALATION_EVENT_DEFINITION__ESCALATION_REF,
-							oldEscalationRef, escalationRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.ESCALATION_EVENT_DEFINITION__ESCALATION_REF, oldEscalationRef,
+							escalationRef));
 			}
 		}
 		return escalationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Escalation basicGetEscalationRef() {
@@ -100,8 +98,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEscalationRef(Escalation newEscalationRef) {
@@ -109,13 +107,12 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 		escalationRef = newEscalationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ESCALATION_EVENT_DEFINITION__ESCALATION_REF,
-					oldEscalationRef, escalationRef));
+					Bpmn2Package.ESCALATION_EVENT_DEFINITION__ESCALATION_REF, oldEscalationRef, escalationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,8 +127,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,8 +142,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,8 +157,8 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -173,4 +170,4 @@ public class EscalationEventDefinitionImpl extends EventDefinitionImpl
 		return super.eIsSet(featureID);
 	}
 
-} //EscalationEventDefinitionImpl
+} // EscalationEventDefinitionImpl

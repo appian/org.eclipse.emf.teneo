@@ -50,7 +50,7 @@ public class LazyLibraryAction extends AbstractTestAction {
 		 * Returns <code>false</code>
 		 * 
 		 * @param type
-		 *            the type.
+		 *          the type.
 		 * @return <code>false</code>
 		 */
 		@Override
@@ -201,7 +201,8 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 		final Writer writer = (Writer) writers.get(0);
 		final PersistableEList<?> writerBooks = (PersistableEList<?>) writer.getBooks();
-		assertTrue("Books of writers should not be loaded is lazy, but it seems to be eager", !writerBooks.isLoaded());
+		assertTrue("Books of writers should not be loaded is lazy, but it seems to be eager",
+				!writerBooks.isLoaded());
 
 		lib.setName("test" + lib.getName());
 

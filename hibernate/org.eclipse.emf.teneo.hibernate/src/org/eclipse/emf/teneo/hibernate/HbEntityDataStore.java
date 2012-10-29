@@ -72,8 +72,7 @@ import org.hibernate.type.Type;
  * @version $Revision: 1.37 $
  */
 @SuppressWarnings("deprecation")
-public class HbEntityDataStore extends HbDataStore implements
-		EntityManagerFactory {
+public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbEntityDataStore.class);
@@ -96,8 +95,7 @@ public class HbEntityDataStore extends HbDataStore implements
 		MappingUtil.registerHbExtensions(getExtensionManager());
 
 		try {
-			PackageRegistryProvider.getInstance().setThreadPackageRegistry(
-					getPackageRegistry());
+			PackageRegistryProvider.getInstance().setThreadPackageRegistry(getPackageRegistry());
 
 			if (log.isDebugEnabled()) {
 				log.debug("Initializing EJB3 Hb Entity DataStore");
@@ -128,11 +126,10 @@ public class HbEntityDataStore extends HbDataStore implements
 			HbHelper.INSTANCE.register(this);
 
 			setInitialized(true);
-			
+
 			setEventListeners();
 		} finally {
-			PackageRegistryProvider.getInstance()
-					.setThreadPackageRegistry(null);
+			PackageRegistryProvider.getInstance().setThreadPackageRegistry(null);
 		}
 	}
 
@@ -145,14 +142,16 @@ public class HbEntityDataStore extends HbDataStore implements
 	/** Set the event listener, can be overridden, in this impl. it does nothing */
 	@Override
 	protected void setEventListeners() {
-		final EMFInitializeCollectionEventListener eventListener = getExtensionManager()
-				.getExtension(EMFInitializeCollectionEventListener.class);
+		final EMFInitializeCollectionEventListener eventListener = getExtensionManager().getExtension(
+				EMFInitializeCollectionEventListener.class);
 		EntityManagerFactory emf = getEntityManagerFactory();
 		if (emf instanceof WrappedEntityManagerFactory) {
-			emf = ((WrappedEntityManagerFactory)emf).getDelegate();
+			emf = ((WrappedEntityManagerFactory) emf).getDelegate();
 		}
-		final ServiceRegistry serviceRegistry = ((SessionFactoryImpl)((EntityManagerFactoryImpl)emf).getSessionFactory()).getServiceRegistry();
-		final EventListenerRegistry eventListenerRegistry = serviceRegistry.getService( EventListenerRegistry.class );
+		final ServiceRegistry serviceRegistry = ((SessionFactoryImpl) ((EntityManagerFactoryImpl) emf)
+				.getSessionFactory()).getServiceRegistry();
+		final EventListenerRegistry eventListenerRegistry = serviceRegistry
+				.getService(EventListenerRegistry.class);
 		eventListenerRegistry.setListeners(EventType.INIT_COLLECTION, eventListener);
 	}
 
@@ -162,8 +161,8 @@ public class HbEntityDataStore extends HbDataStore implements
 		if (getInterceptor() != null) {
 			return;
 		}
-		final Interceptor interceptor = getHbContext().createInterceptor(
-				getHibernateConfiguration(), getEntityNameStrategy());
+		final Interceptor interceptor = getHbContext().createInterceptor(getHibernateConfiguration(),
+				getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}
@@ -184,16 +183,15 @@ public class HbEntityDataStore extends HbDataStore implements
 			// Using HbEntityDataStore causes org.hibernate.MappingException:
 			// Unknown entity:...
 			if (!properties.containsKey("hibernate.ejb.metamodel.generation")) {
-				properties.setProperty("hibernate.ejb.metamodel.generation",
-						"disabled");
+				properties.setProperty("hibernate.ejb.metamodel.generation", "disabled");
 			}
 			getConfiguration().addProperties(properties);
 		}
 	}
 
 	/**
-	 * Maps an ecore model of one ore more epackages into a hibernate xml String
-	 * which is added to the passed configuration
+	 * Maps an ecore model of one ore more epackages into a hibernate xml String which is added to the
+	 * passed configuration
 	 */
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile()
@@ -204,16 +202,13 @@ public class HbEntityDataStore extends HbDataStore implements
 			final String[] fileList = getMappingFileList();
 			for (String element : fileList) {
 				if (log.isDebugEnabled()) {
-					log.debug("Adding file " + element
-						+ " to Hibernate Configuration");
+					log.debug("Adding file " + element + " to Hibernate Configuration");
 				}
-				final PersistenceFileProvider pfp = getExtensionManager()
-						.getExtension(PersistenceFileProvider.class);
-				final InputStream is = pfp.getFileContent(this.getClass(),
-						element);
+				final PersistenceFileProvider pfp = getExtensionManager().getExtension(
+						PersistenceFileProvider.class);
+				final InputStream is = pfp.getFileContent(this.getClass(), element);
 				if (is == null) {
-					throw new HbStoreException("Path to mapping file: "
-							+ element + " does not exist!");
+					throw new HbStoreException("Path to mapping file: " + element + " does not exist!");
 				}
 				getConfiguration().addInputStream(is);
 			}
@@ -232,18 +227,16 @@ public class HbEntityDataStore extends HbDataStore implements
 			if (hasEAVMapping) {
 				try {
 					if (getPersistenceOptions().getEAVMappingFile() != null) {
-						final PersistenceFileProvider pfp = getExtensionManager()
-								.getExtension(PersistenceFileProvider.class);
-						final InputStream is = pfp.getFileContent(this
-								.getClass(), getPersistenceOptions()
+						final PersistenceFileProvider pfp = getExtensionManager().getExtension(
+								PersistenceFileProvider.class);
+						final InputStream is = pfp.getFileContent(this.getClass(), getPersistenceOptions()
 								.getEAVMappingFile());
 						getConfiguration().addInputStream(processEAV(is));
 						is.close();
 					} else {
-						final PersistenceFileProvider pfp = getExtensionManager()
-								.getExtension(PersistenceFileProvider.class);
-						final InputStream is = pfp.getFileContent(
-								EAVGenericIDUserType.class, "eav.hbm.xml");
+						final PersistenceFileProvider pfp = getExtensionManager().getExtension(
+								PersistenceFileProvider.class);
+						final InputStream is = pfp.getFileContent(EAVGenericIDUserType.class, "eav.hbm.xml");
 						getConfiguration().addInputStream(processEAV(is));
 						is.close();
 					}
@@ -251,10 +244,9 @@ public class HbEntityDataStore extends HbDataStore implements
 					throw new IllegalStateException(e);
 				}
 			}
-			
+
 			// TODO replace this
-			final StringBufferInputStream is = new StringBufferInputStream(
-					getMappingXML());
+			final StringBufferInputStream is = new StringBufferInputStream(getMappingXML());
 			getConfiguration().addInputStream(is);
 		}
 	}
@@ -265,8 +257,7 @@ public class HbEntityDataStore extends HbDataStore implements
 
 	/** Build the session factory */
 	protected EntityManagerFactory buildEntityManagerFactory() {
-		final EntityManagerFactory emf = getConfiguration()
-				.buildEntityManagerFactory();
+		final EntityManagerFactory emf = getConfiguration().buildEntityManagerFactory();
 		return new WrappedEntityManagerFactory(emf);
 	}
 
@@ -292,8 +283,7 @@ public class HbEntityDataStore extends HbDataStore implements
 	}
 
 	/**
-	 * Note: returns an instance of the {@link WrappedEntityManagerFactory}
-	 * class.
+	 * Note: returns an instance of the {@link WrappedEntityManagerFactory} class.
 	 */
 	public EntityManagerFactory getEntityManagerFactory() {
 		if (!isInitialized()) {
@@ -390,12 +380,10 @@ public class HbEntityDataStore extends HbDataStore implements
 	}
 
 	/**
-	 * The HbEntityDataStore uses a wrapped entity manager factory and wrapped
-	 * entity manager to work around an issue that the Hibernate entity manager/
-	 * query implementation does not resolve query parameters of the EntityType
-	 * correctly. It determines a wrong type. See the statement about this in
-	 * the javadoc of the Hibernate {@link EntityType#getReturnedClass()}
-	 * method.
+	 * The HbEntityDataStore uses a wrapped entity manager factory and wrapped entity manager to work
+	 * around an issue that the Hibernate entity manager/ query implementation does not resolve query
+	 * parameters of the EntityType correctly. It determines a wrong type. See the statement about
+	 * this in the javadoc of the Hibernate {@link EntityType#getReturnedClass()} method.
 	 * 
 	 * To get to the original Hibernate entity manager use the
 	 * {@link WrappedEntityManagerFactory#getDelegate()} method.
@@ -426,8 +414,7 @@ public class HbEntityDataStore extends HbDataStore implements
 			return new WrappedEntityManager(em);
 		}
 
-		public EntityManager createEntityManager(
-				@SuppressWarnings("rawtypes") Map map) {
+		public EntityManager createEntityManager(@SuppressWarnings("rawtypes") Map map) {
 			EntityManager em = delegate.createEntityManager(map);
 			return new WrappedEntityManager(em);
 		}
@@ -458,8 +445,7 @@ public class HbEntityDataStore extends HbDataStore implements
 	}
 
 	/**
-	 * See {@link WrappedEntityManagerFactory} for a description why this class
-	 * is needed.
+	 * See {@link WrappedEntityManagerFactory} for a description why this class is needed.
 	 * 
 	 * To get to the original Hibernate entity manager use the
 	 * {@link WrappedEntityManager#getDelegateEntityManager()} method.
@@ -497,55 +483,48 @@ public class HbEntityDataStore extends HbDataStore implements
 
 		public Query createNamedQuery(String arg0) {
 			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createNamedQuery(arg0));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNamedQuery(arg0));
 		}
 
-		public Query createNativeQuery(String arg0,
-				@SuppressWarnings("rawtypes") Class arg1) {
+		public Query createNativeQuery(String arg0, @SuppressWarnings("rawtypes") Class arg1) {
 			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createNativeQuery(arg0, arg1));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNativeQuery(arg0,
+							arg1));
 		}
 
 		public Query createNativeQuery(String arg0, String arg1) {
 			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createNativeQuery(arg0, arg1));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNativeQuery(arg0,
+							arg1));
 		}
 
 		public Query createNativeQuery(String arg0) {
 			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createNativeQuery(arg0));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNativeQuery(arg0));
 		}
 
 		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createQuery(CriteriaQuery<T> arg0) {
 			return (TypedQuery<T>) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createQuery(arg0));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createQuery(arg0));
 		}
 
 		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createQuery(String arg0, Class<T> arg1) {
 			return (TypedQuery<T>) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createQuery(arg0, arg1));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createQuery(arg0, arg1));
 		}
 
 		public Query createQuery(String arg0) {
 			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createQuery(arg0));
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createQuery(arg0));
 		}
 
 		public void detach(Object arg0) {
 			delegateEntityManager.detach(arg0);
 		}
 
-		public <T> T find(Class<T> arg0, Object arg1, LockModeType arg2,
-				Map<String, Object> arg3) {
+		public <T> T find(Class<T> arg0, Object arg1, LockModeType arg2, Map<String, Object> arg3) {
 			return delegateEntityManager.find(arg0, arg1, arg2, arg3);
 		}
 
@@ -609,8 +588,7 @@ public class HbEntityDataStore extends HbDataStore implements
 			delegateEntityManager.joinTransaction();
 		}
 
-		public void lock(Object arg0, LockModeType arg1,
-				Map<String, Object> arg2) {
+		public void lock(Object arg0, LockModeType arg1, Map<String, Object> arg2) {
 			delegateEntityManager.lock(arg0, arg1, arg2);
 		}
 
@@ -626,8 +604,7 @@ public class HbEntityDataStore extends HbDataStore implements
 			delegateEntityManager.persist(arg0);
 		}
 
-		public void refresh(Object arg0, LockModeType arg1,
-				Map<String, Object> arg2) {
+		public void refresh(Object arg0, LockModeType arg1, Map<String, Object> arg2) {
 			delegateEntityManager.refresh(arg0, arg1, arg2);
 		}
 
@@ -672,29 +649,23 @@ public class HbEntityDataStore extends HbDataStore implements
 	protected QueryImpl<?> repairParameterJavaType(QueryImpl<?> query) {
 		try {
 			final Set<Parameter<?>> repairedParameters = new HashSet<Parameter<?>>();
-			final Object parametersObject = getQueryParametersField()
-					.get(query);
-			final AbstractQueryImpl queryImpl = AbstractQueryImpl.class
-					.cast(query.getHibernateQuery());
+			final Object parametersObject = getQueryParametersField().get(query);
+			final AbstractQueryImpl queryImpl = AbstractQueryImpl.class.cast(query.getHibernateQuery());
 			for (Parameter<?> parameter : (Collection<Parameter>) parametersObject) {
 				if (Map.class == parameter.getParameterType()) {
 					final Type type;
 					if (parameter.getName() != null) {
 						// repair these ones
-						final NamedParameterDescriptor descriptor = queryImpl
-								.getParameterMetadata()
-								.getNamedParameterDescriptor(
-										parameter.getName());
+						final NamedParameterDescriptor descriptor = queryImpl.getParameterMetadata()
+								.getNamedParameterDescriptor(parameter.getName());
 						type = descriptor.getExpectedType();
 					} else {
-						type = queryImpl.getParameterMetadata()
-								.getOrdinalParameterExpectedType(
-										parameter.getPosition());
+						type = queryImpl.getParameterMetadata().getOrdinalParameterExpectedType(
+								parameter.getPosition());
 					}
 					if (type instanceof EntityType) {
-						final Parameter<?> param = new ParameterImpl(
-								parameter.getName(), parameter.getPosition(),
-								Object.class);
+						final Parameter<?> param = new ParameterImpl(parameter.getName(),
+								parameter.getPosition(), Object.class);
 						repairedParameters.add(param);
 						// final EntityType entityType = (EntityType) type;
 						// final String entityName = entityType

@@ -198,8 +198,10 @@ public abstract class CatalogAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 
-			ProductType result = (ProductType) store.query(ProductType.class, "code", "product1", 1).get(0);
-			ProductType result2 = (ProductType) store.query(ProductType.class, "code", "product2", 1).get(0);
+			ProductType result = (ProductType) store.query(ProductType.class, "code", "product1", 1).get(
+					0);
+			ProductType result2 = (ProductType) store.query(ProductType.class, "code", "product2", 1)
+					.get(0);
 
 			final CatalogType mainCatalog = factory.createCatalogType();
 			mainCatalog.setName("MainCatalog");
@@ -222,7 +224,8 @@ public abstract class CatalogAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 
-			CatalogType cat = (CatalogType) store.query(CatalogType.class, "name", "MainCatalog", 1).get(0);
+			CatalogType cat = (CatalogType) store.query(CatalogType.class, "name", "MainCatalog", 1).get(
+					0);
 
 			assertTrue(cat != null);
 			assert (cat != null);
@@ -239,7 +242,8 @@ public abstract class CatalogAction extends AbstractTestAction {
 		// test if the product2 was not deleted
 		{
 			store.beginTransaction();
-			ProductType result2 = (ProductType) store.query(ProductType.class, "code", "product2", 1).get(0);
+			ProductType result2 = (ProductType) store.query(ProductType.class, "code", "product2", 1)
+					.get(0);
 			assertTrue(result2 != null);
 			store.commitTransaction();
 		}
@@ -252,7 +256,8 @@ public abstract class CatalogAction extends AbstractTestAction {
 			Iterator<?> it = result.iterator();
 			while (it.hasNext()) {
 				CatalogType cat = (CatalogType) it.next();
-				assertTrue(cat.getName().compareTo("MainCatalog") == 0 || cat.getName().compareTo("SubCatalog") == 0);
+				assertTrue(cat.getName().compareTo("MainCatalog") == 0
+						|| cat.getName().compareTo("SubCatalog") == 0);
 			}
 			store.commitTransaction();
 		}
@@ -270,10 +275,9 @@ public abstract class CatalogAction extends AbstractTestAction {
 
 		// test the comments in the hdm
 		if (store.isHibernateTestStore()) {
-			final String[] test =
-					new String[] { "My product documentation".substring(0, COMMENT_LENGTH),
-							"My description documentation".substring(0, COMMENT_LENGTH),
-							"My producttype documentation".substring(0, COMMENT_LENGTH) };
+			final String[] test = new String[] { "My product documentation".substring(0, COMMENT_LENGTH),
+					"My description documentation".substring(0, COMMENT_LENGTH),
+					"My producttype documentation".substring(0, COMMENT_LENGTH) };
 			final String xml = store.getMappingXML();
 			for (String t : test) {
 				if (xml.indexOf(t) == -1) {

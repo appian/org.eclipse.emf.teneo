@@ -41,18 +41,13 @@ public class LibraryExtraLazyJoinMoreAction extends LibraryExtraLazyMoreAction {
 			final LibraryPackage libraryPackage = LibraryPackage.eINSTANCE;
 			joinAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			joinAnnotation.setSource("teneo.jpa");
-			joinAnnotation.getDetails()
-					.put("value", "@JoinTable(name=\"abc\")");
-			libraryPackage.getLibrary_Writers().getEAnnotations().add(
-					joinAnnotation);
+			joinAnnotation.getDetails().put("value", "@JoinTable(name=\"abc\")");
+			libraryPackage.getLibrary_Writers().getEAnnotations().add(joinAnnotation);
 		}
 
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY,
-				"true");
-		props.setProperty(
-				PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS,
-				"true");
+		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY, "true");
+		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
 		return props;
 	}
 
@@ -60,8 +55,7 @@ public class LibraryExtraLazyJoinMoreAction extends LibraryExtraLazyMoreAction {
 		try {
 			super.doAction(store);
 		} finally {
-			LibraryPackage.eINSTANCE.getLibrary_Writers().getEAnnotations()
-					.remove(joinAnnotation);
+			LibraryPackage.eINSTANCE.getLibrary_Writers().getEAnnotations().remove(joinAnnotation);
 			joinAnnotation = null;
 		}
 	}

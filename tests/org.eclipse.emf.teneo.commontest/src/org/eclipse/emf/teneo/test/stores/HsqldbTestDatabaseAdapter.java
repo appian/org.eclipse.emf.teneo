@@ -42,41 +42,41 @@ public class HsqldbTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 	public void dropDatabase() {
 		// just delete all files in the hsqldb directory
 		deleteFile(new File("/tmp/hsqldb"));
-//		
-//		
-// try {
-// final Driver driver = (Driver) Class.forName(dbDriver).newInstance();
-// Properties info = new Properties();
-// info.put("user", dbUser);
-// info.put("password", dbPwd);
-// Connection conn = null;
-// Statement stmt = null;
-// try {
-// conn = driver.connect(dbUrl, info);
-// conn.setAutoCommit(true);
-// final ResultSet rs = conn.getMetaData().getSchemas();
-//
-// stmt = conn.createStatement();
-//
-// while (rs.next()) {
-// final String schemaName = rs.getString(1);
-// if (!"INFORMATION_SCHEMA".equals(schemaName)) {
-// log.info("Dropping schema: " + schemaName);
-// stmt.execute("DROP SCHEMA " + schemaName + " CASCADE;");
-// }
-// }
-// rs.close();
-// } finally {
-// if (stmt != null) {
-// stmt.close();
-// }
-// if (conn != null) {
-// conn.close();
-// }
-// }
-// } catch (Exception e) {
-// throw new StoreTestException("Exception while dropping database: " + logInfo, e);
-// }
+		//
+		//
+		// try {
+		// final Driver driver = (Driver) Class.forName(dbDriver).newInstance();
+		// Properties info = new Properties();
+		// info.put("user", dbUser);
+		// info.put("password", dbPwd);
+		// Connection conn = null;
+		// Statement stmt = null;
+		// try {
+		// conn = driver.connect(dbUrl, info);
+		// conn.setAutoCommit(true);
+		// final ResultSet rs = conn.getMetaData().getSchemas();
+		//
+		// stmt = conn.createStatement();
+		//
+		// while (rs.next()) {
+		// final String schemaName = rs.getString(1);
+		// if (!"INFORMATION_SCHEMA".equals(schemaName)) {
+		// log.info("Dropping schema: " + schemaName);
+		// stmt.execute("DROP SCHEMA " + schemaName + " CASCADE;");
+		// }
+		// }
+		// rs.close();
+		// } finally {
+		// if (stmt != null) {
+		// stmt.close();
+		// }
+		// if (conn != null) {
+		// conn.close();
+		// }
+		// }
+		// } catch (Exception e) {
+		// throw new StoreTestException("Exception while dropping database: " + logInfo, e);
+		// }
 	}
 
 	private void deleteFile(File file) {

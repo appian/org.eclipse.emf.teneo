@@ -19,10 +19,8 @@ import java.io.FileReader;
  */
 public class CompareHBM {
 
-	private static final String fromDir =
-			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm";
-	private static final String toDir =
-			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm_old";
+	private static final String fromDir = "/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm";
+	private static final String toDir = "/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm_old";
 
 	/**
 	 * @param args
@@ -30,7 +28,7 @@ public class CompareHBM {
 	public static void main(String[] args) {
 		try {
 			walkFiles(new File(fromDir), new File(toDir));
-// copyFiles(new File(fromDir), new File(toDir));
+			// copyFiles(new File(fromDir), new File(toDir));
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
@@ -74,52 +72,60 @@ public class CompareHBM {
 		while ((fromLine = from.readLine()) != null) {
 			String toLine = to.readLine();
 			if (toLine == null) {
+				from.close();
+				to.close();
 				return ">> Old file is smaller";
 			}
 			if (toLine.compareTo(fromLine) != 0) {
+				from.close();
+				to.close();
 				return "New>> " + fromLine + "\n" + "Old>> " + toLine;
 			} else {
 				// System.err.println(">>> " + toLine);
 			}
 		}
 		if (to.readLine() != null) {
+			from.close();
+			to.close();
 			return ">> New file is smaller";
 		}
+		from.close();
+		to.close();
 		return null;
 	}
 
-//	private static void copyFiles(File from, File to) throws Exception {
-//		for (File f : from.listFiles()) {
-//			if (f.getPath().indexOf("CVS") != -1) {
-//				continue;
-//			}
-//			if (f.isDirectory()) {
-//				final File toDir = new File(to, f.getName());
-//				if (!toDir.exists()) {
-//					toDir.mkdir();
-//				}
-//				copyFiles(f, toDir);
-//			} else {
-//				File t = getTargetFile(f.getName(), to);
-//				if (t != null) {
-//					t.delete();
-//				}
-//				t = new File(to, f.getName());
-//				copy(f, t);
-//			}
-//		}
-//	}
+	// private static void copyFiles(File from, File to) throws Exception {
+	// for (File f : from.listFiles()) {
+	// if (f.getPath().indexOf("CVS") != -1) {
+	// continue;
+	// }
+	// if (f.isDirectory()) {
+	// final File toDir = new File(to, f.getName());
+	// if (!toDir.exists()) {
+	// toDir.mkdir();
+	// }
+	// copyFiles(f, toDir);
+	// } else {
+	// File t = getTargetFile(f.getName(), to);
+	// if (t != null) {
+	// t.delete();
+	// }
+	// t = new File(to, f.getName());
+	// copy(f, t);
+	// }
+	// }
+	// }
 
-//	private static void copy(File f, File t) throws Exception {
-//		BufferedReader from = new BufferedReader(new FileReader(f));
-//		FileWriter to = new FileWriter(t);
-//		String fromLine;
-//		boolean begin = true;
-//		while ((fromLine = from.readLine()) != null) {
-//			if (!begin) {
-//				to.write("\n");
-//			}
-//			to.write(fromLine);
-//		}
-//	}
+	// private static void copy(File f, File t) throws Exception {
+	// BufferedReader from = new BufferedReader(new FileReader(f));
+	// FileWriter to = new FileWriter(t);
+	// String fromLine;
+	// boolean begin = true;
+	// while ((fromLine = from.readLine()) != null) {
+	// if (!begin) {
+	// to.write("\n");
+	// }
+	// to.write(fromLine);
+	// }
+	// }
 }

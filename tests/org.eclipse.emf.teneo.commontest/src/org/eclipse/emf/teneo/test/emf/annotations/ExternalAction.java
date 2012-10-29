@@ -67,8 +67,7 @@ public class ExternalAction extends AbstractTestAction {
 		try {
 			// a file handle to the current class
 			// the play.xml is in the model directory
-			final URI uri = URI.createURI(this.getClass()
-					.getResource("small_play.xml").toString());
+			final URI uri = URI.createURI(this.getClass().getResource("small_play.xml").toString());
 			final Resource resource = new XMLResourceImpl(uri);
 			resource.load(Collections.EMPTY_MAP);
 			PlayType play = (PlayType) resource.getContents().get(0);
@@ -81,12 +80,9 @@ public class ExternalAction extends AbstractTestAction {
 			throw new TeneoException(e.getMessage(), e);
 		}
 
-		final ExternalObject external1 = ExternalFactory.eINSTANCE
-				.createExternalObject();
-		final ExternalObject external2 = ExternalFactory.eINSTANCE
-				.createExternalObject();
-		final ExternalObject external3 = ExternalFactory.eINSTANCE
-				.createExternalObject();
+		final ExternalObject external1 = ExternalFactory.eINSTANCE.createExternalObject();
+		final ExternalObject external2 = ExternalFactory.eINSTANCE.createExternalObject();
+		final ExternalObject external3 = ExternalFactory.eINSTANCE.createExternalObject();
 		{
 			final URI externalUri = URI.createURI("external.url");
 			final Resource resource = new XMLResourceImpl(externalUri);
@@ -147,16 +143,19 @@ public class ExternalAction extends AbstractTestAction {
 			for (EObject eobj : res.getContents()) {
 				final ExternalTest et = (ExternalTest) eobj;
 				if (et.getName().equals("et1")) {
-					
+
 					assertTrue(et.getExternalObject() instanceof ExternalObject);
-					Assert.assertTrue(((InternalEObject)et.getExternalObject()).eIsProxy());
-					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(0)).eIsProxy());
-					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(1)).eIsProxy());
-					Assert.assertTrue(((InternalEObject)et.getExternalObject()).eProxyURI().toString().contains("external.url"));
+					Assert.assertTrue(((InternalEObject) et.getExternalObject()).eIsProxy());
+					Assert.assertTrue(((InternalEObject) et.getExternalObjects().get(0)).eIsProxy());
+					Assert.assertTrue(((InternalEObject) et.getExternalObjects().get(1)).eIsProxy());
+					Assert.assertTrue(((InternalEObject) et.getExternalObject()).eProxyURI().toString()
+							.contains("external.url"));
 					assertEquals(2, et.getExternalObjects().size());
-					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(0)).eProxyURI().toString().contains("external.url"));
-					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(1)).eProxyURI().toString().contains("external.url"));
-					
+					Assert.assertTrue(((InternalEObject) et.getExternalObjects().get(0)).eProxyURI()
+							.toString().contains("external.url"));
+					Assert.assertTrue(((InternalEObject) et.getExternalObjects().get(1)).eProxyURI()
+							.toString().contains("external.url"));
+
 					assertTrue(et.getEObject() instanceof ActType);
 					int cnt = 0;
 					assertEquals(3, et.getEObjects().size());
@@ -175,8 +174,7 @@ public class ExternalAction extends AbstractTestAction {
 				} else {
 					assertTrue(et.getEObject() instanceof PersonaeType);
 				}
-				assertEquals(et.getEClass(),
-						ExternalPackage.eINSTANCE.getExternalTest());
+				assertEquals(et.getEClass(), ExternalPackage.eINSTANCE.getExternalTest());
 			}
 		} catch (Exception e) {
 			throw new TeneoException(e.getMessage(), e);

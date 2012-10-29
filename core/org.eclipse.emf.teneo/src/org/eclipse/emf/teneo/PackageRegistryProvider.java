@@ -19,9 +19,9 @@ package org.eclipse.emf.teneo;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
- * Provides the package registry to the rest of Teneo. As a default the global Package.Registry is used. There are two
- * ways to override the behavior in this class by setting a Package.Registry explicitly. Or by replacing the singleton
- * instance with your own implementation.
+ * Provides the package registry to the rest of Teneo. As a default the global Package.Registry is
+ * used. There are two ways to override the behavior in this class by setting a Package.Registry
+ * explicitly. Or by replacing the singleton instance with your own implementation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.2 $

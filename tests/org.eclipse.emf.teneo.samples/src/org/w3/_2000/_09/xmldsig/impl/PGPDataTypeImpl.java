@@ -23,27 +23,28 @@ import org.w3._2000._09.xmldsig.PGPDataType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PGP Data Type</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>PGP Data Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getPGPKeyID <em>PGP Key ID</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getPGPKeyPacket <em>PGP Key Packet</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getAny <em>Any</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getPGPKeyPacket1 <em>PGP Key Packet1</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getAny1 <em>Any1</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getPGPKeyID <em>PGP Key ID</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getPGPKeyPacket <em>PGP Key Packet</em>}
+ * </li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getAny <em>Any</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getPGPKeyPacket1 <em>PGP Key Packet1
+ * </em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl#getAny1 <em>Any1</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	/**
-	 * The default value of the '{@link #getPGPKeyID() <em>PGP Key ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getPGPKeyID() <em>PGP Key ID</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPGPKeyID()
 	 * @generated
 	 * @ordered
@@ -51,9 +52,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected static final byte[] PGP_KEY_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPGPKeyID() <em>PGP Key ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPGPKeyID() <em>PGP Key ID</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPGPKeyID()
 	 * @generated
 	 * @ordered
@@ -61,9 +62,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected byte[] pGPKeyID = PGP_KEY_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPGPKeyPacket() <em>PGP Key Packet</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getPGPKeyPacket() <em>PGP Key Packet</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPGPKeyPacket()
 	 * @generated
 	 * @ordered
@@ -71,9 +72,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected static final byte[] PGP_KEY_PACKET_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPGPKeyPacket() <em>PGP Key Packet</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPGPKeyPacket() <em>PGP Key Packet</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPGPKeyPacket()
 	 * @generated
 	 * @ordered
@@ -81,9 +82,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected byte[] pGPKeyPacket = PGP_KEY_PACKET_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAny()
 	 * @generated
 	 * @ordered
@@ -91,9 +92,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected FeatureMap any;
 
 	/**
-	 * The default value of the '{@link #getPGPKeyPacket1() <em>PGP Key Packet1</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getPGPKeyPacket1() <em>PGP Key Packet1</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPGPKeyPacket1()
 	 * @generated
 	 * @ordered
@@ -101,9 +102,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected static final byte[] PGP_KEY_PACKET1_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPGPKeyPacket1() <em>PGP Key Packet1</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPGPKeyPacket1() <em>PGP Key Packet1</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPGPKeyPacket1()
 	 * @generated
 	 * @ordered
@@ -111,9 +112,9 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected byte[] pGPKeyPacket1 = PGP_KEY_PACKET1_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAny1() <em>Any1</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAny1() <em>Any1</em>}' attribute list. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAny1()
 	 * @generated
 	 * @ordered
@@ -121,8 +122,8 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	protected FeatureMap any1;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PGPDataTypeImpl() {
@@ -130,8 +131,8 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -140,8 +141,8 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public byte[] getPGPKeyID() {
@@ -149,20 +150,21 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPGPKeyID(byte[] newPGPKeyID) {
 		byte[] oldPGPKeyID = pGPKeyID;
 		pGPKeyID = newPGPKeyID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID, oldPGPKeyID, pGPKeyID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID, oldPGPKeyID, pGPKeyID));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public byte[] getPGPKeyPacket() {
@@ -170,20 +172,21 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPGPKeyPacket(byte[] newPGPKeyPacket) {
 		byte[] oldPGPKeyPacket = pGPKeyPacket;
 		pGPKeyPacket = newPGPKeyPacket;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET, oldPGPKeyPacket, pGPKeyPacket));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET, oldPGPKeyPacket, pGPKeyPacket));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getAny() {
@@ -194,8 +197,8 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public byte[] getPGPKeyPacket1() {
@@ -203,20 +206,21 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPGPKeyPacket1(byte[] newPGPKeyPacket1) {
 		byte[] oldPGPKeyPacket1 = pGPKeyPacket1;
 		pGPKeyPacket1 = newPGPKeyPacket1;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1, oldPGPKeyPacket1, pGPKeyPacket1));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1, oldPGPKeyPacket1, pGPKeyPacket1));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getAny1() {
@@ -227,129 +231,135 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case XmldsigPackage.PGP_DATA_TYPE__ANY:
-				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
-			case XmldsigPackage.PGP_DATA_TYPE__ANY1:
-				return ((InternalEList<?>)getAny1()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.PGP_DATA_TYPE__ANY:
+			return ((InternalEList<?>) getAny()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.PGP_DATA_TYPE__ANY1:
+			return ((InternalEList<?>) getAny1()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
-				return getPGPKeyID();
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
-				return getPGPKeyPacket();
-			case XmldsigPackage.PGP_DATA_TYPE__ANY:
-				if (coreType) return getAny();
-				return ((FeatureMap.Internal)getAny()).getWrapper();
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
-				return getPGPKeyPacket1();
-			case XmldsigPackage.PGP_DATA_TYPE__ANY1:
-				if (coreType) return getAny1();
-				return ((FeatureMap.Internal)getAny1()).getWrapper();
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
+			return getPGPKeyID();
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
+			return getPGPKeyPacket();
+		case XmldsigPackage.PGP_DATA_TYPE__ANY:
+			if (coreType)
+				return getAny();
+			return ((FeatureMap.Internal) getAny()).getWrapper();
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
+			return getPGPKeyPacket1();
+		case XmldsigPackage.PGP_DATA_TYPE__ANY1:
+			if (coreType)
+				return getAny1();
+			return ((FeatureMap.Internal) getAny1()).getWrapper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
-				setPGPKeyID((byte[])newValue);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
-				setPGPKeyPacket((byte[])newValue);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__ANY:
-				((FeatureMap.Internal)getAny()).set(newValue);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
-				setPGPKeyPacket1((byte[])newValue);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__ANY1:
-				((FeatureMap.Internal)getAny1()).set(newValue);
-				return;
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
+			setPGPKeyID((byte[]) newValue);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
+			setPGPKeyPacket((byte[]) newValue);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__ANY:
+			((FeatureMap.Internal) getAny()).set(newValue);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
+			setPGPKeyPacket1((byte[]) newValue);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__ANY1:
+			((FeatureMap.Internal) getAny1()).set(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
-				setPGPKeyID(PGP_KEY_ID_EDEFAULT);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
-				setPGPKeyPacket(PGP_KEY_PACKET_EDEFAULT);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__ANY:
-				getAny().clear();
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
-				setPGPKeyPacket1(PGP_KEY_PACKET1_EDEFAULT);
-				return;
-			case XmldsigPackage.PGP_DATA_TYPE__ANY1:
-				getAny1().clear();
-				return;
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
+			setPGPKeyID(PGP_KEY_ID_EDEFAULT);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
+			setPGPKeyPacket(PGP_KEY_PACKET_EDEFAULT);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__ANY:
+			getAny().clear();
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
+			setPGPKeyPacket1(PGP_KEY_PACKET1_EDEFAULT);
+			return;
+		case XmldsigPackage.PGP_DATA_TYPE__ANY1:
+			getAny1().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
-				return PGP_KEY_ID_EDEFAULT == null ? pGPKeyID != null : !PGP_KEY_ID_EDEFAULT.equals(pGPKeyID);
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
-				return PGP_KEY_PACKET_EDEFAULT == null ? pGPKeyPacket != null : !PGP_KEY_PACKET_EDEFAULT.equals(pGPKeyPacket);
-			case XmldsigPackage.PGP_DATA_TYPE__ANY:
-				return any != null && !any.isEmpty();
-			case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
-				return PGP_KEY_PACKET1_EDEFAULT == null ? pGPKeyPacket1 != null : !PGP_KEY_PACKET1_EDEFAULT.equals(pGPKeyPacket1);
-			case XmldsigPackage.PGP_DATA_TYPE__ANY1:
-				return any1 != null && !any1.isEmpty();
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_ID:
+			return PGP_KEY_ID_EDEFAULT == null ? pGPKeyID != null : !PGP_KEY_ID_EDEFAULT.equals(pGPKeyID);
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET:
+			return PGP_KEY_PACKET_EDEFAULT == null ? pGPKeyPacket != null : !PGP_KEY_PACKET_EDEFAULT
+					.equals(pGPKeyPacket);
+		case XmldsigPackage.PGP_DATA_TYPE__ANY:
+			return any != null && !any.isEmpty();
+		case XmldsigPackage.PGP_DATA_TYPE__PGP_KEY_PACKET1:
+			return PGP_KEY_PACKET1_EDEFAULT == null ? pGPKeyPacket1 != null : !PGP_KEY_PACKET1_EDEFAULT
+					.equals(pGPKeyPacket1);
+		case XmldsigPackage.PGP_DATA_TYPE__ANY1:
+			return any1 != null && !any1.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (pGPKeyID: ");
@@ -366,4 +376,4 @@ public class PGPDataTypeImpl extends EObjectImpl implements PGPDataType {
 		return result.toString();
 	}
 
-} //PGPDataTypeImpl
+} // PGPDataTypeImpl

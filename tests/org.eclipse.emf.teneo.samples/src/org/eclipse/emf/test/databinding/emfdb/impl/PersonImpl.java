@@ -26,24 +26,23 @@ import org.eclipse.emf.test.databinding.emfdb.Note;
 import org.eclipse.emf.test.databinding.emfdb.Person;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Person</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Person</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.test.databinding.emfdb.impl.PersonImpl#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.eclipse.emf.test.databinding.emfdb.impl.PersonImpl#getParents <em>Parents</em>}</li>
+ * <li>{@link org.eclipse.emf.test.databinding.emfdb.impl.PersonImpl#getNotes <em>Notes</em>}</li>
+ * <li>{@link org.eclipse.emf.test.databinding.emfdb.impl.PersonImpl#getParents <em>Parents</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PersonImpl extends EObjectImpl implements Person {
 	/**
-	 * The cached value of the '{@link #getNotes() <em>Notes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getNotes() <em>Notes</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getNotes()
 	 * @generated
 	 * @ordered
@@ -51,9 +50,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 	protected EList<Note> notes;
 
 	/**
-	 * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getParents()
 	 * @generated
 	 * @ordered
@@ -61,8 +60,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	protected EList<Person> parents;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PersonImpl() {
@@ -70,8 +69,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -80,8 +79,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Note> getNotes() {
@@ -92,8 +91,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Person> getParents() {
@@ -104,88 +103,89 @@ public class PersonImpl extends EObjectImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case EmfdbPackage.PERSON__NOTES:
-				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
+		case EmfdbPackage.PERSON__NOTES:
+			return ((InternalEList<?>) getNotes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EmfdbPackage.PERSON__NOTES:
-				return getNotes();
-			case EmfdbPackage.PERSON__PARENTS:
-				return getParents();
+		case EmfdbPackage.PERSON__NOTES:
+			return getNotes();
+		case EmfdbPackage.PERSON__PARENTS:
+			return getParents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EmfdbPackage.PERSON__NOTES:
-				getNotes().clear();
-				getNotes().addAll((Collection<? extends Note>)newValue);
-				return;
-			case EmfdbPackage.PERSON__PARENTS:
-				getParents().clear();
-				getParents().addAll((Collection<? extends Person>)newValue);
-				return;
+		case EmfdbPackage.PERSON__NOTES:
+			getNotes().clear();
+			getNotes().addAll((Collection<? extends Note>) newValue);
+			return;
+		case EmfdbPackage.PERSON__PARENTS:
+			getParents().clear();
+			getParents().addAll((Collection<? extends Person>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EmfdbPackage.PERSON__NOTES:
-				getNotes().clear();
-				return;
-			case EmfdbPackage.PERSON__PARENTS:
-				getParents().clear();
-				return;
+		case EmfdbPackage.PERSON__NOTES:
+			getNotes().clear();
+			return;
+		case EmfdbPackage.PERSON__PARENTS:
+			getParents().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EmfdbPackage.PERSON__NOTES:
-				return notes != null && !notes.isEmpty();
-			case EmfdbPackage.PERSON__PARENTS:
-				return parents != null && !parents.isEmpty();
+		case EmfdbPackage.PERSON__NOTES:
+			return notes != null && !notes.isEmpty();
+		case EmfdbPackage.PERSON__PARENTS:
+			return parents != null && !parents.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //PersonImpl
+} // PersonImpl

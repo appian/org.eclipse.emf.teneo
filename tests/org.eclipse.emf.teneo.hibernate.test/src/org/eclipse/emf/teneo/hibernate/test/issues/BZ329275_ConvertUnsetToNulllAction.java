@@ -28,5 +28,5 @@ public class BZ329275_ConvertUnsetToNulllAction extends BZ329275Action {
 	protected boolean isConvertUnsetToNull() {
 		return true;
 	}
-	
+
 }

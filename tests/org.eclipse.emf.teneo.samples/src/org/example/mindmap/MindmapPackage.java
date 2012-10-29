@@ -14,57 +14,53 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Package</b> for the model.
- * It contains accessors for the meta objects to represent
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains accessors for the meta
+ * objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * 
  * @see org.example.mindmap.MindmapFactory
  * @model kind="package"
  * @generated
  */
 public interface MindmapPackage extends EPackage {
 	/**
-	 * The package name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNAME = "mindmap";
 
 	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_URI = "http://www.example.org/mindmap";
 
 	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_PREFIX = "mindmap";
 
 	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	MindmapPackage eINSTANCE = org.example.mindmap.impl.MindmapPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.impl.DocumentRootImpl <em>Document Root</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.impl.DocumentRootImpl
+	 * <em>Document Root</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.DocumentRootImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getDocumentRoot()
 	 * @generated
@@ -72,54 +68,54 @@ public interface MindmapPackage extends EPackage {
 	int DOCUMENT_ROOT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Mixed</b></em>' attribute list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DOCUMENT_ROOT__MIXED = 0;
 
 	/**
-	 * The feature id for the '<em><b>XMLNS Prefix Map</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>XMLNS Prefix Map</b></em>' map. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DOCUMENT_ROOT__XMLNS_PREFIX_MAP = 1;
 
 	/**
-	 * The feature id for the '<em><b>XSI Schema Location</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>XSI Schema Location</b></em>' map. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Map</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Map</b></em>' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DOCUMENT_ROOT__MAP = 3;
 
 	/**
-	 * The number of structural features of the '<em>Document Root</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Document Root</em>' class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DOCUMENT_ROOT_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.impl.MapImpl <em>Map</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.impl.MapImpl <em>Map</em>}' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.MapImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getMap()
 	 * @generated
@@ -127,54 +123,54 @@ public interface MindmapPackage extends EPackage {
 	int MAP = 1;
 
 	/**
-	 * The feature id for the '<em><b>Root Topics</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Root Topics</b></em>' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MAP__ROOT_TOPICS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Relations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Relations</b></em>' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MAP__RELATIONS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MAP__RESOURCES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Title</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MAP__TITLE = 3;
 
 	/**
-	 * The number of structural features of the '<em>Map</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Map</em>' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MAP_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.impl.RelationshipImpl <em>Relationship</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.impl.RelationshipImpl
+	 * <em>Relationship</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.RelationshipImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getRelationship()
 	 * @generated
@@ -182,54 +178,54 @@ public interface MindmapPackage extends EPackage {
 	int RELATIONSHIP = 2;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RELATIONSHIP__LABEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Source</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RELATIONSHIP__SOURCE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RELATIONSHIP__TARGET = 2;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Type</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RELATIONSHIP__TYPE = 3;
 
 	/**
-	 * The number of structural features of the '<em>Relationship</em>' class.
-	 * <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Relationship</em>' class. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RELATIONSHIP_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.impl.ResourceImpl <em>Resource</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.impl.ResourceImpl <em>Resource</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.ResourceImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getResource()
 	 * @generated
@@ -237,45 +233,45 @@ public interface MindmapPackage extends EPackage {
 	int RESOURCE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Comments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Comments</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RESOURCE__COMMENTS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Email</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Email</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RESOURCE__EMAIL = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RESOURCE__NAME = 2;
 
 	/**
-	 * The feature id for the '<em><b>Topics</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Topics</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RESOURCE__TOPICS = 3;
 
 	/**
-	 * The number of structural features of the '<em>Resource</em>' class.
-	 * <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Resource</em>' class. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -283,8 +279,8 @@ public interface MindmapPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.example.mindmap.impl.ThreadImpl <em>Thread</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.ThreadImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getThread()
 	 * @generated
@@ -292,54 +288,54 @@ public interface MindmapPackage extends EPackage {
 	int THREAD = 4;
 
 	/**
-	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD__ITEMS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Author</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Author</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD__AUTHOR = 1;
 
 	/**
-	 * The feature id for the '<em><b>Post Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Post Date</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD__POST_DATE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Subject</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Subject</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD__SUBJECT = 3;
 
 	/**
-	 * The number of structural features of the '<em>Thread</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Thread</em>' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.impl.ThreadItemImpl <em>Thread Item</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.impl.ThreadItemImpl
+	 * <em>Thread Item</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.ThreadItemImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getThreadItem()
 	 * @generated
@@ -347,36 +343,36 @@ public interface MindmapPackage extends EPackage {
 	int THREAD_ITEM = 5;
 
 	/**
-	 * The feature id for the '<em><b>Author</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Author</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD_ITEM__AUTHOR = 0;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Body</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD_ITEM__BODY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Item Post Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Item Post Date</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int THREAD_ITEM__ITEM_POST_DATE = 2;
 
 	/**
-	 * The number of structural features of the '<em>Thread Item</em>' class.
-	 * <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Thread Item</em>' class. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -384,8 +380,8 @@ public interface MindmapPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.example.mindmap.impl.TopicImpl <em>Topic</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.impl.TopicImpl
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getTopic()
 	 * @generated
@@ -393,99 +389,99 @@ public interface MindmapPackage extends EPackage {
 	int TOPIC = 6;
 
 	/**
-	 * The feature id for the '<em><b>Comments</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Comments</b></em>' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__COMMENTS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Duration</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__DURATION = 1;
 
 	/**
-	 * The feature id for the '<em><b>End Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>End Date</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__END_DATE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__NAME = 3;
 
 	/**
-	 * The feature id for the '<em><b>Percent Complete</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Percent Complete</b></em>' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__PERCENT_COMPLETE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Priority</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__PRIORITY = 5;
 
 	/**
-	 * The feature id for the '<em><b>Resources</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Resources</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__RESOURCES = 6;
 
 	/**
-	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Start Date</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__START_DATE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Subtopics</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Subtopics</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC__SUBTOPICS = 8;
 
 	/**
-	 * The number of structural features of the '<em>Topic</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Topic</em>' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TOPIC_FEATURE_COUNT = 9;
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.Priority <em>Priority</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.Priority <em>Priority</em>}' enum. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.Priority
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getPriority()
 	 * @generated
@@ -493,9 +489,9 @@ public interface MindmapPackage extends EPackage {
 	int PRIORITY = 7;
 
 	/**
-	 * The meta object id for the '{@link org.example.mindmap.RelationshipType <em>Relationship Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.example.mindmap.RelationshipType
+	 * <em>Relationship Type</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.RelationshipType
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getRelationshipType()
 	 * @generated
@@ -503,9 +499,9 @@ public interface MindmapPackage extends EPackage {
 	int RELATIONSHIP_TYPE = 8;
 
 	/**
-	 * The meta object id for the '<em>Priority Object</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '<em>Priority Object</em>' data type. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.Priority
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getPriorityObject()
 	 * @generated
@@ -513,20 +509,19 @@ public interface MindmapPackage extends EPackage {
 	int PRIORITY_OBJECT = 9;
 
 	/**
-	 * The meta object id for the '<em>Relationship Type Object</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '<em>Relationship Type Object</em>' data type. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see org.example.mindmap.RelationshipType
 	 * @see org.example.mindmap.impl.MindmapPackageImpl#getRelationshipTypeObject()
 	 * @generated
 	 */
 	int RELATIONSHIP_TYPE_OBJECT = 10;
 
-
 	/**
-	 * Returns the meta object for class '{@link org.example.mindmap.DocumentRoot <em>Document Root</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.example.mindmap.DocumentRoot
+	 * <em>Document Root</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Document Root</em>'.
 	 * @see org.example.mindmap.DocumentRoot
 	 * @generated
@@ -534,9 +529,10 @@ public interface MindmapPackage extends EPackage {
 	EClass getDocumentRoot();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.example.mindmap.DocumentRoot#getMixed <em>Mixed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute list '
+	 * {@link org.example.mindmap.DocumentRoot#getMixed <em>Mixed</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
 	 * @see org.example.mindmap.DocumentRoot#getMixed()
 	 * @see #getDocumentRoot()
@@ -545,9 +541,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getDocumentRoot_Mixed();
 
 	/**
-	 * Returns the meta object for the map '{@link org.example.mindmap.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the map '{@link org.example.mindmap.DocumentRoot#getXMLNSPrefixMap
+	 * <em>XMLNS Prefix Map</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the map '<em>XMLNS Prefix Map</em>'.
 	 * @see org.example.mindmap.DocumentRoot#getXMLNSPrefixMap()
 	 * @see #getDocumentRoot()
@@ -556,9 +552,10 @@ public interface MindmapPackage extends EPackage {
 	EReference getDocumentRoot_XMLNSPrefixMap();
 
 	/**
-	 * Returns the meta object for the map '{@link org.example.mindmap.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the map '
+	 * {@link org.example.mindmap.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the map '<em>XSI Schema Location</em>'.
 	 * @see org.example.mindmap.DocumentRoot#getXSISchemaLocation()
 	 * @see #getDocumentRoot()
@@ -567,9 +564,10 @@ public interface MindmapPackage extends EPackage {
 	EReference getDocumentRoot_XSISchemaLocation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.example.mindmap.DocumentRoot#getMap <em>Map</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference '
+	 * {@link org.example.mindmap.DocumentRoot#getMap <em>Map</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference '<em>Map</em>'.
 	 * @see org.example.mindmap.DocumentRoot#getMap()
 	 * @see #getDocumentRoot()
@@ -578,9 +576,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getDocumentRoot_Map();
 
 	/**
-	 * Returns the meta object for class '{@link org.example.mindmap.Map <em>Map</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.example.mindmap.Map <em>Map</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Map</em>'.
 	 * @see org.example.mindmap.Map
 	 * @generated
@@ -588,9 +586,10 @@ public interface MindmapPackage extends EPackage {
 	EClass getMap();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.example.mindmap.Map#getRootTopics <em>Root Topics</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.example.mindmap.Map#getRootTopics <em>Root Topics</em>}'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference list '<em>Root Topics</em>'.
 	 * @see org.example.mindmap.Map#getRootTopics()
 	 * @see #getMap()
@@ -599,9 +598,10 @@ public interface MindmapPackage extends EPackage {
 	EReference getMap_RootTopics();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.example.mindmap.Map#getRelations <em>Relations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.example.mindmap.Map#getRelations <em>Relations</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference list '<em>Relations</em>'.
 	 * @see org.example.mindmap.Map#getRelations()
 	 * @see #getMap()
@@ -610,9 +610,10 @@ public interface MindmapPackage extends EPackage {
 	EReference getMap_Relations();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.example.mindmap.Map#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.example.mindmap.Map#getResources <em>Resources</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference list '<em>Resources</em>'.
 	 * @see org.example.mindmap.Map#getResources()
 	 * @see #getMap()
@@ -621,9 +622,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getMap_Resources();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Map#getTitle <em>Title</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Map#getTitle
+	 * <em>Title</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Title</em>'.
 	 * @see org.example.mindmap.Map#getTitle()
 	 * @see #getMap()
@@ -632,9 +633,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getMap_Title();
 
 	/**
-	 * Returns the meta object for class '{@link org.example.mindmap.Relationship <em>Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.example.mindmap.Relationship
+	 * <em>Relationship</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Relationship</em>'.
 	 * @see org.example.mindmap.Relationship
 	 * @generated
@@ -642,9 +643,9 @@ public interface MindmapPackage extends EPackage {
 	EClass getRelationship();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Relationship#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Relationship#getLabel
+	 * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Label</em>'.
 	 * @see org.example.mindmap.Relationship#getLabel()
 	 * @see #getRelationship()
@@ -653,9 +654,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getRelationship_Label();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.example.mindmap.Relationship#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference '{@link org.example.mindmap.Relationship#getSource
+	 * <em>Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference '<em>Source</em>'.
 	 * @see org.example.mindmap.Relationship#getSource()
 	 * @see #getRelationship()
@@ -664,9 +665,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getRelationship_Source();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.example.mindmap.Relationship#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference '{@link org.example.mindmap.Relationship#getTarget
+	 * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference '<em>Target</em>'.
 	 * @see org.example.mindmap.Relationship#getTarget()
 	 * @see #getRelationship()
@@ -675,9 +676,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getRelationship_Target();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Relationship#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Relationship#getType
+	 * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.example.mindmap.Relationship#getType()
 	 * @see #getRelationship()
@@ -687,8 +688,8 @@ public interface MindmapPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.example.mindmap.Resource <em>Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Resource</em>'.
 	 * @see org.example.mindmap.Resource
 	 * @generated
@@ -696,9 +697,10 @@ public interface MindmapPackage extends EPackage {
 	EClass getResource();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.example.mindmap.Resource#getComments <em>Comments</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the meta object for the reference list '
+	 * {@link org.example.mindmap.Resource#getComments <em>Comments</em>}'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference list '<em>Comments</em>'.
 	 * @see org.example.mindmap.Resource#getComments()
 	 * @see #getResource()
@@ -707,9 +709,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getResource_Comments();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Resource#getEmail <em>Email</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Resource#getEmail
+	 * <em>Email</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Email</em>'.
 	 * @see org.example.mindmap.Resource#getEmail()
 	 * @see #getResource()
@@ -718,9 +720,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getResource_Email();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Resource#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Resource#getName
+	 * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.example.mindmap.Resource#getName()
 	 * @see #getResource()
@@ -729,9 +731,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getResource_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.example.mindmap.Resource#getTopics <em>Topics</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference list '{@link org.example.mindmap.Resource#getTopics
+	 * <em>Topics</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference list '<em>Topics</em>'.
 	 * @see org.example.mindmap.Resource#getTopics()
 	 * @see #getResource()
@@ -740,9 +742,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getResource_Topics();
 
 	/**
-	 * Returns the meta object for class '{@link org.example.mindmap.Thread <em>Thread</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.example.mindmap.Thread <em>Thread</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Thread</em>'.
 	 * @see org.example.mindmap.Thread
 	 * @generated
@@ -750,9 +752,10 @@ public interface MindmapPackage extends EPackage {
 	EClass getThread();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.example.mindmap.Thread#getItems <em>Items</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.example.mindmap.Thread#getItems <em>Items</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference list '<em>Items</em>'.
 	 * @see org.example.mindmap.Thread#getItems()
 	 * @see #getThread()
@@ -761,9 +764,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getThread_Items();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.example.mindmap.Thread#getAuthor <em>Author</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference '{@link org.example.mindmap.Thread#getAuthor
+	 * <em>Author</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference '<em>Author</em>'.
 	 * @see org.example.mindmap.Thread#getAuthor()
 	 * @see #getThread()
@@ -772,9 +775,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getThread_Author();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Thread#getPostDate <em>Post Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Thread#getPostDate
+	 * <em>Post Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Post Date</em>'.
 	 * @see org.example.mindmap.Thread#getPostDate()
 	 * @see #getThread()
@@ -783,9 +786,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getThread_PostDate();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Thread#getSubject <em>Subject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Thread#getSubject
+	 * <em>Subject</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Subject</em>'.
 	 * @see org.example.mindmap.Thread#getSubject()
 	 * @see #getThread()
@@ -794,9 +797,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getThread_Subject();
 
 	/**
-	 * Returns the meta object for class '{@link org.example.mindmap.ThreadItem <em>Thread Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.example.mindmap.ThreadItem <em>Thread Item</em>}
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Thread Item</em>'.
 	 * @see org.example.mindmap.ThreadItem
 	 * @generated
@@ -804,9 +807,9 @@ public interface MindmapPackage extends EPackage {
 	EClass getThreadItem();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.example.mindmap.ThreadItem#getAuthor <em>Author</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference '{@link org.example.mindmap.ThreadItem#getAuthor
+	 * <em>Author</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference '<em>Author</em>'.
 	 * @see org.example.mindmap.ThreadItem#getAuthor()
 	 * @see #getThreadItem()
@@ -815,9 +818,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getThreadItem_Author();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.ThreadItem#getBody <em>Body</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.ThreadItem#getBody
+	 * <em>Body</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Body</em>'.
 	 * @see org.example.mindmap.ThreadItem#getBody()
 	 * @see #getThreadItem()
@@ -826,9 +829,10 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getThreadItem_Body();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.ThreadItem#getItemPostDate <em>Item Post Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.example.mindmap.ThreadItem#getItemPostDate <em>Item Post Date</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Item Post Date</em>'.
 	 * @see org.example.mindmap.ThreadItem#getItemPostDate()
 	 * @see #getThreadItem()
@@ -837,9 +841,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getThreadItem_ItemPostDate();
 
 	/**
-	 * Returns the meta object for class '{@link org.example.mindmap.Topic <em>Topic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.example.mindmap.Topic <em>Topic</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Topic</em>'.
 	 * @see org.example.mindmap.Topic
 	 * @generated
@@ -847,9 +851,10 @@ public interface MindmapPackage extends EPackage {
 	EClass getTopic();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.example.mindmap.Topic#getComments <em>Comments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.example.mindmap.Topic#getComments <em>Comments</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference list '<em>Comments</em>'.
 	 * @see org.example.mindmap.Topic#getComments()
 	 * @see #getTopic()
@@ -858,9 +863,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getTopic_Comments();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getDuration <em>Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getDuration
+	 * <em>Duration</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Duration</em>'.
 	 * @see org.example.mindmap.Topic#getDuration()
 	 * @see #getTopic()
@@ -869,9 +874,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getTopic_Duration();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getEndDate <em>End Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getEndDate
+	 * <em>End Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>End Date</em>'.
 	 * @see org.example.mindmap.Topic#getEndDate()
 	 * @see #getTopic()
@@ -880,9 +885,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getTopic_EndDate();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getName
+	 * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.example.mindmap.Topic#getName()
 	 * @see #getTopic()
@@ -891,9 +896,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getTopic_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getPercentComplete <em>Percent Complete</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getPercentComplete
+	 * <em>Percent Complete</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Percent Complete</em>'.
 	 * @see org.example.mindmap.Topic#getPercentComplete()
 	 * @see #getTopic()
@@ -902,9 +907,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getTopic_PercentComplete();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getPriority <em>Priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getPriority
+	 * <em>Priority</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Priority</em>'.
 	 * @see org.example.mindmap.Topic#getPriority()
 	 * @see #getTopic()
@@ -913,9 +918,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getTopic_Priority();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.example.mindmap.Topic#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference list '{@link org.example.mindmap.Topic#getResources
+	 * <em>Resources</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference list '<em>Resources</em>'.
 	 * @see org.example.mindmap.Topic#getResources()
 	 * @see #getTopic()
@@ -924,9 +929,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getTopic_Resources();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getStartDate <em>Start Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.example.mindmap.Topic#getStartDate
+	 * <em>Start Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Start Date</em>'.
 	 * @see org.example.mindmap.Topic#getStartDate()
 	 * @see #getTopic()
@@ -935,9 +940,9 @@ public interface MindmapPackage extends EPackage {
 	EAttribute getTopic_StartDate();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.example.mindmap.Topic#getSubtopics <em>Subtopics</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference list '{@link org.example.mindmap.Topic#getSubtopics
+	 * <em>Subtopics</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference list '<em>Subtopics</em>'.
 	 * @see org.example.mindmap.Topic#getSubtopics()
 	 * @see #getTopic()
@@ -946,9 +951,9 @@ public interface MindmapPackage extends EPackage {
 	EReference getTopic_Subtopics();
 
 	/**
-	 * Returns the meta object for enum '{@link org.example.mindmap.Priority <em>Priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '{@link org.example.mindmap.Priority <em>Priority</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for enum '<em>Priority</em>'.
 	 * @see org.example.mindmap.Priority
 	 * @generated
@@ -956,9 +961,9 @@ public interface MindmapPackage extends EPackage {
 	EEnum getPriority();
 
 	/**
-	 * Returns the meta object for enum '{@link org.example.mindmap.RelationshipType <em>Relationship Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '{@link org.example.mindmap.RelationshipType
+	 * <em>Relationship Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for enum '<em>Relationship Type</em>'.
 	 * @see org.example.mindmap.RelationshipType
 	 * @generated
@@ -966,55 +971,55 @@ public interface MindmapPackage extends EPackage {
 	EEnum getRelationshipType();
 
 	/**
-	 * Returns the meta object for data type '{@link org.example.mindmap.Priority <em>Priority Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for data type '{@link org.example.mindmap.Priority
+	 * <em>Priority Object</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for data type '<em>Priority Object</em>'.
 	 * @see org.example.mindmap.Priority
 	 * @model instanceClass="org.example.mindmap.Priority"
-	 *        extendedMetaData="name='Priority:Object' baseType='Priority'" 
+	 *        extendedMetaData="name='Priority:Object' baseType='Priority'"
 	 * @generated
 	 */
 	EDataType getPriorityObject();
 
 	/**
-	 * Returns the meta object for data type '{@link org.example.mindmap.RelationshipType <em>Relationship Type Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for data type '{@link org.example.mindmap.RelationshipType
+	 * <em>Relationship Type Object</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for data type '<em>Relationship Type Object</em>'.
 	 * @see org.example.mindmap.RelationshipType
 	 * @model instanceClass="org.example.mindmap.RelationshipType"
-	 *        extendedMetaData="name='RelationshipType:Object' baseType='RelationshipType'" 
+	 *        extendedMetaData="name='RelationshipType:Object' baseType='RelationshipType'"
 	 * @generated
 	 */
 	EDataType getRelationshipTypeObject();
 
 	/**
-	 * Returns the factory that creates the instances of the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	MindmapFactory getMindmapFactory();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * Defines literals for the meta objects that represent
+	 * <!-- begin-user-doc --> Defines literals for the meta objects that represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.DocumentRootImpl <em>Document Root</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.DocumentRootImpl
+		 * <em>Document Root</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.DocumentRootImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getDocumentRoot()
 		 * @generated
@@ -1022,41 +1027,41 @@ public interface MindmapPackage extends EPackage {
 		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
 
 		/**
-		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
 
 		/**
-		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
 
 		/**
-		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Map</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Map</b></em>' containment reference feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference DOCUMENT_ROOT__MAP = eINSTANCE.getDocumentRoot_Map();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.MapImpl <em>Map</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.MapImpl <em>Map</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.MapImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getMap()
 		 * @generated
@@ -1064,41 +1069,41 @@ public interface MindmapPackage extends EPackage {
 		EClass MAP = eINSTANCE.getMap();
 
 		/**
-		 * The meta object literal for the '<em><b>Root Topics</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Root Topics</b></em>' containment reference list
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference MAP__ROOT_TOPICS = eINSTANCE.getMap_RootTopics();
 
 		/**
-		 * The meta object literal for the '<em><b>Relations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Relations</b></em>' containment reference list
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference MAP__RELATIONS = eINSTANCE.getMap_Relations();
 
 		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference MAP__RESOURCES = eINSTANCE.getMap_Resources();
 
 		/**
-		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute MAP__TITLE = eINSTANCE.getMap_Title();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.RelationshipImpl <em>Relationship</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.RelationshipImpl
+		 * <em>Relationship</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.RelationshipImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getRelationship()
 		 * @generated
@@ -1106,41 +1111,41 @@ public interface MindmapPackage extends EPackage {
 		EClass RELATIONSHIP = eINSTANCE.getRelationship();
 
 		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute RELATIONSHIP__LABEL = eINSTANCE.getRelationship_Label();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference RELATIONSHIP__SOURCE = eINSTANCE.getRelationship_Source();
 
 		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference RELATIONSHIP__TARGET = eINSTANCE.getRelationship_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature. <!-- begin-user-doc
+		 * --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute RELATIONSHIP__TYPE = eINSTANCE.getRelationship_Type();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.ResourceImpl <em>Resource</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.ResourceImpl
+		 * <em>Resource</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.ResourceImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getResource()
 		 * @generated
@@ -1148,41 +1153,41 @@ public interface MindmapPackage extends EPackage {
 		EClass RESOURCE = eINSTANCE.getResource();
 
 		/**
-		 * The meta object literal for the '<em><b>Comments</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Comments</b></em>' reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference RESOURCE__COMMENTS = eINSTANCE.getResource_Comments();
 
 		/**
-		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute RESOURCE__EMAIL = eINSTANCE.getResource_Email();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc
+		 * --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute RESOURCE__NAME = eINSTANCE.getResource_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Topics</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Topics</b></em>' reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference RESOURCE__TOPICS = eINSTANCE.getResource_Topics();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.ThreadImpl <em>Thread</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.ThreadImpl <em>Thread</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.ThreadImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getThread()
 		 * @generated
@@ -1191,40 +1196,40 @@ public interface MindmapPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference THREAD__ITEMS = eINSTANCE.getThread_Items();
 
 		/**
-		 * The meta object literal for the '<em><b>Author</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Author</b></em>' reference feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference THREAD__AUTHOR = eINSTANCE.getThread_Author();
 
 		/**
-		 * The meta object literal for the '<em><b>Post Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Post Date</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute THREAD__POST_DATE = eINSTANCE.getThread_PostDate();
 
 		/**
-		 * The meta object literal for the '<em><b>Subject</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Subject</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute THREAD__SUBJECT = eINSTANCE.getThread_Subject();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.ThreadItemImpl <em>Thread Item</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.ThreadItemImpl
+		 * <em>Thread Item</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.ThreadItemImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getThreadItem()
 		 * @generated
@@ -1232,33 +1237,33 @@ public interface MindmapPackage extends EPackage {
 		EClass THREAD_ITEM = eINSTANCE.getThreadItem();
 
 		/**
-		 * The meta object literal for the '<em><b>Author</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Author</b></em>' reference feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference THREAD_ITEM__AUTHOR = eINSTANCE.getThreadItem_Author();
 
 		/**
-		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature. <!-- begin-user-doc
+		 * --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute THREAD_ITEM__BODY = eINSTANCE.getThreadItem_Body();
 
 		/**
-		 * The meta object literal for the '<em><b>Item Post Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Item Post Date</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute THREAD_ITEM__ITEM_POST_DATE = eINSTANCE.getThreadItem_ItemPostDate();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.impl.TopicImpl <em>Topic</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.impl.TopicImpl <em>Topic</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.impl.TopicImpl
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getTopic()
 		 * @generated
@@ -1266,81 +1271,81 @@ public interface MindmapPackage extends EPackage {
 		EClass TOPIC = eINSTANCE.getTopic();
 
 		/**
-		 * The meta object literal for the '<em><b>Comments</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Comments</b></em>' containment reference list
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference TOPIC__COMMENTS = eINSTANCE.getTopic_Comments();
 
 		/**
-		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute TOPIC__DURATION = eINSTANCE.getTopic_Duration();
 
 		/**
-		 * The meta object literal for the '<em><b>End Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>End Date</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute TOPIC__END_DATE = eINSTANCE.getTopic_EndDate();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc
+		 * --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute TOPIC__NAME = eINSTANCE.getTopic_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Percent Complete</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Percent Complete</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute TOPIC__PERCENT_COMPLETE = eINSTANCE.getTopic_PercentComplete();
 
 		/**
-		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute TOPIC__PRIORITY = eINSTANCE.getTopic_Priority();
 
 		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Resources</b></em>' reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference TOPIC__RESOURCES = eINSTANCE.getTopic_Resources();
 
 		/**
-		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute TOPIC__START_DATE = eINSTANCE.getTopic_StartDate();
 
 		/**
-		 * The meta object literal for the '<em><b>Subtopics</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Subtopics</b></em>' reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference TOPIC__SUBTOPICS = eINSTANCE.getTopic_Subtopics();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.Priority <em>Priority</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.Priority <em>Priority</em>}'
+		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.Priority
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getPriority()
 		 * @generated
@@ -1348,9 +1353,9 @@ public interface MindmapPackage extends EPackage {
 		EEnum PRIORITY = eINSTANCE.getPriority();
 
 		/**
-		 * The meta object literal for the '{@link org.example.mindmap.RelationshipType <em>Relationship Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.example.mindmap.RelationshipType
+		 * <em>Relationship Type</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.RelationshipType
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getRelationshipType()
 		 * @generated
@@ -1358,9 +1363,9 @@ public interface MindmapPackage extends EPackage {
 		EEnum RELATIONSHIP_TYPE = eINSTANCE.getRelationshipType();
 
 		/**
-		 * The meta object literal for the '<em>Priority Object</em>' data type.
-		 * <!-- begin-user-doc -->
+		 * The meta object literal for the '<em>Priority Object</em>' data type. <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.Priority
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getPriorityObject()
 		 * @generated
@@ -1368,9 +1373,9 @@ public interface MindmapPackage extends EPackage {
 		EDataType PRIORITY_OBJECT = eINSTANCE.getPriorityObject();
 
 		/**
-		 * The meta object literal for the '<em>Relationship Type Object</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em>Relationship Type Object</em>' data type. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.example.mindmap.RelationshipType
 		 * @see org.example.mindmap.impl.MindmapPackageImpl#getRelationshipTypeObject()
 		 * @generated
@@ -1379,4 +1384,4 @@ public interface MindmapPackage extends EPackage {
 
 	}
 
-} //MindmapPackage
+} // MindmapPackage

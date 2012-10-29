@@ -35,26 +35,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sub Choreography</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sub Choreography</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.SubChoreographyImpl#getLaneSets <em>Lane Sets</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.SubChoreographyImpl#getFlowElements <em>Flow Elements</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.SubChoreographyImpl#getArtifacts <em>Artifacts</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SubChoreographyImpl#getLaneSets <em>Lane Sets</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SubChoreographyImpl#getFlowElements <em>Flow Elements</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SubChoreographyImpl#getArtifacts <em>Artifacts</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class SubChoreographyImpl extends ChoreographyActivityImpl implements
-		SubChoreography {
+public class SubChoreographyImpl extends ChoreographyActivityImpl implements SubChoreography {
 	/**
 	 * The cached value of the '{@link #getLaneSets() <em>Lane Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLaneSets()
 	 * @generated
 	 * @ordered
@@ -62,9 +60,9 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	protected EList<LaneSet> laneSets;
 
 	/**
-	 * The cached value of the '{@link #getFlowElements() <em>Flow Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFlowElements() <em>Flow Elements</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFlowElements()
 	 * @generated
 	 * @ordered
@@ -72,9 +70,9 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	protected EList<FlowElement> flowElements;
 
 	/**
-	 * The cached value of the '{@link #getArtifacts() <em>Artifacts</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getArtifacts() <em>Artifacts</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getArtifacts()
 	 * @generated
 	 * @ordered
@@ -82,8 +80,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	protected EList<Artifact> artifacts;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SubChoreographyImpl() {
@@ -91,8 +89,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -101,70 +99,66 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<LaneSet> getLaneSets() {
 		if (laneSets == null) {
-			laneSets = new EObjectContainmentEList<LaneSet>(LaneSet.class,
-					this, Bpmn2Package.SUB_CHOREOGRAPHY__LANE_SETS);
+			laneSets = new EObjectContainmentEList<LaneSet>(LaneSet.class, this,
+					Bpmn2Package.SUB_CHOREOGRAPHY__LANE_SETS);
 		}
 		return laneSets;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<FlowElement> getFlowElements() {
 		if (flowElements == null) {
-			flowElements = new EObjectContainmentEList<FlowElement>(
-					FlowElement.class, this,
+			flowElements = new EObjectContainmentEList<FlowElement>(FlowElement.class, this,
 					Bpmn2Package.SUB_CHOREOGRAPHY__FLOW_ELEMENTS);
 		}
 		return flowElements;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Artifact> getArtifacts() {
 		if (artifacts == null) {
-			artifacts = new EObjectContainmentEList<Artifact>(Artifact.class,
-					this, Bpmn2Package.SUB_CHOREOGRAPHY__ARTIFACTS);
+			artifacts = new EObjectContainmentEList<Artifact>(Artifact.class, this,
+					Bpmn2Package.SUB_CHOREOGRAPHY__ARTIFACTS);
 		}
 		return artifacts;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.SUB_CHOREOGRAPHY__LANE_SETS:
-			return ((InternalEList<?>) getLaneSets()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getLaneSets()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.SUB_CHOREOGRAPHY__FLOW_ELEMENTS:
-			return ((InternalEList<?>) getFlowElements()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getFlowElements()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.SUB_CHOREOGRAPHY__ARTIFACTS:
-			return ((InternalEList<?>) getArtifacts()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getArtifacts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -181,8 +175,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -195,8 +189,7 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 			return;
 		case Bpmn2Package.SUB_CHOREOGRAPHY__FLOW_ELEMENTS:
 			getFlowElements().clear();
-			getFlowElements().addAll(
-					(Collection<? extends FlowElement>) newValue);
+			getFlowElements().addAll((Collection<? extends FlowElement>) newValue);
 			return;
 		case Bpmn2Package.SUB_CHOREOGRAPHY__ARTIFACTS:
 			getArtifacts().clear();
@@ -207,8 +200,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -228,8 +221,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -246,8 +239,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -266,8 +259,8 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,4 +278,4 @@ public class SubChoreographyImpl extends ChoreographyActivityImpl implements
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //SubChoreographyImpl
+} // SubChoreographyImpl

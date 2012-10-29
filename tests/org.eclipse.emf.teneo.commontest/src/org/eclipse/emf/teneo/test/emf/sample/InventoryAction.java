@@ -27,10 +27,10 @@ import org.eclipse.emf.teneo.samples.emf.sample.inv.PType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
-/** 
+/**
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
+ * @version $Revision: 1.5 $
  */
 public class InventoryAction extends AbstractTestAction {
 	public InventoryAction() {

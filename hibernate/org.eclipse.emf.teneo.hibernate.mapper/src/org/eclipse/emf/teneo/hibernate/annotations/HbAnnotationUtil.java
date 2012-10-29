@@ -39,17 +39,15 @@ public class HbAnnotationUtil {
 	protected static final Log log = LogFactory.getLog(HbAnnotationUtil.class);
 
 	/** Adds an index */
-	public static void setIndex(PAnnotatedEReference aReference,
-			AbstractAnnotator annotator, SQLNameStrategy namingStrategy) {
+	public static void setIndex(PAnnotatedEReference aReference, AbstractAnnotator annotator,
+			SQLNameStrategy namingStrategy) {
 		final String indexName;
 		if (namingStrategy instanceof ClassicSQLNameStrategy) {
-			indexName = ((ClassicSQLNameStrategy)namingStrategy).getForeignKeyIndexName(annotator, aReference);
+			indexName = ((ClassicSQLNameStrategy) namingStrategy).getForeignKeyIndexName(annotator,
+					aReference);
 		} else {
-			indexName = annotator.getPersistenceOptions()
-					.getSQLIndexNamePrefix()
-					+ annotator.getEntityName(aReference.getModelEReference()
-							.getEContainingClass())
-					+ "_"
+			indexName = annotator.getPersistenceOptions().getSQLIndexNamePrefix()
+					+ annotator.getEntityName(aReference.getModelEReference().getEContainingClass()) + "_"
 					+ aReference.getModelEReference().getName();
 		}
 		final HbAnnotatedEReference haReference = (HbAnnotatedEReference) aReference;

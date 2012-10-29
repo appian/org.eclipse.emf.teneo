@@ -41,7 +41,7 @@ public class AccountingTest extends AbstractActionTest {
 			// import
 			HibernateTestStore hbTestStore = (HibernateTestStore) store;
 			HbDataStore ds = hbTestStore.getEmfDataStore();
-			
+
 			ds.importDataStore(is, HbConstants.EXCHANGE_FORMAT_XMI);
 
 			// export

@@ -11,22 +11,21 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Resource </b> associated with the package.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Resource </b> associated with the package. <!-- end-user-doc -->
+ * 
  * @see com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.util.TestResourceFactoryImpl
  * @generated
  */
 public class TestResourceImpl extends XMLResourceImpl {
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param uri the URI of the new resource.
+	 * Creates an instance of the resource. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param uri
+	 *          the URI of the new resource.
 	 * @generated
 	 */
 	public TestResourceImpl(URI uri) {
 		super(uri);
 	}
 
-} //TestResourceImpl
+} // TestResourceImpl

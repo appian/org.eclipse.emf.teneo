@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.EndPoint;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>End Point</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>End Point</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class EndPointImpl extends RootElementImpl implements EndPoint {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EndPointImpl() {
@@ -39,8 +38,8 @@ public class EndPointImpl extends RootElementImpl implements EndPoint {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class EndPointImpl extends RootElementImpl implements EndPoint {
 		return Bpmn2Package.Literals.END_POINT;
 	}
 
-} //EndPointImpl
+} // EndPointImpl

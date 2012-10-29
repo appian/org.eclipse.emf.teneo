@@ -28,24 +28,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Complex Gateway</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Complex Gateway</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ComplexGatewayImpl#getActivationCondition <em>Activation Condition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ComplexGatewayImpl#getDefault <em>Default</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ComplexGatewayImpl#getActivationCondition <em>Activation
+ * Condition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ComplexGatewayImpl#getDefault <em>Default</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	/**
-	 * The cached value of the '{@link #getActivationCondition() <em>Activation Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getActivationCondition() <em>Activation Condition</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getActivationCondition()
 	 * @generated
 	 * @ordered
@@ -53,9 +53,9 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	protected Expression activationCondition;
 
 	/**
-	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
@@ -63,8 +63,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	protected SequenceFlow default_;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ComplexGatewayImpl() {
@@ -72,8 +72,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -82,8 +82,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getActivationCondition() {
@@ -91,19 +91,18 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetActivationCondition(
-			Expression newActivationCondition, NotificationChain msgs) {
+	public NotificationChain basicSetActivationCondition(Expression newActivationCondition,
+			NotificationChain msgs) {
 		Expression oldActivationCondition = activationCondition;
 		activationCondition = newActivationCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION,
-					oldActivationCondition, newActivationCondition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION, oldActivationCondition,
+					newActivationCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -113,39 +112,31 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setActivationCondition(Expression newActivationCondition) {
 		if (newActivationCondition != activationCondition) {
 			NotificationChain msgs = null;
 			if (activationCondition != null)
-				msgs = ((InternalEObject) activationCondition)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) activationCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION, null, msgs);
 			if (newActivationCondition != null)
-				msgs = ((InternalEObject) newActivationCondition)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) newActivationCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION, null, msgs);
 			msgs = basicSetActivationCondition(newActivationCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION,
-					newActivationCondition, newActivationCondition));
+					Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION, newActivationCondition,
+					newActivationCondition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SequenceFlow getDefault() {
@@ -153,26 +144,26 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDefault(SequenceFlow newDefault) {
 		SequenceFlow oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.COMPLEX_GATEWAY__DEFAULT, oldDefault, default_));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.COMPLEX_GATEWAY__DEFAULT,
+					oldDefault, default_));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.COMPLEX_GATEWAY__ACTIVATION_CONDITION:
 			return basicSetActivationCondition(null, msgs);
@@ -181,8 +172,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -197,8 +188,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,8 +206,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -233,8 +224,8 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -248,4 +239,4 @@ public class ComplexGatewayImpl extends GatewayImpl implements ComplexGateway {
 		return super.eIsSet(featureID);
 	}
 
-} //ComplexGatewayImpl
+} // ComplexGatewayImpl

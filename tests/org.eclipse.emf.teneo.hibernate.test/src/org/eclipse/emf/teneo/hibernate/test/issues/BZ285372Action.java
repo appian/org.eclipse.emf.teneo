@@ -55,7 +55,8 @@ public class BZ285372Action extends AbstractTestAction {
 		final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
 				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		final BasicCommandStack commandStack = new BasicCommandStack();
-		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);
+		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(adapterFactory,
+				commandStack);
 
 		// Create resource & test
 		final URI uri = URI.createURI("hibernate://?" + HibernateResource.DS_NAME_PARAM + "="
@@ -71,8 +72,8 @@ public class BZ285372Action extends AbstractTestAction {
 
 			// Add a child to the family (Family contains child)
 			final Person child = EmfdbFactory.eINSTANCE.createPerson();
-			final Command command1 = AddCommand.create(editingDomain, family, EmfdbPackage.Literals.FAMILY__PERSONS,
-					child);
+			final Command command1 = AddCommand.create(editingDomain, family,
+					EmfdbPackage.Literals.FAMILY__PERSONS, child);
 			editingDomain.getCommandStack().execute(command1);
 			resource.save(Collections.EMPTY_MAP);
 
@@ -80,16 +81,20 @@ public class BZ285372Action extends AbstractTestAction {
 			// Add reference of mother to child (Child references mother)
 			final Person mother = EmfdbFactory.eINSTANCE.createPerson();
 			final CompoundCommand command2 = new CompoundCommand();
-			command2.append(AddCommand.create(editingDomain, family, EmfdbPackage.Literals.FAMILY__PERSONS, mother));
-			command2.append(AddCommand.create(editingDomain, child, EmfdbPackage.Literals.PERSON__PARENTS, mother));
+			command2.append(AddCommand.create(editingDomain, family,
+					EmfdbPackage.Literals.FAMILY__PERSONS, mother));
+			command2.append(AddCommand.create(editingDomain, child,
+					EmfdbPackage.Literals.PERSON__PARENTS, mother));
 			editingDomain.getCommandStack().execute(command2);
 			resource.save(Collections.EMPTY_MAP);
 
-			// Undo command stack to remove mother from Family containment and from Person reference
+			// Undo command stack to remove mother from Family containment and from
+			// Person reference
 			editingDomain.getCommandStack().undo();
 			resource.save(Collections.EMPTY_MAP);
 
-			// Redo command stack to re-add mother to Family containment and to Person reference
+			// Redo command stack to re-add mother to Family containment and to Person
+			// reference
 			editingDomain.getCommandStack().redo();
 			resource.save(Collections.EMPTY_MAP); // <-- ERROR here
 

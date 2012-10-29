@@ -14,27 +14,27 @@
  */
 package org.eclipse.dd.dc.impl;
 
-import org.eclipse.dd.dc.*;
-
+import org.eclipse.dd.dc.Bounds;
+import org.eclipse.dd.dc.DcFactory;
+import org.eclipse.dd.dc.DcPackage;
+import org.eclipse.dd.dc.DocumentRoot;
+import org.eclipse.dd.dc.Font;
+import org.eclipse.dd.dc.Point;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static DcFactory init() {
@@ -51,9 +51,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DcFactoryImpl() {
@@ -61,8 +60,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,8 +82,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -93,8 +92,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Bounds createBounds() {
@@ -103,8 +102,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Font createFont() {
@@ -113,8 +112,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Point createPoint() {
@@ -123,8 +122,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DcPackage getDcPackage() {
@@ -132,8 +131,8 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -142,4 +141,4 @@ public class DcFactoryImpl extends EFactoryImpl implements DcFactory {
 		return DcPackage.eINSTANCE;
 	}
 
-} //DcFactoryImpl
+} // DcFactoryImpl

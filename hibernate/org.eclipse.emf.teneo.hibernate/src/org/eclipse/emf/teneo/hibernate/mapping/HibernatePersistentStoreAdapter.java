@@ -29,33 +29,28 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 /**
  * See superclass.
  * 
- * This class adds translation of featuremapentries to hibernate feature map
- * entries.
+ * This class adds translation of featuremapentries to hibernate feature map entries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.1 $
  */
 
 public class HibernatePersistentStoreAdapter extends PersistentStoreAdapter {
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected Object replaceValue(Object value, EStructuralFeature eFeature) {
 		if (value instanceof FeatureMap.Entry) {
 			final FeatureMap.Entry entry = (FeatureMap.Entry) value;
 			final HibernateFeatureMapEntry fme = new HibernateFeatureMapEntry();
-			fme.setFeatureValue(entry.getEStructuralFeature(),
-					entry.getValue(),
-					(FeatureMap.Internal) ((EObject) getTarget())
-							.eGet(eFeature));
+			fme.setFeatureValue(entry.getEStructuralFeature(), entry.getValue(),
+					(FeatureMap.Internal) ((EObject) getTarget()).eGet(eFeature));
 			return fme;
 		}
 		return value;
 	}
 
 	@Override
-	protected List<Object> replaceValues(List<Object> values,
-			EStructuralFeature eFeature) {
+	protected List<Object> replaceValues(List<Object> values, EStructuralFeature eFeature) {
 		final List<Object> result = new ArrayList<Object>();
 		for (Object value : values) {
 			result.add(replaceValue(value, eFeature));

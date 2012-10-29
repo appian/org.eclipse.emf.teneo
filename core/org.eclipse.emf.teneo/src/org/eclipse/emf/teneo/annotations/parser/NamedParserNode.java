@@ -35,7 +35,7 @@ abstract class NamedParserNode {
 
 	/**
 	 * @param name
-	 *            the name to set
+	 *          the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;

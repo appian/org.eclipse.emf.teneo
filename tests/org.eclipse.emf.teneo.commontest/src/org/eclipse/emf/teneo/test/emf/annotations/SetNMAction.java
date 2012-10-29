@@ -28,9 +28,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests an nm relation using sets on both sides.
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.4 $
  */
 public class SetNMAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -38,6 +38,7 @@ public class SetNMAction extends AbstractTestAction {
 
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public SetNMAction() {
@@ -86,7 +87,8 @@ public class SetNMAction extends AbstractTestAction {
 			for (int i = 0; i < list.size(); i++) {
 				assertEquals(NO_ITEMS - 1, ((MyItem) list.get(i)).getYourItem().size());
 				if (i < list.size() - 1) {
-					assertEquals("yourname_" + (i + 1), (((MyItem) list.get(i)).getYourItem().get(i)).getName());
+					assertEquals("yourname_" + (i + 1),
+							(((MyItem) list.get(i)).getYourItem().get(i)).getName());
 				}
 			}
 			store.commitTransaction();

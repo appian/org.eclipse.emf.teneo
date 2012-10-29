@@ -36,9 +36,9 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests for: - Restriction simple type - Extension from simple to complex type - Abstract type - IDREFS - Inheritance
- * and abstract - Extension of complex type - Reference to abstract type - nillable of string (district) and integer
- * (zip)
+ * Tests for: - Restriction simple type - Extension from simple to complex type - Abstract type -
+ * IDREFS - Inheritance and abstract - Extension of complex type - Reference to abstract type -
+ * nillable of string (district) and integer (zip)
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.9 $

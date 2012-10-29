@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.test.databinding.emfdb.*;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EmfdbFactoryImpl extends EFactoryImpl implements EmfdbFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static EmfdbFactory init() {
 		try {
-			EmfdbFactory theEmfdbFactory = (EmfdbFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/emfdb/1.0.0"); 
+			EmfdbFactory theEmfdbFactory = (EmfdbFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/emfdb/1.0.0");
 			if (theEmfdbFactory != null) {
 				return theEmfdbFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new EmfdbFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EmfdbFactoryImpl() {
@@ -53,24 +50,28 @@ public class EmfdbFactoryImpl extends EFactoryImpl implements EmfdbFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EmfdbPackage.FAMILY: return createFamily();
-			case EmfdbPackage.PERSON: return createPerson();
-			case EmfdbPackage.NOTE: return createNote();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case EmfdbPackage.FAMILY:
+			return createFamily();
+		case EmfdbPackage.PERSON:
+			return createPerson();
+		case EmfdbPackage.NOTE:
+			return createNote();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Family createFamily() {
@@ -79,8 +80,8 @@ public class EmfdbFactoryImpl extends EFactoryImpl implements EmfdbFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Person createPerson() {
@@ -89,8 +90,8 @@ public class EmfdbFactoryImpl extends EFactoryImpl implements EmfdbFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Note createNote() {
@@ -99,17 +100,17 @@ public class EmfdbFactoryImpl extends EFactoryImpl implements EmfdbFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EmfdbPackage getEmfdbPackage() {
-		return (EmfdbPackage)getEPackage();
+		return (EmfdbPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -118,4 +119,4 @@ public class EmfdbFactoryImpl extends EFactoryImpl implements EmfdbFactory {
 		return EmfdbPackage.eINSTANCE;
 	}
 
-} //EmfdbFactoryImpl
+} // EmfdbFactoryImpl

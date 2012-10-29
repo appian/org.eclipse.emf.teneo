@@ -24,25 +24,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Script Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Global Script Task</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.GlobalScriptTaskImpl#getScript <em>Script</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.GlobalScriptTaskImpl#getScriptLanguage <em>Script Language</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GlobalScriptTaskImpl#getScript <em>Script</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GlobalScriptTaskImpl#getScriptLanguage <em>Script Language
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
-		GlobalScriptTask {
+public class GlobalScriptTaskImpl extends GlobalTaskImpl implements GlobalScriptTask {
 	/**
-	 * The default value of the '{@link #getScript() <em>Script</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getScript() <em>Script</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScript()
 	 * @generated
 	 * @ordered
@@ -50,9 +49,9 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	protected static final String SCRIPT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getScript() <em>Script</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getScript() <em>Script</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScript()
 	 * @generated
 	 * @ordered
@@ -61,8 +60,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 
 	/**
 	 * The default value of the '{@link #getScriptLanguage() <em>Script Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScriptLanguage()
 	 * @generated
 	 * @ordered
@@ -70,9 +69,9 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	protected static final String SCRIPT_LANGUAGE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getScriptLanguage() <em>Script Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getScriptLanguage() <em>Script Language</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScriptLanguage()
 	 * @generated
 	 * @ordered
@@ -80,8 +79,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	protected String scriptLanguage = SCRIPT_LANGUAGE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GlobalScriptTaskImpl() {
@@ -89,8 +88,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,8 +98,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getScript() {
@@ -108,8 +107,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScript(String newScript) {
@@ -121,8 +120,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getScriptLanguage() {
@@ -130,8 +129,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScriptLanguage(String newScriptLanguage) {
@@ -139,13 +138,12 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 		scriptLanguage = newScriptLanguage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.GLOBAL_SCRIPT_TASK__SCRIPT_LANGUAGE,
-					oldScriptLanguage, scriptLanguage));
+					Bpmn2Package.GLOBAL_SCRIPT_TASK__SCRIPT_LANGUAGE, oldScriptLanguage, scriptLanguage));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,8 +158,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -178,8 +176,8 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -196,26 +194,25 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.GLOBAL_SCRIPT_TASK__SCRIPT:
-			return SCRIPT_EDEFAULT == null ? script != null : !SCRIPT_EDEFAULT
-					.equals(script);
+			return SCRIPT_EDEFAULT == null ? script != null : !SCRIPT_EDEFAULT.equals(script);
 		case Bpmn2Package.GLOBAL_SCRIPT_TASK__SCRIPT_LANGUAGE:
-			return SCRIPT_LANGUAGE_EDEFAULT == null ? scriptLanguage != null
-					: !SCRIPT_LANGUAGE_EDEFAULT.equals(scriptLanguage);
+			return SCRIPT_LANGUAGE_EDEFAULT == null ? scriptLanguage != null : !SCRIPT_LANGUAGE_EDEFAULT
+					.equals(scriptLanguage);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -232,4 +229,4 @@ public class GlobalScriptTaskImpl extends GlobalTaskImpl implements
 		return result.toString();
 	}
 
-} //GlobalScriptTaskImpl
+} // GlobalScriptTaskImpl

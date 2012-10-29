@@ -38,20 +38,18 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles
- * many==false properties.
+ * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles many==false
+ * properties.
  * 
- * This class implements both the getter, setter and propertyaccessor
- * interfaces. When the getGetter and getSetter methods are called it returns
- * itself.
+ * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter
+ * and getSetter methods are called it returns itself.
  * 
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.20 $
  */
-public class EAttributePropertyHandler implements Getter, Setter,
-		PropertyAccessor {
+public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
 	/**
 	 * Generated Serial Version ID
 	 */
@@ -79,12 +77,10 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		this.eAttribute = eAttribute;
 		instanceClass = eAttribute.getEType().getInstanceClass();
 		if (eAttribute.getEType().getInstanceClassName() != null) {
-			isObjectClass = eAttribute.getEType().getInstanceClassName()
-					.contains(".");
+			isObjectClass = eAttribute.getEType().getInstanceClassName().contains(".");
 		}
 		AssertUtil.assertTrue(eAttribute.getName()
-				+ " is a many feature which is not handled by this accessor ",
-				!eAttribute.isMany());
+				+ " is a many feature which is not handled by this accessor ", !eAttribute.isMany());
 		if (log.isDebugEnabled()) {
 			log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
 		}
@@ -106,24 +102,20 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 * java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 * java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -145,8 +137,8 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
-	 * java.util.Map, org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2)
@@ -185,11 +177,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object,
-	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
 
 		EObject eobj = (EObject) target;
 		if (value == null) {
@@ -218,8 +210,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 
 		final Object setValue;
-		if (value != null && instanceClass != null
-				&& value.getClass() != instanceClass) {
+		if (value != null && instanceClass != null && value.getClass() != instanceClass) {
 			final Class<?> valClass = value.getClass();
 			if (valClass == Integer[].class) {
 				setValue = convert((Integer[]) value);
@@ -248,8 +239,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Integer[] arr) {
 		if (instanceClass != int[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName()
-						+ " as instance class but it is: "
+				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: "
 						+ arr.getClass().getName());
 			}
 			return arr;
@@ -265,8 +255,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Boolean[] arr) {
 		if (instanceClass != boolean[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName()
-						+ " as instance class but it is: "
+				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: "
 						+ arr.getClass().getName());
 			}
 			return arr;
@@ -282,8 +271,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Byte[] arr) {
 		if (instanceClass != byte[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName()
-						+ " as instance class but it is: "
+				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: "
 						+ arr.getClass().getName());
 			}
 			return arr;
@@ -299,8 +287,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Double[] arr) {
 		if (instanceClass != double[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName()
-						+ " as instance class but it is: "
+				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: "
 						+ arr.getClass().getName());
 			}
 			return arr;
@@ -316,8 +303,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Float[] arr) {
 		if (instanceClass != float[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName()
-						+ " as instance class but it is: "
+				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: "
 						+ arr.getClass().getName());
 			}
 			return arr;
@@ -333,8 +319,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Long[] arr) {
 		if (instanceClass != long[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting [] as instance class but it is: "
-						+ instanceClass.getName());
+				log.debug("Expecting [] as instance class but it is: " + instanceClass.getName());
 			}
 			return arr;
 		}
@@ -349,8 +334,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private Object convert(Short[] arr) {
 		if (instanceClass != short[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting short[] as instance class but it is: "
-						+ instanceClass.getName());
+				log.debug("Expecting short[] as instance class but it is: " + instanceClass.getName());
 			}
 			return arr;
 		}
@@ -363,13 +347,10 @@ public class EAttributePropertyHandler implements Getter, Setter,
 
 	/** Capature all, do not convert */
 	private Object convert(Object arr) {
-		if (arr != null
-				&& instanceClass != null
-				&& (!instanceClass.isPrimitive() || !arr.getClass()
-						.isPrimitive())) {
+		if (arr != null && instanceClass != null
+				&& (!instanceClass.isPrimitive() || !arr.getClass().isPrimitive())) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName()
-						+ " as instance class but it is: "
+				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: "
 						+ arr.getClass().getName());
 			}
 		}

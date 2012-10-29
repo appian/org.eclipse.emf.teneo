@@ -41,8 +41,7 @@ public class Bz363777Action extends AbstractTestAction {
 	@Override
 	public void doAction(TestStore store) {
 		{
-			final ChannelMap channelMap = Bz363777Factory.eINSTANCE
-					.createChannelMap();
+			final ChannelMap channelMap = Bz363777Factory.eINSTANCE.createChannelMap();
 			final ChannelMapService channelMapService = Bz363777Factory.eINSTANCE
 					.createChannelMapService();
 			channelMap.setKey(111);

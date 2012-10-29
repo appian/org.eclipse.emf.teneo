@@ -21,19 +21,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Item Kind</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Item Kind</b></em>', and utility methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getItemKind()
  * @model extendedMetaData="name='tItemKind'"
  * @generated
  */
 public enum ItemKind implements Enumerator {
 	/**
-	 * The '<em><b>Physical</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Physical</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #PHYSICAL_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +39,8 @@ public enum ItemKind implements Enumerator {
 	PHYSICAL(0, "Physical", "Physical"),
 
 	/**
-	 * The '<em><b>Information</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Information</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #INFORMATION_VALUE
 	 * @generated
 	 * @ordered
@@ -51,13 +48,13 @@ public enum ItemKind implements Enumerator {
 	INFORMATION(1, "Information", "Information");
 
 	/**
-	 * The '<em><b>Physical</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Physical</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Physical</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Physical</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PHYSICAL
 	 * @model name="Physical"
 	 * @generated
@@ -66,13 +63,13 @@ public enum ItemKind implements Enumerator {
 	public static final int PHYSICAL_VALUE = 0;
 
 	/**
-	 * The '<em><b>Information</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Information</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Information</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Information</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #INFORMATION
 	 * @model name="Information"
 	 * @generated
@@ -81,27 +78,26 @@ public enum ItemKind implements Enumerator {
 	public static final int INFORMATION_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Item Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Item Kind</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final ItemKind[] VALUES_ARRAY = new ItemKind[] { PHYSICAL,
-			INFORMATION, };
+	private static final ItemKind[] VALUES_ARRAY = new ItemKind[] { PHYSICAL, INFORMATION, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Item Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Item Kind</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<ItemKind> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ItemKind> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Item Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Item Kind</b></em>' literal with the specified literal value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ItemKind get(String literal) {
@@ -115,9 +111,9 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Item Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Item Kind</b></em>' literal with the specified name. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ItemKind getByName(String name) {
@@ -131,9 +127,9 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Item Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Item Kind</b></em>' literal with the specified integer value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ItemKind get(int value) {
@@ -147,30 +143,29 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ItemKind(int value, String name, String literal) {
@@ -180,8 +175,8 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -189,8 +184,8 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -198,8 +193,8 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -207,9 +202,9 @@ public enum ItemKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -217,4 +212,4 @@ public enum ItemKind implements Enumerator {
 		return literal;
 	}
 
-} //ItemKind
+} // ItemKind

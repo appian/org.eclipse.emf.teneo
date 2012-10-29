@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import junit.framework.Assert;
+
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
@@ -37,7 +39,8 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
+ * Tests persisting of ecore models in a relational store. Only stores them and then reads them
+ * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.19 $
@@ -46,7 +49,8 @@ public class EcoreAction extends AbstractTestAction {
 
 	/** Constructor */
 	public EcoreAction() {
-		super(new EPackage[] { EcorePackage.eINSTANCE, org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE });
+		super(new EPackage[] { EcorePackage.eINSTANCE,
+				org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE });
 	}
 
 	/*
@@ -77,7 +81,8 @@ public class EcoreAction extends AbstractTestAction {
 		try {
 			// read from the resource
 			{
-				resourceOne.load(EcoreAction.class.getResourceAsStream("library.ecore"), Collections.EMPTY_MAP);
+				resourceOne.load(EcoreAction.class.getResourceAsStream("library.ecore"),
+						Collections.EMPTY_MAP);
 				// EPackage epack = (EPackage)resource.getContents().get(0);
 				// resource.unload();
 				final EPackage epack = (EPackage) resourceOne.getContents().get(0);
@@ -94,7 +99,7 @@ public class EcoreAction extends AbstractTestAction {
 				for (TreeIterator<EObject> it = xmlTypePackage.eAllContents(); it.hasNext();) {
 					it.next().eAdapters().clear();
 				}
-				
+
 				store.beginTransaction();
 				store.store(epack);
 				store.store(ecorePackage);
@@ -137,6 +142,7 @@ public class EcoreAction extends AbstractTestAction {
 					it.next();
 					cnt++;
 				}
+				Assert.assertTrue(cnt >= 0);
 				// now compare the two resources
 				// compares fails for now
 				// compareResult(resourceOne, resourceTwo);

@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.ManualTask;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Manual Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Manual Task</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class ManualTaskImpl extends TaskImpl implements ManualTask {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ManualTaskImpl() {
@@ -39,8 +38,8 @@ public class ManualTaskImpl extends TaskImpl implements ManualTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class ManualTaskImpl extends TaskImpl implements ManualTask {
 		return Bpmn2Package.Literals.MANUAL_TASK;
 	}
 
-} //ManualTaskImpl
+} // ManualTaskImpl

@@ -24,24 +24,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Business Rule Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Global Business Rule Task</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.GlobalBusinessRuleTaskImpl#getImplementation <em>Implementation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GlobalBusinessRuleTaskImpl#getImplementation <em>Implementation
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
-		GlobalBusinessRuleTask {
+public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements GlobalBusinessRuleTask {
 	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -49,9 +48,9 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	protected static final String IMPLEMENTATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -59,8 +58,8 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	protected String implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GlobalBusinessRuleTaskImpl() {
@@ -68,8 +67,8 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -78,8 +77,8 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getImplementation() {
@@ -87,8 +86,8 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplementation(String newImplementation) {
@@ -96,13 +95,12 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.GLOBAL_BUSINESS_RULE_TASK__IMPLEMENTATION,
-					oldImplementation, implementation));
+					Bpmn2Package.GLOBAL_BUSINESS_RULE_TASK__IMPLEMENTATION, oldImplementation, implementation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -115,8 +113,8 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,8 +128,8 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,23 +143,23 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.GLOBAL_BUSINESS_RULE_TASK__IMPLEMENTATION:
-			return IMPLEMENTATION_EDEFAULT == null ? implementation != null
-					: !IMPLEMENTATION_EDEFAULT.equals(implementation);
+			return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT
+					.equals(implementation);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -176,4 +174,4 @@ public class GlobalBusinessRuleTaskImpl extends GlobalTaskImpl implements
 		return result.toString();
 	}
 
-} //GlobalBusinessRuleTaskImpl
+} // GlobalBusinessRuleTaskImpl

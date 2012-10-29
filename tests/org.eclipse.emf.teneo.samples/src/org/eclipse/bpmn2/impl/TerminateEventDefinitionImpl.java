@@ -20,19 +20,18 @@ import org.eclipse.bpmn2.TerminateEventDefinition;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Terminate Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Terminate Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class TerminateEventDefinitionImpl extends EventDefinitionImpl implements
 		TerminateEventDefinition {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TerminateEventDefinitionImpl() {
@@ -40,8 +39,8 @@ public class TerminateEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +48,4 @@ public class TerminateEventDefinitionImpl extends EventDefinitionImpl implements
 		return Bpmn2Package.Literals.TERMINATE_EVENT_DEFINITION;
 	}
 
-} //TerminateEventDefinitionImpl
+} // TerminateEventDefinitionImpl

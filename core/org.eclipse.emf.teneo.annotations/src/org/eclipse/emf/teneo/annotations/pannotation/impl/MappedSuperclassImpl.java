@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mapped Superclass</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Mapped Superclass</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class MappedSuperclassImpl extends PAnnotationImpl implements MappedSuperclass {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MappedSuperclassImpl() {
@@ -30,8 +29,8 @@ public class MappedSuperclassImpl extends PAnnotationImpl implements MappedSuper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class MappedSuperclassImpl extends PAnnotationImpl implements MappedSuper
 		return PannotationPackage.Literals.MAPPED_SUPERCLASS;
 	}
 
-} //MappedSuperclassImpl
+} // MappedSuperclassImpl

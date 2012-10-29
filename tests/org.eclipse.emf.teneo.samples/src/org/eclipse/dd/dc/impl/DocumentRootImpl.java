@@ -21,47 +21,42 @@ import org.eclipse.dd.dc.DcPackage;
 import org.eclipse.dd.dc.DocumentRoot;
 import org.eclipse.dd.dc.Font;
 import org.eclipse.dd.dc.Point;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
-
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Document Root</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Document Root</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getBounds <em>Bounds</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getFont <em>Font</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getPoint <em>Point</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location
+ * </em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getBounds <em>Bounds</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getFont <em>Font</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.DocumentRootImpl#getPoint <em>Point</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -69,9 +64,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected FeatureMap mixed;
 
 	/**
-	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getXMLNSPrefixMap()
 	 * @generated
 	 * @ordered
@@ -80,8 +75,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getXSISchemaLocation()
 	 * @generated
 	 * @ordered
@@ -89,8 +84,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected EMap<String, String> xSISchemaLocation;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DocumentRootImpl() {
@@ -98,8 +93,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,8 +103,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -120,135 +115,125 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Map<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
 			xMLNSPrefixMap = new EcoreEMap<String, String>(
-					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
-					EStringToStringMapEntryImpl.class, this,
-					DcPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class,
+					this, DcPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap.map();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Map<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
 			xSISchemaLocation = new EcoreEMap<String, String>(
-					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
-					EStringToStringMapEntryImpl.class, this,
-					DcPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class,
+					this, DcPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation.map();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Bounds getBounds() {
-		return (Bounds) getMixed().get(
-				DcPackage.Literals.DOCUMENT_ROOT__BOUNDS, true);
+		return (Bounds) getMixed().get(DcPackage.Literals.DOCUMENT_ROOT__BOUNDS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetBounds(Bounds newBounds,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				DcPackage.Literals.DOCUMENT_ROOT__BOUNDS, newBounds, msgs);
+	public NotificationChain basicSetBounds(Bounds newBounds, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(DcPackage.Literals.DOCUMENT_ROOT__BOUNDS,
+				newBounds, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBounds(Bounds newBounds) {
-		((FeatureMap.Internal) getMixed()).set(
-				DcPackage.Literals.DOCUMENT_ROOT__BOUNDS, newBounds);
+		((FeatureMap.Internal) getMixed()).set(DcPackage.Literals.DOCUMENT_ROOT__BOUNDS, newBounds);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Font getFont() {
-		return (Font) getMixed().get(DcPackage.Literals.DOCUMENT_ROOT__FONT,
-				true);
+		return (Font) getMixed().get(DcPackage.Literals.DOCUMENT_ROOT__FONT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetFont(Font newFont, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				DcPackage.Literals.DOCUMENT_ROOT__FONT, newFont, msgs);
+		return ((FeatureMap.Internal) getMixed()).basicAdd(DcPackage.Literals.DOCUMENT_ROOT__FONT,
+				newFont, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFont(Font newFont) {
-		((FeatureMap.Internal) getMixed()).set(
-				DcPackage.Literals.DOCUMENT_ROOT__FONT, newFont);
+		((FeatureMap.Internal) getMixed()).set(DcPackage.Literals.DOCUMENT_ROOT__FONT, newFont);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Point getPoint() {
-		return (Point) getMixed().get(DcPackage.Literals.DOCUMENT_ROOT__POINT,
-				true);
+		return (Point) getMixed().get(DcPackage.Literals.DOCUMENT_ROOT__POINT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetPoint(Point newPoint,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				DcPackage.Literals.DOCUMENT_ROOT__POINT, newPoint, msgs);
+	public NotificationChain basicSetPoint(Point newPoint, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(DcPackage.Literals.DOCUMENT_ROOT__POINT,
+				newPoint, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPoint(Point newPoint) {
-		((FeatureMap.Internal) getMixed()).set(
-				DcPackage.Literals.DOCUMENT_ROOT__POINT, newPoint);
+		((FeatureMap.Internal) getMixed()).set(DcPackage.Literals.DOCUMENT_ROOT__POINT, newPoint);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case DcPackage.DOCUMENT_ROOT__MIXED:
 			return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
@@ -269,8 +254,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -282,14 +267,12 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 			return ((FeatureMap.Internal) getMixed()).getWrapper();
 		case DcPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 			if (coreType)
-				return ((EMap.InternalMapView<String, String>) getXMLNSPrefixMap())
-						.eMap();
+				return ((EMap.InternalMapView<String, String>) getXMLNSPrefixMap()).eMap();
 			else
 				return getXMLNSPrefixMap();
 		case DcPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 			if (coreType)
-				return ((EMap.InternalMapView<String, String>) getXSISchemaLocation())
-						.eMap();
+				return ((EMap.InternalMapView<String, String>) getXSISchemaLocation()).eMap();
 			else
 				return getXSISchemaLocation();
 		case DcPackage.DOCUMENT_ROOT__BOUNDS:
@@ -303,8 +286,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -335,8 +318,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -365,8 +348,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -389,8 +372,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -405,4 +388,4 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 		return result.toString();
 	}
 
-} //DocumentRootImpl
+} // DocumentRootImpl

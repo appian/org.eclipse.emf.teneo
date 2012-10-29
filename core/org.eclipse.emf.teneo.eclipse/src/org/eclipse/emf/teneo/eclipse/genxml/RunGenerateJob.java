@@ -35,11 +35,9 @@ import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
 import org.eclipse.jdt.launching.JavaRuntime;
 
 /**
- * Generate a mapping file in a separate java program to use the classpath of
- * the selected projects.
+ * Generate a mapping file in a separate java program to use the classpath of the selected projects.
  */
-public class RunGenerateJob extends WorkspaceJob implements
-		IJavaLaunchConfigurationConstants {
+public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigurationConstants {
 
 	/** Standard name of the generation action */
 	private static final String CONFIGURATION_NAME = "Teneo OR-Mapping Generation";
@@ -62,9 +60,8 @@ public class RunGenerateJob extends WorkspaceJob implements
 	/**
 	 * The constructor.
 	 */
-	public RunGenerateJob(ArrayList<IJavaProject> jProjects, String[] ecores,
-			String targetFileName, String mainClass,
-			HashMap<String, String> options) {
+	public RunGenerateJob(ArrayList<IJavaProject> jProjects, String[] ecores, String targetFileName,
+			String mainClass, HashMap<String, String> options) {
 		super("Generate Mapping File");
 		this.jProjects = jProjects;
 		this.ecores = ecores;
@@ -74,19 +71,16 @@ public class RunGenerateJob extends WorkspaceJob implements
 	}
 
 	/**
-	 * Launches a separate java process using the classpaths of the passed
-	 * projects
+	 * Launches a separate java process using the classpaths of the passed projects
 	 */
 
 	@Override
-	public IStatus runInWorkspace(IProgressMonitor monitor)
-			throws CoreException {
+	public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
 		// first delete the old generation of the same name
 		ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
 		ILaunchConfigurationType type = manager
 				.getLaunchConfigurationType(IJavaLaunchConfigurationConstants.ID_JAVA_APPLICATION);
-		ILaunchConfiguration[] configurations = manager
-				.getLaunchConfigurations(type);
+		ILaunchConfiguration[] configurations = manager.getLaunchConfigurations(type);
 		for (ILaunchConfiguration element : configurations) {
 			if (element.getName().compareTo(CONFIGURATION_NAME) == 0) {
 				element.delete();
@@ -94,15 +88,13 @@ public class RunGenerateJob extends WorkspaceJob implements
 		}
 
 		// create a new launch configuration
-		ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null,
-				CONFIGURATION_NAME);
+		ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, CONFIGURATION_NAME);
 
 		final List<String> classPath = determineClassPath();
 		workingCopy.setAttribute(ATTR_DEFAULT_CLASSPATH, false);
 		workingCopy.setAttribute(ATTR_CLASSPATH, classPath);
 		workingCopy.setAttribute(ATTR_MAIN_TYPE_NAME, mainClass);
-		workingCopy.setAttribute(ATTR_PROJECT_NAME, (jProjects.get(0))
-				.getProject().getName());
+		workingCopy.setAttribute(ATTR_PROJECT_NAME, (jProjects.get(0)).getProject().getName());
 		// workingCopy.setAttribute(ATTR_WORKING_DIRECTORY, workingDir);
 		workingCopy.setAttribute(ATTR_PROGRAM_ARGUMENTS, getProgramArguments());
 		workingCopy.doSave();
@@ -122,9 +114,8 @@ public class RunGenerateJob extends WorkspaceJob implements
 		}
 
 		IPath systemLibsPath = new Path(JavaRuntime.JRE_CONTAINER);
-		IRuntimeClasspathEntry systemLibsEntry = JavaRuntime
-				.newRuntimeContainerClasspathEntry(systemLibsPath,
-						IRuntimeClasspathEntry.STANDARD_CLASSES);
+		IRuntimeClasspathEntry systemLibsEntry = JavaRuntime.newRuntimeContainerClasspathEntry(
+				systemLibsPath, IRuntimeClasspathEntry.STANDARD_CLASSES);
 		result.add(systemLibsEntry.getMemento());
 
 		return result;
@@ -138,8 +129,7 @@ public class RunGenerateJob extends WorkspaceJob implements
 				final IJavaProject ijp = jProjects.get(i);
 				for (int j = 0; j < ijp.getPackageFragmentRoots().length; j++) {
 					IPackageFragmentRoot ipf = ijp.getPackageFragmentRoots()[j];
-					if (ipf.getClass().getName()
-							.endsWith("JarPackageFragmentRoot")) {
+					if (ipf.getClass().getName().endsWith("JarPackageFragmentRoot")) {
 						continue;
 					}
 					if (!ipf.exists()) {
@@ -161,16 +151,14 @@ public class RunGenerateJob extends WorkspaceJob implements
 			}
 			return resultStr.toString();
 		} catch (Exception e) {
-			throw new StoreEclipseException(
-					"Exception while looking for epackages in projects "
-							+ e.getMessage(), e);
+			throw new StoreEclipseException("Exception while looking for epackages in projects "
+					+ e.getMessage(), e);
 		}
 
 	}
 
 	/** Walk the java element structure looking for EPackage sources */
-	private void walk(IJavaElement ije, String pName, ArrayList<String> result)
-			throws Exception {
+	private void walk(IJavaElement ije, String pName, ArrayList<String> result) throws Exception {
 		if (ije.getClass().getName().endsWith("JarPackageFragmentRoot")) {
 			return;
 		}
@@ -179,8 +167,7 @@ public class RunGenerateJob extends WorkspaceJob implements
 		}
 
 		final IPackageFragment pf = (IPackageFragment) ije;
-		final String packageName = pName + (pName.length() > 0 ? "." : "")
-				+ pf.getElementName();
+		final String packageName = pName + (pName.length() > 0 ? "." : "") + pf.getElementName();
 		for (int c = 0; c < pf.getChildren().length; c++) {
 			final IJavaElement child = pf.getChildren()[c];
 			if (child instanceof IPackageFragment) {
@@ -190,20 +177,16 @@ public class RunGenerateJob extends WorkspaceJob implements
 				// TODO make this more robust for other packages which are also
 				// EPackages
 				final ICompilationUnit icu = (ICompilationUnit) child;
-				final String[] types = icu.getTypes()[0]
-						.getSuperInterfaceNames();
+				final String[] types = icu.getTypes()[0].getSuperInterfaceNames();
 				for (String element : types) {
 					if (element.compareTo("EPackage") == 0) {
-						result.add(packageName + "."
-								+ icu.getTypes()[0].getElementName());
+						result.add(packageName + "." + icu.getTypes()[0].getElementName());
 						return;
 					}
 				}
 				if (icu.getTypes()[0].getSuperclassName() != null
-						&& icu.getTypes()[0].getSuperclassName().equals(
-								"EPackageImpl")) {
-					result.add(packageName + "."
-							+ icu.getTypes()[0].getElementName());
+						&& icu.getTypes()[0].getSuperclassName().equals("EPackageImpl")) {
+					result.add(packageName + "." + icu.getTypes()[0].getElementName());
 					return;
 				}
 			}

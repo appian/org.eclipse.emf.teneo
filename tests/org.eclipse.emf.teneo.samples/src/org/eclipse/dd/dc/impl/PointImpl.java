@@ -16,33 +16,29 @@ package org.eclipse.dd.dc.impl;
 
 import org.eclipse.dd.dc.DcPackage;
 import org.eclipse.dd.dc.Point;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Point</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Point</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.dc.impl.PointImpl#getX <em>X</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.PointImpl#getY <em>Y</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.PointImpl#getX <em>X</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.PointImpl#getY <em>Y</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PointImpl extends EObjectImpl implements Point {
 	/**
-	 * The default value of the '{@link #getX() <em>X</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getX()
 	 * @generated
 	 * @ordered
@@ -50,9 +46,9 @@ public class PointImpl extends EObjectImpl implements Point {
 	protected static final float X_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getX() <em>X</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getX()
 	 * @generated
 	 * @ordered
@@ -60,9 +56,9 @@ public class PointImpl extends EObjectImpl implements Point {
 	protected float x = X_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getY()
 	 * @generated
 	 * @ordered
@@ -70,9 +66,9 @@ public class PointImpl extends EObjectImpl implements Point {
 	protected static final float Y_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getY()
 	 * @generated
 	 * @ordered
@@ -80,8 +76,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	protected float y = Y_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PointImpl() {
@@ -89,8 +85,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,8 +95,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getX() {
@@ -108,21 +104,20 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setX(float newX) {
 		float oldX = x;
 		x = newX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.POINT__X, oldX, x));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.POINT__X, oldX, x));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getY() {
@@ -130,21 +125,20 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setY(float newY) {
 		float oldY = y;
 		y = newY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.POINT__Y, oldY, y));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.POINT__Y, oldY, y));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,8 +153,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -177,8 +171,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,8 +189,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -211,8 +205,8 @@ public class PointImpl extends EObjectImpl implements Point {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -229,4 +223,4 @@ public class PointImpl extends EObjectImpl implements Point {
 		return result.toString();
 	}
 
-} //PointImpl
+} // PointImpl

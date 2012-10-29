@@ -15,23 +15,24 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Unique Constraint</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Unique Constraint</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueConstraintImpl#getColumnNames <em>Column Names</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueConstraintImpl#getColumnNames
+ * <em>Column Names</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class UniqueConstraintImpl extends PAnnotationImpl implements UniqueConstraint {
 	/**
-	 * The cached value of the '{@link #getColumnNames() <em>Column Names</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getColumnNames() <em>Column Names</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getColumnNames()
 	 * @generated
 	 * @ordered
@@ -39,8 +40,8 @@ public class UniqueConstraintImpl extends PAnnotationImpl implements UniqueConst
 	protected EList<String> columnNames;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected UniqueConstraintImpl() {
@@ -48,8 +49,8 @@ public class UniqueConstraintImpl extends PAnnotationImpl implements UniqueConst
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -58,85 +59,87 @@ public class UniqueConstraintImpl extends PAnnotationImpl implements UniqueConst
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<String> getColumnNames() {
 		if (columnNames == null) {
-			columnNames = new EDataTypeUniqueEList<String>(String.class, this, PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES);
+			columnNames = new EDataTypeUniqueEList<String>(String.class, this,
+					PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES);
 		}
 		return columnNames;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
-				return getColumnNames();
+		case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
+			return getColumnNames();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
-				getColumnNames().clear();
-				getColumnNames().addAll((Collection<? extends String>)newValue);
-				return;
+		case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
+			getColumnNames().clear();
+			getColumnNames().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
-				getColumnNames().clear();
-				return;
+		case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
+			getColumnNames().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
-				return columnNames != null && !columnNames.isEmpty();
+		case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
+			return columnNames != null && !columnNames.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (columnNames: ");
@@ -145,4 +148,4 @@ public class UniqueConstraintImpl extends PAnnotationImpl implements UniqueConst
 		return result.toString();
 	}
 
-} //UniqueConstraintImpl
+} // UniqueConstraintImpl

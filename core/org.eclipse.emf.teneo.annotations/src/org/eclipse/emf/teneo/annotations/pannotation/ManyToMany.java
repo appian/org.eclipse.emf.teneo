@@ -9,16 +9,18 @@ package org.eclipse.emf.teneo.annotations.pannotation;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Many To Many</b></em>'. <!-- end-user-doc
- * -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Many To Many</b></em>'. <!--
+ * end-user-doc -->
  * 
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getTargetEntity <em>Target Entity</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getTargetEntity <em>Target
+ * Entity</em>}</li>
  * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getCascade <em>Cascade</em>}</li>
  * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getFetch <em>Fetch</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getMappedBy <em>Mapped By</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getMappedBy <em>Mapped By
+ * </em>}</li>
  * </ul>
  * </p>
  * 
@@ -29,12 +31,12 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ManyToMany extends PAnnotation {
 	/**
-	 * Returns the value of the '<em><b>Fetch</b></em>' attribute. The default value is <code>"LAZY"</code>. The
-	 * literals are from the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.FetchType}. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Fetch</b></em>' attribute. The default value is
+	 * <code>"LAZY"</code>. The literals are from the enumeration
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.FetchType}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Fetch</em>' attribute isn't clear, there really should be more of a description
-	 * here...
+	 * If the meaning of the '<em>Fetch</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
@@ -48,9 +50,12 @@ public interface ManyToMany extends PAnnotation {
 	FetchType getFetch();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getFetch <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fetch</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getFetch <em>Fetch</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Fetch</em>' attribute.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see #getFetch()
 	 * @generated
@@ -58,13 +63,13 @@ public interface ManyToMany extends PAnnotation {
 	void setFetch(FetchType value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target Entity</em>' attribute isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Target Entity</em>' attribute isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Target Entity</em>' attribute.
 	 * @see #setTargetEntity(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_TargetEntity()
@@ -74,24 +79,28 @@ public interface ManyToMany extends PAnnotation {
 	String getTargetEntity();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getTargetEntity <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Entity</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getTargetEntity
+	 * <em>Target Entity</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Target Entity</em>' attribute.
 	 * @see #getTargetEntity()
 	 * @generated
 	 */
 	void setTargetEntity(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cascade</b></em>' attribute list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
-	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Cascade</b></em>' attribute list. The list contents are of
+	 * type {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}. The literals are from
+	 * the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cascade</em>' attribute list isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Cascade</em>' attribute list isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Cascade</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.CascadeType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_Cascade()
@@ -101,13 +110,13 @@ public interface ManyToMany extends PAnnotation {
 	EList<CascadeType> getCascade();
 
 	/**
-	 * Returns the value of the '<em><b>Mapped By</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Mapped By</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mapped By</em>' attribute isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Mapped By</em>' attribute isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Mapped By</em>' attribute.
 	 * @see #setMappedBy(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_MappedBy()
@@ -117,23 +126,26 @@ public interface ManyToMany extends PAnnotation {
 	String getMappedBy();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getMappedBy <em>Mapped By</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mapped By</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#getMappedBy <em>Mapped By</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Mapped By</em>' attribute.
 	 * @see #getMappedBy()
 	 * @generated
 	 */
 	void setMappedBy(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Indexed</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Indexed</b></em>' attribute. The default value is
+	 * <code>"true"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Indexed</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Indexed</em>' attribute isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Indexed</em>' attribute.
 	 * @see #setIndexed(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_Indexed()
@@ -143,10 +155,12 @@ public interface ManyToMany extends PAnnotation {
 	boolean isIndexed();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isIndexed <em>Indexed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Indexed</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isIndexed <em>Indexed</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Indexed</em>' attribute.
 	 * @see #isIndexed()
 	 * @generated
 	 */

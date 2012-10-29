@@ -46,9 +46,7 @@ public class VariousAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(
-				PersistenceOptions.SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS,
-				"false");
+		props.setProperty(PersistenceOptions.SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS, "false");
 		return props;
 	}
 

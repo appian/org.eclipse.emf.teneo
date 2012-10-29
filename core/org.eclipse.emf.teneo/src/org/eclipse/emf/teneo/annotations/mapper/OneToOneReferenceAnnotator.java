@@ -37,14 +37,13 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 
 	/** Annotate it */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String logStr =
-				aReference.getModelEReference().getName() + "/" +
-						aReference.getModelEReference().getEContainingClass().getName();
+		final String logStr = aReference.getModelEReference().getName() + "/"
+				+ aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null ||
-				aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToOne but " +
-					"it already has a OneToMany, ManyToMany or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null
+				|| aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToOne but "
+					+ "it already has a OneToMany, ManyToMany or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
@@ -66,7 +65,8 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			oto.setOptional(!eReference.isRequired());
 			oto.setEModelElement(eReference);
 		} else if (log.isDebugEnabled()) {
-			log.debug("EReference + " + logStr + " has an onetoone annotation setting defaults if required");
+			log.debug("EReference + " + logStr
+					+ " has an onetoone annotation setting defaults if required");
 		}
 
 		if (!oto.isSetFetch()) {
@@ -78,10 +78,11 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
 
-		if (oto.getCascade().isEmpty() && eReference.isContainment() && getPersistenceOptions().isSetCascadeAllOnContainment()) {
+		if (oto.getCascade().isEmpty() && eReference.isContainment()
+				&& getPersistenceOptions().isSetCascadeAllOnContainment()) {
 			oto.setOrphanRemoval(true);
 		}
-		
+
 		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			// See bugzilla 211798: handle a specific case when this is a
 			// bidirectional
@@ -91,7 +92,8 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			// foreign key name
 			// is used.
 			if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
-				final PAnnotatedEReference aOpposite = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
+				final PAnnotatedEReference aOpposite = aReference.getPaModel().getPAnnotated(
+						eReference.getEOpposite());
 				if (aOpposite != null && aOpposite.getTransient() == null) {
 					// don't do anything as otherwise hibernate will create two
 					// fk's with the same name
@@ -113,8 +115,8 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 
 		setCascade(oto.getCascade(), eReference.isContainment());
 
-		if (getPersistenceOptions().isMapEmbeddableAsEmbedded() &&
-				aReference.getAReferenceType().getEmbeddable() != null) {
+		if (getPersistenceOptions().isMapEmbeddableAsEmbedded()
+				&& aReference.getAReferenceType().getEmbeddable() != null) {
 			aReference.setEmbedded(getFactory().createEmbedded());
 		}
 

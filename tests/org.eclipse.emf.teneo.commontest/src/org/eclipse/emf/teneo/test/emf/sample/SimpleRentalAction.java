@@ -68,12 +68,12 @@ public class SimpleRentalAction extends AbstractTestAction {
 			rcontract.setRentToBusinessPartner("business partner");
 			store.beginTransaction();
 			store.store(rcontract);
-			
+
 			Manufacturer man = rf.createManufacturer();
 			man.setCode("code");
 			man.setTrusted(false);
 			store.store(man);
-			
+
 			store.commitTransaction();
 		}
 

@@ -36,25 +36,25 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Interface</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Interface</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.InterfaceImpl#getOperations <em>Operations</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.InterfaceImpl#getImplementationRef <em>Implementation Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.InterfaceImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InterfaceImpl#getOperations <em>Operations</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InterfaceImpl#getImplementationRef <em>Implementation Ref</em>}
+ * </li>
+ * <li>{@link org.eclipse.bpmn2.impl.InterfaceImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class InterfaceImpl extends RootElementImpl implements Interface {
 	/**
-	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperations()
 	 * @generated
 	 * @ordered
@@ -62,9 +62,9 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	protected EList<Operation> operations;
 
 	/**
-	 * The cached value of the '{@link #getImplementationRef() <em>Implementation Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImplementationRef() <em>Implementation Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementationRef()
 	 * @generated
 	 * @ordered
@@ -72,9 +72,9 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	protected EObject implementationRef;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -82,9 +82,9 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -92,8 +92,8 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected InterfaceImpl() {
@@ -101,8 +101,8 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -111,21 +111,21 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Operation> getOperations() {
 		if (operations == null) {
-			operations = new EObjectContainmentEList<Operation>(
-					Operation.class, this, Bpmn2Package.INTERFACE__OPERATIONS);
+			operations = new EObjectContainmentEList<Operation>(Operation.class, this,
+					Bpmn2Package.INTERFACE__OPERATIONS);
 		}
 		return operations;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object getImplementationRef() {
@@ -135,16 +135,15 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 			if (implementationRef != oldImplementationRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.INTERFACE__IMPLEMENTATION_REF,
-							oldImplementationRef, implementationRef));
+							Bpmn2Package.INTERFACE__IMPLEMENTATION_REF, oldImplementationRef, implementationRef));
 			}
 		}
 		return implementationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object basicGetImplementationRef() {
@@ -152,8 +151,8 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplementationRef(Object newImplementationRef) {
@@ -161,13 +160,12 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 		implementationRef = (EObject) newImplementationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.INTERFACE__IMPLEMENTATION_REF,
-					oldImplementationRef, implementationRef));
+					Bpmn2Package.INTERFACE__IMPLEMENTATION_REF, oldImplementationRef, implementationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -175,37 +173,36 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.INTERFACE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.INTERFACE__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.INTERFACE__OPERATIONS:
-			return ((InternalEList<?>) getOperations()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOperations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -224,8 +221,8 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -247,8 +244,8 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -268,8 +265,8 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -280,15 +277,14 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 		case Bpmn2Package.INTERFACE__IMPLEMENTATION_REF:
 			return implementationRef != null;
 		case Bpmn2Package.INTERFACE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -303,4 +299,4 @@ public class InterfaceImpl extends RootElementImpl implements Interface {
 		return result.toString();
 	}
 
-} //InterfaceImpl
+} // InterfaceImpl

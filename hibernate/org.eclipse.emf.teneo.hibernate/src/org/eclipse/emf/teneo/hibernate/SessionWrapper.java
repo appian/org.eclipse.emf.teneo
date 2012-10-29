@@ -25,9 +25,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.hibernate.Session;
 
 /**
- * Wraps a session or an entity manager. Is used to support both standard hibernate as well as hibernate entitymanager.
- * The differences between these two are hidden behind this interface (with different implementations for either case).
- * The Teneo runtime code uses this interface to start and commit transactions and perform queries.
+ * Wraps a session or an entity manager. Is used to support both standard hibernate as well as
+ * hibernate entitymanager. The differences between these two are hidden behind this interface (with
+ * different implementations for either case). The Teneo runtime code uses this interface to start
+ * and commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.9 $

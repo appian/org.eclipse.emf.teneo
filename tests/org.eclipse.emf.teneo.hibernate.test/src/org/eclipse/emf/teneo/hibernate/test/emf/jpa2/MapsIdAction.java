@@ -66,7 +66,7 @@ public class MapsIdAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 	}
-	
+
 	private void testNonComponentIdForeignGenerator(TestStore store) {
 		{
 			store.beginTransaction();
@@ -90,8 +90,7 @@ public class MapsIdAction extends AbstractTestAction {
 	private void storePerson(TestStore store) {
 		final Person person = MapsidFactory.eINSTANCE.createPerson();
 		final Name name = MapsidFactory.eINSTANCE.createName();
-		final PersonIdentifier pi = MapsidFactory.eINSTANCE
-				.createPersonIdentifier();
+		final PersonIdentifier pi = MapsidFactory.eINSTANCE.createPersonIdentifier();
 		name.setFirstName(FIRST_NAME);
 		name.setLastName(LAST_NAME);
 		person.setIdentifier(pi);

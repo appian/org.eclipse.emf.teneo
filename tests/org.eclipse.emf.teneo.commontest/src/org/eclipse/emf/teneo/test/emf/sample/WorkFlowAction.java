@@ -21,20 +21,17 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests the workflow example. 
- *  
+ * Tests the workflow example.
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
-*/
-public class WorkFlowAction extends AbstractTestAction 
-{
-	public WorkFlowAction() 
-	{
+ * @version $Revision: 1.3 $
+ */
+public class WorkFlowAction extends AbstractTestAction {
+	public WorkFlowAction() {
 		super(WorkflowPackage.eINSTANCE);
 	}
 
 	/** Test */
-	public void doAction(TestStore store)
-	{
+	public void doAction(TestStore store) {
 	}
 }

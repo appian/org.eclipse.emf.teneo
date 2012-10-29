@@ -48,7 +48,7 @@ public class Extension {
 
 	/**
 	 * @param point
-	 *            the point to set
+	 *          the point to set
 	 */
 	public void setPoint(String point) {
 		this.point = point;
@@ -63,7 +63,7 @@ public class Extension {
 
 	/**
 	 * @param className
-	 *            the className to set
+	 *          the className to set
 	 */
 	public void setClassName(String className) {
 		this.className = className;
@@ -81,7 +81,7 @@ public class Extension {
 	 * normally this method does not need to be called.
 	 * 
 	 * @param defaultExtension
-	 *            the defaultExtension to set
+	 *          the defaultExtension to set
 	 */
 	public void setDefaultExtension(boolean defaultExtension) {
 		this.defaultExtension = defaultExtension;
@@ -89,7 +89,8 @@ public class Extension {
 
 	@Override
 	public String toString() {
-		return " point: " + getPoint() + " classname: " + getClassName() + " default: " + isDefaultExtension();
+		return " point: " + getPoint() + " classname: " + getClassName() + " default: "
+				+ isDefaultExtension();
 	}
 
 	/**
@@ -101,7 +102,7 @@ public class Extension {
 
 	/**
 	 * @param singleton
-	 *            the singleton to set
+	 *          the singleton to set
 	 */
 	public void setSingleton(boolean singleton) {
 		this.singleton = singleton;

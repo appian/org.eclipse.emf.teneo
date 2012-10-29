@@ -19,24 +19,25 @@ import org.w3._2000._09.xmldsig.X509IssuerSerialType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>X509 Issuer Serial Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>X509 Issuer Serial Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.X509IssuerSerialTypeImpl#getX509IssuerName <em>X509 Issuer Name</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.X509IssuerSerialTypeImpl#getX509SerialNumber <em>X509 Serial Number</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.X509IssuerSerialTypeImpl#getX509IssuerName <em>X509
+ * Issuer Name</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.X509IssuerSerialTypeImpl#getX509SerialNumber <em>X509
+ * Serial Number</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerSerialType {
 	/**
 	 * The default value of the '{@link #getX509IssuerName() <em>X509 Issuer Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getX509IssuerName()
 	 * @generated
 	 * @ordered
@@ -45,8 +46,8 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 
 	/**
 	 * The cached value of the '{@link #getX509IssuerName() <em>X509 Issuer Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getX509IssuerName()
 	 * @generated
 	 * @ordered
@@ -54,9 +55,9 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 	protected String x509IssuerName = X509_ISSUER_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getX509SerialNumber() <em>X509 Serial Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getX509SerialNumber() <em>X509 Serial Number</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getX509SerialNumber()
 	 * @generated
 	 * @ordered
@@ -65,8 +66,8 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 
 	/**
 	 * The cached value of the '{@link #getX509SerialNumber() <em>X509 Serial Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getX509SerialNumber()
 	 * @generated
 	 * @ordered
@@ -74,8 +75,8 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 	protected BigInteger x509SerialNumber = X509_SERIAL_NUMBER_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected X509IssuerSerialTypeImpl() {
@@ -83,8 +84,8 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -93,8 +94,8 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getX509IssuerName() {
@@ -102,20 +103,22 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setX509IssuerName(String newX509IssuerName) {
 		String oldX509IssuerName = x509IssuerName;
 		x509IssuerName = newX509IssuerName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME, oldX509IssuerName, x509IssuerName));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME, oldX509IssuerName,
+					x509IssuerName));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BigInteger getX509SerialNumber() {
@@ -123,93 +126,98 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setX509SerialNumber(BigInteger newX509SerialNumber) {
 		BigInteger oldX509SerialNumber = x509SerialNumber;
 		x509SerialNumber = newX509SerialNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER, oldX509SerialNumber, x509SerialNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER, oldX509SerialNumber,
+					x509SerialNumber));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
-				return getX509IssuerName();
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
-				return getX509SerialNumber();
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
+			return getX509IssuerName();
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
+			return getX509SerialNumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
-				setX509IssuerName((String)newValue);
-				return;
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
-				setX509SerialNumber((BigInteger)newValue);
-				return;
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
+			setX509IssuerName((String) newValue);
+			return;
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
+			setX509SerialNumber((BigInteger) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
-				setX509IssuerName(X509_ISSUER_NAME_EDEFAULT);
-				return;
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
-				setX509SerialNumber(X509_SERIAL_NUMBER_EDEFAULT);
-				return;
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
+			setX509IssuerName(X509_ISSUER_NAME_EDEFAULT);
+			return;
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
+			setX509SerialNumber(X509_SERIAL_NUMBER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
-				return X509_ISSUER_NAME_EDEFAULT == null ? x509IssuerName != null : !X509_ISSUER_NAME_EDEFAULT.equals(x509IssuerName);
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
-				return X509_SERIAL_NUMBER_EDEFAULT == null ? x509SerialNumber != null : !X509_SERIAL_NUMBER_EDEFAULT.equals(x509SerialNumber);
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_ISSUER_NAME:
+			return X509_ISSUER_NAME_EDEFAULT == null ? x509IssuerName != null
+					: !X509_ISSUER_NAME_EDEFAULT.equals(x509IssuerName);
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE__X509_SERIAL_NUMBER:
+			return X509_SERIAL_NUMBER_EDEFAULT == null ? x509SerialNumber != null
+					: !X509_SERIAL_NUMBER_EDEFAULT.equals(x509SerialNumber);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (x509IssuerName: ");
@@ -220,4 +228,4 @@ public class X509IssuerSerialTypeImpl extends EObjectImpl implements X509IssuerS
 		return result.toString();
 	}
 
-} //X509IssuerSerialTypeImpl
+} // X509IssuerSerialTypeImpl

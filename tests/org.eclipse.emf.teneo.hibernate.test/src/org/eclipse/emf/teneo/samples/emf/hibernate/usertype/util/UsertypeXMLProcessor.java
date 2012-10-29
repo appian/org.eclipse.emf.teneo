@@ -13,27 +13,26 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 
 /**
- * This class contains helper methods to serialize and deserialize XML documents
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This class contains helper methods to serialize and deserialize XML documents <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class UsertypeXMLProcessor extends XMLProcessor {
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Public constructor to instantiate the helper. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public UsertypeXMLProcessor() {
 		super((EPackage.Registry.INSTANCE));
 		UsertypePackage.eINSTANCE.eClass();
 	}
-	
+
 	/**
-	 * Register for "*" and "xml" file extensions the UsertypeResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Register for "*" and "xml" file extensions the UsertypeResourceFactoryImpl factory. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -46,4 +45,4 @@ public class UsertypeXMLProcessor extends XMLProcessor {
 		return registrations;
 	}
 
-} //UsertypeXMLProcessor
+} // UsertypeXMLProcessor

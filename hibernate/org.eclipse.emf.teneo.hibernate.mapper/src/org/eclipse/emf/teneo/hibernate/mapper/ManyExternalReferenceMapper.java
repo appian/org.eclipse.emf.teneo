@@ -27,19 +27,17 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class ManyExternalReferenceMapper extends AbstractAssociationMapper
-		implements ExtensionPoint {
+public class ManyExternalReferenceMapper extends AbstractAssociationMapper implements
+		ExtensionPoint {
 
-	private static final Log log = LogFactory
-			.getLog(ManyExternalReferenceMapper.class);
+	private static final Log log = LogFactory.getLog(ManyExternalReferenceMapper.class);
 
 	/**
 	 * Process a many=true EReference with URI attribute.
 	 */
 	public void processManyReference(PAnnotatedEReference paReference) {
 		if (log.isDebugEnabled()) {
-			log.debug("Generating many valued attribute mapping for "
-					+ paReference);
+			log.debug("Generating many valued attribute mapping for " + paReference);
 		}
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
@@ -65,15 +63,13 @@ public class ManyExternalReferenceMapper extends AbstractAssociationMapper
 		}
 
 		addFetchType(collElement, otm.getFetch());
-		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(),
-				otm.getCascade(), false));
+		addCascadesForMany(collElement,
+				getCascades(hbReference.getHbCascade(), otm.getCascade(), false));
 
-		addElementElement(collElement, paReference, getColumns(paReference),
-				otm.getTargetEntity());
+		addElementElement(collElement, paReference, getColumns(paReference), otm.getTargetEntity());
 
 		addAccessor(collElement);
 
-		mapFilter(collElement, ((HbAnnotatedETypeElement) hbReference)
-				.getFilter());
+		mapFilter(collElement, ((HbAnnotatedETypeElement) hbReference).getFilter());
 	}
 }

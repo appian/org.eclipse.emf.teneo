@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Embeddable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Embeddable</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class EmbeddableImpl extends PAnnotationImpl implements Embeddable {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EmbeddableImpl() {
@@ -30,8 +29,8 @@ public class EmbeddableImpl extends PAnnotationImpl implements Embeddable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class EmbeddableImpl extends PAnnotationImpl implements Embeddable {
 		return PannotationPackage.Literals.EMBEDDABLE;
 	}
 
-} //EmbeddableImpl
+} // EmbeddableImpl

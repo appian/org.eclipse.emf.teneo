@@ -9,36 +9,35 @@ package org.w3._2000._09.xmldsig;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>DSA Key Value Type</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>DSA Key Value Type</b></em>
+ * '. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getP <em>P</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getQ <em>Q</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getG <em>G</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getY <em>Y</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getJ <em>J</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getSeed <em>Seed</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getPgenCounter <em>Pgen Counter</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getP <em>P</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getQ <em>Q</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getG <em>G</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getY <em>Y</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getJ <em>J</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getSeed <em>Seed</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getPgenCounter <em>Pgen Counter</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType()
  * @model extendedMetaData="name='DSAKeyValueType' kind='elementOnly'"
  * @generated
  */
 public interface DSAKeyValueType extends EObject {
 	/**
-	 * Returns the value of the '<em><b>P</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>P</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>P</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>P</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>P</em>' attribute.
 	 * @see #setP(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_P()
@@ -49,23 +48,24 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getP();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getP <em>P</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>P</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getP <em>P</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>P</em>' attribute.
 	 * @see #getP()
 	 * @generated
 	 */
 	void setP(byte[] value);
 
 	/**
-	 * Returns the value of the '<em><b>Q</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Q</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Q</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Q</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Q</em>' attribute.
 	 * @see #setQ(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_Q()
@@ -76,23 +76,24 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getQ();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getQ <em>Q</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Q</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getQ <em>Q</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Q</em>' attribute.
 	 * @see #getQ()
 	 * @generated
 	 */
 	void setQ(byte[] value);
 
 	/**
-	 * Returns the value of the '<em><b>G</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>G</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>G</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>G</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>G</em>' attribute.
 	 * @see #setG(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_G()
@@ -103,23 +104,24 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getG();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getG <em>G</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>G</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getG <em>G</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>G</em>' attribute.
 	 * @see #getG()
 	 * @generated
 	 */
 	void setG(byte[] value);
 
 	/**
-	 * Returns the value of the '<em><b>Y</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Y</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Y</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Y</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Y</em>' attribute.
 	 * @see #setY(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_Y()
@@ -130,23 +132,24 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getY();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getY <em>Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Y</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getY <em>Y</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Y</em>' attribute.
 	 * @see #getY()
 	 * @generated
 	 */
 	void setY(byte[] value);
 
 	/**
-	 * Returns the value of the '<em><b>J</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>J</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>J</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>J</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>J</em>' attribute.
 	 * @see #setJ(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_J()
@@ -157,23 +160,24 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getJ();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getJ <em>J</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>J</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getJ <em>J</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>J</em>' attribute.
 	 * @see #getJ()
 	 * @generated
 	 */
 	void setJ(byte[] value);
 
 	/**
-	 * Returns the value of the '<em><b>Seed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Seed</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seed</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Seed</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Seed</em>' attribute.
 	 * @see #setSeed(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_Seed()
@@ -184,23 +188,24 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getSeed();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getSeed <em>Seed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seed</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getSeed <em>Seed</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Seed</em>' attribute.
 	 * @see #getSeed()
 	 * @generated
 	 */
 	void setSeed(byte[] value);
 
 	/**
-	 * Returns the value of the '<em><b>Pgen Counter</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Pgen Counter</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pgen Counter</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Pgen Counter</em>' attribute isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Pgen Counter</em>' attribute.
 	 * @see #setPgenCounter(byte[])
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getDSAKeyValueType_PgenCounter()
@@ -211,10 +216,11 @@ public interface DSAKeyValueType extends EObject {
 	byte[] getPgenCounter();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getPgenCounter <em>Pgen Counter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pgen Counter</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.DSAKeyValueType#getPgenCounter
+	 * <em>Pgen Counter</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Pgen Counter</em>' attribute.
 	 * @see #getPgenCounter()
 	 * @generated
 	 */

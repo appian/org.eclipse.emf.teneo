@@ -17,28 +17,27 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * This class contains helper methods to serialize and deserialize XML documents
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This class contains helper methods to serialize and deserialize XML documents <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class XmldsigXMLProcessor extends XMLProcessor {
 
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Public constructor to instantiate the helper. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public XmldsigXMLProcessor() {
 		super((EPackage.Registry.INSTANCE));
 		XmldsigPackage.eINSTANCE.eClass();
 	}
-	
+
 	/**
-	 * Register for "*" and "xml" file extensions the XmldsigResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Register for "*" and "xml" file extensions the XmldsigResourceFactoryImpl factory. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -51,4 +50,4 @@ public class XmldsigXMLProcessor extends XMLProcessor {
 		return registrations;
 	}
 
-} //XmldsigXMLProcessor
+} // XmldsigXMLProcessor

@@ -9,31 +9,32 @@ package org.eclipse.emf.teneo.samples.emf.hibernate.transientotm;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>TWriter</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>TWriter</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getBook <em>Book</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getName <em>Name</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getBook <em>Book</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmPackage#getTWriter()
  * @model extendedMetaData="name='TWriter' kind='elementOnly'"
  * @generated
  */
 public interface TWriter extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmPackage#getTWriter_Name()
@@ -44,23 +45,25 @@ public interface TWriter extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getName <em>Name</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Book</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Book</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Book</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Book</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Book</em>' reference.
 	 * @see #setBook(TBook)
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmPackage#getTWriter_Book()
@@ -70,10 +73,12 @@ public interface TWriter extends EObject {
 	TBook getBook();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getBook <em>Book</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Book</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter#getBook <em>Book</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Book</em>' reference.
 	 * @see #getBook()
 	 * @generated
 	 */

@@ -34,7 +34,7 @@ public interface TestDatabaseAdapter {
 
 	/** Returns true if optimistic transactions should be enabled */
 	public abstract boolean isOptimistic();
-	
+
 	/**
 	 * @return Returns the dbDriver.
 	 */
@@ -70,8 +70,9 @@ public interface TestDatabaseAdapter {
 	public abstract Connection getConnection();
 
 	/**
-	 * Drops the database, uses the conn.getMetaData().getCatalogs() method to determine if the database already exists. This should be
-	 * supported by the database driver. Assumes that the DBMS does not allow multiple database with names that differ only in case.
+	 * Drops the database, uses the conn.getMetaData().getCatalogs() method to determine if the
+	 * database already exists. This should be supported by the database driver. Assumes that the DBMS
+	 * does not allow multiple database with names that differ only in case.
 	 */
 	public abstract void dropDatabase();
 

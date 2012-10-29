@@ -36,8 +36,8 @@ public class NavTopAction extends AbstractTestAction {
 
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(EntityNameStrategy.class.getName(), QualifyingEntityNameStrategy.class
-			.getName());
+		extensionManager.registerExtension(EntityNameStrategy.class.getName(),
+				QualifyingEntityNameStrategy.class.getName());
 	}
 
 	@Override

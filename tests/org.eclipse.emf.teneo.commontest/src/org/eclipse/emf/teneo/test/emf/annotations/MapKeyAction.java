@@ -71,8 +71,8 @@ public class MapKeyAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Check test set, note a where clause has been set on the relation Only
-	 * writers with name martin are returned
+	 * Check test set, note a where clause has been set on the relation Only writers with name martin
+	 * are returned
 	 */
 	private void checkTestSet(Book bk) {
 		// final String prefix = bk.getTitle();
@@ -145,11 +145,9 @@ public class MapKeyAction extends AbstractTestAction {
 						}
 
 						// disabled as hibernate and jpox differ here
-						assertTrue(!((PersistableDelegateList<?>) bk
-								.getWriters()).isLoaded());
+						assertTrue(!((PersistableDelegateList<?>) bk.getWriters()).isLoaded());
 					} else {
-						fail("Type not supported "
-								+ bk.getWriters().getClass().getName());
+						fail("Type not supported " + bk.getWriters().getClass().getName());
 					}
 					bks.add(bk);
 				} else {
@@ -162,8 +160,7 @@ public class MapKeyAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
 		} catch (final Exception e) {
-			throw new StoreTestException(
-					"Exception when testing with resource", e);
+			throw new StoreTestException("Exception when testing with resource", e);
 		}
 
 		// test PersistentStoreAdapter
@@ -176,11 +173,8 @@ public class MapKeyAction extends AbstractTestAction {
 			w.setName("PSAmartin2");
 			bk.getWriters().put(w.getName(), w);
 
-			PersistentStoreAdapter adapter = StoreUtil
-					.getPersistentStoreAdapter(bk);
-			final Object value = adapter
-					.getStoreCollection(MapkeyPackage.eINSTANCE
-							.getBook_Writers());
+			PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter(bk);
+			final Object value = adapter.getStoreCollection(MapkeyPackage.eINSTANCE.getBook_Writers());
 			compareMaps((Map<?, ?>) value, bk.getWriters());
 		}
 	}

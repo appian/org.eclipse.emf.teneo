@@ -32,7 +32,9 @@ public class LibraryCheckNameAction extends LibraryColLengthAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see
+	 * org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension
+	 * .ExtensionManager)
 	 */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {

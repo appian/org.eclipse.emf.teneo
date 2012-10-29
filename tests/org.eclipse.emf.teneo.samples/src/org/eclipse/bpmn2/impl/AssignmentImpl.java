@@ -27,24 +27,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Assignment</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Assignment</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.AssignmentImpl#getFrom <em>From</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.AssignmentImpl#getTo <em>To</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AssignmentImpl#getFrom <em>From</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AssignmentImpl#getTo <em>To</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFrom()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,9 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	protected Expression from;
 
 	/**
-	 * The cached value of the '{@link #getTo() <em>To</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTo() <em>To</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTo()
 	 * @generated
 	 * @ordered
@@ -62,8 +61,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	protected Expression to;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AssignmentImpl() {
@@ -71,8 +70,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,8 +80,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getFrom() {
@@ -90,18 +89,16 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetFrom(Expression newFrom,
-			NotificationChain msgs) {
+	public NotificationChain basicSetFrom(Expression newFrom, NotificationChain msgs) {
 		Expression oldFrom = from;
 		from = newFrom;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Bpmn2Package.ASSIGNMENT__FROM, oldFrom,
-					newFrom);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.ASSIGNMENT__FROM, oldFrom, newFrom);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -111,32 +108,30 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFrom(Expression newFrom) {
 		if (newFrom != from) {
 			NotificationChain msgs = null;
 			if (from != null)
-				msgs = ((InternalEObject) from).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Bpmn2Package.ASSIGNMENT__FROM,
-						null, msgs);
+				msgs = ((InternalEObject) from).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.ASSIGNMENT__FROM, null, msgs);
 			if (newFrom != null)
-				msgs = ((InternalEObject) newFrom).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Bpmn2Package.ASSIGNMENT__FROM,
-						null, msgs);
+				msgs = ((InternalEObject) newFrom).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.ASSIGNMENT__FROM, null, msgs);
 			msgs = basicSetFrom(newFrom, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ASSIGNMENT__FROM, newFrom, newFrom));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.ASSIGNMENT__FROM, newFrom,
+					newFrom));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getTo() {
@@ -144,16 +139,16 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTo(Expression newTo, NotificationChain msgs) {
 		Expression oldTo = to;
 		to = newTo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Bpmn2Package.ASSIGNMENT__TO, oldTo, newTo);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.ASSIGNMENT__TO, oldTo, newTo);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -163,37 +158,35 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTo(Expression newTo) {
 		if (newTo != to) {
 			NotificationChain msgs = null;
 			if (to != null)
-				msgs = ((InternalEObject) to).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Bpmn2Package.ASSIGNMENT__TO,
-						null, msgs);
+				msgs = ((InternalEObject) to).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.ASSIGNMENT__TO, null, msgs);
 			if (newTo != null)
-				msgs = ((InternalEObject) newTo).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Bpmn2Package.ASSIGNMENT__TO,
-						null, msgs);
+				msgs = ((InternalEObject) newTo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.ASSIGNMENT__TO, null, msgs);
 			msgs = basicSetTo(newTo, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ASSIGNMENT__TO, newTo, newTo));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.ASSIGNMENT__TO, newTo,
+					newTo));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.ASSIGNMENT__FROM:
 			return basicSetFrom(null, msgs);
@@ -204,8 +197,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,8 +213,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -238,8 +231,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -256,8 +249,8 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,4 +264,4 @@ public class AssignmentImpl extends BaseElementImpl implements Assignment {
 		return super.eIsSet(featureID);
 	}
 
-} //AssignmentImpl
+} // AssignmentImpl

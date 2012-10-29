@@ -53,12 +53,12 @@ public class HibernateAction extends AbstractTestAction {
 		return props;
 	}
 
-// @Override
-// public Properties getExtraConfigurationProperties() {
-// final Properties props = new Properties();
-// props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
-// return props;
-// }
+	// @Override
+	// public Properties getExtraConfigurationProperties() {
+	// final Properties props = new Properties();
+	// props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
+	// return props;
+	// }
 
 	@Override
 	public void doAction(TestStore store) {

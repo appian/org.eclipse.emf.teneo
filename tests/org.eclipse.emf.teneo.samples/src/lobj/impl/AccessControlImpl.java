@@ -31,33 +31,32 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Access Control</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Access Control</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.AccessControlImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getLastModified <em>Last Modified</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getLastModifiedBy <em>Last Modified By</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getLastStatusChange <em>Last Status Change</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getLastStatusChangeBy <em>Last Status Change By</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getSharednotes <em>Sharednotes</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getAuthorizes <em>Authorizes</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getEditionHistory <em>Edition History</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#isGlobalAccess <em>Global Access</em>}</li>
- *   <li>{@link lobj.impl.AccessControlImpl#getId <em>Id</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getOwner <em>Owner</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getLastModified <em>Last Modified</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getLastModifiedBy <em>Last Modified By</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getStatus <em>Status</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getLastStatusChange <em>Last Status Change</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getLastStatusChangeBy <em>Last Status Change By</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getSharednotes <em>Sharednotes</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getAuthorizes <em>Authorizes</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getEditionHistory <em>Edition History</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#isGlobalAccess <em>Global Access</em>}</li>
+ * <li>{@link lobj.impl.AccessControlImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	/**
-	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getOwner()
 	 * @generated
 	 * @ordered
@@ -65,9 +64,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected User owner;
 
 	/**
-	 * The default value of the '{@link #getLastModified() <em>Last Modified</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLastModified() <em>Last Modified</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLastModified()
 	 * @generated
 	 * @ordered
@@ -75,9 +74,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected static final Date LAST_MODIFIED_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLastModified() <em>Last Modified</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLastModified() <em>Last Modified</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLastModified()
 	 * @generated
 	 * @ordered
@@ -86,8 +85,8 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 
 	/**
 	 * The cached value of the '{@link #getLastModifiedBy() <em>Last Modified By</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLastModifiedBy()
 	 * @generated
 	 * @ordered
@@ -95,9 +94,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected User lastModifiedBy;
 
 	/**
-	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStatus()
 	 * @generated
 	 * @ordered
@@ -105,9 +104,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected static final String STATUS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStatus()
 	 * @generated
 	 * @ordered
@@ -115,9 +114,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected String status = STATUS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLastStatusChange() <em>Last Status Change</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLastStatusChange() <em>Last Status Change</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLastStatusChange()
 	 * @generated
 	 * @ordered
@@ -126,8 +125,8 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 
 	/**
 	 * The cached value of the '{@link #getLastStatusChange() <em>Last Status Change</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLastStatusChange()
 	 * @generated
 	 * @ordered
@@ -135,9 +134,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected Date lastStatusChange = LAST_STATUS_CHANGE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getLastStatusChangeBy() <em>Last Status Change By</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLastStatusChangeBy() <em>Last Status Change By</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLastStatusChangeBy()
 	 * @generated
 	 * @ordered
@@ -146,8 +145,8 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 
 	/**
 	 * The cached value of the '{@link #getSharednotes() <em>Sharednotes</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSharednotes()
 	 * @generated
 	 * @ordered
@@ -155,9 +154,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected Sharednotes sharednotes;
 
 	/**
-	 * The cached value of the '{@link #getAuthorizes() <em>Authorizes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAuthorizes() <em>Authorizes</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAuthorizes()
 	 * @generated
 	 * @ordered
@@ -165,9 +164,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected EList authorizes;
 
 	/**
-	 * The cached value of the '{@link #getEditionHistory() <em>Edition History</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEditionHistory() <em>Edition History</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEditionHistory()
 	 * @generated
 	 * @ordered
@@ -175,9 +174,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected EList editionHistory;
 
 	/**
-	 * The default value of the '{@link #isGlobalAccess() <em>Global Access</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isGlobalAccess() <em>Global Access</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isGlobalAccess()
 	 * @generated
 	 * @ordered
@@ -185,9 +184,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected static final boolean GLOBAL_ACCESS_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isGlobalAccess() <em>Global Access</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isGlobalAccess() <em>Global Access</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isGlobalAccess()
 	 * @generated
 	 * @ordered
@@ -195,9 +194,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected boolean globalAccess = GLOBAL_ACCESS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -205,9 +204,9 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -215,8 +214,8 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AccessControlImpl() {
@@ -224,8 +223,8 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -233,25 +232,26 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public User getOwner() {
 		if (owner != null && owner.eIsProxy()) {
-			InternalEObject oldOwner = (InternalEObject)owner;
-			owner = (User)eResolveProxy(oldOwner);
+			InternalEObject oldOwner = (InternalEObject) owner;
+			owner = (User) eResolveProxy(oldOwner);
 			if (owner != oldOwner) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LobjPackage.ACCESS_CONTROL__OWNER, oldOwner, owner));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							LobjPackage.ACCESS_CONTROL__OWNER, oldOwner, owner));
 			}
 		}
 		return owner;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public User basicGetOwner() {
@@ -259,20 +259,21 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOwner(User newOwner) {
 		User oldOwner = owner;
 		owner = newOwner;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__OWNER, oldOwner, owner));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__OWNER,
+					oldOwner, owner));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getLastModified() {
@@ -280,20 +281,21 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLastModified(Date newLastModified) {
 		Date oldLastModified = lastModified;
 		lastModified = newLastModified;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__LAST_MODIFIED, oldLastModified, lastModified));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__LAST_MODIFIED, oldLastModified, lastModified));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public User getLastModifiedBy() {
@@ -301,20 +303,21 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLastModifiedBy(User newLastModifiedBy) {
 		User oldLastModifiedBy = lastModifiedBy;
 		lastModifiedBy = newLastModifiedBy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY, oldLastModifiedBy, lastModifiedBy));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY, oldLastModifiedBy, lastModifiedBy));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getStatus() {
@@ -322,20 +325,21 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStatus(String newStatus) {
 		String oldStatus = status;
 		status = newStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__STATUS, oldStatus, status));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__STATUS,
+					oldStatus, status));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getLastStatusChange() {
@@ -343,20 +347,21 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLastStatusChange(Date newLastStatusChange) {
 		Date oldLastStatusChange = lastStatusChange;
 		lastStatusChange = newLastStatusChange;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE, oldLastStatusChange, lastStatusChange));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE, oldLastStatusChange, lastStatusChange));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public User getLastStatusChangeBy() {
@@ -364,20 +369,22 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLastStatusChangeBy(User newLastStatusChangeBy) {
 		User oldLastStatusChangeBy = lastStatusChangeBy;
 		lastStatusChangeBy = newLastStatusChangeBy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY, oldLastStatusChangeBy, lastStatusChangeBy));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY, oldLastStatusChangeBy,
+					lastStatusChangeBy));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Sharednotes getSharednotes() {
@@ -385,66 +392,75 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSharednotes(Sharednotes newSharednotes, NotificationChain msgs) {
 		Sharednotes oldSharednotes = sharednotes;
 		sharednotes = newSharednotes;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__SHAREDNOTES, oldSharednotes, newSharednotes);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__SHAREDNOTES, oldSharednotes, newSharednotes);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSharednotes(Sharednotes newSharednotes) {
 		if (newSharednotes != sharednotes) {
 			NotificationChain msgs = null;
 			if (sharednotes != null)
-				msgs = ((InternalEObject)sharednotes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LobjPackage.ACCESS_CONTROL__SHAREDNOTES, null, msgs);
+				msgs = ((InternalEObject) sharednotes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.ACCESS_CONTROL__SHAREDNOTES, null, msgs);
 			if (newSharednotes != null)
-				msgs = ((InternalEObject)newSharednotes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LobjPackage.ACCESS_CONTROL__SHAREDNOTES, null, msgs);
+				msgs = ((InternalEObject) newSharednotes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.ACCESS_CONTROL__SHAREDNOTES, null, msgs);
 			msgs = basicSetSharednotes(newSharednotes, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__SHAREDNOTES, newSharednotes, newSharednotes));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__SHAREDNOTES, newSharednotes, newSharednotes));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getAuthorizes() {
 		if (authorizes == null) {
-			authorizes = new EObjectContainmentEList(Userauthorization.class, this, LobjPackage.ACCESS_CONTROL__AUTHORIZES);
+			authorizes = new EObjectContainmentEList(Userauthorization.class, this,
+					LobjPackage.ACCESS_CONTROL__AUTHORIZES);
 		}
 		return authorizes;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getEditionHistory() {
 		if (editionHistory == null) {
-			editionHistory = new EObjectContainmentEList(Edition.class, this, LobjPackage.ACCESS_CONTROL__EDITION_HISTORY);
+			editionHistory = new EObjectContainmentEList(Edition.class, this,
+					LobjPackage.ACCESS_CONTROL__EDITION_HISTORY);
 		}
 		return editionHistory;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isGlobalAccess() {
@@ -452,20 +468,21 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGlobalAccess(boolean newGlobalAccess) {
 		boolean oldGlobalAccess = globalAccess;
 		globalAccess = newGlobalAccess;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS, oldGlobalAccess, globalAccess));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS, oldGlobalAccess, globalAccess));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -473,198 +490,204 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ACCESS_CONTROL__ID, oldId,
+					id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
-				return basicSetSharednotes(null, msgs);
-			case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
-				return ((InternalEList)getAuthorizes()).basicRemove(otherEnd, msgs);
-			case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
-				return ((InternalEList)getEditionHistory()).basicRemove(otherEnd, msgs);
+		case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
+			return basicSetSharednotes(null, msgs);
+		case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
+			return ((InternalEList) getAuthorizes()).basicRemove(otherEnd, msgs);
+		case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
+			return ((InternalEList) getEditionHistory()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.ACCESS_CONTROL__OWNER:
-				if (resolve) return getOwner();
-				return basicGetOwner();
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
-				return getLastModified();
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
-				return getLastModifiedBy();
-			case LobjPackage.ACCESS_CONTROL__STATUS:
-				return getStatus();
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
-				return getLastStatusChange();
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
-				return getLastStatusChangeBy();
-			case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
-				return getSharednotes();
-			case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
-				return getAuthorizes();
-			case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
-				return getEditionHistory();
-			case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
-				return isGlobalAccess() ? Boolean.TRUE : Boolean.FALSE;
-			case LobjPackage.ACCESS_CONTROL__ID:
-				return getId();
+		case LobjPackage.ACCESS_CONTROL__OWNER:
+			if (resolve)
+				return getOwner();
+			return basicGetOwner();
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
+			return getLastModified();
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
+			return getLastModifiedBy();
+		case LobjPackage.ACCESS_CONTROL__STATUS:
+			return getStatus();
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
+			return getLastStatusChange();
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
+			return getLastStatusChangeBy();
+		case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
+			return getSharednotes();
+		case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
+			return getAuthorizes();
+		case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
+			return getEditionHistory();
+		case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
+			return isGlobalAccess() ? Boolean.TRUE : Boolean.FALSE;
+		case LobjPackage.ACCESS_CONTROL__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.ACCESS_CONTROL__OWNER:
-				setOwner((User)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
-				setLastModified((Date)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
-				setLastModifiedBy((User)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__STATUS:
-				setStatus((String)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
-				setLastStatusChange((Date)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
-				setLastStatusChangeBy((User)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
-				setSharednotes((Sharednotes)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
-				getAuthorizes().clear();
-				getAuthorizes().addAll((Collection)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
-				getEditionHistory().clear();
-				getEditionHistory().addAll((Collection)newValue);
-				return;
-			case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
-				setGlobalAccess(((Boolean)newValue).booleanValue());
-				return;
-			case LobjPackage.ACCESS_CONTROL__ID:
-				setId((String)newValue);
-				return;
+		case LobjPackage.ACCESS_CONTROL__OWNER:
+			setOwner((User) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
+			setLastModified((Date) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
+			setLastModifiedBy((User) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__STATUS:
+			setStatus((String) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
+			setLastStatusChange((Date) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
+			setLastStatusChangeBy((User) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
+			setSharednotes((Sharednotes) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
+			getAuthorizes().clear();
+			getAuthorizes().addAll((Collection) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
+			getEditionHistory().clear();
+			getEditionHistory().addAll((Collection) newValue);
+			return;
+		case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
+			setGlobalAccess(((Boolean) newValue).booleanValue());
+			return;
+		case LobjPackage.ACCESS_CONTROL__ID:
+			setId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.ACCESS_CONTROL__OWNER:
-				setOwner((User)null);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
-				setLastModified(LAST_MODIFIED_EDEFAULT);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
-				setLastModifiedBy((User)null);
-				return;
-			case LobjPackage.ACCESS_CONTROL__STATUS:
-				setStatus(STATUS_EDEFAULT);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
-				setLastStatusChange(LAST_STATUS_CHANGE_EDEFAULT);
-				return;
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
-				setLastStatusChangeBy((User)null);
-				return;
-			case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
-				setSharednotes((Sharednotes)null);
-				return;
-			case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
-				getAuthorizes().clear();
-				return;
-			case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
-				getEditionHistory().clear();
-				return;
-			case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
-				setGlobalAccess(GLOBAL_ACCESS_EDEFAULT);
-				return;
-			case LobjPackage.ACCESS_CONTROL__ID:
-				setId(ID_EDEFAULT);
-				return;
+		case LobjPackage.ACCESS_CONTROL__OWNER:
+			setOwner((User) null);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
+			setLastModified(LAST_MODIFIED_EDEFAULT);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
+			setLastModifiedBy((User) null);
+			return;
+		case LobjPackage.ACCESS_CONTROL__STATUS:
+			setStatus(STATUS_EDEFAULT);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
+			setLastStatusChange(LAST_STATUS_CHANGE_EDEFAULT);
+			return;
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
+			setLastStatusChangeBy((User) null);
+			return;
+		case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
+			setSharednotes((Sharednotes) null);
+			return;
+		case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
+			getAuthorizes().clear();
+			return;
+		case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
+			getEditionHistory().clear();
+			return;
+		case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
+			setGlobalAccess(GLOBAL_ACCESS_EDEFAULT);
+			return;
+		case LobjPackage.ACCESS_CONTROL__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.ACCESS_CONTROL__OWNER:
-				return owner != null;
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
-				return LAST_MODIFIED_EDEFAULT == null ? lastModified != null : !LAST_MODIFIED_EDEFAULT.equals(lastModified);
-			case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
-				return lastModifiedBy != null;
-			case LobjPackage.ACCESS_CONTROL__STATUS:
-				return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
-				return LAST_STATUS_CHANGE_EDEFAULT == null ? lastStatusChange != null : !LAST_STATUS_CHANGE_EDEFAULT.equals(lastStatusChange);
-			case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
-				return lastStatusChangeBy != null;
-			case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
-				return sharednotes != null;
-			case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
-				return authorizes != null && !authorizes.isEmpty();
-			case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
-				return editionHistory != null && !editionHistory.isEmpty();
-			case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
-				return globalAccess != GLOBAL_ACCESS_EDEFAULT;
-			case LobjPackage.ACCESS_CONTROL__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case LobjPackage.ACCESS_CONTROL__OWNER:
+			return owner != null;
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED:
+			return LAST_MODIFIED_EDEFAULT == null ? lastModified != null : !LAST_MODIFIED_EDEFAULT
+					.equals(lastModified);
+		case LobjPackage.ACCESS_CONTROL__LAST_MODIFIED_BY:
+			return lastModifiedBy != null;
+		case LobjPackage.ACCESS_CONTROL__STATUS:
+			return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE:
+			return LAST_STATUS_CHANGE_EDEFAULT == null ? lastStatusChange != null
+					: !LAST_STATUS_CHANGE_EDEFAULT.equals(lastStatusChange);
+		case LobjPackage.ACCESS_CONTROL__LAST_STATUS_CHANGE_BY:
+			return lastStatusChangeBy != null;
+		case LobjPackage.ACCESS_CONTROL__SHAREDNOTES:
+			return sharednotes != null;
+		case LobjPackage.ACCESS_CONTROL__AUTHORIZES:
+			return authorizes != null && !authorizes.isEmpty();
+		case LobjPackage.ACCESS_CONTROL__EDITION_HISTORY:
+			return editionHistory != null && !editionHistory.isEmpty();
+		case LobjPackage.ACCESS_CONTROL__GLOBAL_ACCESS:
+			return globalAccess != GLOBAL_ACCESS_EDEFAULT;
+		case LobjPackage.ACCESS_CONTROL__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (lastModified: ");
@@ -681,4 +704,4 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 		return result.toString();
 	}
 
-} //AccessControlImpl
+} // AccessControlImpl

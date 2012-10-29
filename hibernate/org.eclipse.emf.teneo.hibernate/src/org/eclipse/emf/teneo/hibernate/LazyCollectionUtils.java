@@ -40,30 +40,26 @@ import org.hibernate.persister.collection.QueryableCollection;
  * @version $Revision: 1.9 $
  */
 public class LazyCollectionUtils {
-	
+
 	public final static int DEFAULT_PAGE_SIZE = 100;
 
 	/**
-	 * Returns an iterator which loads the underlying data from the collection
-	 * in pages (controlled by the pageSize parameter). Note if the collection
-	 * is not lazy loadable then a normal iterator is returned. This is checked
-	 * using the {@link #isLazyLoadableCollection(Collection)} method.
+	 * Returns an iterator which loads the underlying data from the collection in pages (controlled by
+	 * the pageSize parameter). Note if the collection is not lazy loadable then a normal iterator is
+	 * returned. This is checked using the {@link #isLazyLoadableCollection(Collection)} method.
 	 * 
-	 * Note: this method can only handle collections of EObjects so not collections
-	 * of primitive typed objects. Paged iteration of these collections is not 
-	 * supported by Hibernate.
+	 * Note: this method can only handle collections of EObjects so not collections of primitive typed
+	 * objects. Paged iteration of these collections is not supported by Hibernate.
 	 * 
 	 * @param coll
-	 *            the collection to iterate lazily over
+	 *          the collection to iterate lazily over
 	 * @param pageSize
-	 *            the pageSize, this determines the pagesize of the page of data
-	 *            read each time from the database
-	 * @return a paging iterator or if not a lazy loadable collection a normal
-	 *         iterator
+	 *          the pageSize, this determines the pagesize of the page of data read each time from the
+	 *          database
+	 * @return a paging iterator or if not a lazy loadable collection a normal iterator
 	 * @see PagingIterator
 	 */
-	public static <E> Iterator<E> getPagedLoadingIterator(Collection<E> coll,
-			int pageSize) {
+	public static <E> Iterator<E> getPagedLoadingIterator(Collection<E> coll, int pageSize) {
 		if (!isLazyLoadableCollection(coll)) {
 			return coll.iterator();
 		}
@@ -77,25 +73,27 @@ public class LazyCollectionUtils {
 		pagingIterator.setPageSize(pageSize);
 		pagingIterator.setSession((Session) session);
 
-		final CollectionEntry entry = session.getPersistenceContext().getCollectionEntry(persistentCollection);
-		final AbstractCollectionPersister persister = (AbstractCollectionPersister)entry.getLoadedPersister();
+		final CollectionEntry entry = session.getPersistenceContext().getCollectionEntry(
+				persistentCollection);
+		final AbstractCollectionPersister persister = (AbstractCollectionPersister) entry
+				.getLoadedPersister();
 		pagingIterator.setEavCollection(coll instanceof EAVDelegatingList);
 		pagingIterator.setIndexColumnNames(persister.getIndexColumnNames());
 		return pagingIterator;
 	}
 
 	/**
-	 * Reads the size of a collection in a lazy manner, i.e. will try to not
-	 * load the collection from the database. The size is cached in the object,
-	 * so subsequent calls to this method will not result in additional database
-	 * queries. This until the collection changes then the cache is cleared.
+	 * Reads the size of a collection in a lazy manner, i.e. will try to not load the collection from
+	 * the database. The size is cached in the object, so subsequent calls to this method will not
+	 * result in additional database queries. This until the collection changes then the cache is
+	 * cleared.
 	 * 
 	 * Note if the collection can not be lazy loaded (see the
-	 * {@link #isLazyLoadableCollection(Collection)}) then the size method is
-	 * called on the collection. This method call is probably not lazy.
+	 * {@link #isLazyLoadableCollection(Collection)}) then the size method is called on the
+	 * collection. This method call is probably not lazy.
 	 * 
 	 * @param coll
-	 *            the collection to get the size from
+	 *          the collection to get the size from
 	 * @return the size of the collection
 	 */
 	public static int size(Collection<?> coll) {
@@ -106,20 +104,18 @@ public class LazyCollectionUtils {
 		final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) persistableList
 				.getDelegate();
 		final SessionImplementor session = persistentCollection.getSession();
-		final QueryableCollection persister = new SessionFactoryHelper(session
-				.getFactory()).getCollectionPersister(persistentCollection
-				.getRole());
+		final QueryableCollection persister = new SessionFactoryHelper(session.getFactory())
+				.getCollectionPersister(persistentCollection.getRole());
 		return persister.getSize(persistentCollection.getKey(), session);
 	}
 
 	/**
-	 * Determines if a collection can be lazy loaded. A lazy loadable collection
-	 * must be a {@link PersistableDelegateList} which has a
-	 * {@link AbstractPersistentCollection} as the delegate list which also must
-	 * have an open Hibernate session.
+	 * Determines if a collection can be lazy loaded. A lazy loadable collection must be a
+	 * {@link PersistableDelegateList} which has a {@link AbstractPersistentCollection} as the
+	 * delegate list which also must have an open Hibernate session.
 	 * 
 	 * @param coll
-	 *            the collection for which to determine if it can be lazy loaded
+	 *          the collection for which to determine if it can be lazy loaded
 	 * @return false if not lazy loadable, true otherwise
 	 */
 	public static <E> boolean isLazyLoadableCollection(Collection<E> coll) {
@@ -136,19 +132,16 @@ public class LazyCollectionUtils {
 				.getDelegate();
 		final SessionImplementor session = persistentCollection.getSession();
 		// if not a valid session then go away
-		if (session == null
-				|| !session.isOpen()
-				|| !session.getPersistenceContext().containsCollection(
-						persistentCollection)) {
+		if (session == null || !session.isOpen()
+				|| !session.getPersistenceContext().containsCollection(persistentCollection)) {
 			return false;
 		}
 		return true;
 	}
 
 	/**
-	 * A paging iterator reads the underlying data from the database in pages.
-	 * Everytime the iterator reaches the end of a page it reads the next page
-	 * from the database.
+	 * A paging iterator reads the underlying data from the database in pages. Everytime the iterator
+	 * reaches the end of a page it reads the next page from the database.
 	 * 
 	 * @author mtaal
 	 */
@@ -221,8 +214,7 @@ public class LazyCollectionUtils {
 		private List<E> loadNextPage() {
 			final Query query;
 			if (isEavCollection()) {
-				query = session.createFilter(collection,
-						" order by this.listIndex ");
+				query = session.createFilter(collection, " order by this.listIndex ");
 			} else {
 				query = session.createFilter(collection, orderBy);
 			}
@@ -232,8 +224,7 @@ public class LazyCollectionUtils {
 		}
 
 		public void remove() {
-			throw new UnsupportedOperationException(
-					"Removal is not supported by the paging iterator");
+			throw new UnsupportedOperationException("Removal is not supported by the paging iterator");
 		}
 
 		public Session getSession() {
@@ -274,8 +265,7 @@ public class LazyCollectionUtils {
 					} else {
 						sb.append(", ");
 					}
-					sb.append(indexColumnName.replaceAll("`", "").replaceAll(
-							"\"", ""));
+					sb.append(indexColumnName.replaceAll("`", "").replaceAll("\"", ""));
 				}
 			}
 			orderBy = sb.toString();
@@ -286,10 +276,11 @@ public class LazyCollectionUtils {
 		}
 
 		/**
-		 * Note the parameter must include the term: order by. Refer to properties of
-		 * the collection content using the this keyword.
+		 * Note the parameter must include the term: order by. Refer to properties of the collection
+		 * content using the this keyword.
 		 * 
-		 * @param orderBy the order by clause including the order by keyword, for example: order by this.name
+		 * @param orderBy
+		 *          the order by clause including the order by keyword, for example: order by this.name
 		 */
 		public void setOrderBy(String orderBy) {
 			this.orderBy = orderBy;

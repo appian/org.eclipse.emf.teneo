@@ -48,10 +48,11 @@ public class IdTypeTestOneAction extends AbstractTestAction {
 		store.commitTransaction();
 
 		final HbDataStore hbStore = (HbDataStore) ((HibernateTestStore) store).getDataStore();
-		assertEquals(EmbeddedidPackage.eINSTANCE.getPerson_Name(), hbStore.getIdFeature(EmbeddedidPackage.eINSTANCE
-				.getPerson()));
+		assertEquals(EmbeddedidPackage.eINSTANCE.getPerson_Name(),
+				hbStore.getIdFeature(EmbeddedidPackage.eINSTANCE.getPerson()));
 		assertEquals(name, hbStore.getId((EObject) person));
-		assertEquals(EmbeddedidPackage.eINSTANCE.getName_(), hbStore.getIdType(EmbeddedidPackage.eINSTANCE.getPerson()));
+		assertEquals(EmbeddedidPackage.eINSTANCE.getName_(),
+				hbStore.getIdType(EmbeddedidPackage.eINSTANCE.getPerson()));
 	}
 
 	private void testPerson(TestStore store) {

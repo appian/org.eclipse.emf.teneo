@@ -48,27 +48,25 @@ import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 public class AbstractProcessingContext {
 
 	/** The logger for all these exceptions */
-	protected static final Log log = LogFactory
-			.getLog(AbstractProcessingContext.class);
+	protected static final Log log = LogFactory.getLog(AbstractProcessingContext.class);
 
 	/** The current list of overrides */
 	private Map<String, Object> currentOverrides = new HashMap<String, Object>();
 
 	/**
-	 * Pushes the current overrides on the stack, to be popped later, this is to
-	 * handle nested components
+	 * Pushes the current overrides on the stack, to be popped later, this is to handle nested
+	 * components
 	 */
 	private Stack<Map<String, Object>> overrideStack = new Stack<Map<String, Object>>();
 
 	/**
-	 * Pushes the current embedding feature on the stack, to be popped later,
-	 * this is to handle nested components and automatic renaming of props
+	 * Pushes the current embedding feature on the stack, to be popped later, this is to handle nested
+	 * components and automatic renaming of props
 	 */
 	private Stack<PAnnotatedEStructuralFeature> embeddingFeatureStack = new Stack<PAnnotatedEStructuralFeature>();
 
 	/**
-	 * Add attribute overrides, happens for each mapped superclass and each
-	 * embedded component
+	 * Add attribute overrides, happens for each mapped superclass and each embedded component
 	 */
 	public void addAttributeOverrides(EList<AttributeOverride> aos) {
 		if (aos != null) {
@@ -88,8 +86,8 @@ public class AbstractProcessingContext {
 	}
 
 	/**
-	 * Pushes the current overrides on the stack, to be popped later, this is to
-	 * handle nested components
+	 * Pushes the current overrides on the stack, to be popped later, this is to handle nested
+	 * components
 	 */
 	public void pushOverrideOnStack() {
 		overrideStack.push(new HashMap<String, Object>(currentOverrides));
@@ -133,8 +131,7 @@ public class AbstractProcessingContext {
 	}
 
 	/** Return the overridden columns for the indicated featureName */
-	public Column getAttributeOverride(String featureName,
-			int embeddingFeatureIndex) {
+	public Column getAttributeOverride(String featureName, int embeddingFeatureIndex) {
 		final Column c = (Column) currentOverrides.get(featureName);
 		if (c == null) {
 			final Object o = getFromStack(featureName);
@@ -143,38 +140,30 @@ public class AbstractProcessingContext {
 			}
 			// o == null, try one level deeper
 			if (embeddingFeatureIndex == -1 && !embeddingFeatureStack.isEmpty()) {
-				String newFeatureName = embeddingFeatureStack.peek()
+				String newFeatureName = embeddingFeatureStack.peek().getModelElement().getName() + "."
+						+ featureName;
+				return getAttributeOverride(newFeatureName, embeddingFeatureStack.size() - 1);
+			} else if (embeddingFeatureIndex > 0) {
+				String newFeatureName = embeddingFeatureStack.get(embeddingFeatureIndex - 1)
 						.getModelElement().getName()
 						+ "." + featureName;
-				return getAttributeOverride(newFeatureName,
-						embeddingFeatureStack.size() - 1);
-			} else if (embeddingFeatureIndex > 0) {
-				String newFeatureName = embeddingFeatureStack
-						.get(embeddingFeatureIndex - 1).getModelElement()
-						.getName()
-						+ "." + featureName;
-				return getAttributeOverride(newFeatureName,
-						embeddingFeatureIndex - 1);
+				return getAttributeOverride(newFeatureName, embeddingFeatureIndex - 1);
 			}
 		}
 		return c;
 	}
 
 	/** Return the overridden JoinColumns for this reference */
-	public AssociationOverride getAssociationOverrides(
-			PAnnotatedEReference paReference) {
-		return getAssociationOverrides(paReference.getModelEReference()
-				.getName());
+	public AssociationOverride getAssociationOverrides(PAnnotatedEReference paReference) {
+		return getAssociationOverrides(paReference.getModelEReference().getName());
 	}
 
 	public AssociationOverride getAssociationOverrides(String featureName) {
 		return getAssociationOverrides(featureName, -1);
 	}
 
-	public AssociationOverride getAssociationOverrides(String featureName,
-			int embeddingFeatureIndex) {
-		final AssociationOverride jcs = (AssociationOverride) currentOverrides
-				.get(featureName);
+	public AssociationOverride getAssociationOverrides(String featureName, int embeddingFeatureIndex) {
+		final AssociationOverride jcs = (AssociationOverride) currentOverrides.get(featureName);
 		if (jcs == null) {
 			final Object o = getFromStack(featureName);
 			if (o instanceof List<?>) {
@@ -182,18 +171,14 @@ public class AbstractProcessingContext {
 			}
 			// o == null, try one level deeper
 			if (embeddingFeatureIndex == -1 && !embeddingFeatureStack.isEmpty()) {
-				String newFeatureName = embeddingFeatureStack.peek()
+				String newFeatureName = embeddingFeatureStack.peek().getModelElement().getName() + "."
+						+ featureName;
+				return getAssociationOverrides(newFeatureName, embeddingFeatureStack.size() - 1);
+			} else if (embeddingFeatureIndex > 0) {
+				String newFeatureName = embeddingFeatureStack.get(embeddingFeatureIndex - 1)
 						.getModelElement().getName()
 						+ "." + featureName;
-				return getAssociationOverrides(newFeatureName,
-						embeddingFeatureStack.size() - 1);
-			} else if (embeddingFeatureIndex > 0) {
-				String newFeatureName = embeddingFeatureStack
-						.get(embeddingFeatureIndex - 1).getModelElement()
-						.getName()
-						+ "." + featureName;
-				return getAssociationOverrides(newFeatureName,
-						embeddingFeatureIndex - 1);
+				return getAssociationOverrides(newFeatureName, embeddingFeatureIndex - 1);
 			}
 		}
 		return jcs;
@@ -211,19 +196,16 @@ public class AbstractProcessingContext {
 	}
 
 	/**
-	 * This method returns all inherited features which need to be added to the
-	 * mapping of the aclass itself. The method makes a distinction makes a
-	 * distinction between the first supertype (the first one in the list) and
-	 * later ones. The features of the first type are only added to the mapping
-	 * if the first type is a mappedsuperclass, in all other cases the features
-	 * of the first type are not mapped in the aclass itself because they are
-	 * inherited (the mapping describes the inheritance relation). For the other
-	 * supertypes (located at index 1 and up in getESuperTypes) the features are
-	 * mapped as properties in the class itself. The superEntity is the super
-	 * aclass denoted as the real supertype extended by teneo.
+	 * This method returns all inherited features which need to be added to the mapping of the aclass
+	 * itself. The method makes a distinction makes a distinction between the first supertype (the
+	 * first one in the list) and later ones. The features of the first type are only added to the
+	 * mapping if the first type is a mappedsuperclass, in all other cases the features of the first
+	 * type are not mapped in the aclass itself because they are inherited (the mapping describes the
+	 * inheritance relation). For the other supertypes (located at index 1 and up in getESuperTypes)
+	 * the features are mapped as properties in the class itself. The superEntity is the super aclass
+	 * denoted as the real supertype extended by teneo.
 	 */
-	public List<PAnnotatedEStructuralFeature> getInheritedFeatures(
-			PAnnotatedEClass aClass) {
+	public List<PAnnotatedEStructuralFeature> getInheritedFeatures(PAnnotatedEClass aClass) {
 		// if no supertypes then there are no inherited features
 		final EClass eclass = aClass.getModelEClass();
 		if (eclass.getESuperTypes().size() == 0) {
@@ -244,8 +226,8 @@ public class AbstractProcessingContext {
 		// remove all features inherited from the first supertype
 		// as this inheritance is done in the mapping file
 		if (aClass.getPaSuperEntity() != null) {
-			inheritedFeatures.removeAll(aClass.getPaSuperEntity()
-					.getModelEClass().getEAllStructuralFeatures());
+			inheritedFeatures.removeAll(aClass.getPaSuperEntity().getModelEClass()
+					.getEAllStructuralFeatures());
 		}
 
 		// get all efeatures from direct mappedsuperclasses
@@ -267,11 +249,9 @@ public class AbstractProcessingContext {
 
 		// solve: https://issues.openbravo.com/view.php?id=19236
 		for (PAnnotatedEStructuralFeature paFeature : result) {
-			if (paFeature.getForeignKey() != null
-					&& paFeature.getForeignKey().isGenerated()) {
-				paFeature.getForeignKey().setName(
-						getSqlNameStrategy().getForeignKeyName(aClass,
-								paFeature));
+			if (paFeature.getForeignKey() != null && paFeature.getForeignKey().isGenerated()) {
+				paFeature.getForeignKey()
+						.setName(getSqlNameStrategy().getForeignKeyName(aClass, paFeature));
 			}
 		}
 
@@ -284,18 +264,15 @@ public class AbstractProcessingContext {
 	}
 
 	/**
-	 * Remove all id-features not inherited from a direct mapped superclass, and
-	 * add the features from the mapped superclass
+	 * Remove all id-features not inherited from a direct mapped superclass, and add the features from
+	 * the mapped superclass
 	 */
-	private void removeIdFeatures(PAnnotatedEClass aClass,
-			List<EStructuralFeature> inheritedFeatures) {
+	private void removeIdFeatures(PAnnotatedEClass aClass, List<EStructuralFeature> inheritedFeatures) {
 		// first get all the mapped superclasses
 		final ArrayList<EClass> mappedSuperEClasses = new ArrayList<EClass>();
 		for (EClass superEClass : aClass.getModelEClass().getESuperTypes()) {
-			final PAnnotatedEClass superPAClass = aClass.getPaModel()
-					.getPAnnotated(superEClass);
-			if (superPAClass != null
-					&& superPAClass.getMappedSuperclass() != null) {
+			final PAnnotatedEClass superPAClass = aClass.getPaModel().getPAnnotated(superEClass);
+			if (superPAClass != null && superPAClass.getMappedSuperclass() != null) {
 				mappedSuperEClasses.add(superPAClass.getModelEClass());
 			}
 		}
@@ -309,21 +286,17 @@ public class AbstractProcessingContext {
 		if (aClass.getPaSuperEntity() == null
 				|| aClass.getPaSuperEntity().getMappedSuperclass() != null) {
 			for (EClass mappedSuperEClass : mappedSuperEClasses) {
-				mappedSuperFeatures.removeAll(mappedSuperEClass
-						.getEAllStructuralFeatures());
-				mappedSuperFeatures.addAll(mappedSuperEClass
-						.getEAllStructuralFeatures());
+				mappedSuperFeatures.removeAll(mappedSuperEClass.getEAllStructuralFeatures());
+				mappedSuperFeatures.addAll(mappedSuperEClass.getEAllStructuralFeatures());
 			}
 		}
 
 		// now remove all id features not coming from a direct mapped superclass
 		final ArrayList<EStructuralFeature> toRemove = new ArrayList<EStructuralFeature>();
 		for (EStructuralFeature esf : inheritedFeatures) {
-			final PAnnotatedEStructuralFeature pef = aClass.getPaModel()
-					.getPAnnotated(esf);
+			final PAnnotatedEStructuralFeature pef = aClass.getPaModel().getPAnnotated(esf);
 
-			if (pef instanceof PAnnotatedEAttribute
-					&& ((PAnnotatedEAttribute) pef).getId() != null
+			if (pef instanceof PAnnotatedEAttribute && ((PAnnotatedEAttribute) pef).getId() != null
 					&& !mappedSuperFeatures.contains(esf)) {
 				toRemove.add(esf);
 			}
@@ -356,21 +329,17 @@ public class AbstractProcessingContext {
 	// }
 
 	/**
-	 * Returns true if the eclass only has mappedsuperclasses without id
-	 * annotated property
+	 * Returns true if the eclass only has mappedsuperclasses without id annotated property
 	 */
 	public boolean mustAddSyntheticID(PAnnotatedEClass entity) {
 		if (entity.hasIdAnnotatedFeature()) {
 			return false;
 		}
 		for (EClass superEClass : entity.getModelEClass().getEAllSuperTypes()) {
-			final PAnnotatedEClass superPAClass = entity.getPaModel()
-					.getPAnnotated(superEClass);
-			if (superPAClass != null
-					&& superPAClass.getMappedSuperclass() == null) {
+			final PAnnotatedEClass superPAClass = entity.getPaModel().getPAnnotated(superEClass);
+			if (superPAClass != null && superPAClass.getMappedSuperclass() == null) {
 				return false;
-			} else if (superPAClass != null
-					&& superPAClass.getMappedSuperclass() != null) {
+			} else if (superPAClass != null && superPAClass.getMappedSuperclass() != null) {
 				if (superPAClass.hasIdAnnotatedFeature()) {
 					return false;
 				}

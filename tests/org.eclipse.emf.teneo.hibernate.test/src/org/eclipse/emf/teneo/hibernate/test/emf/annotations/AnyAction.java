@@ -73,10 +73,13 @@ public class AnyAction extends AbstractTestAction {
 
 		assertEquals(otherIndex, (index * 10));
 
-		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(0)).getValue()).getValue(), (int) (index + 1));
-		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(1)).getValue()).getValue(), "hello" + (index + 1));
+		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(0)).getValue()).getValue(),
+				(int) (index + 1));
+		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(1)).getValue()).getValue(), "hello"
+				+ (index + 1));
 
-		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(2)).getValue()).getValue(), ao.getAny().get(2).getValue());
+		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(2)).getValue()).getValue(), ao.getAny()
+				.get(2).getValue());
 	}
 
 	private void createTestData(TestStore store, int index) {
@@ -96,14 +99,15 @@ public class AnyAction extends AbstractTestAction {
 
 		ao.setAnyOne(ao2);
 		ao.getGroup().add(createEntry(AnyPackage.eINSTANCE.getDocumentRoot_GlobalInt(), index + 1));
-		ao.getGroup().add(createEntry(AnyPackage.eINSTANCE.getAnyObject_GlobalString(), "hello" + (index + 1)));
+		ao.getGroup().add(
+				createEntry(AnyPackage.eINSTANCE.getAnyObject_GlobalString(), "hello" + (index + 1)));
 		ao.getGroup().add(createEntry(AnyPackage.eINSTANCE.getDocumentRoot_GlobalObject(), objectType));
 
 		store.store(ao);
 	}
 
 	private FeatureMap.Entry createEntry(EStructuralFeature eFeature, Object value) {
-		return FeatureMapUtil.createEntry(AnyPackage.eINSTANCE.getAnyObject_Any1(), FeatureMapUtil.createEntry(
-				eFeature, value));
+		return FeatureMapUtil.createEntry(AnyPackage.eINSTANCE.getAnyObject_Any1(),
+				FeatureMapUtil.createEntry(eFeature, value));
 	}
 }

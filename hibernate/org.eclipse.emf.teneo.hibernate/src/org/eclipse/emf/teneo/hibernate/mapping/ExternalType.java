@@ -34,7 +34,8 @@ import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
 /**
- * Provides a way to store external references (references to objects not in the same datastore) as a string/uri.
+ * Provides a way to store external references (references to objects not in the same datastore) as
+ * a string/uri.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
@@ -75,7 +76,8 @@ public class ExternalType implements UserType, ParameterizedType {
 		return x.equals(y);
 	}
 
-	public Object nullSafeGet(ResultSet resultSet, String[] names, SessionImplementor sessionImplementor, Object owner) throws SQLException {
+	public Object nullSafeGet(ResultSet resultSet, String[] names,
+			SessionImplementor sessionImplementor, Object owner) throws SQLException {
 
 		final String data = resultSet.getString(names[0]);
 		if (data == null) {
@@ -83,13 +85,15 @@ public class ExternalType implements UserType, ParameterizedType {
 		}
 
 		// now create a new instance and set its proxyuri
-		final InternalEObject newValue = (InternalEObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		final InternalEObject newValue = (InternalEObject) eClass.getEPackage().getEFactoryInstance()
+				.create(eClass);
 		final URI uri = URI.createURI(data);
 		newValue.eSetProxyURI(uri);
 		return newValue;
 	}
 
-	public void nullSafeSet(PreparedStatement statement, Object value, int index, SessionImplementor sessionImplementor) throws SQLException {
+	public void nullSafeSet(PreparedStatement statement, Object value, int index,
+			SessionImplementor sessionImplementor) throws SQLException {
 		String pvalue = null;
 		if (value != null) {
 			final Resource res = ((InternalEObject) value).eResource();
@@ -141,11 +145,11 @@ public class ExternalType implements UserType, ParameterizedType {
 			eClass = (EClass) eclassifier;
 		} else {
 			if (eclassifier == null) {
-				throw new IllegalArgumentException("Missing eClass " + eClassName + " in package implementation "
-						+ epackage.getName());
+				throw new IllegalArgumentException("Missing eClass " + eClassName
+						+ " in package implementation " + epackage.getName());
 			} else {
-				throw new IllegalArgumentException("Found property of type " + eclassifier.getClass().getName()
-						+ " when an EClass was expected.");
+				throw new IllegalArgumentException("Found property of type "
+						+ eclassifier.getClass().getName() + " when an EClass was expected.");
 			}
 		}
 	}

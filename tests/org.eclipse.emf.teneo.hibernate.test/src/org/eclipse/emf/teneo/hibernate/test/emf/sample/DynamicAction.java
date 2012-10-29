@@ -141,8 +141,7 @@ public class DynamicAction extends AbstractTestAction {
 			employeeManager.setUnique(false);
 			employeeClass.getEStructuralFeatures().add(employeeManager);
 
-			employeeClass.getESuperTypes().add(
-					DynamicPackage.eINSTANCE.getPerson());
+			employeeClass.getESuperTypes().add(DynamicPackage.eINSTANCE.getPerson());
 
 			specialEmployeeClass = efactory.createEClass();
 			specialEmployeeClass.setName("SpecialEmployee");
@@ -159,8 +158,7 @@ public class DynamicAction extends AbstractTestAction {
 			departmentManager = efactory.createEReference();
 			departmentManager.setName("manager");
 			departmentManager.setEType(employeeClass);
-			departmentManager
-					.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
+			departmentManager.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
 			departmentManager.setContainment(true);
 			departmentClass.getEStructuralFeatures().add(departmentManager);
 
@@ -186,8 +184,7 @@ public class DynamicAction extends AbstractTestAction {
 			officeName = efactory.createEAttribute();
 			officeName.setName("name");
 			officeName.setEType(epackage.getEString());
-			final EAnnotation idAnnotation = EcoreFactory.eINSTANCE
-					.createEAnnotation();
+			final EAnnotation idAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			idAnnotation.setSource("teneo.jpa");
 			idAnnotation.getDetails().put("value", "@Id");
 			officeName.getEAnnotations().add(idAnnotation);
@@ -236,8 +233,7 @@ public class DynamicAction extends AbstractTestAction {
 			companyPackage.getEClassifiers().add(officeClass);
 			companyPackage.getEClassifiers().add(officeAddressClass);
 			companyPackage.getEClassifiers().add(dt);
-			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(),
-					companyPackage);
+			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
 			store.updateSchema();
 			// System.err.println(store.getMappingXML());
@@ -284,8 +280,7 @@ public class DynamicAction extends AbstractTestAction {
 			employee.eSet(employeeDepartment, department);
 			store.store(employee);
 
-			Person specialEmployee = (Person) EcoreUtil
-					.create(specialEmployeeClass);
+			Person specialEmployee = (Person) EcoreUtil.create(specialEmployeeClass);
 			specialEmployee.eSet(employeeOffices, offices);
 			specialEmployee.setName("specialEmployee1");
 			store.store(specialEmployee);
@@ -317,8 +312,7 @@ public class DynamicAction extends AbstractTestAction {
 			assertEquals(4, employees.size());
 			for (Object name : employees) {
 				EObject eobject = (EObject) name;
-				assertTrue(eobject.eClass() == employeeClass
-						|| eobject.eClass() == specialEmployeeClass);
+				assertTrue(eobject.eClass() == employeeClass || eobject.eClass() == specialEmployeeClass);
 			}
 
 			EObject officeAddress = EcoreUtil.create(officeAddressClass);
@@ -369,12 +363,10 @@ public class DynamicAction extends AbstractTestAction {
 		if (true) {
 			store.beginTransaction();
 			final HibernateTestStore hbStore = (HibernateTestStore) store;
-			final EObject eobject = companyPackage.getEFactoryInstance()
-					.create(employeeClass);
+			final EObject eobject = companyPackage.getEFactoryInstance().create(employeeClass);
 			hbStore.getSession().load(eobject, getTestId());
 			final Object dep = eobject.eGet(employeeDepartment);
-			assertTrue(dep == null
-					|| dep instanceof org.hibernate.proxy.HibernateProxy);
+			assertTrue(dep == null || dep instanceof org.hibernate.proxy.HibernateProxy);
 			if (dep != null) {
 				((EObject) dep).eGet(departmentOffice);
 			}
@@ -393,8 +385,7 @@ public class DynamicAction extends AbstractTestAction {
 			EObject department = null;
 			for (Object obj : list) {
 				final EObject possibleDepartment = (EObject) obj;
-				if (possibleDepartment.eGet(departmentName).equals(
-						"Software Development")) {
+				if (possibleDepartment.eGet(departmentName).equals("Software Development")) {
 					department = possibleDepartment;
 					break;
 				}
@@ -423,8 +414,7 @@ public class DynamicAction extends AbstractTestAction {
 			List<?> list = store.query("select e from Employee e");
 			assertEquals(2, list.size());
 			Person person = (Person) list.get(0);
-			assertTrue(person.eClass() == employeeClass
-					|| person.eClass() == specialEmployeeClass);
+			assertTrue(person.eClass() == employeeClass || person.eClass() == specialEmployeeClass);
 			store.commitTransaction();
 		}
 		{

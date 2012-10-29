@@ -16,23 +16,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Child Object2</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Child Object2</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link main.impl.ChildObject2Impl#getLength <em>Length</em>}</li>
+ * <li>{@link main.impl.ChildObject2Impl#getLength <em>Length</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 	/**
-	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -40,9 +39,9 @@ public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 	protected static final Integer LENGTH_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -50,8 +49,8 @@ public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 	protected Integer length = LENGTH_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ChildObject2Impl() {
@@ -59,8 +58,8 @@ public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -68,8 +67,8 @@ public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Integer getLength() {
@@ -77,78 +76,80 @@ public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLength(Integer newLength) {
 		Integer oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MainPackage.CHILD_OBJECT2__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, MainPackage.CHILD_OBJECT2__LENGTH,
+					oldLength, length));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MainPackage.CHILD_OBJECT2__LENGTH:
-				return getLength();
+		case MainPackage.CHILD_OBJECT2__LENGTH:
+			return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MainPackage.CHILD_OBJECT2__LENGTH:
-				setLength((Integer)newValue);
-				return;
+		case MainPackage.CHILD_OBJECT2__LENGTH:
+			setLength((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MainPackage.CHILD_OBJECT2__LENGTH:
-				setLength(LENGTH_EDEFAULT);
-				return;
+		case MainPackage.CHILD_OBJECT2__LENGTH:
+			setLength(LENGTH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MainPackage.CHILD_OBJECT2__LENGTH:
-				return LENGTH_EDEFAULT == null ? length != null : !LENGTH_EDEFAULT.equals(length);
+		case MainPackage.CHILD_OBJECT2__LENGTH:
+			return LENGTH_EDEFAULT == null ? length != null : !LENGTH_EDEFAULT.equals(length);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (length: ");
@@ -157,4 +158,4 @@ public class ChildObject2Impl extends BaseObjectImpl implements ChildObject2 {
 		return result.toString();
 	}
 
-} //ChildObject2Impl
+} // ChildObject2Impl

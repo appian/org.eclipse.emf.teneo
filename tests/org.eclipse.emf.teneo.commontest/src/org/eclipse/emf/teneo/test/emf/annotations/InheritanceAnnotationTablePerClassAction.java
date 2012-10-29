@@ -182,7 +182,8 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 		// eventhough at global level one inheritance strategy is used this should differ for
 		// individual
 		// class hierarchies as enforced by the annotations
-		assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class, InheritanceType.TABLE_PER_CLASS));
+		assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class,
+				InheritanceType.TABLE_PER_CLASS));
 		assertTrue(store.isInheritanceStrategy(UKAddressImpl.class, InheritanceType.JOINED));
 		assertTrue(store.isInheritanceStrategy(USAddressImpl.class, InheritanceType.JOINED));
 		assertTrue(store.isInheritanceStrategy(DistrictUKAddressImpl.class, InheritanceType.JOINED));
@@ -218,7 +219,8 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 				}
 			}
 		} catch (final SQLException e) {
-			throw new StoreTestException("Sql exception when retrieving objects based on discriminator values", e);
+			throw new StoreTestException(
+					"Sql exception when retrieving objects based on discriminator values", e);
 		}
 	}
 }

@@ -86,15 +86,16 @@ public class ConfigurableTestSuite extends TestSuite {
 		try {
 			componentTest = new AbstractActionTest((AbstractTestAction) actionClass.newInstance());
 		} catch (Throwable e) {
-			componentTest = warning("Cannot istantiate " + actionClass.getName() + " due to\n" + e.getMessage());
+			componentTest = warning("Cannot istantiate " + actionClass.getName() + " due to\n"
+					+ e.getMessage());
 		}
 		componentSuite.addTest(componentTest);
 		return componentSuite;
 	}
 
 	/**
-	 * Handles specially testClass derived from AbstractTestAction. For this class a suite is
-	 * created acting as a corresponding subclass of AbstractHibernateActionTest
+	 * Handles specially testClass derived from AbstractTestAction. For this class a suite is created
+	 * acting as a corresponding subclass of AbstractHibernateActionTest
 	 */
 	@Override
 	public void addTestSuite(Class testClass) {

@@ -21,38 +21,35 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests for the mixed construction.  
+ * Tests for the mixed construction.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
-*/
-public class RestrictionAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.4 $
+ */
+public class RestrictionAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
-	public RestrictionAction() 
-	{
+	public RestrictionAction() {
 		super(RestrictionPackage.eINSTANCE);
 	}
-	
+
 	/** Returns true if hibernate is enabled for a test, false otherwise */
-	protected boolean hibernateEnabled()
-	{
+	protected boolean hibernateEnabled() {
 		return true;
 	}
 
 	/** Creates simple types and tests against */
-	public void doAction(TestStore store)
-	{
+	public void doAction(TestStore store) {
 		// test a simple type
-        //final RestrictionFactory factory = RestrictionFactory.eINSTANCE;
-    	{
-    		{
-		        store.beginTransaction();
-		        store.commitTransaction();
-    		}
-    	}
+		// final RestrictionFactory factory = RestrictionFactory.eINSTANCE;
+		{
+			{
+				store.beginTransaction();
+				store.commitTransaction();
+			}
+		}
 	}
 }

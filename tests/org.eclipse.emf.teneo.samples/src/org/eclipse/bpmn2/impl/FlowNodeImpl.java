@@ -34,25 +34,24 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Flow Node</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Flow Node</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.FlowNodeImpl#getIncoming <em>Incoming</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.FlowNodeImpl#getLanes <em>Lanes</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.FlowNodeImpl#getOutgoing <em>Outgoing</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FlowNodeImpl#getIncoming <em>Incoming</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FlowNodeImpl#getLanes <em>Lanes</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FlowNodeImpl#getOutgoing <em>Outgoing</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	/**
-	 * The cached value of the '{@link #getIncoming() <em>Incoming</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getIncoming() <em>Incoming</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getIncoming()
 	 * @generated
 	 * @ordered
@@ -60,9 +59,9 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	protected EList<SequenceFlow> incoming;
 
 	/**
-	 * The cached value of the '{@link #getLanes() <em>Lanes</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLanes() <em>Lanes</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLanes()
 	 * @generated
 	 * @ordered
@@ -70,9 +69,9 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	protected EList<Lane> lanes;
 
 	/**
-	 * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOutgoing()
 	 * @generated
 	 * @ordered
@@ -80,8 +79,8 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	protected EList<SequenceFlow> outgoing;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FlowNodeImpl() {
@@ -89,8 +88,8 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,94 +98,89 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<SequenceFlow> getIncoming() {
 		if (incoming == null) {
-			incoming = new EObjectWithInverseEList<SequenceFlow>(
-					SequenceFlow.class, this, Bpmn2Package.FLOW_NODE__INCOMING,
-					Bpmn2Package.SEQUENCE_FLOW__TARGET_REF);
+			incoming = new EObjectWithInverseEList<SequenceFlow>(SequenceFlow.class, this,
+					Bpmn2Package.FLOW_NODE__INCOMING, Bpmn2Package.SEQUENCE_FLOW__TARGET_REF);
 		}
 		return incoming;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Lane> getLanes() {
 		if (lanes == null) {
-			lanes = new EObjectWithInverseResolvingEList.ManyInverse<Lane>(
-					Lane.class, this, Bpmn2Package.FLOW_NODE__LANES,
-					Bpmn2Package.LANE__FLOW_NODE_REFS);
+			lanes = new EObjectWithInverseResolvingEList.ManyInverse<Lane>(Lane.class, this,
+					Bpmn2Package.FLOW_NODE__LANES, Bpmn2Package.LANE__FLOW_NODE_REFS);
 		}
 		return lanes;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<SequenceFlow> getOutgoing() {
 		if (outgoing == null) {
-			outgoing = new EObjectWithInverseEList<SequenceFlow>(
-					SequenceFlow.class, this, Bpmn2Package.FLOW_NODE__OUTGOING,
-					Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF);
+			outgoing = new EObjectWithInverseEList<SequenceFlow>(SequenceFlow.class, this,
+					Bpmn2Package.FLOW_NODE__OUTGOING, Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF);
 		}
 		return outgoing;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.FLOW_NODE__INCOMING:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncoming())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncoming()).basicAdd(otherEnd,
+					msgs);
 		case Bpmn2Package.FLOW_NODE__LANES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getLanes())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getLanes()).basicAdd(otherEnd,
+					msgs);
 		case Bpmn2Package.FLOW_NODE__OUTGOING:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoing())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoing()).basicAdd(otherEnd,
+					msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.FLOW_NODE__INCOMING:
-			return ((InternalEList<?>) getIncoming()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getIncoming()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.FLOW_NODE__LANES:
 			return ((InternalEList<?>) getLanes()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.FLOW_NODE__OUTGOING:
-			return ((InternalEList<?>) getOutgoing()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOutgoing()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -203,8 +197,8 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -228,8 +222,8 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -249,8 +243,8 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -266,4 +260,4 @@ public abstract class FlowNodeImpl extends FlowElementImpl implements FlowNode {
 		return super.eIsSet(featureID);
 	}
 
-} //FlowNodeImpl
+} // FlowNodeImpl

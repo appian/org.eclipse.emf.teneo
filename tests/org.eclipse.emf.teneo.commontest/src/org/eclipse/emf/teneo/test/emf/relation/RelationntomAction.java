@@ -135,12 +135,12 @@ public class RelationntomAction extends AbstractTestAction {
 
 		/*
 		 * // check that the main object can not be deleted { store.checkDeleteFails(Main.class); } //
-		 * <element name="containedonewayrequired" type="this:ContainedChildR"/> // 1) we should
-		 * check here that this child can not be deleted separately { // check 1
+		 * <element name="containedonewayrequired" type="this:ContainedChildR"/> // 1) we should check
+		 * here that this child can not be deleted separately { // check 1
 		 * store.checkDeleteFails(OneNR.class); } //<element name="containedoneWaynotrequired"
-		 * type="this:ContainedChildNR" minOccurs="0"/> // 3) Direct delete of the child should not
-		 * be possible as the parent points to it // 4) if the main object is deleted then this
-		 * child should also be deleted automatically //ContainedChildNR containedChildNR =
+		 * type="this:ContainedChildNR" minOccurs="0"/> // 3) Direct delete of the child should not be
+		 * possible as the parent points to it // 4) if the main object is deleted then this child
+		 * should also be deleted automatically //ContainedChildNR containedChildNR =
 		 * factory.createContainedChildNR(); { // check 3 store.checkDeleteFails(OneNR.class); //
 		 * restore again store.beginTransaction(); MainImpl main =
 		 * (MainImpl)store.getObject(Main.class); // check the econtainer assertTrue("Size of all
@@ -155,28 +155,27 @@ public class RelationntomAction extends AbstractTestAction {
 		 * ((EObject)main.getOnecn().get(0)).eContainer() != null); assertTrue("EContainer is null",
 		 * ((EObject)main.getOnecr().get(1)).eContainer() != null); assertTrue("EContainer is null",
 		 * ((EObject)main.getTwonn().get(1)).eContainer() == null); assertTrue("EContainer is null",
-		 * ((EObject)main.getTwonr().get(1)).eContainer() == null); OneCR onecr =
-		 * factory.createOneCR(); onecr.setName("onecr3"); main.getOnecr().add(onecr);
-		 * main.getOnecr().remove(0); store.commitTransaction(); // should be two now (no cascading
-		 * delete yet!) store.beginTransaction(); store.checkNumber(OneCR.class, 2);
-		 * store.commitTransaction(); } //<element name="notcontainedonewayrequired"
-		 * type="xsd:IDREF" ecore:reference="this:NotContainedChildR"/> // 6b) Element has to be set
-		 * when parent is saved { // check 6 store.checkDeleteFails(OneNR.class); } //<element
+		 * ((EObject)main.getTwonr().get(1)).eContainer() == null); OneCR onecr = factory.createOneCR();
+		 * onecr.setName("onecr3"); main.getOnecr().add(onecr); main.getOnecr().remove(0);
+		 * store.commitTransaction(); // should be two now (no cascading delete yet!)
+		 * store.beginTransaction(); store.checkNumber(OneCR.class, 2); store.commitTransaction(); }
+		 * //<element name="notcontainedonewayrequired" type="xsd:IDREF"
+		 * ecore:reference="this:NotContainedChildR"/> // 6b) Element has to be set when parent is saved
+		 * { // check 6 store.checkDeleteFails(OneNR.class); } //<element
 		 * name="notcontainedtwowaynotrequired" type="xsd:IDREF"
 		 * ecore:reference="this:NotContainedChildNRT" minOccurs="0" ecore:opposite="main"/>
-		 * //NotContainedChildNRT notContainedChildNRT = factory.createNotContainedChildNRT(); //
-		 * 11) The main object can not be deleted without removing the ref to the child // 12)
-		 * Reference to child can be set to nullable and child/main object can be deleted {
-		 * store.beginTransaction(); // check 11 and 12 MainImpl main =
-		 * (MainImpl)store.getObject(Main.class); OneCN delChild = (OneCN)main.getOnecn().get(0);
-		 * main.getOnecn().remove(0); store.deleteObject(delChild); store.commitTransaction(); } //<element
-		 * name="notcontainedtwowaynotrequirednr" type="xsd:IDREF"
-		 * ecore:reference="this:NotContainedChildNRTNR" minOccurs="0" ecore:opposite="main"/>
-		 * //NotContainedChildNRTNR notContainedChildNRTNR = factory.createNotContainedChildNRTNR(); //
-		 * 15) the child object can be deleted because all references are null // 16) The child
-		 * object can be unset from the main object { // check 14 store.beginTransaction(); MainImpl
-		 * main = (MainImpl)store.getObject(Main.class); OneNN child =
-		 * (OneNN)main.getOnenn().get(0); main.getOnenn().remove(0); store.deleteObject(child);
+		 * //NotContainedChildNRT notContainedChildNRT = factory.createNotContainedChildNRT(); // 11)
+		 * The main object can not be deleted without removing the ref to the child // 12) Reference to
+		 * child can be set to nullable and child/main object can be deleted { store.beginTransaction();
+		 * // check 11 and 12 MainImpl main = (MainImpl)store.getObject(Main.class); OneCN delChild =
+		 * (OneCN)main.getOnecn().get(0); main.getOnecn().remove(0); store.deleteObject(delChild);
+		 * store.commitTransaction(); } //<element name="notcontainedtwowaynotrequirednr"
+		 * type="xsd:IDREF" ecore:reference="this:NotContainedChildNRTNR" minOccurs="0"
+		 * ecore:opposite="main"/> //NotContainedChildNRTNR notContainedChildNRTNR =
+		 * factory.createNotContainedChildNRTNR(); // 15) the child object can be deleted because all
+		 * references are null // 16) The child object can be unset from the main object { // check 14
+		 * store.beginTransaction(); MainImpl main = (MainImpl)store.getObject(Main.class); OneNN child
+		 * = (OneNN)main.getOnenn().get(0); main.getOnenn().remove(0); store.deleteObject(child);
 		 * store.commitTransaction(); } // and do some counts { store.beginTransaction();
 		 * store.checkNumber(OneCN.class, 1); //0 store.checkNumber(OneCR.class, 2); //0
 		 * store.checkNumber(OneNN.class, 1); store.checkNumber(OneNR.class, 2);

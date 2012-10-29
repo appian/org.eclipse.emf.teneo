@@ -40,9 +40,7 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
-	 * ()
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -51,11 +49,11 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 		props.put(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY, "true");
 		return props;
 	}
-	
+
 	@Override
 	public void doAction(TestStore store) {
 		super.doAction(store);
-		
+
 		// test lazy behavior of the collection itself
 		{
 			store.beginTransaction();
@@ -66,26 +64,26 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 				final int initialSize = bk.getWriters().size();
 				assertEquals(2, initialSize);
 				testLazy(bk.getWriters());
-				
+
 				// isEmpty
 				assertTrue(!bk.getWriters().isEmpty());
 				testLazy(bk.getWriters());
-				
+
 				// iteration
 				final Iterator<?> iterator = bk.getWriters().iterator();
 				assertTrue(iterator instanceof LazyCollectionUtils.PagingIterator<?>);
 				while (iterator.hasNext()) {
-					assertNotNull(iterator.next());					
+					assertNotNull(iterator.next());
 				}
 				testLazy(bk.getWriters());
-				
+
 				// get
 				final Writer w1 = bk.getWriters().get(bk.getTitle() + "name1");
 				final Writer w2 = bk.getWriters().get(bk.getTitle() + "name2");
 				assertNotNull(w1);
 				assertNotNull(w2);
 				testLazy(bk.getWriters());
-			
+
 				// put
 				final Writer w3 = EmapFactory.eINSTANCE.createWriter();
 				w3.setName(bk.getTitle() + "name3");
@@ -100,9 +98,9 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 			for (Book bk : store.getObjects(Book.class)) {
 				store.deleteObject(bk);
 			}
-			store.commitTransaction();			
+			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final EmapFactory factory = EmapFactory.eINSTANCE;
@@ -146,7 +144,7 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}
-	
+
 	protected void testLazyCollectionUtils(List<?> list) {
 		final PersistableDelegateList<?> persistableEList = (PersistableDelegateList<?>) list;
 		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
@@ -160,7 +158,7 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 
-		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>)LazyCollectionUtils
+		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>) LazyCollectionUtils
 				.getPagedLoadingIterator(list, 5);
 		int index = 0;
 		while (iterator.hasNext()) {

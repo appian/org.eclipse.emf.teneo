@@ -26,7 +26,7 @@ public class EAVExtraLazyAction extends ExtraLazyAction {
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
 		return props;
 	}
-	
+
 	protected boolean isEAVMapped() {
 		return true;
 	}

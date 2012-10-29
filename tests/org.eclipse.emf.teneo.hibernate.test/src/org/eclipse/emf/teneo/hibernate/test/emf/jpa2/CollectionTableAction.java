@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class CollectionTableAction extends AbstractTestAction {
 
 	private static final CollectiontableFactory FACTORY = CollectiontableFactory.eINSTANCE;
-	
+
 	public CollectionTableAction() {
 		super(CollectiontablePackage.eINSTANCE);
 	}
@@ -44,7 +44,7 @@ public class CollectionTableAction extends AbstractTestAction {
 			store.store(item);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final Item item = store.getObject(Item.class);
@@ -58,12 +58,12 @@ public class CollectionTableAction extends AbstractTestAction {
 			item.getNames().remove(30);
 			assertTrue(!item.getNames().contains(baseName + "40"));
 			assertTrue(!item.getNames().contains(baseName + "30"));
-			
+
 			assertTrue(item.getItems().size() == itemCount);
 			for (int i = 0; i < itemCount; i++) {
 				assertTrue(item.getItems().get(i).getName().equals(baseName + "e" + i));
 			}
-			
+
 			store.commitTransaction();
 		}
 		{

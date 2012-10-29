@@ -31,9 +31,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests the forum example
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.4 $
  */
 public class ForumAction extends AbstractTestAction {
 	public ForumAction() {

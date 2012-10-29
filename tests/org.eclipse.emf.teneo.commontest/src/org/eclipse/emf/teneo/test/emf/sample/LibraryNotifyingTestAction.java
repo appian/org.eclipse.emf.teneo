@@ -32,9 +32,8 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Tests the library example of emf/xsd and specifically the notifications when
- * objects are updated. Tests the new PersistentStoreAdapter which keeps the
- * persistentList in the adapter.
+ * Tests the library example of emf/xsd and specifically the notifications when objects are updated.
+ * Tests the new PersistentStoreAdapter which keeps the persistentList in the adapter.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.2 $
@@ -128,19 +127,14 @@ public class LibraryNotifyingTestAction extends AbstractTestAction {
 				assertTrue(libraryBooks == library.getBooks());
 				assertTrue(libraryWriters == library.getWriters());
 				assertTrue(writerBooks == writer.getBooks());
-				PersistentStoreAdapter libraryAdapter = StoreUtil
-						.getPersistentStoreAdapter(library);
+				PersistentStoreAdapter libraryAdapter = StoreUtil.getPersistentStoreAdapter(library);
 				final List<?> persistentLibraryBooks = (List<?>) libraryAdapter
-						.getStoreCollection(LibraryPackage.eINSTANCE
-								.getLibrary_Books());
+						.getStoreCollection(LibraryPackage.eINSTANCE.getLibrary_Books());
 				final List<?> persistentLibraryWriters = (List<?>) libraryAdapter
-						.getStoreCollection(LibraryPackage.eINSTANCE
-								.getLibrary_Writers());
-				PersistentStoreAdapter writerAdapter = StoreUtil
-						.getPersistentStoreAdapter(writer);
+						.getStoreCollection(LibraryPackage.eINSTANCE.getLibrary_Writers());
+				PersistentStoreAdapter writerAdapter = StoreUtil.getPersistentStoreAdapter(writer);
 				final List<?> persistentWriterBooks = (List<?>) writerAdapter
-						.getStoreCollection(LibraryPackage.eINSTANCE
-								.getWriter_Books());
+						.getStoreCollection(LibraryPackage.eINSTANCE.getWriter_Books());
 				checkEqualList(persistentLibraryWriters, libraryWriters);
 				checkEqualList(persistentLibraryBooks, libraryBooks);
 				checkEqualList(persistentWriterBooks, writerBooks);
@@ -150,19 +144,14 @@ public class LibraryNotifyingTestAction extends AbstractTestAction {
 				assertTrue(libraryBooks == library.getBooks());
 				assertTrue(libraryWriters == library.getWriters());
 				assertTrue(writerBooks == writer.getBooks());
-				PersistentStoreAdapter libraryAdapter = StoreUtil
-						.getPersistentStoreAdapter(library);
+				PersistentStoreAdapter libraryAdapter = StoreUtil.getPersistentStoreAdapter(library);
 				final List<?> persistentLibraryBooks = (List<?>) libraryAdapter
-						.getStoreCollection(LibraryPackage.eINSTANCE
-								.getLibrary_Books());
+						.getStoreCollection(LibraryPackage.eINSTANCE.getLibrary_Books());
 				final List<?> persistentLibraryWriters = (List<?>) libraryAdapter
-						.getStoreCollection(LibraryPackage.eINSTANCE
-								.getLibrary_Writers());
-				PersistentStoreAdapter writerAdapter = StoreUtil
-						.getPersistentStoreAdapter(writer);
+						.getStoreCollection(LibraryPackage.eINSTANCE.getLibrary_Writers());
+				PersistentStoreAdapter writerAdapter = StoreUtil.getPersistentStoreAdapter(writer);
 				final List<?> persistentWriterBooks = (List<?>) writerAdapter
-						.getStoreCollection(LibraryPackage.eINSTANCE
-								.getWriter_Books());
+						.getStoreCollection(LibraryPackage.eINSTANCE.getWriter_Books());
 				checkEqualList(persistentLibraryWriters, libraryWriters);
 				checkEqualList(persistentLibraryBooks, libraryBooks);
 				checkEqualList(persistentWriterBooks, writerBooks);

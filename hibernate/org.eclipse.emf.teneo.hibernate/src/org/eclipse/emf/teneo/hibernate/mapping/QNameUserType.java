@@ -107,9 +107,10 @@ public class QNameUserType implements UserType {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
-	 *      java.lang.Object)
+	 * java.lang.Object)
 	 */
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor,
+			Object owner) throws HibernateException, SQLException {
 		final String str = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -120,10 +121,11 @@ public class QNameUserType implements UserType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement,
-	 *      java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object,
+	 * int)
 	 */
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
@@ -135,7 +137,7 @@ public class QNameUserType implements UserType {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object,
-	 *      java.lang.Object)
+	 * java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;
@@ -157,16 +159,18 @@ public class QNameUserType implements UserType {
 
 	protected QName convertFromString(String str) {
 		if (str.indexOf("{") == -1) {
-			throw new HbStoreException("String " + str + " can not be converted to a QName, missing starting {");
+			throw new HbStoreException("String " + str
+					+ " can not be converted to a QName, missing starting {");
 		}
 		final int endIndexNS = str.indexOf("}");
 		if (endIndexNS == -1) {
-			throw new HbStoreException("String " + str +
-					" can not be converted to a QName, missing end ns delimiter } ");
+			throw new HbStoreException("String " + str
+					+ " can not be converted to a QName, missing end ns delimiter } ");
 		}
 		final int prefixIndex = str.indexOf(":", endIndexNS);
 		if (prefixIndex == -1) {
-			throw new HbStoreException("String " + str + " can not be converted to a QName, missing prefix delimiter :");
+			throw new HbStoreException("String " + str
+					+ " can not be converted to a QName, missing prefix delimiter :");
 		}
 		final String ns = str.substring(1, endIndexNS);
 		final String prefix = str.substring(endIndexNS + 1, prefixIndex);

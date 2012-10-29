@@ -29,26 +29,32 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Library</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Library</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getLibrary <em>Library</em>}</li>
- *   <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getAbstractBookDefinitionGroup <em>Abstract Book Definition Group</em>}</li>
- *   <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getAbstractBookDefinition <em>Abstract Book Definition</em>}</li>
- *   <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getUniqueName <em>Unique Name</em>}</li>
+ * <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getLibrary
+ * <em>Library</em>}</li>
+ * <li>
+ * {@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getAbstractBookDefinitionGroup
+ * <em>Abstract Book Definition Group</em>}</li>
+ * <li>
+ * {@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getAbstractBookDefinition
+ * <em>Abstract Book Definition</em>}</li>
+ * <li>
+ * {@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.LibraryImpl#getUniqueName
+ * <em>Unique Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class LibraryImpl extends EObjectImpl implements Library {
 	/**
 	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLibrary()
 	 * @generated
 	 * @ordered
@@ -56,9 +62,10 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	protected EList<Library> library;
 
 	/**
-	 * The cached value of the '{@link #getAbstractBookDefinitionGroup() <em>Abstract Book Definition Group</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAbstractBookDefinitionGroup()
+	 * <em>Abstract Book Definition Group</em>}' attribute list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getAbstractBookDefinitionGroup()
 	 * @generated
 	 * @ordered
@@ -66,9 +73,9 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	protected FeatureMap abstractBookDefinitionGroup;
 
 	/**
-	 * The default value of the '{@link #getUniqueName() <em>Unique Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getUniqueName() <em>Unique Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUniqueName()
 	 * @generated
 	 * @ordered
@@ -76,9 +83,9 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	protected static final String UNIQUE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getUniqueName() <em>Unique Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getUniqueName() <em>Unique Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUniqueName()
 	 * @generated
 	 * @ordered
@@ -86,8 +93,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	protected String uniqueName = UNIQUE_NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LibraryImpl() {
@@ -95,8 +102,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -105,41 +112,44 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Library> getLibrary() {
 		if (library == null) {
-			library = new EObjectContainmentEList<Library>(Library.class, this, TestPackage.LIBRARY__LIBRARY);
+			library = new EObjectContainmentEList<Library>(Library.class, this,
+					TestPackage.LIBRARY__LIBRARY);
 		}
 		return library;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getAbstractBookDefinitionGroup() {
 		if (abstractBookDefinitionGroup == null) {
-			abstractBookDefinitionGroup = new BasicFeatureMap(this, TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP);
+			abstractBookDefinitionGroup = new BasicFeatureMap(this,
+					TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP);
 		}
 		return abstractBookDefinitionGroup;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<BookDefinition> getAbstractBookDefinition() {
-		return getAbstractBookDefinitionGroup().list(TestPackage.Literals.LIBRARY__ABSTRACT_BOOK_DEFINITION);
+		return getAbstractBookDefinitionGroup().list(
+				TestPackage.Literals.LIBRARY__ABSTRACT_BOOK_DEFINITION);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getUniqueName() {
@@ -147,128 +157,133 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setUniqueName(String newUniqueName) {
 		String oldUniqueName = uniqueName;
 		uniqueName = newUniqueName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestPackage.LIBRARY__UNIQUE_NAME, oldUniqueName, uniqueName));
+			eNotify(new ENotificationImpl(this, Notification.SET, TestPackage.LIBRARY__UNIQUE_NAME,
+					oldUniqueName, uniqueName));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case TestPackage.LIBRARY__LIBRARY:
-				return ((InternalEList<?>)getLibrary()).basicRemove(otherEnd, msgs);
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
-				return ((InternalEList<?>)getAbstractBookDefinitionGroup()).basicRemove(otherEnd, msgs);
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION:
-				return ((InternalEList<?>)getAbstractBookDefinition()).basicRemove(otherEnd, msgs);
+		case TestPackage.LIBRARY__LIBRARY:
+			return ((InternalEList<?>) getLibrary()).basicRemove(otherEnd, msgs);
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
+			return ((InternalEList<?>) getAbstractBookDefinitionGroup()).basicRemove(otherEnd, msgs);
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION:
+			return ((InternalEList<?>) getAbstractBookDefinition()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TestPackage.LIBRARY__LIBRARY:
-				return getLibrary();
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
-				if (coreType) return getAbstractBookDefinitionGroup();
-				return ((FeatureMap.Internal)getAbstractBookDefinitionGroup()).getWrapper();
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION:
-				return getAbstractBookDefinition();
-			case TestPackage.LIBRARY__UNIQUE_NAME:
-				return getUniqueName();
+		case TestPackage.LIBRARY__LIBRARY:
+			return getLibrary();
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
+			if (coreType)
+				return getAbstractBookDefinitionGroup();
+			return ((FeatureMap.Internal) getAbstractBookDefinitionGroup()).getWrapper();
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION:
+			return getAbstractBookDefinition();
+		case TestPackage.LIBRARY__UNIQUE_NAME:
+			return getUniqueName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TestPackage.LIBRARY__LIBRARY:
-				getLibrary().clear();
-				getLibrary().addAll((Collection<? extends Library>)newValue);
-				return;
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
-				((FeatureMap.Internal)getAbstractBookDefinitionGroup()).set(newValue);
-				return;
-			case TestPackage.LIBRARY__UNIQUE_NAME:
-				setUniqueName((String)newValue);
-				return;
+		case TestPackage.LIBRARY__LIBRARY:
+			getLibrary().clear();
+			getLibrary().addAll((Collection<? extends Library>) newValue);
+			return;
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
+			((FeatureMap.Internal) getAbstractBookDefinitionGroup()).set(newValue);
+			return;
+		case TestPackage.LIBRARY__UNIQUE_NAME:
+			setUniqueName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TestPackage.LIBRARY__LIBRARY:
-				getLibrary().clear();
-				return;
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
-				getAbstractBookDefinitionGroup().clear();
-				return;
-			case TestPackage.LIBRARY__UNIQUE_NAME:
-				setUniqueName(UNIQUE_NAME_EDEFAULT);
-				return;
+		case TestPackage.LIBRARY__LIBRARY:
+			getLibrary().clear();
+			return;
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
+			getAbstractBookDefinitionGroup().clear();
+			return;
+		case TestPackage.LIBRARY__UNIQUE_NAME:
+			setUniqueName(UNIQUE_NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TestPackage.LIBRARY__LIBRARY:
-				return library != null && !library.isEmpty();
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
-				return abstractBookDefinitionGroup != null && !abstractBookDefinitionGroup.isEmpty();
-			case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION:
-				return !getAbstractBookDefinition().isEmpty();
-			case TestPackage.LIBRARY__UNIQUE_NAME:
-				return UNIQUE_NAME_EDEFAULT == null ? uniqueName != null : !UNIQUE_NAME_EDEFAULT.equals(uniqueName);
+		case TestPackage.LIBRARY__LIBRARY:
+			return library != null && !library.isEmpty();
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION_GROUP:
+			return abstractBookDefinitionGroup != null && !abstractBookDefinitionGroup.isEmpty();
+		case TestPackage.LIBRARY__ABSTRACT_BOOK_DEFINITION:
+			return !getAbstractBookDefinition().isEmpty();
+		case TestPackage.LIBRARY__UNIQUE_NAME:
+			return UNIQUE_NAME_EDEFAULT == null ? uniqueName != null : !UNIQUE_NAME_EDEFAULT
+					.equals(uniqueName);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (abstractBookDefinitionGroup: ");
@@ -279,4 +294,4 @@ public class LibraryImpl extends EObjectImpl implements Library {
 		return result.toString();
 	}
 
-} //LibraryImpl
+} // LibraryImpl

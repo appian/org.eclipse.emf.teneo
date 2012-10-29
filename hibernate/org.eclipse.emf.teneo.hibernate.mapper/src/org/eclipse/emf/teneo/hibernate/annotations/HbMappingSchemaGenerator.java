@@ -34,7 +34,8 @@ public class HbMappingSchemaGenerator extends PersistenceMappingSchemaGenerator 
 	/** The main method */
 	public static void main(String[] args) {
 		final HbMappingSchemaGenerator pmsg = new HbMappingSchemaGenerator();
-		pmsg.setAnnotationEPackages(new EPackage[] { HbannotationPackage.eINSTANCE, PannotationPackage.eINSTANCE });
+		pmsg.setAnnotationEPackages(new EPackage[] { HbannotationPackage.eINSTANCE,
+				PannotationPackage.eINSTANCE });
 		pmsg.setModelEPackage(HbmodelPackage.eINSTANCE);
 		pmsg.setNameSpace("http://www.eclipse.org/emft/teneo");
 		try {

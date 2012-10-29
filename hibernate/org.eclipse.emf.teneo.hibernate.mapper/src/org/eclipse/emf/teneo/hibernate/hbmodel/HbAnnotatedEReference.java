@@ -19,38 +19,57 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotated EReference</b></em>'. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Hb Annotated EReference</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType <em>Hb Type</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize <em>Batch Size</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef <em>Any Meta Def</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On
+ * Delete</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType <em>Hb Type</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize <em>Batch Size
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef <em>Any Meta
+ * Def</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference()
  * @model
  * @generated
  */
 public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotatedETypeElement {
 	/**
-	 * Returns the value of the '<em><b>Hb Cache</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Hb Cache</b></em>' containment reference. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Cache</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Hb Cache</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb Cache</em>' containment reference.
 	 * @see #setHbCache(Cache)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbCache()
@@ -60,22 +79,25 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	Cache getHbCache();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb Cache</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache
+	 * <em>Hb Cache</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Hb Cache</em>' containment reference.
 	 * @see #getHbCache()
 	 * @generated
 	 */
 	void setHbCache(Cache value);
 
 	/**
-	 * Returns the value of the '<em><b>Hb Fetch</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Hb Fetch</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Fetch</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Hb Fetch</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb Fetch</em>' reference.
 	 * @see #setHbFetch(Fetch)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbFetch()
@@ -85,23 +107,25 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	Fetch getHbFetch();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb Fetch</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch
+	 * <em>Hb Fetch</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Hb Fetch</em>' reference.
 	 * @see #getHbFetch()
 	 * @generated
 	 */
 	void setHbFetch(Fetch value);
 
 	/**
-	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Hb On Delete</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Hb On Delete</em>' reference isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb On Delete</em>' reference.
 	 * @see #setHbOnDelete(OnDelete)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbOnDelete()
@@ -111,23 +135,26 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	OnDelete getHbOnDelete();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb On Delete</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete
+	 * <em>Hb On Delete</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Hb On Delete</em>' reference.
 	 * @see #getHbOnDelete()
 	 * @generated
 	 */
 	void setHbOnDelete(OnDelete value);
 
 	/**
-	 * Returns the value of the '<em><b>Natural Id</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Natural Id</b></em>' containment reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Natural Id</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Natural Id</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Natural Id</em>' containment reference.
 	 * @see #setNaturalId(NaturalId)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_NaturalId()
@@ -137,23 +164,26 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	NaturalId getNaturalId();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Natural Id</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId
+	 * <em>Natural Id</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Natural Id</em>' containment reference.
 	 * @see #getNaturalId()
 	 * @generated
 	 */
 	void setNaturalId(NaturalId value);
 
 	/**
-	 * Returns the value of the '<em><b>Immutable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Immutable</b></em>' containment reference. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Immutable</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Immutable</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Immutable</em>' containment reference.
 	 * @see #setImmutable(Immutable)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_Immutable()
@@ -163,23 +193,26 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	Immutable getImmutable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Immutable</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable
+	 * <em>Immutable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Immutable</em>' containment reference.
 	 * @see #getImmutable()
 	 * @generated
 	 */
 	void setImmutable(Immutable value);
 
 	/**
-	 * Returns the value of the '<em><b>Not Found</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Not Found</b></em>' containment reference. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Not Found</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Not Found</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Not Found</em>' containment reference.
 	 * @see #setNotFound(NotFound)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_NotFound()
@@ -189,23 +222,26 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	NotFound getNotFound();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Not Found</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound
+	 * <em>Not Found</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Not Found</em>' containment reference.
 	 * @see #getNotFound()
 	 * @generated
 	 */
 	void setNotFound(NotFound value);
 
 	/**
-	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Type</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Hb Type</em>' containment reference isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb Type</em>' containment reference.
 	 * @see #setHbType(Type)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbType()
@@ -215,23 +251,25 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	Type getHbType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType <em>Hb Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb Type</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType
+	 * <em>Hb Type</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Hb Type</em>' containment reference.
 	 * @see #getHbType()
 	 * @generated
 	 */
 	void setHbType(Type value);
 
 	/**
-	 * Returns the value of the '<em><b>Batch Size</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Batch Size</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Batch Size</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Batch Size</em>' reference isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Batch Size</em>' reference.
 	 * @see #setBatchSize(BatchSize)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_BatchSize()
@@ -241,23 +279,25 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	BatchSize getBatchSize();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize <em>Batch Size</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Batch Size</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize
+	 * <em>Batch Size</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Batch Size</em>' reference.
 	 * @see #getBatchSize()
 	 * @generated
 	 */
 	void setBatchSize(BatchSize value);
 
 	/**
-	 * Returns the value of the '<em><b>Any</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Any</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Any</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Any</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Any</em>' reference.
 	 * @see #setAny(Any)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_Any()
@@ -267,23 +307,25 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	Any getAny();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Any</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Any</em>' reference.
 	 * @see #getAny()
 	 * @generated
 	 */
 	void setAny(Any value);
 
 	/**
-	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Any Meta Def</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Any Meta Def</em>' reference isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Any Meta Def</em>' reference.
 	 * @see #setAnyMetaDef(AnyMetaDef)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_AnyMetaDef()
@@ -293,10 +335,12 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	AnyMetaDef getAnyMetaDef();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef <em>Any Meta Def</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Any Meta Def</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef
+	 * <em>Any Meta Def</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Any Meta Def</em>' reference.
 	 * @see #getAnyMetaDef()
 	 * @generated
 	 */

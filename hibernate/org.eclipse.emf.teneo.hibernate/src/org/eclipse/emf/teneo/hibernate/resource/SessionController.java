@@ -47,7 +47,8 @@ public class SessionController {
 	/** Register a session controller */
 	public static synchronized void registerSessionController(String name, SessionController sc) {
 		if (sessionControllers.get(name) != null) {
-			throw new HbMapperException("There is already a session controller registered with the name: " + name);
+			throw new HbMapperException(
+					"There is already a session controller registered with the name: " + name);
 		}
 		if (log.isDebugEnabled()) {
 			log.debug("Registering session controller: " + name);
@@ -58,7 +59,8 @@ public class SessionController {
 	/** Deregisters a session controller */
 	public static synchronized void deRegisterSessionController(String name) {
 		if (sessionControllers.get(name) == null) {
-			throw new HbMapperException("There is no session controller registered with the name: " + name);
+			throw new HbMapperException("There is no session controller registered with the name: "
+					+ name);
 		}
 		if (log.isDebugEnabled()) {
 			log.debug("De-Registering session controller: " + name);
@@ -86,7 +88,7 @@ public class SessionController {
 
 	/**
 	 * @param hbDataStore
-	 *            the hbDataStore to set
+	 *          the hbDataStore to set
 	 */
 	public void setHbDataStore(HbDataStore hbDataStore) {
 		this.hbDataStore = hbDataStore;

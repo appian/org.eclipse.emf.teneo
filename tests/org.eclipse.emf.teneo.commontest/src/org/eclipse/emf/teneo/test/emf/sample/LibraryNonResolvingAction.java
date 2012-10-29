@@ -36,8 +36,8 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests non-resolving behavior of containment references. Main test is that setTrackingModification does not result in
- * loaded containment elists.
+ * Tests non-resolving behavior of containment references. Main test is that setTrackingModification
+ * does not result in loaded containment elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.11 $
@@ -207,7 +207,7 @@ public class LibraryNonResolvingAction extends AbstractTestAction {
 		 * Returns <code>false</code>
 		 * 
 		 * @param type
-		 *            the type.
+		 *          the type.
 		 * @return <code>false</code>
 		 */
 		@Override

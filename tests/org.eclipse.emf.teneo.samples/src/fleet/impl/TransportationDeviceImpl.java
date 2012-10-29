@@ -14,23 +14,23 @@ import org.eclipse.emf.ecore.EClass;
 import temporal.mod.TemporalBaseEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Transportation Device</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Transportation Device</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.TransportationDeviceImpl#getManufacturedBy <em>Manufactured By</em>}</li>
- *   <li>{@link fleet.impl.TransportationDeviceImpl#getYear <em>Year</em>}</li>
+ * <li>{@link fleet.impl.TransportationDeviceImpl#getManufacturedBy <em>Manufactured By</em>}</li>
+ * <li>{@link fleet.impl.TransportationDeviceImpl#getYear <em>Year</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class TransportationDeviceImpl extends TemporalBaseEObjectImpl implements TransportationDevice {
+public class TransportationDeviceImpl extends TemporalBaseEObjectImpl implements
+		TransportationDevice {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TransportationDeviceImpl() {
@@ -38,8 +38,8 @@ public class TransportationDeviceImpl extends TemporalBaseEObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,8 +48,8 @@ public class TransportationDeviceImpl extends TemporalBaseEObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -58,17 +58,17 @@ public class TransportationDeviceImpl extends TemporalBaseEObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getManufacturedBy() {
-		return (String)eGet(FleetPackage.Literals.TRANSPORTATION_DEVICE__MANUFACTURED_BY, true);
+		return (String) eGet(FleetPackage.Literals.TRANSPORTATION_DEVICE__MANUFACTURED_BY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setManufacturedBy(String newManufacturedBy) {
@@ -76,21 +76,21 @@ public class TransportationDeviceImpl extends TemporalBaseEObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getYear() {
-		return ((Integer)eGet(FleetPackage.Literals.TRANSPORTATION_DEVICE__YEAR, true)).intValue();
+		return ((Integer) eGet(FleetPackage.Literals.TRANSPORTATION_DEVICE__YEAR, true)).intValue();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setYear(int newYear) {
 		eSet(FleetPackage.Literals.TRANSPORTATION_DEVICE__YEAR, new Integer(newYear));
 	}
 
-} //TransportationDeviceImpl
+} // TransportationDeviceImpl

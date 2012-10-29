@@ -49,7 +49,8 @@ public class BZ290969Action extends AbstractTestAction {
 
 	/** Add extensions if you want */
 	public void setExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(SQLNameStrategy.class.getName(), TeneoNewSQLNameStrategy.class.getName());
+		extensionManager.registerExtension(SQLNameStrategy.class.getName(),
+				TeneoNewSQLNameStrategy.class.getName());
 	}
 
 	// @Override

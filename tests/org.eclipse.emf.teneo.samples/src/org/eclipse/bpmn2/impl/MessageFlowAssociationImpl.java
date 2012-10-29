@@ -26,25 +26,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message Flow Association</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Message Flow Association</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageFlowAssociationImpl#getInnerMessageFlowRef <em>Inner Message Flow Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageFlowAssociationImpl#getOuterMessageFlowRef <em>Outer Message Flow Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageFlowAssociationImpl#getInnerMessageFlowRef <em>Inner
+ * Message Flow Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageFlowAssociationImpl#getOuterMessageFlowRef <em>Outer
+ * Message Flow Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class MessageFlowAssociationImpl extends BaseElementImpl implements
-		MessageFlowAssociation {
+public class MessageFlowAssociationImpl extends BaseElementImpl implements MessageFlowAssociation {
 	/**
-	 * The cached value of the '{@link #getInnerMessageFlowRef() <em>Inner Message Flow Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInnerMessageFlowRef() <em>Inner Message Flow Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInnerMessageFlowRef()
 	 * @generated
 	 * @ordered
@@ -52,9 +52,9 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	protected MessageFlow innerMessageFlowRef;
 
 	/**
-	 * The cached value of the '{@link #getOuterMessageFlowRef() <em>Outer Message Flow Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOuterMessageFlowRef() <em>Outer Message Flow Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOuterMessageFlowRef()
 	 * @generated
 	 * @ordered
@@ -62,8 +62,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	protected MessageFlow outerMessageFlowRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MessageFlowAssociationImpl() {
@@ -71,8 +71,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,8 +81,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlow getInnerMessageFlowRef() {
@@ -91,9 +91,7 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 			innerMessageFlowRef = (MessageFlow) eResolveProxy(oldInnerMessageFlowRef);
 			if (innerMessageFlowRef != oldInnerMessageFlowRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.MESSAGE_FLOW_ASSOCIATION__INNER_MESSAGE_FLOW_REF,
 							oldInnerMessageFlowRef, innerMessageFlowRef));
 			}
@@ -102,8 +100,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlow basicGetInnerMessageFlowRef() {
@@ -111,24 +109,22 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInnerMessageFlowRef(MessageFlow newInnerMessageFlowRef) {
 		MessageFlow oldInnerMessageFlowRef = innerMessageFlowRef;
 		innerMessageFlowRef = newInnerMessageFlowRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Bpmn2Package.MESSAGE_FLOW_ASSOCIATION__INNER_MESSAGE_FLOW_REF,
-					oldInnerMessageFlowRef, innerMessageFlowRef));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.MESSAGE_FLOW_ASSOCIATION__INNER_MESSAGE_FLOW_REF, oldInnerMessageFlowRef,
+					innerMessageFlowRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlow getOuterMessageFlowRef() {
@@ -137,9 +133,7 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 			outerMessageFlowRef = (MessageFlow) eResolveProxy(oldOuterMessageFlowRef);
 			if (outerMessageFlowRef != oldOuterMessageFlowRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.MESSAGE_FLOW_ASSOCIATION__OUTER_MESSAGE_FLOW_REF,
 							oldOuterMessageFlowRef, outerMessageFlowRef));
 			}
@@ -148,8 +142,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlow basicGetOuterMessageFlowRef() {
@@ -157,24 +151,22 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOuterMessageFlowRef(MessageFlow newOuterMessageFlowRef) {
 		MessageFlow oldOuterMessageFlowRef = outerMessageFlowRef;
 		outerMessageFlowRef = newOuterMessageFlowRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Bpmn2Package.MESSAGE_FLOW_ASSOCIATION__OUTER_MESSAGE_FLOW_REF,
-					oldOuterMessageFlowRef, outerMessageFlowRef));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.MESSAGE_FLOW_ASSOCIATION__OUTER_MESSAGE_FLOW_REF, oldOuterMessageFlowRef,
+					outerMessageFlowRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -193,8 +185,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -211,8 +203,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -229,8 +221,8 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -244,4 +236,4 @@ public class MessageFlowAssociationImpl extends BaseElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //MessageFlowAssociationImpl
+} // MessageFlowAssociationImpl

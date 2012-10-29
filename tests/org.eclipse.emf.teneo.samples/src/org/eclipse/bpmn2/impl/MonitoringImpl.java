@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.Monitoring;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Monitoring</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Monitoring</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class MonitoringImpl extends BaseElementImpl implements Monitoring {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MonitoringImpl() {
@@ -39,8 +38,8 @@ public class MonitoringImpl extends BaseElementImpl implements Monitoring {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class MonitoringImpl extends BaseElementImpl implements Monitoring {
 		return Bpmn2Package.Literals.MONITORING;
 	}
 
-} //MonitoringImpl
+} // MonitoringImpl

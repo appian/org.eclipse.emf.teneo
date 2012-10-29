@@ -17,24 +17,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Language</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Language</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.LanguageImpl#getLanguage <em>Language</em>}</li>
- *   <li>{@link lobj.impl.LanguageImpl#getCode <em>Code</em>}</li>
+ * <li>{@link lobj.impl.LanguageImpl#getLanguage <em>Language</em>}</li>
+ * <li>{@link lobj.impl.LanguageImpl#getCode <em>Code</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class LanguageImpl extends EObjectImpl implements Language {
 	/**
-	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLanguage()
 	 * @generated
 	 * @ordered
@@ -42,9 +41,9 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	protected static final String LANGUAGE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLanguage()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,9 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	protected String language = LANGUAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getCode()
 	 * @generated
 	 * @ordered
@@ -62,9 +61,9 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	protected static final String CODE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCode() <em>Code</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getCode()
 	 * @generated
 	 * @ordered
@@ -72,8 +71,8 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	protected String code = CODE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LanguageImpl() {
@@ -81,8 +80,8 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -90,8 +89,8 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLanguage() {
@@ -99,20 +98,21 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLanguage(String newLanguage) {
 		String oldLanguage = language;
 		language = newLanguage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.LANGUAGE__LANGUAGE, oldLanguage, language));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.LANGUAGE__LANGUAGE,
+					oldLanguage, language));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getCode() {
@@ -120,88 +120,90 @@ public class LanguageImpl extends EObjectImpl implements Language {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCode(String newCode) {
 		String oldCode = code;
 		code = newCode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.LANGUAGE__CODE, oldCode, code));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.LANGUAGE__CODE, oldCode,
+					code));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.LANGUAGE__LANGUAGE:
-				return getLanguage();
-			case LobjPackage.LANGUAGE__CODE:
-				return getCode();
+		case LobjPackage.LANGUAGE__LANGUAGE:
+			return getLanguage();
+		case LobjPackage.LANGUAGE__CODE:
+			return getCode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.LANGUAGE__LANGUAGE:
-				setLanguage((String)newValue);
-				return;
-			case LobjPackage.LANGUAGE__CODE:
-				setCode((String)newValue);
-				return;
+		case LobjPackage.LANGUAGE__LANGUAGE:
+			setLanguage((String) newValue);
+			return;
+		case LobjPackage.LANGUAGE__CODE:
+			setCode((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.LANGUAGE__LANGUAGE:
-				setLanguage(LANGUAGE_EDEFAULT);
-				return;
-			case LobjPackage.LANGUAGE__CODE:
-				setCode(CODE_EDEFAULT);
-				return;
+		case LobjPackage.LANGUAGE__LANGUAGE:
+			setLanguage(LANGUAGE_EDEFAULT);
+			return;
+		case LobjPackage.LANGUAGE__CODE:
+			setCode(CODE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.LANGUAGE__LANGUAGE:
-				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
-			case LobjPackage.LANGUAGE__CODE:
-				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
+		case LobjPackage.LANGUAGE__LANGUAGE:
+			return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
+		case LobjPackage.LANGUAGE__CODE:
+			return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (language: ");
@@ -212,4 +214,4 @@ public class LanguageImpl extends EObjectImpl implements Language {
 		return result.toString();
 	}
 
-} //LanguageImpl
+} // LanguageImpl

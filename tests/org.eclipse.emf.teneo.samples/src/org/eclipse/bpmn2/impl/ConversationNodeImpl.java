@@ -40,29 +40,32 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Conversation Node</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Conversation Node</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getIncomingConversationLinks <em>Incoming Conversation Links</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getOutgoingConversationLinks <em>Outgoing Conversation Links</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getParticipantRefs <em>Participant Refs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getMessageFlowRefs <em>Message Flow Refs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getCorrelationKeys <em>Correlation Keys</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getIncomingConversationLinks <em>Incoming
+ * Conversation Links</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getOutgoingConversationLinks <em>Outgoing
+ * Conversation Links</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getParticipantRefs <em>Participant Refs
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getMessageFlowRefs <em>Message Flow Refs
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getCorrelationKeys <em>Correlation Keys
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationNodeImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ConversationNodeImpl extends BaseElementImpl implements
-		ConversationNode {
+public class ConversationNodeImpl extends BaseElementImpl implements ConversationNode {
 	/**
-	 * The cached value of the '{@link #getParticipantRefs() <em>Participant Refs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParticipantRefs() <em>Participant Refs</em>}' reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getParticipantRefs()
 	 * @generated
 	 * @ordered
@@ -70,9 +73,9 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	protected EList<Participant> participantRefs;
 
 	/**
-	 * The cached value of the '{@link #getMessageFlowRefs() <em>Message Flow Refs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMessageFlowRefs() <em>Message Flow Refs</em>}' reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessageFlowRefs()
 	 * @generated
 	 * @ordered
@@ -80,9 +83,9 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	protected EList<MessageFlow> messageFlowRefs;
 
 	/**
-	 * The cached value of the '{@link #getCorrelationKeys() <em>Correlation Keys</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCorrelationKeys() <em>Correlation Keys</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCorrelationKeys()
 	 * @generated
 	 * @ordered
@@ -90,9 +93,9 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	protected EList<CorrelationKey> correlationKeys;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -100,9 +103,9 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -110,8 +113,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConversationNodeImpl() {
@@ -119,8 +122,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,76 +132,77 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationLink> getIncomingConversationLinks() {
 		// TODO: implement this method to return the 'Incoming Conversation Links' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationLink> getOutgoingConversationLinks() {
 		// TODO: implement this method to return the 'Outgoing Conversation Links' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Participant> getParticipantRefs() {
 		if (participantRefs == null) {
-			participantRefs = new EObjectResolvingEList<Participant>(
-					Participant.class, this,
+			participantRefs = new EObjectResolvingEList<Participant>(Participant.class, this,
 					Bpmn2Package.CONVERSATION_NODE__PARTICIPANT_REFS);
 		}
 		return participantRefs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<MessageFlow> getMessageFlowRefs() {
 		if (messageFlowRefs == null) {
-			messageFlowRefs = new EObjectResolvingEList<MessageFlow>(
-					MessageFlow.class, this,
+			messageFlowRefs = new EObjectResolvingEList<MessageFlow>(MessageFlow.class, this,
 					Bpmn2Package.CONVERSATION_NODE__MESSAGE_FLOW_REFS);
 		}
 		return messageFlowRefs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<CorrelationKey> getCorrelationKeys() {
 		if (correlationKeys == null) {
-			correlationKeys = new EObjectContainmentEList<CorrelationKey>(
-					CorrelationKey.class, this,
+			correlationKeys = new EObjectContainmentEList<CorrelationKey>(CorrelationKey.class, this,
 					Bpmn2Package.CONVERSATION_NODE__CORRELATION_KEYS);
 		}
 		return correlationKeys;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -206,37 +210,36 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CONVERSATION_NODE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.CONVERSATION_NODE__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.CONVERSATION_NODE__CORRELATION_KEYS:
-			return ((InternalEList<?>) getCorrelationKeys()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getCorrelationKeys()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -259,8 +262,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -269,18 +272,15 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 		switch (featureID) {
 		case Bpmn2Package.CONVERSATION_NODE__PARTICIPANT_REFS:
 			getParticipantRefs().clear();
-			getParticipantRefs().addAll(
-					(Collection<? extends Participant>) newValue);
+			getParticipantRefs().addAll((Collection<? extends Participant>) newValue);
 			return;
 		case Bpmn2Package.CONVERSATION_NODE__MESSAGE_FLOW_REFS:
 			getMessageFlowRefs().clear();
-			getMessageFlowRefs().addAll(
-					(Collection<? extends MessageFlow>) newValue);
+			getMessageFlowRefs().addAll((Collection<? extends MessageFlow>) newValue);
 			return;
 		case Bpmn2Package.CONVERSATION_NODE__CORRELATION_KEYS:
 			getCorrelationKeys().clear();
-			getCorrelationKeys().addAll(
-					(Collection<? extends CorrelationKey>) newValue);
+			getCorrelationKeys().addAll((Collection<? extends CorrelationKey>) newValue);
 			return;
 		case Bpmn2Package.CONVERSATION_NODE__NAME:
 			setName((String) newValue);
@@ -290,8 +290,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -314,8 +314,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -332,15 +332,14 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 		case Bpmn2Package.CONVERSATION_NODE__CORRELATION_KEYS:
 			return correlationKeys != null && !correlationKeys.isEmpty();
 		case Bpmn2Package.CONVERSATION_NODE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -359,8 +358,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -379,8 +378,8 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -395,4 +394,4 @@ public class ConversationNodeImpl extends BaseElementImpl implements
 		return result.toString();
 	}
 
-} //ConversationNodeImpl
+} // ConversationNodeImpl

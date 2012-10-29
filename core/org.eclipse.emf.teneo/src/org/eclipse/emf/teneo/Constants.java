@@ -30,13 +30,16 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 public class Constants {
 	/** StructuralFeatures for TEXT content (part of a mixed complex type) */
-	public static final EStructuralFeature TEXT = XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text();
+	public static final EStructuralFeature TEXT = XMLTypePackage.eINSTANCE
+			.getXMLTypeDocumentRoot_Text();
 
 	/** StructuralFeatures for CDATA content (part of a mixed complex type) */
-	public static final EStructuralFeature CDATA = XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_CDATA();
+	public static final EStructuralFeature CDATA = XMLTypePackage.eINSTANCE
+			.getXMLTypeDocumentRoot_CDATA();
 
 	/** StructuralFeatures for COMMENT content (part of a mixed complex type) */
-	public static final EStructuralFeature COMMENT = XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Comment();
+	public static final EStructuralFeature COMMENT = XMLTypePackage.eINSTANCE
+			.getXMLTypeDocumentRoot_Comment();
 
 	/**
 	 * The name under which this connection (PersistenceManagerFactory) is registered
@@ -50,7 +53,8 @@ public class Constants {
 	public static final String PROP_EDITOR_ID = "editorid";
 
 	/**
-	 * The NS URI of the epackage handled by this database (can be more than one, then should be a comma delimited list)
+	 * The NS URI of the epackage handled by this database (can be more than one, then should be a
+	 * comma delimited list)
 	 */
 	public static final String PROP_EPACKAGE_NSURI = "nsuri";
 
@@ -91,4 +95,12 @@ public class Constants {
 
 	public final static String ANNOTATION_SOURCE_TENEO_JPA = "teneo.jpa";
 	public final static String ANNOTATION_SOURCE_TENEO_MAPPING = "teneo.mapping";
+
+	public final static String ANNOTATION_SOURCE_AUDITING = "teneo.auditing";
+	public final static String ANNOTATION_AUDITING_MODELELEMENT = "teneo.auditing.modelelement";
+	public final static String ANNOTATION_AUDITING_MODELELEMENT_AUDITING = "teneo.auditing.modelelement.auditing";
+
+	public final static String ANNOTATION_AUDITING_NOT = "@NoAuditing";
+
+	public final static String ANNOTATION_SOURCE_TENEO_JPA_AUDITING = "teneo.jpa.auditing";
 }

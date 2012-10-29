@@ -15,30 +15,29 @@
 package org.eclipse.bpmn2;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data Object Reference</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Data Object Reference</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.DataObjectReference#getDataObjectRef <em>Data Object Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.DataObjectReference#getDataObjectRef <em>Data Object Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getDataObjectReference()
  * @model extendedMetaData="name='tDataObjectReference' kind='elementOnly'"
  * @generated
  */
 public interface DataObjectReference extends FlowElement, ItemAwareElement {
 	/**
-	 * Returns the value of the '<em><b>Data Object Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Data Object Ref</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Data Object Ref</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Data Object Ref</em>' reference isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Data Object Ref</em>' reference.
 	 * @see #setDataObjectRef(DataObject)
 	 * @see org.eclipse.bpmn2.Bpmn2Package#getDataObjectReference_DataObjectRef()
@@ -49,10 +48,11 @@ public interface DataObjectReference extends FlowElement, ItemAwareElement {
 	DataObject getDataObjectRef();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpmn2.DataObjectReference#getDataObjectRef <em>Data Object Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Object Ref</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.bpmn2.DataObjectReference#getDataObjectRef
+	 * <em>Data Object Ref</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Data Object Ref</em>' reference.
 	 * @see #getDataObjectRef()
 	 * @generated
 	 */

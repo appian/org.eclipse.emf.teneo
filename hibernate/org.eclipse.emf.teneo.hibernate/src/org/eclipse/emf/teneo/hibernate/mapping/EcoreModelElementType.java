@@ -34,8 +34,7 @@ import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
 /**
- * Persists references to EClassifiers and EStructuralFeatures as a varchar
- * field.
+ * Persists references to EClassifiers and EStructuralFeatures as a varchar field.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.5 $ $Date: 2011/02/27 20:10:36 $
@@ -52,8 +51,7 @@ public class EcoreModelElementType implements UserType, ParameterizedType {
 		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
 	}
 
-	public Object assemble(Serializable cached, Object owner)
-			throws HibernateException {
+	public Object assemble(Serializable cached, Object owner) throws HibernateException {
 		return convertFromString((String) cached);
 	}
 
@@ -88,8 +86,8 @@ public class EcoreModelElementType implements UserType, ParameterizedType {
 		return false;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner)
-			throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor,
+			Object owner) throws HibernateException, SQLException {
 		final String value = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -105,21 +103,19 @@ public class EcoreModelElementType implements UserType, ParameterizedType {
 			return ePackage;
 		} else if (values.length == 2) { // EClassifier
 			final String eClassifierName = values[1];
-			final EClassifier eClassifier = ePackage
-					.getEClassifier(eClassifierName);
+			final EClassifier eClassifier = ePackage.getEClassifier(eClassifierName);
 			return eClassifier;
 		} else {
 			final String eClassifierName = values[1];
-			final EClassifier eClassifier = ePackage
-					.getEClassifier(eClassifierName);
+			final EClassifier eClassifier = ePackage.getEClassifier(eClassifierName);
 			final EClass eClass = (EClass) eClassifier;
 			final String eFeatureName = values[2];
 			return eClass.getEStructuralFeature(eFeatureName);
 		}
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor)
-			throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
@@ -140,16 +136,14 @@ public class EcoreModelElementType implements UserType, ParameterizedType {
 
 		} else {
 			final EStructuralFeature feature = (EStructuralFeature) value;
-			final String uri = feature.getEContainingClass().getEPackage()
-					.getNsURI();
+			final String uri = feature.getEContainingClass().getEPackage().getNsURI();
 			final String eClassName = feature.getEContainingClass().getName();
 			final String eFeatureName = feature.getName();
 			return uri + SEPARATOR + eClassName + SEPARATOR + eFeatureName;
 		}
 	}
 
-	public Object replace(Object original, Object target, Object owner)
-			throws HibernateException {
+	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;
 	}
 

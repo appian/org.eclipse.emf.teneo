@@ -35,28 +35,24 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Annotates a one-to-many attribute (an eattribute with ismany=true), an
- * example is a list of primitives (list of ints).
+ * Annotates a one-to-many attribute (an eattribute with ismany=true), an example is a list of
+ * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.11 $
  */
 
-public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
-		implements ExtensionPoint {
+public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
-	protected static final Log log = LogFactory
-			.getLog(OneToManyAttributeAnnotator.class);
+	protected static final Log log = LogFactory.getLog(OneToManyAttributeAnnotator.class);
 
 	private TemporalType optionDefaultTemporal = null;
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEAttribute aAttribute) {
-		final String logStr = aAttribute.getModelEAttribute().getName()
-				+ "/"
-				+ aAttribute.getModelEAttribute().getEContainingClass()
-						.getName();
+		final String logStr = aAttribute.getModelEAttribute().getName() + "/"
+				+ aAttribute.getModelEAttribute().getEContainingClass().getName();
 
 		if (log.isDebugEnabled()) {
 			log.debug("EAttribute " + logStr + " needs a onetomany");
@@ -83,14 +79,12 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 			log.debug("One to many present adding default information if required");
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames()
-				&& aAttribute.getForeignKey() == null) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aAttribute.getForeignKey() == null) {
 			aAttribute.setForeignKey(createFK(aAttribute));
 		}
 
 		// handle list of enums
-		if (eAttribute.getEType() instanceof EEnum
-				&& aAttribute.getEnumerated() == null) {
+		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
 			final Enumerated enumerated = getFactory().createEnumerated();
 			enumerated.setValue(EnumType.STRING);
 			enumerated.setEModelElement(eAttribute);
@@ -118,26 +112,22 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 		}
 
 		if (aAttribute.getJoinColumns().size() == 0) {
-			final List<String> names = getSqlNameStrategy()
-					.getOneToManyEAttributeJoinColumns(aAttribute);
-			aAttribute
-					.getJoinColumns()
-					.addAll(getJoinColumns(names,
-							FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
+			final List<String> names = getSqlNameStrategy().getOneToManyEAttributeJoinColumns(aAttribute);
+			aAttribute.getJoinColumns().addAll(
+					getJoinColumns(names, FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
 		}
 
 		// set unique and indexed
 		if (!otmWasSet) {
 			if (log.isDebugEnabled()) {
 				log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
-					+ "because otm was not set manually");
+						+ "because otm was not set manually");
 			}
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
 
 			if (aAttribute.getElementCollection() != null
-					&& aAttribute.getElementCollection().getFetch() != otm
-							.getFetch()) {
+					&& aAttribute.getElementCollection().getFetch() != otm.getFetch()) {
 				otm.setFetch(aAttribute.getElementCollection().getFetch());
 			}
 		}
@@ -153,8 +143,7 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
 		super.setPersistenceOptions(persistenceOptions);
 
-		optionDefaultTemporal = TemporalType.get(persistenceOptions
-				.getDefaultTemporalValue());
+		optionDefaultTemporal = TemporalType.get(persistenceOptions.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
 			throw new StoreMappingException("Temporal value not found: "
 					+ persistenceOptions.getDefaultTemporalValue());

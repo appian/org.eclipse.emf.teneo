@@ -16,23 +16,25 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Book Definition Resource Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Book Definition Resource Link</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.BookDefinitionResourceLinkImpl#getBookSubject <em>Book Subject</em>}</li>
+ * <li>
+ * {@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.impl.BookDefinitionResourceLinkImpl#getBookSubject
+ * <em>Book Subject</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements BookDefinitionResourceLink {
+public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements
+		BookDefinitionResourceLink {
 	/**
-	 * The default value of the '{@link #getBookSubject() <em>Book Subject</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getBookSubject() <em>Book Subject</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBookSubject()
 	 * @generated
 	 * @ordered
@@ -40,9 +42,9 @@ public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements 
 	protected static final String BOOK_SUBJECT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBookSubject() <em>Book Subject</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getBookSubject() <em>Book Subject</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBookSubject()
 	 * @generated
 	 * @ordered
@@ -50,8 +52,8 @@ public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements 
 	protected String bookSubject = BOOK_SUBJECT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BookDefinitionResourceLinkImpl() {
@@ -59,8 +61,8 @@ public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,8 +71,8 @@ public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getBookSubject() {
@@ -78,83 +80,86 @@ public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBookSubject(String newBookSubject) {
 		String oldBookSubject = bookSubject;
 		bookSubject = newBookSubject;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT, oldBookSubject, bookSubject));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT, oldBookSubject, bookSubject));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
-				return getBookSubject();
+		case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
+			return getBookSubject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
-				setBookSubject((String)newValue);
-				return;
+		case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
+			setBookSubject((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
-				setBookSubject(BOOK_SUBJECT_EDEFAULT);
-				return;
+		case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
+			setBookSubject(BOOK_SUBJECT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
-				return BOOK_SUBJECT_EDEFAULT == null ? bookSubject != null : !BOOK_SUBJECT_EDEFAULT.equals(bookSubject);
+		case TestPackage.BOOK_DEFINITION_RESOURCE_LINK__BOOK_SUBJECT:
+			return BOOK_SUBJECT_EDEFAULT == null ? bookSubject != null : !BOOK_SUBJECT_EDEFAULT
+					.equals(bookSubject);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (bookSubject: ");
@@ -163,4 +168,4 @@ public class BookDefinitionResourceLinkImpl extends ResourceLinkImpl implements 
 		return result.toString();
 	}
 
-} //BookDefinitionResourceLinkImpl
+} // BookDefinitionResourceLinkImpl

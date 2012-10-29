@@ -23,7 +23,7 @@ import org.hibernate.engine.spi.SessionImplementor;
  */
 
 public class ENumUserIntegerType extends ENumUserType {
-	
+
 	/** The sql types used for enums */
 	private static final int[] SQL_TYPES = new int[] { Types.INTEGER };
 
@@ -33,10 +33,12 @@ public class ENumUserIntegerType extends ENumUserType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[], java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
+	 * java.lang.Object)
 	 */
 	@Override
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor,
+			Object owner) throws HibernateException, SQLException {
 		final int value = rs.getInt(names[0]);
 		if (rs.wasNull())
 			return null;
@@ -61,10 +63,12 @@ public class ENumUserIntegerType extends ENumUserType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object,
+	 * int)
 	 */
 	@Override
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.INTEGER);
 		} else {

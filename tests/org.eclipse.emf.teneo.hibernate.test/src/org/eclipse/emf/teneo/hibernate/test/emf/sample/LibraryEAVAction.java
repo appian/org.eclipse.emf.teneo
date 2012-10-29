@@ -96,8 +96,7 @@ public class LibraryEAVAction extends AbstractTestAction {
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
 
-			assertTrue((lib.getWriters().get(0)).getName().compareTo(
-					"JRR Tolkien") == 0);
+			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 			testLazySize(lib.getWriters().get(0).getBooks());
 
 			// final Object[] eobjs =
@@ -122,7 +121,7 @@ public class LibraryEAVAction extends AbstractTestAction {
 		}
 		testMerge(store);
 	}
-	
+
 	protected void testMerge(TestStore store) {
 
 		{
@@ -138,14 +137,15 @@ public class LibraryEAVAction extends AbstractTestAction {
 
 			// now do merge
 			store.beginTransaction();
-			final Library lib2 = (Library)HbUtil.merge(((HibernateTestStore)store).getSession(), lib, 3);
+			final Library lib2 = (Library) HbUtil
+					.merge(((HibernateTestStore) store).getSession(), lib, 3);
 			assertTrue(lib2 != lib);
 			assertTrue(lib2.getName().equals(lib.getName()));
 			assertTrue(lib2.getBooks().get(0) != bk);
 			assertTrue(lib2.getBooks().get(0).getTitle().equals(bk.getTitle()));
 			assertTrue(lib2.getBooks().get(0).getPages() == bk.getPages());
 			store.commitTransaction();
-			
+
 			store.beginTransaction();
 			Library lib3 = store.getObjects(Library.class).get(0);
 			assertTrue(lib3.getName().equals(lib.getName()));
@@ -155,8 +155,9 @@ public class LibraryEAVAction extends AbstractTestAction {
 	}
 
 	protected void testLazySize(List<?> list) {
-		final PersistableDelegateList<?> persistableEList = (PersistableDelegateList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableDelegateList<?> persistableEList = (PersistableDelegateList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 		int size = LazyCollectionUtils.size(list);

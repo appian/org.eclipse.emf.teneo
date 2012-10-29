@@ -28,28 +28,20 @@ import org.hibernate.HibernateException;
 import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.SessionFactoryObserver;
 import org.hibernate.StatelessSession;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.spi.FilterDefinition;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
-import org.hibernate.service.BootstrapServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
-import org.hibernate.service.internal.StandardServiceRegistryImpl;
 import org.hibernate.stat.Statistics;
 
 /**
- * Holds the sessionfactory related methods, makes the HbSessionDataStore better
- * readable.
+ * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.11 $
  */
-public abstract class HbBaseSessionDataStore extends HbDataStore implements
-		SessionFactory {
+public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
 
 	private static final long serialVersionUID = 1L;
 
@@ -95,15 +87,14 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 
 	/**
 	 * @param sessionFactory
-	 *            the sessionFactory to set
+	 *          the sessionFactory to set
 	 */
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	@SuppressWarnings({ "rawtypes", "deprecation" })
-	public void evict(Class persistentClass, Serializable id)
-			throws HibernateException {
+	public void evict(Class persistentClass, Serializable id) throws HibernateException {
 		getSessionFactory().evict(persistentClass, id);
 	}
 
@@ -113,8 +104,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	}
 
 	@SuppressWarnings({ "deprecation" })
-	public void evictCollection(String roleName, Serializable id)
-			throws HibernateException {
+	public void evictCollection(String roleName, Serializable id) throws HibernateException {
 		getSessionFactory().evictCollection(roleName, id);
 	}
 
@@ -124,8 +114,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	}
 
 	@SuppressWarnings({ "deprecation" })
-	public void evictEntity(String entityName, Serializable id)
-			throws HibernateException {
+	public void evictEntity(String entityName, Serializable id) throws HibernateException {
 		getSessionFactory().evictEntity(entityName, id);
 	}
 
@@ -155,18 +144,15 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	}
 
 	@SuppressWarnings({ "rawtypes" })
-	public ClassMetadata getClassMetadata(Class persistentClass)
-			throws HibernateException {
+	public ClassMetadata getClassMetadata(Class persistentClass) throws HibernateException {
 		return getSessionFactory().getClassMetadata(persistentClass);
 	}
 
-	public ClassMetadata getClassMetadata(String entityName)
-			throws HibernateException {
+	public ClassMetadata getClassMetadata(String entityName) throws HibernateException {
 		return getSessionFactory().getClassMetadata(entityName);
 	}
 
-	public CollectionMetadata getCollectionMetadata(String roleName)
-			throws HibernateException {
+	public CollectionMetadata getCollectionMetadata(String roleName) throws HibernateException {
 		return getSessionFactory().getCollectionMetadata(roleName);
 	}
 
@@ -179,8 +165,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 		return getSessionFactory().getDefinedFilterNames();
 	}
 
-	public FilterDefinition getFilterDefinition(String filterName)
-			throws HibernateException {
+	public FilterDefinition getFilterDefinition(String filterName) throws HibernateException {
 		return getSessionFactory().getFilterDefinition(filterName);
 	}
 
@@ -201,19 +186,18 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	}
 
 	public Session openSession(Connection connection, Interceptor interceptor) {
-		return ((SessionFactoryImpl) getSessionFactory()).withOptions()
-				.interceptor(interceptor).connection(connection).openSession();
-	}
-
-	public Session openSession(Connection connection) {
-		return ((SessionFactoryImpl) getSessionFactory()).withOptions()
+		return ((SessionFactoryImpl) getSessionFactory()).withOptions().interceptor(interceptor)
 				.connection(connection).openSession();
 	}
 
-	public Session openSession(Interceptor interceptor)
-			throws HibernateException {
-		return ((SessionFactoryImpl) getSessionFactory()).withOptions()
-				.interceptor(interceptor).openSession();
+	public Session openSession(Connection connection) {
+		return ((SessionFactoryImpl) getSessionFactory()).withOptions().connection(connection)
+				.openSession();
+	}
+
+	public Session openSession(Interceptor interceptor) throws HibernateException {
+		return ((SessionFactoryImpl) getSessionFactory()).withOptions().interceptor(interceptor)
+				.openSession();
 	}
 
 	public StatelessSession openStatelessSession() {

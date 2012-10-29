@@ -23,35 +23,32 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.w3._2000._09.xmldsig.*;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static XmldsigFactory init() {
 		try {
-			XmldsigFactory theXmldsigFactory = (XmldsigFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.w3.org/2000/09/xmldsig#"); 
+			XmldsigFactory theXmldsigFactory = (XmldsigFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.w3.org/2000/09/xmldsig#");
 			if (theXmldsigFactory != null) {
 				return theXmldsigFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new XmldsigFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public XmldsigFactoryImpl() {
@@ -59,82 +56,108 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case XmldsigPackage.CANONICALIZATION_METHOD_TYPE: return createCanonicalizationMethodType();
-			case XmldsigPackage.DIGEST_METHOD_TYPE: return createDigestMethodType();
-			case XmldsigPackage.DOCUMENT_ROOT: return createDocumentRoot();
-			case XmldsigPackage.DSA_KEY_VALUE_TYPE: return createDSAKeyValueType();
-			case XmldsigPackage.KEY_INFO_TYPE: return createKeyInfoType();
-			case XmldsigPackage.KEY_VALUE_TYPE: return createKeyValueType();
-			case XmldsigPackage.MANIFEST_TYPE: return createManifestType();
-			case XmldsigPackage.OBJECT_TYPE: return createObjectType();
-			case XmldsigPackage.PGP_DATA_TYPE: return createPGPDataType();
-			case XmldsigPackage.REFERENCE_TYPE: return createReferenceType();
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE: return createRetrievalMethodType();
-			case XmldsigPackage.RSA_KEY_VALUE_TYPE: return createRSAKeyValueType();
-			case XmldsigPackage.SIGNATURE_METHOD_TYPE: return createSignatureMethodType();
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE: return createSignaturePropertiesType();
-			case XmldsigPackage.SIGNATURE_PROPERTY_TYPE: return createSignaturePropertyType();
-			case XmldsigPackage.SIGNATURE_TYPE: return createSignatureType();
-			case XmldsigPackage.SIGNATURE_VALUE_TYPE: return createSignatureValueType();
-			case XmldsigPackage.SIGNED_INFO_TYPE: return createSignedInfoType();
-			case XmldsigPackage.SPKI_DATA_TYPE: return createSPKIDataType();
-			case XmldsigPackage.TRANSFORMS_TYPE: return createTransformsType();
-			case XmldsigPackage.TRANSFORM_TYPE: return createTransformType();
-			case XmldsigPackage.X509_DATA_TYPE: return createX509DataType();
-			case XmldsigPackage.X509_ISSUER_SERIAL_TYPE: return createX509IssuerSerialType();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case XmldsigPackage.CANONICALIZATION_METHOD_TYPE:
+			return createCanonicalizationMethodType();
+		case XmldsigPackage.DIGEST_METHOD_TYPE:
+			return createDigestMethodType();
+		case XmldsigPackage.DOCUMENT_ROOT:
+			return createDocumentRoot();
+		case XmldsigPackage.DSA_KEY_VALUE_TYPE:
+			return createDSAKeyValueType();
+		case XmldsigPackage.KEY_INFO_TYPE:
+			return createKeyInfoType();
+		case XmldsigPackage.KEY_VALUE_TYPE:
+			return createKeyValueType();
+		case XmldsigPackage.MANIFEST_TYPE:
+			return createManifestType();
+		case XmldsigPackage.OBJECT_TYPE:
+			return createObjectType();
+		case XmldsigPackage.PGP_DATA_TYPE:
+			return createPGPDataType();
+		case XmldsigPackage.REFERENCE_TYPE:
+			return createReferenceType();
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE:
+			return createRetrievalMethodType();
+		case XmldsigPackage.RSA_KEY_VALUE_TYPE:
+			return createRSAKeyValueType();
+		case XmldsigPackage.SIGNATURE_METHOD_TYPE:
+			return createSignatureMethodType();
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE:
+			return createSignaturePropertiesType();
+		case XmldsigPackage.SIGNATURE_PROPERTY_TYPE:
+			return createSignaturePropertyType();
+		case XmldsigPackage.SIGNATURE_TYPE:
+			return createSignatureType();
+		case XmldsigPackage.SIGNATURE_VALUE_TYPE:
+			return createSignatureValueType();
+		case XmldsigPackage.SIGNED_INFO_TYPE:
+			return createSignedInfoType();
+		case XmldsigPackage.SPKI_DATA_TYPE:
+			return createSPKIDataType();
+		case XmldsigPackage.TRANSFORMS_TYPE:
+			return createTransformsType();
+		case XmldsigPackage.TRANSFORM_TYPE:
+			return createTransformType();
+		case XmldsigPackage.X509_DATA_TYPE:
+			return createX509DataType();
+		case XmldsigPackage.X509_ISSUER_SERIAL_TYPE:
+			return createX509IssuerSerialType();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case XmldsigPackage.CRYPTO_BINARY:
-				return createCryptoBinaryFromString(eDataType, initialValue);
-			case XmldsigPackage.DIGEST_VALUE_TYPE:
-				return createDigestValueTypeFromString(eDataType, initialValue);
-			case XmldsigPackage.HMAC_OUTPUT_LENGTH_TYPE:
-				return createHMACOutputLengthTypeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case XmldsigPackage.CRYPTO_BINARY:
+			return createCryptoBinaryFromString(eDataType, initialValue);
+		case XmldsigPackage.DIGEST_VALUE_TYPE:
+			return createDigestValueTypeFromString(eDataType, initialValue);
+		case XmldsigPackage.HMAC_OUTPUT_LENGTH_TYPE:
+			return createHMACOutputLengthTypeFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case XmldsigPackage.CRYPTO_BINARY:
-				return convertCryptoBinaryToString(eDataType, instanceValue);
-			case XmldsigPackage.DIGEST_VALUE_TYPE:
-				return convertDigestValueTypeToString(eDataType, instanceValue);
-			case XmldsigPackage.HMAC_OUTPUT_LENGTH_TYPE:
-				return convertHMACOutputLengthTypeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case XmldsigPackage.CRYPTO_BINARY:
+			return convertCryptoBinaryToString(eDataType, instanceValue);
+		case XmldsigPackage.DIGEST_VALUE_TYPE:
+			return convertDigestValueTypeToString(eDataType, instanceValue);
+		case XmldsigPackage.HMAC_OUTPUT_LENGTH_TYPE:
+			return convertHMACOutputLengthTypeToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CanonicalizationMethodType createCanonicalizationMethodType() {
@@ -143,8 +166,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DigestMethodType createDigestMethodType() {
@@ -153,8 +176,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -163,8 +186,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DSAKeyValueType createDSAKeyValueType() {
@@ -173,8 +196,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public KeyInfoType createKeyInfoType() {
@@ -183,8 +206,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public KeyValueType createKeyValueType() {
@@ -193,8 +216,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ManifestType createManifestType() {
@@ -203,8 +226,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ObjectType createObjectType() {
@@ -213,8 +236,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PGPDataType createPGPDataType() {
@@ -223,8 +246,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ReferenceType createReferenceType() {
@@ -233,8 +256,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RetrievalMethodType createRetrievalMethodType() {
@@ -243,8 +266,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RSAKeyValueType createRSAKeyValueType() {
@@ -253,8 +276,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignatureMethodType createSignatureMethodType() {
@@ -263,8 +286,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignaturePropertiesType createSignaturePropertiesType() {
@@ -273,8 +296,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignaturePropertyType createSignaturePropertyType() {
@@ -283,8 +306,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignatureType createSignatureType() {
@@ -293,8 +316,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignatureValueType createSignatureValueType() {
@@ -303,8 +326,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignedInfoType createSignedInfoType() {
@@ -313,8 +336,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SPKIDataType createSPKIDataType() {
@@ -323,8 +346,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TransformsType createTransformsType() {
@@ -333,8 +356,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TransformType createTransformType() {
@@ -343,8 +366,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public X509DataType createX509DataType() {
@@ -353,8 +376,8 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public X509IssuerSerialType createX509IssuerSerialType() {
@@ -363,53 +386,58 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public byte[] createCryptoBinaryFromString(EDataType eDataType, String initialValue) {
-		return (byte[])XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.BASE64_BINARY, initialValue);
+		return (byte[]) XMLTypeFactory.eINSTANCE.createFromString(
+				XMLTypePackage.Literals.BASE64_BINARY, initialValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertCryptoBinaryToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.BASE64_BINARY, instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.BASE64_BINARY,
+				instanceValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public byte[] createDigestValueTypeFromString(EDataType eDataType, String initialValue) {
-		return (byte[])XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.BASE64_BINARY, initialValue);
+		return (byte[]) XMLTypeFactory.eINSTANCE.createFromString(
+				XMLTypePackage.Literals.BASE64_BINARY, initialValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertDigestValueTypeToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.BASE64_BINARY, instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.BASE64_BINARY,
+				instanceValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BigInteger createHMACOutputLengthTypeFromString(EDataType eDataType, String initialValue) {
-		return (BigInteger)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.INTEGER, initialValue);
+		return (BigInteger) XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.INTEGER,
+				initialValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertHMACOutputLengthTypeToString(EDataType eDataType, Object instanceValue) {
@@ -417,17 +445,17 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public XmldsigPackage getXmldsigPackage() {
-		return (XmldsigPackage)getEPackage();
+		return (XmldsigPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -436,4 +464,4 @@ public class XmldsigFactoryImpl extends EFactoryImpl implements XmldsigFactory {
 		return XmldsigPackage.eINSTANCE;
 	}
 
-} //XmldsigFactoryImpl
+} // XmldsigFactoryImpl

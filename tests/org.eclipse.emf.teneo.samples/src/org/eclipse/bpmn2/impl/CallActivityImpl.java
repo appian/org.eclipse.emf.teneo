@@ -26,23 +26,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Call Activity</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Call Activity</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.CallActivityImpl#getCalledElementRef <em>Called Element Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CallActivityImpl#getCalledElementRef <em>Called Element Ref
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	/**
 	 * The cached value of the '{@link #getCalledElementRef() <em>Called Element Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCalledElementRef()
 	 * @generated
 	 * @ordered
@@ -50,8 +50,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	protected CallableElement calledElementRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CallActivityImpl() {
@@ -59,8 +59,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,8 +69,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallableElement getCalledElementRef() {
@@ -80,16 +80,15 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 			if (calledElementRef != oldCalledElementRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.CALL_ACTIVITY__CALLED_ELEMENT_REF,
-							oldCalledElementRef, calledElementRef));
+							Bpmn2Package.CALL_ACTIVITY__CALLED_ELEMENT_REF, oldCalledElementRef, calledElementRef));
 			}
 		}
 		return calledElementRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallableElement basicGetCalledElementRef() {
@@ -97,8 +96,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCalledElementRef(CallableElement newCalledElementRef) {
@@ -106,13 +105,12 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 		calledElementRef = newCalledElementRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CALL_ACTIVITY__CALLED_ELEMENT_REF,
-					oldCalledElementRef, calledElementRef));
+					Bpmn2Package.CALL_ACTIVITY__CALLED_ELEMENT_REF, oldCalledElementRef, calledElementRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,8 +125,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,8 +140,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -157,8 +155,8 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -170,4 +168,4 @@ public class CallActivityImpl extends ActivityImpl implements CallActivity {
 		return super.eIsSet(featureID);
 	}
 
-} //CallActivityImpl
+} // CallActivityImpl

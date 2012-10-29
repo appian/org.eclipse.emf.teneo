@@ -171,7 +171,8 @@ public class LibrarySerializationAction extends AbstractTestAction {
 		 * @see java.io.ObjectInputStream#resolveClass(java.io.ObjectStreamClass)
 		 */
 		@Override
-		protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+		protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException,
+				ClassNotFoundException {
 			final String clsName = desc.getName();
 			final Class<?> cls = ClassLoaderResolver.classForName(clsName);
 			if (cls == null) {

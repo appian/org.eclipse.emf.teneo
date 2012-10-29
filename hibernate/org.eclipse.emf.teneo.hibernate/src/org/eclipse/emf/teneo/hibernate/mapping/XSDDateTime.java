@@ -32,8 +32,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.type.MutableType;
 
 /**
- * Implements the hibernate UserType for EMF's XMLGregorianCalendar ("datetime"
- * type in XSD).
+ * Implements the hibernate UserType for EMF's XMLGregorianCalendar ("datetime" type in XSD).
  * 
  * @author <a href="mailto:bvetter@alterpoint.com">Brian Vetter</a>
  * @version $Revision
@@ -71,9 +70,8 @@ public class XSDDateTime extends MutableType {
 	 */
 	@Override
 	public Object deepCopyNotNull(Object value) {
-		return dataTypeFactory
-				.newXMLGregorianCalendar(((XMLGregorianCalendar) value)
-						.toGregorianCalendar());
+		return dataTypeFactory.newXMLGregorianCalendar(((XMLGregorianCalendar) value)
+				.toGregorianCalendar());
 	}
 
 	/*
@@ -95,8 +93,7 @@ public class XSDDateTime extends MutableType {
 	}
 
 	/*
-	 * @see org.hibernate.type.NullableType#isEqual(java.lang.Object,
-	 * java.lang.Object)
+	 * @see org.hibernate.type.NullableType#isEqual(java.lang.Object, java.lang.Object)
 	 */
 	@Override
 	public boolean isEqual(Object x, Object y) throws HibernateException {
@@ -115,8 +112,7 @@ public class XSDDateTime extends MutableType {
 	/*
 	 * Transform the date in the resultSet into a XMLGregorianCalendar instance.
 	 * 
-	 * @see org.hibernate.type.NullableType#get(java.sql.ResultSet,
-	 * java.lang.String)
+	 * @see org.hibernate.type.NullableType#get(java.sql.ResultSet, java.lang.String)
 	 */
 	@Override
 	public Object get(ResultSet resultSet, String name) throws SQLException {
@@ -129,17 +125,14 @@ public class XSDDateTime extends MutableType {
 	}
 
 	/*
-	 * Transform the XMLGregorianCalendar into a timestamp type to store in the
-	 * database
+	 * Transform the XMLGregorianCalendar into a timestamp type to store in the database
 	 * 
-	 * @see org.hibernate.type.NullableType#set(java.sql.PreparedStatement,
-	 * java.lang.Object, int)
+	 * @see org.hibernate.type.NullableType#set(java.sql.PreparedStatement, java.lang.Object, int)
 	 */
 	@Override
-	public void set(PreparedStatement statement, Object value, int index)
-			throws SQLException {
-		Timestamp d = new Timestamp(((XMLGregorianCalendar) value)
-				.toGregorianCalendar().getTime().getTime());
+	public void set(PreparedStatement statement, Object value, int index) throws SQLException {
+		Timestamp d = new Timestamp(((XMLGregorianCalendar) value).toGregorianCalendar().getTime()
+				.getTime());
 		statement.setTimestamp(index, d);
 	}
 

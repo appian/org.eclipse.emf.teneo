@@ -33,26 +33,25 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Relationship</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getSources <em>Sources</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getTargets <em>Targets</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getDirection <em>Direction</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getSources <em>Sources</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getTargets <em>Targets</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getDirection <em>Direction</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.RelationshipImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	/**
-	 * The cached value of the '{@link #getSources() <em>Sources</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSources() <em>Sources</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSources()
 	 * @generated
 	 * @ordered
@@ -60,9 +59,9 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	protected EList<EObject> sources;
 
 	/**
-	 * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargets()
 	 * @generated
 	 * @ordered
@@ -70,9 +69,9 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	protected EList<EObject> targets;
 
 	/**
-	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDirection()
 	 * @generated
 	 * @ordered
@@ -80,9 +79,9 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	protected static final RelationshipDirection DIRECTION_EDEFAULT = RelationshipDirection.NONE;
 
 	/**
-	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDirection()
 	 * @generated
 	 * @ordered
@@ -90,9 +89,9 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	protected RelationshipDirection direction = DIRECTION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -100,9 +99,9 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	protected static final String TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -110,8 +109,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	protected String type = TYPE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RelationshipImpl() {
@@ -119,8 +118,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,8 +128,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<EObject> getSources() {
@@ -142,8 +141,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<EObject> getTargets() {
@@ -155,8 +154,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RelationshipDirection getDirection() {
@@ -164,22 +163,21 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDirection(RelationshipDirection newDirection) {
 		RelationshipDirection oldDirection = direction;
 		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RELATIONSHIP__DIRECTION, oldDirection,
-					direction));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RELATIONSHIP__DIRECTION,
+					oldDirection, direction));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getType() {
@@ -187,21 +185,21 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(String newType) {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RELATIONSHIP__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RELATIONSHIP__TYPE,
+					oldType, type));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,8 +218,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -247,8 +245,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,8 +269,8 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,15 +283,14 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 		case Bpmn2Package.RELATIONSHIP__DIRECTION:
 			return direction != DIRECTION_EDEFAULT;
 		case Bpmn2Package.RELATIONSHIP__TYPE:
-			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT
-					.equals(type);
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -310,4 +307,4 @@ public class RelationshipImpl extends BaseElementImpl implements Relationship {
 		return result.toString();
 	}
 
-} //RelationshipImpl
+} // RelationshipImpl

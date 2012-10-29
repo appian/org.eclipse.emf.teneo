@@ -21,8 +21,8 @@ import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 
 /**
- * The test store encapsulates the datastore actions to different store types
- * (ojb, jpox, etc.). In this way different test cases can be reused.
+ * The test store encapsulates the datastore actions to different store types (ojb, jpox, etc.). In
+ * this way different test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.15 $
@@ -44,8 +44,8 @@ public interface TestStore {
 	public void tearDown(boolean successFullCompletion);
 
 	/**
-	 * Can be used to disabled dropping of the store, convenience for testing
-	 * (for example when an error occured)
+	 * Can be used to disabled dropping of the store, convenience for testing (for example when an
+	 * error occured)
 	 */
 	public void disableDrop();
 
@@ -83,8 +83,7 @@ public interface TestStore {
 	public void checkDeleteSucceeds(Class<?> clazz);
 
 	/**
-	 * Return an object of a certain class, there should only be one in the
-	 * databases
+	 * Return an object of a certain class, there should only be one in the databases
 	 */
 	public <T> T getObject(Class<T> clazz);
 
@@ -95,8 +94,7 @@ public interface TestStore {
 	public void deleteObject(Object obj);
 
 	/** Query for a class using a field and value pair */
-	public List<?> query(Class<?> clazz, String field, String value,
-			int checkCount);
+	public List<?> query(Class<?> clazz, String field, String value, int checkCount);
 
 	/** Query for an object */
 	public List<?> query(Object query);

@@ -19,32 +19,27 @@ import java.util.List;
 import org.eclipse.dd.di.DiPackage;
 import org.eclipse.dd.di.Label;
 import org.eclipse.dd.di.LabeledShape;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Labeled Shape</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Labeled Shape</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.di.impl.LabeledShapeImpl#getOwnedLabel <em>Owned Label</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.LabeledShapeImpl#getOwnedLabel <em>Owned Label</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public abstract class LabeledShapeImpl extends ShapeImpl implements
-		LabeledShape {
+public abstract class LabeledShapeImpl extends ShapeImpl implements LabeledShape {
 	/**
-	 * The cached value of the '{@link #getOwnedLabel() <em>Owned Label</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOwnedLabel() <em>Owned Label</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOwnedLabel()
 	 * @generated
 	 * @ordered
@@ -52,8 +47,8 @@ public abstract class LabeledShapeImpl extends ShapeImpl implements
 	protected EList<Label> ownedLabel;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LabeledShapeImpl() {
@@ -61,8 +56,8 @@ public abstract class LabeledShapeImpl extends ShapeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -71,8 +66,8 @@ public abstract class LabeledShapeImpl extends ShapeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Label> getOwnedLabel() {
@@ -84,8 +79,8 @@ public abstract class LabeledShapeImpl extends ShapeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -98,8 +93,8 @@ public abstract class LabeledShapeImpl extends ShapeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -111,4 +106,4 @@ public abstract class LabeledShapeImpl extends ShapeImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //LabeledShapeImpl
+} // LabeledShapeImpl

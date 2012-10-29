@@ -43,11 +43,11 @@ public class AnnotationParser {
 		annotationTokenizer = new AnnotationTokenizer(eNamedElement, content);
 		parserNodes.clear();
 		int token;
-		while (annotationTokenizer.getCurrentToken() != AnnotationTokenizer.T_EOF &&
-				(token = annotationTokenizer.nextToken()) != AnnotationTokenizer.T_EOF) {
+		while (annotationTokenizer.getCurrentToken() != AnnotationTokenizer.T_EOF
+				&& (token = annotationTokenizer.nextToken()) != AnnotationTokenizer.T_EOF) {
 			if (token != AnnotationTokenizer.T_TYPENAME) {
-				throw new AnnotationParserException("Only typenames are allowed at the root of the " +
-						"annotation, see _ for the error " + annotationTokenizer.getErrorText());
+				throw new AnnotationParserException("Only typenames are allowed at the root of the "
+						+ "annotation, see _ for the error " + annotationTokenizer.getErrorText());
 			}
 			parseTypeName(null);
 		}
@@ -81,24 +81,24 @@ public class AnnotationParser {
 		final int token = annotationTokenizer.nextToken();
 
 		switch (token) {
-			case AnnotationTokenizer.T_EOF:
-				return;
-			case AnnotationTokenizer.T_CONTENTSTART:
-				parseContent(cn);
-				break;
-			case AnnotationTokenizer.T_TYPENAME:
-				parseTypeName(null); // the next one
-				break;
-			case AnnotationTokenizer.T_COMMA: // in case of array
-				if (!(pn instanceof ArrayValueNode)) {
-					throw new AnnotationParserException(
-						"Encountered comma but not within an array definition, see _ for error location " +
-								annotationTokenizer.getErrorText());
-				}
-				return;
-			default:
-				throw new AnnotationParserException("Unknown token, see _ for error position: " +
-						annotationTokenizer.getErrorText());
+		case AnnotationTokenizer.T_EOF:
+			return;
+		case AnnotationTokenizer.T_CONTENTSTART:
+			parseContent(cn);
+			break;
+		case AnnotationTokenizer.T_TYPENAME:
+			parseTypeName(null); // the next one
+			break;
+		case AnnotationTokenizer.T_COMMA: // in case of array
+			if (!(pn instanceof ArrayValueNode)) {
+				throw new AnnotationParserException(
+						"Encountered comma but not within an array definition, see _ for error location "
+								+ annotationTokenizer.getErrorText());
+			}
+			return;
+		default:
+			throw new AnnotationParserException("Unknown token, see _ for error position: "
+					+ annotationTokenizer.getErrorText());
 		}
 	}
 
@@ -106,99 +106,97 @@ public class AnnotationParser {
 	private void parseContent(NamedParserNode pn) {
 		// content can either be an array or a set of values
 
-		expectedToken =
-				AnnotationTokenizer.T_ARRAYSTART + AnnotationTokenizer.T_IDENTIFIER + AnnotationTokenizer.T_VALUE;
+		expectedToken = AnnotationTokenizer.T_ARRAYSTART + AnnotationTokenizer.T_IDENTIFIER
+				+ AnnotationTokenizer.T_VALUE;
 
 		boolean finished = false;
 		while (!finished) {
 			final int token = annotationTokenizer.nextToken();
 			checkToken(token);
 			switch (token) {
-				case AnnotationTokenizer.T_COMMA:
-					expectedToken = AnnotationTokenizer.T_IDENTIFIER;
-					break;
-				case AnnotationTokenizer.T_EOF:
-					throw new AnnotationParserException("Unexcepted end to annotation string, " +
-							annotationTokenizer.getErrorText());
-				case AnnotationTokenizer.T_CONTENTEND:
+			case AnnotationTokenizer.T_COMMA:
+				expectedToken = AnnotationTokenizer.T_IDENTIFIER;
+				break;
+			case AnnotationTokenizer.T_EOF:
+				throw new AnnotationParserException("Unexcepted end to annotation string, "
+						+ annotationTokenizer.getErrorText());
+			case AnnotationTokenizer.T_CONTENTEND:
+				return;
+			case AnnotationTokenizer.T_VALUE:
+				final String theValue = annotationTokenizer.getLexeme();
+				final PrimitiveValueNode valueNode = new PrimitiveValueNode();
+				valueNode.setName("value");
+				valueNode.setValue(theValue);
+				addToParent(pn, valueNode);
+				if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_CONTENTEND) {
+					throw new AnnotationParserException("After this value a closing ) should follow "
+							+ annotationTokenizer.getErrorText());
+				}
+				return;
+			case AnnotationTokenizer.T_IDENTIFIER:
+				final String identifier = annotationTokenizer.getLexeme();
+				// next token must be an is
+				int nextToken = annotationTokenizer.nextToken();
+				// in case of simple annotations with just a value member
+				if (nextToken == AnnotationTokenizer.T_CONTENTEND) {
+					final PrimitiveValueNode vn = new PrimitiveValueNode();
+					vn.setName("value");
+					vn.setValue(identifier);
+					addToParent(pn, vn);
 					return;
-				case AnnotationTokenizer.T_VALUE:
-					final String theValue = annotationTokenizer.getLexeme();
-					final PrimitiveValueNode valueNode = new PrimitiveValueNode();
-					valueNode.setName("value");
-					valueNode.setValue(theValue);
-					addToParent(pn, valueNode);
-					if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_CONTENTEND) {
-						throw new AnnotationParserException("After this value a closing ) should follow " +
-								annotationTokenizer.getErrorText());
-					}
-					return;
-				case AnnotationTokenizer.T_IDENTIFIER:
-					final String identifier = annotationTokenizer.getLexeme();
-					// next token must be an is
-					int nextToken = annotationTokenizer.nextToken();
-					// in case of simple annotations with just a value member
-					if (nextToken == AnnotationTokenizer.T_CONTENTEND) {
-						final PrimitiveValueNode vn = new PrimitiveValueNode();
-						vn.setName("value");
-						vn.setValue(identifier);
-						addToParent(pn, vn);
-						return;
-					}
-					if (nextToken != AnnotationTokenizer.T_IS) {
-						throw new AnnotationParserException(
-							"No = character after identifier, see _ for error position " +
-									annotationTokenizer.getErrorText());
-					}
-					nextToken = annotationTokenizer.nextToken();
-					// if (nextToken == AnnotationTokenizer.T_VALUE) {
-					// final String value = annotationTokenizer.getLexeme();
-					// final PrimitiveValueNode vn = new PrimitiveValueNode();
-					// vn.setName(identifier);
-					// vn.setValue(value);
-					// addToParent(pn, vn);
-					// }
-					if (nextToken == AnnotationTokenizer.T_VALUE) {
-						final String value = annotationTokenizer.getLexeme();
-						final PrimitiveValueNode vn = new PrimitiveValueNode();
-						vn.setName(identifier);
-						vn.setValue(value);
-						addToParent(pn, vn);
-					} else if (nextToken == AnnotationTokenizer.T_IDENTIFIER) {
-						final String value = annotationTokenizer.getLexeme();
-						final PrimitiveValueNode vn = new PrimitiveValueNode();
-						vn.setName(identifier);
-						vn.setValue(value);
-						addToParent(pn, vn);
-					} else if (nextToken == AnnotationTokenizer.T_TYPENAME) {
-						final ReferenceValueNode rvn = new ReferenceValueNode();
-						rvn.setName(identifier);
-						parseTypeName(rvn);
-						addToParent(pn, rvn);
-					} else if (nextToken == AnnotationTokenizer.T_ARRAYSTART) {
-						final ArrayValueNode avn = new ArrayValueNode();
-						avn.setName(identifier);
-						parseArray(avn);
-						addToParent(pn, avn);
-					} else if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_VALUE) {
-						throw new AnnotationParserException("No value token after =, see _ for error position " +
-								annotationTokenizer.getErrorText());
-					}
-					expectedToken =
-							AnnotationTokenizer.T_COMMA + AnnotationTokenizer.T_IDENTIFIER +
-									AnnotationTokenizer.T_CONTENTEND;
-					break;
-				case AnnotationTokenizer.T_ARRAYSTART:
-					// special case in which the main type is just a list of other
-					// types
-					// for example SecondaryTables which is just a list of
-					// SecondaryTable
-					parseArray(pn);
-					((ComplexNode) pn).setList(true);
-					expectedToken =
-							AnnotationTokenizer.T_COMMA + AnnotationTokenizer.T_IDENTIFIER +
-									AnnotationTokenizer.T_CONTENTEND;
-					break;
+				}
+				if (nextToken != AnnotationTokenizer.T_IS) {
+					throw new AnnotationParserException(
+							"No = character after identifier, see _ for error position "
+									+ annotationTokenizer.getErrorText());
+				}
+				nextToken = annotationTokenizer.nextToken();
+				// if (nextToken == AnnotationTokenizer.T_VALUE) {
+				// final String value = annotationTokenizer.getLexeme();
+				// final PrimitiveValueNode vn = new PrimitiveValueNode();
+				// vn.setName(identifier);
+				// vn.setValue(value);
+				// addToParent(pn, vn);
+				// }
+				if (nextToken == AnnotationTokenizer.T_VALUE) {
+					final String value = annotationTokenizer.getLexeme();
+					final PrimitiveValueNode vn = new PrimitiveValueNode();
+					vn.setName(identifier);
+					vn.setValue(value);
+					addToParent(pn, vn);
+				} else if (nextToken == AnnotationTokenizer.T_IDENTIFIER) {
+					final String value = annotationTokenizer.getLexeme();
+					final PrimitiveValueNode vn = new PrimitiveValueNode();
+					vn.setName(identifier);
+					vn.setValue(value);
+					addToParent(pn, vn);
+				} else if (nextToken == AnnotationTokenizer.T_TYPENAME) {
+					final ReferenceValueNode rvn = new ReferenceValueNode();
+					rvn.setName(identifier);
+					parseTypeName(rvn);
+					addToParent(pn, rvn);
+				} else if (nextToken == AnnotationTokenizer.T_ARRAYSTART) {
+					final ArrayValueNode avn = new ArrayValueNode();
+					avn.setName(identifier);
+					parseArray(avn);
+					addToParent(pn, avn);
+				} else if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_VALUE) {
+					throw new AnnotationParserException("No value token after =, see _ for error position "
+							+ annotationTokenizer.getErrorText());
+				}
+				expectedToken = AnnotationTokenizer.T_COMMA + AnnotationTokenizer.T_IDENTIFIER
+						+ AnnotationTokenizer.T_CONTENTEND;
+				break;
+			case AnnotationTokenizer.T_ARRAYSTART:
+				// special case in which the main type is just a list of other
+				// types
+				// for example SecondaryTables which is just a list of
+				// SecondaryTable
+				parseArray(pn);
+				((ComplexNode) pn).setList(true);
+				expectedToken = AnnotationTokenizer.T_COMMA + AnnotationTokenizer.T_IDENTIFIER
+						+ AnnotationTokenizer.T_CONTENTEND;
+				break;
 			}
 		}
 	}
@@ -210,54 +208,54 @@ public class AnnotationParser {
 		addToParent(pn, an);
 		boolean finished = false;
 
-		expectedToken = AnnotationTokenizer.T_TYPENAME + AnnotationTokenizer.T_VALUE + AnnotationTokenizer.T_IDENTIFIER;
+		expectedToken = AnnotationTokenizer.T_TYPENAME + AnnotationTokenizer.T_VALUE
+				+ AnnotationTokenizer.T_IDENTIFIER;
 
 		while (!finished) {
 			final int token = annotationTokenizer.nextToken();
 			checkToken(token);
 			switch (token) {
-				case AnnotationTokenizer.T_EOF:
-					throw new AnnotationParserException("Unexcepted end to annotation string, " +
-							annotationTokenizer.getErrorText());
-				case AnnotationTokenizer.T_TYPENAME:
-					parseTypeName(an);
+			case AnnotationTokenizer.T_EOF:
+				throw new AnnotationParserException("Unexcepted end to annotation string, "
+						+ annotationTokenizer.getErrorText());
+			case AnnotationTokenizer.T_TYPENAME:
+				parseTypeName(an);
 
-					expectedToken = AnnotationTokenizer.T_ARRAYEND + AnnotationTokenizer.T_COMMA;
+				expectedToken = AnnotationTokenizer.T_ARRAYEND + AnnotationTokenizer.T_COMMA;
 
-					break;
-				case AnnotationTokenizer.T_VALUE:
-					String value = annotationTokenizer.getLexeme();
-					if (value != null && value.length() > 1 && value.charAt(0) == '"' &&
-							value.charAt(value.length() - 1) == '"') {
-						value = value.substring(1, value.length() - 1);
-					}
-					an.getChildren().add(value);
-					expectedToken = AnnotationTokenizer.T_ARRAYEND + AnnotationTokenizer.T_COMMA;
-					break;
-				case AnnotationTokenizer.T_IDENTIFIER:
-					an.getChildren().add(annotationTokenizer.getLexeme());
+				break;
+			case AnnotationTokenizer.T_VALUE:
+				String value = annotationTokenizer.getLexeme();
+				if (value != null && value.length() > 1 && value.charAt(0) == '"'
+						&& value.charAt(value.length() - 1) == '"') {
+					value = value.substring(1, value.length() - 1);
+				}
+				an.getChildren().add(value);
+				expectedToken = AnnotationTokenizer.T_ARRAYEND + AnnotationTokenizer.T_COMMA;
+				break;
+			case AnnotationTokenizer.T_IDENTIFIER:
+				an.getChildren().add(annotationTokenizer.getLexeme());
 
-					expectedToken =
-							AnnotationTokenizer.T_IS + AnnotationTokenizer.T_ARRAYEND + AnnotationTokenizer.T_COMMA;
-					break;
-				case AnnotationTokenizer.T_COMMA:
-					expectedToken =
-							AnnotationTokenizer.T_TYPENAME + AnnotationTokenizer.T_VALUE +
-									AnnotationTokenizer.T_IDENTIFIER;
-					break;
-				case AnnotationTokenizer.T_ARRAYEND:
-					expectedToken = Long.MAX_VALUE;
-					return;
+				expectedToken = AnnotationTokenizer.T_IS + AnnotationTokenizer.T_ARRAYEND
+						+ AnnotationTokenizer.T_COMMA;
+				break;
+			case AnnotationTokenizer.T_COMMA:
+				expectedToken = AnnotationTokenizer.T_TYPENAME + AnnotationTokenizer.T_VALUE
+						+ AnnotationTokenizer.T_IDENTIFIER;
+				break;
+			case AnnotationTokenizer.T_ARRAYEND:
+				expectedToken = Long.MAX_VALUE;
+				return;
 			}
 		}
-		throw new AnnotationParserException("Unexpected end of array. " + annotationTokenizer.getErrorText());
+		throw new AnnotationParserException("Unexpected end of array. "
+				+ annotationTokenizer.getErrorText());
 	}
 
 	protected void checkToken(int currentToken) {
 		if ((currentToken & expectedToken) == 0) {
-			final String msg =
-					"Found " + annotationTokenizer.getCurrentTokenName() + " but expected one of : " +
-							annotationTokenizer.getTokenNames(expectedToken);
+			final String msg = "Found " + annotationTokenizer.getCurrentTokenName()
+					+ " but expected one of : " + annotationTokenizer.getTokenNames(expectedToken);
 			throw new AnnotationParserException(msg + ". " + annotationTokenizer.getErrorText());
 		}
 	}

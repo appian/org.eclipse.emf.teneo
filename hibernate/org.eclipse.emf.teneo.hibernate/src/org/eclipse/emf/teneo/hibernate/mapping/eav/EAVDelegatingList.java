@@ -17,6 +17,6 @@ import java.util.List;
  */
 public interface EAVDelegatingList {
 	boolean isDelegateInitialized();
-	
+
 	void setPersistentList(List<?> persistentList);
 }

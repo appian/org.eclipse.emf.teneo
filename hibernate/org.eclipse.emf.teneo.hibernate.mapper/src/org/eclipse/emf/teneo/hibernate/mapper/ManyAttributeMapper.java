@@ -62,9 +62,11 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 		final Element collElement = addCollectionElement(paAttribute);
 		final Element keyElement = collElement.addElement("key");
 
-		final JoinTable jt = paAttribute.getCollectionTable() != null ? paAttribute.getCollectionTable() : paAttribute.getJoinTable();
-		final List<JoinColumn> jcs = jt != null && jt.getJoinColumns().size() > 0 ? jt.getJoinColumns() : (paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paAttribute
-				.getJoinColumns());
+		final JoinTable jt = paAttribute.getCollectionTable() != null ? paAttribute
+				.getCollectionTable() : paAttribute.getJoinTable();
+		final List<JoinColumn> jcs = jt != null && jt.getJoinColumns().size() > 0 ? jt.getJoinColumns()
+				: (paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paAttribute
+						.getJoinColumns());
 		final OneToMany otm = paAttribute.getOneToMany();
 
 		if (jt != null) {
@@ -86,7 +88,8 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 		if (!isArray) {
 			addFetchType(collElement, otm.getFetch());
 		}
-		addCascadesForMany(collElement, getCascades(hbAttribute.getHbCascade(), otm.getCascade(), false));
+		addCascadesForMany(collElement,
+				getCascades(hbAttribute.getHbCascade(), otm.getCascade(), false));
 
 		if (FeatureMapUtil.isFeatureMap(paAttribute.getModelEAttribute())) {
 			if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {

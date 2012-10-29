@@ -24,24 +24,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Text Annotation</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Text Annotation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.TextAnnotationImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.TextAnnotationImpl#getTextFormat <em>Text Format</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.TextAnnotationImpl#getText <em>Text</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.TextAnnotationImpl#getTextFormat <em>Text Format</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -49,9 +48,9 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	protected static final String TEXT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -59,9 +58,9 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	protected String text = TEXT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTextFormat()
 	 * @generated
 	 * @ordered
@@ -69,9 +68,9 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	protected static final String TEXT_FORMAT_EDEFAULT = "text/plain";
 
 	/**
-	 * The cached value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTextFormat()
 	 * @generated
 	 * @ordered
@@ -79,8 +78,8 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	protected String textFormat = TEXT_FORMAT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TextAnnotationImpl() {
@@ -88,8 +87,8 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -98,8 +97,8 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getText() {
@@ -107,21 +106,21 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setText(String newText) {
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.TEXT_ANNOTATION__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.TEXT_ANNOTATION__TEXT,
+					oldText, text));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTextFormat() {
@@ -129,8 +128,8 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTextFormat(String newTextFormat) {
@@ -138,13 +137,12 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 		textFormat = newTextFormat;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.TEXT_ANNOTATION__TEXT_FORMAT, oldTextFormat,
-					textFormat));
+					Bpmn2Package.TEXT_ANNOTATION__TEXT_FORMAT, oldTextFormat, textFormat));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,8 +157,8 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -177,8 +175,8 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,26 +193,25 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.TEXT_ANNOTATION__TEXT:
-			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT
-					.equals(text);
+			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		case Bpmn2Package.TEXT_ANNOTATION__TEXT_FORMAT:
-			return TEXT_FORMAT_EDEFAULT == null ? textFormat != null
-					: !TEXT_FORMAT_EDEFAULT.equals(textFormat);
+			return TEXT_FORMAT_EDEFAULT == null ? textFormat != null : !TEXT_FORMAT_EDEFAULT
+					.equals(textFormat);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -231,4 +228,4 @@ public class TextAnnotationImpl extends ArtifactImpl implements TextAnnotation {
 		return result.toString();
 	}
 
-} //TextAnnotationImpl
+} // TextAnnotationImpl

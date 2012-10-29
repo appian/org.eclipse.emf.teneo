@@ -9,32 +9,32 @@ package org.w3._2000._09.xmldsig;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Retrieval Method Type</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Retrieval Method Type</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getTransforms <em>Transforms</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getType <em>Type</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getURI <em>URI</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getTransforms <em>Transforms</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getType <em>Type</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getURI <em>URI</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.w3._2000._09.xmldsig.XmldsigPackage#getRetrievalMethodType()
  * @model extendedMetaData="name='RetrievalMethodType' kind='elementOnly'"
  * @generated
  */
 public interface RetrievalMethodType extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Transforms</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Transforms</b></em>' containment reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transforms</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Transforms</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Transforms</em>' containment reference.
 	 * @see #setTransforms(TransformsType)
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getRetrievalMethodType_Transforms()
@@ -45,23 +45,24 @@ public interface RetrievalMethodType extends EObject {
 	TransformsType getTransforms();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getTransforms <em>Transforms</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transforms</em>' containment reference.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getTransforms
+	 * <em>Transforms</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Transforms</em>' containment reference.
 	 * @see #getTransforms()
 	 * @generated
 	 */
 	void setTransforms(TransformsType value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getRetrievalMethodType_Type()
@@ -72,23 +73,24 @@ public interface RetrievalMethodType extends EObject {
 	String getType();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getType
+	 * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Type</em>' attribute.
 	 * @see #getType()
 	 * @generated
 	 */
 	void setType(String value);
 
 	/**
-	 * Returns the value of the '<em><b>URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>URI</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>URI</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>URI</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>URI</em>' attribute.
 	 * @see #setURI(String)
 	 * @see org.w3._2000._09.xmldsig.XmldsigPackage#getRetrievalMethodType_URI()
@@ -99,10 +101,11 @@ public interface RetrievalMethodType extends EObject {
 	String getURI();
 
 	/**
-	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getURI <em>URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>URI</em>' attribute.
+	 * Sets the value of the '{@link org.w3._2000._09.xmldsig.RetrievalMethodType#getURI <em>URI</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>URI</em>' attribute.
 	 * @see #getURI()
 	 * @generated
 	 */

@@ -78,8 +78,8 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		try {
-			final SaveAsDialog saDialog = new ExportSaveAsDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getShell());
+			final SaveAsDialog saDialog = new ExportSaveAsDialog(PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getShell());
 			saDialog.open();
 			final IPath path = saDialog.getResult();
 
@@ -134,7 +134,7 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 		 * Creates a new Save As dialog for no specific file.
 		 * 
 		 * @param parentShell
-		 *            the parent shell
+		 *          the parent shell
 		 */
 		public ExportSaveAsDialog(Shell parentShell) {
 			super(parentShell);
@@ -170,7 +170,8 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
+		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core
+		 * .runtime.IProgressMonitor)
 		 */
 		@Override
 		public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {

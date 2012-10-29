@@ -6,19 +6,19 @@
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
-
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Columns</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Columns</b></em>'. <!--
+ * end-user-doc -->
  * 
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Columns#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Columns#getValue <em> Value</em>}</li>
  * </ul>
  * </p>
  * 
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getColumns()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
+ * @model annotation= "http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface Columns extends HbAnnotation {

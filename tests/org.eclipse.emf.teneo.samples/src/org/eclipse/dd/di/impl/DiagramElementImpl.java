@@ -20,45 +20,39 @@ import org.eclipse.dd.di.DiPackage;
 import org.eclipse.dd.di.Diagram;
 import org.eclipse.dd.di.DiagramElement;
 import org.eclipse.dd.di.Style;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Diagram Element</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Diagram Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getOwningDiagram <em>Owning Diagram</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getOwningElement <em>Owning Element</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getOwnedElement <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getModelElement <em>Model Element</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getStyle <em>Style</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getOwningDiagram <em>Owning Diagram</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getOwningElement <em>Owning Element</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getOwnedElement <em>Owned Element</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getModelElement <em>Model Element</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.DiagramElementImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	/**
-	 * The cached value of the '{@link #getOwningElement() <em>Owning Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOwningElement() <em>Owning Element</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOwningElement()
 	 * @generated
 	 * @ordered
@@ -67,8 +61,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 
 	/**
 	 * The cached value of the '{@link #getOwnedElement() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOwnedElement()
 	 * @generated
 	 * @ordered
@@ -76,9 +70,9 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	protected EList<DiagramElement> ownedElement;
 
 	/**
-	 * The cached value of the '{@link #getModelElement() <em>Model Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getModelElement() <em>Model Element</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getModelElement()
 	 * @generated
 	 * @ordered
@@ -86,9 +80,9 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	protected EObject modelElement;
 
 	/**
-	 * The cached value of the '{@link #getStyle() <em>Style</em>}' reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getStyle() <em>Style</em>}' reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getStyle()
 	 * @generated
 	 * @ordered
@@ -96,9 +90,9 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	protected Style style;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -106,9 +100,9 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -116,8 +110,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DiagramElementImpl() {
@@ -125,8 +119,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -135,8 +129,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Diagram getOwningDiagram() {
@@ -146,8 +140,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiagramElement getOwningElement() {
@@ -155,19 +149,17 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetOwningElement(
-			DiagramElement newOwningElement, NotificationChain msgs) {
+	public NotificationChain basicSetOwningElement(DiagramElement newOwningElement,
+			NotificationChain msgs) {
 		DiagramElement oldOwningElement = owningElement;
 		owningElement = newOwningElement;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					DiPackage.DIAGRAM_ELEMENT__OWNING_ELEMENT,
-					oldOwningElement, newOwningElement);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					DiPackage.DIAGRAM_ELEMENT__OWNING_ELEMENT, oldOwningElement, newOwningElement);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -177,23 +169,21 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<DiagramElement> getOwnedElement() {
 		if (ownedElement == null) {
-			ownedElement = new EObjectWithInverseEList<DiagramElement>(
-					DiagramElement.class, this,
-					DiPackage.DIAGRAM_ELEMENT__OWNED_ELEMENT,
-					DiPackage.DIAGRAM_ELEMENT__OWNING_ELEMENT);
+			ownedElement = new EObjectWithInverseEList<DiagramElement>(DiagramElement.class, this,
+					DiPackage.DIAGRAM_ELEMENT__OWNED_ELEMENT, DiPackage.DIAGRAM_ELEMENT__OWNING_ELEMENT);
 		}
 		return ownedElement;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object getModelElement() {
@@ -203,16 +193,15 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 			if (modelElement != oldModelElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							DiPackage.DIAGRAM_ELEMENT__MODEL_ELEMENT,
-							oldModelElement, modelElement));
+							DiPackage.DIAGRAM_ELEMENT__MODEL_ELEMENT, oldModelElement, modelElement));
 			}
 		}
 		return modelElement;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object basicGetModelElement() {
@@ -220,8 +209,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Style getStyle() {
@@ -238,8 +227,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Style basicGetStyle() {
@@ -247,8 +236,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -256,62 +245,60 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DiPackage.DIAGRAM_ELEMENT__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, DiPackage.DIAGRAM_ELEMENT__ID, oldId,
+					id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case DiPackage.DIAGRAM_ELEMENT__OWNING_ELEMENT:
 			if (owningElement != null)
 				msgs = ((InternalEObject) owningElement).eInverseRemove(this,
-						DiPackage.DIAGRAM_ELEMENT__OWNED_ELEMENT,
-						DiagramElement.class, msgs);
+						DiPackage.DIAGRAM_ELEMENT__OWNED_ELEMENT, DiagramElement.class, msgs);
 			return basicSetOwningElement((DiagramElement) otherEnd, msgs);
 		case DiPackage.DIAGRAM_ELEMENT__OWNED_ELEMENT:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedElement())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedElement()).basicAdd(
+					otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case DiPackage.DIAGRAM_ELEMENT__OWNING_ELEMENT:
 			return basicSetOwningElement(null, msgs);
 		case DiPackage.DIAGRAM_ELEMENT__OWNED_ELEMENT:
-			return ((InternalEList<?>) getOwnedElement()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOwnedElement()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -338,8 +325,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -353,8 +340,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -368,8 +355,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -392,8 +379,8 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -408,4 +395,4 @@ public class DiagramElementImpl extends EObjectImpl implements DiagramElement {
 		return result.toString();
 	}
 
-} //DiagramElementImpl
+} // DiagramElementImpl

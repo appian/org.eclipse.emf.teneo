@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.GlobalManualTask;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Manual Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Global Manual Task</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class GlobalManualTaskImpl extends GlobalTaskImpl implements
-		GlobalManualTask {
+public class GlobalManualTaskImpl extends GlobalTaskImpl implements GlobalManualTask {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GlobalManualTaskImpl() {
@@ -40,8 +38,8 @@ public class GlobalManualTaskImpl extends GlobalTaskImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class GlobalManualTaskImpl extends GlobalTaskImpl implements
 		return Bpmn2Package.Literals.GLOBAL_MANUAL_TASK;
 	}
 
-} //GlobalManualTaskImpl
+} // GlobalManualTaskImpl

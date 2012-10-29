@@ -24,8 +24,8 @@ public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite(
-				"Test for org.eclipse.emf.teneo.hibernate.test.emf.jpa2",
-				HibernateTestbed.instance().getConfigurations());
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.jpa2", HibernateTestbed.instance()
+						.getConfigurations());
 		suite.addTestSuite(MapKeyJoinColumnAction.class);
 		suite.addTestSuite(MapKeyTypesAction.class);
 		suite.addTestSuite(MapKeyColumnAction.class);

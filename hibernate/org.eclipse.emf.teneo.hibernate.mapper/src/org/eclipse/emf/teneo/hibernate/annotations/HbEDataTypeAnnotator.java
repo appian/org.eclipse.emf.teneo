@@ -49,15 +49,16 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 		}
 		final String typeClass = getCustomDataType(ped.getModelEDataType());
 		if (typeClass == null) {
-			log.debug("Not creating typedef for edatatype: " + ped.getModelEDataType().getName() +
-					" because it is natively handled by hibernate");
+			log.debug("Not creating typedef for edatatype: " + ped.getModelEDataType().getName()
+					+ " because it is natively handled by hibernate");
 			return;
 		}
 
 		// create default typedef
 		log.debug("Creating default typedef for edatatype " + hed.getModelEDataType().getName());
 		final TypeDef typeDef = HbannotationFactory.eINSTANCE.createTypeDef();
-		typeDef.setName(hed.getModelEDataType().getEPackage().getName() + "." + ped.getModelEDataType().getName());
+		typeDef.setName(hed.getModelEDataType().getEPackage().getName() + "."
+				+ ped.getModelEDataType().getName());
 		typeDef.setTypeClass(getDefaultUserType());
 		// add default parameters
 		final Parameter paramPackage = HbannotationFactory.eINSTANCE.createParameter();
@@ -76,7 +77,7 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 	 * get the Java class name of the class used to represent the custom data type.
 	 * 
 	 * @param classifier
-	 *            non-null classifier to inspect.
+	 *          non-null classifier to inspect.
 	 * @return Class name of the custom data type or null if the classifier does not represent a
 	 *         custom data type that is not already handled by Hibernate.
 	 */
@@ -88,10 +89,11 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 			return null;
 		} else if (eDataType.getInstanceClass() == Object.class) {
 			return null;
-// } else if (typeClassName != null && TypeFactory.basic(typeClassName) != null) {
-// // If Hibernate natively handles the type then don't bother creating
-// // a typedef.
-// return null;
+			// } else if (typeClassName != null && TypeFactory.basic(typeClassName) !=
+			// null) {
+			// // If Hibernate natively handles the type then don't bother creating
+			// // a typedef.
+			// return null;
 		}
 		if (typeClassName != null) {
 			final Class<?> instanceClass = eDataType.getInstanceClass();
@@ -101,12 +103,13 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 					return null;
 				}
 				// get rid of the [] at the end
-// final String primType = typeClassName.substring(0, typeClassName.length() - 2);
+				// final String primType = typeClassName.substring(0,
+				// typeClassName.length() - 2);
 				// check if hb supports it
 				// no dots is primitve
-// if (TypeFactory.basic(primType) != null) {
-// return null; // if so let hb do it
-// }
+				// if (TypeFactory.basic(primType) != null) {
+				// return null; // if so let hb do it
+				// }
 			}
 		}
 

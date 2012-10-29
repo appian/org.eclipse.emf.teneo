@@ -36,25 +36,26 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Call Choreography</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Call Choreography</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.CallChoreographyImpl#getParticipantAssociations <em>Participant Associations</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.CallChoreographyImpl#getCalledChoreographyRef <em>Called Choreography Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CallChoreographyImpl#getParticipantAssociations <em>Participant
+ * Associations</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CallChoreographyImpl#getCalledChoreographyRef <em>Called
+ * Choreography Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class CallChoreographyImpl extends ChoreographyActivityImpl implements
-		CallChoreography {
+public class CallChoreographyImpl extends ChoreographyActivityImpl implements CallChoreography {
 	/**
-	 * The cached value of the '{@link #getParticipantAssociations() <em>Participant Associations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParticipantAssociations()
+	 * <em>Participant Associations</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getParticipantAssociations()
 	 * @generated
 	 * @ordered
@@ -62,9 +63,9 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	protected EList<ParticipantAssociation> participantAssociations;
 
 	/**
-	 * The cached value of the '{@link #getCalledChoreographyRef() <em>Called Choreography Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCalledChoreographyRef() <em>Called Choreography Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCalledChoreographyRef()
 	 * @generated
 	 * @ordered
@@ -72,8 +73,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	protected Choreography calledChoreographyRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CallChoreographyImpl() {
@@ -81,8 +82,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,8 +92,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ParticipantAssociation> getParticipantAssociations() {
@@ -105,8 +106,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Choreography getCalledChoreographyRef() {
@@ -115,19 +116,17 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 			calledChoreographyRef = (Choreography) eResolveProxy(oldCalledChoreographyRef);
 			if (calledChoreographyRef != oldCalledChoreographyRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.CALL_CHOREOGRAPHY__CALLED_CHOREOGRAPHY_REF,
-							oldCalledChoreographyRef, calledChoreographyRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.CALL_CHOREOGRAPHY__CALLED_CHOREOGRAPHY_REF, oldCalledChoreographyRef,
+							calledChoreographyRef));
 			}
 		}
 		return calledChoreographyRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Choreography basicGetCalledChoreographyRef() {
@@ -135,8 +134,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCalledChoreographyRef(Choreography newCalledChoreographyRef) {
@@ -144,29 +143,28 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 		calledChoreographyRef = newCalledChoreographyRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CALL_CHOREOGRAPHY__CALLED_CHOREOGRAPHY_REF,
-					oldCalledChoreographyRef, calledChoreographyRef));
+					Bpmn2Package.CALL_CHOREOGRAPHY__CALLED_CHOREOGRAPHY_REF, oldCalledChoreographyRef,
+					calledChoreographyRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.CALL_CHOREOGRAPHY__PARTICIPANT_ASSOCIATIONS:
-			return ((InternalEList<?>) getParticipantAssociations())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getParticipantAssociations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -183,8 +181,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -193,8 +191,7 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 		switch (featureID) {
 		case Bpmn2Package.CALL_CHOREOGRAPHY__PARTICIPANT_ASSOCIATIONS:
 			getParticipantAssociations().clear();
-			getParticipantAssociations().addAll(
-					(Collection<? extends ParticipantAssociation>) newValue);
+			getParticipantAssociations().addAll((Collection<? extends ParticipantAssociation>) newValue);
 			return;
 		case Bpmn2Package.CALL_CHOREOGRAPHY__CALLED_CHOREOGRAPHY_REF:
 			setCalledChoreographyRef((Choreography) newValue);
@@ -204,8 +201,8 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -222,20 +219,19 @@ public class CallChoreographyImpl extends ChoreographyActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.CALL_CHOREOGRAPHY__PARTICIPANT_ASSOCIATIONS:
-			return participantAssociations != null
-					&& !participantAssociations.isEmpty();
+			return participantAssociations != null && !participantAssociations.isEmpty();
 		case Bpmn2Package.CALL_CHOREOGRAPHY__CALLED_CHOREOGRAPHY_REF:
 			return calledChoreographyRef != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CallChoreographyImpl
+} // CallChoreographyImpl

@@ -44,7 +44,8 @@ public class XmlElementToEStructuralFeatureMapper implements ExtensionPoint {
 			final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			saxParserFactory.setNamespaceAware(true);
 			final SAXParser saxParser = saxParserFactory.newSAXParser();
-			saxParser.parse(this.getClass().getResourceAsStream("persistence-mapping.xsd"), new XmlContentHandler());
+			saxParser.parse(this.getClass().getResourceAsStream("persistence-mapping.xsd"),
+					new XmlContentHandler());
 		} catch (Exception e) {
 			throw new StoreAnnotationsException("Exception while parsing xsd", e);
 		}
@@ -53,12 +54,13 @@ public class XmlElementToEStructuralFeatureMapper implements ExtensionPoint {
 	public class XmlContentHandler extends DefaultHandler {
 
 		@Override
-		public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+		public void startElement(String uri, String localName, String qName, Attributes attributes)
+				throws SAXException {
 			if (localName.equals("attribute") || localName.equals("element")) {
 				xmlElementName = attributes.getValue("name");
-			} else if (localName.equals("appinfo") &&
-					PersistenceMappingSchemaGenerator.ESTRUCTURAL_FEATURE_SOURCE_NAME.equals(attributes
-						.getValue("source"))) {
+			} else if (localName.equals("appinfo")
+					&& PersistenceMappingSchemaGenerator.ESTRUCTURAL_FEATURE_SOURCE_NAME.equals(attributes
+							.getValue("source"))) {
 				appInfoValue = true;
 			}
 		}
@@ -67,8 +69,8 @@ public class XmlElementToEStructuralFeatureMapper implements ExtensionPoint {
 		public void characters(char[] ch, int start, int length) throws SAXException {
 			if (appInfoValue && xmlElementName != null) {
 				final String eStructuralFeatureName = new String(ch, start, length).trim();
-				if (eStructuralFeatureName.length() > 0 &&
-						!eStructuralFeatureNamesByXmlElementName.containsKey(xmlElementName)) {
+				if (eStructuralFeatureName.length() > 0
+						&& !eStructuralFeatureNamesByXmlElementName.containsKey(xmlElementName)) {
 					eStructuralFeatureNamesByXmlElementName.put(xmlElementName, eStructuralFeatureName);
 					appInfoValue = false;
 					xmlElementName = null;

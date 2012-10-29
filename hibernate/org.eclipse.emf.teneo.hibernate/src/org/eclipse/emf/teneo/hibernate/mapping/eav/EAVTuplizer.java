@@ -29,7 +29,8 @@ import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.tuple.entity.PojoEntityTuplizer;
 
 /**
- * Tuplizer created to work around this issue: http://opensource.atlassian.com/projects/hibernate/browse/HHH-4078
+ * Tuplizer created to work around this issue:
+ * http://opensource.atlassian.com/projects/hibernate/browse/HHH-4078
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
@@ -46,7 +47,8 @@ public class EAVTuplizer extends PojoEntityTuplizer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public String determineConcreteSubclassEntityName(Object entityInstance, SessionFactoryImplementor factory) {
+	public String determineConcreteSubclassEntityName(Object entityInstance,
+			SessionFactoryImplementor factory) {
 		final Class<?> concreteEntityClass = entityInstance.getClass();
 		if (concreteEntityClass == getMappedClass()) {
 			return getEntityName();
@@ -58,8 +60,9 @@ public class EAVTuplizer extends PojoEntityTuplizer {
 					return pc.getEntityName();
 				}
 			}
-			throw new HibernateException("Unable to resolve entity name from Class [" + concreteEntityClass.getName()
-					+ "]" + " expected instance/subclass of [" + getEntityName() + "]");
+			throw new HibernateException("Unable to resolve entity name from Class ["
+					+ concreteEntityClass.getName() + "]" + " expected instance/subclass of ["
+					+ getEntityName() + "]");
 		}
 	}
 
@@ -67,21 +70,21 @@ public class EAVTuplizer extends PojoEntityTuplizer {
 	public void setPropertyValues(Object entity, Object[] values) throws HibernateException {
 		boolean setAll = !getEntityMetamodel().hasLazyProperties();
 
-		for ( int j = 0; j < getEntityMetamodel().getPropertySpan(); j++ ) {
-			if ( setAll || values[j] != LazyPropertyInitializer.UNFETCHED_PROPERTY ) {
+		for (int j = 0; j < getEntityMetamodel().getPropertySpan(); j++) {
+			if (setAll || values[j] != LazyPropertyInitializer.UNFETCHED_PROPERTY) {
 				if (values[j] instanceof PersistentList) {
-					final PersistentList persistentList = (PersistentList)values[j];
+					final PersistentList persistentList = (PersistentList) values[j];
 					if (persistentList.getOwner() == null) {
 						persistentList.setOwner(entity);
 					}
 				}
-				setters[j].set( entity, values[j], getFactory() );
+				setters[j].set(entity, values[j], getFactory());
 			}
 		}
 	}
 
 	@Override
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
-		return new EAVValueInstantiator( persistentClass, null );
+		return new EAVValueInstantiator(persistentClass, null);
 	}
 }

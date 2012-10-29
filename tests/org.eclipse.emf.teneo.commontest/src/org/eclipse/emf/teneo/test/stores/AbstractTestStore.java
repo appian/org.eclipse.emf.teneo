@@ -29,11 +29,11 @@ public abstract class AbstractTestStore implements TestStore {
 	private static Log log = LogFactory.getLog(AbstractTestStore.class);
 
 	/**
-	 * Property defining that the mapping file should be saved one directory higher. This is
-	 * sometimes required if an epackage has subpackages.
+	 * Property defining that the mapping file should be saved one directory higher. This is sometimes
+	 * required if an epackage has subpackages.
 	 */
-	public static String STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER =
-			AbstractTestStore.class.getName() + ".StoreMappingFileOneDirectoryHigher";
+	public static String STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER = AbstractTestStore.class.getName()
+			+ ".StoreMappingFileOneDirectoryHigher";
 
 	/** Used to disable drop */
 	protected boolean donotDrop = false;
@@ -61,16 +61,17 @@ public abstract class AbstractTestStore implements TestStore {
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> clazz) {
 		List<?> l = getObjects(clazz); // replace class is called in getObjects
-		TestCase.assertTrue("There are " + l.size() +
-				" object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l.size() == 1);
+		TestCase.assertTrue("There are " + l.size()
+				+ " object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(),
+				l.size() == 1);
 		return (T) l.get(0);
 	}
 
 	/** Test the amount of objects of a certain class in the db */
 	public void checkNumber(Class<?> clazz, int count) {
 		final List<?> list = getObjects(clazz);
-		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size() +
-				" object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
+		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size()
+				+ " object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
 	}
 
 	/** Is called just before the test */

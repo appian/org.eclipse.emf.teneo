@@ -26,25 +26,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Compensate Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Compensate Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.CompensateEventDefinitionImpl#getActivityRef <em>Activity Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.CompensateEventDefinitionImpl#isWaitForCompletion <em>Wait For Completion</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CompensateEventDefinitionImpl#getActivityRef <em>Activity Ref
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CompensateEventDefinitionImpl#isWaitForCompletion <em>Wait For
+ * Completion</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class CompensateEventDefinitionImpl extends EventDefinitionImpl
-		implements CompensateEventDefinition {
+public class CompensateEventDefinitionImpl extends EventDefinitionImpl implements
+		CompensateEventDefinition {
 	/**
-	 * The cached value of the '{@link #getActivityRef() <em>Activity Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getActivityRef() <em>Activity Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getActivityRef()
 	 * @generated
 	 * @ordered
@@ -52,9 +53,9 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	protected Activity activityRef;
 
 	/**
-	 * The default value of the '{@link #isWaitForCompletion() <em>Wait For Completion</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isWaitForCompletion() <em>Wait For Completion</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isWaitForCompletion()
 	 * @generated
 	 * @ordered
@@ -62,9 +63,9 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	protected static final boolean WAIT_FOR_COMPLETION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isWaitForCompletion() <em>Wait For Completion</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isWaitForCompletion() <em>Wait For Completion</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isWaitForCompletion()
 	 * @generated
 	 * @ordered
@@ -72,8 +73,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	protected boolean waitForCompletion = WAIT_FOR_COMPLETION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CompensateEventDefinitionImpl() {
@@ -81,8 +82,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,8 +92,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Activity getActivityRef() {
@@ -101,19 +102,16 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 			activityRef = (Activity) eResolveProxy(oldActivityRef);
 			if (activityRef != oldActivityRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.COMPENSATE_EVENT_DEFINITION__ACTIVITY_REF,
-							oldActivityRef, activityRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.COMPENSATE_EVENT_DEFINITION__ACTIVITY_REF, oldActivityRef, activityRef));
 			}
 		}
 		return activityRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Activity basicGetActivityRef() {
@@ -121,8 +119,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setActivityRef(Activity newActivityRef) {
@@ -130,13 +128,12 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 		activityRef = newActivityRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.COMPENSATE_EVENT_DEFINITION__ACTIVITY_REF,
-					oldActivityRef, activityRef));
+					Bpmn2Package.COMPENSATE_EVENT_DEFINITION__ACTIVITY_REF, oldActivityRef, activityRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isWaitForCompletion() {
@@ -144,24 +141,22 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setWaitForCompletion(boolean newWaitForCompletion) {
 		boolean oldWaitForCompletion = waitForCompletion;
 		waitForCompletion = newWaitForCompletion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Bpmn2Package.COMPENSATE_EVENT_DEFINITION__WAIT_FOR_COMPLETION,
-					oldWaitForCompletion, waitForCompletion));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.COMPENSATE_EVENT_DEFINITION__WAIT_FOR_COMPLETION, oldWaitForCompletion,
+					waitForCompletion));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -178,8 +173,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -196,8 +191,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -214,8 +209,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -230,8 +225,8 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -246,4 +241,4 @@ public class CompensateEventDefinitionImpl extends EventDefinitionImpl
 		return result.toString();
 	}
 
-} //CompensateEventDefinitionImpl
+} // CompensateEventDefinitionImpl

@@ -50,7 +50,7 @@ public class LibraryEAVResourceAction extends LibraryResourceAction {
 	// EAVSingleEAttributeValueHolder
 	public void doAction(TestStore store) {
 		super.doAction(store);
-		
+
 		{
 			store.beginTransaction();
 			List<?> list = store
@@ -79,7 +79,8 @@ public class LibraryEAVResourceAction extends LibraryResourceAction {
 			final Session session = ((HibernateTestStore) store).getSession();
 			final Query qryNonContainment = session
 					.createQuery("select eav.owner from EAVSingleNonContainmentEReferenceValueHolder eav where eav.referenceValue.id=:referedTo");
-			qryNonContainment.setParameter("referedTo", IdentifierCacheHandler.getInstance().getID(writer));
+			qryNonContainment.setParameter("referedTo", IdentifierCacheHandler.getInstance()
+					.getID(writer));
 			assertEquals(2, qryNonContainment.list().size());
 			for (Object o : qryNonContainment.list()) {
 				final Book bk = (Book) o;

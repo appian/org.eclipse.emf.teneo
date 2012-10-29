@@ -18,44 +18,37 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.dd.dc.Point;
-
 import org.eclipse.dd.di.DiPackage;
 import org.eclipse.dd.di.DiagramElement;
 import org.eclipse.dd.di.Edge;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Edge</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Edge</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.di.impl.EdgeImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.EdgeImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.dd.di.impl.EdgeImpl#getWaypoint <em>Waypoint</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.EdgeImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.EdgeImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.EdgeImpl#getWaypoint <em>Waypoint</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -63,9 +56,9 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	protected DiagramElement source;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -74,8 +67,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 
 	/**
 	 * The cached value of the '{@link #getWaypoint() <em>Waypoint</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWaypoint()
 	 * @generated
 	 * @ordered
@@ -83,8 +76,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	protected EList<Point> waypoint;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EdgeImpl() {
@@ -92,8 +85,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,8 +95,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiagramElement getSource() {
@@ -112,16 +105,16 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 			source = (DiagramElement) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							DiPackage.EDGE__SOURCE, oldSource, source));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiPackage.EDGE__SOURCE,
+							oldSource, source));
 			}
 		}
 		return source;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiagramElement basicGetSource() {
@@ -129,8 +122,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiagramElement getTarget() {
@@ -139,16 +132,16 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 			target = (DiagramElement) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							DiPackage.EDGE__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiPackage.EDGE__TARGET,
+							oldTarget, target));
 			}
 		}
 		return target;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiagramElement basicGetTarget() {
@@ -156,37 +149,35 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Point> getWaypoint() {
 		if (waypoint == null) {
-			waypoint = new EObjectContainmentEList<Point>(Point.class, this,
-					DiPackage.EDGE__WAYPOINT);
+			waypoint = new EObjectContainmentEList<Point>(Point.class, this, DiPackage.EDGE__WAYPOINT);
 		}
 		return waypoint;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case DiPackage.EDGE__WAYPOINT:
-			return ((InternalEList<?>) getWaypoint()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getWaypoint()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -207,8 +198,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -224,8 +215,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -239,8 +230,8 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -256,4 +247,4 @@ public abstract class EdgeImpl extends DiagramElementImpl implements Edge {
 		return super.eIsSet(featureID);
 	}
 
-} //EdgeImpl
+} // EdgeImpl

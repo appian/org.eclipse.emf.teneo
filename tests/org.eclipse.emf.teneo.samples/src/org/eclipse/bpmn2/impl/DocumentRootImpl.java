@@ -168,160 +168,211 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Document Root</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Document Root</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAdHocSubProcess <em>Ad Hoc Sub Process</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getFlowElement <em>Flow Element</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getArtifact <em>Artifact</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAssignment <em>Assignment</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAssociation <em>Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAuditing <em>Auditing</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBaseElement <em>Base Element</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBaseElementWithMixedContent <em>Base Element With Mixed Content</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBoundaryEvent <em>Boundary Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBusinessRuleTask <em>Business Rule Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallableElement <em>Callable Element</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallActivity <em>Call Activity</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallChoreography <em>Call Choreography</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallConversation <em>Call Conversation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversationNode <em>Conversation Node</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCancelEventDefinition <em>Cancel Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEventDefinition <em>Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getRootElement <em>Root Element</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCatchEvent <em>Catch Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCategoryValue <em>Category Value</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getChoreography <em>Choreography</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCollaboration <em>Collaboration</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getChoreographyActivity <em>Choreography Activity</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getChoreographyTask <em>Choreography Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCompensateEventDefinition <em>Compensate Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getComplexBehaviorDefinition <em>Complex Behavior Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getComplexGateway <em>Complex Gateway</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConditionalEventDefinition <em>Conditional Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversation <em>Conversation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversationAssociation <em>Conversation Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversationLink <em>Conversation Link</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationKey <em>Correlation Key</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationProperty <em>Correlation Property</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationPropertyBinding <em>Correlation Property Binding</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationPropertyRetrievalExpression <em>Correlation Property Retrieval Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationSubscription <em>Correlation Subscription</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataAssociation <em>Data Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataInput <em>Data Input</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataInputAssociation <em>Data Input Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataObject <em>Data Object</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataObjectReference <em>Data Object Reference</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataOutput <em>Data Output</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataOutputAssociation <em>Data Output Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataState <em>Data State</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataStore <em>Data Store</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataStoreReference <em>Data Store Reference</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDefinitions <em>Definitions</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEndEvent <em>End Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEndPoint <em>End Point</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getError <em>Error</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getErrorEventDefinition <em>Error Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEscalation <em>Escalation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEscalationEventDefinition <em>Escalation Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEvent <em>Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEventBasedGateway <em>Event Based Gateway</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExclusiveGateway <em>Exclusive Gateway</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExtension <em>Extension</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExtensionElements <em>Extension Elements</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getFlowNode <em>Flow Node</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getFormalExpression <em>Formal Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGateway <em>Gateway</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalBusinessRuleTask <em>Global Business Rule Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalChoreographyTask <em>Global Choreography Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalConversation <em>Global Conversation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalManualTask <em>Global Manual Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalScriptTask <em>Global Script Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalTask <em>Global Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalUserTask <em>Global User Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGroup <em>Group</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getHumanPerformer <em>Human Performer</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPerformer <em>Performer</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceRole <em>Resource Role</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getImplicitThrowEvent <em>Implicit Throw Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getImport <em>Import</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getInclusiveGateway <em>Inclusive Gateway</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getInputSet <em>Input Set</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getInterface <em>Interface</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIntermediateCatchEvent <em>Intermediate Catch Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIntermediateThrowEvent <em>Intermediate Throw Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIoBinding <em>Io Binding</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIoSpecification <em>Io Specification</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getItemDefinition <em>Item Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLane <em>Lane</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLaneSet <em>Lane Set</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLinkEventDefinition <em>Link Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLoopCharacteristics <em>Loop Characteristics</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getManualTask <em>Manual Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessage <em>Message</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessageEventDefinition <em>Message Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessageFlow <em>Message Flow</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessageFlowAssociation <em>Message Flow Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMonitoring <em>Monitoring</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMultiInstanceLoopCharacteristics <em>Multi Instance Loop Characteristics</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getOutputSet <em>Output Set</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParallelGateway <em>Parallel Gateway</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParticipant <em>Participant</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParticipantAssociation <em>Participant Association</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParticipantMultiplicity <em>Participant Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPartnerEntity <em>Partner Entity</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPartnerRole <em>Partner Role</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPotentialOwner <em>Potential Owner</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getProcess <em>Process</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getReceiveTask <em>Receive Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getRelationship <em>Relationship</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getRendering <em>Rendering</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResource <em>Resource</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceAssignmentExpression <em>Resource Assignment Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceParameter <em>Resource Parameter</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceParameterBinding <em>Resource Parameter Binding</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getScript <em>Script</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getScriptTask <em>Script Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSendTask <em>Send Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSequenceFlow <em>Sequence Flow</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getServiceTask <em>Service Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSignal <em>Signal</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSignalEventDefinition <em>Signal Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getStandardLoopCharacteristics <em>Standard Loop Characteristics</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getStartEvent <em>Start Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSubChoreography <em>Sub Choreography</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSubConversation <em>Sub Conversation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSubProcess <em>Sub Process</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTask <em>Task</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTerminateEventDefinition <em>Terminate Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTextAnnotation <em>Text Annotation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getThrowEvent <em>Throw Event</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTimerEventDefinition <em>Timer Event Definition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTransaction <em>Transaction</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getUserTask <em>User Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getActivity <em>Activity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAdHocSubProcess <em>Ad Hoc Sub Process
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getFlowElement <em>Flow Element</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getArtifact <em>Artifact</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAssignment <em>Assignment</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAssociation <em>Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getAuditing <em>Auditing</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBaseElement <em>Base Element</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBaseElementWithMixedContent <em>Base
+ * Element With Mixed Content</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBoundaryEvent <em>Boundary Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getBusinessRuleTask <em>Business Rule Task
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallableElement <em>Callable Element</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallActivity <em>Call Activity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallChoreography <em>Call Choreography
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCallConversation <em>Call Conversation
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversationNode <em>Conversation Node
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCancelEventDefinition <em>Cancel Event
+ * Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEventDefinition <em>Event Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getRootElement <em>Root Element</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCatchEvent <em>Catch Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCategory <em>Category</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCategoryValue <em>Category Value</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getChoreography <em>Choreography</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCollaboration <em>Collaboration</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getChoreographyActivity <em>Choreography
+ * Activity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getChoreographyTask <em>Choreography Task
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCompensateEventDefinition <em>Compensate
+ * Event Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getComplexBehaviorDefinition <em>Complex
+ * Behavior Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getComplexGateway <em>Complex Gateway</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConditionalEventDefinition <em>Conditional
+ * Event Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversation <em>Conversation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversationAssociation <em>Conversation
+ * Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getConversationLink <em>Conversation Link
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationKey <em>Correlation Key</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationProperty <em>Correlation
+ * Property</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationPropertyBinding <em>Correlation
+ * Property Binding</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationPropertyRetrievalExpression <em>
+ * Correlation Property Retrieval Expression</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getCorrelationSubscription <em>Correlation
+ * Subscription</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataAssociation <em>Data Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataInput <em>Data Input</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataInputAssociation <em>Data Input
+ * Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataObject <em>Data Object</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataObjectReference <em>Data Object
+ * Reference</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataOutput <em>Data Output</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataOutputAssociation <em>Data Output
+ * Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataState <em>Data State</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataStore <em>Data Store</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDataStoreReference <em>Data Store Reference
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDefinitions <em>Definitions</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getDocumentation <em>Documentation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEndEvent <em>End Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEndPoint <em>End Point</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getError <em>Error</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getErrorEventDefinition <em>Error Event
+ * Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEscalation <em>Escalation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEscalationEventDefinition <em>Escalation
+ * Event Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEvent <em>Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getEventBasedGateway <em>Event Based Gateway
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExclusiveGateway <em>Exclusive Gateway
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExpression <em>Expression</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExtension <em>Extension</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getExtensionElements <em>Extension Elements
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getFlowNode <em>Flow Node</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getFormalExpression <em>Formal Expression
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGateway <em>Gateway</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalBusinessRuleTask <em>Global Business
+ * Rule Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalChoreographyTask <em>Global
+ * Choreography Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalConversation <em>Global Conversation
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalManualTask <em>Global Manual Task
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalScriptTask <em>Global Script Task
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalTask <em>Global Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGlobalUserTask <em>Global User Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getGroup <em>Group</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getHumanPerformer <em>Human Performer</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPerformer <em>Performer</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceRole <em>Resource Role</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getImplicitThrowEvent <em>Implicit Throw Event
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getImport <em>Import</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getInclusiveGateway <em>Inclusive Gateway
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getInputSet <em>Input Set</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getInterface <em>Interface</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIntermediateCatchEvent <em>Intermediate
+ * Catch Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIntermediateThrowEvent <em>Intermediate
+ * Throw Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIoBinding <em>Io Binding</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getIoSpecification <em>Io Specification</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getItemDefinition <em>Item Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLane <em>Lane</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLaneSet <em>Lane Set</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLinkEventDefinition <em>Link Event
+ * Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getLoopCharacteristics <em>Loop
+ * Characteristics</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getManualTask <em>Manual Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessage <em>Message</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessageEventDefinition <em>Message Event
+ * Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessageFlow <em>Message Flow</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMessageFlowAssociation <em>Message Flow
+ * Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMonitoring <em>Monitoring</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getMultiInstanceLoopCharacteristics <em>Multi
+ * Instance Loop Characteristics</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getOperation <em>Operation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getOutputSet <em>Output Set</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParallelGateway <em>Parallel Gateway</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParticipant <em>Participant</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParticipantAssociation <em>Participant
+ * Association</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getParticipantMultiplicity <em>Participant
+ * Multiplicity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPartnerEntity <em>Partner Entity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPartnerRole <em>Partner Role</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getPotentialOwner <em>Potential Owner</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getProcess <em>Process</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getProperty <em>Property</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getReceiveTask <em>Receive Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getRelationship <em>Relationship</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getRendering <em>Rendering</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResource <em>Resource</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceAssignmentExpression <em>Resource
+ * Assignment Expression</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceParameter <em>Resource Parameter
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getResourceParameterBinding <em>Resource
+ * Parameter Binding</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getScript <em>Script</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getScriptTask <em>Script Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSendTask <em>Send Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSequenceFlow <em>Sequence Flow</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getServiceTask <em>Service Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSignal <em>Signal</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSignalEventDefinition <em>Signal Event
+ * Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getStandardLoopCharacteristics <em>Standard
+ * Loop Characteristics</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getStartEvent <em>Start Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSubChoreography <em>Sub Choreography</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSubConversation <em>Sub Conversation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getSubProcess <em>Sub Process</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTask <em>Task</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTerminateEventDefinition <em>Terminate
+ * Event Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getText <em>Text</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTextAnnotation <em>Text Annotation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getThrowEvent <em>Throw Event</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTimerEventDefinition <em>Timer Event
+ * Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getTransaction <em>Transaction</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentRootImpl#getUserTask <em>User Task</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -329,9 +380,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected FeatureMap mixed;
 
 	/**
-	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getXMLNSPrefixMap()
 	 * @generated
 	 * @ordered
@@ -340,8 +391,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getXSISchemaLocation()
 	 * @generated
 	 * @ordered
@@ -349,8 +400,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected EMap<String, String> xSISchemaLocation;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DocumentRootImpl() {
@@ -358,8 +409,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -368,8 +419,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -380,70 +431,65 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Map<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
 			xMLNSPrefixMap = new EcoreEMap<String, String>(
-					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
-					EStringToStringMapEntryImpl.class, this,
-					Bpmn2Package.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class,
+					this, Bpmn2Package.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap.map();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Map<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
 			xSISchemaLocation = new EcoreEMap<String, String>(
-					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
-					EStringToStringMapEntryImpl.class, this,
-					Bpmn2Package.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+					EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class,
+					this, Bpmn2Package.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation.map();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Activity getActivity() {
-		return (Activity) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ACTIVITY, true);
+		return (Activity) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ACTIVITY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetActivity(Activity newActivity,
-			NotificationChain msgs) {
+	public NotificationChain basicSetActivity(Activity newActivity, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ACTIVITY, newActivity,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ACTIVITY, newActivity, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ACTIVITY, newActivity);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ACTIVITY,
+				newActivity);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdHocSubProcess getAdHocSubProcess() {
@@ -452,295 +498,267 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAdHocSubProcess(
-			AdHocSubProcess newAdHocSubProcess, NotificationChain msgs) {
+	public NotificationChain basicSetAdHocSubProcess(AdHocSubProcess newAdHocSubProcess,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__AD_HOC_SUB_PROCESS,
-				newAdHocSubProcess, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__AD_HOC_SUB_PROCESS, newAdHocSubProcess, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAdHocSubProcess(AdHocSubProcess newAdHocSubProcess) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__AD_HOC_SUB_PROCESS,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__AD_HOC_SUB_PROCESS,
 				newAdHocSubProcess);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FlowElement getFlowElement() {
-		return (FlowElement) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_ELEMENT, true);
+		return (FlowElement) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_ELEMENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetFlowElement(FlowElement newFlowElement,
-			NotificationChain msgs) {
+	public NotificationChain basicSetFlowElement(FlowElement newFlowElement, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_ELEMENT,
-				newFlowElement, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_ELEMENT, newFlowElement, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFlowElement(FlowElement newFlowElement) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_ELEMENT,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_ELEMENT,
 				newFlowElement);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Artifact getArtifact() {
-		return (Artifact) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ARTIFACT, true);
+		return (Artifact) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ARTIFACT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetArtifact(Artifact newArtifact,
-			NotificationChain msgs) {
+	public NotificationChain basicSetArtifact(Artifact newArtifact, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ARTIFACT, newArtifact,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ARTIFACT, newArtifact, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setArtifact(Artifact newArtifact) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ARTIFACT, newArtifact);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ARTIFACT,
+				newArtifact);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Assignment getAssignment() {
-		return (Assignment) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSIGNMENT, true);
+		return (Assignment) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ASSIGNMENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAssignment(Assignment newAssignment,
-			NotificationChain msgs) {
+	public NotificationChain basicSetAssignment(Assignment newAssignment, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSIGNMENT, newAssignment,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSIGNMENT, newAssignment, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAssignment(Assignment newAssignment) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSIGNMENT, newAssignment);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ASSIGNMENT,
+				newAssignment);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Association getAssociation() {
-		return (Association) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSOCIATION, true);
+		return (Association) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ASSOCIATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAssociation(Association newAssociation,
-			NotificationChain msgs) {
+	public NotificationChain basicSetAssociation(Association newAssociation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSOCIATION,
-				newAssociation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSOCIATION, newAssociation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAssociation(Association newAssociation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ASSOCIATION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ASSOCIATION,
 				newAssociation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Auditing getAuditing() {
-		return (Auditing) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__AUDITING, true);
+		return (Auditing) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__AUDITING, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAuditing(Auditing newAuditing,
-			NotificationChain msgs) {
+	public NotificationChain basicSetAuditing(Auditing newAuditing, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__AUDITING, newAuditing,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__AUDITING, newAuditing, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAuditing(Auditing newAuditing) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__AUDITING, newAuditing);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__AUDITING,
+				newAuditing);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement getBaseElement() {
-		return (BaseElement) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT, true);
+		return (BaseElement) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetBaseElement(BaseElement newBaseElement,
-			NotificationChain msgs) {
+	public NotificationChain basicSetBaseElement(BaseElement newBaseElement, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT,
-				newBaseElement, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT, newBaseElement, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBaseElement(BaseElement newBaseElement) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT,
 				newBaseElement);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement getBaseElementWithMixedContent() {
-		return (BaseElement) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT_WITH_MIXED_CONTENT,
-						true);
+		return (BaseElement) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT_WITH_MIXED_CONTENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetBaseElementWithMixedContent(
 			BaseElement newBaseElementWithMixedContent, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT_WITH_MIXED_CONTENT,
-						newBaseElementWithMixedContent, msgs);
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT_WITH_MIXED_CONTENT,
+				newBaseElementWithMixedContent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setBaseElementWithMixedContent(
-			BaseElement newBaseElementWithMixedContent) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT_WITH_MIXED_CONTENT,
-						newBaseElementWithMixedContent);
+	public void setBaseElementWithMixedContent(BaseElement newBaseElementWithMixedContent) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__BASE_ELEMENT_WITH_MIXED_CONTENT,
+				newBaseElementWithMixedContent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BoundaryEvent getBoundaryEvent() {
-		return (BoundaryEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BOUNDARY_EVENT, true);
+		return (BoundaryEvent) getMixed()
+				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__BOUNDARY_EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetBoundaryEvent(
-			BoundaryEvent newBoundaryEvent, NotificationChain msgs) {
+	public NotificationChain basicSetBoundaryEvent(BoundaryEvent newBoundaryEvent,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BOUNDARY_EVENT,
-				newBoundaryEvent, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__BOUNDARY_EVENT, newBoundaryEvent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBoundaryEvent(BoundaryEvent newBoundaryEvent) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BOUNDARY_EVENT,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__BOUNDARY_EVENT,
 				newBoundaryEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BusinessRuleTask getBusinessRuleTask() {
@@ -749,97 +767,89 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetBusinessRuleTask(
-			BusinessRuleTask newBusinessRuleTask, NotificationChain msgs) {
+	public NotificationChain basicSetBusinessRuleTask(BusinessRuleTask newBusinessRuleTask,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BUSINESS_RULE_TASK,
-				newBusinessRuleTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__BUSINESS_RULE_TASK, newBusinessRuleTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBusinessRuleTask(BusinessRuleTask newBusinessRuleTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__BUSINESS_RULE_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__BUSINESS_RULE_TASK,
 				newBusinessRuleTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallableElement getCallableElement() {
-		return (CallableElement) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALLABLE_ELEMENT, true);
+		return (CallableElement) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CALLABLE_ELEMENT,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCallableElement(
-			CallableElement newCallableElement, NotificationChain msgs) {
+	public NotificationChain basicSetCallableElement(CallableElement newCallableElement,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALLABLE_ELEMENT,
-				newCallableElement, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CALLABLE_ELEMENT, newCallableElement, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCallableElement(CallableElement newCallableElement) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALLABLE_ELEMENT,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CALLABLE_ELEMENT,
 				newCallableElement);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallActivity getCallActivity() {
-		return (CallActivity) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_ACTIVITY, true);
+		return (CallActivity) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_ACTIVITY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCallActivity(CallActivity newCallActivity,
-			NotificationChain msgs) {
+	public NotificationChain basicSetCallActivity(CallActivity newCallActivity, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_ACTIVITY,
-				newCallActivity, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_ACTIVITY, newCallActivity, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCallActivity(CallActivity newCallActivity) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_ACTIVITY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_ACTIVITY,
 				newCallActivity);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallChoreography getCallChoreography() {
@@ -848,31 +858,29 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCallChoreography(
-			CallChoreography newCallChoreography, NotificationChain msgs) {
+	public NotificationChain basicSetCallChoreography(CallChoreography newCallChoreography,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CHOREOGRAPHY,
-				newCallChoreography, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CHOREOGRAPHY, newCallChoreography, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCallChoreography(CallChoreography newCallChoreography) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CHOREOGRAPHY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CHOREOGRAPHY,
 				newCallChoreography);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallConversation getCallConversation() {
@@ -881,31 +889,29 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCallConversation(
-			CallConversation newCallConversation, NotificationChain msgs) {
+	public NotificationChain basicSetCallConversation(CallConversation newCallConversation,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CONVERSATION,
-				newCallConversation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CONVERSATION, newCallConversation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCallConversation(CallConversation newCallConversation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CONVERSATION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CALL_CONVERSATION,
 				newCallConversation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationNode getConversationNode() {
@@ -914,332 +920,300 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetConversationNode(
-			ConversationNode newConversationNode, NotificationChain msgs) {
+	public NotificationChain basicSetConversationNode(ConversationNode newConversationNode,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_NODE,
-				newConversationNode, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_NODE, newConversationNode, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConversationNode(ConversationNode newConversationNode) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_NODE,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_NODE,
 				newConversationNode);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CancelEventDefinition getCancelEventDefinition() {
 		return (CancelEventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CANCEL_EVENT_DEFINITION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CANCEL_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCancelEventDefinition(
-			CancelEventDefinition newCancelEventDefinition,
-			NotificationChain msgs) {
+			CancelEventDefinition newCancelEventDefinition, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CANCEL_EVENT_DEFINITION,
-				newCancelEventDefinition, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCancelEventDefinition(
-			CancelEventDefinition newCancelEventDefinition) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CANCEL_EVENT_DEFINITION,
-				newCancelEventDefinition);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventDefinition getEventDefinition() {
-		return (EventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_DEFINITION, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetEventDefinition(
-			EventDefinition newEventDefinition, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_DEFINITION,
-				newEventDefinition, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEventDefinition(EventDefinition newEventDefinition) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_DEFINITION,
-				newEventDefinition);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RootElement getRootElement() {
-		return (RootElement) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ROOT_ELEMENT, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRootElement(RootElement newRootElement,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ROOT_ELEMENT,
-				newRootElement, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRootElement(RootElement newRootElement) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ROOT_ELEMENT,
-				newRootElement);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CatchEvent getCatchEvent() {
-		return (CatchEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATCH_EVENT, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCatchEvent(CatchEvent newCatchEvent,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATCH_EVENT,
-				newCatchEvent, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCatchEvent(CatchEvent newCatchEvent) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__CATCH_EVENT,
-						newCatchEvent);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Category getCategory() {
-		return (Category) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCategory(Category newCategory,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY, newCategory,
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CANCEL_EVENT_DEFINITION, newCancelEventDefinition,
 				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setCategory(Category newCategory) {
+	public void setCancelEventDefinition(CancelEventDefinition newCancelEventDefinition) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY, newCategory);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CANCEL_EVENT_DEFINITION, newCancelEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public CategoryValue getCategoryValue() {
-		return (CategoryValue) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY_VALUE, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCategoryValue(
-			CategoryValue newCategoryValue, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY_VALUE,
-				newCategoryValue, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCategoryValue(CategoryValue newCategoryValue) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY_VALUE,
-				newCategoryValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Choreography getChoreography() {
-		return (Choreography) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetChoreography(Choreography newChoreography,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY,
-				newChoreography, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setChoreography(Choreography newChoreography) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY,
-				newChoreography);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Collaboration getCollaboration() {
-		return (Collaboration) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__COLLABORATION, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCollaboration(
-			Collaboration newCollaboration, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__COLLABORATION,
-				newCollaboration, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCollaboration(Collaboration newCollaboration) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__COLLABORATION,
-				newCollaboration);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChoreographyActivity getChoreographyActivity() {
-		return (ChoreographyActivity) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_ACTIVITY,
+	public EventDefinition getEventDefinition() {
+		return (EventDefinition) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_DEFINITION,
 				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetEventDefinition(EventDefinition newEventDefinition,
+			NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_DEFINITION, newEventDefinition, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setEventDefinition(EventDefinition newEventDefinition) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_DEFINITION,
+				newEventDefinition);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public RootElement getRootElement() {
+		return (RootElement) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ROOT_ELEMENT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetRootElement(RootElement newRootElement, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ROOT_ELEMENT, newRootElement, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setRootElement(RootElement newRootElement) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ROOT_ELEMENT,
+				newRootElement);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public CatchEvent getCatchEvent() {
+		return (CatchEvent) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CATCH_EVENT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetCatchEvent(CatchEvent newCatchEvent, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CATCH_EVENT, newCatchEvent, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setCatchEvent(CatchEvent newCatchEvent) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CATCH_EVENT,
+				newCatchEvent);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Category getCategory() {
+		return (Category) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetCategory(Category newCategory, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY, newCategory, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setCategory(Category newCategory) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY,
+				newCategory);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public CategoryValue getCategoryValue() {
+		return (CategoryValue) getMixed()
+				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY_VALUE, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetCategoryValue(CategoryValue newCategoryValue,
+			NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY_VALUE, newCategoryValue, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setCategoryValue(CategoryValue newCategoryValue) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CATEGORY_VALUE,
+				newCategoryValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Choreography getChoreography() {
+		return (Choreography) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetChoreography(Choreography newChoreography, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY, newChoreography, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setChoreography(Choreography newChoreography) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY,
+				newChoreography);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Collaboration getCollaboration() {
+		return (Collaboration) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__COLLABORATION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetCollaboration(Collaboration newCollaboration,
+			NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COLLABORATION, newCollaboration, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setCollaboration(Collaboration newCollaboration) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__COLLABORATION,
+				newCollaboration);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public ChoreographyActivity getChoreographyActivity() {
+		return (ChoreographyActivity) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_ACTIVITY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetChoreographyActivity(
 			ChoreographyActivity newChoreographyActivity, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_ACTIVITY,
-				newChoreographyActivity, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_ACTIVITY, newChoreographyActivity, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setChoreographyActivity(
-			ChoreographyActivity newChoreographyActivity) {
+	public void setChoreographyActivity(ChoreographyActivity newChoreographyActivity) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_ACTIVITY,
-				newChoreographyActivity);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_ACTIVITY, newChoreographyActivity);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChoreographyTask getChoreographyTask() {
@@ -1248,244 +1222,220 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetChoreographyTask(
-			ChoreographyTask newChoreographyTask, NotificationChain msgs) {
+	public NotificationChain basicSetChoreographyTask(ChoreographyTask newChoreographyTask,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_TASK,
-				newChoreographyTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_TASK, newChoreographyTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setChoreographyTask(ChoreographyTask newChoreographyTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CHOREOGRAPHY_TASK,
 				newChoreographyTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CompensateEventDefinition getCompensateEventDefinition() {
-		return (CompensateEventDefinition) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__COMPENSATE_EVENT_DEFINITION,
-						true);
+		return (CompensateEventDefinition) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPENSATE_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCompensateEventDefinition(
-			CompensateEventDefinition newCompensateEventDefinition,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__COMPENSATE_EVENT_DEFINITION,
-						newCompensateEventDefinition, msgs);
+			CompensateEventDefinition newCompensateEventDefinition, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPENSATE_EVENT_DEFINITION,
+				newCompensateEventDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setCompensateEventDefinition(
-			CompensateEventDefinition newCompensateEventDefinition) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__COMPENSATE_EVENT_DEFINITION,
-						newCompensateEventDefinition);
+	public void setCompensateEventDefinition(CompensateEventDefinition newCompensateEventDefinition) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPENSATE_EVENT_DEFINITION,
+				newCompensateEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ComplexBehaviorDefinition getComplexBehaviorDefinition() {
-		return (ComplexBehaviorDefinition) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_BEHAVIOR_DEFINITION,
-						true);
+		return (ComplexBehaviorDefinition) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_BEHAVIOR_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetComplexBehaviorDefinition(
-			ComplexBehaviorDefinition newComplexBehaviorDefinition,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_BEHAVIOR_DEFINITION,
-						newComplexBehaviorDefinition, msgs);
+			ComplexBehaviorDefinition newComplexBehaviorDefinition, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_BEHAVIOR_DEFINITION,
+				newComplexBehaviorDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setComplexBehaviorDefinition(
-			ComplexBehaviorDefinition newComplexBehaviorDefinition) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_BEHAVIOR_DEFINITION,
-						newComplexBehaviorDefinition);
+	public void setComplexBehaviorDefinition(ComplexBehaviorDefinition newComplexBehaviorDefinition) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_BEHAVIOR_DEFINITION,
+				newComplexBehaviorDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ComplexGateway getComplexGateway() {
-		return (ComplexGateway) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_GATEWAY, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetComplexGateway(
-			ComplexGateway newComplexGateway, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_GATEWAY,
-				newComplexGateway, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setComplexGateway(ComplexGateway newComplexGateway) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_GATEWAY,
-				newComplexGateway);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ConditionalEventDefinition getConditionalEventDefinition() {
-		return (ConditionalEventDefinition) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__CONDITIONAL_EVENT_DEFINITION,
-						true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConditionalEventDefinition(
-			ConditionalEventDefinition newConditionalEventDefinition,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__CONDITIONAL_EVENT_DEFINITION,
-						newConditionalEventDefinition, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConditionalEventDefinition(
-			ConditionalEventDefinition newConditionalEventDefinition) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__CONDITIONAL_EVENT_DEFINITION,
-						newConditionalEventDefinition);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Conversation getConversation() {
-		return (Conversation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConversation(Conversation newConversation,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION,
-				newConversation, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConversation(Conversation newConversation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION,
-				newConversation);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ConversationAssociation getConversationAssociation() {
-		return (ConversationAssociation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_ASSOCIATION,
+		return (ComplexGateway) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_GATEWAY,
 				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetComplexGateway(ComplexGateway newComplexGateway,
+			NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_GATEWAY, newComplexGateway, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setComplexGateway(ComplexGateway newComplexGateway) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__COMPLEX_GATEWAY,
+				newComplexGateway);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public ConditionalEventDefinition getConditionalEventDefinition() {
+		return (ConditionalEventDefinition) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONDITIONAL_EVENT_DEFINITION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetConditionalEventDefinition(
+			ConditionalEventDefinition newConditionalEventDefinition, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONDITIONAL_EVENT_DEFINITION,
+				newConditionalEventDefinition, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setConditionalEventDefinition(ConditionalEventDefinition newConditionalEventDefinition) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONDITIONAL_EVENT_DEFINITION,
+				newConditionalEventDefinition);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Conversation getConversation() {
+		return (Conversation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetConversation(Conversation newConversation, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION, newConversation, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setConversation(Conversation newConversation) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION,
+				newConversation);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public ConversationAssociation getConversationAssociation() {
+		return (ConversationAssociation) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_ASSOCIATION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetConversationAssociation(
-			ConversationAssociation newConversationAssociation,
-			NotificationChain msgs) {
+			ConversationAssociation newConversationAssociation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_ASSOCIATION,
-				newConversationAssociation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_ASSOCIATION, newConversationAssociation,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setConversationAssociation(
-			ConversationAssociation newConversationAssociation) {
+	public void setConversationAssociation(ConversationAssociation newConversationAssociation) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_ASSOCIATION,
-				newConversationAssociation);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_ASSOCIATION, newConversationAssociation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationLink getConversationLink() {
@@ -1494,840 +1444,759 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetConversationLink(
-			ConversationLink newConversationLink, NotificationChain msgs) {
+	public NotificationChain basicSetConversationLink(ConversationLink newConversationLink,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_LINK,
-				newConversationLink, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_LINK, newConversationLink, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConversationLink(ConversationLink newConversationLink) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_LINK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CONVERSATION_LINK,
 				newConversationLink);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationKey getCorrelationKey() {
-		return (CorrelationKey) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_KEY, true);
+		return (CorrelationKey) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_KEY,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCorrelationKey(
-			CorrelationKey newCorrelationKey, NotificationChain msgs) {
+	public NotificationChain basicSetCorrelationKey(CorrelationKey newCorrelationKey,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_KEY,
-				newCorrelationKey, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_KEY, newCorrelationKey, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCorrelationKey(CorrelationKey newCorrelationKey) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_KEY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_KEY,
 				newCorrelationKey);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationProperty getCorrelationProperty() {
-		return (CorrelationProperty) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY,
-						true);
+		return (CorrelationProperty) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCorrelationProperty(
-			CorrelationProperty newCorrelationProperty, NotificationChain msgs) {
+	public NotificationChain basicSetCorrelationProperty(CorrelationProperty newCorrelationProperty,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY,
-				newCorrelationProperty, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY, newCorrelationProperty, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setCorrelationProperty(
-			CorrelationProperty newCorrelationProperty) {
+	public void setCorrelationProperty(CorrelationProperty newCorrelationProperty) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY,
-				newCorrelationProperty);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY, newCorrelationProperty);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationPropertyBinding getCorrelationPropertyBinding() {
-		return (CorrelationPropertyBinding) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_BINDING,
-						true);
+		return (CorrelationPropertyBinding) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_BINDING, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCorrelationPropertyBinding(
-			CorrelationPropertyBinding newCorrelationPropertyBinding,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_BINDING,
-						newCorrelationPropertyBinding, msgs);
+			CorrelationPropertyBinding newCorrelationPropertyBinding, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_BINDING,
+				newCorrelationPropertyBinding, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setCorrelationPropertyBinding(
-			CorrelationPropertyBinding newCorrelationPropertyBinding) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_BINDING,
-						newCorrelationPropertyBinding);
+	public void setCorrelationPropertyBinding(CorrelationPropertyBinding newCorrelationPropertyBinding) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_BINDING,
+				newCorrelationPropertyBinding);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationPropertyRetrievalExpression getCorrelationPropertyRetrievalExpression() {
-		return (CorrelationPropertyRetrievalExpression) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION,
-						true);
+		return (CorrelationPropertyRetrievalExpression) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCorrelationPropertyRetrievalExpression(
 			CorrelationPropertyRetrievalExpression newCorrelationPropertyRetrievalExpression,
 			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION,
-						newCorrelationPropertyRetrievalExpression, msgs);
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION,
+				newCorrelationPropertyRetrievalExpression, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCorrelationPropertyRetrievalExpression(
 			CorrelationPropertyRetrievalExpression newCorrelationPropertyRetrievalExpression) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION,
-						newCorrelationPropertyRetrievalExpression);
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION,
+				newCorrelationPropertyRetrievalExpression);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationSubscription getCorrelationSubscription() {
 		return (CorrelationSubscription) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_SUBSCRIPTION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_SUBSCRIPTION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCorrelationSubscription(
-			CorrelationSubscription newCorrelationSubscription,
-			NotificationChain msgs) {
+			CorrelationSubscription newCorrelationSubscription, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_SUBSCRIPTION,
-				newCorrelationSubscription, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCorrelationSubscription(
-			CorrelationSubscription newCorrelationSubscription) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_SUBSCRIPTION,
-				newCorrelationSubscription);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataAssociation getDataAssociation() {
-		return (DataAssociation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_ASSOCIATION, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDataAssociation(
-			DataAssociation newDataAssociation, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_ASSOCIATION,
-				newDataAssociation, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDataAssociation(DataAssociation newDataAssociation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_ASSOCIATION,
-				newDataAssociation);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataInput getDataInput() {
-		return (DataInput) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDataInput(DataInput newDataInput,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT, newDataInput,
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_SUBSCRIPTION, newCorrelationSubscription,
 				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setDataInput(DataInput newDataInput) {
+	public void setCorrelationSubscription(CorrelationSubscription newCorrelationSubscription) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT, newDataInput);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__CORRELATION_SUBSCRIPTION, newCorrelationSubscription);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public DataInputAssociation getDataInputAssociation() {
-		return (DataInputAssociation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT_ASSOCIATION,
+	public DataAssociation getDataAssociation() {
+		return (DataAssociation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_ASSOCIATION,
 				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetDataAssociation(DataAssociation newDataAssociation,
+			NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_ASSOCIATION, newDataAssociation, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setDataAssociation(DataAssociation newDataAssociation) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_ASSOCIATION,
+				newDataAssociation);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public DataInput getDataInput() {
+		return (DataInput) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetDataInput(DataInput newDataInput, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT, newDataInput, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setDataInput(DataInput newDataInput) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT,
+				newDataInput);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public DataInputAssociation getDataInputAssociation() {
+		return (DataInputAssociation) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT_ASSOCIATION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetDataInputAssociation(
 			DataInputAssociation newDataInputAssociation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT_ASSOCIATION,
-				newDataInputAssociation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT_ASSOCIATION, newDataInputAssociation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setDataInputAssociation(
-			DataInputAssociation newDataInputAssociation) {
+	public void setDataInputAssociation(DataInputAssociation newDataInputAssociation) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT_ASSOCIATION,
-				newDataInputAssociation);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_INPUT_ASSOCIATION, newDataInputAssociation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataObject getDataObject() {
-		return (DataObject) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT, true);
+		return (DataObject) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataObject(DataObject newDataObject,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDataObject(DataObject newDataObject, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT,
-				newDataObject, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT, newDataObject, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataObject(DataObject newDataObject) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT,
-						newDataObject);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT,
+				newDataObject);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataObjectReference getDataObjectReference() {
 		return (DataObjectReference) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT_REFERENCE,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT_REFERENCE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataObjectReference(
-			DataObjectReference newDataObjectReference, NotificationChain msgs) {
+	public NotificationChain basicSetDataObjectReference(DataObjectReference newDataObjectReference,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT_REFERENCE,
-				newDataObjectReference, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT_REFERENCE, newDataObjectReference, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setDataObjectReference(
-			DataObjectReference newDataObjectReference) {
+	public void setDataObjectReference(DataObjectReference newDataObjectReference) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT_REFERENCE,
-				newDataObjectReference);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OBJECT_REFERENCE, newDataObjectReference);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataOutput getDataOutput() {
-		return (DataOutput) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT, true);
+		return (DataOutput) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataOutput(DataOutput newDataOutput,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDataOutput(DataOutput newDataOutput, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT,
-				newDataOutput, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT, newDataOutput, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataOutput(DataOutput newDataOutput) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT,
-						newDataOutput);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT,
+				newDataOutput);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataOutputAssociation getDataOutputAssociation() {
 		return (DataOutputAssociation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT_ASSOCIATION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT_ASSOCIATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetDataOutputAssociation(
-			DataOutputAssociation newDataOutputAssociation,
-			NotificationChain msgs) {
+			DataOutputAssociation newDataOutputAssociation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT_ASSOCIATION,
-				newDataOutputAssociation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT_ASSOCIATION, newDataOutputAssociation,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setDataOutputAssociation(
-			DataOutputAssociation newDataOutputAssociation) {
+	public void setDataOutputAssociation(DataOutputAssociation newDataOutputAssociation) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT_ASSOCIATION,
-				newDataOutputAssociation);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_OUTPUT_ASSOCIATION, newDataOutputAssociation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataState getDataState() {
-		return (DataState) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STATE, true);
+		return (DataState) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STATE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataState(DataState newDataState,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDataState(DataState newDataState, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STATE, newDataState,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STATE, newDataState, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataState(DataState newDataState) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STATE, newDataState);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STATE,
+				newDataState);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataStore getDataStore() {
-		return (DataStore) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE, true);
+		return (DataStore) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataStore(DataStore newDataStore,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDataStore(DataStore newDataStore, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE, newDataStore,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE, newDataStore, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataStore(DataStore newDataStore) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE, newDataStore);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE,
+				newDataStore);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataStoreReference getDataStoreReference() {
-		return (DataStoreReference) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE_REFERENCE,
-						true);
+		return (DataStoreReference) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE_REFERENCE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataStoreReference(
-			DataStoreReference newDataStoreReference, NotificationChain msgs) {
+	public NotificationChain basicSetDataStoreReference(DataStoreReference newDataStoreReference,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE_REFERENCE,
-				newDataStoreReference, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE_REFERENCE, newDataStoreReference, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataStoreReference(DataStoreReference newDataStoreReference) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE_REFERENCE,
-				newDataStoreReference);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DATA_STORE_REFERENCE, newDataStoreReference);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Definitions getDefinitions() {
-		return (Definitions) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DEFINITIONS, true);
+		return (Definitions) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DEFINITIONS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDefinitions(Definitions newDefinitions,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDefinitions(Definitions newDefinitions, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DEFINITIONS,
-				newDefinitions, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DEFINITIONS, newDefinitions, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDefinitions(Definitions newDefinitions) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DEFINITIONS,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DEFINITIONS,
 				newDefinitions);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Documentation getDocumentation() {
-		return (Documentation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DOCUMENTATION, true);
+		return (Documentation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__DOCUMENTATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDocumentation(
-			Documentation newDocumentation, NotificationChain msgs) {
+	public NotificationChain basicSetDocumentation(Documentation newDocumentation,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DOCUMENTATION,
-				newDocumentation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__DOCUMENTATION, newDocumentation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDocumentation(Documentation newDocumentation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__DOCUMENTATION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__DOCUMENTATION,
 				newDocumentation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EndEvent getEndEvent() {
-		return (EndEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__END_EVENT, true);
+		return (EndEvent) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__END_EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetEndEvent(EndEvent newEndEvent,
-			NotificationChain msgs) {
+	public NotificationChain basicSetEndEvent(EndEvent newEndEvent, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__END_EVENT, newEndEvent,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__END_EVENT, newEndEvent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEndEvent(EndEvent newEndEvent) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__END_EVENT, newEndEvent);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__END_EVENT,
+				newEndEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EndPoint getEndPoint() {
-		return (EndPoint) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__END_POINT, true);
+		return (EndPoint) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__END_POINT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetEndPoint(EndPoint newEndPoint,
-			NotificationChain msgs) {
+	public NotificationChain basicSetEndPoint(EndPoint newEndPoint, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__END_POINT, newEndPoint,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__END_POINT, newEndPoint, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEndPoint(EndPoint newEndPoint) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__END_POINT, newEndPoint);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__END_POINT,
+				newEndPoint);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Error getError() {
-		return (org.eclipse.bpmn2.Error) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetError(org.eclipse.bpmn2.Error newError,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR, newError, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setError(org.eclipse.bpmn2.Error newError) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR, newError);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ErrorEventDefinition getErrorEventDefinition() {
-		return (ErrorEventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR_EVENT_DEFINITION,
+		return (org.eclipse.bpmn2.Error) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR,
 				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetError(org.eclipse.bpmn2.Error newError, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR,
+				newError, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setError(org.eclipse.bpmn2.Error newError) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR, newError);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public ErrorEventDefinition getErrorEventDefinition() {
+		return (ErrorEventDefinition) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR_EVENT_DEFINITION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetErrorEventDefinition(
 			ErrorEventDefinition newErrorEventDefinition, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR_EVENT_DEFINITION,
-				newErrorEventDefinition, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR_EVENT_DEFINITION, newErrorEventDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setErrorEventDefinition(
-			ErrorEventDefinition newErrorEventDefinition) {
+	public void setErrorEventDefinition(ErrorEventDefinition newErrorEventDefinition) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR_EVENT_DEFINITION,
-				newErrorEventDefinition);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ERROR_EVENT_DEFINITION, newErrorEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Escalation getEscalation() {
-		return (Escalation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION, true);
+		return (Escalation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetEscalation(Escalation newEscalation,
-			NotificationChain msgs) {
+	public NotificationChain basicSetEscalation(Escalation newEscalation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION, newEscalation,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION, newEscalation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEscalation(Escalation newEscalation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION, newEscalation);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION,
+				newEscalation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EscalationEventDefinition getEscalationEventDefinition() {
-		return (EscalationEventDefinition) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION_EVENT_DEFINITION,
-						true);
+		return (EscalationEventDefinition) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetEscalationEventDefinition(
-			EscalationEventDefinition newEscalationEventDefinition,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION_EVENT_DEFINITION,
-						newEscalationEventDefinition, msgs);
+			EscalationEventDefinition newEscalationEventDefinition, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION_EVENT_DEFINITION,
+				newEscalationEventDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setEscalationEventDefinition(
-			EscalationEventDefinition newEscalationEventDefinition) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION_EVENT_DEFINITION,
-						newEscalationEventDefinition);
+	public void setEscalationEventDefinition(EscalationEventDefinition newEscalationEventDefinition) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ESCALATION_EVENT_DEFINITION,
+				newEscalationEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Event getEvent() {
-		return (Event) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT, true);
+		return (Event) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetEvent(Event newEvent,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT, newEvent, msgs);
+	public NotificationChain basicSetEvent(Event newEvent, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT,
+				newEvent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEvent(Event newEvent) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT, newEvent);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT, newEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EventBasedGateway getEventBasedGateway() {
@@ -2336,31 +2205,29 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetEventBasedGateway(
-			EventBasedGateway newEventBasedGateway, NotificationChain msgs) {
+	public NotificationChain basicSetEventBasedGateway(EventBasedGateway newEventBasedGateway,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_BASED_GATEWAY,
-				newEventBasedGateway, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_BASED_GATEWAY, newEventBasedGateway, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEventBasedGateway(EventBasedGateway newEventBasedGateway) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_BASED_GATEWAY,
-				newEventBasedGateway);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EVENT_BASED_GATEWAY, newEventBasedGateway);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExclusiveGateway getExclusiveGateway() {
@@ -2369,95 +2236,87 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetExclusiveGateway(
-			ExclusiveGateway newExclusiveGateway, NotificationChain msgs) {
+	public NotificationChain basicSetExclusiveGateway(ExclusiveGateway newExclusiveGateway,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXCLUSIVE_GATEWAY,
-				newExclusiveGateway, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EXCLUSIVE_GATEWAY, newExclusiveGateway, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setExclusiveGateway(ExclusiveGateway newExclusiveGateway) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXCLUSIVE_GATEWAY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__EXCLUSIVE_GATEWAY,
 				newExclusiveGateway);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getExpression() {
-		return (Expression) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXPRESSION, true);
+		return (Expression) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__EXPRESSION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetExpression(Expression newExpression,
-			NotificationChain msgs) {
+	public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXPRESSION, newExpression,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EXPRESSION, newExpression, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setExpression(Expression newExpression) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXPRESSION, newExpression);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__EXPRESSION,
+				newExpression);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Extension getExtension() {
-		return (Extension) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION, true);
+		return (Extension) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetExtension(Extension newExtension,
-			NotificationChain msgs) {
+	public NotificationChain basicSetExtension(Extension newExtension, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION, newExtension,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION, newExtension, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setExtension(Extension newExtension) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION, newExtension);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION,
+				newExtension);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtensionAttributeValue getExtensionElements() {
@@ -2466,64 +2325,58 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetExtensionElements(
-			ExtensionAttributeValue newExtensionElements, NotificationChain msgs) {
+	public NotificationChain basicSetExtensionElements(ExtensionAttributeValue newExtensionElements,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION_ELEMENTS,
-				newExtensionElements, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION_ELEMENTS, newExtensionElements, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setExtensionElements(
-			ExtensionAttributeValue newExtensionElements) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION_ELEMENTS,
+	public void setExtensionElements(ExtensionAttributeValue newExtensionElements) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__EXTENSION_ELEMENTS,
 				newExtensionElements);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FlowNode getFlowNode() {
-		return (FlowNode) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_NODE, true);
+		return (FlowNode) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_NODE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetFlowNode(FlowNode newFlowNode,
-			NotificationChain msgs) {
+	public NotificationChain basicSetFlowNode(FlowNode newFlowNode, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_NODE, newFlowNode,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_NODE, newFlowNode, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFlowNode(FlowNode newFlowNode) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_NODE, newFlowNode);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__FLOW_NODE,
+				newFlowNode);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FormalExpression getFormalExpression() {
@@ -2532,124 +2385,112 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetFormalExpression(
-			FormalExpression newFormalExpression, NotificationChain msgs) {
+	public NotificationChain basicSetFormalExpression(FormalExpression newFormalExpression,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FORMAL_EXPRESSION,
-				newFormalExpression, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__FORMAL_EXPRESSION, newFormalExpression, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFormalExpression(FormalExpression newFormalExpression) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__FORMAL_EXPRESSION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__FORMAL_EXPRESSION,
 				newFormalExpression);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Gateway getGateway() {
-		return (Gateway) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GATEWAY, true);
+		return (Gateway) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__GATEWAY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGateway(Gateway newGateway,
-			NotificationChain msgs) {
+	public NotificationChain basicSetGateway(Gateway newGateway, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
 				Bpmn2Package.Literals.DOCUMENT_ROOT__GATEWAY, newGateway, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalBusinessRuleTask getGlobalBusinessRuleTask() {
 		return (GlobalBusinessRuleTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_BUSINESS_RULE_TASK,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_BUSINESS_RULE_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetGlobalBusinessRuleTask(
-			GlobalBusinessRuleTask newGlobalBusinessRuleTask,
-			NotificationChain msgs) {
+			GlobalBusinessRuleTask newGlobalBusinessRuleTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_BUSINESS_RULE_TASK,
-				newGlobalBusinessRuleTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_BUSINESS_RULE_TASK, newGlobalBusinessRuleTask,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setGlobalBusinessRuleTask(
-			GlobalBusinessRuleTask newGlobalBusinessRuleTask) {
+	public void setGlobalBusinessRuleTask(GlobalBusinessRuleTask newGlobalBusinessRuleTask) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_BUSINESS_RULE_TASK,
-				newGlobalBusinessRuleTask);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_BUSINESS_RULE_TASK, newGlobalBusinessRuleTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalChoreographyTask getGlobalChoreographyTask() {
 		return (GlobalChoreographyTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CHOREOGRAPHY_TASK,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CHOREOGRAPHY_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetGlobalChoreographyTask(
-			GlobalChoreographyTask newGlobalChoreographyTask,
-			NotificationChain msgs) {
+			GlobalChoreographyTask newGlobalChoreographyTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CHOREOGRAPHY_TASK,
-				newGlobalChoreographyTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CHOREOGRAPHY_TASK, newGlobalChoreographyTask,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setGlobalChoreographyTask(
-			GlobalChoreographyTask newGlobalChoreographyTask) {
+	public void setGlobalChoreographyTask(GlobalChoreographyTask newGlobalChoreographyTask) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CHOREOGRAPHY_TASK,
-				newGlobalChoreographyTask);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CHOREOGRAPHY_TASK, newGlobalChoreographyTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalConversation getGlobalConversation() {
@@ -2658,31 +2499,29 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGlobalConversation(
-			GlobalConversation newGlobalConversation, NotificationChain msgs) {
+	public NotificationChain basicSetGlobalConversation(GlobalConversation newGlobalConversation,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CONVERSATION,
-				newGlobalConversation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CONVERSATION, newGlobalConversation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGlobalConversation(GlobalConversation newGlobalConversation) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CONVERSATION,
-				newGlobalConversation);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_CONVERSATION, newGlobalConversation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalManualTask getGlobalManualTask() {
@@ -2691,31 +2530,29 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGlobalManualTask(
-			GlobalManualTask newGlobalManualTask, NotificationChain msgs) {
+	public NotificationChain basicSetGlobalManualTask(GlobalManualTask newGlobalManualTask,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_MANUAL_TASK,
-				newGlobalManualTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_MANUAL_TASK, newGlobalManualTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGlobalManualTask(GlobalManualTask newGlobalManualTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_MANUAL_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_MANUAL_TASK,
 				newGlobalManualTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalScriptTask getGlobalScriptTask() {
@@ -2724,291 +2561,265 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGlobalScriptTask(
-			GlobalScriptTask newGlobalScriptTask, NotificationChain msgs) {
+	public NotificationChain basicSetGlobalScriptTask(GlobalScriptTask newGlobalScriptTask,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_SCRIPT_TASK,
-				newGlobalScriptTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_SCRIPT_TASK, newGlobalScriptTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGlobalScriptTask(GlobalScriptTask newGlobalScriptTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_SCRIPT_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_SCRIPT_TASK,
 				newGlobalScriptTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalTask getGlobalTask() {
-		return (GlobalTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_TASK, true);
+		return (GlobalTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGlobalTask(GlobalTask newGlobalTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetGlobalTask(GlobalTask newGlobalTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_TASK,
-				newGlobalTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_TASK, newGlobalTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGlobalTask(GlobalTask newGlobalTask) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_TASK,
-						newGlobalTask);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_TASK,
+				newGlobalTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalUserTask getGlobalUserTask() {
-		return (GlobalUserTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_USER_TASK, true);
+		return (GlobalUserTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_USER_TASK,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGlobalUserTask(
-			GlobalUserTask newGlobalUserTask, NotificationChain msgs) {
+	public NotificationChain basicSetGlobalUserTask(GlobalUserTask newGlobalUserTask,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_USER_TASK,
-				newGlobalUserTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_USER_TASK, newGlobalUserTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGlobalUserTask(GlobalUserTask newGlobalUserTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_USER_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__GLOBAL_USER_TASK,
 				newGlobalUserTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Group getGroup() {
-		return (Group) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GROUP, true);
+		return (Group) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__GROUP, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetGroup(Group newGroup,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GROUP, newGroup, msgs);
+	public NotificationChain basicSetGroup(Group newGroup, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__GROUP,
+				newGroup, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGroup(Group newGroup) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__GROUP, newGroup);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__GROUP, newGroup);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HumanPerformer getHumanPerformer() {
-		return (HumanPerformer) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__HUMAN_PERFORMER, true);
+		return (HumanPerformer) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__HUMAN_PERFORMER,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetHumanPerformer(
-			HumanPerformer newHumanPerformer, NotificationChain msgs) {
+	public NotificationChain basicSetHumanPerformer(HumanPerformer newHumanPerformer,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__HUMAN_PERFORMER,
-				newHumanPerformer, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__HUMAN_PERFORMER, newHumanPerformer, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setHumanPerformer(HumanPerformer newHumanPerformer) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__HUMAN_PERFORMER,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__HUMAN_PERFORMER,
 				newHumanPerformer);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Performer getPerformer() {
-		return (Performer) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PERFORMER, true);
+		return (Performer) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__PERFORMER, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetPerformer(Performer newPerformer,
-			NotificationChain msgs) {
+	public NotificationChain basicSetPerformer(Performer newPerformer, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PERFORMER, newPerformer,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PERFORMER, newPerformer, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPerformer(Performer newPerformer) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PERFORMER, newPerformer);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__PERFORMER,
+				newPerformer);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceRole getResourceRole() {
-		return (ResourceRole) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ROLE, true);
+		return (ResourceRole) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ROLE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetResourceRole(ResourceRole newResourceRole,
-			NotificationChain msgs) {
+	public NotificationChain basicSetResourceRole(ResourceRole newResourceRole, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ROLE,
-				newResourceRole, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ROLE, newResourceRole, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResourceRole(ResourceRole newResourceRole) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ROLE,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ROLE,
 				newResourceRole);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ImplicitThrowEvent getImplicitThrowEvent() {
-		return (ImplicitThrowEvent) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__IMPLICIT_THROW_EVENT,
-						true);
+		return (ImplicitThrowEvent) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPLICIT_THROW_EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetImplicitThrowEvent(
-			ImplicitThrowEvent newImplicitThrowEvent, NotificationChain msgs) {
+	public NotificationChain basicSetImplicitThrowEvent(ImplicitThrowEvent newImplicitThrowEvent,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPLICIT_THROW_EVENT,
-				newImplicitThrowEvent, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPLICIT_THROW_EVENT, newImplicitThrowEvent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplicitThrowEvent(ImplicitThrowEvent newImplicitThrowEvent) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPLICIT_THROW_EVENT,
-				newImplicitThrowEvent);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPLICIT_THROW_EVENT, newImplicitThrowEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Import getImport() {
-		return (Import) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPORT, true);
+		return (Import) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__IMPORT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetImport(Import newImport,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPORT, newImport, msgs);
+	public NotificationChain basicSetImport(Import newImport, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__IMPORT,
+				newImport, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImport(Import newImport) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IMPORT, newImport);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__IMPORT, newImport);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InclusiveGateway getInclusiveGateway() {
@@ -3017,199 +2828,181 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetInclusiveGateway(
-			InclusiveGateway newInclusiveGateway, NotificationChain msgs) {
+	public NotificationChain basicSetInclusiveGateway(InclusiveGateway newInclusiveGateway,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INCLUSIVE_GATEWAY,
-				newInclusiveGateway, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INCLUSIVE_GATEWAY, newInclusiveGateway, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInclusiveGateway(InclusiveGateway newInclusiveGateway) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INCLUSIVE_GATEWAY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__INCLUSIVE_GATEWAY,
 				newInclusiveGateway);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InputSet getInputSet() {
-		return (InputSet) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INPUT_SET, true);
+		return (InputSet) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__INPUT_SET, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetInputSet(InputSet newInputSet,
-			NotificationChain msgs) {
+	public NotificationChain basicSetInputSet(InputSet newInputSet, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INPUT_SET, newInputSet,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INPUT_SET, newInputSet, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInputSet(InputSet newInputSet) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INPUT_SET, newInputSet);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__INPUT_SET,
+				newInputSet);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Interface getInterface() {
-		return (Interface) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERFACE, true);
+		return (Interface) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__INTERFACE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetInterface(Interface newInterface,
-			NotificationChain msgs) {
+	public NotificationChain basicSetInterface(Interface newInterface, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERFACE, newInterface,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERFACE, newInterface, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInterface(Interface newInterface) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERFACE, newInterface);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__INTERFACE,
+				newInterface);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntermediateCatchEvent getIntermediateCatchEvent() {
 		return (IntermediateCatchEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_CATCH_EVENT,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_CATCH_EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetIntermediateCatchEvent(
-			IntermediateCatchEvent newIntermediateCatchEvent,
-			NotificationChain msgs) {
+			IntermediateCatchEvent newIntermediateCatchEvent, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_CATCH_EVENT,
-				newIntermediateCatchEvent, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIntermediateCatchEvent(
-			IntermediateCatchEvent newIntermediateCatchEvent) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_CATCH_EVENT,
-				newIntermediateCatchEvent);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IntermediateThrowEvent getIntermediateThrowEvent() {
-		return (IntermediateThrowEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_THROW_EVENT,
-				true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetIntermediateThrowEvent(
-			IntermediateThrowEvent newIntermediateThrowEvent,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_THROW_EVENT,
-				newIntermediateThrowEvent, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIntermediateThrowEvent(
-			IntermediateThrowEvent newIntermediateThrowEvent) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_THROW_EVENT,
-				newIntermediateThrowEvent);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InputOutputBinding getIoBinding() {
-		return (InputOutputBinding) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_BINDING, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetIoBinding(InputOutputBinding newIoBinding,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_BINDING, newIoBinding,
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_CATCH_EVENT, newIntermediateCatchEvent,
 				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setIoBinding(InputOutputBinding newIoBinding) {
+	public void setIntermediateCatchEvent(IntermediateCatchEvent newIntermediateCatchEvent) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_BINDING, newIoBinding);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_CATCH_EVENT, newIntermediateCatchEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public IntermediateThrowEvent getIntermediateThrowEvent() {
+		return (IntermediateThrowEvent) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_THROW_EVENT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetIntermediateThrowEvent(
+			IntermediateThrowEvent newIntermediateThrowEvent, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_THROW_EVENT, newIntermediateThrowEvent,
+				msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setIntermediateThrowEvent(IntermediateThrowEvent newIntermediateThrowEvent) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__INTERMEDIATE_THROW_EVENT, newIntermediateThrowEvent);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public InputOutputBinding getIoBinding() {
+		return (InputOutputBinding) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__IO_BINDING,
+				true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetIoBinding(InputOutputBinding newIoBinding, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_BINDING, newIoBinding, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setIoBinding(InputOutputBinding newIoBinding) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__IO_BINDING,
+				newIoBinding);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InputOutputSpecification getIoSpecification() {
@@ -3218,965 +3011,876 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetIoSpecification(
-			InputOutputSpecification newIoSpecification, NotificationChain msgs) {
+	public NotificationChain basicSetIoSpecification(InputOutputSpecification newIoSpecification,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_SPECIFICATION,
-				newIoSpecification, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_SPECIFICATION, newIoSpecification, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIoSpecification(InputOutputSpecification newIoSpecification) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__IO_SPECIFICATION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__IO_SPECIFICATION,
 				newIoSpecification);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getItemDefinition() {
-		return (ItemDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ITEM_DEFINITION, true);
+		return (ItemDefinition) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__ITEM_DEFINITION,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetItemDefinition(
-			ItemDefinition newItemDefinition, NotificationChain msgs) {
+	public NotificationChain basicSetItemDefinition(ItemDefinition newItemDefinition,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ITEM_DEFINITION,
-				newItemDefinition, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__ITEM_DEFINITION, newItemDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setItemDefinition(ItemDefinition newItemDefinition) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__ITEM_DEFINITION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__ITEM_DEFINITION,
 				newItemDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Lane getLane() {
-		return (Lane) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE,
-				true);
+		return (Lane) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetLane(Lane newLane, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LANE, newLane, msgs);
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE,
+				newLane, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLane(Lane newLane) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LANE, newLane);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE, newLane);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LaneSet getLaneSet() {
-		return (LaneSet) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LANE_SET, true);
+		return (LaneSet) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE_SET, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLaneSet(LaneSet newLaneSet,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE_SET,
-						newLaneSet, msgs);
+	public NotificationChain basicSetLaneSet(LaneSet newLaneSet, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LANE_SET, newLaneSet, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLaneSet(LaneSet newLaneSet) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LANE_SET, newLaneSet);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__LANE_SET,
+				newLaneSet);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LinkEventDefinition getLinkEventDefinition() {
 		return (LinkEventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LINK_EVENT_DEFINITION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LINK_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLinkEventDefinition(
-			LinkEventDefinition newLinkEventDefinition, NotificationChain msgs) {
+	public NotificationChain basicSetLinkEventDefinition(LinkEventDefinition newLinkEventDefinition,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LINK_EVENT_DEFINITION,
-				newLinkEventDefinition, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LINK_EVENT_DEFINITION, newLinkEventDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setLinkEventDefinition(
-			LinkEventDefinition newLinkEventDefinition) {
+	public void setLinkEventDefinition(LinkEventDefinition newLinkEventDefinition) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LINK_EVENT_DEFINITION,
-				newLinkEventDefinition);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LINK_EVENT_DEFINITION, newLinkEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LoopCharacteristics getLoopCharacteristics() {
-		return (LoopCharacteristics) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__LOOP_CHARACTERISTICS,
-						true);
+		return (LoopCharacteristics) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LOOP_CHARACTERISTICS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLoopCharacteristics(
-			LoopCharacteristics newLoopCharacteristics, NotificationChain msgs) {
+	public NotificationChain basicSetLoopCharacteristics(LoopCharacteristics newLoopCharacteristics,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LOOP_CHARACTERISTICS,
-				newLoopCharacteristics, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LOOP_CHARACTERISTICS, newLoopCharacteristics, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setLoopCharacteristics(
-			LoopCharacteristics newLoopCharacteristics) {
+	public void setLoopCharacteristics(LoopCharacteristics newLoopCharacteristics) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__LOOP_CHARACTERISTICS,
-				newLoopCharacteristics);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__LOOP_CHARACTERISTICS, newLoopCharacteristics);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ManualTask getManualTask() {
-		return (ManualTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MANUAL_TASK, true);
+		return (ManualTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__MANUAL_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetManualTask(ManualTask newManualTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetManualTask(ManualTask newManualTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MANUAL_TASK,
-				newManualTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MANUAL_TASK, newManualTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setManualTask(ManualTask newManualTask) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__MANUAL_TASK,
-						newManualTask);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__MANUAL_TASK,
+				newManualTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message getMessage() {
-		return (Message) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE, true);
+		return (Message) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetMessage(Message newMessage,
-			NotificationChain msgs) {
+	public NotificationChain basicSetMessage(Message newMessage, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
 				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE, newMessage, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMessage(Message newMessage) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE, newMessage);
+		((FeatureMap.Internal) getMixed())
+				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE, newMessage);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageEventDefinition getMessageEventDefinition() {
 		return (MessageEventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_EVENT_DEFINITION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMessageEventDefinition(
-			MessageEventDefinition newMessageEventDefinition,
-			NotificationChain msgs) {
+			MessageEventDefinition newMessageEventDefinition, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_EVENT_DEFINITION,
-				newMessageEventDefinition, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_EVENT_DEFINITION, newMessageEventDefinition,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setMessageEventDefinition(
-			MessageEventDefinition newMessageEventDefinition) {
+	public void setMessageEventDefinition(MessageEventDefinition newMessageEventDefinition) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_EVENT_DEFINITION,
-				newMessageEventDefinition);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_EVENT_DEFINITION, newMessageEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlow getMessageFlow() {
-		return (MessageFlow) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW, true);
+		return (MessageFlow) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetMessageFlow(MessageFlow newMessageFlow,
-			NotificationChain msgs) {
+	public NotificationChain basicSetMessageFlow(MessageFlow newMessageFlow, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW,
-				newMessageFlow, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW, newMessageFlow, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMessageFlow(MessageFlow newMessageFlow) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW,
 				newMessageFlow);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlowAssociation getMessageFlowAssociation() {
 		return (MessageFlowAssociation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW_ASSOCIATION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW_ASSOCIATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMessageFlowAssociation(
-			MessageFlowAssociation newMessageFlowAssociation,
-			NotificationChain msgs) {
+			MessageFlowAssociation newMessageFlowAssociation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW_ASSOCIATION,
-				newMessageFlowAssociation, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMessageFlowAssociation(
-			MessageFlowAssociation newMessageFlowAssociation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW_ASSOCIATION,
-				newMessageFlowAssociation);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Monitoring getMonitoring() {
-		return (Monitoring) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MONITORING, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMonitoring(Monitoring newMonitoring,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MONITORING, newMonitoring,
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW_ASSOCIATION, newMessageFlowAssociation,
 				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setMessageFlowAssociation(MessageFlowAssociation newMessageFlowAssociation) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MESSAGE_FLOW_ASSOCIATION, newMessageFlowAssociation);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Monitoring getMonitoring() {
+		return (Monitoring) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__MONITORING, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetMonitoring(Monitoring newMonitoring, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MONITORING, newMonitoring, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMonitoring(Monitoring newMonitoring) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__MONITORING, newMonitoring);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__MONITORING,
+				newMonitoring);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MultiInstanceLoopCharacteristics getMultiInstanceLoopCharacteristics() {
-		return (MultiInstanceLoopCharacteristics) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__MULTI_INSTANCE_LOOP_CHARACTERISTICS,
-						true);
+		return (MultiInstanceLoopCharacteristics) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MULTI_INSTANCE_LOOP_CHARACTERISTICS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMultiInstanceLoopCharacteristics(
-			MultiInstanceLoopCharacteristics newMultiInstanceLoopCharacteristics,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__MULTI_INSTANCE_LOOP_CHARACTERISTICS,
-						newMultiInstanceLoopCharacteristics, msgs);
+			MultiInstanceLoopCharacteristics newMultiInstanceLoopCharacteristics, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MULTI_INSTANCE_LOOP_CHARACTERISTICS,
+				newMultiInstanceLoopCharacteristics, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMultiInstanceLoopCharacteristics(
 			MultiInstanceLoopCharacteristics newMultiInstanceLoopCharacteristics) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__MULTI_INSTANCE_LOOP_CHARACTERISTICS,
-						newMultiInstanceLoopCharacteristics);
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__MULTI_INSTANCE_LOOP_CHARACTERISTICS,
+				newMultiInstanceLoopCharacteristics);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation getOperation() {
-		return (Operation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__OPERATION, true);
+		return (Operation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__OPERATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetOperation(Operation newOperation,
-			NotificationChain msgs) {
+	public NotificationChain basicSetOperation(Operation newOperation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__OPERATION, newOperation,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__OPERATION, newOperation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__OPERATION, newOperation);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__OPERATION,
+				newOperation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OutputSet getOutputSet() {
-		return (OutputSet) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__OUTPUT_SET, true);
+		return (OutputSet) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__OUTPUT_SET, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetOutputSet(OutputSet newOutputSet,
-			NotificationChain msgs) {
+	public NotificationChain basicSetOutputSet(OutputSet newOutputSet, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__OUTPUT_SET, newOutputSet,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__OUTPUT_SET, newOutputSet, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOutputSet(OutputSet newOutputSet) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__OUTPUT_SET, newOutputSet);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__OUTPUT_SET,
+				newOutputSet);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParallelGateway getParallelGateway() {
-		return (ParallelGateway) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARALLEL_GATEWAY, true);
+		return (ParallelGateway) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__PARALLEL_GATEWAY,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetParallelGateway(
-			ParallelGateway newParallelGateway, NotificationChain msgs) {
+	public NotificationChain basicSetParallelGateway(ParallelGateway newParallelGateway,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARALLEL_GATEWAY,
-				newParallelGateway, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARALLEL_GATEWAY, newParallelGateway, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setParallelGateway(ParallelGateway newParallelGateway) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARALLEL_GATEWAY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__PARALLEL_GATEWAY,
 				newParallelGateway);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant getParticipant() {
-		return (Participant) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT, true);
+		return (Participant) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetParticipant(Participant newParticipant,
-			NotificationChain msgs) {
+	public NotificationChain basicSetParticipant(Participant newParticipant, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT,
-				newParticipant, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT, newParticipant, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setParticipant(Participant newParticipant) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT,
 				newParticipant);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParticipantAssociation getParticipantAssociation() {
 		return (ParticipantAssociation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_ASSOCIATION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_ASSOCIATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetParticipantAssociation(
-			ParticipantAssociation newParticipantAssociation,
-			NotificationChain msgs) {
+			ParticipantAssociation newParticipantAssociation, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_ASSOCIATION,
-				newParticipantAssociation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_ASSOCIATION, newParticipantAssociation,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setParticipantAssociation(
-			ParticipantAssociation newParticipantAssociation) {
+	public void setParticipantAssociation(ParticipantAssociation newParticipantAssociation) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_ASSOCIATION,
-				newParticipantAssociation);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_ASSOCIATION, newParticipantAssociation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParticipantMultiplicity getParticipantMultiplicity() {
 		return (ParticipantMultiplicity) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_MULTIPLICITY,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_MULTIPLICITY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetParticipantMultiplicity(
-			ParticipantMultiplicity newParticipantMultiplicity,
-			NotificationChain msgs) {
+			ParticipantMultiplicity newParticipantMultiplicity, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_MULTIPLICITY,
-				newParticipantMultiplicity, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_MULTIPLICITY, newParticipantMultiplicity,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setParticipantMultiplicity(
-			ParticipantMultiplicity newParticipantMultiplicity) {
+	public void setParticipantMultiplicity(ParticipantMultiplicity newParticipantMultiplicity) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_MULTIPLICITY,
-				newParticipantMultiplicity);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTICIPANT_MULTIPLICITY, newParticipantMultiplicity);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PartnerEntity getPartnerEntity() {
-		return (PartnerEntity) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ENTITY, true);
+		return (PartnerEntity) getMixed()
+				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ENTITY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetPartnerEntity(
-			PartnerEntity newPartnerEntity, NotificationChain msgs) {
+	public NotificationChain basicSetPartnerEntity(PartnerEntity newPartnerEntity,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ENTITY,
-				newPartnerEntity, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ENTITY, newPartnerEntity, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPartnerEntity(PartnerEntity newPartnerEntity) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ENTITY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ENTITY,
 				newPartnerEntity);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PartnerRole getPartnerRole() {
-		return (PartnerRole) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ROLE, true);
+		return (PartnerRole) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ROLE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetPartnerRole(PartnerRole newPartnerRole,
-			NotificationChain msgs) {
+	public NotificationChain basicSetPartnerRole(PartnerRole newPartnerRole, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ROLE,
-				newPartnerRole, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ROLE, newPartnerRole, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPartnerRole(PartnerRole newPartnerRole) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ROLE,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__PARTNER_ROLE,
 				newPartnerRole);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PotentialOwner getPotentialOwner() {
-		return (PotentialOwner) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__POTENTIAL_OWNER, true);
+		return (PotentialOwner) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__POTENTIAL_OWNER,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetPotentialOwner(
-			PotentialOwner newPotentialOwner, NotificationChain msgs) {
+	public NotificationChain basicSetPotentialOwner(PotentialOwner newPotentialOwner,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__POTENTIAL_OWNER,
-				newPotentialOwner, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__POTENTIAL_OWNER, newPotentialOwner, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPotentialOwner(PotentialOwner newPotentialOwner) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__POTENTIAL_OWNER,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__POTENTIAL_OWNER,
 				newPotentialOwner);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Process getProcess() {
-		return (org.eclipse.bpmn2.Process) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PROCESS, true);
+		return (org.eclipse.bpmn2.Process) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__PROCESS,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetProcess(
-			org.eclipse.bpmn2.Process newProcess, NotificationChain msgs) {
+	public NotificationChain basicSetProcess(org.eclipse.bpmn2.Process newProcess,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
 				Bpmn2Package.Literals.DOCUMENT_ROOT__PROCESS, newProcess, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setProcess(org.eclipse.bpmn2.Process newProcess) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PROCESS, newProcess);
+		((FeatureMap.Internal) getMixed())
+				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__PROCESS, newProcess);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Property getProperty() {
-		return (Property) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PROPERTY, true);
+		return (Property) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__PROPERTY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetProperty(Property newProperty,
-			NotificationChain msgs) {
+	public NotificationChain basicSetProperty(Property newProperty, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PROPERTY, newProperty,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__PROPERTY, newProperty, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setProperty(Property newProperty) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__PROPERTY, newProperty);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__PROPERTY,
+				newProperty);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ReceiveTask getReceiveTask() {
-		return (ReceiveTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RECEIVE_TASK, true);
+		return (ReceiveTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__RECEIVE_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetReceiveTask(ReceiveTask newReceiveTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetReceiveTask(ReceiveTask newReceiveTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RECEIVE_TASK,
-				newReceiveTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RECEIVE_TASK, newReceiveTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setReceiveTask(ReceiveTask newReceiveTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RECEIVE_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__RECEIVE_TASK,
 				newReceiveTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Relationship getRelationship() {
-		return (Relationship) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RELATIONSHIP, true);
+		return (Relationship) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__RELATIONSHIP, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetRelationship(Relationship newRelationship,
-			NotificationChain msgs) {
+	public NotificationChain basicSetRelationship(Relationship newRelationship, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RELATIONSHIP,
-				newRelationship, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RELATIONSHIP, newRelationship, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setRelationship(Relationship newRelationship) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RELATIONSHIP,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__RELATIONSHIP,
 				newRelationship);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Rendering getRendering() {
-		return (Rendering) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RENDERING, true);
+		return (Rendering) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__RENDERING, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetRendering(Rendering newRendering,
-			NotificationChain msgs) {
+	public NotificationChain basicSetRendering(Rendering newRendering, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RENDERING, newRendering,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RENDERING, newRendering, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setRendering(Rendering newRendering) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RENDERING, newRendering);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__RENDERING,
+				newRendering);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resource getResource() {
-		return (Resource) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE, true);
+		return (Resource) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetResource(Resource newResource,
-			NotificationChain msgs) {
+	public NotificationChain basicSetResource(Resource newResource, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE, newResource,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE, newResource, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResource(Resource newResource) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE, newResource);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE,
+				newResource);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceAssignmentExpression getResourceAssignmentExpression() {
-		return (ResourceAssignmentExpression) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ASSIGNMENT_EXPRESSION,
-						true);
+		return (ResourceAssignmentExpression) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ASSIGNMENT_EXPRESSION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetResourceAssignmentExpression(
-			ResourceAssignmentExpression newResourceAssignmentExpression,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ASSIGNMENT_EXPRESSION,
-						newResourceAssignmentExpression, msgs);
+			ResourceAssignmentExpression newResourceAssignmentExpression, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ASSIGNMENT_EXPRESSION,
+				newResourceAssignmentExpression, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResourceAssignmentExpression(
 			ResourceAssignmentExpression newResourceAssignmentExpression) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ASSIGNMENT_EXPRESSION,
-						newResourceAssignmentExpression);
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_ASSIGNMENT_EXPRESSION,
+				newResourceAssignmentExpression);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceParameter getResourceParameter() {
@@ -4185,735 +3889,663 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetResourceParameter(
-			ResourceParameter newResourceParameter, NotificationChain msgs) {
+	public NotificationChain basicSetResourceParameter(ResourceParameter newResourceParameter,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER,
-				newResourceParameter, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER, newResourceParameter, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResourceParameter(ResourceParameter newResourceParameter) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER,
 				newResourceParameter);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceParameterBinding getResourceParameterBinding() {
-		return (ResourceParameterBinding) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER_BINDING,
-						true);
+		return (ResourceParameterBinding) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER_BINDING, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetResourceParameterBinding(
-			ResourceParameterBinding newResourceParameterBinding,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER_BINDING,
-						newResourceParameterBinding, msgs);
+			ResourceParameterBinding newResourceParameterBinding, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER_BINDING,
+				newResourceParameterBinding, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setResourceParameterBinding(
-			ResourceParameterBinding newResourceParameterBinding) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER_BINDING,
-						newResourceParameterBinding);
+	public void setResourceParameterBinding(ResourceParameterBinding newResourceParameterBinding) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__RESOURCE_PARAMETER_BINDING,
+				newResourceParameterBinding);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object getScript() {
-		return (Object) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT, true);
+		return (Object) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetScript(EObject newScript,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT, newScript, msgs);
+	public NotificationChain basicSetScript(EObject newScript, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT,
+				newScript, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScript(Object newScript) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT, newScript);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT, newScript);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ScriptTask getScriptTask() {
-		return (ScriptTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT_TASK, true);
+		return (ScriptTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetScriptTask(ScriptTask newScriptTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetScriptTask(ScriptTask newScriptTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT_TASK,
-				newScriptTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT_TASK, newScriptTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScriptTask(ScriptTask newScriptTask) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT_TASK,
-						newScriptTask);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SCRIPT_TASK,
+				newScriptTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SendTask getSendTask() {
-		return (SendTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SEND_TASK, true);
+		return (SendTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SEND_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSendTask(SendTask newSendTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetSendTask(SendTask newSendTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SEND_TASK, newSendTask,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SEND_TASK, newSendTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSendTask(SendTask newSendTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SEND_TASK, newSendTask);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SEND_TASK,
+				newSendTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SequenceFlow getSequenceFlow() {
-		return (SequenceFlow) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SEQUENCE_FLOW, true);
+		return (SequenceFlow) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SEQUENCE_FLOW, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceFlow(SequenceFlow newSequenceFlow,
-			NotificationChain msgs) {
+	public NotificationChain basicSetSequenceFlow(SequenceFlow newSequenceFlow, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SEQUENCE_FLOW,
-				newSequenceFlow, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SEQUENCE_FLOW, newSequenceFlow, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSequenceFlow(SequenceFlow newSequenceFlow) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SEQUENCE_FLOW,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SEQUENCE_FLOW,
 				newSequenceFlow);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ServiceTask getServiceTask() {
-		return (ServiceTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SERVICE_TASK, true);
+		return (ServiceTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SERVICE_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetServiceTask(ServiceTask newServiceTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetServiceTask(ServiceTask newServiceTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SERVICE_TASK,
-				newServiceTask, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SERVICE_TASK, newServiceTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setServiceTask(ServiceTask newServiceTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SERVICE_TASK,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SERVICE_TASK,
 				newServiceTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Signal getSignal() {
-		return (Signal) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL, true);
+		return (Signal) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSignal(Signal newSignal,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL, newSignal, msgs);
+	public NotificationChain basicSetSignal(Signal newSignal, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL,
+				newSignal, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL, newSignal);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL, newSignal);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignalEventDefinition getSignalEventDefinition() {
 		return (SignalEventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL_EVENT_DEFINITION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSignalEventDefinition(
-			SignalEventDefinition newSignalEventDefinition,
-			NotificationChain msgs) {
+			SignalEventDefinition newSignalEventDefinition, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL_EVENT_DEFINITION,
-				newSignalEventDefinition, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL_EVENT_DEFINITION, newSignalEventDefinition,
+				msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setSignalEventDefinition(
-			SignalEventDefinition newSignalEventDefinition) {
+	public void setSignalEventDefinition(SignalEventDefinition newSignalEventDefinition) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL_EVENT_DEFINITION,
-				newSignalEventDefinition);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SIGNAL_EVENT_DEFINITION, newSignalEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StandardLoopCharacteristics getStandardLoopCharacteristics() {
-		return (StandardLoopCharacteristics) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__STANDARD_LOOP_CHARACTERISTICS,
-						true);
+		return (StandardLoopCharacteristics) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__STANDARD_LOOP_CHARACTERISTICS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetStandardLoopCharacteristics(
-			StandardLoopCharacteristics newStandardLoopCharacteristics,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__STANDARD_LOOP_CHARACTERISTICS,
-						newStandardLoopCharacteristics, msgs);
+			StandardLoopCharacteristics newStandardLoopCharacteristics, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__STANDARD_LOOP_CHARACTERISTICS,
+				newStandardLoopCharacteristics, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStandardLoopCharacteristics(
 			StandardLoopCharacteristics newStandardLoopCharacteristics) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__STANDARD_LOOP_CHARACTERISTICS,
-						newStandardLoopCharacteristics);
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__STANDARD_LOOP_CHARACTERISTICS,
+				newStandardLoopCharacteristics);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StartEvent getStartEvent() {
-		return (StartEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__START_EVENT, true);
+		return (StartEvent) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__START_EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetStartEvent(StartEvent newStartEvent,
-			NotificationChain msgs) {
+	public NotificationChain basicSetStartEvent(StartEvent newStartEvent, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__START_EVENT,
-				newStartEvent, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__START_EVENT, newStartEvent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStartEvent(StartEvent newStartEvent) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__START_EVENT,
-						newStartEvent);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__START_EVENT,
+				newStartEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SubChoreography getSubChoreography() {
-		return (SubChoreography) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CHOREOGRAPHY, true);
+		return (SubChoreography) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CHOREOGRAPHY,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSubChoreography(
-			SubChoreography newSubChoreography, NotificationChain msgs) {
+	public NotificationChain basicSetSubChoreography(SubChoreography newSubChoreography,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CHOREOGRAPHY,
-				newSubChoreography, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CHOREOGRAPHY, newSubChoreography, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSubChoreography(SubChoreography newSubChoreography) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CHOREOGRAPHY,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CHOREOGRAPHY,
 				newSubChoreography);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SubConversation getSubConversation() {
-		return (SubConversation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CONVERSATION, true);
+		return (SubConversation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CONVERSATION,
+				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSubConversation(
-			SubConversation newSubConversation, NotificationChain msgs) {
+	public NotificationChain basicSetSubConversation(SubConversation newSubConversation,
+			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CONVERSATION,
-				newSubConversation, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CONVERSATION, newSubConversation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSubConversation(SubConversation newSubConversation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CONVERSATION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_CONVERSATION,
 				newSubConversation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SubProcess getSubProcess() {
-		return (SubProcess) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_PROCESS, true);
+		return (SubProcess) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_PROCESS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSubProcess(SubProcess newSubProcess,
-			NotificationChain msgs) {
+	public NotificationChain basicSetSubProcess(SubProcess newSubProcess, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_PROCESS,
-				newSubProcess, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_PROCESS, newSubProcess, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSubProcess(SubProcess newSubProcess) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_PROCESS,
-						newSubProcess);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__SUB_PROCESS,
+				newSubProcess);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Task getTask() {
-		return (Task) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__TASK,
+		return (Task) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__TASK, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__TASK,
+				newTask, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setTask(Task newTask) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__TASK, newTask);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public TerminateEventDefinition getTerminateEventDefinition() {
+		return (TerminateEventDefinition) getMixed().get(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TERMINATE_EVENT_DEFINITION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetTerminateEventDefinition(
+			TerminateEventDefinition newTerminateEventDefinition, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TERMINATE_EVENT_DEFINITION,
+				newTerminateEventDefinition, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setTerminateEventDefinition(TerminateEventDefinition newTerminateEventDefinition) {
+		((FeatureMap.Internal) getMixed()).set(
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TERMINATE_EVENT_DEFINITION,
+				newTerminateEventDefinition);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Object getText() {
+		return (Object) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public NotificationChain basicSetText(EObject newText, NotificationChain msgs) {
+		return ((FeatureMap.Internal) getMixed()).basicAdd(Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT,
+				newText, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setText(Object newText) {
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT, newText);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public TextAnnotation getTextAnnotation() {
+		return (TextAnnotation) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT_ANNOTATION,
 				true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TASK, newTask, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTask(Task newTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TASK, newTask);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TerminateEventDefinition getTerminateEventDefinition() {
-		return (TerminateEventDefinition) getMixed()
-				.get(Bpmn2Package.Literals.DOCUMENT_ROOT__TERMINATE_EVENT_DEFINITION,
-						true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTerminateEventDefinition(
-			TerminateEventDefinition newTerminateEventDefinition,
-			NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed())
-				.basicAdd(
-						Bpmn2Package.Literals.DOCUMENT_ROOT__TERMINATE_EVENT_DEFINITION,
-						newTerminateEventDefinition, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTerminateEventDefinition(
-			TerminateEventDefinition newTerminateEventDefinition) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__TERMINATE_EVENT_DEFINITION,
-						newTerminateEventDefinition);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getText() {
-		return (Object) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetText(EObject newText,
+	public NotificationChain basicSetTextAnnotation(TextAnnotation newTextAnnotation,
 			NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT, newText, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT_ANNOTATION, newTextAnnotation, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setText(Object newText) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT, newText);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TextAnnotation getTextAnnotation() {
-		return (TextAnnotation) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT_ANNOTATION, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTextAnnotation(
-			TextAnnotation newTextAnnotation, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT_ANNOTATION,
-				newTextAnnotation, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTextAnnotation(TextAnnotation newTextAnnotation) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT_ANNOTATION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__TEXT_ANNOTATION,
 				newTextAnnotation);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ThrowEvent getThrowEvent() {
-		return (ThrowEvent) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__THROW_EVENT, true);
+		return (ThrowEvent) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__THROW_EVENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetThrowEvent(ThrowEvent newThrowEvent,
-			NotificationChain msgs) {
+	public NotificationChain basicSetThrowEvent(ThrowEvent newThrowEvent, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__THROW_EVENT,
-				newThrowEvent, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__THROW_EVENT, newThrowEvent, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setThrowEvent(ThrowEvent newThrowEvent) {
-		((FeatureMap.Internal) getMixed())
-				.set(Bpmn2Package.Literals.DOCUMENT_ROOT__THROW_EVENT,
-						newThrowEvent);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__THROW_EVENT,
+				newThrowEvent);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TimerEventDefinition getTimerEventDefinition() {
 		return (TimerEventDefinition) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TIMER_EVENT_DEFINITION,
-				true);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TIMER_EVENT_DEFINITION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTimerEventDefinition(
 			TimerEventDefinition newTimerEventDefinition, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TIMER_EVENT_DEFINITION,
-				newTimerEventDefinition, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TIMER_EVENT_DEFINITION, newTimerEventDefinition, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setTimerEventDefinition(
-			TimerEventDefinition newTimerEventDefinition) {
+	public void setTimerEventDefinition(TimerEventDefinition newTimerEventDefinition) {
 		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TIMER_EVENT_DEFINITION,
-				newTimerEventDefinition);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TIMER_EVENT_DEFINITION, newTimerEventDefinition);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Transaction getTransaction() {
-		return (Transaction) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TRANSACTION, true);
+		return (Transaction) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__TRANSACTION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetTransaction(Transaction newTransaction,
-			NotificationChain msgs) {
+	public NotificationChain basicSetTransaction(Transaction newTransaction, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TRANSACTION,
-				newTransaction, msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__TRANSACTION, newTransaction, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTransaction(Transaction newTransaction) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__TRANSACTION,
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__TRANSACTION,
 				newTransaction);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public UserTask getUserTask() {
-		return (UserTask) getMixed().get(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__USER_TASK, true);
+		return (UserTask) getMixed().get(Bpmn2Package.Literals.DOCUMENT_ROOT__USER_TASK, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetUserTask(UserTask newUserTask,
-			NotificationChain msgs) {
+	public NotificationChain basicSetUserTask(UserTask newUserTask, NotificationChain msgs) {
 		return ((FeatureMap.Internal) getMixed()).basicAdd(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__USER_TASK, newUserTask,
-				msgs);
+				Bpmn2Package.Literals.DOCUMENT_ROOT__USER_TASK, newUserTask, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setUserTask(UserTask newUserTask) {
-		((FeatureMap.Internal) getMixed()).set(
-				Bpmn2Package.Literals.DOCUMENT_ROOT__USER_TASK, newUserTask);
+		((FeatureMap.Internal) getMixed()).set(Bpmn2Package.Literals.DOCUMENT_ROOT__USER_TASK,
+				newUserTask);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.DOCUMENT_ROOT__MIXED:
 			return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
@@ -5198,8 +4830,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -5211,14 +4843,12 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 			return ((FeatureMap.Internal) getMixed()).getWrapper();
 		case Bpmn2Package.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 			if (coreType)
-				return ((EMap.InternalMapView<String, String>) getXMLNSPrefixMap())
-						.eMap();
+				return ((EMap.InternalMapView<String, String>) getXMLNSPrefixMap()).eMap();
 			else
 				return getXMLNSPrefixMap();
 		case Bpmn2Package.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 			if (coreType)
-				return ((EMap.InternalMapView<String, String>) getXSISchemaLocation())
-						.eMap();
+				return ((EMap.InternalMapView<String, String>) getXSISchemaLocation()).eMap();
 			else
 				return getXSISchemaLocation();
 		case Bpmn2Package.DOCUMENT_ROOT__ACTIVITY:
@@ -5496,8 +5126,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -5921,8 +5551,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -6344,8 +5974,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -6632,8 +6262,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -6648,4 +6278,4 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 		return result.toString();
 	}
 
-} //DocumentRootImpl
+} // DocumentRootImpl

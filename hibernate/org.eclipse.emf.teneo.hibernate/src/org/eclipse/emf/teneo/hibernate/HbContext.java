@@ -54,7 +54,8 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFTuplizerClass(org.hibernate.cfg.Configuration)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFTuplizerClass(org.hibernate
+	 * .cfg.Configuration)
 	 */
 	public Class<?> getEMFTuplizerClass(Configuration hbConfiguration) {
 		return EMFTuplizer.class;
@@ -63,7 +64,8 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFComponentTuplizerClass(org.hibernate.cfg.Configuration)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFComponentTuplizerClass(
+	 * org.hibernate.cfg.Configuration)
 	 */
 	public Class<?> getEMFComponentTuplizerClass(Configuration hbConfiguration) {
 		return EMFComponentTuplizer.class;
@@ -72,7 +74,8 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getFeatureMapEntryTuplizer(org.hibernate.cfg.Configuration)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getFeatureMapEntryTuplizer(org
+	 * .hibernate.cfg.Configuration)
 	 */
 	public Class<?> getFeatureMapEntryTuplizer(Configuration hbConfiguration) {
 		return FeatureMapEntryTuplizer.class;
@@ -81,7 +84,8 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createInterceptor(org.hibernate.cfg.Configuration)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createInterceptor(org.hibernate
+	 * .cfg.Configuration)
 	 */
 	public Interceptor createInterceptor(Configuration hbConfiguration, EntityNameStrategy ens) {
 		return extensionManager.getExtension(EMFInterceptor.class);
@@ -90,7 +94,7 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapEntryFeatureURIAccessor()
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext# createFeatureMapEntryFeatureURIAccessor()
 	 */
 	public PropertyAccessor createFeatureMapEntryFeatureURIAccessor() {
 		return extensionManager.getExtension(FeatureMapEntryFeatureURIPropertyHandler.class);
@@ -99,11 +103,12 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapEntryAccessor(org.eclipse.emf.ecore.EStructuralFeature)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapEntryAccessor
+	 * (org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	public PropertyAccessor createFeatureMapEntryAccessor(EStructuralFeature feature) {
-		final FeatureMapEntryPropertyHandler handler =
-				extensionManager.getExtension(FeatureMapEntryPropertyHandler.class);
+		final FeatureMapEntryPropertyHandler handler = extensionManager
+				.getExtension(FeatureMapEntryPropertyHandler.class);
 		handler.initialize(feature);
 		return handler;
 	}
@@ -129,7 +134,7 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEContainerFeatureIDAccessor()
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEContainerFeatureIDAccessor ()
 	 */
 	public PropertyAccessor createEContainerFeatureIDAccessor() {
 		return extensionManager.getExtension(EContainerFeatureIDAccessor.class);
@@ -138,10 +143,12 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapPropertyAccessor(org.eclipse.emf.ecore.EStructuralFeature)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapPropertyAccessor
+	 * (org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	public PropertyAccessor createFeatureMapPropertyAccessor(EStructuralFeature eFeature) {
-		final FeatureMapPropertyHandler fmh = extensionManager.getExtension(FeatureMapPropertyHandler.class);
+		final FeatureMapPropertyHandler fmh = extensionManager
+				.getExtension(FeatureMapPropertyHandler.class);
 		fmh.initialize(eFeature);
 		return fmh;
 	}
@@ -149,9 +156,11 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEListAccessor(org.eclipse.emf.ecore.EStructuralFeature)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEListAccessor(org.eclipse
+	 * .emf.ecore.EStructuralFeature)
 	 */
-	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy, boolean newEMapMapping) {
+	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy,
+			boolean newEMapMapping) {
 		final EListPropertyHandler handler = extensionManager.getExtension(EListPropertyHandler.class);
 		handler.initialize(eFeature, extraLazy, newEMapMapping);
 		return handler;
@@ -160,10 +169,12 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEReferenceAccessor(org.eclipse.emf.ecore.EReference)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEReferenceAccessor(org.
+	 * eclipse.emf.ecore.EReference)
 	 */
 	public PropertyAccessor createEReferenceAccessor(EReference eReference) {
-		final EReferencePropertyHandler handler = extensionManager.getExtension(EReferencePropertyHandler.class);
+		final EReferencePropertyHandler handler = extensionManager
+				.getExtension(EReferencePropertyHandler.class);
 		handler.initialize(eReference);
 		return handler;
 	}
@@ -171,7 +182,8 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEAttributeAccessor(org.eclipse.emf.ecore.EAttribute)
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEAttributeAccessor(org.
+	 * eclipse.emf.ecore.EAttribute)
 	 */
 	public PropertyAccessor createEAttributeAccessor(EAttribute eAttribute) {
 		return new EAttributePropertyHandler(eAttribute);
@@ -180,7 +192,8 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
+	 * (org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;

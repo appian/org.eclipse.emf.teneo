@@ -40,12 +40,13 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java.lang.String)
+	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java. lang.String)
 	 */
 	@Override
 	public EClass getEClass(String name) {
 		if (name.startsWith(HB_PREFIX)) {
-			return (EClass) HbannotationPackage.eINSTANCE.getEClassifier(name.substring(HB_PREFIX.length()));
+			return (EClass) HbannotationPackage.eINSTANCE.getEClassifier(name.substring(HB_PREFIX
+					.length()));
 		} else {
 			final EClass eClass = super.getEClass(name);
 			if (eClass == null) {

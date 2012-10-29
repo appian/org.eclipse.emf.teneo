@@ -30,8 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class OverrideSecondaryAction extends AbstractTestAction {
 
 	private static final String VERIFICATION_QUERY1 = "select count(*) from secondary_table where emp_num is not null";
-	private static final String VERIFICATION_QUERY2 =
-			"select count(*) from secondary_table where other_name is not null";
+	private static final String VERIFICATION_QUERY2 = "select count(*) from secondary_table where other_name is not null";
 
 	public OverrideSecondaryAction() {
 		super(AttroverridesecondarytablePackage.eINSTANCE);

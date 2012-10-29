@@ -42,6 +42,8 @@ public interface HbResource {
 	/** Return the sessionwrapper */
 	public SessionWrapper getSessionWrapper();
 
-	/** Returns the sessionwrapper to the resource so that it can do clean up (or not) */
+	/**
+	 * Returns the sessionwrapper to the resource so that it can do clean up (or not)
+	 */
 	void returnSessionWrapper(SessionWrapper sessionWrapper);
 }

@@ -24,23 +24,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Business Rule Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Business Rule Task</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.BusinessRuleTaskImpl#getImplementation <em>Implementation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BusinessRuleTaskImpl#getImplementation <em>Implementation</em>}
+ * </li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -48,9 +48,9 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	protected static final String IMPLEMENTATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -58,8 +58,8 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	protected String implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BusinessRuleTaskImpl() {
@@ -67,8 +67,8 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,8 +77,8 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getImplementation() {
@@ -86,8 +86,8 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplementation(String newImplementation) {
@@ -95,13 +95,12 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.BUSINESS_RULE_TASK__IMPLEMENTATION,
-					oldImplementation, implementation));
+					Bpmn2Package.BUSINESS_RULE_TASK__IMPLEMENTATION, oldImplementation, implementation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,8 +113,8 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,8 +128,8 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,23 +143,23 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.BUSINESS_RULE_TASK__IMPLEMENTATION:
-			return IMPLEMENTATION_EDEFAULT == null ? implementation != null
-					: !IMPLEMENTATION_EDEFAULT.equals(implementation);
+			return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT
+					.equals(implementation);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -175,4 +174,4 @@ public class BusinessRuleTaskImpl extends TaskImpl implements BusinessRuleTask {
 		return result.toString();
 	}
 
-} //BusinessRuleTaskImpl
+} // BusinessRuleTaskImpl

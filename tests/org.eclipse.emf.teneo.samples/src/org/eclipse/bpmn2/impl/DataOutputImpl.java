@@ -35,27 +35,28 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Output</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Data Output</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getOutputSetWithOptional <em>Output Set With Optional</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getOutputSetWithWhileExecuting <em>Output Set With While Executing</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getOutputSetRefs <em>Output Set Refs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#isIsCollection <em>Is Collection</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getOutputSetWithOptional <em>Output Set With
+ * Optional</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getOutputSetWithWhileExecuting <em>Output Set
+ * With While Executing</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getOutputSetRefs <em>Output Set Refs</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#isIsCollection <em>Is Collection</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataOutputImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	/**
-	 * The cached value of the '{@link #getOutputSetWithOptional() <em>Output Set With Optional</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOutputSetWithOptional() <em>Output Set With Optional</em>}'
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOutputSetWithOptional()
 	 * @generated
 	 * @ordered
@@ -63,9 +64,10 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	protected EList<OutputSet> outputSetWithOptional;
 
 	/**
-	 * The cached value of the '{@link #getOutputSetWithWhileExecuting() <em>Output Set With While Executing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOutputSetWithWhileExecuting()
+	 * <em>Output Set With While Executing</em>}' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getOutputSetWithWhileExecuting()
 	 * @generated
 	 * @ordered
@@ -74,8 +76,8 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 
 	/**
 	 * The cached value of the '{@link #getOutputSetRefs() <em>Output Set Refs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOutputSetRefs()
 	 * @generated
 	 * @ordered
@@ -83,9 +85,9 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	protected EList<OutputSet> outputSetRefs;
 
 	/**
-	 * The default value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsCollection()
 	 * @generated
 	 * @ordered
@@ -93,9 +95,9 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	protected static final boolean IS_COLLECTION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsCollection()
 	 * @generated
 	 * @ordered
@@ -103,9 +105,9 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	protected boolean isCollection = IS_COLLECTION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -113,9 +115,9 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -123,8 +125,8 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataOutputImpl() {
@@ -132,8 +134,8 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,53 +144,50 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<OutputSet> getOutputSetWithOptional() {
 		if (outputSetWithOptional == null) {
 			outputSetWithOptional = new EObjectWithInverseResolvingEList.ManyInverse<OutputSet>(
-					OutputSet.class, this,
-					Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_OPTIONAL,
+					OutputSet.class, this, Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_OPTIONAL,
 					Bpmn2Package.OUTPUT_SET__OPTIONAL_OUTPUT_REFS);
 		}
 		return outputSetWithOptional;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<OutputSet> getOutputSetWithWhileExecuting() {
 		if (outputSetWithWhileExecuting == null) {
 			outputSetWithWhileExecuting = new EObjectWithInverseResolvingEList.ManyInverse<OutputSet>(
-					OutputSet.class, this,
-					Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_WHILE_EXECUTING,
+					OutputSet.class, this, Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_WHILE_EXECUTING,
 					Bpmn2Package.OUTPUT_SET__WHILE_EXECUTING_OUTPUT_REFS);
 		}
 		return outputSetWithWhileExecuting;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<OutputSet> getOutputSetRefs() {
 		if (outputSetRefs == null) {
-			outputSetRefs = new EObjectWithInverseResolvingEList.ManyInverse<OutputSet>(
-					OutputSet.class, this,
-					Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_REFS,
+			outputSetRefs = new EObjectWithInverseResolvingEList.ManyInverse<OutputSet>(OutputSet.class,
+					this, Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_REFS,
 					Bpmn2Package.OUTPUT_SET__DATA_OUTPUT_REFS);
 		}
 		return outputSetRefs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsCollection() {
@@ -196,8 +195,8 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsCollection(boolean newIsCollection) {
@@ -205,13 +204,12 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 		isCollection = newIsCollection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_OUTPUT__IS_COLLECTION, oldIsCollection,
-					isCollection));
+					Bpmn2Package.DATA_OUTPUT__IS_COLLECTION, oldIsCollection, isCollection));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -219,27 +217,27 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_OUTPUT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.DATA_OUTPUT__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_OPTIONAL:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutputSetWithOptional())
@@ -248,37 +246,34 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutputSetWithWhileExecuting())
 					.basicAdd(otherEnd, msgs);
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_REFS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutputSetRefs())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutputSetRefs()).basicAdd(
+					otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_OPTIONAL:
-			return ((InternalEList<?>) getOutputSetWithOptional()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOutputSetWithOptional()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_WHILE_EXECUTING:
-			return ((InternalEList<?>) getOutputSetWithWhileExecuting())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getOutputSetWithWhileExecuting()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_REFS:
-			return ((InternalEList<?>) getOutputSetRefs()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOutputSetRefs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -299,8 +294,8 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -309,18 +304,15 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 		switch (featureID) {
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_OPTIONAL:
 			getOutputSetWithOptional().clear();
-			getOutputSetWithOptional().addAll(
-					(Collection<? extends OutputSet>) newValue);
+			getOutputSetWithOptional().addAll((Collection<? extends OutputSet>) newValue);
 			return;
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_WHILE_EXECUTING:
 			getOutputSetWithWhileExecuting().clear();
-			getOutputSetWithWhileExecuting().addAll(
-					(Collection<? extends OutputSet>) newValue);
+			getOutputSetWithWhileExecuting().addAll((Collection<? extends OutputSet>) newValue);
 			return;
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_REFS:
 			getOutputSetRefs().clear();
-			getOutputSetRefs().addAll(
-					(Collection<? extends OutputSet>) newValue);
+			getOutputSetRefs().addAll((Collection<? extends OutputSet>) newValue);
 			return;
 		case Bpmn2Package.DATA_OUTPUT__IS_COLLECTION:
 			setIsCollection((Boolean) newValue);
@@ -333,8 +325,8 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -360,33 +352,30 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_OPTIONAL:
-			return outputSetWithOptional != null
-					&& !outputSetWithOptional.isEmpty();
+			return outputSetWithOptional != null && !outputSetWithOptional.isEmpty();
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_WITH_WHILE_EXECUTING:
-			return outputSetWithWhileExecuting != null
-					&& !outputSetWithWhileExecuting.isEmpty();
+			return outputSetWithWhileExecuting != null && !outputSetWithWhileExecuting.isEmpty();
 		case Bpmn2Package.DATA_OUTPUT__OUTPUT_SET_REFS:
 			return outputSetRefs != null && !outputSetRefs.isEmpty();
 		case Bpmn2Package.DATA_OUTPUT__IS_COLLECTION:
 			return isCollection != IS_COLLECTION_EDEFAULT;
 		case Bpmn2Package.DATA_OUTPUT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -403,4 +392,4 @@ public class DataOutputImpl extends ItemAwareElementImpl implements DataOutput {
 		return result.toString();
 	}
 
-} //DataOutputImpl
+} // DataOutputImpl

@@ -35,25 +35,27 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class JoinColumnsTest extends AbstractActionTest {
 
 	private static JoinColumnsAction testAction = new JoinColumnsAction() {
-		
+
 		/** Checks the version column */
-		protected void checkVersion(TestStore store) { 
-    		Connection conn = null;
-    		Statement stmt = null;
-	    	try {
+		protected void checkVersion(TestStore store) {
+			Connection conn = null;
+			Statement stmt = null;
 			try {
-	    			conn = store.getConnection();
-	    			stmt = conn.createStatement();
-	    			// check version column name
-		    		ResultSet rs = stmt.executeQuery("select myversion from person");
-		    		assertTrue(rs.next());
-	    		} finally {
-	    			if (stmt != null) stmt.close();
-	    			if (conn != null) conn.close();
-	    		}
-	    	} catch (SQLException e) {
-	    		throw new StoreTestException("Sql exception when checking db schema", e);
-	    	}
+				try {
+					conn = store.getConnection();
+					stmt = conn.createStatement();
+					// check version column name
+					ResultSet rs = stmt.executeQuery("select myversion from person");
+					assertTrue(rs.next());
+				} finally {
+					if (stmt != null)
+						stmt.close();
+					if (conn != null)
+						conn.close();
+				}
+			} catch (SQLException e) {
+				throw new StoreTestException("Sql exception when checking db schema", e);
+			}
 		}
 	};
 

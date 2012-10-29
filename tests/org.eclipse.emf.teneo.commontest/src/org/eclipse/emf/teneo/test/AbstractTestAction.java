@@ -54,7 +54,7 @@ public abstract class AbstractTestAction extends TestCase {
 	 * Constructor
 	 * 
 	 * @param the
-	 *            epackage for which this test is run
+	 *          epackage for which this test is run
 	 */
 	public AbstractTestAction(EPackage epackage) {
 		this(new EPackage[] { epackage });
@@ -82,7 +82,8 @@ public abstract class AbstractTestAction extends TestCase {
 	public abstract void doAction(TestStore store);
 
 	/**
-	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of eager loading.
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of
+	 * eager loading.
 	 */
 	public Properties getExtraConfigurationProperties() {
 		return new Properties();
@@ -94,13 +95,15 @@ public abstract class AbstractTestAction extends TestCase {
 	}
 
 	/**
-	 * Returns the path of the XML persistence mapping file on the classpath or null if none is available.
+	 * Returns the path of the XML persistence mapping file on the classpath or null if none is
+	 * available.
 	 * <p>
-	 * Returning non-null will cause the TestAction to be run twice: first for a PAnnotatedModel populated from
-	 * EAnnotations and then for a PAnnotatedModel populated from the XML persistence mapping.
+	 * Returning non-null will cause the TestAction to be run twice: first for a PAnnotatedModel
+	 * populated from EAnnotations and then for a PAnnotatedModel populated from the XML persistence
+	 * mapping.
 	 * <p>
-	 * This implementation looks for a mapping file on the classpath named &lt;class name&gt;.persistence.xml, returning
-	 * its path if it exists or null if it does not.
+	 * This implementation looks for a mapping file on the classpath named &lt;class
+	 * name&gt;.persistence.xml, returning its path if it exists or null if it does not.
 	 * 
 	 * @see ConfigurableTestSuite
 	 */

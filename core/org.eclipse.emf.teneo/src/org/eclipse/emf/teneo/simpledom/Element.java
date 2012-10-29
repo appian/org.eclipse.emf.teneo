@@ -111,7 +111,7 @@ public class Element extends Node {
 
 	/**
 	 * @param text
-	 *            the text to set
+	 *          the text to set
 	 */
 	public void addText(String text) {
 		setText(getText() + text);
@@ -160,7 +160,7 @@ public class Element extends Node {
 
 	/**
 	 * @param parent
-	 *            the parent to set
+	 *          the parent to set
 	 */
 	public void setParent(Element parent) {
 		this.parent = parent;

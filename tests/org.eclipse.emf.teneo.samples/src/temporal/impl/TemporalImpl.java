@@ -21,26 +21,26 @@ import temporal.mod.TemporalBaseEObjectImpl;
 import temporal.mod.TemporalDateProvider;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Temporal</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Temporal</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link temporal.impl.TemporalImpl#getDate <em>Date</em>}</li>
- *   <li>{@link temporal.impl.TemporalImpl#getTouchedAttributes <em>Touched Attributes</em>}</li>
- *   <li>{@link temporal.impl.TemporalImpl#isContinuity <em>Continuity</em>}</li>
- *   <li>{@link temporal.impl.TemporalImpl#getVersionHolder <em>Version Holder</em>}</li>
- *   <li>{@link temporal.impl.TemporalImpl#getVersionHolderContainment <em>Version Holder Containment</em>}</li>
+ * <li>{@link temporal.impl.TemporalImpl#getDate <em>Date</em>}</li>
+ * <li>{@link temporal.impl.TemporalImpl#getTouchedAttributes <em>Touched Attributes</em>}</li>
+ * <li>{@link temporal.impl.TemporalImpl#isContinuity <em>Continuity</em>}</li>
+ * <li>{@link temporal.impl.TemporalImpl#getVersionHolder <em>Version Holder</em>}</li>
+ * <li>{@link temporal.impl.TemporalImpl#getVersionHolderContainment <em>Version Holder Containment
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TemporalImpl() {
@@ -48,8 +48,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -58,8 +58,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,17 +68,17 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getDate() {
-		return (Date)eGet(TemporalPackage.Literals.TEMPORAL__DATE, true);
+		return (Date) eGet(TemporalPackage.Literals.TEMPORAL__DATE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDate(Date newDate) {
@@ -86,17 +86,17 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public byte[] getTouchedAttributes() {
-		return (byte[])eGet(TemporalPackage.Literals.TEMPORAL__TOUCHED_ATTRIBUTES, true);
+		return (byte[]) eGet(TemporalPackage.Literals.TEMPORAL__TOUCHED_ATTRIBUTES, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTouchedAttributes(byte[] newTouchedAttributes) {
@@ -104,17 +104,17 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isContinuity() {
-		return ((Boolean)eGet(TemporalPackage.Literals.TEMPORAL__CONTINUITY, true)).booleanValue();
+		return ((Boolean) eGet(TemporalPackage.Literals.TEMPORAL__CONTINUITY, true)).booleanValue();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setContinuity(boolean newContinuity) {
@@ -122,17 +122,17 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public VersionHolder getVersionHolder() {
-		return (VersionHolder)eGet(TemporalPackage.Literals.TEMPORAL__VERSION_HOLDER, true);
+		return (VersionHolder) eGet(TemporalPackage.Literals.TEMPORAL__VERSION_HOLDER, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setVersionHolder(VersionHolder newVersionHolder) {
@@ -140,17 +140,17 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public VersionHolder getVersionHolderContainment() {
-		return (VersionHolder)eGet(TemporalPackage.Literals.TEMPORAL__VERSION_HOLDER_CONTAINMENT, true);
+		return (VersionHolder) eGet(TemporalPackage.Literals.TEMPORAL__VERSION_HOLDER_CONTAINMENT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setVersionHolderContainment(VersionHolder newVersionHolderContainment) {
@@ -158,8 +158,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Temporal versionAt(Date date) {
@@ -167,8 +167,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Temporal createVersion() {
@@ -176,8 +176,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isDateWithinVersion(Date date) {
@@ -185,8 +185,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Temporal continuity() {
@@ -194,8 +194,8 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Temporal currentVersion() {
@@ -203,12 +203,12 @@ public class TemporalImpl extends TemporalBaseEObjectImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList versions() {
 		return TemporalUtil.versions(this);
 	}
 
-} //TemporalImpl
+} // TemporalImpl

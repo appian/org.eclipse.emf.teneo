@@ -29,8 +29,8 @@ import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 
 /**
- * Class is responsible for generating the hbm file. Is run through a launcher
- * therefore the main methods.
+ * Class is responsible for generating the hbm file. Is run through a launcher therefore the main
+ * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.17 $
@@ -59,19 +59,15 @@ public class GenerateHBM {
 				// when loading the epackage should be loaded
 				for (String element : epacks) {
 					try {
-						log.debug("Loading class " + element
-								+ " should be an epackage");
+						log.debug("Loading class " + element + " should be an epackage");
 
 						Class<?> epack = Class.forName(element);
 						if (!EPackage.class.isAssignableFrom(epack)) {
-							log
-									.warn("HBM Generator found "
-											+ epack.getName()
-											+ " but this is not an EPackage, ignoring it");
+							log.warn("HBM Generator found " + epack.getName()
+									+ " but this is not an EPackage, ignoring it");
 						}
 					} catch (Throwable t) { // ignore everything but log it
-						log.error("Exception while instantiating " + element
-								+ ", message: " + t.getMessage());
+						log.error("Exception while instantiating " + element + ", message: " + t.getMessage());
 					}
 				}
 			} else {
@@ -79,19 +75,16 @@ public class GenerateHBM {
 			}
 		}
 
-		createORMapperFile(targetFileName, ecores.toArray(new String[ecores
-				.size()]), options);
+		createORMapperFile(targetFileName, ecores.toArray(new String[ecores.size()]), options);
 	}
 
 	/** Creates the mapping file */
-	private static void createORMapperFile(String targetFileName,
-			String[] ecores, Properties options) {
+	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options) {
 		try {
 			// get the first ecore file
 			File firstEcore = new File(ecores[0]);
 			File file = new File(firstEcore.getParentFile(), targetFileName);
-			final File archiveFile = new File(firstEcore.getParentFile(),
-					targetFileName + "_old");
+			final File archiveFile = new File(firstEcore.getParentFile(), targetFileName + "_old");
 
 			if (file.exists()) {
 				if (archiveFile.exists()) {
@@ -102,25 +95,23 @@ public class GenerateHBM {
 			}
 			file.createNewFile();
 
-			final ExtensionManager extensionManager = ExtensionManagerFactory
-					.getInstance().create();
+			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			MappingUtil.registerHbExtensions(extensionManager);
 
-			final PersistenceOptions po = extensionManager.getExtension(
-					PersistenceOptions.class, new Object[] { options });
-			final PAnnotatedModel paModel = extensionManager.getExtension(
-					PersistenceMappingBuilder.class).buildMapping(ecores, po,
-					extensionManager);
+			final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class,
+					new Object[] { options });
+			final PAnnotatedModel paModel = extensionManager
+					.getExtension(PersistenceMappingBuilder.class).buildMapping(ecores, po, extensionManager);
 			final HibernateMappingGenerator hmg = extensionManager
 					.getExtension(HibernateMappingGenerator.class);
 			hmg.setPersistenceOptions(po);
 			FileWriter writer = new FileWriter(file);
 			writer.write(hmg.generateToString(paModel));
 			writer.flush();
+			writer.close();
 		} catch (IOException e) {
 			log.error(e);
-			throw new TeneoException(
-					"IOException when creating or mapping file", e);
+			throw new TeneoException("IOException when creating or mapping file", e);
 		}
 	}
 

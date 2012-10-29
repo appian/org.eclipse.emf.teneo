@@ -64,9 +64,7 @@ public class EMapAction extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
-	 * ()
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -84,7 +82,7 @@ public class EMapAction extends AbstractTestAction {
 			store.store(createTestSet("prefix2"));
 			store.commitTransaction();
 		}
-		
+
 		// test lazy collections utils
 		{
 			store.beginTransaction();
@@ -123,7 +121,7 @@ public class EMapAction extends AbstractTestAction {
 					assertTrue(bk.getWriters().size() == 2);
 					bks.add(bk);
 				} else {
-					ws.add((Writer)obj);
+					ws.add((Writer) obj);
 				}
 			}
 			assertEquals(2, bks.size());
@@ -142,8 +140,7 @@ public class EMapAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
 		} catch (Exception e) {
-			throw new StoreTestException(
-					"Exception when testing with resource", e);
+			throw new StoreTestException("Exception when testing with resource", e);
 		}
 
 		{
@@ -164,14 +161,13 @@ public class EMapAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			store.commitTransaction();
 		} catch (Exception e) {
-			throw new StoreTestException(
-					"Exception when testing with resource", e);
+			throw new StoreTestException("Exception when testing with resource", e);
 		}
 
 		{
 			store.beginTransaction();
 			final Book bk = createTestSet("prefix10");
-			store.store(bk);			
+			store.store(bk);
 			store.commitTransaction();
 
 			final Writer w1 = EmapFactory.eINSTANCE.createWriter();
@@ -179,14 +175,10 @@ public class EMapAction extends AbstractTestAction {
 			bk.getWriters().put(w1.getName(), w1);
 			bk.getCityByWriter().put(w1, "Utrecht");
 			if (!isEAVTest()) {
-				final PersistentStoreAdapter adapter = StoreUtil
-						.getPersistentStoreAdapter(bk);
-				final Object ws = adapter
-						.getStoreCollection(EmapPackage.eINSTANCE
-								.getBook_Writers());
+				final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter(bk);
+				final Object ws = adapter.getStoreCollection(EmapPackage.eINSTANCE.getBook_Writers());
 				final Object cbws = adapter
-						.getStoreCollection(EmapPackage.eINSTANCE
-								.getBook_CityByWriter());
+						.getStoreCollection(EmapPackage.eINSTANCE.getBook_CityByWriter());
 				checkEqual(ws, bk.getWriters());
 				checkEqual(cbws, bk.getCityByWriter());
 			}
@@ -266,7 +258,7 @@ public class EMapAction extends AbstractTestAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 
-		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>)LazyCollectionUtils
+		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>) LazyCollectionUtils
 				.getPagedLoadingIterator(list, 5);
 		iterator.setOrderBy(getOrderBy());
 		int index = 0;
@@ -279,9 +271,9 @@ public class EMapAction extends AbstractTestAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}
-	
+
 	protected String getOrderBy() {
-		return "order by this.name desc"; 
+		return "order by this.name desc";
 	}
-	
+
 }

@@ -17,11 +17,11 @@
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
-
 /**
  * Variant of super class which loads all lists extra-lazily.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
-public class EAVExtraMultiNonContainmentEReferenceValueHolder extends EAVMultiNonContainmentEReferenceValueHolder {
+public class EAVExtraMultiNonContainmentEReferenceValueHolder extends
+		EAVMultiNonContainmentEReferenceValueHolder {
 }

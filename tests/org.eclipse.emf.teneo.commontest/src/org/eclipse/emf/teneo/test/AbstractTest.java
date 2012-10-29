@@ -41,7 +41,7 @@ public abstract class AbstractTest extends TestCase {
 	// set this
 	static {
 		System.setProperty("org.eclipse.emf.ecore.EPackage.Registry.INSTANCE",
-			"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
+				"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
 	}
 
 	/** The test store is the connection to the database and specific datalayer actions */

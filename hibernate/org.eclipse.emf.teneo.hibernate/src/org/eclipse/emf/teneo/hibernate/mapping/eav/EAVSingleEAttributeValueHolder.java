@@ -77,8 +77,7 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		// do type specific handling
 		final boolean isBlob = value instanceof byte[]
 				|| (value instanceof String && isClob(getEStructuralFeature()));
-		final EDataType eDataType = (EDataType) getEStructuralFeature()
-				.getEType();
+		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
 		final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
 		if (!isBlob) {
 			typeNeutralValue = eFactory.convertToString(eDataType, value);
@@ -103,8 +102,7 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 			if (value instanceof BigDecimal) {
 				final BigDecimal bdValue = (BigDecimal) value;
 				if (bdValue.precision() > MAX_PRECISION) {
-					final MathContext mathContext = new MathContext(
-							MAX_PRECISION);
+					final MathContext mathContext = new MathContext(MAX_PRECISION);
 					numericValue = bdValue.round(mathContext);
 				} else {
 					numericValue = bdValue;
@@ -113,12 +111,12 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 				longValue = ((BigInteger) value).longValue();
 			} else if (value instanceof Double || value instanceof Float) {
 				doubleValue = ((Number) value).doubleValue();
-			} else if (value instanceof Integer || value instanceof Long
-					|| value instanceof Short || value instanceof Byte) {
+			} else if (value instanceof Integer || value instanceof Long || value instanceof Short
+					|| value instanceof Byte) {
 				longValue = ((Number) value).longValue();
 			} else {
-				throw new UnsupportedOperationException("Primitive type "
-						+ value.getClass() + " not supported here.");
+				throw new UnsupportedOperationException("Primitive type " + value.getClass()
+						+ " not supported here.");
 			}
 		}
 	}
@@ -129,12 +127,9 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		} else if (objectValue == null && textValue != null) {
 			objectValue = textValue.getTextValue();
 		} else if (objectValue == null && typeNeutralValue != null) {
-			final EDataType eDataType = (EDataType) getEStructuralFeature()
-					.getEType();
-			final EFactory eFactory = eDataType.getEPackage()
-					.getEFactoryInstance();
-			objectValue = eFactory
-					.createFromString(eDataType, typeNeutralValue);
+			final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
+			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
+			objectValue = eFactory.createFromString(eDataType, typeNeutralValue);
 		}
 
 		return objectValue;
@@ -219,16 +214,16 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 	private boolean isClob(EStructuralFeature eFeature) {
 		final EAttribute eAttribute = (EAttribute) eFeature;
 		try {
-			final PAnnotatedEAttribute paEAttribute = getHbDataStore()
-					.getPaModel().getPAnnotated(eAttribute);
+			final PAnnotatedEAttribute paEAttribute = getHbDataStore().getPaModel().getPAnnotated(
+					eAttribute);
 			if (paEAttribute == null) {
 				return false;
 			}
 			if (paEAttribute.getLob() != null) {
 				return true;
 			}
-			final PAnnotatedEDataType paDataType = getHbDataStore()
-					.getPaModel().getPAnnotated(eAttribute.getEAttributeType());
+			final PAnnotatedEDataType paDataType = getHbDataStore().getPaModel().getPAnnotated(
+					eAttribute.getEAttributeType());
 			if (paDataType == null) {
 				return false;
 			}
@@ -239,13 +234,11 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		}
 	}
 
-	protected static boolean isFeatureExtraLazy(HbDataStore hbDataStore,
-			EStructuralFeature eFeature) {
+	protected static boolean isFeatureExtraLazy(HbDataStore hbDataStore, EStructuralFeature eFeature) {
 		if (hbDataStore.getPersistenceOptions().isFetchAssociationExtraLazy()) {
 			return true;
 		}
-		final PAnnotatedEStructuralFeature paFeature = hbDataStore.getPaModel()
-				.getPAnnotated(eFeature);
+		final PAnnotatedEStructuralFeature paFeature = hbDataStore.getPaModel().getPAnnotated(eFeature);
 		if (paFeature.getOneToMany() != null
 				&& paFeature.getOneToMany().getFetch().equals(FetchType.EXTRA)) {
 			return Boolean.TRUE;

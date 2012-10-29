@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MainFactory init() {
 		try {
-			MainFactory theMainFactory = (MainFactory)EPackage.Registry.INSTANCE.getEFactory("http:///main.ecore"); 
+			MainFactory theMainFactory = (MainFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http:///main.ecore");
 			if (theMainFactory != null) {
 				return theMainFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new MainFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MainFactoryImpl() {
@@ -53,27 +50,35 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case MainPackage.CHILD_OBJECT2: return createChildObject2();
-			case MainPackage.CHILD_OBJECT1: return createChildObject1();
-			case MainPackage.BASE_OBJECT: return createBaseObject();
-			case MainPackage.BASE_GROUP: return createBaseGroup();
-			case MainPackage.BASE_COMPONENT: return createBaseComponent();
-			case MainPackage.CHILD_OBJECT3: return createChildObject3();
-			case MainPackage.CHILD_OBJECT4: return createChildObject4();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case MainPackage.CHILD_OBJECT2:
+			return createChildObject2();
+		case MainPackage.CHILD_OBJECT1:
+			return createChildObject1();
+		case MainPackage.BASE_OBJECT:
+			return createBaseObject();
+		case MainPackage.BASE_GROUP:
+			return createBaseGroup();
+		case MainPackage.BASE_COMPONENT:
+			return createBaseComponent();
+		case MainPackage.CHILD_OBJECT3:
+			return createChildObject3();
+		case MainPackage.CHILD_OBJECT4:
+			return createChildObject4();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChildObject2 createChildObject2() {
@@ -82,8 +87,8 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChildObject1 createChildObject1() {
@@ -92,8 +97,8 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseObject createBaseObject() {
@@ -102,8 +107,8 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseGroup createBaseGroup() {
@@ -112,8 +117,8 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseComponent createBaseComponent() {
@@ -122,8 +127,8 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChildObject3 createChildObject3() {
@@ -132,8 +137,8 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChildObject4 createChildObject4() {
@@ -142,17 +147,17 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MainPackage getMainPackage() {
-		return (MainPackage)getEPackage();
+		return (MainPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -160,4 +165,4 @@ public class MainFactoryImpl extends EFactoryImpl implements MainFactory {
 		return MainPackage.eINSTANCE;
 	}
 
-} //MainFactoryImpl
+} // MainFactoryImpl

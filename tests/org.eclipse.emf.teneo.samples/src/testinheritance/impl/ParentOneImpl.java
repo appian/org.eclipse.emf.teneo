@@ -17,23 +17,22 @@ import testinheritance.ParentOne;
 import testinheritance.TestinheritancePackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parent One</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Parent One</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link testinheritance.impl.ParentOneImpl#getAnotherProperty <em>Another Property</em>}</li>
+ * <li>{@link testinheritance.impl.ParentOneImpl#getAnotherProperty <em>Another Property</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ParentOneImpl extends EObjectImpl implements ParentOne {
 	/**
 	 * The default value of the '{@link #getAnotherProperty() <em>Another Property</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAnotherProperty()
 	 * @generated
 	 * @ordered
@@ -42,8 +41,8 @@ public class ParentOneImpl extends EObjectImpl implements ParentOne {
 
 	/**
 	 * The cached value of the '{@link #getAnotherProperty() <em>Another Property</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAnotherProperty()
 	 * @generated
 	 * @ordered
@@ -51,8 +50,8 @@ public class ParentOneImpl extends EObjectImpl implements ParentOne {
 	protected long anotherProperty = ANOTHER_PROPERTY_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ParentOneImpl() {
@@ -60,8 +59,8 @@ public class ParentOneImpl extends EObjectImpl implements ParentOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,8 +69,8 @@ public class ParentOneImpl extends EObjectImpl implements ParentOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public long getAnotherProperty() {
@@ -79,83 +78,85 @@ public class ParentOneImpl extends EObjectImpl implements ParentOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAnotherProperty(long newAnotherProperty) {
 		long oldAnotherProperty = anotherProperty;
 		anotherProperty = newAnotherProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY, oldAnotherProperty, anotherProperty));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY, oldAnotherProperty, anotherProperty));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
-				return new Long(getAnotherProperty());
+		case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
+			return new Long(getAnotherProperty());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
-				setAnotherProperty(((Long)newValue).longValue());
-				return;
+		case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
+			setAnotherProperty(((Long) newValue).longValue());
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
-				setAnotherProperty(ANOTHER_PROPERTY_EDEFAULT);
-				return;
+		case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
+			setAnotherProperty(ANOTHER_PROPERTY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
-				return anotherProperty != ANOTHER_PROPERTY_EDEFAULT;
+		case TestinheritancePackage.PARENT_ONE__ANOTHER_PROPERTY:
+			return anotherProperty != ANOTHER_PROPERTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (anotherProperty: ");
@@ -164,4 +165,4 @@ public class ParentOneImpl extends EObjectImpl implements ParentOne {
 		return result.toString();
 	}
 
-} //ParentOneImpl
+} // ParentOneImpl

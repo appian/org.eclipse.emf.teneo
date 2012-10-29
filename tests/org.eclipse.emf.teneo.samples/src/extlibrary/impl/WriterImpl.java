@@ -20,8 +20,8 @@ import extlibrary.ExtlibraryPackage;
 import extlibrary.Writer;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Writer</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Writer</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -34,8 +34,8 @@ import extlibrary.Writer;
  */
 public class WriterImpl extends PersonImpl implements Writer {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * 
 	 * @see #getName()
 	 * @generated
@@ -44,8 +44,8 @@ public class WriterImpl extends PersonImpl implements Writer {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBooks() <em>Books</em>}' reference
-	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getBooks() <em>Books</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @see #getBooks()
 	 * @generated
@@ -100,8 +100,7 @@ public class WriterImpl extends PersonImpl implements Writer {
 	public EList getBooks() {
 		if (books == null) {
 			books = new EObjectWithInverseResolvingEList(Book.class, this,
-					ExtlibraryPackage.WRITER__BOOKS,
-					ExtlibraryPackage.BOOK__AUTHOR);
+					ExtlibraryPackage.WRITER__BOOKS, ExtlibraryPackage.BOOK__AUTHOR);
 		}
 		return books;
 	}
@@ -112,8 +111,8 @@ public class WriterImpl extends PersonImpl implements Writer {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case ExtlibraryPackage.WRITER__BOOKS:
 			return ((InternalEList) getBooks()).basicAdd(otherEnd, msgs);
@@ -127,8 +126,8 @@ public class WriterImpl extends PersonImpl implements Writer {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case ExtlibraryPackage.WRITER__BOOKS:
 			return ((InternalEList) getBooks()).basicRemove(otherEnd, msgs);
@@ -198,8 +197,7 @@ public class WriterImpl extends PersonImpl implements Writer {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ExtlibraryPackage.WRITER__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		case ExtlibraryPackage.WRITER__BOOKS:
 			return books != null && !books.isEmpty();
 		}

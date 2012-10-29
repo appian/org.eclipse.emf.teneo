@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Association Direction</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Association Direction</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getAssociationDirection()
  * @model extendedMetaData="name='tAssociationDirection'"
  * @generated
  */
 public enum AssociationDirection implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum AssociationDirection implements Enumerator {
 	NONE(0, "None", "None"),
 
 	/**
-	 * The '<em><b>One</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>One</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #ONE_VALUE
 	 * @generated
 	 * @ordered
@@ -51,9 +49,8 @@ public enum AssociationDirection implements Enumerator {
 	ONE(1, "One", "One"),
 
 	/**
-	 * The '<em><b>Both</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Both</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #BOTH_VALUE
 	 * @generated
 	 * @ordered
@@ -61,13 +58,13 @@ public enum AssociationDirection implements Enumerator {
 	BOTH(2, "Both", "Both");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NONE
 	 * @model name="None"
 	 * @generated
@@ -76,13 +73,13 @@ public enum AssociationDirection implements Enumerator {
 	public static final int NONE_VALUE = 0;
 
 	/**
-	 * The '<em><b>One</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>One</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ONE
 	 * @model name="One"
 	 * @generated
@@ -91,13 +88,13 @@ public enum AssociationDirection implements Enumerator {
 	public static final int ONE_VALUE = 1;
 
 	/**
-	 * The '<em><b>Both</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Both</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Both</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Both</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BOTH
 	 * @model name="Both"
 	 * @generated
@@ -106,27 +103,27 @@ public enum AssociationDirection implements Enumerator {
 	public static final int BOTH_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Association Direction</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Association Direction</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final AssociationDirection[] VALUES_ARRAY = new AssociationDirection[] {
-			NONE, ONE, BOTH, };
+	private static final AssociationDirection[] VALUES_ARRAY = new AssociationDirection[] { NONE,
+			ONE, BOTH, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Association Direction</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Association Direction</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<AssociationDirection> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<AssociationDirection> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Association Direction</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AssociationDirection get(String literal) {
@@ -140,9 +137,9 @@ public enum AssociationDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Association Direction</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Association Direction</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AssociationDirection getByName(String name) {
@@ -157,8 +154,8 @@ public enum AssociationDirection implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Association Direction</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AssociationDirection get(int value) {
@@ -174,30 +171,29 @@ public enum AssociationDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private AssociationDirection(int value, String name, String literal) {
@@ -207,8 +203,8 @@ public enum AssociationDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -216,8 +212,8 @@ public enum AssociationDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -225,8 +221,8 @@ public enum AssociationDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -234,9 +230,9 @@ public enum AssociationDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -244,4 +240,4 @@ public enum AssociationDirection implements Enumerator {
 		return literal;
 	}
 
-} //AssociationDirection
+} // AssociationDirection

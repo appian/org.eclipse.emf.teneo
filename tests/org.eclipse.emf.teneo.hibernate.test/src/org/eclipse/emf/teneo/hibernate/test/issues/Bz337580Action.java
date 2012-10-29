@@ -33,8 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * Tests the solution of https://bugs.eclipse.org/bugs/show_bug.cgi?id=337580
  * 
- * Option to NOT apply the name strategy to names specified explicitly via JPA
- * annotations
+ * Option to NOT apply the name strategy to names specified explicitly via JPA annotations
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.1 $
@@ -48,8 +47,7 @@ public class Bz337580Action extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.AUTO_ADAPT_MANUAL_SET_SQL_NAMES,
-				"false");
+		props.setProperty(PersistenceOptions.AUTO_ADAPT_MANUAL_SET_SQL_NAMES, "false");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "10");
 		return props;
 	}
@@ -75,8 +73,7 @@ public class Bz337580Action extends AbstractTestAction {
 					stmt = conn.createStatement();
 					// check truncated column name and a non-truncated
 					// verylongename
-					ResultSet rs = stmt
-							.executeQuery("select NMWHCHSHLD from AVERYLONGNAMEFORTEST");
+					ResultSet rs = stmt.executeQuery("select NMWHCHSHLD from AVERYLONGNAMEFORTEST");
 					assertTrue(rs.next());
 					assertFalse(rs.next());
 				} finally {
@@ -86,8 +83,7 @@ public class Bz337580Action extends AbstractTestAction {
 						conn.close();
 				}
 			} catch (SQLException e) {
-				throw new StoreTestException(
-						"Sql exception when checking db schema", e);
+				throw new StoreTestException("Sql exception when checking db schema", e);
 			}
 		}
 	}

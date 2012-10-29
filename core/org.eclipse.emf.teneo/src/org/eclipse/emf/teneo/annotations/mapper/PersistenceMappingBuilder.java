@@ -43,8 +43,8 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Receives a list of ecore files and generates a mapping model using different strategies. The mapping model is
- * returned.
+ * Receives a list of ecore files and generates a mapping model using different strategies. The
+ * mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.14 $
@@ -60,7 +60,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	/**
 	 * Receives a list of ecore files and returns a Mapping
 	 */
-	public PAnnotatedModel buildMapping(String[] ecoreFiles, PersistenceOptions po, ExtensionManager extensionManager) {
+	public PAnnotatedModel buildMapping(String[] ecoreFiles, PersistenceOptions po,
+			ExtensionManager extensionManager) {
 		return buildMapping(StoreUtil.readEPackages(ecoreFiles), po, extensionManager);
 	}
 
@@ -69,14 +70,16 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	 * 
 	 * @Deprecated use the method with the List<EPackage> parameter
 	 */
-	public PAnnotatedModel buildMapping(EPackage[] epackages, PersistenceOptions po, ExtensionManager extensionManager) {
+	public PAnnotatedModel buildMapping(EPackage[] epackages, PersistenceOptions po,
+			ExtensionManager extensionManager) {
 		return buildMapping(Arrays.asList(epackages), po, extensionManager);
 	}
 
 	/**
 	 * Builds a persistence mapping for one or more epackages
 	 */
-	public PAnnotatedModel buildMapping(List<EPackage> epacks, PersistenceOptions po, ExtensionManager extensionManager) {
+	public PAnnotatedModel buildMapping(List<EPackage> epacks, PersistenceOptions po,
+			ExtensionManager extensionManager) {
 		// read the subepackages
 		List<EPackage> epackages = new ArrayList<EPackage>();
 		for (EPackage epack : epacks) {
@@ -113,8 +116,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 
 		if (po.isMapDocumentRoot()) {
 			// use the ecore package which is present in the package registry
-			final EPackage ecorePackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
-					EcorePackage.eNS_URI);
+			final EPackage ecorePackage = PackageRegistryProvider.getInstance().getPackageRegistry()
+					.getEPackage(EcorePackage.eNS_URI);
 			final EClassifier eClassifier = ecorePackage.getEClassifier(EcorePackage.eINSTANCE
 					.getEStringToStringMapEntry().getName());
 			pamodelBuilder.addSpecificEClass((EClass) eClassifier);
@@ -246,7 +249,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	private void addAllUsedEPackages(EClass eClass, List<EPackage> ePackages) {
 		addAllUsedEPackages(eClass.getEPackage(), ePackages);
 		for (EClass eSuperClass : eClass.getESuperTypes()) {
-			// apparently there is a cycle in one of the XSD/XML packages, this prevents this.
+			// apparently there is a cycle in one of the XSD/XML packages, this
+			// prevents this.
 			if (!ePackages.contains(eSuperClass.getEPackage())) {
 				addAllUsedEPackages(eSuperClass, ePackages);
 			}
@@ -267,8 +271,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * For each pannotated eattribute find the pannotated edatatype and copy the values of the estructuralfeature if not
-	 * yet set in the eattribute
+	 * For each pannotated eattribute find the pannotated edatatype and copy the values of the
+	 * estructuralfeature if not yet set in the eattribute
 	 */
 	protected void processEDataTypeAnnotations(PAnnotatedModel pam) {
 		if (log.isDebugEnabled()) {
@@ -289,7 +293,7 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 							if (asf != null && !pea.eIsSet(asf) && ped.eIsSet(esf)) {
 								if (log.isDebugEnabled()) {
 									log.debug("Copying value for feature " + esf.getName() + " from edatatype "
-										+ et.getName() + " to " + pea.getModelEAttribute().getName());
+											+ et.getName() + " to " + pea.getModelEAttribute().getName());
 								}
 
 								final Object obj = ped.eGet(esf);

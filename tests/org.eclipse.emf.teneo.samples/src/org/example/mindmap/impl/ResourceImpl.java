@@ -27,26 +27,25 @@ import org.example.mindmap.Resource;
 import org.example.mindmap.Topic;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Resource</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.example.mindmap.impl.ResourceImpl#getComments <em>Comments</em>}</li>
- *   <li>{@link org.example.mindmap.impl.ResourceImpl#getEmail <em>Email</em>}</li>
- *   <li>{@link org.example.mindmap.impl.ResourceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.example.mindmap.impl.ResourceImpl#getTopics <em>Topics</em>}</li>
+ * <li>{@link org.example.mindmap.impl.ResourceImpl#getComments <em>Comments</em>}</li>
+ * <li>{@link org.example.mindmap.impl.ResourceImpl#getEmail <em>Email</em>}</li>
+ * <li>{@link org.example.mindmap.impl.ResourceImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.example.mindmap.impl.ResourceImpl#getTopics <em>Topics</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ResourceImpl extends EObjectImpl implements Resource {
 	/**
-	 * The cached value of the '{@link #getComments() <em>Comments</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getComments() <em>Comments</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getComments()
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	protected EList comments = null;
 
 	/**
-	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEmail()
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	protected static final String EMAIL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEmail() <em>Email</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEmail() <em>Email</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getEmail()
 	 * @generated
 	 * @ordered
@@ -74,9 +73,9 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	protected String email = EMAIL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -84,9 +83,9 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -94,9 +93,9 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTopics()
 	 * @generated
 	 * @ordered
@@ -104,8 +103,8 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	protected EList topics = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResourceImpl() {
@@ -113,8 +112,8 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -122,20 +121,21 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getComments() {
 		if (comments == null) {
-			comments = new EObjectWithInverseResolvingEList(org.example.mindmap.Thread.class, this, MindmapPackage.RESOURCE__COMMENTS, MindmapPackage.THREAD__AUTHOR);
+			comments = new EObjectWithInverseResolvingEList(org.example.mindmap.Thread.class, this,
+					MindmapPackage.RESOURCE__COMMENTS, MindmapPackage.THREAD__AUTHOR);
 		}
 		return comments;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getEmail() {
@@ -143,20 +143,21 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEmail(String newEmail) {
 		String oldEmail = email;
 		email = newEmail;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RESOURCE__EMAIL, oldEmail, email));
+			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RESOURCE__EMAIL,
+					oldEmail, email));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -164,152 +165,157 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RESOURCE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RESOURCE__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getTopics() {
 		if (topics == null) {
-			topics = new EObjectWithInverseResolvingEList.ManyInverse(Topic.class, this, MindmapPackage.RESOURCE__TOPICS, MindmapPackage.TOPIC__RESOURCES);
+			topics = new EObjectWithInverseResolvingEList.ManyInverse(Topic.class, this,
+					MindmapPackage.RESOURCE__TOPICS, MindmapPackage.TOPIC__RESOURCES);
 		}
 		return topics;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case MindmapPackage.RESOURCE__COMMENTS:
-				return ((InternalEList)getComments()).basicAdd(otherEnd, msgs);
-			case MindmapPackage.RESOURCE__TOPICS:
-				return ((InternalEList)getTopics()).basicAdd(otherEnd, msgs);
+		case MindmapPackage.RESOURCE__COMMENTS:
+			return ((InternalEList) getComments()).basicAdd(otherEnd, msgs);
+		case MindmapPackage.RESOURCE__TOPICS:
+			return ((InternalEList) getTopics()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case MindmapPackage.RESOURCE__COMMENTS:
-				return ((InternalEList)getComments()).basicRemove(otherEnd, msgs);
-			case MindmapPackage.RESOURCE__TOPICS:
-				return ((InternalEList)getTopics()).basicRemove(otherEnd, msgs);
+		case MindmapPackage.RESOURCE__COMMENTS:
+			return ((InternalEList) getComments()).basicRemove(otherEnd, msgs);
+		case MindmapPackage.RESOURCE__TOPICS:
+			return ((InternalEList) getTopics()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MindmapPackage.RESOURCE__COMMENTS:
-				return getComments();
-			case MindmapPackage.RESOURCE__EMAIL:
-				return getEmail();
-			case MindmapPackage.RESOURCE__NAME:
-				return getName();
-			case MindmapPackage.RESOURCE__TOPICS:
-				return getTopics();
+		case MindmapPackage.RESOURCE__COMMENTS:
+			return getComments();
+		case MindmapPackage.RESOURCE__EMAIL:
+			return getEmail();
+		case MindmapPackage.RESOURCE__NAME:
+			return getName();
+		case MindmapPackage.RESOURCE__TOPICS:
+			return getTopics();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MindmapPackage.RESOURCE__COMMENTS:
-				getComments().clear();
-				getComments().addAll((Collection)newValue);
-				return;
-			case MindmapPackage.RESOURCE__EMAIL:
-				setEmail((String)newValue);
-				return;
-			case MindmapPackage.RESOURCE__NAME:
-				setName((String)newValue);
-				return;
-			case MindmapPackage.RESOURCE__TOPICS:
-				getTopics().clear();
-				getTopics().addAll((Collection)newValue);
-				return;
+		case MindmapPackage.RESOURCE__COMMENTS:
+			getComments().clear();
+			getComments().addAll((Collection) newValue);
+			return;
+		case MindmapPackage.RESOURCE__EMAIL:
+			setEmail((String) newValue);
+			return;
+		case MindmapPackage.RESOURCE__NAME:
+			setName((String) newValue);
+			return;
+		case MindmapPackage.RESOURCE__TOPICS:
+			getTopics().clear();
+			getTopics().addAll((Collection) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MindmapPackage.RESOURCE__COMMENTS:
-				getComments().clear();
-				return;
-			case MindmapPackage.RESOURCE__EMAIL:
-				setEmail(EMAIL_EDEFAULT);
-				return;
-			case MindmapPackage.RESOURCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case MindmapPackage.RESOURCE__TOPICS:
-				getTopics().clear();
-				return;
+		case MindmapPackage.RESOURCE__COMMENTS:
+			getComments().clear();
+			return;
+		case MindmapPackage.RESOURCE__EMAIL:
+			setEmail(EMAIL_EDEFAULT);
+			return;
+		case MindmapPackage.RESOURCE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case MindmapPackage.RESOURCE__TOPICS:
+			getTopics().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MindmapPackage.RESOURCE__COMMENTS:
-				return comments != null && !comments.isEmpty();
-			case MindmapPackage.RESOURCE__EMAIL:
-				return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
-			case MindmapPackage.RESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case MindmapPackage.RESOURCE__TOPICS:
-				return topics != null && !topics.isEmpty();
+		case MindmapPackage.RESOURCE__COMMENTS:
+			return comments != null && !comments.isEmpty();
+		case MindmapPackage.RESOURCE__EMAIL:
+			return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
+		case MindmapPackage.RESOURCE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case MindmapPackage.RESOURCE__TOPICS:
+			return topics != null && !topics.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (email: ");
@@ -320,4 +326,4 @@ public class ResourceImpl extends EObjectImpl implements Resource {
 		return result.toString();
 	}
 
-} //ResourceImpl
+} // ResourceImpl

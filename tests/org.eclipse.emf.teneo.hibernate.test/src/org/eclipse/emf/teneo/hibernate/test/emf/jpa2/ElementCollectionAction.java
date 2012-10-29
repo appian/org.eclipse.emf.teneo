@@ -17,7 +17,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class ElementCollectionAction extends AbstractTestAction {
 
 	private static final ElementcollectionFactory FACTORY = ElementcollectionFactory.eINSTANCE;
-	
+
 	public ElementCollectionAction() {
 		super(ElementcollectionPackage.eINSTANCE);
 	}
@@ -35,7 +35,7 @@ public class ElementCollectionAction extends AbstractTestAction {
 			store.store(item);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final Item item = store.getObject(Item.class);

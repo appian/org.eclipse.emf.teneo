@@ -24,23 +24,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Start Event</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Start Event</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.StartEventImpl#isIsInterrupting <em>Is Interrupting</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.StartEventImpl#isIsInterrupting <em>Is Interrupting</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	/**
-	 * The default value of the '{@link #isIsInterrupting() <em>Is Interrupting</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsInterrupting() <em>Is Interrupting</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsInterrupting()
 	 * @generated
 	 * @ordered
@@ -48,9 +47,9 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	protected static final boolean IS_INTERRUPTING_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isIsInterrupting() <em>Is Interrupting</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsInterrupting() <em>Is Interrupting</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsInterrupting()
 	 * @generated
 	 * @ordered
@@ -58,8 +57,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	protected boolean isInterrupting = IS_INTERRUPTING_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected StartEventImpl() {
@@ -67,8 +66,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,8 +76,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsInterrupting() {
@@ -86,8 +85,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsInterrupting(boolean newIsInterrupting) {
@@ -95,13 +94,12 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 		isInterrupting = newIsInterrupting;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.START_EVENT__IS_INTERRUPTING,
-					oldIsInterrupting, isInterrupting));
+					Bpmn2Package.START_EVENT__IS_INTERRUPTING, oldIsInterrupting, isInterrupting));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,8 +112,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,8 +127,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,8 +142,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,8 +156,8 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -174,4 +172,4 @@ public class StartEventImpl extends CatchEventImpl implements StartEvent {
 		return result.toString();
 	}
 
-} //StartEventImpl
+} // StartEventImpl

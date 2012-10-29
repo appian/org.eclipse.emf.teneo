@@ -35,14 +35,15 @@ class PrimitiveValueNode extends NamedParserNode {
 
 	/**
 	 * @param value
-	 *            the value to set
+	 *          the value to set
 	 */
 	public void setValue(String value) {
 		value = value.replaceAll("&gt;", ">");
 		value = value.replaceAll("&lt;", "<");
 
 		// correct a small mistake in the tokenizer
-		if (value != null && value.length() > 1 && value.charAt(0) == '"' && value.charAt(value.length() - 1) == '"') {
+		if (value != null && value.length() > 1 && value.charAt(0) == '"'
+				&& value.charAt(value.length() - 1) == '"') {
 			this.value = value.substring(1, value.length() - 1);
 		} else {
 			this.value = value;

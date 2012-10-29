@@ -197,20 +197,20 @@ public class SchoolLibraryAction extends AbstractTestAction {
 		}
 
 		// now use a resource to read!
-// try {
-// final Resource res = store.getResource(getQuery4());
-// res.load(Collections.EMPTY_MAP);
-// Iterator it = res.getContents().iterator();
-// while (it.hasNext()) {
-// Book obj = (Book)it.next();
-// if (obj.getAuthor() != null) {
-// assertEquals(obj.eResource(), obj.getAuthor().eResource());
-// }
-// }
-// res.unload();
-// } catch (IOException e) {
-// throw new StoreTestException("Exception", e);
-// }
+		// try {
+		// final Resource res = store.getResource(getQuery4());
+		// res.load(Collections.EMPTY_MAP);
+		// Iterator it = res.getContents().iterator();
+		// while (it.hasNext()) {
+		// Book obj = (Book)it.next();
+		// if (obj.getAuthor() != null) {
+		// assertEquals(obj.eResource(), obj.getAuthor().eResource());
+		// }
+		// }
+		// res.unload();
+		// } catch (IOException e) {
+		// throw new StoreTestException("Exception", e);
+		// }
 
 		try {
 			Resource res = store.getResource();
@@ -228,7 +228,8 @@ public class SchoolLibraryAction extends AbstractTestAction {
 
 	/** Returns one test query */
 	protected String getQuery1() {
-		return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM " + BookImpl.class.getName();
+		return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM "
+				+ BookImpl.class.getName();
 		// "query1=FROM " + Writer.class.getName() + "&query2=FROM " + Book.class.getName()
 	}
 
@@ -240,7 +241,8 @@ public class SchoolLibraryAction extends AbstractTestAction {
 
 	/** Returns one test query */
 	protected String getQuery3() {
-		return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM " + BookImpl.class.getName();
+		return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM "
+				+ BookImpl.class.getName();
 		// "query1=FROM " + Writer.class.getName() + "&query2=FROM " + Book.class.getName();
 	}
 

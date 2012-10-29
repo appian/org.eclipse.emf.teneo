@@ -29,53 +29,50 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Performs a number of test actions on the catalog example. Create products, link a supplier, 
- * add to catalog, delete from catalog. 
+ * Performs a number of test actions on the catalog example. Create products, link a supplier, add
+ * to catalog, delete from catalog.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
-*/
-public abstract class AccountingAction extends AbstractTestAction 
-{
-	public AccountingAction() 
-	{ 
+ * @version $Revision: 1.5 $
+ */
+public abstract class AccountingAction extends AbstractTestAction {
+	public AccountingAction() {
 		super(AccountingPackage.eINSTANCE);
 	}
 
 	/** Creates a supplier, a product, relates then, saves and retrieves them again. */
-	public void doAction(TestStore store)
-	{
-        final AccountingFactory factory = AccountingFactory.eINSTANCE;
-    	{
-	        store.beginTransaction();
-	        
-	        Accounting all = factory.createAccounting();
-	        all.setName("Accounting Data");
+	public void doAction(TestStore store) {
+		final AccountingFactory factory = AccountingFactory.eINSTANCE;
+		{
+			store.beginTransaction();
 
-	        Vat vat = factory.createVat();
-	        vat.setName("19%");
-	        vat.setRate(0.19f);
-	        
-	        Account account = factory.createBalanceAccount();
-	        account.setName("Software Development Costs");
-	        
-	        AccountGroup accGroup = factory.createAccountGroup();
-	        accGroup.setName("Activa");
-	        accGroup.getAccount().add(account);
-	        
-	        JournalGroup yearJournal = factory.createJournalGroup();
-	        yearJournal.setName("journalgroup");
-	        
-	        all.getVat().add(vat);
-	        all.getJournalGroup().add(yearJournal);
-	        all.getAccountGroup().add(accGroup);
-	        
-	        store.store(all);
-    		store.commitTransaction();    		
-    	}
+			Accounting all = factory.createAccounting();
+			all.setName("Accounting Data");
+
+			Vat vat = factory.createVat();
+			vat.setName("19%");
+			vat.setRate(0.19f);
+
+			Account account = factory.createBalanceAccount();
+			account.setName("Software Development Costs");
+
+			AccountGroup accGroup = factory.createAccountGroup();
+			accGroup.setName("Activa");
+			accGroup.getAccount().add(account);
+
+			JournalGroup yearJournal = factory.createJournalGroup();
+			yearJournal.setName("journalgroup");
+
+			all.getVat().add(vat);
+			all.getJournalGroup().add(yearJournal);
+			all.getAccountGroup().add(accGroup);
+
+			store.store(all);
+			store.commitTransaction();
+		}
 		imTestExport(AccountingPackage.class.getResourceAsStream("import.xmi"), store);
 	}
-	
+
 	/** Import/export, from and to */
 	protected abstract void imTestExport(InputStream is, TestStore store);
 }

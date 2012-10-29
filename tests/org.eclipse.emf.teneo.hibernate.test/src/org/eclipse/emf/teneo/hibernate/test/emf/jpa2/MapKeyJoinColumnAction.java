@@ -51,7 +51,7 @@ public class MapKeyJoinColumnAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final Images images = store.getObject(Images.class);
-			
+
 			Assert.assertTrue(images.getPhotoParts().size() == 2);
 			for (PhotoPart pp : images.getPhotoParts().keySet()) {
 				final String val = images.getPhotoParts().get(pp);
@@ -68,8 +68,7 @@ public class MapKeyJoinColumnAction extends AbstractTestAction {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt
-					.executeQuery("select PARTS_NAME from PHOTOPARTS_MAP");
+			rs = stmt.executeQuery("select PARTS_NAME from PHOTOPARTS_MAP");
 			Assert.assertTrue(rs.next());
 			Assert.assertTrue(rs.next());
 			Assert.assertFalse(rs.next());

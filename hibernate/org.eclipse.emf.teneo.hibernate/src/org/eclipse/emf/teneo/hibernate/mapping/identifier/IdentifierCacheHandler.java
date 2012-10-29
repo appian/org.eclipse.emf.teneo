@@ -17,8 +17,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Implements two maps for caching identifier and version information.
- * Internally uses weakreferences and periodic purge actions to clean the maps.
+ * Implements two maps for caching identifier and version information. Internally uses
+ * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.21 $
@@ -73,8 +73,7 @@ public class IdentifierCacheHandler {
 		final Object id = idMap.get(new Key(obj));
 		if (id == null) {
 			if (log.isDebugEnabled()) {
-				log.debug("ID for object " + obj.getClass().getName()
-						+ " not found in id cache");
+				log.debug("ID for object " + obj.getClass().getName() + " not found in id cache");
 			}
 			return null;
 		}
@@ -87,8 +86,7 @@ public class IdentifierCacheHandler {
 	/** Set an identifier in the cache */
 	public void setID(Object obj, Object id) {
 		if (log.isDebugEnabled()) {
-			log.debug("Setting id: " + id + " for object "
-					+ obj.getClass().getName() + " in idcache ");
+			log.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
 		}
 
 		if (id == null) { // actually a remove of the id
@@ -145,8 +143,8 @@ public class IdentifierCacheHandler {
 	/** Sets a version in the cache */
 	public void setVersion(Object obj, Object version) {
 		if (log.isDebugEnabled()) {
-			log.debug("Setting version: " + version + " for object "
-					+ obj.getClass().getName() + " in idcache ");
+			log.debug("Setting version: " + version + " for object " + obj.getClass().getName()
+					+ " in idcache ");
 		}
 		if (version == null) {
 			versionMap.remove(new Key(obj));
@@ -197,8 +195,8 @@ public class IdentifierCacheHandler {
 	}
 
 	/**
-	 * Own implementation of the key in the hashmap to override the equals
-	 * method. Equality for this cache is real memory location equality
+	 * Own implementation of the key in the hashmap to override the equals method. Equality for this
+	 * cache is real memory location equality
 	 */
 
 	protected static class Key {

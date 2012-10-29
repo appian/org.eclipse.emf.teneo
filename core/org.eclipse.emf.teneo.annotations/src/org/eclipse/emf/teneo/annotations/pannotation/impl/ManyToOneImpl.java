@@ -21,24 +21,29 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Many To One</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Many To One</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getTargetEntity <em>Target Entity</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getCascade <em>Cascade</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getFetch <em>Fetch</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#isOptional <em>Optional</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getTargetEntity <em>
+ * Target Entity</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getCascade <em>
+ * Cascade</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getFetch <em>Fetch
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#isOptional <em>
+ * Optional</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	/**
-	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -66,8 +71,8 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	protected EList<CascadeType> cascade;
 
 	/**
-	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #getFetch()
 	 * @generated
@@ -76,9 +81,9 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	protected static final FetchType FETCH_EDEFAULT = FetchType.EAGER;
 
 	/**
-	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -86,9 +91,8 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	protected FetchType fetch = FETCH_EDEFAULT;
 
 	/**
-	 * This is true if the Fetch attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the Fetch attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -116,6 +120,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ManyToOneImpl() {
@@ -124,6 +129,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,6 +139,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -141,6 +148,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
@@ -149,12 +157,13 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 		boolean oldFetchESet = fetchESet;
 		fetchESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__FETCH, oldFetch, fetch, !oldFetchESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__FETCH,
+					oldFetch, fetch, !oldFetchESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetFetch() {
@@ -163,12 +172,13 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 		fetch = FETCH_EDEFAULT;
 		fetchESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.MANY_TO_ONE__FETCH, oldFetch, FETCH_EDEFAULT, oldFetchESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+					PannotationPackage.MANY_TO_ONE__FETCH, oldFetch, FETCH_EDEFAULT, oldFetchESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetFetch() {
@@ -177,6 +187,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isOptional() {
@@ -185,103 +196,111 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOptional(boolean newOptional) {
 		boolean oldOptional = optional;
 		optional = newOptional;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__OPTIONAL, oldOptional, optional));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.MANY_TO_ONE__OPTIONAL, oldOptional, optional));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
-				return getTargetEntity();
-			case PannotationPackage.MANY_TO_ONE__CASCADE:
-				return getCascade();
-			case PannotationPackage.MANY_TO_ONE__FETCH:
-				return getFetch();
-			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
-				return isOptional();
+		case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
+			return getTargetEntity();
+		case PannotationPackage.MANY_TO_ONE__CASCADE:
+			return getCascade();
+		case PannotationPackage.MANY_TO_ONE__FETCH:
+			return getFetch();
+		case PannotationPackage.MANY_TO_ONE__OPTIONAL:
+			return isOptional();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
-				setTargetEntity((String)newValue);
-				return;
-			case PannotationPackage.MANY_TO_ONE__CASCADE:
-				getCascade().clear();
-				getCascade().addAll((Collection<? extends CascadeType>)newValue);
-				return;
-			case PannotationPackage.MANY_TO_ONE__FETCH:
-				setFetch((FetchType)newValue);
-				return;
-			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
-				setOptional((Boolean)newValue);
-				return;
+		case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
+			setTargetEntity((String) newValue);
+			return;
+		case PannotationPackage.MANY_TO_ONE__CASCADE:
+			getCascade().clear();
+			getCascade().addAll((Collection<? extends CascadeType>) newValue);
+			return;
+		case PannotationPackage.MANY_TO_ONE__FETCH:
+			setFetch((FetchType) newValue);
+			return;
+		case PannotationPackage.MANY_TO_ONE__OPTIONAL:
+			setOptional((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
-				setTargetEntity(TARGET_ENTITY_EDEFAULT);
-				return;
-			case PannotationPackage.MANY_TO_ONE__CASCADE:
-				getCascade().clear();
-				return;
-			case PannotationPackage.MANY_TO_ONE__FETCH:
-				unsetFetch();
-				return;
-			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
-				setOptional(OPTIONAL_EDEFAULT);
-				return;
+		case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
+			setTargetEntity(TARGET_ENTITY_EDEFAULT);
+			return;
+		case PannotationPackage.MANY_TO_ONE__CASCADE:
+			getCascade().clear();
+			return;
+		case PannotationPackage.MANY_TO_ONE__FETCH:
+			unsetFetch();
+			return;
+		case PannotationPackage.MANY_TO_ONE__OPTIONAL:
+			setOptional(OPTIONAL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
-				return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT.equals(targetEntity);
-			case PannotationPackage.MANY_TO_ONE__CASCADE:
-				return cascade != null && !cascade.isEmpty();
-			case PannotationPackage.MANY_TO_ONE__FETCH:
-				return isSetFetch();
-			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
-				return optional != OPTIONAL_EDEFAULT;
+		case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
+			return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT
+					.equals(targetEntity);
+		case PannotationPackage.MANY_TO_ONE__CASCADE:
+			return cascade != null && !cascade.isEmpty();
+		case PannotationPackage.MANY_TO_ONE__FETCH:
+			return isSetFetch();
+		case PannotationPackage.MANY_TO_ONE__OPTIONAL:
+			return optional != OPTIONAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTargetEntity() {
@@ -290,33 +309,39 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetEntity(String newTargetEntity) {
 		String oldTargetEntity = targetEntity;
 		targetEntity = newTargetEntity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__TARGET_ENTITY, oldTargetEntity, targetEntity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.MANY_TO_ONE__TARGET_ENTITY, oldTargetEntity, targetEntity));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<CascadeType> getCascade() {
 		if (cascade == null) {
-			cascade = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, PannotationPackage.MANY_TO_ONE__CASCADE);
+			cascade = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this,
+					PannotationPackage.MANY_TO_ONE__CASCADE);
 		}
 		return cascade;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (targetEntity: ");
@@ -324,7 +349,10 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 		result.append(", cascade: ");
 		result.append(cascade);
 		result.append(", fetch: ");
-		if (fetchESet) result.append(fetch); else result.append("<unset>");
+		if (fetchESet)
+			result.append(fetch);
+		else
+			result.append("<unset>");
 		result.append(", optional: ");
 		result.append(optional);
 		result.append(')');
@@ -332,8 +360,8 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	}
 
 	@Override
-	protected String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject, EStructuralFeature eFeature,
-			boolean prependComma, List<String> imports) {
+	protected String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject,
+			EStructuralFeature eFeature, boolean prependComma, List<String> imports) {
 		if (eFeature == PannotationPackage.eINSTANCE.getManyToOne_TargetEntity()) {
 			// do not return anything because jpa expects a real classname,
 			// the targetentity only has an entityname here.

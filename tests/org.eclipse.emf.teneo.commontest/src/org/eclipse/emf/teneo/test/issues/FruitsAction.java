@@ -25,7 +25,7 @@ import tc.tree.TreePackage;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.2 $
  */
 public class FruitsAction extends AbstractTestAction {
 	public FruitsAction() {

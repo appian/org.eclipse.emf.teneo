@@ -14,17 +14,19 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EModel Element</b></em>'. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>PAnnotated EModel Element</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getModelElement <em>Model Element</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getTransient <em>Transient</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getModelElement <em>
+ * Model Element</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getTransient <em>
+ * Transient</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEModelElement()
  * @model abstract="true"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PAnnotationElementCommutes'"
@@ -32,39 +34,42 @@ import org.eclipse.emf.teneo.annotations.pannotation.Transient;
  */
 public interface PAnnotatedEModelElement extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Model Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Model Element</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Annotated Element</em>' reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Annotated Element</em>' reference isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Model Element</em>' reference.
 	 * @see #setModelElement(ENamedElement)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEModelElement_ModelElement()
-	 * @model derived="true"
-	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @model derived="true" annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	ENamedElement getModelElement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getModelElement <em>Model Element</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Model Element</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getModelElement
+	 * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Model Element</em>' reference.
 	 * @see #getModelElement()
 	 * @generated
 	 */
 	void setModelElement(ENamedElement value);
 
 	/**
-	 * Returns the value of the '<em><b>Transient</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Transient</b></em>' containment reference. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Transient</em>' containment reference isn't clear, there really should be more of
-	 * a description here...
+	 * If the meaning of the '<em>Transient</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Transient</em>' containment reference.
 	 * @see #setTransient(Transient)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEModelElement_Transient()
@@ -74,9 +79,12 @@ public interface PAnnotatedEModelElement extends EObject {
 	Transient getTransient();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getTransient <em>Transient</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transient</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement#getTransient
+	 * <em>Transient</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Transient</em>' containment reference.
 	 * @see #getTransient()
 	 * @generated
 	 */

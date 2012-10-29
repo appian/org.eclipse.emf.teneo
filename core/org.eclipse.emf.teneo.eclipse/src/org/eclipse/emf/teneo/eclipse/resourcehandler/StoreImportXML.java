@@ -125,7 +125,8 @@ public abstract class StoreImportXML implements IObjectActionDelegate {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
+		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core
+		 * .runtime.IProgressMonitor)
 		 */
 		@Override
 		public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {

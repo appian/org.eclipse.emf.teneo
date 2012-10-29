@@ -33,20 +33,22 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * @version $Revision: 1.10 $
  */
 
-public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
+public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements
+		ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(BidirectionalManyToManyAnnotator.class);
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String featureLogStr =
-				aReference.getModelEReference().getName() + "/" +
-						aReference.getModelEReference().getEContainingClass().getName();
+		final String featureLogStr = aReference.getModelEReference().getName() + "/"
+				+ aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
-					"it already has a OneToMany, OneToOne or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null
+				|| aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + featureLogStr
+					+ " should be a ManyToMany but "
+					+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
@@ -91,8 +93,8 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 		// set
 		// bugzilla: 164808
 		final PAnnotatedEReference otherPA = aReference.getPaModel().getPAnnotated(eOpposite);
-		if (mtm.getMappedBy() == null && setMappedBy(eReference) &&
-				(otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
+		if (mtm.getMappedBy() == null && setMappedBy(eReference)
+				&& (otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
 			mtm.setMappedBy(eOpposite.getName());
 		}
 

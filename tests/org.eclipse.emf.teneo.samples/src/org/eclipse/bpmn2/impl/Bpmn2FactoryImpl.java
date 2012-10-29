@@ -163,16 +163,14 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Bpmn2Factory init() {
@@ -189,9 +187,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Bpmn2FactoryImpl() {
@@ -199,8 +196,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -471,8 +468,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -485,29 +482,26 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 		case Bpmn2Package.CHOREOGRAPHY_LOOP_TYPE:
 			return createChoreographyLoopTypeFromString(eDataType, initialValue);
 		case Bpmn2Package.EVENT_BASED_GATEWAY_TYPE:
-			return createEventBasedGatewayTypeFromString(eDataType,
-					initialValue);
+			return createEventBasedGatewayTypeFromString(eDataType, initialValue);
 		case Bpmn2Package.GATEWAY_DIRECTION:
 			return createGatewayDirectionFromString(eDataType, initialValue);
 		case Bpmn2Package.ITEM_KIND:
 			return createItemKindFromString(eDataType, initialValue);
 		case Bpmn2Package.MULTI_INSTANCE_BEHAVIOR:
-			return createMultiInstanceBehaviorFromString(eDataType,
-					initialValue);
+			return createMultiInstanceBehaviorFromString(eDataType, initialValue);
 		case Bpmn2Package.PROCESS_TYPE:
 			return createProcessTypeFromString(eDataType, initialValue);
 		case Bpmn2Package.RELATIONSHIP_DIRECTION:
-			return createRelationshipDirectionFromString(eDataType,
-					initialValue);
+			return createRelationshipDirectionFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -520,29 +514,26 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 		case Bpmn2Package.CHOREOGRAPHY_LOOP_TYPE:
 			return convertChoreographyLoopTypeToString(eDataType, instanceValue);
 		case Bpmn2Package.EVENT_BASED_GATEWAY_TYPE:
-			return convertEventBasedGatewayTypeToString(eDataType,
-					instanceValue);
+			return convertEventBasedGatewayTypeToString(eDataType, instanceValue);
 		case Bpmn2Package.GATEWAY_DIRECTION:
 			return convertGatewayDirectionToString(eDataType, instanceValue);
 		case Bpmn2Package.ITEM_KIND:
 			return convertItemKindToString(eDataType, instanceValue);
 		case Bpmn2Package.MULTI_INSTANCE_BEHAVIOR:
-			return convertMultiInstanceBehaviorToString(eDataType,
-					instanceValue);
+			return convertMultiInstanceBehaviorToString(eDataType, instanceValue);
 		case Bpmn2Package.PROCESS_TYPE:
 			return convertProcessTypeToString(eDataType, instanceValue);
 		case Bpmn2Package.RELATIONSHIP_DIRECTION:
-			return convertRelationshipDirectionToString(eDataType,
-					instanceValue);
+			return convertRelationshipDirectionToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -551,8 +542,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Activity createActivity() {
@@ -561,8 +552,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdHocSubProcess createAdHocSubProcess() {
@@ -571,8 +562,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Artifact createArtifact() {
@@ -581,8 +572,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Assignment createAssignment() {
@@ -591,8 +582,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Association createAssociation() {
@@ -601,8 +592,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Auditing createAuditing() {
@@ -611,8 +602,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement createBaseElement() {
@@ -621,8 +612,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BoundaryEvent createBoundaryEvent() {
@@ -631,8 +622,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BusinessRuleTask createBusinessRuleTask() {
@@ -641,8 +632,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallActivity createCallActivity() {
@@ -651,8 +642,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallChoreography createCallChoreography() {
@@ -661,8 +652,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallConversation createCallConversation() {
@@ -671,8 +662,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallableElement createCallableElement() {
@@ -681,8 +672,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CancelEventDefinition createCancelEventDefinition() {
@@ -691,8 +682,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Category createCategory() {
@@ -701,8 +692,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CategoryValue createCategoryValue() {
@@ -711,8 +702,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Choreography createChoreography() {
@@ -721,8 +712,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChoreographyTask createChoreographyTask() {
@@ -731,8 +722,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Collaboration createCollaboration() {
@@ -741,8 +732,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CompensateEventDefinition createCompensateEventDefinition() {
@@ -751,8 +742,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ComplexBehaviorDefinition createComplexBehaviorDefinition() {
@@ -761,8 +752,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ComplexGateway createComplexGateway() {
@@ -771,8 +762,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConditionalEventDefinition createConditionalEventDefinition() {
@@ -781,8 +772,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Conversation createConversation() {
@@ -791,8 +782,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationAssociation createConversationAssociation() {
@@ -801,8 +792,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationLink createConversationLink() {
@@ -811,8 +802,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationNode createConversationNode() {
@@ -821,8 +812,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationKey createCorrelationKey() {
@@ -831,8 +822,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationProperty createCorrelationProperty() {
@@ -841,8 +832,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationPropertyBinding createCorrelationPropertyBinding() {
@@ -851,8 +842,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationPropertyRetrievalExpression createCorrelationPropertyRetrievalExpression() {
@@ -861,8 +852,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrelationSubscription createCorrelationSubscription() {
@@ -871,8 +862,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataAssociation createDataAssociation() {
@@ -881,8 +872,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataInput createDataInput() {
@@ -891,8 +882,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataInputAssociation createDataInputAssociation() {
@@ -901,8 +892,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataObject createDataObject() {
@@ -911,8 +902,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataObjectReference createDataObjectReference() {
@@ -921,8 +912,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataOutput createDataOutput() {
@@ -931,8 +922,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataOutputAssociation createDataOutputAssociation() {
@@ -941,8 +932,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataState createDataState() {
@@ -951,8 +942,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataStore createDataStore() {
@@ -961,8 +952,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataStoreReference createDataStoreReference() {
@@ -971,8 +962,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Definitions createDefinitions() {
@@ -981,8 +972,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Documentation createDocumentation() {
@@ -991,8 +982,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EndEvent createEndEvent() {
@@ -1001,8 +992,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EndPoint createEndPoint() {
@@ -1011,8 +1002,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Error createError() {
@@ -1021,8 +1012,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ErrorEventDefinition createErrorEventDefinition() {
@@ -1031,8 +1022,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Escalation createEscalation() {
@@ -1041,8 +1032,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EscalationEventDefinition createEscalationEventDefinition() {
@@ -1051,8 +1042,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EventBasedGateway createEventBasedGateway() {
@@ -1061,8 +1052,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EventDefinition createEventDefinition() {
@@ -1071,8 +1062,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExclusiveGateway createExclusiveGateway() {
@@ -1081,8 +1072,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression createExpression() {
@@ -1091,8 +1082,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Extension createExtension() {
@@ -1101,8 +1092,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtensionAttributeDefinition createExtensionAttributeDefinition() {
@@ -1111,8 +1102,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtensionAttributeValue createExtensionAttributeValue() {
@@ -1121,8 +1112,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtensionDefinition createExtensionDefinition() {
@@ -1131,8 +1122,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FormalExpression createFormalExpression() {
@@ -1141,8 +1132,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalBusinessRuleTask createGlobalBusinessRuleTask() {
@@ -1151,8 +1142,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalChoreographyTask createGlobalChoreographyTask() {
@@ -1161,8 +1152,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalConversation createGlobalConversation() {
@@ -1171,8 +1162,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalManualTask createGlobalManualTask() {
@@ -1181,8 +1172,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalScriptTask createGlobalScriptTask() {
@@ -1191,8 +1182,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalTask createGlobalTask() {
@@ -1201,8 +1192,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GlobalUserTask createGlobalUserTask() {
@@ -1211,8 +1202,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Group createGroup() {
@@ -1221,8 +1212,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HumanPerformer createHumanPerformer() {
@@ -1231,8 +1222,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ImplicitThrowEvent createImplicitThrowEvent() {
@@ -1241,8 +1232,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Import createImport() {
@@ -1251,8 +1242,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InclusiveGateway createInclusiveGateway() {
@@ -1261,8 +1252,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InputOutputBinding createInputOutputBinding() {
@@ -1271,8 +1262,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InputOutputSpecification createInputOutputSpecification() {
@@ -1281,8 +1272,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InputSet createInputSet() {
@@ -1291,8 +1282,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode createInteractionNode() {
@@ -1301,8 +1292,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Interface createInterface() {
@@ -1311,8 +1302,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntermediateCatchEvent createIntermediateCatchEvent() {
@@ -1321,8 +1312,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntermediateThrowEvent createIntermediateThrowEvent() {
@@ -1331,8 +1322,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemAwareElement createItemAwareElement() {
@@ -1341,8 +1332,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition createItemDefinition() {
@@ -1351,8 +1342,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Lane createLane() {
@@ -1361,8 +1352,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LaneSet createLaneSet() {
@@ -1371,8 +1362,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LinkEventDefinition createLinkEventDefinition() {
@@ -1381,8 +1372,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ManualTask createManualTask() {
@@ -1391,8 +1382,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message createMessage() {
@@ -1401,8 +1392,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageEventDefinition createMessageEventDefinition() {
@@ -1411,8 +1402,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlow createMessageFlow() {
@@ -1421,8 +1412,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MessageFlowAssociation createMessageFlowAssociation() {
@@ -1431,8 +1422,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Monitoring createMonitoring() {
@@ -1441,8 +1432,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MultiInstanceLoopCharacteristics createMultiInstanceLoopCharacteristics() {
@@ -1451,8 +1442,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation createOperation() {
@@ -1461,8 +1452,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OutputSet createOutputSet() {
@@ -1471,8 +1462,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParallelGateway createParallelGateway() {
@@ -1481,8 +1472,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant createParticipant() {
@@ -1491,8 +1482,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParticipantAssociation createParticipantAssociation() {
@@ -1501,8 +1492,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParticipantMultiplicity createParticipantMultiplicity() {
@@ -1511,8 +1502,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PartnerEntity createPartnerEntity() {
@@ -1521,8 +1512,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PartnerRole createPartnerRole() {
@@ -1531,8 +1522,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Performer createPerformer() {
@@ -1541,8 +1532,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PotentialOwner createPotentialOwner() {
@@ -1551,8 +1542,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Process createProcess() {
@@ -1561,8 +1552,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Property createProperty() {
@@ -1571,8 +1562,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ReceiveTask createReceiveTask() {
@@ -1581,8 +1572,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Relationship createRelationship() {
@@ -1591,8 +1582,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Rendering createRendering() {
@@ -1601,8 +1592,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resource createResource() {
@@ -1611,8 +1602,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceAssignmentExpression createResourceAssignmentExpression() {
@@ -1621,8 +1612,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceParameter createResourceParameter() {
@@ -1631,8 +1622,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceParameterBinding createResourceParameterBinding() {
@@ -1641,8 +1632,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceRole createResourceRole() {
@@ -1651,8 +1642,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RootElement createRootElement() {
@@ -1661,8 +1652,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ScriptTask createScriptTask() {
@@ -1671,8 +1662,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SendTask createSendTask() {
@@ -1681,8 +1672,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SequenceFlow createSequenceFlow() {
@@ -1691,8 +1682,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ServiceTask createServiceTask() {
@@ -1701,8 +1692,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Signal createSignal() {
@@ -1711,8 +1702,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SignalEventDefinition createSignalEventDefinition() {
@@ -1721,8 +1712,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StandardLoopCharacteristics createStandardLoopCharacteristics() {
@@ -1731,8 +1722,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StartEvent createStartEvent() {
@@ -1741,8 +1732,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SubChoreography createSubChoreography() {
@@ -1751,8 +1742,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SubConversation createSubConversation() {
@@ -1761,8 +1752,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SubProcess createSubProcess() {
@@ -1771,8 +1762,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Task createTask() {
@@ -1781,8 +1772,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TerminateEventDefinition createTerminateEventDefinition() {
@@ -1791,8 +1782,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TextAnnotation createTextAnnotation() {
@@ -1801,8 +1792,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TimerEventDefinition createTimerEventDefinition() {
@@ -1811,8 +1802,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Transaction createTransaction() {
@@ -1821,8 +1812,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public UserTask createUserTask() {
@@ -1831,233 +1822,211 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public AdHocOrdering createAdHocOrderingFromString(EDataType eDataType,
-			String initialValue) {
+	public AdHocOrdering createAdHocOrderingFromString(EDataType eDataType, String initialValue) {
 		AdHocOrdering result = AdHocOrdering.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertAdHocOrderingToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertAdHocOrderingToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public AssociationDirection createAssociationDirectionFromString(
-			EDataType eDataType, String initialValue) {
+	public AssociationDirection createAssociationDirectionFromString(EDataType eDataType,
+			String initialValue) {
 		AssociationDirection result = AssociationDirection.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertAssociationDirectionToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertAssociationDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public ChoreographyLoopType createChoreographyLoopTypeFromString(
-			EDataType eDataType, String initialValue) {
+	public ChoreographyLoopType createChoreographyLoopTypeFromString(EDataType eDataType,
+			String initialValue) {
 		ChoreographyLoopType result = ChoreographyLoopType.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertChoreographyLoopTypeToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertChoreographyLoopTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EventBasedGatewayType createEventBasedGatewayTypeFromString(
-			EDataType eDataType, String initialValue) {
+	public EventBasedGatewayType createEventBasedGatewayTypeFromString(EDataType eDataType,
+			String initialValue) {
 		EventBasedGatewayType result = EventBasedGatewayType.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertEventBasedGatewayTypeToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertEventBasedGatewayTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public GatewayDirection createGatewayDirectionFromString(
-			EDataType eDataType, String initialValue) {
+	public GatewayDirection createGatewayDirectionFromString(EDataType eDataType, String initialValue) {
 		GatewayDirection result = GatewayDirection.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertGatewayDirectionToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertGatewayDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public ItemKind createItemKindFromString(EDataType eDataType,
-			String initialValue) {
+	public ItemKind createItemKindFromString(EDataType eDataType, String initialValue) {
 		ItemKind result = ItemKind.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertItemKindToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertItemKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public MultiInstanceBehavior createMultiInstanceBehaviorFromString(
-			EDataType eDataType, String initialValue) {
+	public MultiInstanceBehavior createMultiInstanceBehaviorFromString(EDataType eDataType,
+			String initialValue) {
 		MultiInstanceBehavior result = MultiInstanceBehavior.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertMultiInstanceBehaviorToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertMultiInstanceBehaviorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public ProcessType createProcessTypeFromString(EDataType eDataType,
-			String initialValue) {
+	public ProcessType createProcessTypeFromString(EDataType eDataType, String initialValue) {
 		ProcessType result = ProcessType.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertProcessTypeToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertProcessTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public RelationshipDirection createRelationshipDirectionFromString(
-			EDataType eDataType, String initialValue) {
+	public RelationshipDirection createRelationshipDirectionFromString(EDataType eDataType,
+			String initialValue) {
 		RelationshipDirection result = RelationshipDirection.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+					+ "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertRelationshipDirectionToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertRelationshipDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Bpmn2Package getBpmn2Package() {
@@ -2065,8 +2034,8 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -2075,4 +2044,4 @@ public class Bpmn2FactoryImpl extends EFactoryImpl implements Bpmn2Factory {
 		return Bpmn2Package.eINSTANCE;
 	}
 
-} //Bpmn2FactoryImpl
+} // Bpmn2FactoryImpl

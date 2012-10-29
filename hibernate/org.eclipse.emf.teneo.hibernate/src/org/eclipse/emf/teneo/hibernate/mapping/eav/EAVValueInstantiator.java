@@ -35,21 +35,23 @@ public class EAVValueInstantiator extends PojoInstantiator {
 	private static final long serialVersionUID = 6946442685247491904L;
 
 	private HbDataStore hbDataStore;
-	
-	public EAVValueInstantiator(Component component, ReflectionOptimizer.InstantiationOptimizer optimizer) {
+
+	public EAVValueInstantiator(Component component,
+			ReflectionOptimizer.InstantiationOptimizer optimizer) {
 		super(component, optimizer);
 		hbDataStore = HbHelper.INSTANCE.getDataStore(component);
 	}
 
-	public EAVValueInstantiator(PersistentClass persistentClass, ReflectionOptimizer.InstantiationOptimizer optimizer) {
+	public EAVValueInstantiator(PersistentClass persistentClass,
+			ReflectionOptimizer.InstantiationOptimizer optimizer) {
 		super(persistentClass, optimizer);
 		hbDataStore = HbHelper.INSTANCE.getDataStore(persistentClass);
 	}
-	
+
 	public Object instantiate() {
 		final Object object = super.instantiate();
 		if (object instanceof EAVValueHolder) {
-			final EAVValueHolder valueHolder = (EAVValueHolder)object;
+			final EAVValueHolder valueHolder = (EAVValueHolder) object;
 			valueHolder.setHbDataStore(hbDataStore);
 		}
 		return object;

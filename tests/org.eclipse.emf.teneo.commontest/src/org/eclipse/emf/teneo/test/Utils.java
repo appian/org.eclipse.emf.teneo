@@ -77,7 +77,7 @@ public class Utils {
 	// {
 	// throw new StoreTestException("Exception when loading properties file test.properties", e);
 	// }
-	//		
+	//
 	// return hiearchizeProps(props);
 	// }
 
@@ -115,11 +115,13 @@ public class Utils {
 	 */
 	public static String getOutputDirectory() {
 		// this file is now in test/src/org/elver/store/test/Utils.class
-		File file = new File(Utils.class.getResource('/' + Utils.class.getName().replace('.', '/') + ".class").getFile());
+		File file = new File(Utils.class.getResource(
+				'/' + Utils.class.getName().replace('.', '/') + ".class").getFile());
 
 		// now go up 5 directories:
 		// Utils test store elver org bin
-		return file.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
+		return file.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile()
+				.getAbsolutePath();
 	}
 
 	/**
@@ -127,7 +129,8 @@ public class Utils {
 	 */
 	public static String getOutputDirectory(String className) {
 		// this file is now in test/src/org/elver/store/test/Utils.class
-		File file = new File(Utils.class.getResource('/' + Utils.class.getName().replace('.', '/') + ".class").getFile());
+		File file = new File(Utils.class.getResource(
+				'/' + Utils.class.getName().replace('.', '/') + ".class").getFile());
 
 		// now go up 5 directories:
 		// Utils test store elver org bin
@@ -140,8 +143,8 @@ public class Utils {
 		file = new File(file, path);
 
 		if (!file.exists()) {
-			throw new StoreTestException("Directory " + file.getAbsolutePath() + " within test directory does not exist. Tried path: "
-					+ file.getAbsolutePath());
+			throw new StoreTestException("Directory " + file.getAbsolutePath()
+					+ " within test directory does not exist. Tried path: " + file.getAbsolutePath());
 		}
 		return file.getAbsolutePath();
 	}
@@ -160,13 +163,13 @@ public class Utils {
 		in.close();
 		out.close();
 	}
-	
+
 	/** Returns the output location of the passed class, only supports directories (no jars!) */
 	public static File getClassParentDirectory(Class cls) {
 		final ClassLoader clsl = cls.getClassLoader();
-		final String clsFile = cls.getName ().replace ('.', '/').concat (".class");
-		final URL url = clsl != null ? clsl.getResource(clsFile) :
-			ClassLoader.getSystemResource(clsFile);
+		final String clsFile = cls.getName().replace('.', '/').concat(".class");
+		final URL url = clsl != null ? clsl.getResource(clsFile) : ClassLoader
+				.getSystemResource(clsFile);
 		final File file = new File(url.getFile());
 		return file.getParentFile();
 	}

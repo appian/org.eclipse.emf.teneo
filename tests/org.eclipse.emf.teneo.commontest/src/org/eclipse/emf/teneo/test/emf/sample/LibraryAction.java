@@ -50,8 +50,7 @@ public class LibraryAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY,
-				"READ_WRITE");
+		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
 		props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 		props.setProperty(PersistenceOptions.DEFAULT_VARCHAR_LENGTH, "50");
 		props.setProperty(PersistenceOptions.DEFAULT_VARCHAR_LENGTH, "50");
@@ -126,14 +125,13 @@ public class LibraryAction extends AbstractTestAction {
 		// walk through the structure starting from the library
 		{
 			store.beginTransaction();
-			Library lib = (Library) store.query(Library.class, "name",
-					"Science Fiction Library", 1).get(0);
+			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(
+					0);
 
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
 
-			assertTrue((lib.getWriters().get(0)).getName().compareTo(
-					"JRR Tolkien") == 0);
+			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 			testLazySize(lib.getWriters().get(0).getBooks());
 
 			// final Object[] eobjs =
@@ -181,14 +179,12 @@ public class LibraryAction extends AbstractTestAction {
 			checkDetachCopy(store, writ);
 
 			// now set the container of the writer
-			assertTrue("The container of the writer should be set!",
-					store.setContainer(writ));
+			assertTrue("The container of the writer should be set!", store.setContainer(writ));
 
-			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers()
-					.getFeatureID(), writ.eContainingFeature().getFeatureID());
+			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers().getFeatureID(), writ
+					.eContainingFeature().getFeatureID());
 
-			assertTrue(
-					"The container of the writer should be equal to the earlier retrieved Library",
+			assertTrue("The container of the writer should be equal to the earlier retrieved Library",
 					lib == writ.eContainer());
 
 			final Object[] eobjs = store.getCrossReferencers(writ, false);
@@ -206,8 +202,7 @@ public class LibraryAction extends AbstractTestAction {
 			assertTrue(bk.eContainer() == lib);
 
 			// check if the containing feature is also set correctly
-			assertTrue(bk.eContainingFeature() == LibraryPackage.eINSTANCE
-					.getLibrary_Books());
+			assertTrue(bk.eContainingFeature() == LibraryPackage.eINSTANCE.getLibrary_Books());
 
 			assertTrue(lib.getBooks().contains(bk));
 
@@ -263,8 +258,7 @@ public class LibraryAction extends AbstractTestAction {
 	protected void checkDetachCopy(TestStore store, Writer writ) {
 	}
 
-	protected void checkContainerAfterLibraryRetrieve(TestStore store,
-			final Writer writ) {
+	protected void checkContainerAfterLibraryRetrieve(TestStore store, final Writer writ) {
 		// TODO specialize for Hibernate/JPOX, was:
 		// if (store instanceof JPOXTestStore)
 		// {
@@ -275,8 +269,7 @@ public class LibraryAction extends AbstractTestAction {
 		// }
 	}
 
-	protected void checkContainerAfterWriterRetrieve(TestStore store,
-			final Writer writ) {
+	protected void checkContainerAfterWriterRetrieve(TestStore store, final Writer writ) {
 		// TODO specialize for Hibernate/JPOX, was:
 		// if (store instanceof HibernateTestStore)
 		// {

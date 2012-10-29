@@ -64,9 +64,8 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
-	public void run(IAction action, final String targetFileName,
-			String resultTitle1, final HashMap<String, String> options,
-			final String mainClass) {
+	public void run(IAction action, final String targetFileName, String resultTitle1,
+			final HashMap<String, String> options, final String mainClass) {
 		final StringBuffer result = new StringBuffer();
 
 		for (int i = 0; i < ecoreFiles.size(); i++) {
@@ -75,14 +74,12 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 
 		if (ecoreFiles.size() == 0) {
 			Shell shell = new Shell();
-			MessageDialog.openInformation(shell, Messages
-					.getString("teneo.create.or.mapping"), Messages
-					.getString("teneo.select.ecore.file"));
+			MessageDialog.openInformation(shell, Messages.getString("teneo.create.or.mapping"),
+					Messages.getString("teneo.select.ecore.file"));
 			return;
 		}
 
-		log.debug("Generating or descriptor file based on ecores in: "
-				+ result.toString());
+		log.debug("Generating or descriptor file based on ecores in: " + result.toString());
 
 		try {
 			final IContainer container = (ecoreFiles.get(0)).getParent();
@@ -102,13 +99,12 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 				}
 			}
 
-			RunGenerateJob rgj = new RunGenerateJob(jprojects, ecoreLocations,
-					targetFileName, mainClass, options);
+			RunGenerateJob rgj = new RunGenerateJob(jprojects, ecoreLocations, targetFileName, mainClass,
+					options);
 			rgj.schedule();
 
 			Shell shell = new Shell();
-			MessageDialog.openInformation(shell, resultTitle1, Messages
-					.getString("teneo.file.created")
+			MessageDialog.openInformation(shell, resultTitle1, Messages.getString("teneo.file.created")
 					+ container.getName());
 
 			// is refresh a dangerous action, eclipse crashes?

@@ -35,7 +35,8 @@ public class HbMapperConstants {
 	public static final String ECLASSIFIER_PARAM = "eclassifier";
 
 	/**
-	 * Name of the Hibernate type param that holds the name of the EMF attribute for the EMF custom data type.
+	 * Name of the Hibernate type param that holds the name of the EMF attribute for the EMF custom
+	 * data type.
 	 */
 	public static final String EDATATYPE_PARAM = "edatatype";
 

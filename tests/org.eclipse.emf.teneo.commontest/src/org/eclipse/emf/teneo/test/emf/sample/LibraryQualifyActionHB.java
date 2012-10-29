@@ -48,8 +48,8 @@ public class LibraryQualifyActionHB extends AbstractTestAction {
 	/** Add extensions if you want */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(EntityNameStrategy.class.getName(), QualifyingEntityNameStrategy.class
-			.getName());
+		extensionManager.registerExtension(EntityNameStrategy.class.getName(),
+				QualifyingEntityNameStrategy.class.getName());
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -90,9 +90,11 @@ public class LibraryQualifyActionHB extends AbstractTestAction {
 		// now test some qualified queries
 		{
 			store.beginTransaction();
-			Library lib = (Library) store.query("select l from " + LibraryPackage.eNS_PREFIX + ".Library l").get(0);
+			Library lib = (Library) store.query(
+					"select l from " + LibraryPackage.eNS_PREFIX + ".Library l").get(0);
 			assertTrue(lib != null);
-			Writer writ = (Writer) store.query("select w from " + LibraryPackage.eNS_PREFIX + ".Writer w").get(0);
+			Writer writ = (Writer) store
+					.query("select w from " + LibraryPackage.eNS_PREFIX + ".Writer w").get(0);
 			assertTrue(writ != null);
 			Book bk = (Book) store.query("select b from " + LibraryPackage.eNS_PREFIX + ".Book b").get(0);
 			assertTrue(bk != null);

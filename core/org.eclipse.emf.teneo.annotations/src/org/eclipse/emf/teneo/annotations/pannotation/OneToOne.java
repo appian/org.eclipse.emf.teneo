@@ -9,20 +9,24 @@ package org.eclipse.emf.teneo.annotations.pannotation;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>One To One</b></em>'. <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>One To One</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getTargetEntity <em>Target Entity</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getCascade <em>Cascade</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOptional <em>Optional</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getMappedBy <em>Mapped By</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval <em>Orphan Removal</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getTargetEntity <em>Target
+ * Entity</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getCascade <em>Cascade</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOptional <em>Optional</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getMappedBy <em>Mapped By</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval <em>Orphan
+ * Removal</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne()
  * @model annotation="teneo/internal/Target 0='EReference'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='IsNotManyValued'"
@@ -30,12 +34,12 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface OneToOne extends PAnnotation {
 	/**
-	 * Returns the value of the '<em><b>Fetch</b></em>' attribute. The default value is <code>"EAGER"</code>.
-	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.FetchType}. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Fetch</b></em>' attribute. The default value is
+	 * <code>"EAGER"</code>. The literals are from the enumeration
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.FetchType}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Fetch</em>' attribute isn't clear, there really should be more of a description
-	 * here...
+	 * If the meaning of the '<em>Fetch</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
@@ -49,9 +53,11 @@ public interface OneToOne extends PAnnotation {
 	FetchType getFetch();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fetch</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch
+	 * <em>Fetch</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Fetch</em>' attribute.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see #isSetFetch()
 	 * @see #unsetFetch()
@@ -61,9 +67,10 @@ public interface OneToOne extends PAnnotation {
 	void setFetch(FetchType value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Unsets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isSetFetch()
 	 * @see #getFetch()
 	 * @see #setFetch(FetchType)
@@ -72,9 +79,10 @@ public interface OneToOne extends PAnnotation {
 	void unsetFetch();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns whether the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}'
+	 * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return whether the value of the '<em>Fetch</em>' attribute is set.
 	 * @see #unsetFetch()
 	 * @see #getFetch()
@@ -84,14 +92,14 @@ public interface OneToOne extends PAnnotation {
 	boolean isSetFetch();
 
 	/**
-	 * Returns the value of the '<em><b>Optional</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Optional</b></em>' attribute. The default value is
+	 * <code>"true"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Optional</em>' attribute isn't clear, there really should be more of a description
-	 * here...
+	 * If the meaning of the '<em>Optional</em>' attribute isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Optional</em>' attribute.
 	 * @see #setOptional(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne_Optional()
@@ -101,22 +109,25 @@ public interface OneToOne extends PAnnotation {
 	boolean isOptional();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOptional <em>Optional</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Optional</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOptional <em>Optional</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Optional</em>' attribute.
 	 * @see #isOptional()
 	 * @generated
 	 */
 	void setOptional(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target Entity</em>' attribute isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Target Entity</em>' attribute isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Target Entity</em>' attribute.
 	 * @see #setTargetEntity(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne_TargetEntity()
@@ -126,24 +137,28 @@ public interface OneToOne extends PAnnotation {
 	String getTargetEntity();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getTargetEntity <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Entity</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getTargetEntity
+	 * <em>Target Entity</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Target Entity</em>' attribute.
 	 * @see #getTargetEntity()
 	 * @generated
 	 */
 	void setTargetEntity(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cascade</b></em>' attribute list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
-	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Cascade</b></em>' attribute list. The list contents are of
+	 * type {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}. The literals are from
+	 * the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cascade</em>' attribute list isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Cascade</em>' attribute list isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Cascade</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.CascadeType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne_Cascade()
@@ -153,13 +168,13 @@ public interface OneToOne extends PAnnotation {
 	EList<CascadeType> getCascade();
 
 	/**
-	 * Returns the value of the '<em><b>Mapped By</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Mapped By</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mapped By</em>' attribute isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Mapped By</em>' attribute isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Mapped By</em>' attribute.
 	 * @see #setMappedBy(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne_MappedBy()
@@ -169,23 +184,26 @@ public interface OneToOne extends PAnnotation {
 	String getMappedBy();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getMappedBy <em>Mapped By</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mapped By</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getMappedBy <em>Mapped By</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Mapped By</em>' attribute.
 	 * @see #getMappedBy()
 	 * @generated
 	 */
 	void setMappedBy(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Orphan Removal</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Orphan Removal</b></em>' attribute. The default value is
+	 * <code>"false"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Orphan Removal</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Orphan Removal</em>' attribute isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Orphan Removal</em>' attribute.
 	 * @see #setOrphanRemoval(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne_OrphanRemoval()
@@ -195,10 +213,12 @@ public interface OneToOne extends PAnnotation {
 	boolean isOrphanRemoval();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval <em>Orphan Removal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Orphan Removal</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval
+	 * <em>Orphan Removal</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Orphan Removal</em>' attribute.
 	 * @see #isOrphanRemoval()
 	 * @generated
 	 */

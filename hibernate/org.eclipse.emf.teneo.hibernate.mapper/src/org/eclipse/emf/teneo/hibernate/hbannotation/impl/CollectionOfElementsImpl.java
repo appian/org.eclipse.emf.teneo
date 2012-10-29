@@ -14,24 +14,27 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Collection Of Elements</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Collection Of Elements</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getTargetElement <em>Target Element</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getFetch <em>Fetch</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getTargetElement
+ * <em>Target Element</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getFetch <em>
+ * Fetch</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CollectionOfElementsImpl extends HbAnnotationImpl implements CollectionOfElements {
 	/**
-	 * The default value of the '{@link #getTargetElement() <em>Target Element</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTargetElement() <em>Target Element</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetElement()
 	 * @generated
 	 * @ordered
@@ -39,9 +42,9 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	protected static final String TARGET_ELEMENT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTargetElement() <em>Target Element</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetElement() <em>Target Element</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetElement()
 	 * @generated
 	 * @ordered
@@ -49,9 +52,9 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	protected String targetElement = TARGET_ELEMENT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -59,9 +62,9 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	protected static final FetchType FETCH_EDEFAULT = FetchType.LAZY;
 
 	/**
-	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -69,8 +72,8 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	protected FetchType fetch = FETCH_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CollectionOfElementsImpl() {
@@ -78,8 +81,8 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -88,8 +91,8 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTargetElement() {
@@ -97,20 +100,22 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetElement(String newTargetElement) {
 		String oldTargetElement = targetElement;
 		targetElement = newTargetElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT, oldTargetElement, targetElement));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT, oldTargetElement,
+					targetElement));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -118,93 +123,96 @@ public class CollectionOfElementsImpl extends HbAnnotationImpl implements Collec
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
 		FetchType oldFetch = fetch;
 		fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH, oldFetch, fetch));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH, oldFetch, fetch));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				return getTargetElement();
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
-				return getFetch();
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+			return getTargetElement();
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			return getFetch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				setTargetElement((String)newValue);
-				return;
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
-				setFetch((FetchType)newValue);
-				return;
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+			setTargetElement((String) newValue);
+			return;
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			setFetch((FetchType) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				setTargetElement(TARGET_ELEMENT_EDEFAULT);
-				return;
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
-				setFetch(FETCH_EDEFAULT);
-				return;
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+			setTargetElement(TARGET_ELEMENT_EDEFAULT);
+			return;
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			setFetch(FETCH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT.equals(targetElement);
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
-				return fetch != FETCH_EDEFAULT;
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+			return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT
+					.equals(targetElement);
+		case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			return fetch != FETCH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (targetElement: ");

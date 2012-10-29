@@ -123,7 +123,8 @@ public abstract class DetachAction extends AbstractTestAction {
 				assert (testa != null);
 
 				// get testb to force a load
-				if (testc.getTestB().size() != 2 || (testc.getTestB().get(0)).getCode().compareTo("testb2") != 0) {
+				if (testc.getTestB().size() != 2
+						|| (testc.getTestB().get(0)).getCode().compareTo("testb2") != 0) {
 					throw new Error("Where is testb?");
 				}
 
@@ -179,8 +180,8 @@ public abstract class DetachAction extends AbstractTestAction {
 					throw new StoreTestException("The code of testa was not set!");
 				}
 
-				if ((testc.getTestB().get(0)).getCode().compareTo("testb3") != 0 ||
-						(testc.getTestB().get(1)).getCode().compareTo("testb4") != 0) {
+				if ((testc.getTestB().get(0)).getCode().compareTo("testb3") != 0
+						|| (testc.getTestB().get(1)).getCode().compareTo("testb4") != 0) {
 					throw new StoreTestException("TestB was not set");
 				}
 
@@ -210,7 +211,7 @@ public abstract class DetachAction extends AbstractTestAction {
 	// PersistenceCapable pc = (PersistenceCapable) eObject;
 	// if (!pc.jdoIsDetached())
 	// fail("The object with class: " + pc.getClass().getName() + " is not detached");
-	//			
+	//
 	// if (pc.jdoGetObjectId() == null)
 	// fail("The object with class: " + pc.getClass().getName() + " has no id!");
 	// }

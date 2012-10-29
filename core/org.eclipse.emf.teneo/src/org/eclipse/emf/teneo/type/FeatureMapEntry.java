@@ -216,8 +216,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	}
 
 	/**
-	 * Checks if a certain feature has a certain name or that its group (if present) has this name,
-	 * in which case it is also set to true.
+	 * Checks if a certain feature has a certain name or that its group (if present) has this name, in
+	 * which case it is also set to true.
 	 */
 	protected boolean featureForField(String name) {
 		if (eStructuralFeature.getName().compareTo(name) == 0) {
@@ -230,7 +230,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 			return true;
 		}
 
-		final EStructuralFeature affiliatedFeature = ExtendedMetaData.INSTANCE.getAffiliation(eStructuralFeature);
+		final EStructuralFeature affiliatedFeature = ExtendedMetaData.INSTANCE
+				.getAffiliation(eStructuralFeature);
 		if (affiliatedFeature != null && affiliatedFeature.getName().compareTo(name) == 0) {
 			return true;
 		}
@@ -246,8 +247,9 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 			initialize();
 		}
 
-		if (value != null && value instanceof InternalEObject && eStructuralFeature instanceof EReference &&
-				((EReference) eStructuralFeature).isContainment()) {
+		if (value != null && value instanceof InternalEObject
+				&& eStructuralFeature instanceof EReference
+				&& ((EReference) eStructuralFeature).isContainment()) {
 			EContainerRepairControl.setContainer(owner, (InternalEObject) value, eStructuralFeature);
 		}
 	}
@@ -265,8 +267,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 			return false;
 		} else {
 			FeatureMap.Entry entry = (FeatureMap.Entry) that;
-			return entry.getEStructuralFeature() == eStructuralFeature &&
-					(value == null ? entry.getValue() == null : value.equals(entry.getValue()));
+			return entry.getEStructuralFeature() == eStructuralFeature
+					&& (value == null ? entry.getValue() == null : value.equals(entry.getValue()));
 		}
 	}
 
@@ -297,8 +299,7 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 		String prefix = eStructuralFeature.getEContainingClass().getEPackage().getNsPrefix();
 		eStructuralFeature.getName();
 		return (prefix != null && prefix.length() != 0 ? prefix + ":" + eStructuralFeature.getName()
-				: eStructuralFeature.getName()) +
-				"=" + value;
+				: eStructuralFeature.getName()) + "=" + value;
 	}
 
 	/** Create copy with same feature and different value */
@@ -310,7 +311,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	public abstract Internal createEntry(Object value);
 
 	/** Do inverse action */
-	public NotificationChain inverseAdd(InternalEObject owner, int featureID, NotificationChain notifications) {
+	public NotificationChain inverseAdd(InternalEObject owner, int featureID,
+			NotificationChain notifications) {
 		return inverseAction.inverseAdd(owner, featureID, notifications);
 	}
 
@@ -321,7 +323,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	}
 
 	/** Do inverse action */
-	public NotificationChain inverseRemove(InternalEObject owner, int featureID, NotificationChain notifications) {
+	public NotificationChain inverseRemove(InternalEObject owner, int featureID,
+			NotificationChain notifications) {
 		return inverseAction.inverseRemove(owner, featureID, notifications);
 	}
 
@@ -334,10 +337,11 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	/** Validate type of object against the type of the efeature */
 	public void validate(Object value) {
 		if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
-			String valueClass =
-					value instanceof EObject ? ((EObject) value).eClass().getName() : value.getClass().getName();
-			throw new ClassCastException("The feature '" + eStructuralFeature.getName() + "'s type '" +
-					eStructuralFeature.getEType().getName() + "' does not permit a value of type '" + valueClass + "'");
+			String valueClass = value instanceof EObject ? ((EObject) value).eClass().getName() : value
+					.getClass().getName();
+			throw new ClassCastException("The feature '" + eStructuralFeature.getName() + "'s type '"
+					+ eStructuralFeature.getEType().getName() + "' does not permit a value of type '"
+					+ valueClass + "'");
 		}
 	}
 
@@ -345,12 +349,14 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	private class InverseAction {
 
 		/** Handles inverse action, differs on the basis of the feature type */
-		public NotificationChain inverseAdd(InternalEObject owner, int featureID, NotificationChain notifications) {
+		public NotificationChain inverseAdd(InternalEObject owner, int featureID,
+				NotificationChain notifications) {
 			return inverseAdd(owner, value, featureID, notifications);
 		}
 
 		/** Handles inverse action, differs on the basis of the feature type */
-		public NotificationChain inverseRemove(InternalEObject owner, int featureID, NotificationChain notifications) {
+		public NotificationChain inverseRemove(InternalEObject owner, int featureID,
+				NotificationChain notifications) {
 			return inverseRemove(owner, value, featureID, notifications);
 		}
 
@@ -365,19 +371,22 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 				NotificationChain notifications) {
 			return notifications;
 		}
-//
-//		/**
-//		 * validate the type of the value with the type expected by the efeature
-//		 */
-//		public void validate(Object value) {
-//			if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
-//				String valueClass =
-//						value instanceof EObject ? ((EObject) value).eClass().getName() : value.getClass().getName();
-//				throw new ClassCastException("The feature '" + eStructuralFeature.getName() + "'s type '" +
-//						eStructuralFeature.getEType().getName() + "' does not permit a value of type '" + valueClass +
-//						"'");
-//			}
-//		}
+		//
+		// /**
+		// * validate the type of the value with the type expected by the efeature
+		// */
+		// public void validate(Object value) {
+		// if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
+		// String valueClass =
+		// value instanceof EObject ? ((EObject) value).eClass().getName() :
+		// value.getClass().getName();
+		// throw new ClassCastException("The feature '" +
+		// eStructuralFeature.getName() + "'s type '" +
+		// eStructuralFeature.getEType().getName() +
+		// "' does not permit a value of type '" + valueClass +
+		// "'");
+		// }
+		// }
 	}
 
 	/** Containment Inverse Action */
@@ -398,26 +407,24 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 		}
 
 		/** Does inverse action on other end */
-		private NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
-				NotificationChain notifications) {
+		private NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd,
+				int featureID, NotificationChain notifications) {
 			if (otherEnd != null) {
 				int containmentFeatureID = owner.eClass().getFeatureID(eStructuralFeature);
-				notifications =
-						otherEnd.eInverseAdd(owner, InternalEObject.EOPPOSITE_FEATURE_BASE -
-								(containmentFeatureID == -1 ? featureID : containmentFeatureID), null, notifications);
+				notifications = otherEnd.eInverseAdd(owner, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- (containmentFeatureID == -1 ? featureID : containmentFeatureID), null, notifications);
 			}
 
 			return notifications;
 		}
 
 		/** Does inverse action on other end */
-		private NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
-				NotificationChain notifications) {
+		private NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd,
+				int featureID, NotificationChain notifications) {
 			if (otherEnd != null) {
 				int containmentFeatureID = owner.eClass().getFeatureID(eStructuralFeature);
-				notifications =
-						otherEnd.eInverseRemove(owner, InternalEObject.EOPPOSITE_FEATURE_BASE -
-								(containmentFeatureID == -1 ? featureID : containmentFeatureID), null, notifications);
+				notifications = otherEnd.eInverseRemove(owner, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- (containmentFeatureID == -1 ? featureID : containmentFeatureID), null, notifications);
 			}
 
 			return notifications;
@@ -442,24 +449,24 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 		}
 
 		/** Does inverse action on other end */
-		private final NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
-				NotificationChain notifications) {
+		private final NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd,
+				int featureID, NotificationChain notifications) {
 			if (otherEnd != null) {
-				notifications =
-						otherEnd.eInverseAdd(owner, otherEnd.eClass().getFeatureID(
-							((EReference) eStructuralFeature).getEOpposite()), null, notifications);
+				notifications = otherEnd.eInverseAdd(owner,
+						otherEnd.eClass().getFeatureID(((EReference) eStructuralFeature).getEOpposite()), null,
+						notifications);
 			}
 
 			return notifications;
 		}
 
 		/** Does inverse action on other end */
-		private final NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
-				NotificationChain notifications) {
+		private final NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd,
+				int featureID, NotificationChain notifications) {
 			if (otherEnd != null) {
-				notifications =
-						otherEnd.eInverseRemove(owner, otherEnd.eClass().getFeatureID(
-							((EReference) eStructuralFeature).getEOpposite()), null, notifications);
+				notifications = otherEnd.eInverseRemove(owner,
+						otherEnd.eClass().getFeatureID(((EReference) eStructuralFeature).getEOpposite()), null,
+						notifications);
 			}
 			return notifications;
 		}

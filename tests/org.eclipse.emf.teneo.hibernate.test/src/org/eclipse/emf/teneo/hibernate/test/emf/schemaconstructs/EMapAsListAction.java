@@ -32,9 +32,7 @@ public class EMapAsListAction extends EMapAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
-	 * ()
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {

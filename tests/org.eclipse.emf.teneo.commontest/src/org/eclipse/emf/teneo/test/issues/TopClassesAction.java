@@ -31,8 +31,8 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests if topclasses are computed correctly also in case of an inheritance strategy. Tests if also for n:m relation lazy loading of
- * detached objects works for jpox.
+ * Tests if topclasses are computed correctly also in case of an inheritance strategy. Tests if also
+ * for n:m relation lazy loading of detached objects works for jpox.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.4 $

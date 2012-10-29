@@ -39,7 +39,8 @@ public class Bz293848Action extends AbstractTestAction {
 			XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
 			final java.net.URL url = Bz293848Action.class
 					.getResource("/org/eclipse/emf/teneo/hibernate/test/issues/xx301.xsd");
-			Collection<EObject> eCoreObjects = xsdEcoreBuilder.generate(URI.createURI(url.toURI().toString()));
+			Collection<EObject> eCoreObjects = xsdEcoreBuilder.generate(URI.createURI(url.toURI()
+					.toString()));
 			for (EObject ecoreObject : eCoreObjects) {
 				if (ecoreObject instanceof EPackage) {
 					final EPackage localEPackage = (EPackage) ecoreObject;
@@ -109,29 +110,40 @@ public class Bz293848Action extends AbstractTestAction {
 			// List<?> list = session.createQuery("from ComType").list();
 
 			// the following statement performs this sql:
-			// select comtype0_.e_id as e1_0_0_, comtype0_.e_version as e3_0_0_, comtype0_."LOCATIONTYPE_LOCATION_E_ID"
-			// as LOCATION4_0_0_, comtype0_."NAME" as NAME5_0_0_ from "COMTYPE" comtype0_ where comtype0_.e_id=?
+			// select comtype0_.e_id as e1_0_0_, comtype0_.e_version as e3_0_0_,
+			// comtype0_."LOCATIONTYPE_LOCATION_E_ID"
+			// as LOCATION4_0_0_, comtype0_."NAME" as NAME5_0_0_ from "COMTYPE"
+			// comtype0_ where comtype0_.e_id=?
 			EObject company = (EObject) session.get("ComType", new Long(1));
 
-			final EObject location = (EObject) company.eGet(company.eClass().getEStructuralFeature("location"));
+			final EObject location = (EObject) company.eGet(company.eClass().getEStructuralFeature(
+					"location"));
 
 			// the following statement executes this sql:
 			// select locationty0_.e_id as e1_2_0_, locationty0_.e_version as e3_2_0_,
-			// locationty0_."DEPARTMENT_ZIP_E_ID" as DEPARTMENT4_2_0_, locationty0_."ADDRESS" as ADDRESS5_2_0_,
-			// locationty0_.econtainer_class as econtainer6_2_0_, locationty0_.e_container as e7_2_0_,
-			// locationty0_.e_container_feature_name as e8_2_0_ from "LOCATIONTYPE" locationty0_ where
+			// locationty0_."DEPARTMENT_ZIP_E_ID" as DEPARTMENT4_2_0_,
+			// locationty0_."ADDRESS" as ADDRESS5_2_0_,
+			// locationty0_.econtainer_class as econtainer6_2_0_,
+			// locationty0_.e_container as e7_2_0_,
+			// locationty0_.e_container_feature_name as e8_2_0_ from "LOCATIONTYPE"
+			// locationty0_ where
 			// locationty0_.e_id=?
 			location.eGet(location.eClass().getEStructuralFeature("address"));
 
 			// the following statement executes this sql:
-			// select employees0_."COMTYPE_EMPLOYEES_E_ID" as COMTYPE7_1_, employees0_.e_id as e1_1_,
-			// employees0_."COMTYPE_EMPLOYEES_IDX" as COMTYPE8_1_, employees0_.e_id as e1_3_0_, employees0_.e_version as
-			// e3_3_0_, employees0_."LASTNAME" as LASTNAME4_3_0_, employees0_."AGE" as AGE5_3_0_,
-			// employees0_."FIRSTNAME" as FIRSTNAME6_3_0_, employees0_.econtainer_class as econtainer9_3_0_,
-			// employees0_.e_container as e10_3_0_, employees0_.e_container_feature_name as e11_3_0_ from "PERSONTYPE"
+			// select employees0_."COMTYPE_EMPLOYEES_E_ID" as COMTYPE7_1_,
+			// employees0_.e_id as e1_1_,
+			// employees0_."COMTYPE_EMPLOYEES_IDX" as COMTYPE8_1_, employees0_.e_id as
+			// e1_3_0_, employees0_.e_version as
+			// e3_3_0_, employees0_."LASTNAME" as LASTNAME4_3_0_, employees0_."AGE" as
+			// AGE5_3_0_,
+			// employees0_."FIRSTNAME" as FIRSTNAME6_3_0_,
+			// employees0_.econtainer_class as econtainer9_3_0_,
+			// employees0_.e_container as e10_3_0_,
+			// employees0_.e_container_feature_name as e11_3_0_ from "PERSONTYPE"
 			// employees0_ where employees0_."COMTYPE_EMPLOYEES_E_ID"=?
-			final EObject employee = (EObject) ((List<?>) company
-					.eGet(company.eClass().getEStructuralFeature("employees"))).get(0);
+			final EObject employee = (EObject) ((List<?>) company.eGet(company.eClass()
+					.getEStructuralFeature("employees"))).get(0);
 			employee.eGet(employee.eClass().getEStructuralFeature("lastName"));
 
 			store.commitTransaction();

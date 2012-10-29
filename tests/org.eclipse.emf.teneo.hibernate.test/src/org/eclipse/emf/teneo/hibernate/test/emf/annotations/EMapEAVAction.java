@@ -53,7 +53,8 @@ public class EMapEAVAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Check test set, note a where clause has been set on the relation Only writers with name martin are returned
+	 * Check test set, note a where clause has been set on the relation Only writers with name martin
+	 * are returned
 	 */
 	private void checkTestSet(Book bk) {
 		// final String prefix = bk.getTitle();

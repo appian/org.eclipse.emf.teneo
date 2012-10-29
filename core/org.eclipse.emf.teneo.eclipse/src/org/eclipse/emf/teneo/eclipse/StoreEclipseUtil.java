@@ -54,19 +54,16 @@ public class StoreEclipseUtil {
 			checkProperty(Constants.PROP_EDITOR_EXTENSTION, Constants.PROP_EDITOR_ID, props);
 			return props;
 		} catch (IOException e) {
-			throw new StoreEclipseException("Exception when reading properties from: " + filePath,
-					e);
+			throw new StoreEclipseException("Exception when reading properties from: " + filePath, e);
 		} catch (CoreException e) {
-			throw new StoreEclipseException("Exception when reading properties from: " + filePath,
-					e);
+			throw new StoreEclipseException("Exception when reading properties from: " + filePath, e);
 		}
 	}
 
 	/** Checks if the passed value is null, if not then an exception is thrown */
 	private static void checkProperty(String propName, Properties props) {
 		if (props.getProperty(propName) == null) {
-			throw new StoreEclipseException("The ehb file does not contain the property: "
-					+ propName);
+			throw new StoreEclipseException("The ehb file does not contain the property: " + propName);
 		}
 	}
 

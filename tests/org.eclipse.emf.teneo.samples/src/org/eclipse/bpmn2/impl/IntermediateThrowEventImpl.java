@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.IntermediateThrowEvent;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Intermediate Throw Event</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Intermediate Throw Event</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class IntermediateThrowEventImpl extends ThrowEventImpl implements
-		IntermediateThrowEvent {
+public class IntermediateThrowEventImpl extends ThrowEventImpl implements IntermediateThrowEvent {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected IntermediateThrowEventImpl() {
@@ -40,8 +38,8 @@ public class IntermediateThrowEventImpl extends ThrowEventImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class IntermediateThrowEventImpl extends ThrowEventImpl implements
 		return Bpmn2Package.Literals.INTERMEDIATE_THROW_EVENT;
 	}
 
-} //IntermediateThrowEventImpl
+} // IntermediateThrowEventImpl

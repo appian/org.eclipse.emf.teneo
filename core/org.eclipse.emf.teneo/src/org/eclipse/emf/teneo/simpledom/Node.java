@@ -41,7 +41,7 @@ public abstract class Node {
 
 	/**
 	 * @param name
-	 *            the name to set
+	 *          the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -56,7 +56,7 @@ public abstract class Node {
 
 	/**
 	 * @param text
-	 *            the text to set
+	 *          the text to set
 	 */
 	public void setText(String text) {
 		this.text = text;

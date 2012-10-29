@@ -21,26 +21,33 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>One To One</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>One To One</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getTargetEntity <em>Target Entity</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getCascade <em>Cascade</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getFetch <em>Fetch</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#isOptional <em>Optional</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getMappedBy <em>Mapped By</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#isOrphanRemoval <em>Orphan Removal</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getTargetEntity <em>
+ * Target Entity</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getCascade <em>Cascade
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getFetch <em>Fetch
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#isOptional <em>
+ * Optional</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getMappedBy <em>Mapped
+ * By</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#isOrphanRemoval <em>
+ * Orphan Removal</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	/**
-	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -68,8 +75,8 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	protected EList<CascadeType> cascade;
 
 	/**
-	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #getFetch()
 	 * @generated
@@ -78,9 +85,9 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	protected static final FetchType FETCH_EDEFAULT = FetchType.EAGER;
 
 	/**
-	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -88,9 +95,8 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	protected FetchType fetch = FETCH_EDEFAULT;
 
 	/**
-	 * This is true if the Fetch attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the Fetch attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -137,9 +143,9 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	protected String mappedBy = MAPPED_BY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isOrphanRemoval() <em>Orphan Removal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isOrphanRemoval() <em>Orphan Removal</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isOrphanRemoval()
 	 * @generated
 	 * @ordered
@@ -147,9 +153,9 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	protected static final boolean ORPHAN_REMOVAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isOrphanRemoval() <em>Orphan Removal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isOrphanRemoval() <em>Orphan Removal</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isOrphanRemoval()
 	 * @generated
 	 * @ordered
@@ -158,6 +164,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected OneToOneImpl() {
@@ -166,6 +173,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -175,6 +183,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -183,6 +192,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
@@ -191,12 +201,13 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 		boolean oldFetchESet = fetchESet;
 		fetchESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__FETCH, oldFetch, fetch, !oldFetchESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__FETCH,
+					oldFetch, fetch, !oldFetchESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetFetch() {
@@ -205,12 +216,13 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 		fetch = FETCH_EDEFAULT;
 		fetchESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.ONE_TO_ONE__FETCH, oldFetch, FETCH_EDEFAULT, oldFetchESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.ONE_TO_ONE__FETCH,
+					oldFetch, FETCH_EDEFAULT, oldFetchESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetFetch() {
@@ -219,6 +231,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isOptional() {
@@ -227,17 +240,20 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOptional(boolean newOptional) {
 		boolean oldOptional = optional;
 		optional = newOptional;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__OPTIONAL, oldOptional, optional));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.ONE_TO_ONE__OPTIONAL, oldOptional, optional));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTargetEntity() {
@@ -246,28 +262,33 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetEntity(String newTargetEntity) {
 		String oldTargetEntity = targetEntity;
 		targetEntity = newTargetEntity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__TARGET_ENTITY, oldTargetEntity, targetEntity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.ONE_TO_ONE__TARGET_ENTITY, oldTargetEntity, targetEntity));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<CascadeType> getCascade() {
 		if (cascade == null) {
-			cascade = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, PannotationPackage.ONE_TO_ONE__CASCADE);
+			cascade = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this,
+					PannotationPackage.ONE_TO_ONE__CASCADE);
 		}
 		return cascade;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getMappedBy() {
@@ -276,18 +297,20 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMappedBy(String newMappedBy) {
 		String oldMappedBy = mappedBy;
 		mappedBy = newMappedBy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__MAPPED_BY, oldMappedBy, mappedBy));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.ONE_TO_ONE__MAPPED_BY, oldMappedBy, mappedBy));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isOrphanRemoval() {
@@ -295,130 +318,138 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOrphanRemoval(boolean newOrphanRemoval) {
 		boolean oldOrphanRemoval = orphanRemoval;
 		orphanRemoval = newOrphanRemoval;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL, oldOrphanRemoval, orphanRemoval));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL, oldOrphanRemoval, orphanRemoval));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
-				return getTargetEntity();
-			case PannotationPackage.ONE_TO_ONE__CASCADE:
-				return getCascade();
-			case PannotationPackage.ONE_TO_ONE__FETCH:
-				return getFetch();
-			case PannotationPackage.ONE_TO_ONE__OPTIONAL:
-				return isOptional();
-			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
-				return getMappedBy();
-			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
-				return isOrphanRemoval();
+		case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
+			return getTargetEntity();
+		case PannotationPackage.ONE_TO_ONE__CASCADE:
+			return getCascade();
+		case PannotationPackage.ONE_TO_ONE__FETCH:
+			return getFetch();
+		case PannotationPackage.ONE_TO_ONE__OPTIONAL:
+			return isOptional();
+		case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
+			return getMappedBy();
+		case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+			return isOrphanRemoval();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
-				setTargetEntity((String)newValue);
-				return;
-			case PannotationPackage.ONE_TO_ONE__CASCADE:
-				getCascade().clear();
-				getCascade().addAll((Collection<? extends CascadeType>)newValue);
-				return;
-			case PannotationPackage.ONE_TO_ONE__FETCH:
-				setFetch((FetchType)newValue);
-				return;
-			case PannotationPackage.ONE_TO_ONE__OPTIONAL:
-				setOptional((Boolean)newValue);
-				return;
-			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
-				setMappedBy((String)newValue);
-				return;
-			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
-				setOrphanRemoval((Boolean)newValue);
-				return;
+		case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
+			setTargetEntity((String) newValue);
+			return;
+		case PannotationPackage.ONE_TO_ONE__CASCADE:
+			getCascade().clear();
+			getCascade().addAll((Collection<? extends CascadeType>) newValue);
+			return;
+		case PannotationPackage.ONE_TO_ONE__FETCH:
+			setFetch((FetchType) newValue);
+			return;
+		case PannotationPackage.ONE_TO_ONE__OPTIONAL:
+			setOptional((Boolean) newValue);
+			return;
+		case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
+			setMappedBy((String) newValue);
+			return;
+		case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+			setOrphanRemoval((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
-				setTargetEntity(TARGET_ENTITY_EDEFAULT);
-				return;
-			case PannotationPackage.ONE_TO_ONE__CASCADE:
-				getCascade().clear();
-				return;
-			case PannotationPackage.ONE_TO_ONE__FETCH:
-				unsetFetch();
-				return;
-			case PannotationPackage.ONE_TO_ONE__OPTIONAL:
-				setOptional(OPTIONAL_EDEFAULT);
-				return;
-			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
-				setMappedBy(MAPPED_BY_EDEFAULT);
-				return;
-			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
-				setOrphanRemoval(ORPHAN_REMOVAL_EDEFAULT);
-				return;
+		case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
+			setTargetEntity(TARGET_ENTITY_EDEFAULT);
+			return;
+		case PannotationPackage.ONE_TO_ONE__CASCADE:
+			getCascade().clear();
+			return;
+		case PannotationPackage.ONE_TO_ONE__FETCH:
+			unsetFetch();
+			return;
+		case PannotationPackage.ONE_TO_ONE__OPTIONAL:
+			setOptional(OPTIONAL_EDEFAULT);
+			return;
+		case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
+			setMappedBy(MAPPED_BY_EDEFAULT);
+			return;
+		case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+			setOrphanRemoval(ORPHAN_REMOVAL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
-				return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT.equals(targetEntity);
-			case PannotationPackage.ONE_TO_ONE__CASCADE:
-				return cascade != null && !cascade.isEmpty();
-			case PannotationPackage.ONE_TO_ONE__FETCH:
-				return isSetFetch();
-			case PannotationPackage.ONE_TO_ONE__OPTIONAL:
-				return optional != OPTIONAL_EDEFAULT;
-			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
-				return MAPPED_BY_EDEFAULT == null ? mappedBy != null : !MAPPED_BY_EDEFAULT.equals(mappedBy);
-			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
-				return orphanRemoval != ORPHAN_REMOVAL_EDEFAULT;
+		case PannotationPackage.ONE_TO_ONE__TARGET_ENTITY:
+			return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT
+					.equals(targetEntity);
+		case PannotationPackage.ONE_TO_ONE__CASCADE:
+			return cascade != null && !cascade.isEmpty();
+		case PannotationPackage.ONE_TO_ONE__FETCH:
+			return isSetFetch();
+		case PannotationPackage.ONE_TO_ONE__OPTIONAL:
+			return optional != OPTIONAL_EDEFAULT;
+		case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
+			return MAPPED_BY_EDEFAULT == null ? mappedBy != null : !MAPPED_BY_EDEFAULT.equals(mappedBy);
+		case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+			return orphanRemoval != ORPHAN_REMOVAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (targetEntity: ");
@@ -426,7 +457,10 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 		result.append(", cascade: ");
 		result.append(cascade);
 		result.append(", fetch: ");
-		if (fetchESet) result.append(fetch); else result.append("<unset>");
+		if (fetchESet)
+			result.append(fetch);
+		else
+			result.append("<unset>");
 		result.append(", optional: ");
 		result.append(optional);
 		result.append(", mappedBy: ");
@@ -438,8 +472,8 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	}
 
 	@Override
-	protected String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject, EStructuralFeature eFeature,
-			boolean prependComma, List<String> imports) {
+	protected String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject,
+			EStructuralFeature eFeature, boolean prependComma, List<String> imports) {
 		if (eFeature == PannotationPackage.eINSTANCE.getOneToOne_TargetEntity()) {
 			// do not return anything because jpa expects a real classname,
 			// the targetentity only has an entityname here.

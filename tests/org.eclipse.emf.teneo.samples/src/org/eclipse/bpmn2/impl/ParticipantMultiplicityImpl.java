@@ -24,25 +24,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Participant Multiplicity</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Participant Multiplicity</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantMultiplicityImpl#getMaximum <em>Maximum</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantMultiplicityImpl#getMinimum <em>Minimum</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantMultiplicityImpl#getMaximum <em>Maximum</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantMultiplicityImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ParticipantMultiplicityImpl extends BaseElementImpl implements
-		ParticipantMultiplicity {
+public class ParticipantMultiplicityImpl extends BaseElementImpl implements ParticipantMultiplicity {
 	/**
-	 * The default value of the '{@link #getMaximum() <em>Maximum</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getMaximum() <em>Maximum</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMaximum()
 	 * @generated
 	 * @ordered
@@ -50,9 +48,9 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	protected static final int MAXIMUM_EDEFAULT = 1;
 
 	/**
-	 * The cached value of the '{@link #getMaximum() <em>Maximum</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMaximum() <em>Maximum</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMaximum()
 	 * @generated
 	 * @ordered
@@ -60,9 +58,9 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	protected int maximum = MAXIMUM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMinimum() <em>Minimum</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getMinimum() <em>Minimum</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMinimum()
 	 * @generated
 	 * @ordered
@@ -70,9 +68,9 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	protected static final int MINIMUM_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getMinimum() <em>Minimum</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMinimum() <em>Minimum</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMinimum()
 	 * @generated
 	 * @ordered
@@ -80,8 +78,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	protected int minimum = MINIMUM_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ParticipantMultiplicityImpl() {
@@ -89,8 +87,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,8 +97,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getMaximum() {
@@ -108,8 +106,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMaximum(int newMaximum) {
@@ -117,13 +115,12 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 		maximum = newMaximum;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PARTICIPANT_MULTIPLICITY__MAXIMUM, oldMaximum,
-					maximum));
+					Bpmn2Package.PARTICIPANT_MULTIPLICITY__MAXIMUM, oldMaximum, maximum));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getMinimum() {
@@ -131,8 +128,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMinimum(int newMinimum) {
@@ -140,13 +137,12 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 		minimum = newMinimum;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PARTICIPANT_MULTIPLICITY__MINIMUM, oldMinimum,
-					minimum));
+					Bpmn2Package.PARTICIPANT_MULTIPLICITY__MINIMUM, oldMinimum, minimum));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -161,8 +157,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -179,8 +175,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -197,8 +193,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -213,8 +209,8 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -231,4 +227,4 @@ public class ParticipantMultiplicityImpl extends BaseElementImpl implements
 		return result.toString();
 	}
 
-} //ParticipantMultiplicityImpl
+} // ParticipantMultiplicityImpl

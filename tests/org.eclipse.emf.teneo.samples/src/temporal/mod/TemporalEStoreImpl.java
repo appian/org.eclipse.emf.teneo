@@ -91,11 +91,13 @@ public class TemporalEStoreImpl implements EStore {
 		return next.remove(eObject, feature, index);
 	}
 
-	public Object move(InternalEObject eObject, EStructuralFeature feature, int targetIndex, int sourceIndex) {
+	public Object move(InternalEObject eObject, EStructuralFeature feature, int targetIndex,
+			int sourceIndex) {
 		if (isBypass() == false) {
 			// Hook in temporality
 			Object[] retValue = new Object[1];
-			boolean handled = TemporalEStoreHandler.move(eObject, feature, targetIndex, sourceIndex, retValue);
+			boolean handled = TemporalEStoreHandler.move(eObject, feature, targetIndex, sourceIndex,
+					retValue);
 			if (handled) {
 				if (trace) {
 					System.out.println("Handled " + eObject + " feature " + feature.getName());

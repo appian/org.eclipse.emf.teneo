@@ -45,7 +45,8 @@ import org.hibernate.collection.internal.PersistentMap;
  * @version $Revision: 1.9 $
  */
 
-public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> implements ExtensionPoint {
+public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> implements
+		ExtensionPoint {
 	/**
 	 * Serial Version ID
 	 */
@@ -55,7 +56,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	private static Log log = LogFactory.getLog(MapHibernatePersistableEMap.class);
 
 	private Long cachedSize = null;
-	
+
 	/**
 	 * Constructor: this version will take a natural map as input (probided by hibernate) and
 	 * transform the entries into the EMF keyToValue format
@@ -67,11 +68,12 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/**
-	 * This constructor is usually called when the list is created and filled by the user first.
-	 * when called by a hibernate load, the other overload with a map input is used instead.
+	 * This constructor is usually called when the list is created and filled by the user first. when
+	 * called by a hibernate load, the other overload with a map input is used instead.
 	 * 
 	 */
-	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref, List<BasicEMap.Entry<K, V>> list) {
+	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref,
+			List<BasicEMap.Entry<K, V>> list) {
 		super(eref.getEReferenceType(), owner, eref, list);
 	}
 
@@ -81,8 +83,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
-	 * the scenes, this happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind the
+	 * scenes, this happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {
@@ -124,7 +126,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 		// if we are not loaded yet, we return the size of the buffered lazy
 		// load delegate
 		if (!isMapValueIsEAttribute() && this.getORMMapDelegate() != null) {
-			if (!this.isORMMapDelegateLoaded() && (this.getORMMapDelegate() instanceof AbstractPersistentCollection)) {
+			if (!this.isORMMapDelegateLoaded()
+					&& (this.getORMMapDelegate() instanceof AbstractPersistentCollection)) {
 				if (cachedSize != null) {
 					return cachedSize.intValue();
 				}
@@ -137,8 +140,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 
 					// now that we have the session, we can query the size of
 					// the list without loading it
-					cachedSize =
-							((Long) s.createFilter(this.getORMMapDelegate(), "select count(*)").list().get(0));
+					cachedSize = ((Long) s.createFilter(this.getORMMapDelegate(), "select count(*)").list()
+							.get(0));
 					size = cachedSize.intValue();
 					return size;
 				} catch (Throwable t) {
@@ -163,14 +166,15 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 			return false;
 		}
 
-		return ((this.ormMapDelegate instanceof PersistentMap) && (((PersistentMap) ormMapDelegate).wasInitialized()));
+		return ((this.ormMapDelegate instanceof PersistentMap) && (((PersistentMap) ormMapDelegate)
+				.wasInitialized()));
 	}
 
 	/**
 	 * Do the actual load and wrapping. can be overridden
 	 */
 	@Override
-	@SuppressWarnings({"rawtypes","unchecked"})
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void doLoad() {
 		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;
@@ -186,9 +190,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 				{
 					// if the delegate is already loaded then no transaction is
 					// required
-					final boolean isDelegateLoaded =
-							delegate instanceof AbstractPersistentCollection &&
-									((AbstractPersistentCollection) delegate).wasInitialized();
+					final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
+							&& ((AbstractPersistentCollection) delegate).wasInitialized();
 					if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
 						if (log.isDebugEnabled()) {
 							log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
@@ -226,7 +229,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 					for (Object o : entrySet()) {
 						if (o instanceof EObject) {
 							((StoreResource) res).addToContentOrAttach((InternalEObject) o,
-								(EReference) getEStructuralFeature());
+									(EReference) getEStructuralFeature());
 						}
 					}
 				}

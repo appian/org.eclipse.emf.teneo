@@ -25,25 +25,24 @@ import org.w3._2000._09.xmldsig.SPKIDataType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>SPKI Data Type</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>SPKI Data Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl#getGroup <em>Group</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl#getSPKISexp <em>SPKI Sexp</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl#getAny <em>Any</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl#getGroup <em>Group</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl#getSPKISexp <em>SPKI Sexp</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 	/**
-	 * The cached value of the '{@link #getGroup() <em>Group</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getGroup() <em>Group</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGroup()
 	 * @generated
 	 * @ordered
@@ -51,8 +50,8 @@ public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 	protected FeatureMap group;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SPKIDataTypeImpl() {
@@ -60,8 +59,8 @@ public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,8 +69,8 @@ public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getGroup() {
@@ -82,8 +81,8 @@ public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<byte[]> getSPKISexp() {
@@ -91,120 +90,125 @@ public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getAny() {
-		return (FeatureMap)getGroup().<FeatureMap.Entry>list(XmldsigPackage.Literals.SPKI_DATA_TYPE__ANY);
+		return (FeatureMap) getGroup().<FeatureMap.Entry> list(
+				XmldsigPackage.Literals.SPKI_DATA_TYPE__ANY);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
-				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
-			case XmldsigPackage.SPKI_DATA_TYPE__ANY:
-				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
+			return ((InternalEList<?>) getGroup()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.SPKI_DATA_TYPE__ANY:
+			return ((InternalEList<?>) getAny()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
-				if (coreType) return getGroup();
-				return ((FeatureMap.Internal)getGroup()).getWrapper();
-			case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
-				return getSPKISexp();
-			case XmldsigPackage.SPKI_DATA_TYPE__ANY:
-				if (coreType) return getAny();
-				return ((FeatureMap.Internal)getAny()).getWrapper();
+		case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
+			if (coreType)
+				return getGroup();
+			return ((FeatureMap.Internal) getGroup()).getWrapper();
+		case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
+			return getSPKISexp();
+		case XmldsigPackage.SPKI_DATA_TYPE__ANY:
+			if (coreType)
+				return getAny();
+			return ((FeatureMap.Internal) getAny()).getWrapper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
-				((FeatureMap.Internal)getGroup()).set(newValue);
-				return;
-			case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
-				getSPKISexp().clear();
-				getSPKISexp().addAll((Collection<? extends byte[]>)newValue);
-				return;
-			case XmldsigPackage.SPKI_DATA_TYPE__ANY:
-				((FeatureMap.Internal)getAny()).set(newValue);
-				return;
+		case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
+			((FeatureMap.Internal) getGroup()).set(newValue);
+			return;
+		case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
+			getSPKISexp().clear();
+			getSPKISexp().addAll((Collection<? extends byte[]>) newValue);
+			return;
+		case XmldsigPackage.SPKI_DATA_TYPE__ANY:
+			((FeatureMap.Internal) getAny()).set(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
-				getGroup().clear();
-				return;
-			case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
-				getSPKISexp().clear();
-				return;
-			case XmldsigPackage.SPKI_DATA_TYPE__ANY:
-				getAny().clear();
-				return;
+		case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
+			getGroup().clear();
+			return;
+		case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
+			getSPKISexp().clear();
+			return;
+		case XmldsigPackage.SPKI_DATA_TYPE__ANY:
+			getAny().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
-				return group != null && !group.isEmpty();
-			case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
-				return !getSPKISexp().isEmpty();
-			case XmldsigPackage.SPKI_DATA_TYPE__ANY:
-				return !getAny().isEmpty();
+		case XmldsigPackage.SPKI_DATA_TYPE__GROUP:
+			return group != null && !group.isEmpty();
+		case XmldsigPackage.SPKI_DATA_TYPE__SPKI_SEXP:
+			return !getSPKISexp().isEmpty();
+		case XmldsigPackage.SPKI_DATA_TYPE__ANY:
+			return !getAny().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (group: ");
@@ -213,4 +217,4 @@ public class SPKIDataTypeImpl extends EObjectImpl implements SPKIDataType {
 		return result.toString();
 	}
 
-} //SPKIDataTypeImpl
+} // SPKIDataTypeImpl

@@ -19,23 +19,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Item</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Item</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link extlibrary.impl.ItemImpl#getPublicationDate <em>Publication Date</em>}</li>
+ * <li>{@link extlibrary.impl.ItemImpl#getPublicationDate <em>Publication Date</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class ItemImpl extends EObjectImpl implements Item {
 	/**
 	 * The default value of the '{@link #getPublicationDate() <em>Publication Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPublicationDate()
 	 * @generated
 	 * @ordered
@@ -44,8 +43,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item {
 
 	/**
 	 * The cached value of the '{@link #getPublicationDate() <em>Publication Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPublicationDate()
 	 * @generated
 	 * @ordered
@@ -53,8 +52,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item {
 	protected Date publicationDate = PUBLICATION_DATE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ItemImpl() {
@@ -62,8 +61,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -71,8 +70,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getPublicationDate() {
@@ -80,78 +79,81 @@ public abstract class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPublicationDate(Date newPublicationDate) {
 		Date oldPublicationDate = publicationDate;
 		publicationDate = newPublicationDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExtlibraryPackage.ITEM__PUBLICATION_DATE, oldPublicationDate, publicationDate));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ExtlibraryPackage.ITEM__PUBLICATION_DATE, oldPublicationDate, publicationDate));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
-				return getPublicationDate();
+		case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
+			return getPublicationDate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
-				setPublicationDate((Date)newValue);
-				return;
+		case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
+			setPublicationDate((Date) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
-				setPublicationDate(PUBLICATION_DATE_EDEFAULT);
-				return;
+		case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
+			setPublicationDate(PUBLICATION_DATE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
-				return PUBLICATION_DATE_EDEFAULT == null ? publicationDate != null : !PUBLICATION_DATE_EDEFAULT.equals(publicationDate);
+		case ExtlibraryPackage.ITEM__PUBLICATION_DATE:
+			return PUBLICATION_DATE_EDEFAULT == null ? publicationDate != null
+					: !PUBLICATION_DATE_EDEFAULT.equals(publicationDate);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (publicationDate: ");
@@ -160,4 +162,4 @@ public abstract class ItemImpl extends EObjectImpl implements Item {
 		return result.toString();
 	}
 
-} //ItemImpl
+} // ItemImpl

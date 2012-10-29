@@ -30,9 +30,7 @@ public class LibraryContainerFeatureIDFeatureIDAction extends LibraryAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(
-				PersistenceOptions.ECONTAINER_FEATURE_PERSISTENCE_STRATEGY,
-				"featureid");
+		props.setProperty(PersistenceOptions.ECONTAINER_FEATURE_PERSISTENCE_STRATEGY, "featureid");
 		return props;
 	}
 

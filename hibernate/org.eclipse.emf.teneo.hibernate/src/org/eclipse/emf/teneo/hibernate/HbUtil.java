@@ -78,13 +78,11 @@ public class HbUtil {
 		if (ePackageMetaAttribute == null) {
 			return null;
 		}
-		final EPackage epackage = PackageRegistryProvider.getInstance()
-				.getPackageRegistry()
+		final EPackage epackage = PackageRegistryProvider.getInstance().getPackageRegistry()
 				.getEPackage(ePackageMetaAttribute.getValue());
 		if (epackage == null) {
-			throw new IllegalArgumentException(
-					"Could not find ePackage using nsuri "
-							+ ePackageMetaAttribute.getValue());
+			throw new IllegalArgumentException("Could not find ePackage using nsuri "
+					+ ePackageMetaAttribute.getValue());
 		}
 		final MetaAttribute eClassMetaAttribute = component
 				.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META);
@@ -95,65 +93,52 @@ public class HbUtil {
 	}
 
 	/**
-	 * A merge method which does not use Session.merge but uses the EMF api to
-	 * travers object references and execute merge through the object tree. The
-	 * merge will traverse all EReferences. The maximum level it will traverse
-	 * is passed in as the maxMergeLevel parameters.
+	 * A merge method which does not use Session.merge but uses the EMF api to travers object
+	 * references and execute merge through the object tree. The merge will traverse all EReferences.
+	 * The maximum level it will traverse is passed in as the maxMergeLevel parameters.
 	 * 
 	 * @param session
-	 *            the hibernate session
+	 *          the hibernate session
 	 * @param eObject
-	 *            the eObject to merge
+	 *          the eObject to merge
 	 * @return the object read from the database with Merge support.
 	 */
-	public static EObject merge(Session session, EObject eObject,
-			int maxMergeLevel) {
+	public static EObject merge(Session session, EObject eObject, int maxMergeLevel) {
 		SessionImplementor sessionImplementor = (SessionImplementor) session;
-		return merge(sessionImplementor, eObject,
-				new HashMap<EObject, EObject>(), maxMergeLevel, 0);
+		return merge(sessionImplementor, eObject, new HashMap<EObject, EObject>(), maxMergeLevel, 0);
 	}
 
-	private static EObject merge(SessionImplementor sessionImplementor,
-			EObject eObject, Map<EObject, EObject> copyCache,
-			int maxMergeLevel, int currentMergeLevel) {
+	private static EObject merge(SessionImplementor sessionImplementor, EObject eObject,
+			Map<EObject, EObject> copyCache, int maxMergeLevel, int currentMergeLevel) {
 		if (copyCache.containsKey(eObject)) {
 			return copyCache.get(eObject);
 		}
 		final String entityName = sessionImplementor.guessEntityName(eObject);
-		final EntityPersister persister = sessionImplementor
-				.getEntityPersister(entityName, eObject);
-		final Serializable id = persister.getIdentifier(eObject,
-				sessionImplementor);
+		final EntityPersister persister = sessionImplementor.getEntityPersister(entityName, eObject);
+		final Serializable id = persister.getIdentifier(eObject, sessionImplementor);
 		if (id != null) {
-			final EObject source = (EObject) ((Session) sessionImplementor)
-					.get(entityName, id);
+			final EObject source = (EObject) ((Session) sessionImplementor).get(entityName, id);
 			copyCache.put(eObject, source);
 			if (maxMergeLevel == currentMergeLevel) {
 				return source;
 			}
 			// now copy the features
-			for (EStructuralFeature eFeature : source.eClass()
-					.getEAllStructuralFeatures()) {
+			for (EStructuralFeature eFeature : source.eClass().getEAllStructuralFeatures()) {
 				if (eFeature instanceof EAttribute) {
 					source.eSet(eFeature, eObject.eGet(eFeature));
 				} else if (eFeature.isMany()) {
 					final List<EObject> newValues = new ArrayList<EObject>();
 					@SuppressWarnings("unchecked")
-					final List<EObject> currentValues = (List<EObject>) eObject
-							.eGet(eFeature);
+					final List<EObject> currentValues = (List<EObject>) eObject.eGet(eFeature);
 					for (EObject currentValue : currentValues) {
-						newValues
-								.add(merge(sessionImplementor, currentValue,
-										copyCache, maxMergeLevel,
-										currentMergeLevel + 1));
+						newValues.add(merge(sessionImplementor, currentValue, copyCache, maxMergeLevel,
+								currentMergeLevel + 1));
 					}
 					source.eSet(eFeature, newValues);
 				} else {
 					source.eSet(
 							eFeature,
-							merge(sessionImplementor,
-									(EObject) eObject.eGet(eFeature),
-									copyCache, maxMergeLevel,
+							merge(sessionImplementor, (EObject) eObject.eGet(eFeature), copyCache, maxMergeLevel,
 									currentMergeLevel + 1));
 				}
 			}
@@ -165,8 +150,7 @@ public class HbUtil {
 
 	public static boolean isEAVMapped(PersistentClass mappedEntity) {
 		if (mappedEntity.getEntityName() != null
-				&& mappedEntity.getEntityName().equals(
-						Constants.EAV_EOBJECT_ENTITY_NAME)) {
+				&& mappedEntity.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			return true;
 		}
 		if (mappedEntity.getSuperclass() == null) {
@@ -178,17 +162,16 @@ public class HbUtil {
 	/** Encode the id of an eobject */
 	@SuppressWarnings("unchecked")
 	public static String idToString(EObject eobj, HbDataStore hd, Session session) {
-		final PersistentClass pc = hd.getPersistentClass(hd
-				.getEntityNameStrategy().toEntityName(eobj.eClass()));
+		final PersistentClass pc = hd.getPersistentClass(hd.getEntityNameStrategy().toEntityName(
+				eobj.eClass()));
 		if (pc == null) { // can happen with map entries
 			return null;
 		}
 		Object id;
 		if (eobj instanceof HibernateProxy) {
-			id = ((HibernateProxy) eobj).getHibernateLazyInitializer()
-					.getIdentifier();
+			id = ((HibernateProxy) eobj).getHibernateLazyInitializer().getIdentifier();
 		} else {
-			id = IdentifierUtil.getID(eobj, hd, (SessionImplementor)session);
+			id = IdentifierUtil.getID(eobj, hd, (SessionImplementor) session);
 		}
 		if (id == null) {
 			id = IdentifierCacheHandler.getInstance().getID(eobj);
@@ -209,8 +192,8 @@ public class HbUtil {
 	@SuppressWarnings("unchecked")
 	public static Object stringToId(EClass eclass, HbDataStore hd, String id) {
 		try {
-			final PersistentClass pc = hd.getPersistentClass(hd
-					.getEntityNameStrategy().toEntityName(eclass));
+			final PersistentClass pc = hd.getPersistentClass(hd.getEntityNameStrategy().toEntityName(
+					eclass));
 			final Type t = pc.getIdentifierProperty().getType();
 			if (t instanceof IdentifierType) {
 				return ((IdentifierType<Object>) t).stringToObject(id);
@@ -219,38 +202,33 @@ public class HbUtil {
 			}
 			return null;
 		} catch (Exception e) {
-			throw new HbStoreException("Exception while converting id: " + id
-					+ " of eclass " + eclass.getName());
+			throw new HbStoreException("Exception while converting id: " + id + " of eclass "
+					+ eclass.getName());
 		}
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */
-	public static PropertyAccessor getPropertyAccessor(Property mappedProperty,
-			HbDataStore ds, String entityName, EClass mappedEClass) {
-		if (mappedProperty
-				.getMetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR) != null) { // synthetic
+	public static PropertyAccessor getPropertyAccessor(Property mappedProperty, HbDataStore ds,
+			String entityName, EClass mappedEClass) {
+		if (mappedProperty.getMetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR) != null) { // synthetic
 			return new SyntheticPropertyHandler(mappedProperty.getName());
 		} else if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic
 			// ID
 			return new IdentifierPropertyHandler();
-		} else if (mappedProperty
-				.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
+		} else if (mappedProperty.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return ds.getHbContext().createVersionAccessor();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				"_identifierMapper") == 0) { // name
+		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) { // name
 			// is
 			// used
 			// by
 			// hb
 			return new EmbeddedPropertyAccessor(); // new
 			// DummyPropertyHandler();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbConstants.PROPERTY_ECONTAINER) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbConstants.PROPERTY_ECONTAINER) == 0) {
 			return ds.getHbContext().createEContainerAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				HbConstants.PROPERTY_ECONTAINER_FEATURE_NAME) == 0) {
-			return ds.getExtensionManager().getExtension(
-					NewEContainerFeatureIDPropertyHandler.class);
+			return ds.getExtensionManager().getExtension(NewEContainerFeatureIDPropertyHandler.class);
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				HbConstants.PROPERTY_ECONTAINER_FEATURE_ID) == 0) {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
@@ -266,19 +244,17 @@ public class HbUtil {
 				eClass = ERuntime.INSTANCE.getEClass(entityName);
 			}
 		}
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(
-				eClass, mappedProperty.getName());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass,
+				mappedProperty.getName());
 
 		if (efeature == null) {
-			throw new HbMapperException(
-					"Feature not found for eclass/entity/property "
-							+ eClass.getName() + "/" + entityName + "/"
-							+ mappedProperty.getName());
+			throw new HbMapperException("Feature not found for eclass/entity/property "
+					+ eClass.getName() + "/" + entityName + "/" + mappedProperty.getName());
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Creating property accessor for " + mappedProperty.getName()
-				+ "/" + entityName + "/" + efeature.getName());
+			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName
+					+ "/" + efeature.getName());
 		}
 
 		// check extra lazy
@@ -290,17 +266,14 @@ public class HbUtil {
 		} else if (efeature instanceof EReference) {
 			final EReference eref = (EReference) efeature;
 			if (eref.isMany()) {
-				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy,
+				return ds.getHbContext().createEListAccessor(efeature, extraLazy,
 						ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
-				PropertyAccessor erefPropertyHandler = ds.getHbContext()
-						.createEReferenceAccessor(eref);
+				PropertyAccessor erefPropertyHandler = ds.getHbContext().createEReferenceAccessor(eref);
 				if (erefPropertyHandler instanceof EReferencePropertyHandler) {
 					if (mappedProperty.getPersistentClass() != null) {
 						((EReferencePropertyHandler) erefPropertyHandler)
-								.setId(mappedProperty == mappedProperty
-										.getPersistentClass()
+								.setId(mappedProperty == mappedProperty.getPersistentClass()
 										.getIdentifierProperty());
 					}
 				}
@@ -309,25 +282,20 @@ public class HbUtil {
 		} else {
 			final EAttribute eattr = (EAttribute) efeature;
 			if (eattr.isMany()) {
-				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy,
+				return ds.getHbContext().createEListAccessor(efeature, extraLazy,
 						ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				// note also array types are going here!
-				final PropertyAccessor pa = ds.getHbContext()
-						.createEAttributeAccessor(eattr);
+				final PropertyAccessor pa = ds.getHbContext().createEAttributeAccessor(eattr);
 				// note this check is necessary because maybe somebody override
 				// HBContext.createEAttributeAccessor
 				// to not return a EAttributePropertyHandler
 				if (pa instanceof EAttributePropertyHandler) {
 					final EAttributePropertyHandler eAttributePropertyHandler = (EAttributePropertyHandler) pa;
-					eAttributePropertyHandler.setPersistenceOptions(ds
-							.getPersistenceOptions());
+					eAttributePropertyHandler.setPersistenceOptions(ds.getPersistenceOptions());
 					if (mappedProperty.getPersistentClass() != null) {
-						eAttributePropertyHandler
-								.setId(mappedProperty == mappedProperty
-										.getPersistentClass()
-										.getIdentifierProperty());
+						eAttributePropertyHandler.setId(mappedProperty == mappedProperty.getPersistentClass()
+								.getIdentifierProperty());
 					}
 				}
 				return pa;
@@ -337,8 +305,7 @@ public class HbUtil {
 
 	/** Returns the meta class uri, if not found then null is returned */
 	public static String getEClassNameFromFeatureMapMeta(PersistentClass pc) {
-		MetaAttribute ma = pc
-				.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
+		MetaAttribute ma = pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
 		if (ma == null) {
 			return null;
 		}
@@ -346,18 +313,16 @@ public class HbUtil {
 	}
 
 	/**
-	 * Returns the structural feature, handles the case of structural features
-	 * which are part of a feature map entry. public static EStructuralFeature
-	 * getFeature(PersistentClass pc, String propName, EPackage[] epacks) {
-	 * final MetaAttribute ma = pc.getMetaAttribute("eclass"); // TODO:
-	 * externalize final String eclassName; if (ma != null) { eclassName =
-	 * ma.getValue(); } else { eclassName = pc.getEntityName(); } return
-	 * StoreUtil.getEStructuralFeature(eclassName, propName, epacks); }
+	 * Returns the structural feature, handles the case of structural features which are part of a
+	 * feature map entry. public static EStructuralFeature getFeature(PersistentClass pc, String
+	 * propName, EPackage[] epacks) { final MetaAttribute ma = pc.getMetaAttribute("eclass"); // TODO:
+	 * externalize final String eclassName; if (ma != null) { eclassName = ma.getValue(); } else {
+	 * eclassName = pc.getEntityName(); } return StoreUtil.getEStructuralFeature(eclassName, propName,
+	 * epacks); }
 	 */
 
 	/**
-	 * Creates and registers an emf data store using a set of generic store
-	 * properties
+	 * Creates and registers an emf data store using a set of generic store properties
 	 */
 	public static HbDataStore getCreateDataStore(Properties props) {
 		final String name = props.getProperty(Constants.PROP_NAME);
@@ -368,16 +333,11 @@ public class HbUtil {
 
 		final Properties hbProps = new Properties();
 		hbProps.putAll(props);
-		hbProps.put(Environment.USER,
-				doTrim(props.getProperty(Constants.PROP_DB_USER)));
-		hbProps.put(Environment.PASS,
-				doTrim(props.getProperty(Constants.PROP_DB_PWD)));
-		hbProps.put(Environment.DRIVER,
-				doTrim(props.getProperty(Constants.PROP_DB_DRIVER)));
-		hbProps.put(Environment.URL,
-				doTrim(props.getProperty(Constants.PROP_DB_URL)));
-		hbProps.put(Environment.DIALECT,
-				doTrim(props.getProperty(Constants.PROP_DB_DIALECT)));
+		hbProps.put(Environment.USER, doTrim(props.getProperty(Constants.PROP_DB_USER)));
+		hbProps.put(Environment.PASS, doTrim(props.getProperty(Constants.PROP_DB_PWD)));
+		hbProps.put(Environment.DRIVER, doTrim(props.getProperty(Constants.PROP_DB_DRIVER)));
+		hbProps.put(Environment.URL, doTrim(props.getProperty(Constants.PROP_DB_URL)));
+		hbProps.put(Environment.DIALECT, doTrim(props.getProperty(Constants.PROP_DB_DIALECT)));
 
 		EPackage[] epacks = StoreUtil.getEPackages(doTrim(props
 				.getProperty(Constants.PROP_EPACKAGE_NSURI)));

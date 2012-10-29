@@ -38,7 +38,7 @@ public class HibernateTestStoreFactory extends AbstractTestStoreFactory {
 	protected TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages,
 			String mappingFileLocation, Properties props, InheritanceType inheritanceType, boolean ejb3,
 			ExtensionManager extensionManager) {
-		return new HibernateTestStore((HibernateTestDBAdapter) adapter, epackages, props, inheritanceType, ejb3,
-			extensionManager);
+		return new HibernateTestStore((HibernateTestDBAdapter) adapter, epackages, props,
+				inheritanceType, ejb3, extensionManager);
 	}
 }

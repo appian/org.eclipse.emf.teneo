@@ -61,8 +61,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Creates a supplier, a product, relates then, saves them in a resource and retrieves them
-	 * again. and does sme
+	 * Creates a supplier, a product, relates then, saves them in a resource and retrieves them again.
+	 * and does sme
 	 */
 	Resource resource;
 
@@ -107,8 +107,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 				resource = store.getResource();
 				resource.load(null);
 
-				assertTrue("There should be two top objects in the resource but there are " +
-						resource.getContents().size(), resource.getContents().size() == 2);
+				assertTrue("There should be two top objects in the resource but there are "
+						+ resource.getContents().size(), resource.getContents().size() == 2);
 
 				// get the supplier
 				SupplierType supplier = null;
@@ -233,10 +233,11 @@ public class CatalogResourceAction extends AbstractTestAction {
 				while (it.hasNext()) {
 					final Object obj = it.next();
 
-					assertTrue("Only top classes should be returned", obj instanceof ProductType ||
-							obj instanceof SupplierType || obj instanceof CatalogType);
+					assertTrue("Only top classes should be returned", obj instanceof ProductType
+							|| obj instanceof SupplierType || obj instanceof CatalogType);
 
-					if (obj instanceof CatalogType && ((CatalogType) obj).getName().compareTo("MainCatalog") == 0) {
+					if (obj instanceof CatalogType
+							&& ((CatalogType) obj).getName().compareTo("MainCatalog") == 0) {
 						assertTrue("There should only be one MainCatalog", cat == null);
 						cat = (CatalogType) obj;
 					}
@@ -366,7 +367,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 			// check if the update of the price was passed on
 			{
 				store.beginTransaction();
-				ProductType result = (ProductType) store.query(ProductType.class, "code", "product1", 1).get(0);
+				ProductType result = (ProductType) store.query(ProductType.class, "code", "product1", 1)
+						.get(0);
 				assertTrue(result != null);
 				assertEquals(169.96, result.getPrice().getPrice(), 0.01);
 				store.commitTransaction();

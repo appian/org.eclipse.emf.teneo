@@ -19,11 +19,11 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Hb Annotation</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Hb Annotation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class HbAnnotationImpl extends PAnnotationImpl implements HbAnnotation {
@@ -40,6 +40,7 @@ public abstract class HbAnnotationImpl extends PAnnotationImpl implements HbAnno
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected HbAnnotationImpl() {
@@ -48,6 +49,7 @@ public abstract class HbAnnotationImpl extends PAnnotationImpl implements HbAnno
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

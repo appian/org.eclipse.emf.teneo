@@ -66,7 +66,8 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 	}
 
 	/** Constructor */
-	public MapPersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, EStructuralFeature feature) {
+	public MapPersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner,
+			EStructuralFeature feature) {
 		// invoke constructor with no lazyLoadMapDelegate
 		this(entryEClass, owner, feature, (java.util.Map<K, V>) null);
 	}
@@ -80,8 +81,8 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 	 * @param owner
 	 * @param featureID
 	 * @param lazyLoadDelegate
-	 *            a java.util.map that is a proxy collection taht will be used when lazy load is
-	 *            invoked. if it is null, then the map is considered as loaded
+	 *          a java.util.map that is a proxy collection taht will be used when lazy load is
+	 *          invoked. if it is null, then the map is considered as loaded
 	 */
 	public MapPersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
 			Map<K, V> ormMapDelegate) {
@@ -114,8 +115,8 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 	 * @param owner
 	 * @param featureID
 	 * @param ormMapDelegate
-	 *            a java.util.map that is a proxy collection taht will be used when lazy load is
-	 *            invoked. if it is null, then the map is considered as loaded
+	 *          a java.util.map that is a proxy collection taht will be used when lazy load is
+	 *          invoked. if it is null, then the map is considered as loaded
 	 */
 	public MapPersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> list) {
@@ -143,8 +144,8 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 
 	/** Needs to be implemented by concrete subclass, does nothing here */
 	@Override
-	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner, EStructuralFeature feature,
-			List<BasicEMap.Entry<K, V>> delegateORMList) {
+	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner,
+			EStructuralFeature feature, List<BasicEMap.Entry<K, V>> delegateORMList) {
 		throw new UnsupportedOperationException("This method should not be called!");
 	}
 

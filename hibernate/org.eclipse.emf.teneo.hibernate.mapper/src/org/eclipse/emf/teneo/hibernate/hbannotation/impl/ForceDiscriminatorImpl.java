@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Force Discriminator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Force Discriminator</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class ForceDiscriminatorImpl extends HbAnnotationImpl implements ForceDiscriminator {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ForceDiscriminatorImpl() {
@@ -30,8 +29,8 @@ public class ForceDiscriminatorImpl extends HbAnnotationImpl implements ForceDis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class ForceDiscriminatorImpl extends HbAnnotationImpl implements ForceDis
 		return HbannotationPackage.Literals.FORCE_DISCRIMINATOR;
 	}
 
-} //ForceDiscriminatorImpl
+} // ForceDiscriminatorImpl

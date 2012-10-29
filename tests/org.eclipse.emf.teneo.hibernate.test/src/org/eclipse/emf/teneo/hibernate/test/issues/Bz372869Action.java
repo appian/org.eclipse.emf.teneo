@@ -32,7 +32,7 @@ public class Bz372869Action extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		EModelResolver.instance().register(new EPackage[]{ProductPackage.eINSTANCE});
+		EModelResolver.instance().register(new EPackage[] { ProductPackage.eINSTANCE });
 		Assert.assertTrue(EModelResolver.instance().isRegistered(ProductPackage.eINSTANCE));
 		Assert.assertTrue(EModelResolver.instance().isRegistered(LibraryPackage.eINSTANCE));
 		Assert.assertTrue(EModelResolver.instance().isRegistered(RentalPackage.eINSTANCE));
@@ -40,8 +40,9 @@ public class Bz372869Action extends AbstractTestAction {
 		Assert.assertTrue(ERuntime.instance().isRegistered(RentalPackage.eINSTANCE));
 		Assert.assertNotNull(ERuntime.instance().getJavaClass(LibraryPackage.eINSTANCE.getBook()));
 		Assert.assertNotNull(ERuntime.instance().getJavaClass(RentalPackage.eINSTANCE.getCurrency()));
-		Assert.assertNotNull(ERuntime.instance().getJavaClass(ProductPackage.eINSTANCE.getProductType()));
-		((HbDataStore)store.getDataStore()).close();
+		Assert.assertNotNull(ERuntime.instance()
+				.getJavaClass(ProductPackage.eINSTANCE.getProductType()));
+		((HbDataStore) store.getDataStore()).close();
 		Assert.assertTrue(EModelResolver.instance().isRegistered(ProductPackage.eINSTANCE));
 		Assert.assertFalse(EModelResolver.instance().isRegistered(LibraryPackage.eINSTANCE));
 		Assert.assertFalse(EModelResolver.instance().isRegistered(RentalPackage.eINSTANCE));
@@ -49,6 +50,7 @@ public class Bz372869Action extends AbstractTestAction {
 		Assert.assertFalse(ERuntime.instance().isRegistered(RentalPackage.eINSTANCE));
 		Assert.assertNull(ERuntime.instance().getJavaClass(LibraryPackage.eINSTANCE.getBook()));
 		Assert.assertNull(ERuntime.instance().getJavaClass(RentalPackage.eINSTANCE.getCurrency()));
-		Assert.assertNotNull(ERuntime.instance().getJavaClass(ProductPackage.eINSTANCE.getProductType()));
+		Assert.assertNotNull(ERuntime.instance()
+				.getJavaClass(ProductPackage.eINSTANCE.getProductType()));
 	}
 }

@@ -59,7 +59,8 @@ class ArrayValueNode extends NamedParserNode {
 				final ArrayValueNode avn = (ArrayValueNode) ob;
 				result.addAll((List<Object>) avn.convert(ecr));
 			} else {
-				throw new AnnotationParserException("Type " + ob.getClass().getName() + " not supported here");
+				throw new AnnotationParserException("Type " + ob.getClass().getName()
+						+ " not supported here");
 			}
 		}
 		return result;

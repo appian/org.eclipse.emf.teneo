@@ -42,24 +42,24 @@ public class StorePlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 
-// See bugzilla 207170
-//		
-// Properties props = new Properties();
-// try
-// {
-// props.load(StorePlugin.class.getResourceAsStream("log4j.properties"));
-// }
-// catch (IOException e)
-// {
-// throw new StoreEclipseException("Exception when reading log4j props", e);
-// }
-//		
-// // place the log file in the allowed location
-// final File file = getStateLocation().makeAbsolute().toFile();
-// props.setProperty("log4j.appender.A1.File", file.getAbsolutePath() +
-// File.separator + props.getProperty("log4j.appender.A1.File"));
-//		
-// PropertyConfigurator.configure(props);
+		// See bugzilla 207170
+		//
+		// Properties props = new Properties();
+		// try
+		// {
+		// props.load(StorePlugin.class.getResourceAsStream("log4j.properties"));
+		// }
+		// catch (IOException e)
+		// {
+		// throw new StoreEclipseException("Exception when reading log4j props", e);
+		// }
+		//
+		// // place the log file in the allowed location
+		// final File file = getStateLocation().makeAbsolute().toFile();
+		// props.setProperty("log4j.appender.A1.File", file.getAbsolutePath() +
+		// File.separator + props.getProperty("log4j.appender.A1.File"));
+		//
+		// PropertyConfigurator.configure(props);
 	}
 
 	/**
@@ -82,10 +82,11 @@ public class StorePlugin extends AbstractUIPlugin {
 	 * Returns an image descriptor for the image file at the given plug-in relative path.
 	 * 
 	 * @param path
-	 *            the path
+	 *          the path
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
-		return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.emf.teneo.hibernate.eclipse", path);
+		return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.emf.teneo.hibernate.eclipse",
+				path);
 	}
 }

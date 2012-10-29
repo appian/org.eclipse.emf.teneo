@@ -37,26 +37,27 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resource Role</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Resource Role</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getResourceRef <em>Resource Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getResourceParameterBindings <em>Resource Parameter Bindings</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getResourceAssignmentExpression <em>Resource Assignment Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getResourceRef <em>Resource Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getResourceParameterBindings <em>Resource
+ * Parameter Bindings</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getResourceAssignmentExpression <em>Resource
+ * Assignment Expression</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceRoleImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	/**
-	 * The cached value of the '{@link #getResourceRef() <em>Resource Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResourceRef() <em>Resource Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResourceRef()
 	 * @generated
 	 * @ordered
@@ -64,9 +65,10 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	protected Resource resourceRef;
 
 	/**
-	 * The cached value of the '{@link #getResourceParameterBindings() <em>Resource Parameter Bindings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResourceParameterBindings()
+	 * <em>Resource Parameter Bindings</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getResourceParameterBindings()
 	 * @generated
 	 * @ordered
@@ -74,9 +76,10 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	protected EList<ResourceParameterBinding> resourceParameterBindings;
 
 	/**
-	 * The cached value of the '{@link #getResourceAssignmentExpression() <em>Resource Assignment Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResourceAssignmentExpression()
+	 * <em>Resource Assignment Expression</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getResourceAssignmentExpression()
 	 * @generated
 	 * @ordered
@@ -84,9 +87,9 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	protected ResourceAssignmentExpression resourceAssignmentExpression;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -94,9 +97,9 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -104,8 +107,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResourceRoleImpl() {
@@ -113,8 +116,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -123,8 +126,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resource getResourceRef() {
@@ -134,16 +137,15 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 			if (resourceRef != oldResourceRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.RESOURCE_ROLE__RESOURCE_REF,
-							oldResourceRef, resourceRef));
+							Bpmn2Package.RESOURCE_ROLE__RESOURCE_REF, oldResourceRef, resourceRef));
 			}
 		}
 		return resourceRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resource basicGetResourceRef() {
@@ -151,8 +153,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResourceRef(Resource newResourceRef) {
@@ -160,13 +162,12 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 		resourceRef = newResourceRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_ROLE__RESOURCE_REF, oldResourceRef,
-					resourceRef));
+					Bpmn2Package.RESOURCE_ROLE__RESOURCE_REF, oldResourceRef, resourceRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ResourceParameterBinding> getResourceParameterBindings() {
@@ -179,8 +180,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceAssignmentExpression getResourceAssignmentExpression() {
@@ -188,21 +189,18 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetResourceAssignmentExpression(
-			ResourceAssignmentExpression newResourceAssignmentExpression,
-			NotificationChain msgs) {
+			ResourceAssignmentExpression newResourceAssignmentExpression, NotificationChain msgs) {
 		ResourceAssignmentExpression oldResourceAssignmentExpression = resourceAssignmentExpression;
 		resourceAssignmentExpression = newResourceAssignmentExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 					Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION,
-					oldResourceAssignmentExpression,
-					newResourceAssignmentExpression);
+					oldResourceAssignmentExpression, newResourceAssignmentExpression);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -212,8 +210,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResourceAssignmentExpression(
@@ -221,33 +219,25 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 		if (newResourceAssignmentExpression != resourceAssignmentExpression) {
 			NotificationChain msgs = null;
 			if (resourceAssignmentExpression != null)
-				msgs = ((InternalEObject) resourceAssignmentExpression)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION,
-								null, msgs);
+				msgs = ((InternalEObject) resourceAssignmentExpression).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION,
+						null, msgs);
 			if (newResourceAssignmentExpression != null)
-				msgs = ((InternalEObject) newResourceAssignmentExpression)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION,
-								null, msgs);
-			msgs = basicSetResourceAssignmentExpression(
-					newResourceAssignmentExpression, msgs);
+				msgs = ((InternalEObject) newResourceAssignmentExpression).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION,
+						null, msgs);
+			msgs = basicSetResourceAssignmentExpression(newResourceAssignmentExpression, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION,
-					newResourceAssignmentExpression,
-					newResourceAssignmentExpression));
+					newResourceAssignmentExpression, newResourceAssignmentExpression));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -255,30 +245,29 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_ROLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RESOURCE_ROLE__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.RESOURCE_ROLE__RESOURCE_PARAMETER_BINDINGS:
-			return ((InternalEList<?>) getResourceParameterBindings())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getResourceParameterBindings()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION:
 			return basicSetResourceAssignmentExpression(null, msgs);
 		}
@@ -286,8 +275,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -308,8 +297,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -335,8 +324,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -359,8 +348,8 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -369,20 +358,18 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 		case Bpmn2Package.RESOURCE_ROLE__RESOURCE_REF:
 			return resourceRef != null;
 		case Bpmn2Package.RESOURCE_ROLE__RESOURCE_PARAMETER_BINDINGS:
-			return resourceParameterBindings != null
-					&& !resourceParameterBindings.isEmpty();
+			return resourceParameterBindings != null && !resourceParameterBindings.isEmpty();
 		case Bpmn2Package.RESOURCE_ROLE__RESOURCE_ASSIGNMENT_EXPRESSION:
 			return resourceAssignmentExpression != null;
 		case Bpmn2Package.RESOURCE_ROLE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -397,4 +384,4 @@ public class ResourceRoleImpl extends BaseElementImpl implements ResourceRole {
 		return result.toString();
 	}
 
-} //ResourceRoleImpl
+} // ResourceRoleImpl

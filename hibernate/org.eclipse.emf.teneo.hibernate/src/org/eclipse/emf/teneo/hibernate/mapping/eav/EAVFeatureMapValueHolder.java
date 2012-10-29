@@ -56,7 +56,8 @@ public class EAVFeatureMapValueHolder extends EAVMultiValueHolder {
 	public Object get(InternalEObject owner) {
 		final EAVDelegatingFeatureMap featureMap = new EAVDelegatingFeatureMap((InternalEObject) owner,
 				getEStructuralFeature());
-		// final DelegatingLateLoadingList.FeatureMapList objValues = new DelegatingLateLoadingList.FeatureMapList();
+		// final DelegatingLateLoadingList.FeatureMapList objValues = new
+		// DelegatingLateLoadingList.FeatureMapList();
 		// objValues.setOwner(owner);
 		// objValues.setPersistentList(values);
 		featureMap.setPersistentList(values);

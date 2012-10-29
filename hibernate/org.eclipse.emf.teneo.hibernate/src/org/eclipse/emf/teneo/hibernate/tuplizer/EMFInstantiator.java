@@ -57,14 +57,14 @@ public class EMFInstantiator implements Instantiator {
 
 	/** The mapped class */
 	private final Class<?> mappedClass;
-	
+
 	private boolean isDynamicEObject = false;
 
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, PersistentClass pc) {
 		if (log.isDebugEnabled()) {
-			log.debug("Creating eobject instantiator for " + pc.getEntityName()
-				+ " and eclass " + eclass.getName());
+			log.debug("Creating eobject instantiator for " + pc.getEntityName() + " and eclass "
+					+ eclass.getName());
 		}
 		proxyInterface = pc.getProxyInterface();
 		this.eclass = eclass;
@@ -74,8 +74,7 @@ public class EMFInstantiator implements Instantiator {
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, Component component) {
 		if (log.isDebugEnabled()) {
-			log.debug("Creating eobject instantiator for component eclass "
-				+ eclass.getName());
+			log.debug("Creating eobject instantiator for component eclass " + eclass.getName());
 		}
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
@@ -95,16 +94,13 @@ public class EMFInstantiator implements Instantiator {
 			}
 		}
 
-		final PersistentStoreAdapter adapter = StoreUtil
-				.getPersistentStoreAdapter(eobject);
+		final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter(eobject);
 		adapter.setTargetCreatedByORM(true);
 
 		if (eobject == null) {
-			throw new HbMapperException(
-					"The mapped "
-							+ mappedClass.getName()
-							+ " class can not be instantiated."
-							+ " Possibly the class it is not an eclass or it is abstract.");
+			throw new HbMapperException("The mapped " + mappedClass.getName()
+					+ " class can not be instantiated."
+					+ " Possibly the class it is not an eclass or it is abstract.");
 		}
 		return eobject;
 	}

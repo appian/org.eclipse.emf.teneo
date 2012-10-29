@@ -28,26 +28,27 @@ import org.example.mindmap.Map;
 import org.example.mindmap.MindmapPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Document Root</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Document Root</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.example.mindmap.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.example.mindmap.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link org.example.mindmap.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link org.example.mindmap.impl.DocumentRootImpl#getMap <em>Map</em>}</li>
+ * <li>{@link org.example.mindmap.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
+ * <li>{@link org.example.mindmap.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}
+ * </li>
+ * <li>{@link org.example.mindmap.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location
+ * </em>}</li>
+ * <li>{@link org.example.mindmap.impl.DocumentRootImpl#getMap <em>Map</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -55,9 +56,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected FeatureMap mixed = null;
 
 	/**
-	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getXMLNSPrefixMap()
 	 * @generated
 	 * @ordered
@@ -66,8 +67,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getXSISchemaLocation()
 	 * @generated
 	 * @ordered
@@ -75,8 +76,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected EMap xSISchemaLocation = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DocumentRootImpl() {
@@ -84,8 +85,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -93,8 +94,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -105,169 +106,180 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EMap getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
-			xMLNSPrefixMap = new EcoreEMap(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+			xMLNSPrefixMap = new EcoreEMap(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
+					EStringToStringMapEntryImpl.class, this, MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EMap getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
-			xSISchemaLocation = new EcoreEMap(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+			xSISchemaLocation = new EcoreEMap(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
+					EStringToStringMapEntryImpl.class, this,
+					MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Map getMap() {
-		return (Map)getMixed().get(MindmapPackage.Literals.DOCUMENT_ROOT__MAP, true);
+		return (Map) getMixed().get(MindmapPackage.Literals.DOCUMENT_ROOT__MAP, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMap(Map newMap, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(MindmapPackage.Literals.DOCUMENT_ROOT__MAP, newMap, msgs);
+		return ((FeatureMap.Internal) getMixed()).basicAdd(MindmapPackage.Literals.DOCUMENT_ROOT__MAP,
+				newMap, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMap(Map newMap) {
-		((FeatureMap.Internal)getMixed()).set(MindmapPackage.Literals.DOCUMENT_ROOT__MAP, newMap);
+		((FeatureMap.Internal) getMixed()).set(MindmapPackage.Literals.DOCUMENT_ROOT__MAP, newMap);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case MindmapPackage.DOCUMENT_ROOT__MIXED:
-				return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-			case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				return ((InternalEList)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
-			case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				return ((InternalEList)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
-			case MindmapPackage.DOCUMENT_ROOT__MAP:
-				return basicSetMap(null, msgs);
+		case MindmapPackage.DOCUMENT_ROOT__MIXED:
+			return ((InternalEList) getMixed()).basicRemove(otherEnd, msgs);
+		case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			return ((InternalEList) getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
+		case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			return ((InternalEList) getXSISchemaLocation()).basicRemove(otherEnd, msgs);
+		case MindmapPackage.DOCUMENT_ROOT__MAP:
+			return basicSetMap(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MindmapPackage.DOCUMENT_ROOT__MIXED:
-				if (coreType) return getMixed();
-				return ((FeatureMap.Internal)getMixed()).getWrapper();
-			case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				if (coreType) return getXMLNSPrefixMap();
-				else return getXMLNSPrefixMap().map();
-			case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				if (coreType) return getXSISchemaLocation();
-				else return getXSISchemaLocation().map();
-			case MindmapPackage.DOCUMENT_ROOT__MAP:
-				return getMap();
+		case MindmapPackage.DOCUMENT_ROOT__MIXED:
+			if (coreType)
+				return getMixed();
+			return ((FeatureMap.Internal) getMixed()).getWrapper();
+		case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			if (coreType)
+				return getXMLNSPrefixMap();
+			else
+				return getXMLNSPrefixMap().map();
+		case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			if (coreType)
+				return getXSISchemaLocation();
+			else
+				return getXSISchemaLocation().map();
+		case MindmapPackage.DOCUMENT_ROOT__MAP:
+			return getMap();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MindmapPackage.DOCUMENT_ROOT__MIXED:
-				((FeatureMap.Internal)getMixed()).set(newValue);
-				return;
-			case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
-				return;
-			case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
-				return;
-			case MindmapPackage.DOCUMENT_ROOT__MAP:
-				setMap((Map)newValue);
-				return;
+		case MindmapPackage.DOCUMENT_ROOT__MIXED:
+			((FeatureMap.Internal) getMixed()).set(newValue);
+			return;
+		case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			((EStructuralFeature.Setting) getXMLNSPrefixMap()).set(newValue);
+			return;
+		case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			((EStructuralFeature.Setting) getXSISchemaLocation()).set(newValue);
+			return;
+		case MindmapPackage.DOCUMENT_ROOT__MAP:
+			setMap((Map) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MindmapPackage.DOCUMENT_ROOT__MIXED:
-				getMixed().clear();
-				return;
-			case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				getXMLNSPrefixMap().clear();
-				return;
-			case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				getXSISchemaLocation().clear();
-				return;
-			case MindmapPackage.DOCUMENT_ROOT__MAP:
-				setMap((Map)null);
-				return;
+		case MindmapPackage.DOCUMENT_ROOT__MIXED:
+			getMixed().clear();
+			return;
+		case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			getXMLNSPrefixMap().clear();
+			return;
+		case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			getXSISchemaLocation().clear();
+			return;
+		case MindmapPackage.DOCUMENT_ROOT__MAP:
+			setMap((Map) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MindmapPackage.DOCUMENT_ROOT__MIXED:
-				return mixed != null && !mixed.isEmpty();
-			case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				return xMLNSPrefixMap != null && !xMLNSPrefixMap.isEmpty();
-			case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
-			case MindmapPackage.DOCUMENT_ROOT__MAP:
-				return getMap() != null;
+		case MindmapPackage.DOCUMENT_ROOT__MIXED:
+			return mixed != null && !mixed.isEmpty();
+		case MindmapPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			return xMLNSPrefixMap != null && !xMLNSPrefixMap.isEmpty();
+		case MindmapPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
+		case MindmapPackage.DOCUMENT_ROOT__MAP:
+			return getMap() != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mixed: ");
@@ -276,4 +288,4 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 		return result.toString();
 	}
 
-} //DocumentRootImpl
+} // DocumentRootImpl

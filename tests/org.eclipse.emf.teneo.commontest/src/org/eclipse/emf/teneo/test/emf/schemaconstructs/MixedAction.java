@@ -37,17 +37,18 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests for the mixed construction.  
+ * Tests for the mixed construction.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ 
-*/
+ * @version $Revision: 1.7 $
+ */
 public class MixedAction extends AbstractTestAction {
 	/** Two days in millis to work around an issue in emf xml calendar */
 	private static long TWO_DAYS = 1000 * 60 * 60 * 24 * 2;
 
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public MixedAction() {
@@ -86,7 +87,7 @@ public class MixedAction extends AbstractTestAction {
 				cal.set(Calendar.DAY_OF_MONTH, i + 1);
 				letter.setShipDate(store.getDate(cal.getTime())); // 8
 				letter.getMixed().add(Constants.COMMENT,
-					i + "Comment: please ensure that the product is delivered on time."); // 9
+						i + "Comment: please ensure that the product is delivered on time."); // 9
 				letter.getMixed().add(Constants.CDATA, i + "CDATA test"); // 10
 
 				store.store(letter);
@@ -119,34 +120,36 @@ public class MixedAction extends AbstractTestAction {
 					final FeatureMap.Entry salEntry = getEntry(list, 1);
 					assertTrue(salEntry.getValue() instanceof SalutationType);
 					assertTrue(salEntry.getEStructuralFeature() == MixedPackage.eINSTANCE
-						.getLetterBodyType_Salutation());
+							.getLetterBodyType_Salutation());
 					SalutationType sal = (SalutationType) salEntry.getValue();
 
 					checkEntry(docIndex, sal.getMixed(), 0, Constants.TEXT, "Dear mr.", null);
-					checkEntry(docIndex, sal.getMixed(), 1, MixedPackage.eINSTANCE.getSalutationType_Name(), " Taal",
-						sal.getName());
+					checkEntry(docIndex, sal.getMixed(), 1, MixedPackage.eINSTANCE.getSalutationType_Name(),
+							" Taal", sal.getName());
 					checkEntry(docIndex, sal.getMixed(), 2, Constants.TEXT, ",", null);
 				}
 
 				// 1 salutation
-				checkEntry(docIndex, list, 2, Constants.TEXT, "Please order the following product for me", null);
-				checkEntry(docIndex, list, 3, MixedPackage.eINSTANCE.getLetterBodyType_ProductName(), "bicycle", letter
-					.getProductName());
+				checkEntry(docIndex, list, 2, Constants.TEXT, "Please order the following product for me",
+						null);
+				checkEntry(docIndex, list, 3, MixedPackage.eINSTANCE.getLetterBodyType_ProductName(),
+						"bicycle", letter.getProductName());
 				checkEntry(docIndex, list, 4, Constants.TEXT, "Description: Bicycle", null);
 				checkEntry(docIndex, list, 5, Constants.COMMENT, "With two wheels!", null);
 
 				// 6 biginteger
 				assertTrue("Error in retrieving integer field",
-					((BigInteger) getEntry(list, 6).getValue()).intValue() == docIndex);
+						((BigInteger) getEntry(list, 6).getValue()).intValue() == docIndex);
 
 				checkEntry(docIndex, list, 7, Constants.TEXT, "Unit: pieces", null);
 
 				// 8 Date
 				{
 					final FeatureMap.Entry dateEntry = getEntry(list, 8);
-					assertTrue(dateEntry.getValue() instanceof XMLGregorianCalendar ||
-							dateEntry.getValue() instanceof Date);
-					assertTrue(dateEntry.getEStructuralFeature() == MixedPackage.eINSTANCE.getLetterBodyType_ShipDate());
+					assertTrue(dateEntry.getValue() instanceof XMLGregorianCalendar
+							|| dateEntry.getValue() instanceof Date);
+					assertTrue(dateEntry.getEStructuralFeature() == MixedPackage.eINSTANCE
+							.getLetterBodyType_ShipDate());
 
 					final Date date;
 					if (dateEntry.getValue() instanceof XMLGregorianCalendar) {
@@ -162,13 +165,13 @@ public class MixedAction extends AbstractTestAction {
 					// therefor the following checks are disabled
 					/*
 					 * assertEquals(date.getDate(), cal.get(Calendar.DAY_OF_MONTH));
-					 * assertEquals(date.getMonth(), cal.get(Calendar.MONTH));
-					 * assertEquals((date.getYear() + 1900), cal.get(Calendar.YEAR));
+					 * assertEquals(date.getMonth(), cal.get(Calendar.MONTH)); assertEquals((date.getYear() +
+					 * 1900), cal.get(Calendar.YEAR));
 					 */
 				}
 
 				checkEntry(docIndex, list, 9, Constants.COMMENT,
-					"Comment: please ensure that the product is delivered on time.", null);
+						"Comment: please ensure that the product is delivered on time.", null);
 				checkEntry(docIndex, list, 10, Constants.CDATA, "CDATA test", null);
 			}
 
@@ -186,21 +189,25 @@ public class MixedAction extends AbstractTestAction {
 	}
 
 	/** Checks a certain entry */
-	private void checkEntry(int docIndex, EList list, int index, EStructuralFeature feature, Object value, String val2) {
+	private void checkEntry(int docIndex, EList list, int index, EStructuralFeature feature,
+			Object value, String val2) {
 		checkEntry(docIndex, getEntry(list, index), feature, value, val2);
 	}
 
 	/** Checks a certain entry */
-	private void checkEntry(int docIndex, FeatureMap.Entry entry, EStructuralFeature feature, Object value, String val2) {
-		assertTrue("Error, expected/found feature: " + feature.getName() + "/" +
-				entry.getEStructuralFeature().getName(), entry.getEStructuralFeature() == feature);
+	private void checkEntry(int docIndex, FeatureMap.Entry entry, EStructuralFeature feature,
+			Object value, String val2) {
+		assertTrue("Error, expected/found feature: " + feature.getName() + "/"
+				+ entry.getEStructuralFeature().getName(), entry.getEStructuralFeature() == feature);
 		assertTrue("Expected String, got: " + value.getClass().getName(), value instanceof String);
 		final String entryVal = (String) entry.getValue();
 		final String expVal = docIndex + (String) value;
-		assertTrue("Error, expected/found value: " + expVal + "/" + entryVal, entryVal.compareTo(expVal) == 0);
+		assertTrue("Error, expected/found value: " + expVal + "/" + entryVal,
+				entryVal.compareTo(expVal) == 0);
 		if (val2 != null) // extra check
 		{
-			assertTrue("Error, expected/found value: " + val2 + "/" + entryVal, entryVal.compareTo(val2) == 0);
+			assertTrue("Error, expected/found value: " + val2 + "/" + entryVal,
+					entryVal.compareTo(val2) == 0);
 		}
 	}
 }

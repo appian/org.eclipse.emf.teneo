@@ -16,15 +16,16 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Inheritance</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Inheritance</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.InheritanceImpl#getStrategy <em>Strategy</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.InheritanceImpl#getStrategy <em>
+ * Strategy</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class InheritanceImpl extends PAnnotationImpl implements Inheritance {
@@ -50,6 +51,7 @@ public class InheritanceImpl extends PAnnotationImpl implements Inheritance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected InheritanceImpl() {
@@ -58,6 +60,7 @@ public class InheritanceImpl extends PAnnotationImpl implements Inheritance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,6 +70,7 @@ public class InheritanceImpl extends PAnnotationImpl implements Inheritance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InheritanceType getStrategy() {
@@ -75,76 +79,84 @@ public class InheritanceImpl extends PAnnotationImpl implements Inheritance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStrategy(InheritanceType newStrategy) {
 		InheritanceType oldStrategy = strategy;
 		strategy = newStrategy == null ? STRATEGY_EDEFAULT : newStrategy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.INHERITANCE__STRATEGY, oldStrategy, strategy));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.INHERITANCE__STRATEGY, oldStrategy, strategy));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.INHERITANCE__STRATEGY:
-				return getStrategy();
+		case PannotationPackage.INHERITANCE__STRATEGY:
+			return getStrategy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.INHERITANCE__STRATEGY:
-				setStrategy((InheritanceType)newValue);
-				return;
+		case PannotationPackage.INHERITANCE__STRATEGY:
+			setStrategy((InheritanceType) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.INHERITANCE__STRATEGY:
-				setStrategy(STRATEGY_EDEFAULT);
-				return;
+		case PannotationPackage.INHERITANCE__STRATEGY:
+			setStrategy(STRATEGY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.INHERITANCE__STRATEGY:
-				return strategy != STRATEGY_EDEFAULT;
+		case PannotationPackage.INHERITANCE__STRATEGY:
+			return strategy != STRATEGY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (strategy: ");

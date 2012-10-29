@@ -6,7 +6,6 @@
  */
 package org.eclipse.example.library.impl;
 
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -21,25 +20,24 @@ import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Book</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Book</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.example.library.impl.BookImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link org.eclipse.example.library.impl.BookImpl#getPages <em>Pages</em>}</li>
- *   <li>{@link org.eclipse.example.library.impl.BookImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link org.eclipse.example.library.impl.BookImpl#getAuthor <em>Author</em>}</li>
+ * <li>{@link org.eclipse.example.library.impl.BookImpl#getTitle <em>Title</em>}</li>
+ * <li>{@link org.eclipse.example.library.impl.BookImpl#getPages <em>Pages</em>}</li>
+ * <li>{@link org.eclipse.example.library.impl.BookImpl#getCategory <em>Category</em>}</li>
+ * <li>{@link org.eclipse.example.library.impl.BookImpl#getAuthor <em>Author</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class BookImpl extends EObjectImpl implements Book {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BookImpl() {
@@ -47,8 +45,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -57,8 +55,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,17 +65,17 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTitle() {
-		return (String)eGet(LibraryPackage.Literals.BOOK__TITLE, true);
+		return (String) eGet(LibraryPackage.Literals.BOOK__TITLE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTitle(String newTitle) {
@@ -85,17 +83,17 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getPages() {
-		return ((Integer)eGet(LibraryPackage.Literals.BOOK__PAGES, true)).intValue();
+		return ((Integer) eGet(LibraryPackage.Literals.BOOK__PAGES, true)).intValue();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPages(int newPages) {
@@ -103,8 +101,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetPages() {
@@ -112,8 +110,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetPages() {
@@ -121,17 +119,17 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BookCategory getCategory() {
-		return (BookCategory)eGet(LibraryPackage.Literals.BOOK__CATEGORY, true);
+		return (BookCategory) eGet(LibraryPackage.Literals.BOOK__CATEGORY, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCategory(BookCategory newCategory) {
@@ -139,8 +137,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetCategory() {
@@ -148,8 +146,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetCategory() {
@@ -157,21 +155,21 @@ public class BookImpl extends EObjectImpl implements Book {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Writer getAuthor() {
-		return (Writer)eGet(LibraryPackage.Literals.BOOK__AUTHOR, true);
+		return (Writer) eGet(LibraryPackage.Literals.BOOK__AUTHOR, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAuthor(Writer newAuthor) {
 		eSet(LibraryPackage.Literals.BOOK__AUTHOR, newAuthor);
 	}
 
-} //BookImpl
+} // BookImpl

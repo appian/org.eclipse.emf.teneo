@@ -52,15 +52,16 @@ import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>PAnnotated Model</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>PAnnotated Model</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl#getPaEPackages <em>Pa EPackages</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl#getPaEPackages <em>
+ * Pa EPackages</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel {
@@ -72,8 +73,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			// TODO handle resolve?
 			Object msgFeature = msg.getFeature();
 			if (!msg.isTouch()
-					&& msgFeature == PamodelPackage.eINSTANCE
-							.getPAnnotatedEModelElement_ModelElement()) {
+					&& msgFeature == PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_ModelElement()) {
 				switch (msg.getEventType()) {
 				case Notification.SET:
 				case Notification.UNSET:
@@ -83,8 +83,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 				}
 			} else if (msgFeature instanceof EReference && !msg.isTouch()) {
 				EReference r = (EReference) msgFeature;
-				if (PamodelPackage.eINSTANCE.getPAnnotatedEModelElement()
-						.isSuperTypeOf(r.getEReferenceType())
+				if (PamodelPackage.eINSTANCE.getPAnnotatedEModelElement().isSuperTypeOf(
+						r.getEReferenceType())
 						&& r.isContainment()) {
 					switch (msg.getEventType()) {
 					case Notification.UNSET:
@@ -122,8 +122,9 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	final MapTrackingAdapter itsMapTrackingAdapter;
 
 	/**
-	 * The cached value of the '{@link #getPaEPackages() <em>Pa EPackages</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPaEPackages() <em>Pa EPackages</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPaEPackages()
 	 * @generated
 	 * @ordered
@@ -131,9 +132,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	protected EList<PAnnotatedEPackage> paEPackages;
 
 	/**
-	 * Record the association between the EModelElement and the
-	 * PAnnotatedEModelElement that are contained in this PAnnotatedModel
-	 * content.
+	 * Record the association between the EModelElement and the PAnnotatedEModelElement that are
+	 * contained in this PAnnotatedModel content.
 	 */
 	protected final Map<EModelElement, PAnnotatedEModelElement> eElement_to_pElement;
 
@@ -162,21 +162,19 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Register the association among a PAnnotatedEModelElement and its
-	 * annotated EModelElement. If another PAnnotatedEModelElement was
-	 * associatied to the same EModelElement, such association will be broken.
+	 * Register the association among a PAnnotatedEModelElement and its annotated EModelElement. If
+	 * another PAnnotatedEModelElement was associatied to the same EModelElement, such association
+	 * will be broken.
 	 * 
 	 * <p>
-	 * In order to mantain the consistency of the model, whenever an association
-	 * among a PAnnotatedEModelElement <code>pa</code> and an EModelElement
-	 * <code>e</code> is broken, the annotatedElement feature of <code>pa</code>
-	 * is unset.
+	 * In order to mantain the consistency of the model, whenever an association among a
+	 * PAnnotatedEModelElement <code>pa</code> and an EModelElement <code>e</code> is broken, the
+	 * annotatedElement feature of <code>pa</code> is unset.
 	 */
 	protected void addMapping(PAnnotatedEModelElement target) {
 		final EModelElement eModelElement = target.getModelElement();
 		if (eModelElement != null) {
-			PAnnotatedEModelElement prevAssoc = eElement_to_pElement
-					.get(eModelElement);
+			PAnnotatedEModelElement prevAssoc = eElement_to_pElement.get(eModelElement);
 			if (prevAssoc != null) {
 				removeMapping(eModelElement);
 				prevAssoc.setModelElement(null);
@@ -187,8 +185,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * Unregister the association between an <code>EModelElement</code> and the
-	 * <code>PAnnotatedEModelElement</code> that references it via the
-	 * <code>annotatedElement</code> feature.
+	 * <code>PAnnotatedEModelElement</code> that references it via the <code>annotatedElement</code>
+	 * feature.
 	 */
 	protected void removeMapping(EModelElement eModelElement) {
 		final Object prevAssoc = eElement_to_pElement.remove(eModelElement);
@@ -196,8 +194,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Invoked whenever a new PAnnotatedEModelElement is added to the
-	 * PAnnotatedModel.
+	 * Invoked whenever a new PAnnotatedEModelElement is added to the PAnnotatedModel.
 	 */
 	protected void attach(PAnnotatedEModelElement aElement) {
 		aElement.eAdapters().add(0, itsMapTrackingAdapter);
@@ -206,8 +203,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Invoked whenever a set of new PAnnotatedEModelElement is added to the
-	 * PAnnotatedModel.
+	 * Invoked whenever a set of new PAnnotatedEModelElement is added to the PAnnotatedModel.
 	 */
 	protected void attach(List<? extends Object> aElements) {
 		for (Object x : aElements) {
@@ -218,8 +214,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Invoked whenever a PAnnotatedEModelElement is removed from the
-	 * PAnnotatedModel.
+	 * Invoked whenever a PAnnotatedEModelElement is removed from the PAnnotatedModel.
 	 */
 	protected void detach(PAnnotatedEModelElement aElement) {
 		aElement.eAdapters().remove(itsMapTrackingAdapter);
@@ -231,8 +226,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Invoked whenever a set of PAnnotatedEModelElement is removed from the
-	 * PAnnotatedModel.
+	 * Invoked whenever a set of PAnnotatedEModelElement is removed from the PAnnotatedModel.
 	 */
 	protected void detach(List<? extends Object> aElements) {
 		for (Object x : aElements) {
@@ -243,16 +237,13 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Invariant: the eElement_to_pElement map agree with the PAnnotatedModel
-	 * content.
+	 * Invariant: the eElement_to_pElement map agree with the PAnnotatedModel content.
 	 * <p>
 	 * This method should be used only for debugging. TODO use in validation.
 	 */
 	public void invMapIsWellFormed() {
-		Set<EModelElement> definedUnused = new HashSet<EModelElement>(
-				eElement_to_pElement.keySet());
-		for (TreeIterator<? extends Object> i = EcoreUtil
-				.getAllContents(eContents()); i.hasNext();) {
+		Set<EModelElement> definedUnused = new HashSet<EModelElement>(eElement_to_pElement.keySet());
+		for (TreeIterator<? extends Object> i = EcoreUtil.getAllContents(eContents()); i.hasNext();) {
 			Object x = i.next();
 			if (x instanceof PAnnotatedEModelElement) {
 				PAnnotatedEModelElement paElement = (PAnnotatedEModelElement) x;
@@ -269,9 +260,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEModelElement</code>
-	 *         associated (via the <code>annotatedElement</code> feature) to the
-	 *         given <code>EModelElement</code>.
+	 * @return Returns the unique <code>PAnnotatedEModelElement</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EModelElement</code>.
 	 */
 	public PAnnotatedEModelElement getPAnnotated(EModelElement e) {
 		checkAnnotatedPresent(e, eElement_to_pElement);
@@ -279,9 +269,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEPackage</code> associated
-	 *         (via the <code>annotatedElement</code> feature) to the given
-	 *         <code>EPackage</code>.
+	 * @return Returns the unique <code>PAnnotatedEPackage</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EPackage</code>.
 	 */
 	public PAnnotatedEPackage getPAnnotated(EPackage e) {
 		checkAnnotatedPresent(e, eElement_to_pElement);
@@ -289,9 +278,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEClass</code> associated (via
-	 *         the <code>annotatedElement</code> feature) to the given
-	 *         <code>EClass</code>.
+	 * @return Returns the unique <code>PAnnotatedEClass</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EClass</code>.
 	 */
 	public PAnnotatedEClass getPAnnotated(EClass e) {
 		// in this case do not throw an error
@@ -303,9 +291,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEStructuralFeature</code>
-	 *         associated (via the <code>annotatedElement</code> feature) to the
-	 *         given <code>EStructuralFeature</code>.
+	 * @return Returns the unique <code>PAnnotatedEStructuralFeature</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EStructuralFeature</code>.
 	 */
 	public PAnnotatedEStructuralFeature getPAnnotated(EStructuralFeature e) {
 		checkAnnotatedPresent(e, eElement_to_pElement);
@@ -313,9 +300,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEDataType</code> associated
-	 *         (via the <code>annotatedElement</code> feature) to the given
-	 *         <code>EDataType</code>.
+	 * @return Returns the unique <code>PAnnotatedEDataType</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EDataType</code>.
 	 */
 	public PAnnotatedEDataType getPAnnotated(EDataType e) {
 		// do not check because many datatypes belong to the emf package
@@ -323,9 +309,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEAttribute</code> associated
-	 *         (via the <code>annotatedElement</code> feature) to the given
-	 *         <code>EAttribute</code>.
+	 * @return Returns the unique <code>PAnnotatedEAttribute</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EAttribute</code>.
 	 */
 	public PAnnotatedEAttribute getPAnnotated(EAttribute e) {
 		checkAnnotatedPresent(e, eElement_to_pElement);
@@ -333,9 +318,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return Returns the unique <code>PAnnotatedEReference</code> associated
-	 *         (via the <code>annotatedElement</code> feature) to the given
-	 *         <code>EReference</code>.
+	 * @return Returns the unique <code>PAnnotatedEReference</code> associated (via the
+	 *         <code>annotatedElement</code> feature) to the given <code>EReference</code>.
 	 */
 	public PAnnotatedEReference getPAnnotated(EReference e) {
 		checkAnnotatedPresent(e, eElement_to_pElement);
@@ -343,8 +327,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * Checks if there is a annotated model element for the passed emf model
-	 * element. If not then an illegal argument is thrown
+	 * Checks if there is a annotated model element for the passed emf model element. If not then an
+	 * illegal argument is thrown
 	 */
 	private void checkAnnotatedPresent(EModelElement ee,
 			Map<EModelElement, PAnnotatedEModelElement> map) {
@@ -360,17 +344,16 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 							+ "resolvable by EMF.");
 		}
 		if (map.get(ee) == null) {
-			final String name = ee instanceof ENamedElement ? " for: "
-					+ ((ENamedElement) ee).getName() : "";
-			throw new IllegalArgumentException(
-					"No annotated model element present " + name + " for type "
-							+ ee.eClass().getName()
-							+ " has its epackage been registered with Teneo?");
+			final String name = ee instanceof ENamedElement ? " for: " + ((ENamedElement) ee).getName()
+					: "";
+			throw new IllegalArgumentException("No annotated model element present " + name
+					+ " for type " + ee.eClass().getName() + " has its epackage been registered with Teneo?");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -380,106 +363,115 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PAnnotatedEPackage> getPaEPackages() {
 		if (paEPackages == null) {
-			paEPackages = new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(PAnnotatedEPackage.class, this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
+			paEPackages = new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(
+					PAnnotatedEPackage.class, this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES,
+					PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
 		}
 		return paEPackages;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEPackages()).basicAdd(otherEnd, msgs);
+		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEPackages()).basicAdd(
+					otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return ((InternalEList<?>)getPaEPackages()).basicRemove(otherEnd, msgs);
+		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+			return ((InternalEList<?>) getPaEPackages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return getPaEPackages();
+		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+			return getPaEPackages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				getPaEPackages().clear();
-				getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>)newValue);
-				return;
+		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+			getPaEPackages().clear();
+			getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				getPaEPackages().clear();
-				return;
+		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+			getPaEPackages().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return paEPackages != null && !paEPackages.isEmpty();
+		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+			return paEPackages != null && !paEPackages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * Returns a sequence generator on the basis of its name, if not found then
-	 * an exception is thrown. efeature is passed for debugging purposes.
+	 * Returns a sequence generator on the basis of its name, if not found then an exception is
+	 * thrown. efeature is passed for debugging purposes.
 	 */
-	public SequenceGenerator getSequenceGenerator(EStructuralFeature efeature,
-			String name) {
+	public SequenceGenerator getSequenceGenerator(EStructuralFeature efeature, String name) {
 		// TODO: should not only the paepackage of the efeature be checked?
 		for (PAnnotatedEPackage pae : getPaEPackages()) {
 			for (SequenceGenerator sg : pae.getSequenceGenerators()) {
@@ -493,27 +485,22 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 						return sg;
 					}
 				}
-				
-				for (PAnnotatedEStructuralFeature aFeature : aClass
-						.getPaEStructuralFeatures()) {
-					if (aFeature.getSequenceGenerator() != null &&
-							aFeature.getSequenceGenerator().getName() != null
-							&& aFeature.getSequenceGenerator().getName()
-									.compareTo(name) == 0) {
+
+				for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
+					if (aFeature.getSequenceGenerator() != null
+							&& aFeature.getSequenceGenerator().getName() != null
+							&& aFeature.getSequenceGenerator().getName().compareTo(name) == 0) {
 						return aFeature.getSequenceGenerator();
 					}
 				}
 			}
 		}
-		throw new IllegalStateException(
-				"No sequence generator found with the name: " + name
-						+ ", name is used in " + "annotation of element "
-						+ efeature.getEContainingClass().getName() + "/"
-						+ efeature.getName());
+		throw new IllegalStateException("No sequence generator found with the name: " + name
+				+ ", name is used in " + "annotation of element "
+				+ efeature.getEContainingClass().getName() + "/" + efeature.getName());
 	}
 
-	public SequenceStyleGenerator getSequenceStyleGenerator(
-			EStructuralFeature efeature, String name) {
+	public SequenceStyleGenerator getSequenceStyleGenerator(EStructuralFeature efeature, String name) {
 		// TODO: should not only the paepackage of the efeature be checked?
 		for (PAnnotatedEPackage pae : getPaEPackages()) {
 			for (SequenceStyleGenerator sg : pae.getSequenceStyleGenerators()) {
@@ -522,19 +509,16 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 				}
 			}
 		}
-		throw new IllegalStateException(
-				"No sequence generator found with the name: " + name
-						+ ", name is used in " + "annotation of element "
-						+ efeature.getEContainingClass().getName() + "/"
-						+ efeature.getName());
+		throw new IllegalStateException("No sequence generator found with the name: " + name
+				+ ", name is used in " + "annotation of element "
+				+ efeature.getEContainingClass().getName() + "/" + efeature.getName());
 	}
 
 	/**
-	 * Returns a table generator on the basis of its name, if not found then an
-	 * exception is thrown. efeature is passed for debugging purposes.
+	 * Returns a table generator on the basis of its name, if not found then an exception is thrown.
+	 * efeature is passed for debugging purposes.
 	 */
-	public TableGenerator getTableGenerator(EStructuralFeature efeature,
-			String name) {
+	public TableGenerator getTableGenerator(EStructuralFeature efeature, String name) {
 		// TODO: should not only the paepackage of the efeature be checked?
 		for (PAnnotatedEPackage pae : getPaEPackages()) {
 			for (TableGenerator tg : pae.getTableGenerators()) {
@@ -543,17 +527,14 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 				}
 			}
 			for (PAnnotatedEClass pec : pae.getPaEClasses()) {
-				if (pec.getTableGenerator() != null
-						&& pec.getTableGenerator().getName() != null
+				if (pec.getTableGenerator() != null && pec.getTableGenerator().getName() != null
 						&& pec.getTableGenerator().getName().compareTo(name) == 0) {
 					return pec.getTableGenerator();
 				}
 
-				for (PAnnotatedEStructuralFeature pef : pec
-						.getPaEStructuralFeatures()) {
+				for (PAnnotatedEStructuralFeature pef : pec.getPaEStructuralFeatures()) {
 					for (TableGenerator tg : pef.getTableGenerators()) {
-						if (tg.getName() != null
-								&& tg.getName().compareTo(name) == 0) {
+						if (tg.getName() != null && tg.getName().compareTo(name) == 0) {
 							return tg;
 						}
 					}
@@ -573,7 +554,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * @param initialized
-	 *            the initialized to set
+	 *          the initialized to set
 	 */
 	public void setInitialized(boolean initialized) {
 		this.initialized = initialized;
@@ -582,8 +563,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	private ConcurrentHashMap<String, EClass> entityNameToEClass = new ConcurrentHashMap<String, EClass>();
 
 	/**
-	 * @return the eclass annotated with this entity name. If not found then an
-	 *         exception is thrown
+	 * @return the eclass annotated with this entity name. If not found then an exception is thrown
 	 */
 	public EClass getEClass(String entityName) {
 		EClass eClass;
@@ -592,22 +572,19 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
 			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				if (aClass.getEntity() != null
-						&& aClass.getEntity().getName() != null
+				if (aClass.getEntity() != null && aClass.getEntity().getName() != null
 						&& aClass.getEntity().getName().compareTo(entityName) == 0) {
 					entityNameToEClass.put(entityName, aClass.getModelEClass());
 					return aClass.getModelEClass();
 				}
 			}
 		}
-		throw new IllegalArgumentException(
-				"No Annotated EClass for entityName " + entityName);
+		throw new IllegalArgumentException("No Annotated EClass for entityName " + entityName);
 	}
 
 	/**
-	 * @return the EClassifier for a certain name. First the eclasses are
-	 *         searched using the name as the entityname then the edatatypes are
-	 *         searched.
+	 * @return the EClassifier for a certain name. First the eclasses are searched using the name as
+	 *         the entityname then the edatatypes are searched.
 	 */
 	public EClassifier getEClassifier(String name) {
 		if (hasEClass(name)) {
@@ -615,8 +592,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 
 		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
-			final EClassifier eClassifier = aPackage.getModelEPackage()
-					.getEClassifier(name);
+			final EClassifier eClassifier = aPackage.getModelEPackage().getEClassifier(name);
 			if (eClassifier instanceof EDataType) {
 				return eClassifier;
 			}
@@ -625,8 +601,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	}
 
 	/**
-	 * @return true if there is an EClass with the name as entityname or an
-	 *         EDataType with the name passed as a parameter.
+	 * @return true if there is an EClass with the name as entityname or an EDataType with the name
+	 *         passed as a parameter.
 	 */
 	public boolean hasEClassifier(String name) {
 		if (hasEClass(name)) {
@@ -634,8 +610,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 
 		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
-			final EClassifier eClassifier = aPackage.getModelEPackage()
-					.getEClassifier(name);
+			final EClassifier eClassifier = aPackage.getModelEPackage().getEClassifier(name);
 			if (eClassifier instanceof EDataType) {
 				return true;
 			}
@@ -650,8 +625,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
 			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				if (aClass.getEntity() != null
-						&& aClass.getEntity().getName() != null
+				if (aClass.getEntity() != null && aClass.getEntity().getName() != null
 						&& aClass.getEntity().getName().compareTo(entityName) == 0) {
 					entityNameToEClass.put(entityName, aClass.getModelEClass());
 					return true;
@@ -676,8 +650,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			return res;
 		} catch (IOException e) {
 			// todo replace with teneo exception
-			throw new IllegalStateException(
-					"Exception while converting pamodel to a xml string", e);
+			throw new IllegalStateException("Exception while converting pamodel to a xml string", e);
 		}
 	}
 

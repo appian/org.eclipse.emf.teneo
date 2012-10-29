@@ -25,24 +25,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Error Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Error Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ErrorEventDefinitionImpl#getErrorRef <em>Error Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ErrorEventDefinitionImpl#getErrorRef <em>Error Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
-		ErrorEventDefinition {
+public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements ErrorEventDefinition {
 	/**
-	 * The cached value of the '{@link #getErrorRef() <em>Error Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getErrorRef() <em>Error Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getErrorRef()
 	 * @generated
 	 * @ordered
@@ -50,8 +48,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	protected org.eclipse.bpmn2.Error errorRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ErrorEventDefinitionImpl() {
@@ -59,8 +57,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,8 +67,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Error getErrorRef() {
@@ -80,16 +78,15 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 			if (errorRef != oldErrorRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.ERROR_EVENT_DEFINITION__ERROR_REF,
-							oldErrorRef, errorRef));
+							Bpmn2Package.ERROR_EVENT_DEFINITION__ERROR_REF, oldErrorRef, errorRef));
 			}
 		}
 		return errorRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Error basicGetErrorRef() {
@@ -97,8 +94,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setErrorRef(org.eclipse.bpmn2.Error newErrorRef) {
@@ -106,13 +103,12 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 		errorRef = newErrorRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ERROR_EVENT_DEFINITION__ERROR_REF,
-					oldErrorRef, errorRef));
+					Bpmn2Package.ERROR_EVENT_DEFINITION__ERROR_REF, oldErrorRef, errorRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,8 +123,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,8 +138,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -157,8 +153,8 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -170,4 +166,4 @@ public class ErrorEventDefinitionImpl extends EventDefinitionImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //ErrorEventDefinitionImpl
+} // ErrorEventDefinitionImpl

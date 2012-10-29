@@ -55,15 +55,15 @@ public class OrphanRemovalAction extends AbstractTestAction {
 			store.store(employee);
 		}
 		store.commitTransaction();
-		
+
 		store.checkNumber(Employee.class, 1);
 		store.checkNumber(EmployeeInfo.class, 1);
 		store.checkNumber(Address.class, 4);
-		
+
 		store.beginTransaction();
 		{
 			final Employee employee = store.getObject(Employee.class);
-			
+
 			final EmployeeInfo info = factory.createEmployeeInfo();
 			info.setName(name2);
 
@@ -76,7 +76,7 @@ public class OrphanRemovalAction extends AbstractTestAction {
 			employee.setEmployeeInfo(info);
 
 			employee.getAddresses().remove(1);
-			
+
 			store.flush();
 		}
 		store.commitTransaction();
@@ -86,14 +86,14 @@ public class OrphanRemovalAction extends AbstractTestAction {
 
 		// still one
 		store.checkNumber(EmployeeInfo.class, 1);
-		
+
 		store.beginTransaction();
 		{
 			final EmployeeInfo info = store.getObject(EmployeeInfo.class);
 			assertEquals(name2, info.getName());
 		}
 		store.commitTransaction();
-		
+
 		// delete the parent, everything should be gone now...
 		store.beginTransaction();
 		{
@@ -101,10 +101,10 @@ public class OrphanRemovalAction extends AbstractTestAction {
 			store.deleteObject(employee);
 		}
 		store.commitTransaction();
-		
+
 		store.checkNumber(Employee.class, 0);
 		store.checkNumber(Address.class, 0);
 		store.checkNumber(EmployeeInfo.class, 0);
-		
+
 	}
 }

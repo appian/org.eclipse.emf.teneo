@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Version</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Version</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class VersionImpl extends PAnnotationImpl implements Version {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected VersionImpl() {
@@ -30,8 +29,8 @@ public class VersionImpl extends PAnnotationImpl implements Version {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class VersionImpl extends PAnnotationImpl implements Version {
 		return PannotationPackage.Literals.VERSION;
 	}
 
-} //VersionImpl
+} // VersionImpl

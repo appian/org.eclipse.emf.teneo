@@ -53,12 +53,12 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 	public HbExtraLazyPersistableEMap(InternalEObject owner, EReference eref, List<Entry<K, V>> list) {
 		super(owner, eref, list);
 	}
-	
+
 	@Override
 	public Iterator<java.util.Map.Entry<K, V>> iterator() {
 		return LazyCollectionUtils.getPagedLoadingIterator(this, LazyCollectionUtils.DEFAULT_PAGE_SIZE);
 	}
-	
+
 	@Override
 	public int size() {
 		// if we are not loaded yet, we return the size of the buffered lazy
@@ -66,7 +66,7 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 
 		if (!isLoaded() && isHibernateListPresent()) {
 			try {
-				size = ((PersistentList)((PersistableEList<?>) delegateEList).getDelegate()).size();
+				size = ((PersistentList) ((PersistableEList<?>) delegateEList).getDelegate()).size();
 				return size;
 			} catch (Throwable t) {
 				// ignore on purpose, let the call to super handle it
@@ -83,20 +83,25 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 		// do a lazy get
 		if (key != null && !isLoaded() && isHibernateListPresent()) {
 			final Session session = getSession();
-			
+
 			session.flush();
-			
-			// create a query 
-			final AbstractPersistentCollection collection = (AbstractPersistentCollection)getDelegate();
-			final CollectionEntry collectionEntry = ((SessionImplementor)session).getPersistenceContext().getCollectionEntry(collection);
-			final AbstractCollectionPersister persister = (AbstractCollectionPersister)collectionEntry.getLoadedPersister();
-			final String entityName = ((EntityType)persister.getCollectionMetadata().getElementType()).getAssociatedEntityName();
-			final Query qry = session.createQuery("select e from " + entityName + " as e where e.key=:key and e." + StoreUtil.getExtraLazyInversePropertyName(getEStructuralFeature()) + "=:owner");
+
+			// create a query
+			final AbstractPersistentCollection collection = (AbstractPersistentCollection) getDelegate();
+			final CollectionEntry collectionEntry = ((SessionImplementor) session)
+					.getPersistenceContext().getCollectionEntry(collection);
+			final AbstractCollectionPersister persister = (AbstractCollectionPersister) collectionEntry
+					.getLoadedPersister();
+			final String entityName = ((EntityType) persister.getCollectionMetadata().getElementType())
+					.getAssociatedEntityName();
+			final Query qry = session.createQuery("select e from " + entityName
+					+ " as e where e.key=:key and e."
+					+ StoreUtil.getExtraLazyInversePropertyName(getEStructuralFeature()) + "=:owner");
 			qry.setParameter("key", key);
 			qry.setParameter("owner", getOwner());
 			final Object result = qry.uniqueResult();
 			if (result instanceof Map.Entry<?, ?>) {
-				final Map.Entry<K, V> entry = (Map.Entry<K, V>)result;
+				final Map.Entry<K, V> entry = (Map.Entry<K, V>) result;
 				return entry.getValue();
 			}
 			return null;
@@ -109,26 +114,26 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 	@Override
 	public V put(K key, V value) {
 		if (!isLoaded() && isHibernateListPresent()) {
-			final Map.Entry<K, V> entry = (Map.Entry<K, V>)get(key);
+			final Map.Entry<K, V> entry = (Map.Entry<K, V>) get(key);
 			if (entry != null && entry instanceof org.eclipse.emf.common.util.BasicEMap.Entry<?, ?>) {
-		        V result = putEntry((org.eclipse.emf.common.util.BasicEMap.Entry<K, V>)entry, value);
-		        didModify((org.eclipse.emf.common.util.BasicEMap.Entry<K, V>)entry, result);
-		        return result;
-			} else {			
+				V result = putEntry((org.eclipse.emf.common.util.BasicEMap.Entry<K, V>) entry, value);
+				didModify((org.eclipse.emf.common.util.BasicEMap.Entry<K, V>) entry, result);
+				return result;
+			} else {
 				// we get here, create a new one and add it to the persistablelist...
-				org.eclipse.emf.common.util.BasicEMap.Entry<K, V> newEntry = newEntry(hashOf(key), key, value);
+				org.eclipse.emf.common.util.BasicEMap.Entry<K, V> newEntry = newEntry(hashOf(key), key,
+						value);
 				delegateEList.add(newEntry);
-			    return null;
+				return null;
 			}
 		}
 		return super.put(key, value);
 	}
 
-
 	/** Needs to be implemented by concrete subclass */
 	@Override
-	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner, EStructuralFeature feature,
-			List<BasicEMap.Entry<K, V>> delegateORMList) {
+	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner,
+			EStructuralFeature feature, List<BasicEMap.Entry<K, V>> delegateORMList) {
 		return new HbExtraLazyPersistableEList<Entry<K, V>>(owner, feature, delegateORMList) {
 			private static final long serialVersionUID = 1L;
 
@@ -160,7 +165,6 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 		};
 	}
 
-	
 	@Override
 	public boolean remove(Object object) {
 		// TODO Auto-generated method stub
@@ -178,7 +182,7 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 		// TODO Auto-generated method stub
 		return super.removeKey(key);
 	}
-	
+
 	private boolean isHibernateListPresent() {
 		return getDelegate() instanceof AbstractPersistentCollection;
 	}
@@ -187,7 +191,7 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 		final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
 		final SessionImplementor session = ((AbstractPersistentCollection) persistentCollection)
 				.getSession();
-		return (Session)session;
+		return (Session) session;
 	}
-	
+
 }

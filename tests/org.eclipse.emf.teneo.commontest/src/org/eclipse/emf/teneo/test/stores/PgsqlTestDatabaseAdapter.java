@@ -80,8 +80,8 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 							return;
 						} catch (Exception e) {
 							Thread.sleep(500);
-							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName() +
-									"), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
+							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName()
+									+ "), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
 							// log.warn("Waiting for " + WAIT_TIME +
 							// " milli seconds on postgresql to release connections");
 							// wait(WAIT_TIME);
@@ -153,8 +153,8 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 							return;
 						} catch (Exception e) {
 							Thread.sleep(500);
-							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName() +
-									"), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
+							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName()
+									+ "), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
 							// log.warn("Waiting for " + WAIT_TIME +
 							// " milli seconds on postgresql to release connections");
 							// wait(WAIT_TIME);

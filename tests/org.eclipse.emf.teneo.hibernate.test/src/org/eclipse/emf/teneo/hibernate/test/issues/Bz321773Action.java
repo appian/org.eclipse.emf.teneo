@@ -25,7 +25,6 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  */
 public class Bz321773Action extends AbstractTestAction {
 
-
 	public Bz321773Action() {
 		super(Bz321773Package.eINSTANCE);
 	}
@@ -43,7 +42,7 @@ public class Bz321773Action extends AbstractTestAction {
 			store.store(item2);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			Item1 item1 = store.getObject(Item1.class);

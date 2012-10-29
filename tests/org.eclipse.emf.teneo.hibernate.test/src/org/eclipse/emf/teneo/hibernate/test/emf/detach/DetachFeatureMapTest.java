@@ -22,7 +22,8 @@ import org.eclipse.emf.teneo.test.emf.detach.DetachFeatureMapAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Is a test case to test detach functionality for featuremap with different kinds of methods on the featuremap (move, set, etc).
+ * Is a test case to test detach functionality for featuremap with different kinds of methods on the
+ * featuremap (move, set, etc).
  * 
  * @version $Revision: 1.4 $
  */
@@ -32,7 +33,8 @@ public class DetachFeatureMapTest extends AbstractActionTest {
 	private static DetachFeatureMapAction testAction = new DetachFeatureMapAction() {
 		/** Returns the resource uri, jdo is default (for now) */
 		public String getResourceUri(TestStore store) {
-			return "hibernate://?" + StoreResource.DS_NAME_PARAM + "=" + store.getDatabaseAdapter().getDbName();
+			return "hibernate://?" + StoreResource.DS_NAME_PARAM + "="
+					+ store.getDatabaseAdapter().getDbName();
 		}
 	};
 

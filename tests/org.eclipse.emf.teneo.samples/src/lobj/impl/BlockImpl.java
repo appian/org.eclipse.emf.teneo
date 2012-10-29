@@ -28,25 +28,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Block</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Block</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.BlockImpl#getBlockMeta <em>Block Meta</em>}</li>
- *   <li>{@link lobj.impl.BlockImpl#getExternalMetadata <em>External Metadata</em>}</li>
- *   <li>{@link lobj.impl.BlockImpl#getAccessControl <em>Access Control</em>}</li>
+ * <li>{@link lobj.impl.BlockImpl#getBlockMeta <em>Block Meta</em>}</li>
+ * <li>{@link lobj.impl.BlockImpl#getExternalMetadata <em>External Metadata</em>}</li>
+ * <li>{@link lobj.impl.BlockImpl#getAccessControl <em>Access Control</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	/**
 	 * The cached value of the '{@link #getBlockMeta() <em>Block Meta</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBlockMeta()
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	protected BlockMeta blockMeta;
 
 	/**
-	 * The cached value of the '{@link #getExternalMetadata() <em>External Metadata</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getExternalMetadata() <em>External Metadata</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExternalMetadata()
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	protected EList externalMetadata;
 
 	/**
-	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAccessControl()
 	 * @generated
 	 * @ordered
@@ -74,8 +73,8 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	protected AccessControl accessControl;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BlockImpl() {
@@ -83,8 +82,8 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -92,8 +91,8 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BlockMeta getBlockMeta() {
@@ -101,54 +100,62 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetBlockMeta(BlockMeta newBlockMeta, NotificationChain msgs) {
 		BlockMeta oldBlockMeta = blockMeta;
 		blockMeta = newBlockMeta;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LobjPackage.BLOCK__BLOCK_META, oldBlockMeta, newBlockMeta);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					LobjPackage.BLOCK__BLOCK_META, oldBlockMeta, newBlockMeta);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBlockMeta(BlockMeta newBlockMeta) {
 		if (newBlockMeta != blockMeta) {
 			NotificationChain msgs = null;
 			if (blockMeta != null)
-				msgs = ((InternalEObject)blockMeta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LobjPackage.BLOCK__BLOCK_META, null, msgs);
+				msgs = ((InternalEObject) blockMeta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.BLOCK__BLOCK_META, null, msgs);
 			if (newBlockMeta != null)
-				msgs = ((InternalEObject)newBlockMeta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LobjPackage.BLOCK__BLOCK_META, null, msgs);
+				msgs = ((InternalEObject) newBlockMeta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.BLOCK__BLOCK_META, null, msgs);
 			msgs = basicSetBlockMeta(newBlockMeta, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.BLOCK__BLOCK_META, newBlockMeta, newBlockMeta));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.BLOCK__BLOCK_META,
+					newBlockMeta, newBlockMeta));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getExternalMetadata() {
 		if (externalMetadata == null) {
-			externalMetadata = new EObjectContainmentEList(ExternalMetadata.class, this, LobjPackage.BLOCK__EXTERNAL_METADATA);
+			externalMetadata = new EObjectContainmentEList(ExternalMetadata.class, this,
+					LobjPackage.BLOCK__EXTERNAL_METADATA);
 		}
 		return externalMetadata;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AccessControl getAccessControl() {
@@ -156,129 +163,138 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAccessControl(AccessControl newAccessControl, NotificationChain msgs) {
+	public NotificationChain basicSetAccessControl(AccessControl newAccessControl,
+			NotificationChain msgs) {
 		AccessControl oldAccessControl = accessControl;
 		accessControl = newAccessControl;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LobjPackage.BLOCK__ACCESS_CONTROL, oldAccessControl, newAccessControl);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					LobjPackage.BLOCK__ACCESS_CONTROL, oldAccessControl, newAccessControl);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAccessControl(AccessControl newAccessControl) {
 		if (newAccessControl != accessControl) {
 			NotificationChain msgs = null;
 			if (accessControl != null)
-				msgs = ((InternalEObject)accessControl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LobjPackage.BLOCK__ACCESS_CONTROL, null, msgs);
+				msgs = ((InternalEObject) accessControl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.BLOCK__ACCESS_CONTROL, null, msgs);
 			if (newAccessControl != null)
-				msgs = ((InternalEObject)newAccessControl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LobjPackage.BLOCK__ACCESS_CONTROL, null, msgs);
+				msgs = ((InternalEObject) newAccessControl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- LobjPackage.BLOCK__ACCESS_CONTROL, null, msgs);
 			msgs = basicSetAccessControl(newAccessControl, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.BLOCK__ACCESS_CONTROL, newAccessControl, newAccessControl));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.BLOCK__ACCESS_CONTROL,
+					newAccessControl, newAccessControl));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case LobjPackage.BLOCK__BLOCK_META:
-				return basicSetBlockMeta(null, msgs);
-			case LobjPackage.BLOCK__EXTERNAL_METADATA:
-				return ((InternalEList)getExternalMetadata()).basicRemove(otherEnd, msgs);
-			case LobjPackage.BLOCK__ACCESS_CONTROL:
-				return basicSetAccessControl(null, msgs);
+		case LobjPackage.BLOCK__BLOCK_META:
+			return basicSetBlockMeta(null, msgs);
+		case LobjPackage.BLOCK__EXTERNAL_METADATA:
+			return ((InternalEList) getExternalMetadata()).basicRemove(otherEnd, msgs);
+		case LobjPackage.BLOCK__ACCESS_CONTROL:
+			return basicSetAccessControl(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.BLOCK__BLOCK_META:
-				return getBlockMeta();
-			case LobjPackage.BLOCK__EXTERNAL_METADATA:
-				return getExternalMetadata();
-			case LobjPackage.BLOCK__ACCESS_CONTROL:
-				return getAccessControl();
+		case LobjPackage.BLOCK__BLOCK_META:
+			return getBlockMeta();
+		case LobjPackage.BLOCK__EXTERNAL_METADATA:
+			return getExternalMetadata();
+		case LobjPackage.BLOCK__ACCESS_CONTROL:
+			return getAccessControl();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.BLOCK__BLOCK_META:
-				setBlockMeta((BlockMeta)newValue);
-				return;
-			case LobjPackage.BLOCK__EXTERNAL_METADATA:
-				getExternalMetadata().clear();
-				getExternalMetadata().addAll((Collection)newValue);
-				return;
-			case LobjPackage.BLOCK__ACCESS_CONTROL:
-				setAccessControl((AccessControl)newValue);
-				return;
+		case LobjPackage.BLOCK__BLOCK_META:
+			setBlockMeta((BlockMeta) newValue);
+			return;
+		case LobjPackage.BLOCK__EXTERNAL_METADATA:
+			getExternalMetadata().clear();
+			getExternalMetadata().addAll((Collection) newValue);
+			return;
+		case LobjPackage.BLOCK__ACCESS_CONTROL:
+			setAccessControl((AccessControl) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.BLOCK__BLOCK_META:
-				setBlockMeta((BlockMeta)null);
-				return;
-			case LobjPackage.BLOCK__EXTERNAL_METADATA:
-				getExternalMetadata().clear();
-				return;
-			case LobjPackage.BLOCK__ACCESS_CONTROL:
-				setAccessControl((AccessControl)null);
-				return;
+		case LobjPackage.BLOCK__BLOCK_META:
+			setBlockMeta((BlockMeta) null);
+			return;
+		case LobjPackage.BLOCK__EXTERNAL_METADATA:
+			getExternalMetadata().clear();
+			return;
+		case LobjPackage.BLOCK__ACCESS_CONTROL:
+			setAccessControl((AccessControl) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.BLOCK__BLOCK_META:
-				return blockMeta != null;
-			case LobjPackage.BLOCK__EXTERNAL_METADATA:
-				return externalMetadata != null && !externalMetadata.isEmpty();
-			case LobjPackage.BLOCK__ACCESS_CONTROL:
-				return accessControl != null;
+		case LobjPackage.BLOCK__BLOCK_META:
+			return blockMeta != null;
+		case LobjPackage.BLOCK__EXTERNAL_METADATA:
+			return externalMetadata != null && !externalMetadata.isEmpty();
+		case LobjPackage.BLOCK__ACCESS_CONTROL:
+			return accessControl != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //BlockImpl
+} // BlockImpl

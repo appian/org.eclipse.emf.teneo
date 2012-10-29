@@ -30,8 +30,9 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
-/** 
- * Tests reference relations between abstract relations. This failed during compute references, the test is therefore very light.
+/**
+ * Tests reference relations between abstract relations. This failed during compute references, the
+ * test is therefore very light.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.6 $

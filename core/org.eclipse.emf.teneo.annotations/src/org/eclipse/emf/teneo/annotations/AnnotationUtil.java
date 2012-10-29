@@ -33,8 +33,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 public class AnnotationUtil {
 
 	/** Returns an annotation correct name value pair if the feature is set */
-	public static String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject, EStructuralFeature eFeature,
-			boolean prependComma, List<String> importStatements) {
+	public static String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject,
+			EStructuralFeature eFeature, boolean prependComma, List<String> importStatements) {
 		final Object value = eObject.eGet(eFeature);
 		if (value == null) {
 			return "";

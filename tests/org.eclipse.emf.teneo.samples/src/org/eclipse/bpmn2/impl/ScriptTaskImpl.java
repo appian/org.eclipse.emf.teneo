@@ -24,24 +24,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Script Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Script Task</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ScriptTaskImpl#getScript <em>Script</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ScriptTaskImpl#getScriptFormat <em>Script Format</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ScriptTaskImpl#getScript <em>Script</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ScriptTaskImpl#getScriptFormat <em>Script Format</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	/**
-	 * The default value of the '{@link #getScript() <em>Script</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getScript() <em>Script</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScript()
 	 * @generated
 	 * @ordered
@@ -49,9 +48,9 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	protected static final String SCRIPT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getScript() <em>Script</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getScript() <em>Script</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScript()
 	 * @generated
 	 * @ordered
@@ -59,9 +58,9 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	protected String script = SCRIPT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getScriptFormat() <em>Script Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getScriptFormat() <em>Script Format</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScriptFormat()
 	 * @generated
 	 * @ordered
@@ -69,9 +68,9 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	protected static final String SCRIPT_FORMAT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getScriptFormat() <em>Script Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getScriptFormat() <em>Script Format</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScriptFormat()
 	 * @generated
 	 * @ordered
@@ -79,8 +78,8 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	protected String scriptFormat = SCRIPT_FORMAT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ScriptTaskImpl() {
@@ -88,8 +87,8 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -98,8 +97,8 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getScript() {
@@ -107,21 +106,21 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScript(String newScript) {
 		String oldScript = script;
 		script = newScript;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SCRIPT_TASK__SCRIPT, oldScript, script));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.SCRIPT_TASK__SCRIPT,
+					oldScript, script));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getScriptFormat() {
@@ -129,8 +128,8 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScriptFormat(String newScriptFormat) {
@@ -138,13 +137,12 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 		scriptFormat = newScriptFormat;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SCRIPT_TASK__SCRIPT_FORMAT, oldScriptFormat,
-					scriptFormat));
+					Bpmn2Package.SCRIPT_TASK__SCRIPT_FORMAT, oldScriptFormat, scriptFormat));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,8 +157,8 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -177,8 +175,8 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,26 +193,25 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.SCRIPT_TASK__SCRIPT:
-			return SCRIPT_EDEFAULT == null ? script != null : !SCRIPT_EDEFAULT
-					.equals(script);
+			return SCRIPT_EDEFAULT == null ? script != null : !SCRIPT_EDEFAULT.equals(script);
 		case Bpmn2Package.SCRIPT_TASK__SCRIPT_FORMAT:
-			return SCRIPT_FORMAT_EDEFAULT == null ? scriptFormat != null
-					: !SCRIPT_FORMAT_EDEFAULT.equals(scriptFormat);
+			return SCRIPT_FORMAT_EDEFAULT == null ? scriptFormat != null : !SCRIPT_FORMAT_EDEFAULT
+					.equals(scriptFormat);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -231,4 +228,4 @@ public class ScriptTaskImpl extends TaskImpl implements ScriptTask {
 		return result.toString();
 	}
 
-} //ScriptTaskImpl
+} // ScriptTaskImpl

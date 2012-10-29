@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.EventDefinition;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Event Definition</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Event Definition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class EventDefinitionImpl extends RootElementImpl implements
-		EventDefinition {
+public class EventDefinitionImpl extends RootElementImpl implements EventDefinition {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EventDefinitionImpl() {
@@ -40,8 +38,8 @@ public class EventDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class EventDefinitionImpl extends RootElementImpl implements
 		return Bpmn2Package.Literals.EVENT_DEFINITION;
 	}
 
-} //EventDefinitionImpl
+} // EventDefinitionImpl

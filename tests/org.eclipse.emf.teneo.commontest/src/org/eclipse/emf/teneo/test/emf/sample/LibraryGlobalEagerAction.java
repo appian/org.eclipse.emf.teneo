@@ -54,7 +54,8 @@ public class LibraryGlobalEagerAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of eager loading.
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of
+	 * eager loading.
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -197,7 +198,7 @@ public class LibraryGlobalEagerAction extends AbstractTestAction {
 		 * Returns <code>false</code>
 		 * 
 		 * @param type
-		 *            the type.
+		 *          the type.
 		 * @return <code>false</code>
 		 */
 		@Override

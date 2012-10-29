@@ -9,33 +9,32 @@ package org.eclipse.example.library;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Book</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Book</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.example.library.Book#getTitle <em>Title</em>}</li>
- *   <li>{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}</li>
- *   <li>{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}</li>
- *   <li>{@link org.eclipse.example.library.Book#getAuthor <em>Author</em>}</li>
+ * <li>{@link org.eclipse.example.library.Book#getTitle <em>Title</em>}</li>
+ * <li>{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}</li>
+ * <li>{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}</li>
+ * <li>{@link org.eclipse.example.library.Book#getAuthor <em>Author</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.example.library.LibraryPackage#getBook()
  * @model extendedMetaData="name='Book' kind='elementOnly'"
  * @generated
  */
 public interface Book extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Title</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Title</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.eclipse.example.library.LibraryPackage#getBook_Title()
@@ -46,23 +45,24 @@ public interface Book extends EObject {
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.example.library.Book#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.example.library.Book#getTitle <em>Title</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Title</em>' attribute.
 	 * @see #getTitle()
 	 * @generated
 	 */
 	void setTitle(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Pages</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Pages</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pages</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Pages</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Pages</em>' attribute.
 	 * @see #isSetPages()
 	 * @see #unsetPages()
@@ -75,10 +75,11 @@ public interface Book extends EObject {
 	int getPages();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pages</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Pages</em>' attribute.
 	 * @see #isSetPages()
 	 * @see #unsetPages()
 	 * @see #getPages()
@@ -87,9 +88,9 @@ public interface Book extends EObject {
 	void setPages(int value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Unsets the value of the '{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isSetPages()
 	 * @see #getPages()
 	 * @see #setPages(int)
@@ -98,9 +99,9 @@ public interface Book extends EObject {
 	void unsetPages();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.example.library.Book#getPages <em>Pages</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns whether the value of the '{@link org.eclipse.example.library.Book#getPages
+	 * <em>Pages</em>}' attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return whether the value of the '<em>Pages</em>' attribute is set.
 	 * @see #unsetPages()
 	 * @see #getPages()
@@ -110,15 +111,15 @@ public interface Book extends EObject {
 	boolean isSetPages();
 
 	/**
-	 * Returns the value of the '<em><b>Category</b></em>' attribute.
-	 * The default value is <code>"Mystery"</code>.
-	 * The literals are from the enumeration {@link org.eclipse.example.library.BookCategory}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Category</b></em>' attribute. The default value is
+	 * <code>"Mystery"</code>. The literals are from the enumeration
+	 * {@link org.eclipse.example.library.BookCategory}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Category</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Category</em>' attribute isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Category</em>' attribute.
 	 * @see org.eclipse.example.library.BookCategory
 	 * @see #isSetCategory()
@@ -132,10 +133,11 @@ public interface Book extends EObject {
 	BookCategory getCategory();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Category</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Category</em>' attribute.
 	 * @see org.eclipse.example.library.BookCategory
 	 * @see #isSetCategory()
 	 * @see #unsetCategory()
@@ -145,9 +147,9 @@ public interface Book extends EObject {
 	void setCategory(BookCategory value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Unsets the value of the '{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isSetCategory()
 	 * @see #getCategory()
 	 * @see #setCategory(BookCategory)
@@ -156,9 +158,9 @@ public interface Book extends EObject {
 	void unsetCategory();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.example.library.Book#getCategory <em>Category</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns whether the value of the '{@link org.eclipse.example.library.Book#getCategory
+	 * <em>Category</em>}' attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return whether the value of the '<em>Category</em>' attribute is set.
 	 * @see #unsetCategory()
 	 * @see #getCategory()
@@ -168,29 +170,30 @@ public interface Book extends EObject {
 	boolean isSetCategory();
 
 	/**
-	 * Returns the value of the '<em><b>Author</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.example.library.Writer#getBooks <em>Books</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Author</b></em>' reference. It is bidirectional and its
+	 * opposite is '{@link org.eclipse.example.library.Writer#getBooks <em>Books</em>}'. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Author</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Author</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Author</em>' reference.
 	 * @see #setAuthor(Writer)
 	 * @see org.eclipse.example.library.LibraryPackage#getBook_Author()
 	 * @see org.eclipse.example.library.Writer#getBooks
-	 * @model opposite="books" required="true"
-	 *        extendedMetaData="kind='element' name='author'"
+	 * @model opposite="books" required="true" extendedMetaData="kind='element' name='author'"
 	 * @generated
 	 */
 	Writer getAuthor();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.example.library.Book#getAuthor <em>Author</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Author</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.example.library.Book#getAuthor <em>Author</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Author</em>' reference.
 	 * @see #getAuthor()
 	 * @generated
 	 */

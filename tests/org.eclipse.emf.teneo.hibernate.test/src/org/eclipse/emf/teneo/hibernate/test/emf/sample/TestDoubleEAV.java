@@ -97,7 +97,8 @@ public class TestDoubleEAV extends AbstractTestAction {
 		setValue(test, "elementTwo", new BigDecimal("10.23132"));
 
 		store.beginTransaction();
-		// In the next statement com.microsoft.sqlserver.jdbc.SQLServerException: Error converting data type nvarchar to
+		// In the next statement com.microsoft.sqlserver.jdbc.SQLServerException:
+		// Error converting data type nvarchar to
 		// decimal.
 		// will be thrown for MS SQLServer 2008 through sqljdbc4-2.0.jar
 		store.store(test);

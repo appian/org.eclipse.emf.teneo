@@ -27,16 +27,15 @@ public class PersistenceFileProvider implements ExtensionPoint {
 	protected static final Log log = LogFactory.getLog(PersistenceFileProvider.class);
 
 	/**
-	 * Returns an InputStream with the file content, note if the file does not exist then null may
-	 * be returned. This implementation searches for the file in the classpath using the path
-	 * parameters.
+	 * Returns an InputStream with the file content, note if the file does not exist then null may be
+	 * returned. This implementation searches for the file in the classpath using the path parameters.
 	 * 
 	 * Custom implementations of this class may use any other method to find the file.
 	 * 
 	 * @param clz
-	 *            the class to use when reading the file through a classloader
+	 *          the class to use when reading the file through a classloader
 	 * @param path
-	 *            the path to the file (incl. the filename and extension)
+	 *          the path to the file (incl. the filename and extension)
 	 * 
 	 * @return an InputStream if found, or null otherwise
 	 */

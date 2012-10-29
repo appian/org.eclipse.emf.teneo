@@ -18,28 +18,39 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUnique <em>Unique</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isNullable <em>Nullable</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isInsertable <em>Insertable</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUpdatable <em>Updatable</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getColumnDefinition <em>Column Definition</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getTable <em>Table</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getLength <em>Length</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getPrecision <em>Precision</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getScale <em>Scale</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getUniqueKey <em>Unique Key</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getIndex <em>Index</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUnique <em>Unique
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isNullable <em>Nullable
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isInsertable <em>
+ * Insertable</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUpdatable <em>
+ * Updatable</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getColumnDefinition <em>
+ * Column Definition</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getTable <em>Table</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getLength <em>Length
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getPrecision <em>
+ * Precision</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getScale <em>Scale</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getUniqueKey <em>Unique
+ * Key</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getIndex <em>Index</em>}
+ * </li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ColumnImpl extends PAnnotationImpl implements Column {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -47,9 +58,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -57,8 +68,8 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #isUnique()
 	 * @generated
@@ -67,8 +78,8 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final boolean UNIQUE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #isUnique()
 	 * @generated
@@ -97,9 +108,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected boolean nullable = NULLABLE_EDEFAULT;
 
 	/**
-	 * This is true if the Nullable attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the Nullable attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -148,6 +159,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	/**
 	 * The default value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -157,6 +169,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	/**
 	 * The cached value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -164,8 +177,8 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected String columnDefinition = COLUMN_DEFINITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #getTable()
 	 * @generated
@@ -174,9 +187,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final String TABLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getTable()
 	 * @generated
 	 * @ordered
@@ -184,8 +197,8 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected String table = TABLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #getLength()
 	 * @generated
@@ -194,8 +207,8 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final int LENGTH_EDEFAULT = 255;
 
 	/**
-	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #getLength()
 	 * @generated
@@ -233,17 +246,17 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected int precision = PRECISION_EDEFAULT;
 
 	/**
-	 * This is true if the Precision attribute has been set.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * This is true if the Precision attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean precisionESet;
 
 	/**
-	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #getScale()
 	 * @generated
@@ -252,9 +265,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final int SCALE_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -262,8 +275,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected int scale = SCALE_EDEFAULT;
 
 	/**
-	 * This is true if the Scale attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
+	 * This is true if the Scale attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
@@ -271,9 +283,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected boolean scaleESet;
 
 	/**
-	 * The default value of the '{@link #getUniqueKey() <em>Unique Key</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getUniqueKey() <em>Unique Key</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUniqueKey()
 	 * @generated
 	 * @ordered
@@ -281,9 +293,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final String UNIQUE_KEY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getUniqueKey() <em>Unique Key</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getUniqueKey() <em>Unique Key</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUniqueKey()
 	 * @generated
 	 * @ordered
@@ -291,9 +303,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected String uniqueKey = UNIQUE_KEY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -301,9 +313,9 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected static final String INDEX_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -312,6 +324,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ColumnImpl() {
@@ -320,6 +333,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -329,6 +343,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -337,17 +352,20 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NAME,
+					oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getLength() {
@@ -356,6 +374,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLength(int newLength) {
@@ -364,11 +383,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		boolean oldLengthESet = lengthESet;
 		lengthESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__LENGTH, oldLength, length, !oldLengthESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__LENGTH,
+					oldLength, length, !oldLengthESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetLength() {
@@ -377,11 +398,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		length = LENGTH_EDEFAULT;
 		lengthESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__LENGTH, oldLength, LENGTH_EDEFAULT, oldLengthESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__LENGTH,
+					oldLength, LENGTH_EDEFAULT, oldLengthESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetLength() {
@@ -390,6 +413,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getScale() {
@@ -398,6 +422,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setScale(int newScale) {
@@ -406,11 +431,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		boolean oldScaleESet = scaleESet;
 		scaleESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__SCALE, oldScale, scale, !oldScaleESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__SCALE,
+					oldScale, scale, !oldScaleESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetScale() {
@@ -419,11 +446,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		scale = SCALE_EDEFAULT;
 		scaleESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__SCALE, oldScale, SCALE_EDEFAULT, oldScaleESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__SCALE,
+					oldScale, SCALE_EDEFAULT, oldScaleESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetScale() {
@@ -431,8 +460,8 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getUniqueKey() {
@@ -440,20 +469,21 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setUniqueKey(String newUniqueKey) {
 		String oldUniqueKey = uniqueKey;
 		uniqueKey = newUniqueKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UNIQUE_KEY, oldUniqueKey, uniqueKey));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UNIQUE_KEY,
+					oldUniqueKey, uniqueKey));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getIndex() {
@@ -461,183 +491,191 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIndex(String newIndex) {
 		String oldIndex = index;
 		index = newIndex;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INDEX, oldIndex, index));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INDEX,
+					oldIndex, index));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__NAME:
-				return getName();
-			case PannotationPackage.COLUMN__UNIQUE:
-				return isUnique();
-			case PannotationPackage.COLUMN__NULLABLE:
-				return isNullable();
-			case PannotationPackage.COLUMN__INSERTABLE:
-				return isInsertable();
-			case PannotationPackage.COLUMN__UPDATABLE:
-				return isUpdatable();
-			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
-				return getColumnDefinition();
-			case PannotationPackage.COLUMN__TABLE:
-				return getTable();
-			case PannotationPackage.COLUMN__LENGTH:
-				return getLength();
-			case PannotationPackage.COLUMN__PRECISION:
-				return getPrecision();
-			case PannotationPackage.COLUMN__SCALE:
-				return getScale();
-			case PannotationPackage.COLUMN__UNIQUE_KEY:
-				return getUniqueKey();
-			case PannotationPackage.COLUMN__INDEX:
-				return getIndex();
+		case PannotationPackage.COLUMN__NAME:
+			return getName();
+		case PannotationPackage.COLUMN__UNIQUE:
+			return isUnique();
+		case PannotationPackage.COLUMN__NULLABLE:
+			return isNullable();
+		case PannotationPackage.COLUMN__INSERTABLE:
+			return isInsertable();
+		case PannotationPackage.COLUMN__UPDATABLE:
+			return isUpdatable();
+		case PannotationPackage.COLUMN__COLUMN_DEFINITION:
+			return getColumnDefinition();
+		case PannotationPackage.COLUMN__TABLE:
+			return getTable();
+		case PannotationPackage.COLUMN__LENGTH:
+			return getLength();
+		case PannotationPackage.COLUMN__PRECISION:
+			return getPrecision();
+		case PannotationPackage.COLUMN__SCALE:
+			return getScale();
+		case PannotationPackage.COLUMN__UNIQUE_KEY:
+			return getUniqueKey();
+		case PannotationPackage.COLUMN__INDEX:
+			return getIndex();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__NAME:
-				setName((String)newValue);
-				return;
-			case PannotationPackage.COLUMN__UNIQUE:
-				setUnique((Boolean)newValue);
-				return;
-			case PannotationPackage.COLUMN__NULLABLE:
-				setNullable((Boolean)newValue);
-				return;
-			case PannotationPackage.COLUMN__INSERTABLE:
-				setInsertable((Boolean)newValue);
-				return;
-			case PannotationPackage.COLUMN__UPDATABLE:
-				setUpdatable((Boolean)newValue);
-				return;
-			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
-				setColumnDefinition((String)newValue);
-				return;
-			case PannotationPackage.COLUMN__TABLE:
-				setTable((String)newValue);
-				return;
-			case PannotationPackage.COLUMN__LENGTH:
-				setLength((Integer)newValue);
-				return;
-			case PannotationPackage.COLUMN__PRECISION:
-				setPrecision((Integer)newValue);
-				return;
-			case PannotationPackage.COLUMN__SCALE:
-				setScale((Integer)newValue);
-				return;
-			case PannotationPackage.COLUMN__UNIQUE_KEY:
-				setUniqueKey((String)newValue);
-				return;
-			case PannotationPackage.COLUMN__INDEX:
-				setIndex((String)newValue);
-				return;
+		case PannotationPackage.COLUMN__NAME:
+			setName((String) newValue);
+			return;
+		case PannotationPackage.COLUMN__UNIQUE:
+			setUnique((Boolean) newValue);
+			return;
+		case PannotationPackage.COLUMN__NULLABLE:
+			setNullable((Boolean) newValue);
+			return;
+		case PannotationPackage.COLUMN__INSERTABLE:
+			setInsertable((Boolean) newValue);
+			return;
+		case PannotationPackage.COLUMN__UPDATABLE:
+			setUpdatable((Boolean) newValue);
+			return;
+		case PannotationPackage.COLUMN__COLUMN_DEFINITION:
+			setColumnDefinition((String) newValue);
+			return;
+		case PannotationPackage.COLUMN__TABLE:
+			setTable((String) newValue);
+			return;
+		case PannotationPackage.COLUMN__LENGTH:
+			setLength((Integer) newValue);
+			return;
+		case PannotationPackage.COLUMN__PRECISION:
+			setPrecision((Integer) newValue);
+			return;
+		case PannotationPackage.COLUMN__SCALE:
+			setScale((Integer) newValue);
+			return;
+		case PannotationPackage.COLUMN__UNIQUE_KEY:
+			setUniqueKey((String) newValue);
+			return;
+		case PannotationPackage.COLUMN__INDEX:
+			setIndex((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__UNIQUE:
-				setUnique(UNIQUE_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__NULLABLE:
-				unsetNullable();
-				return;
-			case PannotationPackage.COLUMN__INSERTABLE:
-				setInsertable(INSERTABLE_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__UPDATABLE:
-				setUpdatable(UPDATABLE_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
-				setColumnDefinition(COLUMN_DEFINITION_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__TABLE:
-				setTable(TABLE_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__LENGTH:
-				unsetLength();
-				return;
-			case PannotationPackage.COLUMN__PRECISION:
-				unsetPrecision();
-				return;
-			case PannotationPackage.COLUMN__SCALE:
-				unsetScale();
-				return;
-			case PannotationPackage.COLUMN__UNIQUE_KEY:
-				setUniqueKey(UNIQUE_KEY_EDEFAULT);
-				return;
-			case PannotationPackage.COLUMN__INDEX:
-				setIndex(INDEX_EDEFAULT);
-				return;
+		case PannotationPackage.COLUMN__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__UNIQUE:
+			setUnique(UNIQUE_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__NULLABLE:
+			unsetNullable();
+			return;
+		case PannotationPackage.COLUMN__INSERTABLE:
+			setInsertable(INSERTABLE_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__UPDATABLE:
+			setUpdatable(UPDATABLE_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__COLUMN_DEFINITION:
+			setColumnDefinition(COLUMN_DEFINITION_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__TABLE:
+			setTable(TABLE_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__LENGTH:
+			unsetLength();
+			return;
+		case PannotationPackage.COLUMN__PRECISION:
+			unsetPrecision();
+			return;
+		case PannotationPackage.COLUMN__SCALE:
+			unsetScale();
+			return;
+		case PannotationPackage.COLUMN__UNIQUE_KEY:
+			setUniqueKey(UNIQUE_KEY_EDEFAULT);
+			return;
+		case PannotationPackage.COLUMN__INDEX:
+			setIndex(INDEX_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case PannotationPackage.COLUMN__UNIQUE:
-				return unique != UNIQUE_EDEFAULT;
-			case PannotationPackage.COLUMN__NULLABLE:
-				return isSetNullable();
-			case PannotationPackage.COLUMN__INSERTABLE:
-				return insertable != INSERTABLE_EDEFAULT;
-			case PannotationPackage.COLUMN__UPDATABLE:
-				return updatable != UPDATABLE_EDEFAULT;
-			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
-				return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null : !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
-			case PannotationPackage.COLUMN__TABLE:
-				return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
-			case PannotationPackage.COLUMN__LENGTH:
-				return isSetLength();
-			case PannotationPackage.COLUMN__PRECISION:
-				return isSetPrecision();
-			case PannotationPackage.COLUMN__SCALE:
-				return isSetScale();
-			case PannotationPackage.COLUMN__UNIQUE_KEY:
-				return UNIQUE_KEY_EDEFAULT == null ? uniqueKey != null : !UNIQUE_KEY_EDEFAULT.equals(uniqueKey);
-			case PannotationPackage.COLUMN__INDEX:
-				return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
+		case PannotationPackage.COLUMN__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case PannotationPackage.COLUMN__UNIQUE:
+			return unique != UNIQUE_EDEFAULT;
+		case PannotationPackage.COLUMN__NULLABLE:
+			return isSetNullable();
+		case PannotationPackage.COLUMN__INSERTABLE:
+			return insertable != INSERTABLE_EDEFAULT;
+		case PannotationPackage.COLUMN__UPDATABLE:
+			return updatable != UPDATABLE_EDEFAULT;
+		case PannotationPackage.COLUMN__COLUMN_DEFINITION:
+			return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null
+					: !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
+		case PannotationPackage.COLUMN__TABLE:
+			return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
+		case PannotationPackage.COLUMN__LENGTH:
+			return isSetLength();
+		case PannotationPackage.COLUMN__PRECISION:
+			return isSetPrecision();
+		case PannotationPackage.COLUMN__SCALE:
+			return isSetScale();
+		case PannotationPackage.COLUMN__UNIQUE_KEY:
+			return UNIQUE_KEY_EDEFAULT == null ? uniqueKey != null : !UNIQUE_KEY_EDEFAULT
+					.equals(uniqueKey);
+		case PannotationPackage.COLUMN__INDEX:
+			return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -646,17 +684,20 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setUnique(boolean newUnique) {
 		boolean oldUnique = unique;
 		unique = newUnique;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UNIQUE, oldUnique, unique));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UNIQUE,
+					oldUnique, unique));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getPrecision() {
@@ -665,6 +706,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPrecision(int newPrecision) {
@@ -673,11 +715,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		boolean oldPrecisionESet = precisionESet;
 		precisionESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__PRECISION, oldPrecision, precision, !oldPrecisionESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__PRECISION,
+					oldPrecision, precision, !oldPrecisionESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetPrecision() {
@@ -686,11 +730,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		precision = PRECISION_EDEFAULT;
 		precisionESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__PRECISION, oldPrecision, PRECISION_EDEFAULT, oldPrecisionESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__PRECISION,
+					oldPrecision, PRECISION_EDEFAULT, oldPrecisionESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetPrecision() {
@@ -699,6 +745,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isNullable() {
@@ -707,6 +754,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setNullable(boolean newNullable) {
@@ -715,12 +763,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		boolean oldNullableESet = nullableESet;
 		nullableESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NULLABLE, oldNullable, nullable, !oldNullableESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NULLABLE,
+					oldNullable, nullable, !oldNullableESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetNullable() {
@@ -729,12 +778,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		nullable = NULLABLE_EDEFAULT;
 		nullableESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__NULLABLE, oldNullable, NULLABLE_EDEFAULT, oldNullableESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__NULLABLE,
+					oldNullable, NULLABLE_EDEFAULT, oldNullableESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetNullable() {
@@ -743,6 +793,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isInsertable() {
@@ -751,17 +802,20 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInsertable(boolean newInsertable) {
 		boolean oldInsertable = insertable;
 		insertable = newInsertable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INSERTABLE, oldInsertable, insertable));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INSERTABLE,
+					oldInsertable, insertable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isUpdatable() {
@@ -770,17 +824,20 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setUpdatable(boolean newUpdatable) {
 		boolean oldUpdatable = updatable;
 		updatable = newUpdatable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UPDATABLE, oldUpdatable, updatable));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UPDATABLE,
+					oldUpdatable, updatable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getColumnDefinition() {
@@ -789,17 +846,20 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setColumnDefinition(String newColumnDefinition) {
 		String oldColumnDefinition = columnDefinition;
 		columnDefinition = newColumnDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__COLUMN_DEFINITION, oldColumnDefinition, columnDefinition));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PannotationPackage.COLUMN__COLUMN_DEFINITION, oldColumnDefinition, columnDefinition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTable() {
@@ -808,22 +868,26 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTable(String newTable) {
 		String oldTable = table;
 		table = newTable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__TABLE, oldTable, table));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__TABLE,
+					oldTable, table));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -831,7 +895,10 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		result.append(", unique: ");
 		result.append(unique);
 		result.append(", nullable: ");
-		if (nullableESet) result.append(nullable); else result.append("<unset>");
+		if (nullableESet)
+			result.append(nullable);
+		else
+			result.append("<unset>");
 		result.append(", insertable: ");
 		result.append(insertable);
 		result.append(", updatable: ");
@@ -841,11 +908,20 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		result.append(", table: ");
 		result.append(table);
 		result.append(", length: ");
-		if (lengthESet) result.append(length); else result.append("<unset>");
+		if (lengthESet)
+			result.append(length);
+		else
+			result.append("<unset>");
 		result.append(", precision: ");
-		if (precisionESet) result.append(precision); else result.append("<unset>");
+		if (precisionESet)
+			result.append(precision);
+		else
+			result.append("<unset>");
 		result.append(", scale: ");
-		if (scaleESet) result.append(scale); else result.append("<unset>");
+		if (scaleESet)
+			result.append(scale);
+		else
+			result.append("<unset>");
 		result.append(", uniqueKey: ");
 		result.append(uniqueKey);
 		result.append(", index: ");

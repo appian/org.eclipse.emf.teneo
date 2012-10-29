@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.Bpmn2Package;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Auditing</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Auditing</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class AuditingImpl extends BaseElementImpl implements Auditing {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AuditingImpl() {
@@ -39,8 +38,8 @@ public class AuditingImpl extends BaseElementImpl implements Auditing {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class AuditingImpl extends BaseElementImpl implements Auditing {
 		return Bpmn2Package.Literals.AUDITING;
 	}
 
-} //AuditingImpl
+} // AuditingImpl

@@ -27,16 +27,17 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests an mtm relation to itself.
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
-*/
+ * @version $Revision: 1.4 $
+ */
 public class MTMSameAction extends AbstractTestAction {
 	/** The number of testitems created */
 	private static int NO_ITEMS = 10;
 
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public MTMSameAction() {

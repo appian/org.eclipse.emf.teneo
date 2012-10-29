@@ -48,8 +48,7 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
-		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY,
-				"true");
+		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY, "true");
 		props.setProperty(PersistenceOptions.SET_PROXY, "true");
 		return props;
 	}
@@ -98,8 +97,7 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 			testLazySize(lib.getBooks());
 
 			final Writer w = lib.getWriters().get(0);
-			assertTrue(w.getName().compareTo(
-					"JRR Tolkien") == 0);
+			assertTrue(w.getName().compareTo("JRR Tolkien") == 0);
 			testLazySize(w.getBooks());
 			testLazy(lib.getWriters());
 			testLazy(w.getBooks());
@@ -120,14 +118,14 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 			assertTrue(lBook.eContainer() == lib);
 
 			assertTrue(lBook == wBook);
-			
+
 			assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0);
 			assertTrue(wBook.getPages() == lBook.getPages());
 			assertTrue(wBook.getCategory() instanceof BookCategory);
 			assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL);
 			store.commitTransaction();
 		}
-		
+
 		// now do some add and remove actions
 		{
 			store.beginTransaction();
@@ -139,7 +137,7 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 			bk.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 			w.getBooks().add(1, bk);
 			lib.getBooks().add(0, bk);
-			store.commitTransaction();			
+			store.commitTransaction();
 		}
 		{
 			store.beginTransaction();
@@ -191,7 +189,7 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 		final PersistableDelegateList<?> persistableEList = (PersistableDelegateList<?>) list;
 		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
 				.getDelegate();
-		assertFalse(persistentCollection.wasInitialized());		
+		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}
 }

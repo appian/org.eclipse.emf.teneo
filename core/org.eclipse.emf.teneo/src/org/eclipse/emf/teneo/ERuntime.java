@@ -61,7 +61,7 @@ public class ERuntime extends EModelResolver {
 
 	/** Count of times that an epackage got registered */
 	private final ArrayList<Integer> registrationCount = new ArrayList<Integer>();
-	
+
 	/** The mapping from concrete classes to eclass and back */
 	private final HashMap<Class<?>, EClass> concreteToEClass = new HashMap<Class<?>, EClass>();
 
@@ -74,11 +74,11 @@ public class ERuntime extends EModelResolver {
 
 	/** The list of contained classes/interfaces */
 	private final ArrayList<Class<?>> containedClasses = new ArrayList<Class<?>>();
-	
+
 	/** Remove an epackage from the internal lists */
 	public void removeEPackages(List<EPackage> ePackages) {
 		for (EPackage ePackage : ePackages) {
-			epackages.remove(ePackage);		
+			epackages.remove(ePackage);
 		}
 
 		// recompute everything
@@ -177,8 +177,8 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Walks through a interface inheritance structure and determines if a superclass is contained
-	 * if so then the class is added to the containedclasses
+	 * Walks through a interface inheritance structure and determines if a superclass is contained if
+	 * so then the class is added to the containedclasses
 	 */
 	private boolean isSelfOrSuperContained(Class<?> checkClass, ArrayList<Class<?>> containedClasses) {
 		// assert (checkClass.isInterface());
@@ -276,8 +276,8 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Walks up the class hierarchy and adds the superclasses to the concrete-interface mapping
-	 * class sets
+	 * Walks up the class hierarchy and adds the superclasses to the concrete-interface mapping class
+	 * sets
 	 */
 	private void addAbstractSupers(Class<?> clazz) {
 
@@ -321,15 +321,15 @@ public class ERuntime extends EModelResolver {
 
 	/** Convenience method to easily determine which packages should be ignored */
 	private static boolean ignorePackage(EPackage epack) {
-			return false;
-//		}
-//		if (epack instanceof XMLTypePackageImpl) {
-//			return true; // ignore this
-//		}
-//		if (epack instanceof EcorePackageImpl) {
-//			return true; // ignore this
-//		}
-//		return false;
+		return false;
+		// }
+		// if (epack instanceof XMLTypePackageImpl) {
+		// return true; // ignore this
+		// }
+		// if (epack instanceof EcorePackageImpl) {
+		// return true; // ignore this
+		// }
+		// return false;
 	}
 
 	/** Returns the instanceclass for a passed interface */
@@ -419,8 +419,7 @@ public class ERuntime extends EModelResolver {
 
 	/**
 	 * Returns the list of EMF interfaces which are contained. Only the topmost interface in a class
-	 * hierarchy is returned. This can be used to automatically create the econtainer field
-	 * mappings.
+	 * hierarchy is returned. This can be used to automatically create the econtainer field mappings.
 	 * 
 	 * Note that multiple classes in one inheritance structure can be present.
 	 */

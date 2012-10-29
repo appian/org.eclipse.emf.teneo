@@ -41,7 +41,8 @@ public class GMFNotationAction extends AbstractTestAction {
 	/** Constructor */
 	public GMFNotationAction() {
 		throw new UnsupportedOperationException("Not supported");
-		// super(new EPackage[] { EcorePackage.eINSTANCE, NotationPackage.eINSTANCE, MindmapPackage.eINSTANCE });
+		// super(new EPackage[] { EcorePackage.eINSTANCE, NotationPackage.eINSTANCE,
+		// MindmapPackage.eINSTANCE });
 	}
 
 	/*
@@ -63,8 +64,10 @@ public class GMFNotationAction extends AbstractTestAction {
 		final URI mindmapURI = URI.createURI(mindmapURL.toString());
 		final URL diagramURL = getClass().getResource("default.mmd");
 		final URI diagramURI = URI.createURI(diagramURL.toString());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("mmd", new XMIResourceFactoryImpl());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("mindmap", new XMIResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("mmd",
+				new XMIResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("mindmap",
+				new XMIResourceFactoryImpl());
 		final ResourceSet rs = new ResourceSetImpl();
 		final XMIResource mindmapResource = (XMIResource) rs.createResource(mindmapURI);
 		final XMIResource diagramResource = (XMIResource) rs.createResource(diagramURI);

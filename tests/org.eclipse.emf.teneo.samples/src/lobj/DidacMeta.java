@@ -6,74 +6,73 @@
  */
 package lobj;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Didac Meta</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Didac Meta</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link lobj.DidacMeta#getGoal <em>Goal</em>}</li>
- *   <li>{@link lobj.DidacMeta#getPrecognition <em>Precognition</em>}</li>
+ * <li>{@link lobj.DidacMeta#getGoal <em>Goal</em>}</li>
+ * <li>{@link lobj.DidacMeta#getPrecognition <em>Precognition</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see lobj.LobjPackage#getDidacMeta()
  * @model extendedMetaData="kind='elementOnly'"
  * @generated
  */
 public interface DidacMeta extends SimpleDidacMeta {
 	/**
-	 * Returns the value of the '<em><b>Goal</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Goal</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Goal</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Goal</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Goal</em>' attribute.
 	 * @see #setGoal(String)
 	 * @see lobj.LobjPackage#getDidacMeta_Goal()
-	 * @model unique="false"
-	 *        extendedMetaData="kind='element'"
+	 * @model unique="false" extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getGoal();
 
 	/**
-	 * Sets the value of the '{@link lobj.DidacMeta#getGoal <em>Goal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Goal</em>' attribute.
+	 * Sets the value of the '{@link lobj.DidacMeta#getGoal <em>Goal</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Goal</em>' attribute.
 	 * @see #getGoal()
 	 * @generated
 	 */
 	void setGoal(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Precognition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Precognition</b></em>' containment reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Precognition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Precognition</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Precognition</em>' containment reference.
 	 * @see #setPrecognition(Precognition)
 	 * @see lobj.LobjPackage#getDidacMeta_Precognition()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' namespace='##targetNamespace'"
+	 * @model containment="true" extendedMetaData="kind='element' namespace='##targetNamespace'"
 	 * @generated
 	 */
 	Precognition getPrecognition();
 
 	/**
-	 * Sets the value of the '{@link lobj.DidacMeta#getPrecognition <em>Precognition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Precognition</em>' containment reference.
+	 * Sets the value of the '{@link lobj.DidacMeta#getPrecognition <em>Precognition</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Precognition</em>' containment reference.
 	 * @see #getPrecognition()
 	 * @generated
 	 */

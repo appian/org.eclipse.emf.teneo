@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 /**
  * A DynamicEObjectImpl which implements Serializable. This is required by Hibernate.
  * 
- * TODO: probably serialization code has to be added to actually support serialization of a 
+ * TODO: probably serialization code has to be added to actually support serialization of a
  * DynamicEObjectImpl. Often however Hibernate won't really serialize the object, so it might not be
  * necessary for most cases.
  * 
@@ -31,9 +31,10 @@ import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.2 $
- */ 
-public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implements Serializable, Map<String, Object> {
-	
+ */
+public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implements Serializable,
+		Map<String, Object> {
+
 	private static final long serialVersionUID = 1L;
 
 	public SerializableDynamicEObjectImpl(EClass eClass) {
@@ -53,7 +54,7 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 		if (!(key instanceof String)) {
 			return false;
 		}
-		final String keyString = (String)key;
+		final String keyString = (String) key;
 		final EStructuralFeature eFeature = eClass().getEStructuralFeature(keyString);
 		if (eFeature == null) {
 			return false;
@@ -66,7 +67,7 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 			return false;
 		}
 		for (EStructuralFeature eFeature : eClass().getEAllStructuralFeatures()) {
-			final Object featureValue  = eGet(eFeature);
+			final Object featureValue = eGet(eFeature);
 			if (featureValue != null && value.equals(featureValue)) {
 				return true;
 			}
@@ -75,7 +76,7 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 	}
 
 	public Object get(Object key) {
-		return eGet(eClass().getEStructuralFeature((String)key));
+		return eGet(eClass().getEStructuralFeature((String) key));
 	}
 
 	public Object put(String key, Object value) {
@@ -86,7 +87,7 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 
 	public Object remove(Object key) {
 		final Object value = get(key);
-		eSet(eClass().getEStructuralFeature((String)key), null);
+		eSet(eClass().getEStructuralFeature((String) key), null);
 		return value;
 	}
 

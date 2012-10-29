@@ -25,25 +25,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Fleet</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Fleet</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.FleetImpl#getId <em>Id</em>}</li>
- *   <li>{@link fleet.impl.FleetImpl#getVehicles <em>Vehicles</em>}</li>
- *   <li>{@link fleet.impl.FleetImpl#getVehicleInformation <em>Vehicle Information</em>}</li>
- *   <li>{@link fleet.impl.FleetImpl#getServiceGarage <em>Service Garage</em>}</li>
+ * <li>{@link fleet.impl.FleetImpl#getId <em>Id</em>}</li>
+ * <li>{@link fleet.impl.FleetImpl#getVehicles <em>Vehicles</em>}</li>
+ * <li>{@link fleet.impl.FleetImpl#getVehicleInformation <em>Vehicle Information</em>}</li>
+ * <li>{@link fleet.impl.FleetImpl#getServiceGarage <em>Service Garage</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class FleetImpl extends TemporalImpl implements Fleet {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FleetImpl() {
@@ -51,8 +50,8 @@ public class FleetImpl extends TemporalImpl implements Fleet {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -61,17 +60,17 @@ public class FleetImpl extends TemporalImpl implements Fleet {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eGet(FleetPackage.Literals.FLEET__ID, true);
+		return (String) eGet(FleetPackage.Literals.FLEET__ID, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -79,41 +78,41 @@ public class FleetImpl extends TemporalImpl implements Fleet {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList getVehicles() {
-		return (EList)eGet(FleetPackage.Literals.FLEET__VEHICLES, true);
+		return (EList) eGet(FleetPackage.Literals.FLEET__VEHICLES, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList getVehicleInformation() {
-		return (EList)eGet(FleetPackage.Literals.FLEET__VEHICLE_INFORMATION, true);
+		return (EList) eGet(FleetPackage.Literals.FLEET__VEHICLE_INFORMATION, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Garage getServiceGarage() {
-		return (Garage)eGet(FleetPackage.Literals.FLEET__SERVICE_GARAGE, true);
+		return (Garage) eGet(FleetPackage.Literals.FLEET__SERVICE_GARAGE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setServiceGarage(Garage newServiceGarage) {
 		eSet(FleetPackage.Literals.FLEET__SERVICE_GARAGE, newServiceGarage);
 	}
 
-} //FleetImpl
+} // FleetImpl

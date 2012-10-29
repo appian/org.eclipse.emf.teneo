@@ -63,7 +63,8 @@ public class FieldUtil {
 	}
 
 	/**
-	 * Get the value for a field, first the field is accessed directly if not found then the getter is called.
+	 * Get the value for a field, first the field is accessed directly if not found then the getter is
+	 * called.
 	 */
 	public static Object callGetter(Object target, String fieldName) {
 		try {
@@ -77,7 +78,8 @@ public class FieldUtil {
 			}
 			return callMethod(target, method.getName(), new Object[0]);
 		} catch (Exception e) {
-			throw new TeneoException("Exception getting " + fieldName + " from " + target.getClass().getName(), e);
+			throw new TeneoException("Exception getting " + fieldName + " from "
+					+ target.getClass().getName(), e);
 		}
 	}
 
@@ -92,15 +94,16 @@ public class FieldUtil {
 			final Field field = getField(target.getClass(), fieldName);
 			field.set(target, value);
 		} catch (Exception e) {
-			throw new TeneoException("Exception setting " + fieldName + " from " + target.getClass().getName()
-					+ " to value " + value + " of type " + (value != null ? value.getClass().getName() : ""), e);
+			throw new TeneoException("Exception setting " + fieldName + " from "
+					+ target.getClass().getName() + " to value " + value + " of type "
+					+ (value != null ? value.getClass().getName() : ""), e);
 		}
 	}
 
 	/**
-	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will make the field
-	 * accessible also. Is a bit rough because it does a case insensitive search. Note if the field is not found an
-	 * exception is thrown.
+	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will make
+	 * the field accessible also. Is a bit rough because it does a case insensitive search. Note if
+	 * the field is not found an exception is thrown.
 	 */
 	public static Field getField(Class<?> clazz, String fieldName) {
 		Field field = (Field) fieldMethodCache.get(clazz.getName() + "." + fieldName);
@@ -119,7 +122,8 @@ public class FieldUtil {
 			}
 		} catch (Exception e) // todo replace with specific exception
 		{
-			throw new TeneoException("Field " + fieldName + " not accessible for class: " + clazz.getName(), e);
+			throw new TeneoException("Field " + fieldName + " not accessible for class: "
+					+ clazz.getName(), e);
 		}
 		if (field == null) {
 			return null;
@@ -148,12 +152,14 @@ public class FieldUtil {
 	}
 
 	/** Does the actual search for the method */
-	private static Method getMethodInternal(Class<?> clazz, String methodName, int numOfParams) throws Exception {
+	private static Method getMethodInternal(Class<?> clazz, String methodName, int numOfParams)
+			throws Exception {
 		if (clazz == null) {
 			return null;
 		}
 
-		final Method method = (Method) fieldMethodCache.get(clazz.getName() + "." + methodName + "." + numOfParams);
+		final Method method = (Method) fieldMethodCache.get(clazz.getName() + "." + methodName + "."
+				+ numOfParams);
 		if (method != null) {
 			return method;
 		}

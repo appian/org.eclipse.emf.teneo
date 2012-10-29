@@ -26,24 +26,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Signal Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Signal Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.SignalEventDefinitionImpl#getSignalRef <em>Signal Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SignalEventDefinitionImpl#getSignalRef <em>Signal Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
-		SignalEventDefinition {
+public class SignalEventDefinitionImpl extends EventDefinitionImpl implements SignalEventDefinition {
 	/**
-	 * The cached value of the '{@link #getSignalRef() <em>Signal Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSignalRef() <em>Signal Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSignalRef()
 	 * @generated
 	 * @ordered
@@ -51,8 +49,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	protected Signal signalRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SignalEventDefinitionImpl() {
@@ -60,8 +58,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,8 +68,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Signal getSignalRef() {
@@ -81,16 +79,15 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 			if (signalRef != oldSignalRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.SIGNAL_EVENT_DEFINITION__SIGNAL_REF,
-							oldSignalRef, signalRef));
+							Bpmn2Package.SIGNAL_EVENT_DEFINITION__SIGNAL_REF, oldSignalRef, signalRef));
 			}
 		}
 		return signalRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Signal basicGetSignalRef() {
@@ -98,8 +95,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSignalRef(Signal newSignalRef) {
@@ -107,13 +104,12 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 		signalRef = newSignalRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SIGNAL_EVENT_DEFINITION__SIGNAL_REF,
-					oldSignalRef, signalRef));
+					Bpmn2Package.SIGNAL_EVENT_DEFINITION__SIGNAL_REF, oldSignalRef, signalRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -128,8 +124,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -143,8 +139,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,8 +154,8 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -171,4 +167,4 @@ public class SignalEventDefinitionImpl extends EventDefinitionImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //SignalEventDefinitionImpl
+} // SignalEventDefinitionImpl

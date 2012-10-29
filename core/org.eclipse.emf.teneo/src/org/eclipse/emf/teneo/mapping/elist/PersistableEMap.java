@@ -37,9 +37,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 
 /**
- * A persistable emap which uses the PersistableEList as its delegate. Note that this implementation is based on the
- * implementation of the superclass. The superclass makes use of a delegate list to store its content. This
- * implementation puts a persistent list in this member.
+ * A persistable emap which uses the PersistableEList as its delegate. Note that this implementation
+ * is based on the implementation of the superclass. The superclass makes use of a delegate list to
+ * store its content. This implementation puts a persistent list in this member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
@@ -67,8 +67,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	private boolean isLoading = false;
 
 	/**
-	 * The owner of the objet. we must keep a copy since emap does not have one and the delegate EList does not expose
-	 * this field publicly
+	 * The owner of the objet. we must keep a copy since emap does not have one and the delegate EList
+	 * does not expose this field publicly
 	 */
 	private InternalEObject owner;
 
@@ -79,7 +79,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/** Constructor */
-	public PersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, EStructuralFeature feature) {
+	public PersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner,
+			EStructuralFeature feature) {
 		// invoke constructor with no lazyLoadMapDelegate
 		super(entryEClass, BasicEMap.Entry.class, owner, owner.eClass().getFeatureID(feature));
 
@@ -126,8 +127,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		// NOTE BEWARE: the delegateEList is a member of the superclass!
 		delegateEList = createDelegateEList(owner, feature, delegateORMList);
 
-		logString = "EMap with entry eclass: " + entryEClass.getName() + " of member " + feature.getName()
-				+ " owned by " + owner.getClass().getName() + " with delegate list "
+		logString = "EMap with entry eclass: " + entryEClass.getName() + " of member "
+				+ feature.getName() + " owned by " + owner.getClass().getName() + " with delegate list "
 				+ delegateORMList.getClass().getName();
 
 		if (log.isDebugEnabled()) {
@@ -143,7 +144,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 			setLoaded(delegateORMList.size() > 0);
 		}
 		if (isLoaded) {
-			// force the map to be computed, this sets the internal entrydata/size member
+			// force the map to be computed, this sets the internal entrydata/size
+			// member
 			get(null);
 		}
 	}
@@ -203,7 +205,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		try {
 			doLoad();
 
-			// force the map to be computed, this sets the internal entrydata/size member
+			// force the map to be computed, this sets the internal entrydata/size
+			// member
 			get(null);
 
 			// set the size
@@ -382,7 +385,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	public NotificationChain basicAdd(java.util.Map.Entry<K, V> object, NotificationChain notifications) {
+	public NotificationChain basicAdd(java.util.Map.Entry<K, V> object,
+			NotificationChain notifications) {
 		load();
 		return super.basicAdd(object, notifications);
 	}

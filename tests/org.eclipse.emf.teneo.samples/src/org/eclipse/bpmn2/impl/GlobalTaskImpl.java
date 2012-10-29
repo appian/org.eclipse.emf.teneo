@@ -32,23 +32,22 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Global Task</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.GlobalTaskImpl#getResources <em>Resources</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GlobalTaskImpl#getResources <em>Resources</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 	/**
-	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResources()
 	 * @generated
 	 * @ordered
@@ -56,8 +55,8 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 	protected EList<ResourceRole> resources;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GlobalTaskImpl() {
@@ -65,8 +64,8 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -75,38 +74,36 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ResourceRole> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentEList<ResourceRole>(
-					ResourceRole.class, this,
+			resources = new EObjectContainmentEList<ResourceRole>(ResourceRole.class, this,
 					Bpmn2Package.GLOBAL_TASK__RESOURCES);
 		}
 		return resources;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.GLOBAL_TASK__RESOURCES:
-			return ((InternalEList<?>) getResources()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getResources()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -119,8 +116,8 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -129,16 +126,15 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 		switch (featureID) {
 		case Bpmn2Package.GLOBAL_TASK__RESOURCES:
 			getResources().clear();
-			getResources()
-					.addAll((Collection<? extends ResourceRole>) newValue);
+			getResources().addAll((Collection<? extends ResourceRole>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -152,8 +148,8 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -165,4 +161,4 @@ public class GlobalTaskImpl extends CallableElementImpl implements GlobalTask {
 		return super.eIsSet(featureID);
 	}
 
-} //GlobalTaskImpl
+} // GlobalTaskImpl

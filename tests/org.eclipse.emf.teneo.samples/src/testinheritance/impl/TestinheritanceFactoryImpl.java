@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import testinheritance.*;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TestinheritanceFactoryImpl extends EFactoryImpl implements TestinheritanceFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static TestinheritanceFactory init() {
 		try {
-			TestinheritanceFactory theTestinheritanceFactory = (TestinheritanceFactory)EPackage.Registry.INSTANCE.getEFactory("http://xsd.tns.example.com/testinheritance/model"); 
+			TestinheritanceFactory theTestinheritanceFactory = (TestinheritanceFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://xsd.tns.example.com/testinheritance/model");
 			if (theTestinheritanceFactory != null) {
 				return theTestinheritanceFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new TestinheritanceFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestinheritanceFactoryImpl() {
@@ -53,31 +50,42 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TestinheritancePackage.SOME_RESOURCE: return createSomeResource();
-			case TestinheritancePackage.SOME_BASE_CLASS: return createSomeBaseClass();
-			case TestinheritancePackage.SOME_OTHER_BASE_CLASS: return createSomeOtherBaseClass();
-			case TestinheritancePackage.NAME_VALUE_PAIR: return createNameValuePair();
-			case TestinheritancePackage.PARENT_ONE: return createParentOne();
-			case TestinheritancePackage.PARENT_TWO: return createParentTwo();
-			case TestinheritancePackage.PARENT_ZERO: return createParentZero();
-			case TestinheritancePackage.CHILD: return createChild();
-			case TestinheritancePackage.CHILD2: return createChild2();
-			case TestinheritancePackage.SOME_REFERENCE: return createSomeReference();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case TestinheritancePackage.SOME_RESOURCE:
+			return createSomeResource();
+		case TestinheritancePackage.SOME_BASE_CLASS:
+			return createSomeBaseClass();
+		case TestinheritancePackage.SOME_OTHER_BASE_CLASS:
+			return createSomeOtherBaseClass();
+		case TestinheritancePackage.NAME_VALUE_PAIR:
+			return createNameValuePair();
+		case TestinheritancePackage.PARENT_ONE:
+			return createParentOne();
+		case TestinheritancePackage.PARENT_TWO:
+			return createParentTwo();
+		case TestinheritancePackage.PARENT_ZERO:
+			return createParentZero();
+		case TestinheritancePackage.CHILD:
+			return createChild();
+		case TestinheritancePackage.CHILD2:
+			return createChild2();
+		case TestinheritancePackage.SOME_REFERENCE:
+			return createSomeReference();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SomeResource createSomeResource() {
@@ -86,8 +94,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SomeBaseClass createSomeBaseClass() {
@@ -96,8 +104,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SomeOtherBaseClass createSomeOtherBaseClass() {
@@ -106,8 +114,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NameValuePair createNameValuePair() {
@@ -116,8 +124,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParentOne createParentOne() {
@@ -126,8 +134,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParentTwo createParentTwo() {
@@ -136,8 +144,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParentZero createParentZero() {
@@ -146,8 +154,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Child createChild() {
@@ -156,8 +164,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Child2 createChild2() {
@@ -166,8 +174,8 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SomeReference createSomeReference() {
@@ -176,17 +184,17 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestinheritancePackage getTestinheritancePackage() {
-		return (TestinheritancePackage)getEPackage();
+		return (TestinheritancePackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -195,4 +203,4 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 		return TestinheritancePackage.eINSTANCE;
 	}
 
-} //TestinheritanceFactoryImpl
+} // TestinheritanceFactoryImpl

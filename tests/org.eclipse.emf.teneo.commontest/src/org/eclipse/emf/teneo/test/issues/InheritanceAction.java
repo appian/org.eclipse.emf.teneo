@@ -38,7 +38,7 @@ public class InheritanceAction extends AbstractTestAction {
 	 * @param arg0
 	 */
 	public InheritanceAction() {
-		super(new EPackage[] { InheritancePackage.eINSTANCE});
+		super(new EPackage[] { InheritancePackage.eINSTANCE });
 	}
 
 	/*

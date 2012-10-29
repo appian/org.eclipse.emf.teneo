@@ -30,16 +30,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * Tests the solution of https://bugs.eclipse.org/bugs/show_bug.cgi?id=336501
  * 
- * PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE" overrides @Temporal
- * annotation
+ * PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE" overrides @Temporal annotation
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.1 $
  */
 public class Bz336501Action extends AbstractTestAction {
 
-	private static final Timestamp TIMESTAMP = new Timestamp(
-			new Date().getTime());
+	private static final Timestamp TIMESTAMP = new Timestamp(new Date().getTime());
 
 	public Bz336501Action() {
 		super(Bz336501Package.eINSTANCE);

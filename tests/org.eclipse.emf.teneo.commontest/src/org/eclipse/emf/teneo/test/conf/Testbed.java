@@ -30,8 +30,8 @@ import org.eclipse.emf.teneo.test.stores.TestDBAdapters;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * The test bed encapsulates the environment of a test action. It has 2 functions: 1) to encapsulate the possible
- * configurations/dbadapters, and 2) to keep the current running configuration.
+ * The test bed encapsulates the environment of a test action. It has 2 functions: 1) to encapsulate
+ * the possible configurations/dbadapters, and 2) to keep the current running configuration.
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  */
 public abstract class Testbed {
 	/** The logger */
-//	private static Log log = LogFactory.getLog(Testbed.class);
+	// private static Log log = LogFactory.getLog(Testbed.class);
 
 	/** The testbed instance */
 	private static Testbed testBed = null;
@@ -69,8 +69,8 @@ public abstract class Testbed {
 	private TestConfiguration currentCfg;
 
 	/**
-	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the
-	 * non-abstract subclass
+	 * Constructor, the constructor assumes that the test and db properties are located in the same
+	 * location as the non-abstract subclass
 	 */
 	protected Testbed() {
 		dbAdapters = new TestDBAdapters();
@@ -85,8 +85,8 @@ public abstract class Testbed {
 	}
 
 	/**
-	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the
-	 * non-abstract subclass
+	 * Constructor, the constructor assumes that the test and db properties are located in the same
+	 * location as the non-abstract subclass
 	 */
 	protected Testbed(String configPropertiesFile) {
 		dbAdapters = new TestDBAdapters();
@@ -101,7 +101,8 @@ public abstract class Testbed {
 	}
 
 	/**
-	 * Request a store for the given configuration. No other store can be requested until this one is tear down.
+	 * Request a store for the given configuration. No other store can be requested until this one is
+	 * tear down.
 	 */
 	public abstract TestStore createStore(AbstractTest testCase);
 
@@ -139,9 +140,10 @@ public abstract class Testbed {
 	}
 
 	/**
-	 * Deletes the current binary files private void deleteFiles(File directory) { File[] files = directory.listFiles();
-	 * for (int i = 0; i < files.length; i++) { if (files[i].isDirectory()) { deleteFiles(files[i]); } if
-	 * (files[i].getName().endsWith(".class") || files[i].getName().endsWith(".jdo")) files[i].delete(); } }
+	 * Deletes the current binary files private void deleteFiles(File directory) { File[] files =
+	 * directory.listFiles(); for (int i = 0; i < files.length; i++) { if (files[i].isDirectory()) {
+	 * deleteFiles(files[i]); } if (files[i].getName().endsWith(".class") ||
+	 * files[i].getName().endsWith(".jdo")) files[i].delete(); } }
 	 */
 
 	/** Get the current configuration, for which the current test is run */
@@ -152,7 +154,8 @@ public abstract class Testbed {
 	/** And set the current configuration */
 	public void setActiveConfiguration(TestConfiguration newConfiguration) {
 		if (!testConfigs.getConfigurations().contains(newConfiguration))
-			throw new IllegalArgumentException("Cannot to switch to not configuration " + newConfiguration);
+			throw new IllegalArgumentException("Cannot to switch to not configuration "
+					+ newConfiguration);
 		this.currentCfg = newConfiguration;
 	}
 

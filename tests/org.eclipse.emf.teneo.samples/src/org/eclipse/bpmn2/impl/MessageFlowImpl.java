@@ -27,26 +27,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message Flow</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Message Flow</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getMessageRef <em>Message Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getSourceRef <em>Source Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getTargetRef <em>Target Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getMessageRef <em>Message Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getSourceRef <em>Source Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageFlowImpl#getTargetRef <em>Target Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	/**
-	 * The cached value of the '{@link #getMessageRef() <em>Message Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMessageRef() <em>Message Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessageRef()
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	protected Message messageRef;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -74,9 +73,9 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSourceRef()
 	 * @generated
 	 * @ordered
@@ -84,9 +83,9 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	protected InteractionNode sourceRef;
 
 	/**
-	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetRef()
 	 * @generated
 	 * @ordered
@@ -94,8 +93,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	protected InteractionNode targetRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MessageFlowImpl() {
@@ -103,8 +102,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,8 +112,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message getMessageRef() {
@@ -124,16 +123,15 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 			if (messageRef != oldMessageRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.MESSAGE_FLOW__MESSAGE_REF,
-							oldMessageRef, messageRef));
+							Bpmn2Package.MESSAGE_FLOW__MESSAGE_REF, oldMessageRef, messageRef));
 			}
 		}
 		return messageRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message basicGetMessageRef() {
@@ -141,22 +139,21 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMessageRef(Message newMessageRef) {
 		Message oldMessageRef = messageRef;
 		messageRef = newMessageRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE_FLOW__MESSAGE_REF, oldMessageRef,
-					messageRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.MESSAGE_FLOW__MESSAGE_REF,
+					oldMessageRef, messageRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -164,21 +161,21 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE_FLOW__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.MESSAGE_FLOW__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode getSourceRef() {
@@ -188,16 +185,15 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 			if (sourceRef != oldSourceRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.MESSAGE_FLOW__SOURCE_REF,
-							oldSourceRef, sourceRef));
+							Bpmn2Package.MESSAGE_FLOW__SOURCE_REF, oldSourceRef, sourceRef));
 			}
 		}
 		return sourceRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode basicGetSourceRef() {
@@ -205,22 +201,21 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSourceRef(InteractionNode newSourceRef) {
 		InteractionNode oldSourceRef = sourceRef;
 		sourceRef = newSourceRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE_FLOW__SOURCE_REF, oldSourceRef,
-					sourceRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.MESSAGE_FLOW__SOURCE_REF,
+					oldSourceRef, sourceRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode getTargetRef() {
@@ -230,16 +225,15 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 			if (targetRef != oldTargetRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.MESSAGE_FLOW__TARGET_REF,
-							oldTargetRef, targetRef));
+							Bpmn2Package.MESSAGE_FLOW__TARGET_REF, oldTargetRef, targetRef));
 			}
 		}
 		return targetRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode basicGetTargetRef() {
@@ -247,22 +241,21 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetRef(InteractionNode newTargetRef) {
 		InteractionNode oldTargetRef = targetRef;
 		targetRef = newTargetRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE_FLOW__TARGET_REF, oldTargetRef,
-					targetRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.MESSAGE_FLOW__TARGET_REF,
+					oldTargetRef, targetRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -287,8 +280,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -311,8 +304,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -335,8 +328,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -345,8 +338,7 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 		case Bpmn2Package.MESSAGE_FLOW__MESSAGE_REF:
 			return messageRef != null;
 		case Bpmn2Package.MESSAGE_FLOW__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.MESSAGE_FLOW__SOURCE_REF:
 			return sourceRef != null;
 		case Bpmn2Package.MESSAGE_FLOW__TARGET_REF:
@@ -356,8 +348,8 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -372,4 +364,4 @@ public class MessageFlowImpl extends BaseElementImpl implements MessageFlow {
 		return result.toString();
 	}
 
-} //MessageFlowImpl
+} // MessageFlowImpl

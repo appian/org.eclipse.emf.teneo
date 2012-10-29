@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Choreography Loop Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Choreography Loop Type</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getChoreographyLoopType()
  * @model extendedMetaData="name='tChoreographyLoopType'"
  * @generated
  */
 public enum ChoreographyLoopType implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum ChoreographyLoopType implements Enumerator {
 	NONE(0, "None", "None"),
 
 	/**
-	 * The '<em><b>Standard</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Standard</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #STANDARD_VALUE
 	 * @generated
 	 * @ordered
@@ -51,20 +49,19 @@ public enum ChoreographyLoopType implements Enumerator {
 	STANDARD(1, "Standard", "Standard"),
 
 	/**
-	 * The '<em><b>Multi Instance Sequential</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Multi Instance Sequential</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #MULTI_INSTANCE_SEQUENTIAL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MULTI_INSTANCE_SEQUENTIAL(2, "MultiInstanceSequential",
-			"MultiInstanceSequential"),
+	MULTI_INSTANCE_SEQUENTIAL(2, "MultiInstanceSequential", "MultiInstanceSequential"),
 
 	/**
-	 * The '<em><b>Multi Instance Parallel</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Multi Instance Parallel</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #MULTI_INSTANCE_PARALLEL_VALUE
 	 * @generated
 	 * @ordered
@@ -72,13 +69,13 @@ public enum ChoreographyLoopType implements Enumerator {
 	MULTI_INSTANCE_PARALLEL(3, "MultiInstanceParallel", "MultiInstanceParallel");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NONE
 	 * @model name="None"
 	 * @generated
@@ -87,13 +84,13 @@ public enum ChoreographyLoopType implements Enumerator {
 	public static final int NONE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Standard</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Standard</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Standard</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Standard</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #STANDARD
 	 * @model name="Standard"
 	 * @generated
@@ -102,13 +99,13 @@ public enum ChoreographyLoopType implements Enumerator {
 	public static final int STANDARD_VALUE = 1;
 
 	/**
-	 * The '<em><b>Multi Instance Sequential</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Multi Instance Sequential</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Multi Instance Sequential</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Multi Instance Sequential</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MULTI_INSTANCE_SEQUENTIAL
 	 * @model name="MultiInstanceSequential"
 	 * @generated
@@ -117,13 +114,13 @@ public enum ChoreographyLoopType implements Enumerator {
 	public static final int MULTI_INSTANCE_SEQUENTIAL_VALUE = 2;
 
 	/**
-	 * The '<em><b>Multi Instance Parallel</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Multi Instance Parallel</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Multi Instance Parallel</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Multi Instance Parallel</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MULTI_INSTANCE_PARALLEL
 	 * @model name="MultiInstanceParallel"
 	 * @generated
@@ -132,27 +129,27 @@ public enum ChoreographyLoopType implements Enumerator {
 	public static final int MULTI_INSTANCE_PARALLEL_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Choreography Loop Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Choreography Loop Type</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final ChoreographyLoopType[] VALUES_ARRAY = new ChoreographyLoopType[] {
-			NONE, STANDARD, MULTI_INSTANCE_SEQUENTIAL, MULTI_INSTANCE_PARALLEL, };
+	private static final ChoreographyLoopType[] VALUES_ARRAY = new ChoreographyLoopType[] { NONE,
+			STANDARD, MULTI_INSTANCE_SEQUENTIAL, MULTI_INSTANCE_PARALLEL, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Choreography Loop Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Choreography Loop Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<ChoreographyLoopType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ChoreographyLoopType> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Choreography Loop Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ChoreographyLoopType get(String literal) {
@@ -166,9 +163,9 @@ public enum ChoreographyLoopType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Choreography Loop Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Choreography Loop Type</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ChoreographyLoopType getByName(String name) {
@@ -183,8 +180,8 @@ public enum ChoreographyLoopType implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Choreography Loop Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ChoreographyLoopType get(int value) {
@@ -202,30 +199,29 @@ public enum ChoreographyLoopType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ChoreographyLoopType(int value, String name, String literal) {
@@ -235,8 +231,8 @@ public enum ChoreographyLoopType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -244,8 +240,8 @@ public enum ChoreographyLoopType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -253,8 +249,8 @@ public enum ChoreographyLoopType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -262,9 +258,9 @@ public enum ChoreographyLoopType implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -272,4 +268,4 @@ public enum ChoreographyLoopType implements Enumerator {
 		return literal;
 	}
 
-} //ChoreographyLoopType
+} // ChoreographyLoopType

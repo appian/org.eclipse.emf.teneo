@@ -20,25 +20,25 @@ import org.w3._2000._09.xmldsig.TransformsType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Retrieval Method Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Retrieval Method Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl#getTransforms <em>Transforms</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl#getURI <em>URI</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl#getTransforms <em>Transforms
+ * </em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl#getURI <em>URI</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMethodType {
 	/**
 	 * The cached value of the '{@link #getTransforms() <em>Transforms</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTransforms()
 	 * @generated
 	 * @ordered
@@ -46,9 +46,9 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	protected TransformsType transforms;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -56,9 +56,9 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	protected static final String TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -66,9 +66,9 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	protected String type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getURI() <em>URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getURI() <em>URI</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getURI()
 	 * @generated
 	 * @ordered
@@ -76,9 +76,9 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	protected static final String URI_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getURI() <em>URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getURI() <em>URI</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getURI()
 	 * @generated
 	 * @ordered
@@ -86,8 +86,8 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	protected String uRI = URI_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RetrievalMethodTypeImpl() {
@@ -95,8 +95,8 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -105,8 +105,8 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TransformsType getTransforms() {
@@ -114,42 +114,49 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTransforms(TransformsType newTransforms, NotificationChain msgs) {
 		TransformsType oldTransforms = transforms;
 		transforms = newTransforms;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, oldTransforms, newTransforms);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, oldTransforms, newTransforms);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTransforms(TransformsType newTransforms) {
 		if (newTransforms != transforms) {
 			NotificationChain msgs = null;
 			if (transforms != null)
-				msgs = ((InternalEObject)transforms).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, null, msgs);
+				msgs = ((InternalEObject) transforms).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, null, msgs);
 			if (newTransforms != null)
-				msgs = ((InternalEObject)newTransforms).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, null, msgs);
+				msgs = ((InternalEObject) newTransforms).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, null, msgs);
 			msgs = basicSetTransforms(newTransforms, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, newTransforms, newTransforms));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS, newTransforms, newTransforms));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getType() {
@@ -157,20 +164,21 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(String newType) {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE, oldType, type));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getURI() {
@@ -178,117 +186,120 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setURI(String newURI) {
 		String oldURI = uRI;
 		uRI = newURI;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI, oldURI, uRI));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI, oldURI, uRI));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
-				return basicSetTransforms(null, msgs);
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
+			return basicSetTransforms(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
-				return getTransforms();
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
-				return getType();
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
-				return getURI();
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
+			return getTransforms();
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
+			return getType();
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
+			return getURI();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
-				setTransforms((TransformsType)newValue);
-				return;
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
-				setType((String)newValue);
-				return;
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
-				setURI((String)newValue);
-				return;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
+			setTransforms((TransformsType) newValue);
+			return;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
+			setType((String) newValue);
+			return;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
+			setURI((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
-				setTransforms((TransformsType)null);
-				return;
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
-				setURI(URI_EDEFAULT);
-				return;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
+			setTransforms((TransformsType) null);
+			return;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
+			setURI(URI_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
-				return transforms != null;
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
-				return URI_EDEFAULT == null ? uRI != null : !URI_EDEFAULT.equals(uRI);
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TRANSFORMS:
+			return transforms != null;
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__TYPE:
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+		case XmldsigPackage.RETRIEVAL_METHOD_TYPE__URI:
+			return URI_EDEFAULT == null ? uRI != null : !URI_EDEFAULT.equals(uRI);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");
@@ -299,4 +310,4 @@ public class RetrievalMethodTypeImpl extends EObjectImpl implements RetrievalMet
 		return result.toString();
 	}
 
-} //RetrievalMethodTypeImpl
+} // RetrievalMethodTypeImpl

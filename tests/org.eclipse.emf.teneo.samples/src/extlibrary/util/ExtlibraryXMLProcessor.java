@@ -15,27 +15,26 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 /**
- * This class contains helper methods to serialize and deserialize XML documents
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This class contains helper methods to serialize and deserialize XML documents <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ExtlibraryXMLProcessor extends XMLProcessor {
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Public constructor to instantiate the helper. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtlibraryXMLProcessor() {
 		super((EPackage.Registry.INSTANCE));
 		ExtlibraryPackage.eINSTANCE.eClass();
 	}
-	
+
 	/**
-	 * Register for "*" and "xml" file extensions the ExtlibraryResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Register for "*" and "xml" file extensions the ExtlibraryResourceFactoryImpl factory. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Map getRegistrations() {
@@ -47,4 +46,4 @@ public class ExtlibraryXMLProcessor extends XMLProcessor {
 		return registrations;
 	}
 
-} //ExtlibraryXMLProcessor
+} // ExtlibraryXMLProcessor

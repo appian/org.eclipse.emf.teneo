@@ -18,35 +18,32 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import temporal.*;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static TemporalFactory init() {
 		try {
-			TemporalFactory theTemporalFactory = (TemporalFactory)EPackage.Registry.INSTANCE.getEFactory("http:///temporal.ecore"); 
+			TemporalFactory theTemporalFactory = (TemporalFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http:///temporal.ecore");
 			if (theTemporalFactory != null) {
 				return theTemporalFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new TemporalFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TemporalFactoryImpl() {
@@ -54,53 +51,58 @@ public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TemporalPackage.TEMPORAL: return createTemporal();
-			case TemporalPackage.VERSION_HOLDER: return createVersionHolder();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case TemporalPackage.TEMPORAL:
+			return createTemporal();
+		case TemporalPackage.VERSION_HOLDER:
+			return createVersionHolder();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case TemporalPackage.EBOOLEAN_ARRAY:
-				return createEBooleanArrayFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case TemporalPackage.EBOOLEAN_ARRAY:
+			return createEBooleanArrayFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case TemporalPackage.EBOOLEAN_ARRAY:
-				return convertEBooleanArrayToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case TemporalPackage.EBOOLEAN_ARRAY:
+			return convertEBooleanArrayToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Temporal createTemporal() {
@@ -109,8 +111,8 @@ public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public VersionHolder createVersionHolder() {
@@ -119,8 +121,8 @@ public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean[] createEBooleanArrayFromString(EDataType eDataType, String initialValue) {
@@ -130,8 +132,8 @@ public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertEBooleanArrayToString(EDataType eDataType, Object instanceValue) {
@@ -141,17 +143,17 @@ public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TemporalPackage getTemporalPackage() {
-		return (TemporalPackage)getEPackage();
+		return (TemporalPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -160,4 +162,4 @@ public class TemporalFactoryImpl extends EFactoryImpl implements TemporalFactory
 		return TemporalPackage.eINSTANCE;
 	}
 
-} //TemporalFactoryImpl
+} // TemporalFactoryImpl

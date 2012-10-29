@@ -23,12 +23,12 @@ public class Bz390774Action extends AbstractTestAction {
 		super(new EPackage[] { Bz390774Package.eINSTANCE });
 	}
 
-//	@Override
-//	public Properties getExtraConfigurationProperties() {
-//		final Properties props = new Properties();
-//		props.setProperty(PersistenceOptions.SET_PROXY, "true");
-//		return props;
-//	}
+	// @Override
+	// public Properties getExtraConfigurationProperties() {
+	// final Properties props = new Properties();
+	// props.setProperty(PersistenceOptions.SET_PROXY, "true");
+	// return props;
+	// }
 
 	@Override
 	public void doAction(TestStore store) {

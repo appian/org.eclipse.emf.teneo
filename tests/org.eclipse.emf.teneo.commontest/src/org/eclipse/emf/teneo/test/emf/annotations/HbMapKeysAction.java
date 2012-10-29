@@ -42,13 +42,13 @@ public class HbMapKeysAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-// props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
+		// props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
 		return props;
 	}
 
 	/**
-	 * Check test set, note a where clause has been set on the relation Only writers with name
-	 * martin are returned
+	 * Check test set, note a where clause has been set on the relation Only writers with name martin
+	 * are returned
 	 */
 	private void checkTestSet(Book bk) {
 		// final String prefix = bk.getTitle();

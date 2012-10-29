@@ -17,7 +17,6 @@
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
-
 /**
  * Stores a single EReference value when the EReference is non containment.
  * 

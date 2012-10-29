@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * @version $Revision: 1.3 $
  */
 public class ModelGroupAction extends AbstractTestAction {
-	
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 

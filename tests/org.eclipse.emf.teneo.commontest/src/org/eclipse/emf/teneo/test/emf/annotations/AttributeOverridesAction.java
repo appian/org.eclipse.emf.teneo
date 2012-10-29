@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.5 $
  */

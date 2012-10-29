@@ -27,24 +27,23 @@ import org.w3._2000._09.xmldsig.ReferenceType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Manifest Type</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Manifest Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.ManifestTypeImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.ManifestTypeImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.ManifestTypeImpl#getReference <em>Reference</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.ManifestTypeImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	/**
-	 * The cached value of the '{@link #getReference() <em>Reference</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getReference() <em>Reference</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getReference()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,9 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	protected EList<ReferenceType> reference;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -62,9 +61,9 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -72,8 +71,8 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ManifestTypeImpl() {
@@ -81,8 +80,8 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,20 +90,21 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<ReferenceType> getReference() {
 		if (reference == null) {
-			reference = new EObjectContainmentEList<ReferenceType>(ReferenceType.class, this, XmldsigPackage.MANIFEST_TYPE__REFERENCE);
+			reference = new EObjectContainmentEList<ReferenceType>(ReferenceType.class, this,
+					XmldsigPackage.MANIFEST_TYPE__REFERENCE);
 		}
 		return reference;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -112,109 +112,112 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.MANIFEST_TYPE__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.MANIFEST_TYPE__ID,
+					oldId, id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
-				return ((InternalEList<?>)getReference()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
+			return ((InternalEList<?>) getReference()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
-				return getReference();
-			case XmldsigPackage.MANIFEST_TYPE__ID:
-				return getId();
+		case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
+			return getReference();
+		case XmldsigPackage.MANIFEST_TYPE__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
-				getReference().clear();
-				getReference().addAll((Collection<? extends ReferenceType>)newValue);
-				return;
-			case XmldsigPackage.MANIFEST_TYPE__ID:
-				setId((String)newValue);
-				return;
+		case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
+			getReference().clear();
+			getReference().addAll((Collection<? extends ReferenceType>) newValue);
+			return;
+		case XmldsigPackage.MANIFEST_TYPE__ID:
+			setId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
-				getReference().clear();
-				return;
-			case XmldsigPackage.MANIFEST_TYPE__ID:
-				setId(ID_EDEFAULT);
-				return;
+		case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
+			getReference().clear();
+			return;
+		case XmldsigPackage.MANIFEST_TYPE__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
-				return reference != null && !reference.isEmpty();
-			case XmldsigPackage.MANIFEST_TYPE__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case XmldsigPackage.MANIFEST_TYPE__REFERENCE:
+			return reference != null && !reference.isEmpty();
+		case XmldsigPackage.MANIFEST_TYPE__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
@@ -223,4 +226,4 @@ public class ManifestTypeImpl extends EObjectImpl implements ManifestType {
 		return result.toString();
 	}
 
-} //ManifestTypeImpl
+} // ManifestTypeImpl

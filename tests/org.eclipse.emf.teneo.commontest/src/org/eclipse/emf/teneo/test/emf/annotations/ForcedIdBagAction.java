@@ -83,8 +83,8 @@ public class ForcedIdBagAction extends AbstractTestAction {
 			// hibernate entitymanager, need to check!
 			resultSet = metaData.getPrimaryKeys(null, null, "myjoin");
 			resultSet.next();
-			assertTrue("Primary key column should be named \"idbag_id\"", "idbag_id".equalsIgnoreCase(resultSet
-				.getString("COLUMN_NAME")));
+			assertTrue("Primary key column should be named \"idbag_id\"",
+					"idbag_id".equalsIgnoreCase(resultSet.getString("COLUMN_NAME")));
 			assertFalse("Found more than one primary key.", resultSet.next());
 		} catch (final SQLException e) {
 			assertFalse(e.getMessage(), true);

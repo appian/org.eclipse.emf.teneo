@@ -30,11 +30,6 @@ import org.hibernate.EntityNameResolver;
 
 public class EMFEntityNameResolver implements ExtensionPoint, EntityNameResolver {
 
-	/**
-	 * Generated Serial Version ID
-	 */
-	private static final long serialVersionUID = 1680117509182298808L;
-
 	/** The qualify property used to compute the eclassname */
 	private EntityNameStrategy qualifyStrategy;
 

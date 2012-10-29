@@ -80,12 +80,12 @@ public class IdBagAction extends AbstractTestAction {
 			}
 			assertTrue("No primary key found for \"roles\" table.", rsTrue || rs2True);
 			if (rsTrue) {
-				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet
-					.getString("COLUMN_NAME")));
+				assertTrue("Primary key column should be named \"ID\"",
+						"ID".equalsIgnoreCase(resultSet.getString("COLUMN_NAME")));
 				assertFalse("Found more than one primary key.", resultSet.next());
 			} else {
-				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet2
-					.getString("COLUMN_NAME")));
+				assertTrue("Primary key column should be named \"ID\"",
+						"ID".equalsIgnoreCase(resultSet2.getString("COLUMN_NAME")));
 				assertFalse("Found more than one primary key.", resultSet2.next());
 			}
 		} catch (final SQLException e) {

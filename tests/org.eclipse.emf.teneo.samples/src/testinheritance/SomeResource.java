@@ -6,13 +6,11 @@
  */
 package testinheritance;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Some Resource</b></em>'.
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Some Resource</b></em>'.
  * <!-- end-user-doc -->
- *
- *
+ * 
+ * 
  * @see testinheritance.TestinheritancePackage#getSomeResource()
  * @model
  * @generated

@@ -30,7 +30,8 @@ public class HibernateResourceFactory implements Resource.Factory {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.ecore.resource.Resource.Factory#createResource(org.eclipse.emf.common.util.URI)
+	 * @see org.eclipse.emf.ecore.resource.Resource.Factory#createResource(org.eclipse
+	 * .emf.common.util.URI)
 	 */
 	public Resource createResource(URI uri) {
 		return new HibernateResource(uri);

@@ -30,25 +30,24 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Documentation</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Documentation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentationImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentationImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DocumentationImpl#getTextFormat <em>Text Format</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentationImpl#getMixed <em>Mixed</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentationImpl#getText <em>Text</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DocumentationImpl#getTextFormat <em>Text Format</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DocumentationImpl extends BaseElementImpl implements Documentation {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -56,9 +55,9 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	protected FeatureMap mixed;
 
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -66,9 +65,9 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	protected static final String TEXT_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTextFormat()
 	 * @generated
 	 * @ordered
@@ -76,9 +75,9 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	protected static final String TEXT_FORMAT_EDEFAULT = "text/plain";
 
 	/**
-	 * The cached value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTextFormat() <em>Text Format</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTextFormat()
 	 * @generated
 	 * @ordered
@@ -86,8 +85,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	protected String textFormat = TEXT_FORMAT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DocumentationImpl() {
@@ -95,8 +94,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -105,8 +104,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -117,8 +116,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getText() {
@@ -128,8 +127,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setText(String newText) {
@@ -139,8 +138,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTextFormat() {
@@ -148,8 +147,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTextFormat(String newTextFormat) {
@@ -157,18 +156,17 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 		textFormat = newTextFormat;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DOCUMENTATION__TEXT_FORMAT, oldTextFormat,
-					textFormat));
+					Bpmn2Package.DOCUMENTATION__TEXT_FORMAT, oldTextFormat, textFormat));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.DOCUMENTATION__MIXED:
 			return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
@@ -177,8 +175,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -197,8 +195,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -218,8 +216,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -239,8 +237,8 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -249,18 +247,17 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 		case Bpmn2Package.DOCUMENTATION__MIXED:
 			return mixed != null && !mixed.isEmpty();
 		case Bpmn2Package.DOCUMENTATION__TEXT:
-			return TEXT_EDEFAULT == null ? getText() != null : !TEXT_EDEFAULT
-					.equals(getText());
+			return TEXT_EDEFAULT == null ? getText() != null : !TEXT_EDEFAULT.equals(getText());
 		case Bpmn2Package.DOCUMENTATION__TEXT_FORMAT:
-			return TEXT_FORMAT_EDEFAULT == null ? textFormat != null
-					: !TEXT_FORMAT_EDEFAULT.equals(textFormat);
+			return TEXT_FORMAT_EDEFAULT == null ? textFormat != null : !TEXT_FORMAT_EDEFAULT
+					.equals(textFormat);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -277,4 +274,4 @@ public class DocumentationImpl extends BaseElementImpl implements Documentation 
 		return result.toString();
 	}
 
-} //DocumentationImpl
+} // DocumentationImpl

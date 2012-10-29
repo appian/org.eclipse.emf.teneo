@@ -54,13 +54,12 @@ public abstract class EModelResolver {
 	}
 
 	private Map<EPackage, List<DataStore>> ePackageRegistration = new HashMap<EPackage, List<DataStore>>();
-	
+
 	/** Clear all internal datastructures */
 	public abstract void clear();
 
 	/**
-	 * @return the EClass for a java class, if not found then the superclass of the javaclass is
-	 *         tried
+	 * @return the EClass for a java class, if not found then the superclass of the javaclass is tried
 	 */
 	public abstract EClass getEClass(Class<?> javaClass);
 
@@ -71,7 +70,7 @@ public abstract class EModelResolver {
 	public abstract void register(EPackage[] epacks);
 
 	/** Register that a set of epackages is owned by a datastore */
-	public synchronized void registerOwnerShip(DataStore dataStore, EPackage[] epacks) {	
+	public synchronized void registerOwnerShip(DataStore dataStore, EPackage[] epacks) {
 		for (EPackage ePackage : epacks) {
 			List<DataStore> stores = ePackageRegistration.get(ePackage);
 			if (stores == null) {
@@ -83,7 +82,7 @@ public abstract class EModelResolver {
 			}
 		}
 	}
-	
+
 	/** Unregister an epackage */
 	public synchronized void unregisterOwnerShip(DataStore dataStore, EPackage[] epacks) {
 		final List<EPackage> toRemove = new ArrayList<EPackage>();
@@ -99,12 +98,12 @@ public abstract class EModelResolver {
 		}
 		removeEPackages(toRemove);
 	}
-	
+
 	/** Remove an epackage from the internal lists */
 	protected void removeEPackages(List<EPackage> ePackages) {
-		
+
 	}
-	
+
 	/** @return all java classes and interfaces */
 	public abstract List<Class<?>> getAllClassesAndInterfaces();
 
@@ -127,7 +126,8 @@ public abstract class EModelResolver {
 	public Object create(EPackage epackage, String eclassName) {
 		final EClass eclass = (EClass) epackage.getEClassifier(eclassName);
 		if (eclass == null) {
-			throw new IllegalArgumentException("No EClass " + eclassName + " found in epackage " + epackage.getName());
+			throw new IllegalArgumentException("No EClass " + eclassName + " found in epackage "
+					+ epackage.getName());
 		}
 		return create(eclass);
 	}

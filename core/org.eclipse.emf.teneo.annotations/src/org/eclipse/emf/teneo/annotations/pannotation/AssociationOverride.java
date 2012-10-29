@@ -9,31 +9,34 @@ package org.eclipse.emf.teneo.annotations.pannotation;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Association Override</b></em>'. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Association Override</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinColumns <em>Join Columns</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinTable <em>Join Table</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getName <em>Name
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinColumns <em>
+ * Join Columns</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinTable <em>
+ * Join Table</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getAssociationOverride()
  * @model annotation="teneo/internal/Target 0='EClass'"
  * @generated
  */
 public interface AssociationOverride extends PAnnotation {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description
-	 * here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getAssociationOverride_Name()
@@ -43,23 +46,27 @@ public interface AssociationOverride extends PAnnotation {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getName <em>Name</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Join Columns</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.JoinColumn}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Join Columns</b></em>' containment reference list. The list
+	 * contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.JoinColumn}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Join Columns</em>' containment reference list isn't clear, there really should be
-	 * more of a description here...
+	 * If the meaning of the '<em>Join Columns</em>' containment reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getAssociationOverride_JoinColumns()
 	 * @model containment="true" required="true"
@@ -68,13 +75,14 @@ public interface AssociationOverride extends PAnnotation {
 	EList<JoinColumn> getJoinColumns();
 
 	/**
-	 * Returns the value of the '<em><b>Join Table</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Join Table</b></em>' containment reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Join Table</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Join Table</em>' containment reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Join Table</em>' containment reference.
 	 * @see #setJoinTable(JoinTable)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getAssociationOverride_JoinTable()
@@ -84,10 +92,12 @@ public interface AssociationOverride extends PAnnotation {
 	JoinTable getJoinTable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinTable <em>Join Table</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Join Table</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinTable
+	 * <em>Join Table</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Join Table</em>' containment reference.
 	 * @see #getJoinTable()
 	 * @generated
 	 */

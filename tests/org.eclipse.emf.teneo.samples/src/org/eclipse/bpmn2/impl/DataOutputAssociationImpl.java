@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.DataOutputAssociation;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Output Association</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Data Output Association</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class DataOutputAssociationImpl extends DataAssociationImpl implements
-		DataOutputAssociation {
+public class DataOutputAssociationImpl extends DataAssociationImpl implements DataOutputAssociation {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataOutputAssociationImpl() {
@@ -40,8 +38,8 @@ public class DataOutputAssociationImpl extends DataAssociationImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class DataOutputAssociationImpl extends DataAssociationImpl implements
 		return Bpmn2Package.Literals.DATA_OUTPUT_ASSOCIATION;
 	}
 
-} //DataOutputAssociationImpl
+} // DataOutputAssociationImpl

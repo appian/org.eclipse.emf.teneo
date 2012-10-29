@@ -19,27 +19,26 @@ import temporal.impl.TemporalImpl;
 import temporal.mod.TemporalBaseEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Person</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Person</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.PersonImpl#getId <em>Id</em>}</li>
- *   <li>{@link fleet.impl.PersonImpl#getName <em>Name</em>}</li>
- *   <li>{@link fleet.impl.PersonImpl#isEmployed <em>Employed</em>}</li>
- *   <li>{@link fleet.impl.PersonImpl#getAddresses <em>Addresses</em>}</li>
- *   <li>{@link fleet.impl.PersonImpl#getOwnedVehicles <em>Owned Vehicles</em>}</li>
- *   <li>{@link fleet.impl.PersonImpl#getBirthAddress <em>Birth Address</em>}</li>
+ * <li>{@link fleet.impl.PersonImpl#getId <em>Id</em>}</li>
+ * <li>{@link fleet.impl.PersonImpl#getName <em>Name</em>}</li>
+ * <li>{@link fleet.impl.PersonImpl#isEmployed <em>Employed</em>}</li>
+ * <li>{@link fleet.impl.PersonImpl#getAddresses <em>Addresses</em>}</li>
+ * <li>{@link fleet.impl.PersonImpl#getOwnedVehicles <em>Owned Vehicles</em>}</li>
+ * <li>{@link fleet.impl.PersonImpl#getBirthAddress <em>Birth Address</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PersonImpl extends TemporalImpl implements Person {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PersonImpl() {
@@ -47,8 +46,8 @@ public class PersonImpl extends TemporalImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -57,17 +56,17 @@ public class PersonImpl extends TemporalImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eGet(FleetPackage.Literals.PERSON__ID, true);
+		return (String) eGet(FleetPackage.Literals.PERSON__ID, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -75,17 +74,17 @@ public class PersonImpl extends TemporalImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(FleetPackage.Literals.PERSON__NAME, true);
+		return (String) eGet(FleetPackage.Literals.PERSON__NAME, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -93,17 +92,17 @@ public class PersonImpl extends TemporalImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isEmployed() {
-		return ((Boolean)eGet(FleetPackage.Literals.PERSON__EMPLOYED, true)).booleanValue();
+		return ((Boolean) eGet(FleetPackage.Literals.PERSON__EMPLOYED, true)).booleanValue();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEmployed(boolean newEmployed) {
@@ -111,41 +110,41 @@ public class PersonImpl extends TemporalImpl implements Person {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList getAddresses() {
-		return (EList)eGet(FleetPackage.Literals.PERSON__ADDRESSES, true);
+		return (EList) eGet(FleetPackage.Literals.PERSON__ADDRESSES, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList getOwnedVehicles() {
-		return (EList)eGet(FleetPackage.Literals.PERSON__OWNED_VEHICLES, true);
+		return (EList) eGet(FleetPackage.Literals.PERSON__OWNED_VEHICLES, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Address getBirthAddress() {
-		return (Address)eGet(FleetPackage.Literals.PERSON__BIRTH_ADDRESS, true);
+		return (Address) eGet(FleetPackage.Literals.PERSON__BIRTH_ADDRESS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBirthAddress(Address newBirthAddress) {
 		eSet(FleetPackage.Literals.PERSON__BIRTH_ADDRESS, newBirthAddress);
 	}
 
-} //PersonImpl
+} // PersonImpl

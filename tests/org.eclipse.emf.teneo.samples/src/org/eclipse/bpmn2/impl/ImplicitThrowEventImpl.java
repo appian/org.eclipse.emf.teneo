@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.ImplicitThrowEvent;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Implicit Throw Event</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Implicit Throw Event</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class ImplicitThrowEventImpl extends ThrowEventImpl implements
-		ImplicitThrowEvent {
+public class ImplicitThrowEventImpl extends ThrowEventImpl implements ImplicitThrowEvent {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ImplicitThrowEventImpl() {
@@ -40,8 +38,8 @@ public class ImplicitThrowEventImpl extends ThrowEventImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class ImplicitThrowEventImpl extends ThrowEventImpl implements
 		return Bpmn2Package.Literals.IMPLICIT_THROW_EVENT;
 	}
 
-} //ImplicitThrowEventImpl
+} // ImplicitThrowEventImpl

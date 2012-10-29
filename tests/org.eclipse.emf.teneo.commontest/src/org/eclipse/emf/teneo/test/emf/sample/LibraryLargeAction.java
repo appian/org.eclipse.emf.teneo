@@ -53,7 +53,7 @@ public class LibraryLargeAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-// props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
+		// props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
 		props.setProperty(PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG, "true");
 		return props;
 	}
@@ -70,10 +70,11 @@ public class LibraryLargeAction extends AbstractTestAction {
 				System.err.println("before commit");
 				long commitTime = System.currentTimeMillis();
 				store.commitTransaction();
-				System.err.println("Transaction " + (j + 1) + " inserted library(#" + LIB_CNT + ") and Writer(#" +
-						NUM_WRITER_TRANSACTION + ") and Book(#" + NUM_BOOK_TRANSACTION + ") in " +
-						((System.currentTimeMillis() - t) / 1000) + " seconds of which the commit took " +
-						((System.currentTimeMillis() - commitTime) / 1000));
+				System.err.println("Transaction " + (j + 1) + " inserted library(#" + LIB_CNT
+						+ ") and Writer(#" + NUM_WRITER_TRANSACTION + ") and Book(#" + NUM_BOOK_TRANSACTION
+						+ ") in " + ((System.currentTimeMillis() - t) / 1000)
+						+ " seconds of which the commit took "
+						+ ((System.currentTimeMillis() - commitTime) / 1000));
 				t = System.currentTimeMillis();
 			}
 		}
@@ -102,8 +103,8 @@ public class LibraryLargeAction extends AbstractTestAction {
 				}
 			}
 			store.commitTransaction();
-			System.err.println("Time to remove and add " + (LIB_CNT * WRITER_CNT) + " books: " +
-					((System.currentTimeMillis() - t) / 1000) + " seconds ");
+			System.err.println("Time to remove and add " + (LIB_CNT * WRITER_CNT) + " books: "
+					+ ((System.currentTimeMillis() - t) / 1000) + " seconds ");
 		}
 	}
 

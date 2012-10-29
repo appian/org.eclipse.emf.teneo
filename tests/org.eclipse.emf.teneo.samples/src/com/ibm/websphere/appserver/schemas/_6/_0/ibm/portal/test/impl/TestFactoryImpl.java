@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static TestFactory init() {
 		try {
-			TestFactory theTestFactory = (TestFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsd"); 
+			TestFactory theTestFactory = (TestFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsd");
 			if (theTestFactory != null) {
 				return theTestFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new TestFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestFactoryImpl() {
@@ -53,28 +50,36 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TestPackage.ADULT_BOOKS: return createAdultBooks();
-			case TestPackage.BOOK_DEFINITION_RESOURCE_LINK: return createBookDefinitionResourceLink();
-			case TestPackage.BOOKS_IN_LIB: return createBooksInLib();
-			case TestPackage.CHILDREN_BOOKS: return createChildrenBooks();
-			case TestPackage.DOCUMENT_ROOT: return createDocumentRoot();
-			case TestPackage.LIBRARY: return createLibrary();
-			case TestPackage.PUBLISHER_DEFINITION: return createPublisherDefinition();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case TestPackage.ADULT_BOOKS:
+			return createAdultBooks();
+		case TestPackage.BOOK_DEFINITION_RESOURCE_LINK:
+			return createBookDefinitionResourceLink();
+		case TestPackage.BOOKS_IN_LIB:
+			return createBooksInLib();
+		case TestPackage.CHILDREN_BOOKS:
+			return createChildrenBooks();
+		case TestPackage.DOCUMENT_ROOT:
+			return createDocumentRoot();
+		case TestPackage.LIBRARY:
+			return createLibrary();
+		case TestPackage.PUBLISHER_DEFINITION:
+			return createPublisherDefinition();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdultBooks createAdultBooks() {
@@ -83,8 +88,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BookDefinitionResourceLink createBookDefinitionResourceLink() {
@@ -93,8 +98,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BooksInLib createBooksInLib() {
@@ -103,8 +108,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ChildrenBooks createChildrenBooks() {
@@ -113,8 +118,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -123,8 +128,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Library createLibrary() {
@@ -133,8 +138,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PublisherDefinition createPublisherDefinition() {
@@ -143,17 +148,17 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestPackage getTestPackage() {
-		return (TestPackage)getEPackage();
+		return (TestPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -162,4 +167,4 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 		return TestPackage.eINSTANCE;
 	}
 
-} //TestFactoryImpl
+} // TestFactoryImpl

@@ -27,26 +27,28 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Standard Loop Characteristics</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Standard Loop Characteristics</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.StandardLoopCharacteristicsImpl#getLoopCondition <em>Loop Condition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.StandardLoopCharacteristicsImpl#getLoopMaximum <em>Loop Maximum</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.StandardLoopCharacteristicsImpl#isTestBefore <em>Test Before</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.StandardLoopCharacteristicsImpl#getLoopCondition <em>Loop
+ * Condition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.StandardLoopCharacteristicsImpl#getLoopMaximum <em>Loop Maximum
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.StandardLoopCharacteristicsImpl#isTestBefore <em>Test Before
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
-		implements StandardLoopCharacteristics {
+public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl implements
+		StandardLoopCharacteristics {
 	/**
-	 * The cached value of the '{@link #getLoopCondition() <em>Loop Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLoopCondition() <em>Loop Condition</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLoopCondition()
 	 * @generated
 	 * @ordered
@@ -54,9 +56,9 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	protected Expression loopCondition;
 
 	/**
-	 * The cached value of the '{@link #getLoopMaximum() <em>Loop Maximum</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLoopMaximum() <em>Loop Maximum</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLoopMaximum()
 	 * @generated
 	 * @ordered
@@ -64,9 +66,9 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	protected Expression loopMaximum;
 
 	/**
-	 * The default value of the '{@link #isTestBefore() <em>Test Before</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isTestBefore() <em>Test Before</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isTestBefore()
 	 * @generated
 	 * @ordered
@@ -74,9 +76,9 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	protected static final boolean TEST_BEFORE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isTestBefore() <em>Test Before</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isTestBefore() <em>Test Before</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isTestBefore()
 	 * @generated
 	 * @ordered
@@ -84,8 +86,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	protected boolean testBefore = TEST_BEFORE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected StandardLoopCharacteristicsImpl() {
@@ -93,8 +95,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -103,8 +105,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getLoopCondition() {
@@ -112,19 +114,17 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLoopCondition(Expression newLoopCondition,
-			NotificationChain msgs) {
+	public NotificationChain basicSetLoopCondition(Expression newLoopCondition, NotificationChain msgs) {
 		Expression oldLoopCondition = loopCondition;
 		loopCondition = newLoopCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION,
-					oldLoopCondition, newLoopCondition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION, oldLoopCondition,
+					newLoopCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -134,39 +134,31 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLoopCondition(Expression newLoopCondition) {
 		if (newLoopCondition != loopCondition) {
 			NotificationChain msgs = null;
 			if (loopCondition != null)
-				msgs = ((InternalEObject) loopCondition)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) loopCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION, null, msgs);
 			if (newLoopCondition != null)
-				msgs = ((InternalEObject) newLoopCondition)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) newLoopCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION, null, msgs);
 			msgs = basicSetLoopCondition(newLoopCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION,
-					newLoopCondition, newLoopCondition));
+					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION, newLoopCondition,
+					newLoopCondition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getLoopMaximum() {
@@ -174,19 +166,16 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLoopMaximum(Expression newLoopMaximum,
-			NotificationChain msgs) {
+	public NotificationChain basicSetLoopMaximum(Expression newLoopMaximum, NotificationChain msgs) {
 		Expression oldLoopMaximum = loopMaximum;
 		loopMaximum = newLoopMaximum;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM,
-					oldLoopMaximum, newLoopMaximum);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM, oldLoopMaximum, newLoopMaximum);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -196,39 +185,30 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLoopMaximum(Expression newLoopMaximum) {
 		if (newLoopMaximum != loopMaximum) {
 			NotificationChain msgs = null;
 			if (loopMaximum != null)
-				msgs = ((InternalEObject) loopMaximum)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM,
-								null, msgs);
+				msgs = ((InternalEObject) loopMaximum).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM, null, msgs);
 			if (newLoopMaximum != null)
-				msgs = ((InternalEObject) newLoopMaximum)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM,
-								null, msgs);
+				msgs = ((InternalEObject) newLoopMaximum).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM, null, msgs);
 			msgs = basicSetLoopMaximum(newLoopMaximum, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM,
-					newLoopMaximum, newLoopMaximum));
+					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_MAXIMUM, newLoopMaximum, newLoopMaximum));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isTestBefore() {
@@ -236,8 +216,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTestBefore(boolean newTestBefore) {
@@ -245,18 +225,17 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 		testBefore = newTestBefore;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__TEST_BEFORE,
-					oldTestBefore, testBefore));
+					Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__TEST_BEFORE, oldTestBefore, testBefore));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.STANDARD_LOOP_CHARACTERISTICS__LOOP_CONDITION:
 			return basicSetLoopCondition(null, msgs);
@@ -267,8 +246,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,8 +264,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -306,8 +285,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -327,8 +306,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -345,8 +324,8 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -361,4 +340,4 @@ public class StandardLoopCharacteristicsImpl extends LoopCharacteristicsImpl
 		return result.toString();
 	}
 
-} //StandardLoopCharacteristicsImpl
+} // StandardLoopCharacteristicsImpl

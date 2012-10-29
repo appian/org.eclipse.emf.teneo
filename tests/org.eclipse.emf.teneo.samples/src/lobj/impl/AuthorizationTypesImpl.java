@@ -17,26 +17,25 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Authorization Types</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Authorization Types</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.AuthorizationTypesImpl#getAuthType <em>Auth Type</em>}</li>
- *   <li>{@link lobj.impl.AuthorizationTypesImpl#getAuthTypeDesc <em>Auth Type Desc</em>}</li>
- *   <li>{@link lobj.impl.AuthorizationTypesImpl#isReadOnly <em>Read Only</em>}</li>
- *   <li>{@link lobj.impl.AuthorizationTypesImpl#getId <em>Id</em>}</li>
+ * <li>{@link lobj.impl.AuthorizationTypesImpl#getAuthType <em>Auth Type</em>}</li>
+ * <li>{@link lobj.impl.AuthorizationTypesImpl#getAuthTypeDesc <em>Auth Type Desc</em>}</li>
+ * <li>{@link lobj.impl.AuthorizationTypesImpl#isReadOnly <em>Read Only</em>}</li>
+ * <li>{@link lobj.impl.AuthorizationTypesImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AuthorizationTypesImpl extends EObjectImpl implements AuthorizationTypes {
 	/**
-	 * The default value of the '{@link #getAuthType() <em>Auth Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getAuthType() <em>Auth Type</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAuthType()
 	 * @generated
 	 * @ordered
@@ -44,9 +43,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected static final String AUTH_TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAuthType() <em>Auth Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAuthType() <em>Auth Type</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAuthType()
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected String authType = AUTH_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getAuthTypeDesc() <em>Auth Type Desc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getAuthTypeDesc() <em>Auth Type Desc</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAuthTypeDesc()
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected static final String AUTH_TYPE_DESC_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAuthTypeDesc() <em>Auth Type Desc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAuthTypeDesc() <em>Auth Type Desc</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAuthTypeDesc()
 	 * @generated
 	 * @ordered
@@ -74,9 +73,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected String authTypeDesc = AUTH_TYPE_DESC_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isReadOnly()
 	 * @generated
 	 * @ordered
@@ -84,9 +83,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected static final boolean READ_ONLY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isReadOnly()
 	 * @generated
 	 * @ordered
@@ -94,9 +93,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected boolean readOnly = READ_ONLY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -104,9 +103,9 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -114,8 +113,8 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AuthorizationTypesImpl() {
@@ -123,8 +122,8 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -132,8 +131,8 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getAuthType() {
@@ -141,20 +140,21 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAuthType(String newAuthType) {
 		String oldAuthType = authType;
 		authType = newAuthType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE, oldAuthType, authType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE, oldAuthType, authType));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getAuthTypeDesc() {
@@ -162,20 +162,21 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAuthTypeDesc(String newAuthTypeDesc) {
 		String oldAuthTypeDesc = authTypeDesc;
 		authTypeDesc = newAuthTypeDesc;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC, oldAuthTypeDesc, authTypeDesc));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC, oldAuthTypeDesc, authTypeDesc));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isReadOnly() {
@@ -183,20 +184,21 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setReadOnly(boolean newReadOnly) {
 		boolean oldReadOnly = readOnly;
 		readOnly = newReadOnly;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.AUTHORIZATION_TYPES__READ_ONLY, oldReadOnly, readOnly));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					LobjPackage.AUTHORIZATION_TYPES__READ_ONLY, oldReadOnly, readOnly));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -204,108 +206,111 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.AUTHORIZATION_TYPES__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.AUTHORIZATION_TYPES__ID,
+					oldId, id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
-				return getAuthType();
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
-				return getAuthTypeDesc();
-			case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
-				return isReadOnly() ? Boolean.TRUE : Boolean.FALSE;
-			case LobjPackage.AUTHORIZATION_TYPES__ID:
-				return getId();
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
+			return getAuthType();
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
+			return getAuthTypeDesc();
+		case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
+			return isReadOnly() ? Boolean.TRUE : Boolean.FALSE;
+		case LobjPackage.AUTHORIZATION_TYPES__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
-				setAuthType((String)newValue);
-				return;
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
-				setAuthTypeDesc((String)newValue);
-				return;
-			case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
-				setReadOnly(((Boolean)newValue).booleanValue());
-				return;
-			case LobjPackage.AUTHORIZATION_TYPES__ID:
-				setId((String)newValue);
-				return;
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
+			setAuthType((String) newValue);
+			return;
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
+			setAuthTypeDesc((String) newValue);
+			return;
+		case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
+			setReadOnly(((Boolean) newValue).booleanValue());
+			return;
+		case LobjPackage.AUTHORIZATION_TYPES__ID:
+			setId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
-				setAuthType(AUTH_TYPE_EDEFAULT);
-				return;
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
-				setAuthTypeDesc(AUTH_TYPE_DESC_EDEFAULT);
-				return;
-			case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
-				setReadOnly(READ_ONLY_EDEFAULT);
-				return;
-			case LobjPackage.AUTHORIZATION_TYPES__ID:
-				setId(ID_EDEFAULT);
-				return;
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
+			setAuthType(AUTH_TYPE_EDEFAULT);
+			return;
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
+			setAuthTypeDesc(AUTH_TYPE_DESC_EDEFAULT);
+			return;
+		case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
+			setReadOnly(READ_ONLY_EDEFAULT);
+			return;
+		case LobjPackage.AUTHORIZATION_TYPES__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
-				return AUTH_TYPE_EDEFAULT == null ? authType != null : !AUTH_TYPE_EDEFAULT.equals(authType);
-			case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
-				return AUTH_TYPE_DESC_EDEFAULT == null ? authTypeDesc != null : !AUTH_TYPE_DESC_EDEFAULT.equals(authTypeDesc);
-			case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
-				return readOnly != READ_ONLY_EDEFAULT;
-			case LobjPackage.AUTHORIZATION_TYPES__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE:
+			return AUTH_TYPE_EDEFAULT == null ? authType != null : !AUTH_TYPE_EDEFAULT.equals(authType);
+		case LobjPackage.AUTHORIZATION_TYPES__AUTH_TYPE_DESC:
+			return AUTH_TYPE_DESC_EDEFAULT == null ? authTypeDesc != null : !AUTH_TYPE_DESC_EDEFAULT
+					.equals(authTypeDesc);
+		case LobjPackage.AUTHORIZATION_TYPES__READ_ONLY:
+			return readOnly != READ_ONLY_EDEFAULT;
+		case LobjPackage.AUTHORIZATION_TYPES__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (authType: ");
@@ -320,4 +325,4 @@ public class AuthorizationTypesImpl extends EObjectImpl implements Authorization
 		return result.toString();
 	}
 
-} //AuthorizationTypesImpl
+} // AuthorizationTypesImpl

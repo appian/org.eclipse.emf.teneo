@@ -30,26 +30,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Store Reference</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Data Store Reference</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.DataStoreReferenceImpl#getDataState <em>Data State</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataStoreReferenceImpl#getItemSubjectRef <em>Item Subject Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataStoreReferenceImpl#getDataStoreRef <em>Data Store Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataStoreReferenceImpl#getDataState <em>Data State</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataStoreReferenceImpl#getItemSubjectRef <em>Item Subject Ref
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataStoreReferenceImpl#getDataStoreRef <em>Data Store Ref</em>}
+ * </li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class DataStoreReferenceImpl extends FlowElementImpl implements
-		DataStoreReference {
+public class DataStoreReferenceImpl extends FlowElementImpl implements DataStoreReference {
 	/**
 	 * The cached value of the '{@link #getDataState() <em>Data State</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDataState()
 	 * @generated
 	 * @ordered
@@ -58,8 +58,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 
 	/**
 	 * The cached value of the '{@link #getItemSubjectRef() <em>Item Subject Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getItemSubjectRef()
 	 * @generated
 	 * @ordered
@@ -67,9 +67,9 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	protected ItemDefinition itemSubjectRef;
 
 	/**
-	 * The cached value of the '{@link #getDataStoreRef() <em>Data Store Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDataStoreRef() <em>Data Store Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDataStoreRef()
 	 * @generated
 	 * @ordered
@@ -77,8 +77,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	protected DataStore dataStoreRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataStoreReferenceImpl() {
@@ -86,8 +86,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -96,8 +96,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataState getDataState() {
@@ -105,19 +105,16 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDataState(DataState newDataState,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDataState(DataState newDataState, NotificationChain msgs) {
 		DataState oldDataState = dataState;
 		dataState = newDataState;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE,
-					oldDataState, newDataState);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE, oldDataState, newDataState);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -127,39 +124,30 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataState(DataState newDataState) {
 		if (newDataState != dataState) {
 			NotificationChain msgs = null;
 			if (dataState != null)
-				msgs = ((InternalEObject) dataState)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE,
-								null, msgs);
+				msgs = ((InternalEObject) dataState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE, null, msgs);
 			if (newDataState != null)
-				msgs = ((InternalEObject) newDataState)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE,
-								null, msgs);
+				msgs = ((InternalEObject) newDataState).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE, null, msgs);
 			msgs = basicSetDataState(newDataState, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE,
-					newDataState, newDataState));
+					Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE, newDataState, newDataState));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getItemSubjectRef() {
@@ -168,19 +156,17 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 			itemSubjectRef = (ItemDefinition) eResolveProxy(oldItemSubjectRef);
 			if (itemSubjectRef != oldItemSubjectRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.DATA_STORE_REFERENCE__ITEM_SUBJECT_REF,
-							oldItemSubjectRef, itemSubjectRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.DATA_STORE_REFERENCE__ITEM_SUBJECT_REF, oldItemSubjectRef,
+							itemSubjectRef));
 			}
 		}
 		return itemSubjectRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition basicGetItemSubjectRef() {
@@ -188,8 +174,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setItemSubjectRef(ItemDefinition newItemSubjectRef) {
@@ -197,13 +183,12 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 		itemSubjectRef = newItemSubjectRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_STORE_REFERENCE__ITEM_SUBJECT_REF,
-					oldItemSubjectRef, itemSubjectRef));
+					Bpmn2Package.DATA_STORE_REFERENCE__ITEM_SUBJECT_REF, oldItemSubjectRef, itemSubjectRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataStore getDataStoreRef() {
@@ -213,16 +198,15 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 			if (dataStoreRef != oldDataStoreRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.DATA_STORE_REFERENCE__DATA_STORE_REF,
-							oldDataStoreRef, dataStoreRef));
+							Bpmn2Package.DATA_STORE_REFERENCE__DATA_STORE_REF, oldDataStoreRef, dataStoreRef));
 			}
 		}
 		return dataStoreRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataStore basicGetDataStoreRef() {
@@ -230,8 +214,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDataStoreRef(DataStore newDataStoreRef) {
@@ -239,18 +223,17 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 		dataStoreRef = newDataStoreRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_STORE_REFERENCE__DATA_STORE_REF,
-					oldDataStoreRef, dataStoreRef));
+					Bpmn2Package.DATA_STORE_REFERENCE__DATA_STORE_REF, oldDataStoreRef, dataStoreRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.DATA_STORE_REFERENCE__DATA_STATE:
 			return basicSetDataState(null, msgs);
@@ -259,8 +242,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -281,8 +264,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -302,8 +285,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -323,8 +306,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -341,8 +324,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -361,8 +344,8 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -380,4 +363,4 @@ public class DataStoreReferenceImpl extends FlowElementImpl implements
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //DataStoreReferenceImpl
+} // DataStoreReferenceImpl

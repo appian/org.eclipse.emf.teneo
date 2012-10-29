@@ -80,11 +80,9 @@ public class Tutorial {
 		// hibernateProperties.setProperty(Environment.DIALECT,
 		// "org.hibernate.dialect.MySQLInnoDBDialect");
 
-		hibernateProperties.setProperty(Environment.DRIVER,
-				"org.hsqldb.jdbcDriver");
+		hibernateProperties.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
 		hibernateProperties.setProperty(Environment.USER, "sa");
-		hibernateProperties.setProperty(Environment.URL,
-				"jdbc:hsqldb:mem:library");
+		hibernateProperties.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
 		hibernateProperties.setProperty(Environment.PASS, "");
 		hibernateProperties.setProperty(Environment.DIALECT,
 				org.hibernate.dialect.HSQLDialect.class.getName());
@@ -93,13 +91,11 @@ public class Tutorial {
 		// see this page
 		// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
 		// for all the available options
-		hibernateProperties.setProperty(
-				PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
+		hibernateProperties.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
 				"REFRESH,PERSIST,MERGE");
 
 		// use the joined inheritance mapping
-		hibernateProperties.setProperty(PersistenceOptions.INHERITANCE_MAPPING,
-				"JOINED");
+		hibernateProperties.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 
 		// use an annotations file as an example
 		// this lets the library use a special table
@@ -108,8 +104,7 @@ public class Tutorial {
 
 		// Create the DataStore.
 		final String dataStoreName = "LibraryDataStore";
-		final HbDataStore dataStore = HbHelper.INSTANCE
-				.createRegisterDataStore(dataStoreName);
+		final HbDataStore dataStore = HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
 		dataStore.setDataStoreProperties(hibernateProperties);
 
 		// Configure the EPackages used by this DataStore.
@@ -214,14 +209,12 @@ public class Tutorial {
 			}
 
 			// Retrieve George Orwell's book.
-			query = session
-					.createQuery("SELECT book FROM Book book, Writer writ WHERE "
-							+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
+			query = session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
+					+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
 			books = query.list();
 
 			// Show some results
-			System.out
-					.println("There are " + books.size() + " in the Library.");
+			System.out.println("There are " + books.size() + " in the Library.");
 			System.out.println(books.get(0).getClass().getName());
 			Book book = (Book) books.get(0);
 			System.out.println(book.getTitle());
@@ -237,8 +230,7 @@ public class Tutorial {
 		}
 
 		try {
-			String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM
-					+ "=" + dataStoreName;
+			String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM + "=" + dataStoreName;
 			final URI uri = URI.createURI(uriStr);
 			ResourceSet resourceSet = new ResourceSetImpl();
 			final Resource res = resourceSet.createResource(uri);

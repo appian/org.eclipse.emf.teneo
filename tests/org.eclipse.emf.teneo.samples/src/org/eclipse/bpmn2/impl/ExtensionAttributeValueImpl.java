@@ -33,26 +33,25 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Extension Attribute Value</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Extension Attribute Value</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ExtensionAttributeValueImpl#getValueRef <em>Value Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ExtensionAttributeValueImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ExtensionAttributeValueImpl#getExtensionAttributeDefinition <em>Extension Attribute Definition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ExtensionAttributeValueImpl#getValueRef <em>Value Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ExtensionAttributeValueImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ExtensionAttributeValueImpl#getExtensionAttributeDefinition
+ * <em>Extension Attribute Definition</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ExtensionAttributeValueImpl extends EObjectImpl implements
-		ExtensionAttributeValue {
+public class ExtensionAttributeValueImpl extends EObjectImpl implements ExtensionAttributeValue {
 	/**
-	 * The cached value of the '{@link #getValueRef() <em>Value Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getValueRef() <em>Value Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValueRef()
 	 * @generated
 	 * @ordered
@@ -60,9 +59,9 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	protected EObject valueRef;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -70,9 +69,10 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	protected FeatureMap value;
 
 	/**
-	 * The cached value of the '{@link #getExtensionAttributeDefinition() <em>Extension Attribute Definition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getExtensionAttributeDefinition()
+	 * <em>Extension Attribute Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #getExtensionAttributeDefinition()
 	 * @generated
 	 * @ordered
@@ -80,8 +80,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	protected ExtensionAttributeDefinition extensionAttributeDefinition;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExtensionAttributeValueImpl() {
@@ -89,8 +89,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,8 +99,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object getValueRef() {
@@ -110,16 +110,15 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 			if (valueRef != oldValueRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE_REF,
-							oldValueRef, valueRef));
+							Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE_REF, oldValueRef, valueRef));
 			}
 		}
 		return valueRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object basicGetValueRef() {
@@ -127,8 +126,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setValueRef(Object newValueRef) {
@@ -136,49 +135,43 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 		valueRef = (EObject) newValueRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE_REF,
-					oldValueRef, valueRef));
+					Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE_REF, oldValueRef, valueRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getValue() {
 		if (value == null) {
-			value = new BasicFeatureMap(this,
-					Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE);
+			value = new BasicFeatureMap(this, Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE);
 		}
 		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtensionAttributeDefinition getExtensionAttributeDefinition() {
-		if (extensionAttributeDefinition != null
-				&& extensionAttributeDefinition.eIsProxy()) {
+		if (extensionAttributeDefinition != null && extensionAttributeDefinition.eIsProxy()) {
 			InternalEObject oldExtensionAttributeDefinition = (InternalEObject) extensionAttributeDefinition;
 			extensionAttributeDefinition = (ExtensionAttributeDefinition) eResolveProxy(oldExtensionAttributeDefinition);
 			if (extensionAttributeDefinition != oldExtensionAttributeDefinition) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__EXTENSION_ATTRIBUTE_DEFINITION,
-							oldExtensionAttributeDefinition,
-							extensionAttributeDefinition));
+							oldExtensionAttributeDefinition, extensionAttributeDefinition));
 			}
 		}
 		return extensionAttributeDefinition;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExtensionAttributeDefinition basicGetExtensionAttributeDefinition() {
@@ -186,8 +179,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setExtensionAttributeDefinition(
@@ -195,22 +188,19 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 		ExtensionAttributeDefinition oldExtensionAttributeDefinition = extensionAttributeDefinition;
 		extensionAttributeDefinition = newExtensionAttributeDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__EXTENSION_ATTRIBUTE_DEFINITION,
-					oldExtensionAttributeDefinition,
-					extensionAttributeDefinition));
+					oldExtensionAttributeDefinition, extensionAttributeDefinition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.EXTENSION_ATTRIBUTE_VALUE__VALUE:
 			return ((InternalEList<?>) getValue()).basicRemove(otherEnd, msgs);
@@ -219,8 +209,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -243,8 +233,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -264,8 +254,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,8 +275,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -303,8 +293,8 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -319,4 +309,4 @@ public class ExtensionAttributeValueImpl extends EObjectImpl implements
 		return result.toString();
 	}
 
-} //ExtensionAttributeValueImpl
+} // ExtensionAttributeValueImpl

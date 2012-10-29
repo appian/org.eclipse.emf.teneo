@@ -25,25 +25,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Event Based Gateway</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Event Based Gateway</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.EventBasedGatewayImpl#getEventGatewayType <em>Event Gateway Type</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.EventBasedGatewayImpl#isInstantiate <em>Instantiate</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.EventBasedGatewayImpl#getEventGatewayType <em>Event Gateway
+ * Type</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.EventBasedGatewayImpl#isInstantiate <em>Instantiate</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class EventBasedGatewayImpl extends GatewayImpl implements
-		EventBasedGateway {
+public class EventBasedGatewayImpl extends GatewayImpl implements EventBasedGateway {
 	/**
-	 * The default value of the '{@link #getEventGatewayType() <em>Event Gateway Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getEventGatewayType() <em>Event Gateway Type</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEventGatewayType()
 	 * @generated
 	 * @ordered
@@ -52,8 +51,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 
 	/**
 	 * The cached value of the '{@link #getEventGatewayType() <em>Event Gateway Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEventGatewayType()
 	 * @generated
 	 * @ordered
@@ -61,9 +60,9 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	protected EventBasedGatewayType eventGatewayType = EVENT_GATEWAY_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isInstantiate()
 	 * @generated
 	 * @ordered
@@ -71,9 +70,9 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	protected static final boolean INSTANTIATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isInstantiate()
 	 * @generated
 	 * @ordered
@@ -81,8 +80,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	protected boolean instantiate = INSTANTIATE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EventBasedGatewayImpl() {
@@ -90,8 +89,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,8 +99,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EventBasedGatewayType getEventGatewayType() {
@@ -109,8 +108,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEventGatewayType(EventBasedGatewayType newEventGatewayType) {
@@ -119,13 +118,13 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 				: newEventGatewayType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.EVENT_BASED_GATEWAY__EVENT_GATEWAY_TYPE,
-					oldEventGatewayType, eventGatewayType));
+					Bpmn2Package.EVENT_BASED_GATEWAY__EVENT_GATEWAY_TYPE, oldEventGatewayType,
+					eventGatewayType));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isInstantiate() {
@@ -133,8 +132,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInstantiate(boolean newInstantiate) {
@@ -142,13 +141,12 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 		instantiate = newInstantiate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.EVENT_BASED_GATEWAY__INSTANTIATE,
-					oldInstantiate, instantiate));
+					Bpmn2Package.EVENT_BASED_GATEWAY__INSTANTIATE, oldInstantiate, instantiate));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -163,8 +161,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -181,8 +179,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -199,8 +197,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,8 +213,8 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -233,4 +231,4 @@ public class EventBasedGatewayImpl extends GatewayImpl implements
 		return result.toString();
 	}
 
-} //EventBasedGatewayImpl
+} // EventBasedGatewayImpl

@@ -21,26 +21,28 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Table</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Table</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getCatalog <em>Catalog</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getSchema <em>Schema</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getUniqueConstraints <em>Unique Constraints</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getCatalog <em>Catalog
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getSchema <em>Schema
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl#getUniqueConstraints <em>
+ * Unique Constraints</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TableImpl extends PAnnotationImpl implements Table {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -48,9 +50,9 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -58,9 +60,9 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getCatalog() <em>Catalog</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getCatalog() <em>Catalog</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCatalog()
 	 * @generated
 	 * @ordered
@@ -68,9 +70,9 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected static final String CATALOG_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCatalog() <em>Catalog</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCatalog() <em>Catalog</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCatalog()
 	 * @generated
 	 * @ordered
@@ -78,9 +80,9 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected String catalog = CATALOG_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSchema() <em>Schema</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getSchema() <em>Schema</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSchema()
 	 * @generated
 	 * @ordered
@@ -88,9 +90,9 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected static final String SCHEMA_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSchema() <em>Schema</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSchema() <em>Schema</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSchema()
 	 * @generated
 	 * @ordered
@@ -98,9 +100,9 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected String schema = SCHEMA_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getUniqueConstraints() <em>Unique Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getUniqueConstraints() <em>Unique Constraints</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUniqueConstraints()
 	 * @generated
 	 * @ordered
@@ -108,8 +110,8 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	protected EList<UniqueConstraint> uniqueConstraints;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TableImpl() {
@@ -117,8 +119,8 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,8 +129,8 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -136,20 +138,21 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TABLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TABLE__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getCatalog() {
@@ -157,20 +160,21 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCatalog(String newCatalog) {
 		String oldCatalog = catalog;
 		catalog = newCatalog;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TABLE__CATALOG, oldCatalog, catalog));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TABLE__CATALOG,
+					oldCatalog, catalog));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getSchema() {
@@ -178,141 +182,145 @@ public class TableImpl extends PAnnotationImpl implements Table {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSchema(String newSchema) {
 		String oldSchema = schema;
 		schema = newSchema;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TABLE__SCHEMA, oldSchema, schema));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TABLE__SCHEMA,
+					oldSchema, schema));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<UniqueConstraint> getUniqueConstraints() {
 		if (uniqueConstraints == null) {
-			uniqueConstraints = new EObjectContainmentEList<UniqueConstraint>(UniqueConstraint.class, this, PannotationPackage.TABLE__UNIQUE_CONSTRAINTS);
+			uniqueConstraints = new EObjectContainmentEList<UniqueConstraint>(UniqueConstraint.class,
+					this, PannotationPackage.TABLE__UNIQUE_CONSTRAINTS);
 		}
 		return uniqueConstraints;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
-				return ((InternalEList<?>)getUniqueConstraints()).basicRemove(otherEnd, msgs);
+		case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
+			return ((InternalEList<?>) getUniqueConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.TABLE__NAME:
-				return getName();
-			case PannotationPackage.TABLE__CATALOG:
-				return getCatalog();
-			case PannotationPackage.TABLE__SCHEMA:
-				return getSchema();
-			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
-				return getUniqueConstraints();
+		case PannotationPackage.TABLE__NAME:
+			return getName();
+		case PannotationPackage.TABLE__CATALOG:
+			return getCatalog();
+		case PannotationPackage.TABLE__SCHEMA:
+			return getSchema();
+		case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
+			return getUniqueConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.TABLE__NAME:
-				setName((String)newValue);
-				return;
-			case PannotationPackage.TABLE__CATALOG:
-				setCatalog((String)newValue);
-				return;
-			case PannotationPackage.TABLE__SCHEMA:
-				setSchema((String)newValue);
-				return;
-			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
-				getUniqueConstraints().clear();
-				getUniqueConstraints().addAll((Collection<? extends UniqueConstraint>)newValue);
-				return;
+		case PannotationPackage.TABLE__NAME:
+			setName((String) newValue);
+			return;
+		case PannotationPackage.TABLE__CATALOG:
+			setCatalog((String) newValue);
+			return;
+		case PannotationPackage.TABLE__SCHEMA:
+			setSchema((String) newValue);
+			return;
+		case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
+			getUniqueConstraints().clear();
+			getUniqueConstraints().addAll((Collection<? extends UniqueConstraint>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.TABLE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case PannotationPackage.TABLE__CATALOG:
-				setCatalog(CATALOG_EDEFAULT);
-				return;
-			case PannotationPackage.TABLE__SCHEMA:
-				setSchema(SCHEMA_EDEFAULT);
-				return;
-			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
-				getUniqueConstraints().clear();
-				return;
+		case PannotationPackage.TABLE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case PannotationPackage.TABLE__CATALOG:
+			setCatalog(CATALOG_EDEFAULT);
+			return;
+		case PannotationPackage.TABLE__SCHEMA:
+			setSchema(SCHEMA_EDEFAULT);
+			return;
+		case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
+			getUniqueConstraints().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.TABLE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case PannotationPackage.TABLE__CATALOG:
-				return CATALOG_EDEFAULT == null ? catalog != null : !CATALOG_EDEFAULT.equals(catalog);
-			case PannotationPackage.TABLE__SCHEMA:
-				return SCHEMA_EDEFAULT == null ? schema != null : !SCHEMA_EDEFAULT.equals(schema);
-			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
-				return uniqueConstraints != null && !uniqueConstraints.isEmpty();
+		case PannotationPackage.TABLE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case PannotationPackage.TABLE__CATALOG:
+			return CATALOG_EDEFAULT == null ? catalog != null : !CATALOG_EDEFAULT.equals(catalog);
+		case PannotationPackage.TABLE__SCHEMA:
+			return SCHEMA_EDEFAULT == null ? schema != null : !SCHEMA_EDEFAULT.equals(schema);
+		case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
+			return uniqueConstraints != null && !uniqueConstraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -325,4 +333,4 @@ public class TableImpl extends PAnnotationImpl implements Table {
 		return result.toString();
 	}
 
-} //TableImpl
+} // TableImpl

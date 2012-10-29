@@ -47,11 +47,11 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Is a test case to test detach functionality for featuremap with different kinds of methods
- * on the featuremap (move, set, etc).
- *  
+ * Is a test case to test detach functionality for featuremap with different kinds of methods on the
+ * featuremap (move, set, etc).
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ 
+ * @version $Revision: 1.6 $
  */
 public class DetachFeatureMapAction extends AbstractTestAction {
 
@@ -224,7 +224,8 @@ public class DetachFeatureMapAction extends AbstractTestAction {
 				// create an editing domain
 				ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(factories);
 				BasicCommandStack commandStack = new BasicCommandStack();
-				EditingDomain editDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
+				EditingDomain editDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack,
+						new HashMap());
 				;
 
 				// get and load the resource
@@ -279,6 +280,7 @@ public class DetachFeatureMapAction extends AbstractTestAction {
 
 	/** Returns the resource uri, jdo is default (for now) */
 	public String getResourceUri(TestStore store) {
-		return "jpoxdao://?" + StoreResource.DS_NAME_PARAM + "=" + store.getDatabaseAdapter().getDbName();
+		return "jpoxdao://?" + StoreResource.DS_NAME_PARAM + "="
+				+ store.getDatabaseAdapter().getDbName();
 	}
 }

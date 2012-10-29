@@ -35,9 +35,9 @@ import org.hibernate.type.AbstractStandardBasicType;
 import org.hibernate.type.Type;
 
 /**
- * Different identifier related utilities. The current Elver store
- * representation does not use the EMF id concept but uses the underlying
- * hibernate identifier. This allows more flexibility than the EMF identifier.
+ * Different identifier related utilities. The current Elver store representation does not use the
+ * EMF id concept but uses the underlying hibernate identifier. This allows more flexibility than
+ * the EMF identifier.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.9 $
@@ -58,15 +58,14 @@ public class IdentifierUtil {
 	/**
 	 * Returns the identifiertype on the basis of the class of the passed object
 	 */
-	public static Type getIdentifierType(String className,
-			SessionImplementor session) {
+	public static Type getIdentifierType(String className, SessionImplementor session) {
 		Type type = identifierTypeCache.get(className);
 		if (type != null) {
 			return type;
 		}
 
-		final Type identifierType = ((SessionImpl) session).getFactory()
-				.getClassMetadata(className).getIdentifierType();
+		final Type identifierType = ((SessionImpl) session).getFactory().getClassMetadata(className)
+				.getIdentifierType();
 		identifierTypeCache.put(className, identifierType);
 		return identifierType;
 	}
@@ -74,14 +73,12 @@ public class IdentifierUtil {
 	/** Converts an id to a string representation */
 	public static String idToString(Object object, SessionImplementor session) {
 
-		return createIDString(
-				getIdentifierType(object.getClass().getName(), session),
+		return createIDString(getIdentifierType(object.getClass().getName(), session),
 				getID(object, session));
 	}
 
 	/** String to id */
-	public static Serializable stringToId(String className,
-			SessionImplementor Session, String idStr) {
+	public static Serializable stringToId(String className, SessionImplementor Session, String idStr) {
 		return extractID(getIdentifierType(className, Session), idStr);
 	}
 
@@ -95,25 +92,19 @@ public class IdentifierUtil {
 
 		// for all other cases the classname of the type is encoded into the
 		// field
-		final String className = idString.substring(0,
-				idString.indexOf(ENCODING_SEPARATOR));
-		final String strValue = idString.substring(1 + idString
-				.indexOf(ENCODING_SEPARATOR));
+		final String className = idString.substring(0, idString.indexOf(ENCODING_SEPARATOR));
+		final String strValue = idString.substring(1 + idString.indexOf(ENCODING_SEPARATOR));
 
 		Constructor<?> constructor = constructorCache.get(className);
 		if (constructor == null) {
 			try {
-				final Class<?> clazz = ClassLoaderResolver
-						.classForName(className);
-				constructor = clazz
-						.getConstructor(new Class[] { String.class });
+				final Class<?> clazz = ClassLoaderResolver.classForName(className);
+				constructor = clazz.getConstructor(new Class[] { String.class });
 			} catch (StoreClassLoadException e) {
 				throw new HbMapperException("Class " + className + " not found");
 			} catch (NoSuchMethodException e) {
-				throw new HbMapperException(
-						"Class "
-								+ className
-								+ " does not have a constructor with a String parameter!");
+				throw new HbMapperException("Class " + className
+						+ " does not have a constructor with a String parameter!");
 			}
 		}
 		if (constructor == null) {
@@ -122,27 +113,21 @@ public class IdentifierUtil {
 		}
 
 		try {
-			return (Serializable) constructor
-					.newInstance(new Object[] { strValue });
+			return (Serializable) constructor.newInstance(new Object[] { strValue });
 		} catch (InvocationTargetException e) {
-			throw new HbMapperException("Can not instantiate: " + className
-					+ " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		} catch (InstantiationException e) {
-			throw new HbMapperException("Can not instantiate: " + className
-					+ " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		} catch (IllegalAccessException e) {
-			throw new HbMapperException("Can not instantiate: " + className
-					+ " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		}
 	}
 
 	/** Returns the id of the passed object */
-	@SuppressWarnings("deprecation")
 	public static Serializable getID(EObject eobj, HbDataStore hd, SessionImplementor session) {
-		final String entityName = hd.getEntityNameStrategy().toEntityName(
-				eobj.eClass());
-		final EntityPersister entityPersister = ((SessionFactoryImpl) hd
-				.getSessionFactory()).getEntityPersister(entityName);
+		final String entityName = hd.getEntityNameStrategy().toEntityName(eobj.eClass());
+		final EntityPersister entityPersister = ((SessionFactoryImpl) hd.getSessionFactory())
+				.getEntityPersister(entityName);
 		return entityPersister.getIdentifier(eobj, session);
 	}
 
@@ -155,14 +140,12 @@ public class IdentifierUtil {
 
 		// now with entity name
 		final String entityName = session.bestGuessEntityName(object);
-		id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, object,
-				session);
+		id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, object, session);
 		if (id != null) {
 			return id;
 		}
 		// now the slow way
-		return (Serializable) IdentifierCacheHandler.getInstance()
-				.getID(object);
+		return (Serializable) IdentifierCacheHandler.getInstance().getID(object);
 	}
 
 	/** Creates an id string from a serializable object */

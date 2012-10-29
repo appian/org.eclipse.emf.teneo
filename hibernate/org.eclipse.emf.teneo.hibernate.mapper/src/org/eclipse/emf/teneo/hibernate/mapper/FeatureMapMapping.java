@@ -24,10 +24,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * The feature map mapping handles the mapping of a feature map feature, this includes group and mixed types. It is
- * created for each feature map feature during the mapping of the features of an entity. At the end of the entity
- * processing the feature map mapping instances are used to create a hibernate specific mapping and add it to the
- * resulting document.
+ * The feature map mapping handles the mapping of a feature map feature, this includes group and
+ * mixed types. It is created for each feature map feature during the mapping of the features of an
+ * entity. At the end of the entity processing the feature map mapping instances are used to create
+ * a hibernate specific mapping and add it to the resulting document.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -46,7 +46,7 @@ public class FeatureMapMapping extends AbstractMapper {
 
 	/**
 	 * @param hbmContext
-	 *            The context in which the mapping takes place
+	 *          The context in which the mapping takes place
 	 */
 	public FeatureMapMapping(MappingContext hbmContext, PAnnotatedEAttribute paAttribute) {
 		super.setHbmContext(hbmContext);
@@ -59,37 +59,49 @@ public class FeatureMapMapping extends AbstractMapper {
 
 	/** Returns the entityName */
 	public String getEntityName() {
-		return StoreUtil.getEntityName(hbmContext.getEntityNameStrategy(), paAttribute.getModelEAttribute());
+		return StoreUtil.getEntityName(hbmContext.getEntityNameStrategy(),
+				paAttribute.getModelEAttribute());
 	}
 
 	/** Processes the features of this featuremap entry */
 	public void process() {
-		final String entityName = StoreUtil.getEntityName(hbmContext.getEntityNameStrategy(), paAttribute.getModelEAttribute());
+		final String entityName = StoreUtil.getEntityName(hbmContext.getEntityNameStrategy(),
+				paAttribute.getModelEAttribute());
 		log.debug("Processing feature map feature: " + entityName);
 		Element mainElement;
 		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
 			mainElement = getCompositeElement();
 
-			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addAttribute("inherit", "false").addText(
-					hbmContext.getEntityNameStrategy().toEntityName(
-							paAttribute.getModelEAttribute().getEContainingClass()));
+			mainElement
+					.addElement("meta")
+					.addAttribute("attribute", HbMapperConstants.FEATUREMAP_META)
+					.addAttribute("inherit", "false")
+					.addText(
+							hbmContext.getEntityNameStrategy().toEntityName(
+									paAttribute.getModelEAttribute().getEContainingClass()));
 		} else {
-			mainElement = hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName)
-					.addAttribute("lazy", "false").addAttribute("table",
-							hbmContext.trunc(entityName.toUpperCase(), false));
+			mainElement = hbmContext.getCurrent().addElement("class")
+					.addAttribute("entity-name", entityName).addAttribute("lazy", "false")
+					.addAttribute("table", hbmContext.trunc(null, entityName.toUpperCase(), false));
 
-			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addAttribute("inherit", "false").addText(
-					hbmContext.getEntityNameStrategy().toEntityName(
-							paAttribute.getModelEAttribute().getEContainingClass()));
+			mainElement
+					.addElement("meta")
+					.addAttribute("attribute", HbMapperConstants.FEATUREMAP_META)
+					.addAttribute("inherit", "false")
+					.addText(
+							hbmContext.getEntityNameStrategy().toEntityName(
+									paAttribute.getModelEAttribute().getEContainingClass()));
 
 			// TODO: check if id of parent can be used instead
-			mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
-					"native");
+			mainElement.addElement("id").addAttribute("type", "long").addElement("generator")
+					.addAttribute("class", "native");
 
 			if (hbmContext.alwaysVersion()) {
-				final Element versionElement = mainElement.addElement("version").addAttribute("name",
-						hbmContext.getVersionColumnName()).addAttribute("access",
-						"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+				final Element versionElement = mainElement
+						.addElement("version")
+						.addAttribute("name", hbmContext.getVersionColumnName())
+						.addAttribute("access",
+								"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
 				final Element meta = new Element("meta");
 				meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
 				meta.addAttribute("inherit", "false");
@@ -101,14 +113,14 @@ public class FeatureMapMapping extends AbstractMapper {
 		hbmContext.setCurrent(mainElement);
 		hbmContext.setCurrentElementFeatureMap(true);
 		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
-			mainElement.addElement("tuplizer").addAttribute("entity-mode", "pojo").addAttribute("class",
-					getHbmContext().getComponentFeatureMapTuplizer());
-			mainElement.addElement("tuplizer").addAttribute("entity-mode", "dynamic-map").addAttribute("class",
-					getHbmContext().getComponentFeatureMapTuplizer());
+			mainElement.addElement("tuplizer").addAttribute("entity-mode", "pojo")
+					.addAttribute("class", getHbmContext().getComponentFeatureMapTuplizer());
+			mainElement.addElement("tuplizer").addAttribute("entity-mode", "dynamic-map")
+					.addAttribute("class", getHbmContext().getComponentFeatureMapTuplizer());
 		}
 
-		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE).addAttribute(
-				"type", "java.lang.String");
+		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE)
+				.addAttribute("type", "java.lang.String");
 
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
@@ -125,12 +137,14 @@ public class FeatureMapMapping extends AbstractMapper {
 				// note with mixed everyone is part of the group except the
 				// mixed feature itself
 				if ((isMixed && !isEFeatureMixed)
-						|| (modelGroupFeature != null && modelGroupFeature == paAttribute.getModelEStructuralFeature())) {
+						|| (modelGroupFeature != null && modelGroupFeature == paAttribute
+								.getModelEStructuralFeature())) {
 					log.debug("Feature " + StoreUtil.toString(eFeature) + " belongs to this featuremap");
 
 					// continue if it is a id
 					Id id = null;
-					if (paFeature instanceof PAnnotatedEAttribute && ((PAnnotatedEAttribute) paFeature).getId() != null) {
+					if (paFeature instanceof PAnnotatedEAttribute
+							&& ((PAnnotatedEAttribute) paFeature).getId() != null) {
 						// Feature is an id, temporarily removing the id, otherwise
 						// the fm gets confused
 						id = ((PAnnotatedEAttribute) paFeature).getId();
@@ -156,11 +170,14 @@ public class FeatureMapMapping extends AbstractMapper {
 		}
 
 		if (StoreUtil.isMixed(paAttribute.getModelEAttribute())) {
-			mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_MIXED_TEXT)
+			mainElement.addElement("property")
+					.addAttribute("name", HbMapperConstants.PROPERTY_MIXED_TEXT)
 					.addAttribute("type", "java.lang.String");
-			mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_MIXED_CDATA)
+			mainElement.addElement("property")
+					.addAttribute("name", HbMapperConstants.PROPERTY_MIXED_CDATA)
 					.addAttribute("type", "java.lang.String");
-			mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_MIXED_COMMENT)
+			mainElement.addElement("property")
+					.addAttribute("name", HbMapperConstants.PROPERTY_MIXED_COMMENT)
 					.addAttribute("type", "java.lang.String");
 		}
 		hbmContext.setCurrent(mainElement.getParent());
@@ -169,13 +186,18 @@ public class FeatureMapMapping extends AbstractMapper {
 	}
 
 	private void addWildCardFeatureMapping(Element mainElement, PAnnotatedEStructuralFeature paFeature) {
-		mainElement.addElement("property").addAttribute("name",
-				paFeature.getModelEStructuralFeature().getName() + "_" + HbMapperConstants.PROPERTY_ANY_PRIMITIVE)
+		mainElement
+				.addElement("property")
+				.addAttribute(
+						"name",
+						paFeature.getModelEStructuralFeature().getName() + "_"
+								+ HbMapperConstants.PROPERTY_ANY_PRIMITIVE)
 				.addAttribute("type", "java.lang.String");
 		final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
-		final String assocName = getHbmContext().getPropertyName(paFeature.getModelEStructuralFeature());
-		mainElement.addElement(createAny(assocName + "_" + HbMapperConstants.PROPERTY_ANY_REFERENCE, paFeature,
-				hbAttribute.getAny(), hbAttribute.getAnyMetaDef(), false));
+		final String assocName = getHbmContext()
+				.getPropertyName(paFeature.getModelEStructuralFeature());
+		mainElement.addElement(createAny(assocName + "_" + HbMapperConstants.PROPERTY_ANY_REFERENCE,
+				paFeature, hbAttribute.getAny(), hbAttribute.getAnyMetaDef(), false));
 	}
 
 	/** Returns the eattribute */

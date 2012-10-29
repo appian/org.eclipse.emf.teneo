@@ -38,27 +38,25 @@ import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Association</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Data Association</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getSourceRef <em>Source Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getTargetRef <em>Target Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getTransformation <em>Transformation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getAssignment <em>Assignment</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getSourceRef <em>Source Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getTargetRef <em>Target Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getTransformation <em>Transformation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.DataAssociationImpl#getAssignment <em>Assignment</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class DataAssociationImpl extends BaseElementImpl implements
-		DataAssociation {
+public class DataAssociationImpl extends BaseElementImpl implements DataAssociation {
 	/**
-	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSourceRef()
 	 * @generated
 	 * @ordered
@@ -66,9 +64,9 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	protected EList<ItemAwareElement> sourceRef;
 
 	/**
-	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetRef()
 	 * @generated
 	 * @ordered
@@ -76,9 +74,9 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	protected ItemAwareElement targetRef;
 
 	/**
-	 * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTransformation()
 	 * @generated
 	 * @ordered
@@ -86,9 +84,9 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	protected FormalExpression transformation;
 
 	/**
-	 * The cached value of the '{@link #getAssignment() <em>Assignment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAssignment() <em>Assignment</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAssignment()
 	 * @generated
 	 * @ordered
@@ -96,8 +94,8 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	protected EList<Assignment> assignment;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataAssociationImpl() {
@@ -105,8 +103,8 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -115,22 +113,21 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ItemAwareElement> getSourceRef() {
 		if (sourceRef == null) {
-			sourceRef = new EObjectEList<ItemAwareElement>(
-					ItemAwareElement.class, this,
+			sourceRef = new EObjectEList<ItemAwareElement>(ItemAwareElement.class, this,
 					Bpmn2Package.DATA_ASSOCIATION__SOURCE_REF);
 		}
 		return sourceRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemAwareElement getTargetRef() {
@@ -138,8 +135,8 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetRef(ItemAwareElement newTargetRef) {
@@ -147,13 +144,12 @@ public class DataAssociationImpl extends BaseElementImpl implements
 		targetRef = newTargetRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_ASSOCIATION__TARGET_REF, oldTargetRef,
-					targetRef));
+					Bpmn2Package.DATA_ASSOCIATION__TARGET_REF, oldTargetRef, targetRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FormalExpression getTransformation() {
@@ -161,19 +157,17 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetTransformation(
-			FormalExpression newTransformation, NotificationChain msgs) {
+	public NotificationChain basicSetTransformation(FormalExpression newTransformation,
+			NotificationChain msgs) {
 		FormalExpression oldTransformation = transformation;
 		transformation = newTransformation;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION,
-					oldTransformation, newTransformation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION, oldTransformation, newTransformation);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -183,71 +177,60 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTransformation(FormalExpression newTransformation) {
 		if (newTransformation != transformation) {
 			NotificationChain msgs = null;
 			if (transformation != null)
-				msgs = ((InternalEObject) transformation)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION,
-								null, msgs);
+				msgs = ((InternalEObject) transformation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION, null, msgs);
 			if (newTransformation != null)
-				msgs = ((InternalEObject) newTransformation)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION,
-								null, msgs);
+				msgs = ((InternalEObject) newTransformation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION, null, msgs);
 			msgs = basicSetTransformation(newTransformation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION,
-					newTransformation, newTransformation));
+					Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION, newTransformation, newTransformation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Assignment> getAssignment() {
 		if (assignment == null) {
-			assignment = new EObjectContainmentEList<Assignment>(
-					Assignment.class, this,
+			assignment = new EObjectContainmentEList<Assignment>(Assignment.class, this,
 					Bpmn2Package.DATA_ASSOCIATION__ASSIGNMENT);
 		}
 		return assignment;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.DATA_ASSOCIATION__TRANSFORMATION:
 			return basicSetTransformation(null, msgs);
 		case Bpmn2Package.DATA_ASSOCIATION__ASSIGNMENT:
-			return ((InternalEList<?>) getAssignment()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getAssignment()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -266,8 +249,8 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -276,8 +259,7 @@ public class DataAssociationImpl extends BaseElementImpl implements
 		switch (featureID) {
 		case Bpmn2Package.DATA_ASSOCIATION__SOURCE_REF:
 			getSourceRef().clear();
-			getSourceRef().addAll(
-					(Collection<? extends ItemAwareElement>) newValue);
+			getSourceRef().addAll((Collection<? extends ItemAwareElement>) newValue);
 			return;
 		case Bpmn2Package.DATA_ASSOCIATION__TARGET_REF:
 			setTargetRef((ItemAwareElement) newValue);
@@ -294,8 +276,8 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -318,8 +300,8 @@ public class DataAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -337,4 +319,4 @@ public class DataAssociationImpl extends BaseElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //DataAssociationImpl
+} // DataAssociationImpl

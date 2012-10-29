@@ -13,25 +13,28 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Id Bag</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Id Bag</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getGenerator <em>Generator</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getTable <em>Table</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getGenerator <em>Generator
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getType <em>Type</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	/**
-	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGenerator()
 	 * @generated
 	 * @ordered
@@ -39,9 +42,9 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	protected static final String GENERATOR_EDEFAULT = "increment";
 
 	/**
-	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGenerator()
 	 * @generated
 	 * @ordered
@@ -49,9 +52,9 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	protected String generator = GENERATOR_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -59,9 +62,9 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	protected static final String TYPE_EDEFAULT = "long";
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -69,9 +72,9 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	protected String type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTable()
 	 * @generated
 	 * @ordered
@@ -79,9 +82,9 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	protected static final String TABLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getTable()
 	 * @generated
 	 * @ordered
@@ -89,8 +92,8 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	protected String table = TABLE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected IdBagImpl() {
@@ -98,8 +101,8 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,8 +111,8 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getGenerator() {
@@ -117,20 +120,21 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGenerator(String newGenerator) {
 		String oldGenerator = generator;
 		generator = newGenerator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__GENERATOR, oldGenerator, generator));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__GENERATOR,
+					oldGenerator, generator));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getType() {
@@ -138,20 +142,21 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(String newType) {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__TYPE,
+					oldType, type));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTable() {
@@ -159,103 +164,105 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTable(String newTable) {
 		String oldTable = table;
 		table = newTable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__TABLE, oldTable, table));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__TABLE,
+					oldTable, table));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__GENERATOR:
-				return getGenerator();
-			case HbannotationPackage.ID_BAG__TYPE:
-				return getType();
-			case HbannotationPackage.ID_BAG__TABLE:
-				return getTable();
+		case HbannotationPackage.ID_BAG__GENERATOR:
+			return getGenerator();
+		case HbannotationPackage.ID_BAG__TYPE:
+			return getType();
+		case HbannotationPackage.ID_BAG__TABLE:
+			return getTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__GENERATOR:
-				setGenerator((String)newValue);
-				return;
-			case HbannotationPackage.ID_BAG__TYPE:
-				setType((String)newValue);
-				return;
-			case HbannotationPackage.ID_BAG__TABLE:
-				setTable((String)newValue);
-				return;
+		case HbannotationPackage.ID_BAG__GENERATOR:
+			setGenerator((String) newValue);
+			return;
+		case HbannotationPackage.ID_BAG__TYPE:
+			setType((String) newValue);
+			return;
+		case HbannotationPackage.ID_BAG__TABLE:
+			setTable((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__GENERATOR:
-				setGenerator(GENERATOR_EDEFAULT);
-				return;
-			case HbannotationPackage.ID_BAG__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case HbannotationPackage.ID_BAG__TABLE:
-				setTable(TABLE_EDEFAULT);
-				return;
+		case HbannotationPackage.ID_BAG__GENERATOR:
+			setGenerator(GENERATOR_EDEFAULT);
+			return;
+		case HbannotationPackage.ID_BAG__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case HbannotationPackage.ID_BAG__TABLE:
+			setTable(TABLE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__GENERATOR:
-				return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
-			case HbannotationPackage.ID_BAG__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case HbannotationPackage.ID_BAG__TABLE:
-				return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
+		case HbannotationPackage.ID_BAG__GENERATOR:
+			return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
+		case HbannotationPackage.ID_BAG__TYPE:
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+		case HbannotationPackage.ID_BAG__TABLE:
+			return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (generator: ");
@@ -268,4 +275,4 @@ public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 		return result.toString();
 	}
 
-} //IdBagImpl
+} // IdBagImpl

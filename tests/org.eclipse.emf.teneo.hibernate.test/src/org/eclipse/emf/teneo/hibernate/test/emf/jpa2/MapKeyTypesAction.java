@@ -8,18 +8,10 @@
 
 package org.eclipse.emf.teneo.hibernate.test.emf.jpa2;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 
 import junit.framework.Assert;
 
-import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.CollectiontableFactory;
-import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.CollectiontablePackage;
-import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.EmbeddedItem;
-import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.Item;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.EnumType;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsFactory;
@@ -58,14 +50,14 @@ public class MapKeyTypesAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final Images images = store.getObject(Images.class);
-			
+
 			Assert.assertTrue(images.getImageDateDescriptions().size() == 2);
 			Assert.assertTrue(images.getImageDateDescriptions().get(dt1).equals(v1));
 			Assert.assertTrue(images.getImageDateDescriptions().get(dt2).equals(v2));
 			// keys are not the same object!
 			Assert.assertTrue(images.getImageDateDescriptions().get(0).getKey() != dt1);
 			Assert.assertTrue(images.getImageDateDescriptions().get(0).getKey() != dt2);
-			
+
 			Assert.assertTrue(images.getImageTypeNames().size() == 2);
 			Assert.assertTrue(images.getImageTypeNames().get(t1).equals(v3));
 			Assert.assertTrue(images.getImageTypeNames().get(t2).equals(v4));

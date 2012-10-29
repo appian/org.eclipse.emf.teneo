@@ -17,24 +17,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Link</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.example.car.impl.CarLinkImpl#getCarLinkId <em>Car Link Id</em>}</li>
- *   <li>{@link com.example.car.impl.CarLinkImpl#getName <em>Name</em>}</li>
+ * <li>{@link com.example.car.impl.CarLinkImpl#getCarLinkId <em>Car Link Id</em>}</li>
+ * <li>{@link com.example.car.impl.CarLinkImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CarLinkImpl extends EObjectImpl implements CarLink {
 	/**
-	 * The default value of the '{@link #getCarLinkId() <em>Car Link Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getCarLinkId() <em>Car Link Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCarLinkId()
 	 * @generated
 	 * @ordered
@@ -42,9 +41,9 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	protected static final String CAR_LINK_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCarLinkId() <em>Car Link Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCarLinkId() <em>Car Link Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCarLinkId()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,9 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	protected String carLinkId = CAR_LINK_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,9 +61,9 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -72,8 +71,8 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CarLinkImpl() {
@@ -81,8 +80,8 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,8 +90,8 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getCarLinkId() {
@@ -100,20 +99,21 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCarLinkId(String newCarLinkId) {
 		String oldCarLinkId = carLinkId;
 		carLinkId = newCarLinkId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CarPackage.CAR_LINK__CAR_LINK_ID, oldCarLinkId, carLinkId));
+			eNotify(new ENotificationImpl(this, Notification.SET, CarPackage.CAR_LINK__CAR_LINK_ID,
+					oldCarLinkId, carLinkId));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -121,93 +121,96 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CarPackage.CAR_LINK__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, CarPackage.CAR_LINK__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CarPackage.CAR_LINK__CAR_LINK_ID:
-				return getCarLinkId();
-			case CarPackage.CAR_LINK__NAME:
-				return getName();
+		case CarPackage.CAR_LINK__CAR_LINK_ID:
+			return getCarLinkId();
+		case CarPackage.CAR_LINK__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CarPackage.CAR_LINK__CAR_LINK_ID:
-				setCarLinkId((String)newValue);
-				return;
-			case CarPackage.CAR_LINK__NAME:
-				setName((String)newValue);
-				return;
+		case CarPackage.CAR_LINK__CAR_LINK_ID:
+			setCarLinkId((String) newValue);
+			return;
+		case CarPackage.CAR_LINK__NAME:
+			setName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CarPackage.CAR_LINK__CAR_LINK_ID:
-				setCarLinkId(CAR_LINK_ID_EDEFAULT);
-				return;
-			case CarPackage.CAR_LINK__NAME:
-				setName(NAME_EDEFAULT);
-				return;
+		case CarPackage.CAR_LINK__CAR_LINK_ID:
+			setCarLinkId(CAR_LINK_ID_EDEFAULT);
+			return;
+		case CarPackage.CAR_LINK__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CarPackage.CAR_LINK__CAR_LINK_ID:
-				return CAR_LINK_ID_EDEFAULT == null ? carLinkId != null : !CAR_LINK_ID_EDEFAULT.equals(carLinkId);
-			case CarPackage.CAR_LINK__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case CarPackage.CAR_LINK__CAR_LINK_ID:
+			return CAR_LINK_ID_EDEFAULT == null ? carLinkId != null : !CAR_LINK_ID_EDEFAULT
+					.equals(carLinkId);
+		case CarPackage.CAR_LINK__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (carLinkId: ");
@@ -218,4 +221,4 @@ public class CarLinkImpl extends EObjectImpl implements CarLink {
 		return result.toString();
 	}
 
-} //CarLinkImpl
+} // CarLinkImpl

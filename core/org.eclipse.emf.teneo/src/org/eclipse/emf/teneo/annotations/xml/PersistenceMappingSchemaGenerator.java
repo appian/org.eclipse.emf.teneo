@@ -103,20 +103,23 @@ public class PersistenceMappingSchemaGenerator {
 		final Document doc = new Document();
 
 		// The root Element
-		final Element root = new Element("xsd:schema").addAttribute("targetNamespace", nameSpace).addAttribute(
-				"elementFormDefault", "qualified").addAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
+		final Element root = new Element("xsd:schema").addAttribute("targetNamespace", nameSpace)
+				.addAttribute("elementFormDefault", "qualified")
+				.addAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
 				.addAttribute("xmlns", nameSpace);
 
-		root.addElement("xsd:element").addAttribute("name", "persistence-mapping").addAttribute("type",
-				"PersistenceMapping");
-		root.addElement("xsd:complexType").addAttribute("name", "PersistenceMapping").addElement("xsd:sequence")
-				.addAttribute("minOccurs", "1").addAttribute("maxOccurs", "unbounded").addElement("xsd:element")
+		root.addElement("xsd:element").addAttribute("name", "persistence-mapping")
+				.addAttribute("type", "PersistenceMapping");
+		root.addElement("xsd:complexType").addAttribute("name", "PersistenceMapping")
+				.addElement("xsd:sequence").addAttribute("minOccurs", "1")
+				.addAttribute("maxOccurs", "unbounded").addElement("xsd:element")
 				.addAttribute("name", "epackage").addAttribute("type", "EPackage");
 
 		// first determine which types have only one string field, these are handled
 		// slightly different because this makes the xml easier
 		for (EPackage annotationEPackage : annotationEPackages) {
-			final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(annotationEPackage.getEClassifiers());
+			final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(
+					annotationEPackage.getEClassifiers());
 			for (EClassifier eClassifier : eclassifiers) {
 				String schemaTypeName = eClassifier.getName();
 				if (eClassifier instanceof EClass) {
@@ -180,14 +183,16 @@ public class PersistenceMappingSchemaGenerator {
 					continue;
 				}
 
-				// Annotation types with a single feature are converted to simple type references in
+				// Annotation types with a single feature are converted to simple type
+				// references in
 				// the schema.
 				if (oneMappableFeature(eClass)) {
 					/*
 					 * final EStructuralFeature eStructuralFeature = (EStructuralFeature)
-					 * eClass.getEStructuralFeatures().get(0); final EClassifier eType = eStructuralFeature.getEType();
-					 * schemaTypeName = (String) schemaTypeNamesByAnnotationType.get(eType.getName()); if
-					 * (schemaTypeName == null) { schemaTypeName = eType.getName(); }
+					 * eClass.getEStructuralFeatures().get(0); final EClassifier eType =
+					 * eStructuralFeature.getEType(); schemaTypeName = (String)
+					 * schemaTypeNamesByAnnotationType.get(eType.getName()); if (schemaTypeName == null) {
+					 * schemaTypeName = eType.getName(); }
 					 * schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
 					 */
 					continue;
@@ -251,14 +256,16 @@ public class PersistenceMappingSchemaGenerator {
 		final Element epackElement = new Element("xsd:complexType").addAttribute("name", "EPackage");
 		final Element choiceElement = epackElement.addElement("xsd:choice");
 		processStructuralFeatures(choiceElement, getPAnnotatedEPackage().getEAllStructuralFeatures());
-		choiceElement.addElement("xsd:element").addAttribute("name", "eclass").addAttribute("type", "EClass");
-		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
+		choiceElement.addElement("xsd:element").addAttribute("name", "eclass")
+				.addAttribute("type", "EClass");
+		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype")
+				.addAttribute("type", "EDataType");
 
 		addMinMaxOccurs(choiceElement, "0", "unbounded");
 
 		// add the namespace-uri attribute
-		epackElement.addElement("xsd:attribute").addAttribute("name", "namespace-uri").addAttribute("type",
-				"xsd:anyURI").addAttribute("use", "required");
+		epackElement.addElement("xsd:attribute").addAttribute("name", "namespace-uri")
+				.addAttribute("type", "xsd:anyURI").addAttribute("use", "required");
 		return epackElement;
 	}
 
@@ -268,15 +275,19 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = eclassElement.addElement("xsd:choice");
 		processStructuralFeatures(choiceElement, getPAnnotatedEClass().getEAllStructuralFeatures());
 
-		choiceElement.addElement("xsd:element").addAttribute("name", "eattribute").addAttribute("type", "EAttribute");
-		choiceElement.addElement("xsd:element").addAttribute("name", "ereference").addAttribute("type", "EReference");
-		choiceElement.addElement("xsd:element").addAttribute("name", "property").addAttribute("type", "Property");
-		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
+		choiceElement.addElement("xsd:element").addAttribute("name", "eattribute")
+				.addAttribute("type", "EAttribute");
+		choiceElement.addElement("xsd:element").addAttribute("name", "ereference")
+				.addAttribute("type", "EReference");
+		choiceElement.addElement("xsd:element").addAttribute("name", "property")
+				.addAttribute("type", "Property");
+		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype")
+				.addAttribute("type", "EDataType");
 
 		addMinMaxOccurs(choiceElement, "0", "unbounded");
 
-		eclassElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-				.addAttribute("use", "required");
+		eclassElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use", "required");
 		return eclassElement;
 	}
 
@@ -286,8 +297,8 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = erefElement.addElement("xsd:choice");
 		processStructuralFeatures(choiceElement, getPAnnotatedEReference().getEAllStructuralFeatures());
 		addMinMaxOccurs(choiceElement, "0", "unbounded");
-		erefElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-				.addAttribute("use", "required");
+		erefElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use", "required");
 		return erefElement;
 	}
 
@@ -297,8 +308,8 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
 		processStructuralFeatures(choiceElement, getPAnnotatedEAttribute().getEAllStructuralFeatures());
 		addMinMaxOccurs(choiceElement, "0", "unbounded");
-		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-				.addAttribute("use", "required");
+		eattrElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use", "required");
 		return eattrElement;
 	}
 
@@ -308,8 +319,8 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
 		processStructuralFeatures(choiceElement, getPAnnotatedEDataType().getEAllStructuralFeatures());
 		addMinMaxOccurs(choiceElement, "0", "unbounded");
-		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-				.addAttribute("use", "required");
+		eattrElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use", "required");
 		return eattrElement;
 	}
 
@@ -317,21 +328,25 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createPropertyElement() {
 		final Element propertyElement = new Element("xsd:complexType").addAttribute("name", "Property");
 		final Element choiceElement = propertyElement.addElement("xsd:choice");
-		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(getPAnnotatedEAttribute()
-				.getEAllStructuralFeatures());
+		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(
+				getPAnnotatedEAttribute().getEAllStructuralFeatures());
 		features.removeAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 		features.addAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 
 		processStructuralFeatures(choiceElement, features);
 		addMinMaxOccurs(choiceElement, "0", "unbounded");
-		propertyElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-				.addAttribute("use", "required");
+		propertyElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use", "required");
 		return propertyElement;
 	}
 
-	/** Walk through a pamodel type and add references to each type to the passed element */
-	private void processStructuralFeatures(Element mainElement, List<EStructuralFeature> eStructuralFeatures) {
-		final List<EStructuralFeature> eFeatures = new ArrayList<EStructuralFeature>(eStructuralFeatures);
+	/**
+	 * Walk through a pamodel type and add references to each type to the passed element
+	 */
+	private void processStructuralFeatures(Element mainElement,
+			List<EStructuralFeature> eStructuralFeatures) {
+		final List<EStructuralFeature> eFeatures = new ArrayList<EStructuralFeature>(
+				eStructuralFeatures);
 		Collections.sort(eFeatures, new ENamedElementComparator());
 		for (EStructuralFeature ef : eFeatures) {
 			processStructuralFeature(mainElement, ef);
@@ -357,7 +372,8 @@ public class PersistenceMappingSchemaGenerator {
 			elementName = eAnnotation.getDetails().get("elementName");
 		}
 		if (elementName == null) {
-			// No explicit XML element name specified, so derive from the name instead.
+			// No explicit XML element name specified, so derive from the name
+			// instead.
 			elementName = eStructuralFeature.getName();
 			if (eStructuralFeature.isMany() && elementName.endsWith("s")) {
 				elementName = elementName.substring(0, elementName.length() - 1);
@@ -384,22 +400,25 @@ public class PersistenceMappingSchemaGenerator {
 
 		if (eStructuralFeature instanceof EReference) {
 			// EReferences are represented by child elements.
-			final Element element = createSchemaElement(elementName, typeName, eStructuralFeature.getName());
+			final Element element = createSchemaElement(elementName, typeName,
+					eStructuralFeature.getName());
 			element.addAttribute(new Attribute("minOccurs", String.valueOf(minOccurs)));
 			if (eStructuralFeature.isMany()) {
 				element.addAttribute(new Attribute("maxOccurs", "unbounded"));
 			}
 			parentElement.addElement(element);
 		} else {
-			// EAttributes are represented by attributes and optional child elements in case of many
+			// EAttributes are represented by attributes and optional child elements
+			// in case of many
 			// multiplicity.
-			final Element attributeElement = createSchemaAttribute(eStructuralFeature.getName(), typeName,
-					eStructuralFeature.getName());
-			attributeElement.addAttribute(new Attribute("use", (minOccurs == 0 ? "optional" : "required")));
+			final Element attributeElement = createSchemaAttribute(eStructuralFeature.getName(),
+					typeName, eStructuralFeature.getName());
+			attributeElement
+					.addAttribute(new Attribute("use", (minOccurs == 0 ? "optional" : "required")));
 			parentElement.getParent().addElement(attributeElement);
 			if (eStructuralFeature.isMany()) {
-				final Element element = createSchemaElement(eStructuralFeature.getName(), typeName, eStructuralFeature
-						.getName());
+				final Element element = createSchemaElement(eStructuralFeature.getName(), typeName,
+						eStructuralFeature.getName());
 				parentElement.addElement(element);
 				element.addAttribute(new Attribute("minOccurs", "0"));
 				element.addAttribute(new Attribute("maxOccurs", "unbounded"));
@@ -554,7 +573,7 @@ public class PersistenceMappingSchemaGenerator {
 
 	/**
 	 * @param annotationEPackages
-	 *            the annotationEPackages to set
+	 *          the annotationEPackages to set
 	 */
 	public void setAnnotationEPackages(EPackage[] annotationEPackages) {
 		this.annotationEPackages = annotationEPackages;
@@ -569,7 +588,7 @@ public class PersistenceMappingSchemaGenerator {
 
 	/**
 	 * @param modelEPackage
-	 *            the modelEPackage to set
+	 *          the modelEPackage to set
 	 */
 	public void setModelEPackage(EPackage modelEPackage) {
 		this.modelEPackage = modelEPackage;
@@ -584,7 +603,7 @@ public class PersistenceMappingSchemaGenerator {
 
 	/**
 	 * @param nameSpace
-	 *            the nameSpace to set
+	 *          the nameSpace to set
 	 */
 	public void setNameSpace(String nameSpace) {
 		this.nameSpace = nameSpace;

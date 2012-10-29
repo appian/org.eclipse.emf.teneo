@@ -47,7 +47,7 @@ public class Name implements Serializable {
 		result = 37 * result + last.hashCode();
 		return result;
 	}
-	
+
 	public String toString() {
 		return first + " " + last;
 	}

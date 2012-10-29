@@ -123,31 +123,32 @@ public class AnyTypeAction extends AbstractTestAction {
 					assertTrue(a.getMyB().getName().compareTo("myb3") == 0);
 					assertTrue(a.eContainer() == testAny);
 				} else {
-					assertTrue("The multiAnyType should have only 2 elements but it has " +
-							testAny.getMultiAnyType().size(), false);
+					assertTrue("The multiAnyType should have only 2 elements but it has "
+							+ testAny.getMultiAnyType().size(), false);
 				}
 			}
 
 			// test xsd:any
-			assertTrue("Size of testAny.getAny should be 3 but it is: " + testAny.getAny().size(), testAny.getAny()
-				.size() == 3);
+			assertTrue("Size of testAny.getAny should be 3 but it is: " + testAny.getAny().size(),
+					testAny.getAny().size() == 3);
 			for (int i = 0; i < testAny.getAny().size(); i++) {
 				final FeatureMap.Entry entry = testAny.getAny().get(i);
 				if (i == 0) {
-					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getB_Name().getName() + "/" +
-							entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getB_Name() == entry
-						.getEStructuralFeature());
-					assertTrue("Expected/found: 'my b'/" + entry.getValue(), "my b"
-						.compareTo((String) entry.getValue()) == 0);
+					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getB_Name().getName()
+							+ "/" + entry.getEStructuralFeature().getName(),
+							AnytypePackage.eINSTANCE.getB_Name() == entry.getEStructuralFeature());
+					assertTrue("Expected/found: 'my b'/" + entry.getValue(),
+							"my b".compareTo((String) entry.getValue()) == 0);
 				} else if (i == 1) {
-					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_Doub().getName() + "/" +
-							entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getA_Doub() == entry
-						.getEStructuralFeature());
-					assertTrue("Expected/found: 3.0/" + entry.getValue(), new Double(3.0).equals(entry.getValue()));
+					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_Doub().getName()
+							+ "/" + entry.getEStructuralFeature().getName(),
+							AnytypePackage.eINSTANCE.getA_Doub() == entry.getEStructuralFeature());
+					assertTrue("Expected/found: 3.0/" + entry.getValue(),
+							new Double(3.0).equals(entry.getValue()));
 				} else if (i == 2) {
-					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_MyB().getName() + "/" +
-							entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getA_MyB() == entry
-						.getEStructuralFeature());
+					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_MyB().getName()
+							+ "/" + entry.getEStructuralFeature().getName(),
+							AnytypePackage.eINSTANCE.getA_MyB() == entry.getEStructuralFeature());
 					B b4 = (B) entry.getValue();
 					assertTrue(b4.getName().compareTo("myb4") == 0);
 				}
@@ -158,25 +159,26 @@ public class AnyTypeAction extends AbstractTestAction {
 			 * factory.createB(); b5.setName("myb5");
 			 * testAny.getMyAny().add(AnytypePackage.eINSTANCE.getA_MyB(), b5);
 			 */
-			assertTrue("Size of testAny.getMyAny should be 3 but it is: " + testAny.getMyAny().size(), testAny
-				.getMyAny().size() == 3);
+			assertTrue("Size of testAny.getMyAny should be 3 but it is: " + testAny.getMyAny().size(),
+					testAny.getMyAny().size() == 3);
 			for (int i = 0; i < testAny.getMyAny().size(); i++) {
 				final FeatureMap.Entry entry = testAny.getMyAny().get(i);
 				if (i == 0) {
-					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getB_Name().getName() + "/" +
-							entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getB_Name() == entry
-						.getEStructuralFeature());
-					assertTrue("Expected/found: 'my b my any'/" + entry.getValue(), "my b my any"
-						.compareTo((String) entry.getValue()) == 0);
+					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getB_Name().getName()
+							+ "/" + entry.getEStructuralFeature().getName(),
+							AnytypePackage.eINSTANCE.getB_Name() == entry.getEStructuralFeature());
+					assertTrue("Expected/found: 'my b my any'/" + entry.getValue(),
+							"my b my any".compareTo((String) entry.getValue()) == 0);
 				} else if (i == 1) {
-					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_Doub().getName() + "/" +
-							entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getA_Doub() == entry
-						.getEStructuralFeature());
-					assertTrue("Expected/found: 3.4/" + entry.getValue(), new Double(3.4).equals(entry.getValue()));
+					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_Doub().getName()
+							+ "/" + entry.getEStructuralFeature().getName(),
+							AnytypePackage.eINSTANCE.getA_Doub() == entry.getEStructuralFeature());
+					assertTrue("Expected/found: 3.4/" + entry.getValue(),
+							new Double(3.4).equals(entry.getValue()));
 				} else if (i == 2) {
-					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_MyB().getName() + "/" +
-							entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getA_MyB() == entry
-						.getEStructuralFeature());
+					assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getA_MyB().getName()
+							+ "/" + entry.getEStructuralFeature().getName(),
+							AnytypePackage.eINSTANCE.getA_MyB() == entry.getEStructuralFeature());
 					B b5 = (B) entry.getValue();
 					assertTrue(b5.getName().compareTo("myb5") == 0);
 				}

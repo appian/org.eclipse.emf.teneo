@@ -26,24 +26,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Signal</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Signal</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.SignalImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.SignalImpl#getStructureRef <em>Structure Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SignalImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SignalImpl#getStructureRef <em>Structure Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SignalImpl extends RootElementImpl implements Signal {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -51,9 +50,9 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -61,9 +60,9 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStructureRef() <em>Structure Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStructureRef() <em>Structure Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStructureRef()
 	 * @generated
 	 * @ordered
@@ -71,8 +70,8 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	protected ItemDefinition structureRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SignalImpl() {
@@ -80,8 +79,8 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -90,8 +89,8 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -99,21 +98,21 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SIGNAL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.SIGNAL__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getStructureRef() {
@@ -123,16 +122,15 @@ public class SignalImpl extends RootElementImpl implements Signal {
 			if (structureRef != oldStructureRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.SIGNAL__STRUCTURE_REF,
-							oldStructureRef, structureRef));
+							Bpmn2Package.SIGNAL__STRUCTURE_REF, oldStructureRef, structureRef));
 			}
 		}
 		return structureRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition basicGetStructureRef() {
@@ -140,22 +138,21 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStructureRef(ItemDefinition newStructureRef) {
 		ItemDefinition oldStructureRef = structureRef;
 		structureRef = newStructureRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SIGNAL__STRUCTURE_REF, oldStructureRef,
-					structureRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.SIGNAL__STRUCTURE_REF,
+					oldStructureRef, structureRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -172,8 +169,8 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -190,8 +187,8 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -208,16 +205,15 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.SIGNAL__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.SIGNAL__STRUCTURE_REF:
 			return structureRef != null;
 		}
@@ -225,8 +221,8 @@ public class SignalImpl extends RootElementImpl implements Signal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -241,4 +237,4 @@ public class SignalImpl extends RootElementImpl implements Signal {
 		return result.toString();
 	}
 
-} //SignalImpl
+} // SignalImpl

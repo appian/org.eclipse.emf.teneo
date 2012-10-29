@@ -12,23 +12,22 @@ import fleet.USAddress;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>US Address</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>US Address</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.USAddressImpl#getZipCode <em>Zip Code</em>}</li>
- *   <li>{@link fleet.impl.USAddressImpl#getState <em>State</em>}</li>
+ * <li>{@link fleet.impl.USAddressImpl#getZipCode <em>Zip Code</em>}</li>
+ * <li>{@link fleet.impl.USAddressImpl#getState <em>State</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class USAddressImpl extends AddressImpl implements USAddress {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected USAddressImpl() {
@@ -36,8 +35,8 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -46,17 +45,17 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getZipCode() {
-		return (String)eGet(FleetPackage.Literals.US_ADDRESS__ZIP_CODE, true);
+		return (String) eGet(FleetPackage.Literals.US_ADDRESS__ZIP_CODE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setZipCode(String newZipCode) {
@@ -64,21 +63,21 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getState() {
-		return (String)eGet(FleetPackage.Literals.US_ADDRESS__STATE, true);
+		return (String) eGet(FleetPackage.Literals.US_ADDRESS__STATE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setState(String newState) {
 		eSet(FleetPackage.Literals.US_ADDRESS__STATE, newState);
 	}
 
-} //USAddressImpl
+} // USAddressImpl

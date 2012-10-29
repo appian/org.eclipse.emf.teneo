@@ -30,7 +30,8 @@ import org.hibernate.property.Setter;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.6 $
  */
-public class EContainerFeatureIDAccessor implements PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
+public class EContainerFeatureIDAccessor implements PropertyAccessor, ExtensionPoint,
+		ExtensionManagerAware {
 
 	private ExtensionManager extensionManager;
 
@@ -41,8 +42,8 @@ public class EContainerFeatureIDAccessor implements PropertyAccessor, ExtensionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
-		final EContainerFeatureIDPropertyHandler handler =
-				extensionManager.getExtension(EContainerFeatureIDPropertyHandler.class);
+		final EContainerFeatureIDPropertyHandler handler = extensionManager
+				.getExtension(EContainerFeatureIDPropertyHandler.class);
 		handler.initialize(propertyName);
 		return handler;
 	}
@@ -54,8 +55,8 @@ public class EContainerFeatureIDAccessor implements PropertyAccessor, ExtensionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
-		final EContainerFeatureIDPropertyHandler handler =
-				extensionManager.getExtension(EContainerFeatureIDPropertyHandler.class);
+		final EContainerFeatureIDPropertyHandler handler = extensionManager
+				.getExtension(EContainerFeatureIDPropertyHandler.class);
 		handler.initialize(propertyName);
 		return handler;
 	}
@@ -63,7 +64,8 @@ public class EContainerFeatureIDAccessor implements PropertyAccessor, ExtensionP
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
+	 * (org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;

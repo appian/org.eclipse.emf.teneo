@@ -62,7 +62,8 @@ public class LibraryTest extends AbstractActionTest {
 			// strip of the impl
 			path = path.replaceAll("\\.", "/").substring(0, path.length() - 5) + "/library.ecore";
 			final Properties props = super.getExtraConfigurationProperties();
-			props.setProperty(HibernateTestStore.EPACKAGE_INIT_MODE, HibernateTestStore.EPACKAGE_INIT_MODE_CLASS);
+			props.setProperty(HibernateTestStore.EPACKAGE_INIT_MODE,
+					HibernateTestStore.EPACKAGE_INIT_MODE_CLASS);
 			props.setProperty(PersistenceOptions.SQL_FOREIGN_KEY_NAME_PREFIX, "FKPRE_");
 			props.setProperty(PersistenceOptions.SQL_COLUMN_NAME_PREFIX, "COL_");
 			props.setProperty(PersistenceOptions.SQL_TABLE_NAME_PREFIX, "TAB_");
@@ -100,7 +101,7 @@ public class LibraryTest extends AbstractActionTest {
 		/** Dump the annotated model to standard output */
 		@Override
 		protected void dumpPAModel(TestStore testStore) {
-//			final HibernateTestStore hts = (HibernateTestStore) testStore;
+			// final HibernateTestStore hts = (HibernateTestStore) testStore;
 			// System.err.println(hts.getEmfDataStore().getPaModel().toXML());
 		}
 
@@ -127,8 +128,9 @@ public class LibraryTest extends AbstractActionTest {
 		}
 
 		protected void testLazySize(List<?> list) {
-			final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-			final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+			final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+			final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+					.getDelegate();
 			assertFalse(persistentCollection.wasInitialized());
 			assertFalse(persistableEList.isLoaded());
 			int size = LazyCollectionUtils.size(list);
@@ -136,13 +138,13 @@ public class LibraryTest extends AbstractActionTest {
 			assertFalse(persistentCollection.wasInitialized());
 			assertFalse(persistableEList.isLoaded());
 		}
-		
+
 		protected void testMerge(TestStore store) {
 
 			{
 				store.beginTransaction();
-				Library lib = (Library) store.query(Library.class, "name",
-						"Science Fiction Library", 1).get(0);
+				Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1)
+						.get(0);
 				Book bk = lib.getBooks().get(0);
 				lib.setName("test123");
 				bk.setPages(5000);
@@ -155,17 +157,17 @@ public class LibraryTest extends AbstractActionTest {
 
 				// now do merge
 				store.beginTransaction();
-				final Library lib2 = (Library)HbUtil.merge(((HibernateTestStore)store).getSession(), lib, 2);
+				final Library lib2 = (Library) HbUtil.merge(((HibernateTestStore) store).getSession(), lib,
+						2);
 				assertTrue(lib2 != lib);
 				assertTrue(lib2.getName().equals(lib.getName()));
 				assertTrue(lib2.getBooks().get(0) != bk);
 				assertTrue(lib2.getBooks().get(0).getTitle().equals(bk.getTitle()));
 				assertTrue(lib2.getBooks().get(0).getPages() == bk.getPages());
 				store.commitTransaction();
-				
+
 				store.beginTransaction();
-				Library lib3 = (Library) store.query(Library.class, "name",
-						"test123", 1).get(0);
+				Library lib3 = (Library) store.query(Library.class, "name", "test123", 1).get(0);
 				assertNotNull(lib3);
 				store.commitTransaction();
 			}

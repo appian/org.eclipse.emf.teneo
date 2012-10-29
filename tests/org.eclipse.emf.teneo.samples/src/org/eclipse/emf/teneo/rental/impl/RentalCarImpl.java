@@ -17,23 +17,22 @@ import org.eclipse.emf.teneo.rental.RentalCarSize;
 import org.eclipse.emf.teneo.rental.RentalPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Car</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Car</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl#getSize <em>Size</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -41,9 +40,9 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	protected static final RentalCarSize SIZE_EDEFAULT = RentalCarSize.SMALL;
 
 	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -51,17 +50,16 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	protected RentalCarSize size = SIZE_EDEFAULT;
 
 	/**
-	 * This is true if the Size attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the Size attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean sizeESet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RentalCarImpl() {
@@ -69,8 +67,8 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -79,8 +77,8 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RentalCarSize getSize() {
@@ -88,8 +86,8 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSize(RentalCarSize newSize) {
@@ -98,12 +96,13 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 		boolean oldSizeESet = sizeESet;
 		sizeESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CAR__SIZE, oldSize, size, !oldSizeESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CAR__SIZE,
+					oldSize, size, !oldSizeESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetSize() {
@@ -112,12 +111,13 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 		size = SIZE_EDEFAULT;
 		sizeESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, RentalPackage.RENTAL_CAR__SIZE, oldSize, SIZE_EDEFAULT, oldSizeESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, RentalPackage.RENTAL_CAR__SIZE,
+					oldSize, SIZE_EDEFAULT, oldSizeESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetSize() {
@@ -125,77 +125,81 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CAR__SIZE:
-				return getSize();
+		case RentalPackage.RENTAL_CAR__SIZE:
+			return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CAR__SIZE:
-				setSize((RentalCarSize)newValue);
-				return;
+		case RentalPackage.RENTAL_CAR__SIZE:
+			setSize((RentalCarSize) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CAR__SIZE:
-				unsetSize();
-				return;
+		case RentalPackage.RENTAL_CAR__SIZE:
+			unsetSize();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CAR__SIZE:
-				return isSetSize();
+		case RentalPackage.RENTAL_CAR__SIZE:
+			return isSetSize();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (size: ");
-		if (sizeESet) result.append(size); else result.append("<unset>");
+		if (sizeESet)
+			result.append(size);
+		else
+			result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}
 
-} //RentalCarImpl
+} // RentalCarImpl

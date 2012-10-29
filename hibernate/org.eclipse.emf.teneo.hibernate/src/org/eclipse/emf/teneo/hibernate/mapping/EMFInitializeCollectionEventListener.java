@@ -27,15 +27,16 @@ import org.hibernate.event.spi.InitializeCollectionEvent;
  * 
  * @author <a href="mailto:mtaal@elver.org">Mike Kanaley</a>
  */
-public class EMFInitializeCollectionEventListener extends DefaultInitializeCollectionEventListener implements
-		ExtensionPoint {
+public class EMFInitializeCollectionEventListener extends DefaultInitializeCollectionEventListener
+		implements ExtensionPoint {
 
 	private static final long serialVersionUID = 1L;
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.event.def.DefaultInitializeCollectionEventListener#onInitializeCollection(org.hibernate.event.InitializeCollectionEvent)
+	 * @see org.hibernate.event.def.DefaultInitializeCollectionEventListener#
+	 * onInitializeCollection(org.hibernate.event.InitializeCollectionEvent)
 	 */
 	@Override
 	public void onInitializeCollection(InitializeCollectionEvent event) throws HibernateException {

@@ -44,7 +44,7 @@ public class IdAction extends AbstractTestAction {
 	@Override
 	public void doAction(TestStore store) {
 		System.err.println(store.getMappingXML());
-		
+
 		final IdFactory factory = IdFactory.eINSTANCE;
 		{
 			store.beginTransaction();
@@ -53,7 +53,7 @@ public class IdAction extends AbstractTestAction {
 				store.store(factory.createTableID());
 				store.store(factory.createSimpleID());
 				store.store(factory.createTableGeneratorID());
-				
+
 				final AutoID aid = factory.createAutoID();
 				aid.setName("autoid" + i);
 				store.store(aid);

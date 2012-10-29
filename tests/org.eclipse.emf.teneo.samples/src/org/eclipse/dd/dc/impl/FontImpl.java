@@ -18,47 +18,39 @@ import java.util.Map;
 
 import org.eclipse.dd.dc.DcPackage;
 import org.eclipse.dd.dc.Font;
-
 import org.eclipse.dd.dc.util.DcValidator;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Font</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Font</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsBold <em>Is Bold</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsItalic <em>Is Italic</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsStrikeThrough <em>Is Strike Through</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsUnderline <em>Is Underline</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.FontImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.FontImpl#getSize <em>Size</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsBold <em>Is Bold</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsItalic <em>Is Italic</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsStrikeThrough <em>Is Strike Through</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.FontImpl#isIsUnderline <em>Is Underline</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.FontImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.FontImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class FontImpl extends EObjectImpl implements Font {
 	/**
-	 * The default value of the '{@link #isIsBold() <em>Is Bold</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsBold() <em>Is Bold</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsBold()
 	 * @generated
 	 * @ordered
@@ -66,9 +58,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected static final boolean IS_BOLD_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsBold() <em>Is Bold</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsBold() <em>Is Bold</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsBold()
 	 * @generated
 	 * @ordered
@@ -76,9 +68,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected boolean isBold = IS_BOLD_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsItalic() <em>Is Italic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsItalic() <em>Is Italic</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsItalic()
 	 * @generated
 	 * @ordered
@@ -86,9 +78,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected static final boolean IS_ITALIC_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsItalic() <em>Is Italic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsItalic() <em>Is Italic</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsItalic()
 	 * @generated
 	 * @ordered
@@ -97,8 +89,8 @@ public class FontImpl extends EObjectImpl implements Font {
 
 	/**
 	 * The default value of the '{@link #isIsStrikeThrough() <em>Is Strike Through</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsStrikeThrough()
 	 * @generated
 	 * @ordered
@@ -107,8 +99,8 @@ public class FontImpl extends EObjectImpl implements Font {
 
 	/**
 	 * The cached value of the '{@link #isIsStrikeThrough() <em>Is Strike Through</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsStrikeThrough()
 	 * @generated
 	 * @ordered
@@ -116,9 +108,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected boolean isStrikeThrough = IS_STRIKE_THROUGH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsUnderline() <em>Is Underline</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsUnderline() <em>Is Underline</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsUnderline()
 	 * @generated
 	 * @ordered
@@ -126,9 +118,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected static final boolean IS_UNDERLINE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsUnderline() <em>Is Underline</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsUnderline() <em>Is Underline</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsUnderline()
 	 * @generated
 	 * @ordered
@@ -136,9 +128,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected boolean isUnderline = IS_UNDERLINE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -146,9 +138,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -156,9 +148,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -166,9 +158,9 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected static final float SIZE_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -176,8 +168,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	protected float size = SIZE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FontImpl() {
@@ -185,8 +177,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,8 +187,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsBold() {
@@ -204,21 +196,21 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsBold(boolean newIsBold) {
 		boolean oldIsBold = isBold;
 		isBold = newIsBold;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.FONT__IS_BOLD, oldIsBold, isBold));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.FONT__IS_BOLD, oldIsBold,
+					isBold));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsItalic() {
@@ -226,21 +218,21 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsItalic(boolean newIsItalic) {
 		boolean oldIsItalic = isItalic;
 		isItalic = newIsItalic;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.FONT__IS_ITALIC, oldIsItalic, isItalic));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.FONT__IS_ITALIC, oldIsItalic,
+					isItalic));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsStrikeThrough() {
@@ -248,22 +240,21 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsStrikeThrough(boolean newIsStrikeThrough) {
 		boolean oldIsStrikeThrough = isStrikeThrough;
 		isStrikeThrough = newIsStrikeThrough;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.FONT__IS_STRIKE_THROUGH, oldIsStrikeThrough,
-					isStrikeThrough));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.FONT__IS_STRIKE_THROUGH,
+					oldIsStrikeThrough, isStrikeThrough));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsUnderline() {
@@ -271,21 +262,21 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsUnderline(boolean newIsUnderline) {
 		boolean oldIsUnderline = isUnderline;
 		isUnderline = newIsUnderline;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.FONT__IS_UNDERLINE, oldIsUnderline, isUnderline));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.FONT__IS_UNDERLINE,
+					oldIsUnderline, isUnderline));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -293,21 +284,20 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.FONT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.FONT__NAME, oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getSize() {
@@ -315,50 +305,42 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSize(float newSize) {
 		float oldSize = size;
 		size = newSize;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.FONT__SIZE, oldSize, size));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.FONT__SIZE, oldSize, size));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generatedNOT
 	 */
-	public boolean non_negative_size(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public boolean non_negative_size(DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-						DcValidator.DIAGNOSTIC_SOURCE,
-						DcValidator.FONT__NON_NEGATIVE_SIZE,
-						EcorePlugin.INSTANCE.getString(
-								"_UI_GenericInvariant_diagnostic",
-								new Object[] {
-										"non_negative_size",
-										EObjectValidator.getObjectLabel(this,
-												context) }),
-						new Object[] { this }));
-			}
-			return false;
-		}
+//		if (false) {
+//			if (diagnostics != null) {
+//				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, DcValidator.DIAGNOSTIC_SOURCE,
+//						DcValidator.FONT__NON_NEGATIVE_SIZE, EcorePlugin.INSTANCE.getString(
+//								"_UI_GenericInvariant_diagnostic", new Object[] { "non_negative_size",
+//										EObjectValidator.getObjectLabel(this, context) }), new Object[] { this }));
+//			}
+//			return false;
+//		}
 		return true;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -381,8 +363,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -411,8 +393,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -441,8 +423,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -457,8 +439,7 @@ public class FontImpl extends EObjectImpl implements Font {
 		case DcPackage.FONT__IS_UNDERLINE:
 			return isUnderline != IS_UNDERLINE_EDEFAULT;
 		case DcPackage.FONT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DcPackage.FONT__SIZE:
 			return size != SIZE_EDEFAULT;
 		}
@@ -466,8 +447,8 @@ public class FontImpl extends EObjectImpl implements Font {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -492,4 +473,4 @@ public class FontImpl extends EObjectImpl implements Font {
 		return result.toString();
 	}
 
-} //FontImpl
+} // FontImpl

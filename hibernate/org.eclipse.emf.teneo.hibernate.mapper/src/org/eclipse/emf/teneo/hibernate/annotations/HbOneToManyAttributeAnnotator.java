@@ -49,27 +49,26 @@ public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
 	/** Process the features of the eclass */
 	@Override
 	public void annotate(PAnnotatedEAttribute aAttribute) {
-		boolean isCollectionOfElements =
-				(aAttribute instanceof HbAnnotatedEAttribute && null != ((HbAnnotatedEAttribute) aAttribute)
-					.getHbCollectionOfElements());
+		boolean isCollectionOfElements = (aAttribute instanceof HbAnnotatedEAttribute && null != ((HbAnnotatedEAttribute) aAttribute)
+				.getHbCollectionOfElements());
 
 		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) aAttribute;
-		final HbAnnotatedEDataType hed =
-				(HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
-					aAttribute.getModelEAttribute().getEAttributeType());
+		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
+				aAttribute.getModelEAttribute().getEAttributeType());
 		if (isCollectionOfElements) {
 			CollectionOfElements coe = ((HbAnnotatedEAttribute) aAttribute).getHbCollectionOfElements();
 			if (coe.getTargetElement() == null) {
 				coe.setTargetElement(getTargetTypeName(aAttribute));
 			}
-		} else if (hea.getHbType() != null && hea.getOneToMany() == null && !aAttribute.getModelEAttribute().isMany()) {
+		} else if (hea.getHbType() != null && hea.getOneToMany() == null
+				&& !aAttribute.getModelEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
 			// to be able to handle the complete list/collection
 			singleAttributeAnnotator.annotate(aAttribute);
-		} else if (hed != null && hed.getHbTypeDef() != null && hea.getOneToMany() == null &&
-				!aAttribute.getModelEAttribute().isMany()) {
+		} else if (hed != null && hed.getHbTypeDef() != null && hea.getOneToMany() == null
+				&& !aAttribute.getModelEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
@@ -80,20 +79,20 @@ public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
 		}
 	}
 
-// MT: is now recomputed in the mapping step
-// /** Returns the type name of a many attribute */
-// @Override
-// protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
-// final HbAnnotatedEDataType ped =
-// (HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
-// aAttribute.getModelEAttribute().getEAttributeType());
-// if (ped != null && ped.getHbTypeDef() != null) {
-// return ped.getHbTypeDef().getName();
-// }
-// if (((HbAnnotatedEAttribute) aAttribute).getHbType() != null) {
-// return ((HbAnnotatedEAttribute) aAttribute).getHbType().getType();
-// }
-// return EcoreDataTypes.INSTANCE.getTargetTypeName(aAttribute);
-// }
+	// MT: is now recomputed in the mapping step
+	// /** Returns the type name of a many attribute */
+	// @Override
+	// protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
+	// final HbAnnotatedEDataType ped =
+	// (HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
+	// aAttribute.getModelEAttribute().getEAttributeType());
+	// if (ped != null && ped.getHbTypeDef() != null) {
+	// return ped.getHbTypeDef().getName();
+	// }
+	// if (((HbAnnotatedEAttribute) aAttribute).getHbType() != null) {
+	// return ((HbAnnotatedEAttribute) aAttribute).getHbType().getType();
+	// }
+	// return EcoreDataTypes.INSTANCE.getTargetTypeName(aAttribute);
+	// }
 
 }

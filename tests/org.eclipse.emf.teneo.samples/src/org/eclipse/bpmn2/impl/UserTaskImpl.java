@@ -35,24 +35,23 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>User Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>User Task</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.UserTaskImpl#getRenderings <em>Renderings</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.UserTaskImpl#getImplementation <em>Implementation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.UserTaskImpl#getRenderings <em>Renderings</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.UserTaskImpl#getImplementation <em>Implementation</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class UserTaskImpl extends TaskImpl implements UserTask {
 	/**
-	 * The cached value of the '{@link #getRenderings() <em>Renderings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRenderings() <em>Renderings</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRenderings()
 	 * @generated
 	 * @ordered
@@ -60,9 +59,9 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	protected EList<Rendering> renderings;
 
 	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -70,9 +69,9 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	protected static final String IMPLEMENTATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -80,8 +79,8 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	protected String implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected UserTaskImpl() {
@@ -89,8 +88,8 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,21 +98,21 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Rendering> getRenderings() {
 		if (renderings == null) {
-			renderings = new EObjectContainmentEList<Rendering>(
-					Rendering.class, this, Bpmn2Package.USER_TASK__RENDERINGS);
+			renderings = new EObjectContainmentEList<Rendering>(Rendering.class, this,
+					Bpmn2Package.USER_TASK__RENDERINGS);
 		}
 		return renderings;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getImplementation() {
@@ -121,38 +120,36 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplementation(String newImplementation) {
 		String oldImplementation = implementation;
 		implementation = newImplementation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.USER_TASK__IMPLEMENTATION, oldImplementation,
-					implementation));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.USER_TASK__IMPLEMENTATION,
+					oldImplementation, implementation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.USER_TASK__RENDERINGS:
-			return ((InternalEList<?>) getRenderings()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getRenderings()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -167,8 +164,8 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -187,8 +184,8 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -205,8 +202,8 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,15 +212,15 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 		case Bpmn2Package.USER_TASK__RENDERINGS:
 			return renderings != null && !renderings.isEmpty();
 		case Bpmn2Package.USER_TASK__IMPLEMENTATION:
-			return IMPLEMENTATION_EDEFAULT == null ? implementation != null
-					: !IMPLEMENTATION_EDEFAULT.equals(implementation);
+			return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT
+					.equals(implementation);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -238,4 +235,4 @@ public class UserTaskImpl extends TaskImpl implements UserTask {
 		return result.toString();
 	}
 
-} //UserTaskImpl
+} // UserTaskImpl

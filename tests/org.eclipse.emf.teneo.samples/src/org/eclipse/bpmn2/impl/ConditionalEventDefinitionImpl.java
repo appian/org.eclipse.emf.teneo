@@ -27,24 +27,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Conditional Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Conditional Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ConditionalEventDefinitionImpl#getCondition <em>Condition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConditionalEventDefinitionImpl#getCondition <em>Condition</em>}
+ * </li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
-		implements ConditionalEventDefinition {
+public class ConditionalEventDefinitionImpl extends EventDefinitionImpl implements
+		ConditionalEventDefinition {
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCondition()
 	 * @generated
 	 * @ordered
@@ -52,8 +52,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	protected Expression condition;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConditionalEventDefinitionImpl() {
@@ -61,8 +61,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -71,8 +71,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getCondition() {
@@ -80,19 +80,16 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCondition(Expression newCondition,
-			NotificationChain msgs) {
+	public NotificationChain basicSetCondition(Expression newCondition, NotificationChain msgs) {
 		Expression oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION,
-					oldCondition, newCondition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION, oldCondition, newCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -102,44 +99,35 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCondition(Expression newCondition) {
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
-				msgs = ((InternalEObject) condition)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION, null, msgs);
 			if (newCondition != null)
-				msgs = ((InternalEObject) newCondition)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION, null, msgs);
 			msgs = basicSetCondition(newCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION,
-					newCondition, newCondition));
+					Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION, newCondition, newCondition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.CONDITIONAL_EVENT_DEFINITION__CONDITION:
 			return basicSetCondition(null, msgs);
@@ -148,8 +136,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -162,8 +150,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -177,8 +165,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -192,8 +180,8 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -205,4 +193,4 @@ public class ConditionalEventDefinitionImpl extends EventDefinitionImpl
 		return super.eIsSet(featureID);
 	}
 
-} //ConditionalEventDefinitionImpl
+} // ConditionalEventDefinitionImpl

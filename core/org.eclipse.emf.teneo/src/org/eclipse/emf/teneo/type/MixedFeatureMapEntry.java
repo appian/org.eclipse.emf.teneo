@@ -74,7 +74,7 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 	/** Returns true if the feature is a TEXT, CDATA or COMMENT */
 	protected boolean isMixedFeature() {
 		final EStructuralFeature structuralFeature = getEStructuralFeature();
-		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA ||
-				structuralFeature == Constants.COMMENT;
+		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA
+				|| structuralFeature == Constants.COMMENT;
 	}
 }

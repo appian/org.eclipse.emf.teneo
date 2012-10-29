@@ -17,24 +17,23 @@ import org.eclipse.emf.ecore.EClass;
 import temporal.mod.TemporalBaseEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Vin</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Vin</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.VinImpl#getId <em>Id</em>}</li>
- *   <li>{@link fleet.impl.VinImpl#getInstallationDate <em>Installation Date</em>}</li>
- *   <li>{@link fleet.impl.VinImpl#getVehicle <em>Vehicle</em>}</li>
+ * <li>{@link fleet.impl.VinImpl#getId <em>Id</em>}</li>
+ * <li>{@link fleet.impl.VinImpl#getInstallationDate <em>Installation Date</em>}</li>
+ * <li>{@link fleet.impl.VinImpl#getVehicle <em>Vehicle</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class VinImpl extends TemporalBaseEObjectImpl implements Vin {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected VinImpl() {
@@ -42,8 +41,8 @@ public class VinImpl extends TemporalBaseEObjectImpl implements Vin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -52,8 +51,8 @@ public class VinImpl extends TemporalBaseEObjectImpl implements Vin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -62,17 +61,17 @@ public class VinImpl extends TemporalBaseEObjectImpl implements Vin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eGet(FleetPackage.Literals.VIN__ID, true);
+		return (String) eGet(FleetPackage.Literals.VIN__ID, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -80,17 +79,17 @@ public class VinImpl extends TemporalBaseEObjectImpl implements Vin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getInstallationDate() {
-		return (Date)eGet(FleetPackage.Literals.VIN__INSTALLATION_DATE, true);
+		return (Date) eGet(FleetPackage.Literals.VIN__INSTALLATION_DATE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInstallationDate(Date newInstallationDate) {
@@ -98,21 +97,21 @@ public class VinImpl extends TemporalBaseEObjectImpl implements Vin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Vehicle getVehicle() {
-		return (Vehicle)eGet(FleetPackage.Literals.VIN__VEHICLE, true);
+		return (Vehicle) eGet(FleetPackage.Literals.VIN__VEHICLE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setVehicle(Vehicle newVehicle) {
 		eSet(FleetPackage.Literals.VIN__VEHICLE, newVehicle);
 	}
 
-} //VinImpl
+} // VinImpl

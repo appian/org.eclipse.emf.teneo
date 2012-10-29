@@ -59,9 +59,8 @@ public class QuickTest {
 	}
 
 	/**
-	 * The method performing the real action. This method is used by other
-	 * tutorials therefore has it been made public and expects the database name
-	 * and returns an instance of the HbDataStore.
+	 * The method performing the real action. This method is used by other tutorials therefore has it
+	 * been made public and expects the database name and returns an instance of the HbDataStore.
 	 */
 	public static HbDataStore doQuickStart(String dbName) {
 
@@ -83,8 +82,7 @@ public class QuickTest {
 		props.setProperty(Environment.USER, "sa");
 		props.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
 		props.setProperty(Environment.PASS, "");
-		props.setProperty(Environment.DIALECT,
-				org.hibernate.dialect.HSQLDialect.class.getName());
+		props.setProperty(Environment.DIALECT, org.hibernate.dialect.HSQLDialect.class.getName());
 
 		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
 		props.setProperty(PersistenceOptions.MAP_DOCUMENT_ROOT, "true");
@@ -94,14 +92,14 @@ public class QuickTest {
 		// the name of the session factory
 		String hbName = "test";
 		// create the HbDataStore using the name
-		final HbDataStore hbds = HbHelper.INSTANCE
-				.createRegisterDataStore(hbName);
+		final HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
 
 		// set the properties
 		hbds.setDataStoreProperties(props);
 
 		// sets its epackages stored in this datastore
-		hbds.setEPackages(new EPackage[] { Bpmn2Package.eINSTANCE, BpmnDiPackage.eINSTANCE, DcPackage.eINSTANCE, DiPackage.eINSTANCE  });
+		hbds.setEPackages(new EPackage[] { Bpmn2Package.eINSTANCE, BpmnDiPackage.eINSTANCE,
+				DcPackage.eINSTANCE, DiPackage.eINSTANCE });
 
 		// initialize, also creates the database tables
 		try {

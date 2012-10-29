@@ -33,6 +33,7 @@ public class NoCollectionOwnerAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-//		final NoCollectionOwnerFactory factory = NoCollectionOwnerFactory.eINSTANCE;
+		// final NoCollectionOwnerFactory factory =
+		// NoCollectionOwnerFactory.eINSTANCE;
 	}
 }

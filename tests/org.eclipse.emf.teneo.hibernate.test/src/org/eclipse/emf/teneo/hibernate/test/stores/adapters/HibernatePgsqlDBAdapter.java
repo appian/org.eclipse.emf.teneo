@@ -17,7 +17,7 @@
 package org.eclipse.emf.teneo.hibernate.test.stores.adapters;
 
 import org.eclipse.emf.teneo.test.stores.PgsqlTestDatabaseAdapter;
-import org.hibernate.dialect.PostgreSQLDialect;
+import org.hibernate.dialect.PostgresPlusDialect;
 
 /**
  * Overridden to add the hibernate database dialect.
@@ -26,9 +26,10 @@ import org.hibernate.dialect.PostgreSQLDialect;
  * @version $Revision: 1.5 $
  */
 
-public class HibernatePgsqlDBAdapter extends PgsqlTestDatabaseAdapter implements HibernateTestDBAdapter {
+public class HibernatePgsqlDBAdapter extends PgsqlTestDatabaseAdapter implements
+		HibernateTestDBAdapter {
 	/** Return the hibernate dialted */
 	public String getDialect() {
-		return PostgreSQLDialect.class.getName();
+		return PostgresPlusDialect.class.getName();
 	}
 }

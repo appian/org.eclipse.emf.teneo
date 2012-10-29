@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.EndEvent;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>End Event</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>End Event</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class EndEventImpl extends ThrowEventImpl implements EndEvent {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EndEventImpl() {
@@ -39,8 +38,8 @@ public class EndEventImpl extends ThrowEventImpl implements EndEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class EndEventImpl extends ThrowEventImpl implements EndEvent {
 		return Bpmn2Package.Literals.END_EVENT;
 	}
 
-} //EndEventImpl
+} // EndEventImpl

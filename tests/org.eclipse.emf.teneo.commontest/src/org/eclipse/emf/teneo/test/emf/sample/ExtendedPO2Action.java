@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests the extended po 2 example
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.6 $ $Date: 2008/02/28 07:08:14 $
  */

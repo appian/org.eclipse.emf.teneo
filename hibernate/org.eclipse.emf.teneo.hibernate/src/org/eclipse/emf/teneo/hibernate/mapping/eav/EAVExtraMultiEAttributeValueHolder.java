@@ -17,7 +17,6 @@
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
-
 /**
  * Variant of super class which loads all lists extra-lazily.
  * 

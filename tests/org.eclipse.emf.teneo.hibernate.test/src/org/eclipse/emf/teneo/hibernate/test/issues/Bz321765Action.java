@@ -64,8 +64,7 @@ public class Bz321765Action extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			final Employee employee = (Employee) store.getObject("Employee",
-					getPK());
+			final Employee employee = (Employee) store.getObject("Employee", getPK());
 			assertEquals(new BigInteger("100"), employee.getSalary());
 			store.commitTransaction();
 		}

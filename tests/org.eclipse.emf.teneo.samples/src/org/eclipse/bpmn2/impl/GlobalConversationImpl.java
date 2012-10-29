@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.GlobalConversation;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Conversation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Global Conversation</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class GlobalConversationImpl extends CollaborationImpl implements
-		GlobalConversation {
+public class GlobalConversationImpl extends CollaborationImpl implements GlobalConversation {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GlobalConversationImpl() {
@@ -40,8 +38,8 @@ public class GlobalConversationImpl extends CollaborationImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class GlobalConversationImpl extends CollaborationImpl implements
 		return Bpmn2Package.Literals.GLOBAL_CONVERSATION;
 	}
 
-} //GlobalConversationImpl
+} // GlobalConversationImpl

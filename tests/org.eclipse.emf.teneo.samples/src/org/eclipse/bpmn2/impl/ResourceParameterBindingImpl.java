@@ -28,25 +28,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resource Parameter Binding</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Resource Parameter Binding</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceParameterBindingImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceParameterBindingImpl#getParameterRef <em>Parameter Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceParameterBindingImpl#getExpression <em>Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceParameterBindingImpl#getParameterRef <em>Parameter Ref
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ResourceParameterBindingImpl extends BaseElementImpl implements
 		ResourceParameterBinding {
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -54,9 +55,9 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	protected Expression expression;
 
 	/**
-	 * The cached value of the '{@link #getParameterRef() <em>Parameter Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParameterRef() <em>Parameter Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getParameterRef()
 	 * @generated
 	 * @ordered
@@ -64,8 +65,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	protected ResourceParameter parameterRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResourceParameterBindingImpl() {
@@ -73,8 +74,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,8 +84,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getExpression() {
@@ -92,19 +93,16 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetExpression(Expression newExpression,
-			NotificationChain msgs) {
+	public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs) {
 		Expression oldExpression = expression;
 		expression = newExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION,
-					oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -114,39 +112,30 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setExpression(Expression newExpression) {
 		if (newExpression != expression) {
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject) expression)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION,
-								null, msgs);
+				msgs = ((InternalEObject) expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject) newExpression)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION,
-								null, msgs);
+				msgs = ((InternalEObject) newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION,
-					newExpression, newExpression));
+					Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceParameter getParameterRef() {
@@ -155,19 +144,16 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 			parameterRef = (ResourceParameter) eResolveProxy(oldParameterRef);
 			if (parameterRef != oldParameterRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.RESOURCE_PARAMETER_BINDING__PARAMETER_REF,
-							oldParameterRef, parameterRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.RESOURCE_PARAMETER_BINDING__PARAMETER_REF, oldParameterRef, parameterRef));
 			}
 		}
 		return parameterRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResourceParameter basicGetParameterRef() {
@@ -175,8 +161,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setParameterRef(ResourceParameter newParameterRef) {
@@ -184,18 +170,17 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 		parameterRef = newParameterRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_PARAMETER_BINDING__PARAMETER_REF,
-					oldParameterRef, parameterRef));
+					Bpmn2Package.RESOURCE_PARAMETER_BINDING__PARAMETER_REF, oldParameterRef, parameterRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.RESOURCE_PARAMETER_BINDING__EXPRESSION:
 			return basicSetExpression(null, msgs);
@@ -204,8 +189,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -222,8 +207,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -240,8 +225,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -258,8 +243,8 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -273,4 +258,4 @@ public class ResourceParameterBindingImpl extends BaseElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //ResourceParameterBindingImpl
+} // ResourceParameterBindingImpl

@@ -55,6 +55,7 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 
 	/**
 	 * Set the SET_PROXY property to true.
+	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
 	@Override
@@ -99,7 +100,8 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			final RentalContract rc = (RentalContract) store.query("select rc from RentalContract as rc").get(0);
+			final RentalContract rc = (RentalContract) store.query("select rc from RentalContract as rc")
+					.get(0);
 			assertEquals(2, rc.getRentalUnits().size());
 			final RentalCar rcar = (RentalCar) rc.getRentalUnits().get(0);
 			final RentalBicycle rb = (RentalBicycle) rc.getRentalUnits().get(1);

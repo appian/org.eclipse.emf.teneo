@@ -16,24 +16,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Periodical</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Periodical</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link extlibrary.impl.PeriodicalImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link extlibrary.impl.PeriodicalImpl#getIssuesPerYear <em>Issues Per Year</em>}</li>
+ * <li>{@link extlibrary.impl.PeriodicalImpl#getTitle <em>Title</em>}</li>
+ * <li>{@link extlibrary.impl.PeriodicalImpl#getIssuesPerYear <em>Issues Per Year</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTitle()
 	 * @generated
 	 * @ordered
@@ -41,9 +40,9 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	protected static final String TITLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getTitle()
 	 * @generated
 	 * @ordered
@@ -51,9 +50,9 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	protected String title = TITLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getIssuesPerYear() <em>Issues Per Year</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getIssuesPerYear() <em>Issues Per Year</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getIssuesPerYear()
 	 * @generated
 	 * @ordered
@@ -61,9 +60,9 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	protected static final int ISSUES_PER_YEAR_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getIssuesPerYear() <em>Issues Per Year</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getIssuesPerYear() <em>Issues Per Year</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getIssuesPerYear()
 	 * @generated
 	 * @ordered
@@ -71,8 +70,8 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	protected int issuesPerYear = ISSUES_PER_YEAR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PeriodicalImpl() {
@@ -80,8 +79,8 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -89,8 +88,8 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTitle() {
@@ -98,20 +97,21 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExtlibraryPackage.PERIODICAL__TITLE, oldTitle, title));
+			eNotify(new ENotificationImpl(this, Notification.SET, ExtlibraryPackage.PERIODICAL__TITLE,
+					oldTitle, title));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getIssuesPerYear() {
@@ -119,88 +119,90 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIssuesPerYear(int newIssuesPerYear) {
 		int oldIssuesPerYear = issuesPerYear;
 		issuesPerYear = newIssuesPerYear;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR, oldIssuesPerYear, issuesPerYear));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR, oldIssuesPerYear, issuesPerYear));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ExtlibraryPackage.PERIODICAL__TITLE:
-				return getTitle();
-			case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
-				return new Integer(getIssuesPerYear());
+		case ExtlibraryPackage.PERIODICAL__TITLE:
+			return getTitle();
+		case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
+			return new Integer(getIssuesPerYear());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ExtlibraryPackage.PERIODICAL__TITLE:
-				setTitle((String)newValue);
-				return;
-			case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
-				setIssuesPerYear(((Integer)newValue).intValue());
-				return;
+		case ExtlibraryPackage.PERIODICAL__TITLE:
+			setTitle((String) newValue);
+			return;
+		case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
+			setIssuesPerYear(((Integer) newValue).intValue());
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ExtlibraryPackage.PERIODICAL__TITLE:
-				setTitle(TITLE_EDEFAULT);
-				return;
-			case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
-				setIssuesPerYear(ISSUES_PER_YEAR_EDEFAULT);
-				return;
+		case ExtlibraryPackage.PERIODICAL__TITLE:
+			setTitle(TITLE_EDEFAULT);
+			return;
+		case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
+			setIssuesPerYear(ISSUES_PER_YEAR_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ExtlibraryPackage.PERIODICAL__TITLE:
-				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
-				return issuesPerYear != ISSUES_PER_YEAR_EDEFAULT;
+		case ExtlibraryPackage.PERIODICAL__TITLE:
+			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+		case ExtlibraryPackage.PERIODICAL__ISSUES_PER_YEAR:
+			return issuesPerYear != ISSUES_PER_YEAR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (title: ");
@@ -211,4 +213,4 @@ public abstract class PeriodicalImpl extends ItemImpl implements Periodical {
 		return result.toString();
 	}
 
-} //PeriodicalImpl
+} // PeriodicalImpl

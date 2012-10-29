@@ -37,7 +37,8 @@ public class HbUnidirectionalManyToManyAnnotator extends UnidirectionalManyToMan
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.annotations.mapper.UnidirectionalManyToManyAnnotator#annotate(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 * @see org.eclipse.emf.teneo.annotations.mapper.UnidirectionalManyToManyAnnotator
+	 * #annotate(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
 	 */
 	@Override
 	public void annotate(PAnnotatedEReference reference) {

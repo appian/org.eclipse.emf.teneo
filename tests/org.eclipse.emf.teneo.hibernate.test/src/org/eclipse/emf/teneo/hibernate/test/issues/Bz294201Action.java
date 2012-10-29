@@ -32,7 +32,8 @@ public class Bz294201Action extends AbstractTestAction {
 			XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
 			final java.net.URL url = Bz294201Action.class
 					.getResource("/org/eclipse/emf/teneo/hibernate/test/issues/documentrootexp_2.xsd");
-			Collection<EObject> eCoreObjects = xsdEcoreBuilder.generate(URI.createURI(url.toURI().toString()));
+			Collection<EObject> eCoreObjects = xsdEcoreBuilder.generate(URI.createURI(url.toURI()
+					.toString()));
 			for (EObject ecoreObject : eCoreObjects) {
 				if (ecoreObject instanceof EPackage) {
 					return (EPackage) ecoreObject;

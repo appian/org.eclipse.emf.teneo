@@ -112,7 +112,8 @@ public class RentalResourceReferenceAction extends AbstractTestAction {
 
 		try {
 			final ResourceSet rs = new ResourceSetImpl();
-			rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml", new XMLResourceFactoryImpl());
+			rs.getResourceFactoryRegistry().getExtensionToFactoryMap()
+					.put("xml", new XMLResourceFactoryImpl());
 			final Resource new_resource = rs.createResource(URI.createFileURI("rental.xml"));
 			new_resource.load(new ByteArrayInputStream(bytes), Collections.EMPTY_MAP);
 			final RentalContract rc = (RentalContract) new_resource.getContents().get(0);

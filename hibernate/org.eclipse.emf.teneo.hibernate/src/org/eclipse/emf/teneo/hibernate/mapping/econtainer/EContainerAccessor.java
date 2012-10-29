@@ -41,7 +41,8 @@ public class EContainerAccessor implements PropertyAccessor, ExtensionPoint, Ext
 	 */
 	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
-		final EContainerPropertyHandler handler = extensionManager.getExtension(EContainerPropertyHandler.class);
+		final EContainerPropertyHandler handler = extensionManager
+				.getExtension(EContainerPropertyHandler.class);
 		handler.initialize(propertyName);
 		return handler;
 	}
@@ -53,14 +54,15 @@ public class EContainerAccessor implements PropertyAccessor, ExtensionPoint, Ext
 	 */
 	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
-		final EContainerPropertyHandler handler = extensionManager.getExtension(EContainerPropertyHandler.class);
+		final EContainerPropertyHandler handler = extensionManager
+				.getExtension(EContainerPropertyHandler.class);
 		handler.initialize(propertyName);
 		return handler;
 	}
 
 	/**
 	 * @param extensionManager
-	 *            the extensionManager to set
+	 *          the extensionManager to set
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;

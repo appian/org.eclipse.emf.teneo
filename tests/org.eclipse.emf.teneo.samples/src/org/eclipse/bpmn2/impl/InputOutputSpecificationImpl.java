@@ -35,27 +35,29 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Input Output Specification</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Input Output Specification</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getDataInputs <em>Data Inputs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getDataOutputs <em>Data Outputs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getInputSets <em>Input Sets</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getOutputSets <em>Output Sets</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getDataInputs <em>Data Inputs
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getDataOutputs <em>Data Outputs
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getInputSets <em>Input Sets</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InputOutputSpecificationImpl#getOutputSets <em>Output Sets
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class InputOutputSpecificationImpl extends BaseElementImpl implements
 		InputOutputSpecification {
 	/**
-	 * The cached value of the '{@link #getDataInputs() <em>Data Inputs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDataInputs() <em>Data Inputs</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDataInputs()
 	 * @generated
 	 * @ordered
@@ -63,9 +65,9 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	protected EList<DataInput> dataInputs;
 
 	/**
-	 * The cached value of the '{@link #getDataOutputs() <em>Data Outputs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDataOutputs() <em>Data Outputs</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDataOutputs()
 	 * @generated
 	 * @ordered
@@ -73,9 +75,9 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	protected EList<DataOutput> dataOutputs;
 
 	/**
-	 * The cached value of the '{@link #getInputSets() <em>Input Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInputSets() <em>Input Sets</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInputSets()
 	 * @generated
 	 * @ordered
@@ -83,9 +85,9 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	protected EList<InputSet> inputSets;
 
 	/**
-	 * The cached value of the '{@link #getOutputSets() <em>Output Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOutputSets() <em>Output Sets</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOutputSets()
 	 * @generated
 	 * @ordered
@@ -93,8 +95,8 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	protected EList<OutputSet> outputSets;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected InputOutputSpecificationImpl() {
@@ -102,8 +104,8 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,88 +114,81 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<DataInput> getDataInputs() {
 		if (dataInputs == null) {
-			dataInputs = new EObjectContainmentEList<DataInput>(
-					DataInput.class, this,
+			dataInputs = new EObjectContainmentEList<DataInput>(DataInput.class, this,
 					Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__DATA_INPUTS);
 		}
 		return dataInputs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<DataOutput> getDataOutputs() {
 		if (dataOutputs == null) {
-			dataOutputs = new EObjectContainmentEList<DataOutput>(
-					DataOutput.class, this,
+			dataOutputs = new EObjectContainmentEList<DataOutput>(DataOutput.class, this,
 					Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__DATA_OUTPUTS);
 		}
 		return dataOutputs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<InputSet> getInputSets() {
 		if (inputSets == null) {
-			inputSets = new EObjectContainmentEList<InputSet>(InputSet.class,
-					this, Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__INPUT_SETS);
+			inputSets = new EObjectContainmentEList<InputSet>(InputSet.class, this,
+					Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__INPUT_SETS);
 		}
 		return inputSets;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<OutputSet> getOutputSets() {
 		if (outputSets == null) {
-			outputSets = new EObjectContainmentEList<OutputSet>(
-					OutputSet.class, this,
+			outputSets = new EObjectContainmentEList<OutputSet>(OutputSet.class, this,
 					Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__OUTPUT_SETS);
 		}
 		return outputSets;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__DATA_INPUTS:
-			return ((InternalEList<?>) getDataInputs()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getDataInputs()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__DATA_OUTPUTS:
-			return ((InternalEList<?>) getDataOutputs()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getDataOutputs()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__INPUT_SETS:
-			return ((InternalEList<?>) getInputSets()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getInputSets()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__OUTPUT_SETS:
-			return ((InternalEList<?>) getOutputSets()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOutputSets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -212,8 +207,8 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -226,8 +221,7 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 			return;
 		case Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__DATA_OUTPUTS:
 			getDataOutputs().clear();
-			getDataOutputs()
-					.addAll((Collection<? extends DataOutput>) newValue);
+			getDataOutputs().addAll((Collection<? extends DataOutput>) newValue);
 			return;
 		case Bpmn2Package.INPUT_OUTPUT_SPECIFICATION__INPUT_SETS:
 			getInputSets().clear();
@@ -242,8 +236,8 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -266,8 +260,8 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,4 +279,4 @@ public class InputOutputSpecificationImpl extends BaseElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //InputOutputSpecificationImpl
+} // InputOutputSpecificationImpl

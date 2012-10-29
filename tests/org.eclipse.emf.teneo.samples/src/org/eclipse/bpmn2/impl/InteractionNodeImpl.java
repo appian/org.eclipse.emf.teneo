@@ -25,23 +25,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Interaction Node</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Interaction Node</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.InteractionNodeImpl#getIncomingConversationLinks <em>Incoming Conversation Links</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.InteractionNodeImpl#getOutgoingConversationLinks <em>Outgoing Conversation Links</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InteractionNodeImpl#getIncomingConversationLinks <em>Incoming
+ * Conversation Links</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InteractionNodeImpl#getOutgoingConversationLinks <em>Outgoing
+ * Conversation Links</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class InteractionNodeImpl extends EObjectImpl implements InteractionNode {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected InteractionNodeImpl() {
@@ -49,8 +50,8 @@ public class InteractionNodeImpl extends EObjectImpl implements InteractionNode 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -59,34 +60,38 @@ public class InteractionNodeImpl extends EObjectImpl implements InteractionNode 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationLink> getIncomingConversationLinks() {
 		// TODO: implement this method to return the 'Incoming Conversation Links' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationLink> getOutgoingConversationLinks() {
 		// TODO: implement this method to return the 'Outgoing Conversation Links' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -101,8 +106,8 @@ public class InteractionNodeImpl extends EObjectImpl implements InteractionNode 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,4 +121,4 @@ public class InteractionNodeImpl extends EObjectImpl implements InteractionNode 
 		return super.eIsSet(featureID);
 	}
 
-} //InteractionNodeImpl
+} // InteractionNodeImpl

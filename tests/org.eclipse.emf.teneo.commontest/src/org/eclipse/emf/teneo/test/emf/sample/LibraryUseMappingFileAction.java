@@ -51,8 +51,9 @@ public class LibraryUseMappingFileAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props
-			.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
-				"/org/eclipse/emf/teneo/hibernate/test/emf/test.hbm.xml,/org/eclipse/emf/teneo/hibernate/test/emf/test2.hbm.xml");
+				.setProperty(
+						PersistenceOptions.MAPPING_FILE_PATH,
+						"/org/eclipse/emf/teneo/hibernate/test/emf/test.hbm.xml,/org/eclipse/emf/teneo/hibernate/test/emf/test2.hbm.xml");
 		return props;
 	}
 

@@ -25,24 +25,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Inclusive Gateway</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Inclusive Gateway</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.InclusiveGatewayImpl#getDefault <em>Default</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.InclusiveGatewayImpl#getDefault <em>Default</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class InclusiveGatewayImpl extends GatewayImpl implements
-		InclusiveGateway {
+public class InclusiveGatewayImpl extends GatewayImpl implements InclusiveGateway {
 	/**
-	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
@@ -50,8 +48,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	protected SequenceFlow default_;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected InclusiveGatewayImpl() {
@@ -59,8 +57,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,8 +67,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SequenceFlow getDefault() {
@@ -78,8 +76,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDefault(SequenceFlow newDefault) {
@@ -87,13 +85,12 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 		default_ = newDefault;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.INCLUSIVE_GATEWAY__DEFAULT, oldDefault,
-					default_));
+					Bpmn2Package.INCLUSIVE_GATEWAY__DEFAULT, oldDefault, default_));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -106,8 +103,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -121,8 +118,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -136,8 +133,8 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -149,4 +146,4 @@ public class InclusiveGatewayImpl extends GatewayImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //InclusiveGatewayImpl
+} // InclusiveGatewayImpl

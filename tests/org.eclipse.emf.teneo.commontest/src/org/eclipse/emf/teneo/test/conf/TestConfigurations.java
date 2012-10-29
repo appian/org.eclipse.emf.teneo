@@ -55,9 +55,9 @@ public class TestConfigurations {
 	 * Add the given configuration.
 	 * 
 	 * @throws NullPointerException
-	 *             if the argument is null
+	 *           if the argument is null
 	 * @throws IllegalArgumentException
-	 *             if a configuration with the same name is already present
+	 *           if a configuration with the same name is already present
 	 */
 	public void addConfiguration(TestConfiguration cfg) {
 		if (cfgs.containsKey(cfg.getName())) {
@@ -81,12 +81,10 @@ public class TestConfigurations {
 			TestDatabaseAdapter dbAdapter = dbAdapters.get(((String) cfgValues.get("dbadapter")).trim());
 			InheritanceType mapStrategy = parseStrategy((String) cfgValues.get("mapstrategy"));
 			boolean optimistic = Boolean.valueOf((String) cfgValues.get("optimistic")).booleanValue();
-			boolean ejb3 =
-					cfgValues.get("ejb3") != null ? Boolean.valueOf((String) cfgValues.get("ejb3")).booleanValue()
-							: false;
-			boolean xml =
-					cfgValues.get("xml") != null ? Boolean.valueOf((String) cfgValues.get("xml")).booleanValue()
-							: false;
+			boolean ejb3 = cfgValues.get("ejb3") != null ? Boolean
+					.valueOf((String) cfgValues.get("ejb3")).booleanValue() : false;
+			boolean xml = cfgValues.get("xml") != null ? Boolean.valueOf((String) cfgValues.get("xml"))
+					.booleanValue() : false;
 			addConfiguration(new TestConfiguration(cfgName, dbAdapter, mapStrategy, optimistic, ejb3, xml));
 		}
 	}

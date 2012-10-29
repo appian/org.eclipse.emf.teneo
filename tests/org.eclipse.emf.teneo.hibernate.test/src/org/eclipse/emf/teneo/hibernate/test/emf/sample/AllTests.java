@@ -60,8 +60,8 @@ public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite(
-				"Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
-				HibernateTestbed.instance().getConfigurations());
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
+						.getConfigurations());
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(LibraryEAVAction.class);
 		suite.addTestSuite(DynamicEAVNoDBSchemaAction.class);

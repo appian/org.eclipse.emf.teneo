@@ -25,7 +25,8 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 
 /**
- * Manages a set of extensions. Currently for each extension point there will always be only one extension instance.
+ * Manages a set of extensions. Currently for each extension point there will always be only one
+ * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.9 $
@@ -71,7 +72,8 @@ public class DefaultExtensionManager implements ExtensionManager {
 			throw new TeneoExtensionException("Point of extension may not be null");
 		}
 		if (extension.getClassName() == null) {
-			throw new TeneoExtensionException("Classname of extension: " + extension.getPoint() + " may not be null");
+			throw new TeneoExtensionException("Classname of extension: " + extension.getPoint()
+					+ " may not be null");
 		}
 		if (log.isDebugEnabled()) {
 			log.debug("Registering " + extension);
@@ -179,17 +181,20 @@ public class DefaultExtensionManager implements ExtensionManager {
 				// disabled as it is not so meaningfull
 				// log.warn("The extension: " + extension.getPoint() +
 				// " is declared as a singleton but this getInstance call " +
-				// " passed initialization parameters so it is not cached, " + clz.getName());
+				// " passed initialization parameters so it is not cached, " +
+				// clz.getName());
 			}
 
 			return extensionInstance;
 		} catch (Exception e) {
-			throw new TeneoExtensionException("Exception while instantiating: " + extension.getClassName(), e);
+			throw new TeneoExtensionException("Exception while instantiating: "
+					+ extension.getClassName(), e);
 		}
 	}
 
 	/** Return the constructor for a class and initialization arguments */
-	protected Constructor<?> getConstructor(Class<?> clz, Object[] initArgs) throws NoSuchMethodException {
+	protected Constructor<?> getConstructor(Class<?> clz, Object[] initArgs)
+			throws NoSuchMethodException {
 		Constructor<?> result = null;
 		final Class<?>[] initTypes = new Class<?>[initArgs.length];
 		int i = 0;
@@ -265,8 +270,8 @@ public class DefaultExtensionManager implements ExtensionManager {
 	}
 
 	/**
-	 * Registers an instance for all other extensionpoints it implements if no other instance was already registered for
-	 * it.
+	 * Registers an instance for all other extensionpoints it implements if no other instance was
+	 * already registered for it.
 	 */
 	private void registerForAllExtensionPoints(Class<?> cls, ExtensionPoint extensionInstance) {
 		if (cls == null) {
@@ -292,11 +297,11 @@ public class DefaultExtensionManager implements ExtensionManager {
 		if (extension == null) {
 			return;
 		}
-		if (extension.getClassName().compareTo(extensionInstance.getClass().getName()) == 0 && extension.isSingleton()
-				&& extensionInstances.get(extension.getPoint()) == null) {
+		if (extension.getClassName().compareTo(extensionInstance.getClass().getName()) == 0
+				&& extension.isSingleton() && extensionInstances.get(extension.getPoint()) == null) {
 			if (log.isDebugEnabled()) {
 				log.debug("Also registering extensioninstance: " + extensionInstance.getClass().getName()
-					+ " for extension " + extension.getPoint());
+						+ " for extension " + extension.getPoint());
 			}
 			extensionInstances.put(extension.getPoint(), extensionInstance);
 		}

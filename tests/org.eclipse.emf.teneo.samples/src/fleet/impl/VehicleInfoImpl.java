@@ -17,23 +17,22 @@ import org.eclipse.emf.ecore.EClass;
 import temporal.mod.TemporalBaseEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Vehicle Info</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Vehicle Info</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.VehicleInfoImpl#getAcquisitionDate <em>Acquisition Date</em>}</li>
- *   <li>{@link fleet.impl.VehicleInfoImpl#getVehicle <em>Vehicle</em>}</li>
+ * <li>{@link fleet.impl.VehicleInfoImpl#getAcquisitionDate <em>Acquisition Date</em>}</li>
+ * <li>{@link fleet.impl.VehicleInfoImpl#getVehicle <em>Vehicle</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class VehicleInfoImpl extends TemporalBaseEObjectImpl implements VehicleInfo {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected VehicleInfoImpl() {
@@ -41,8 +40,8 @@ public class VehicleInfoImpl extends TemporalBaseEObjectImpl implements VehicleI
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -51,8 +50,8 @@ public class VehicleInfoImpl extends TemporalBaseEObjectImpl implements VehicleI
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -61,17 +60,17 @@ public class VehicleInfoImpl extends TemporalBaseEObjectImpl implements VehicleI
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getAcquisitionDate() {
-		return (Date)eGet(FleetPackage.Literals.VEHICLE_INFO__ACQUISITION_DATE, true);
+		return (Date) eGet(FleetPackage.Literals.VEHICLE_INFO__ACQUISITION_DATE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAcquisitionDate(Date newAcquisitionDate) {
@@ -79,21 +78,21 @@ public class VehicleInfoImpl extends TemporalBaseEObjectImpl implements VehicleI
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Vehicle getVehicle() {
-		return (Vehicle)eGet(FleetPackage.Literals.VEHICLE_INFO__VEHICLE, true);
+		return (Vehicle) eGet(FleetPackage.Literals.VEHICLE_INFO__VEHICLE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setVehicle(Vehicle newVehicle) {
 		eSet(FleetPackage.Literals.VEHICLE_INFO__VEHICLE, newVehicle);
 	}
 
-} //VehicleInfoImpl
+} // VehicleInfoImpl

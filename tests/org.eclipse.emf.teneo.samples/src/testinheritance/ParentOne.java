@@ -9,30 +9,29 @@ package testinheritance;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Parent One</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Parent One</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link testinheritance.ParentOne#getAnotherProperty <em>Another Property</em>}</li>
+ * <li>{@link testinheritance.ParentOne#getAnotherProperty <em>Another Property</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see testinheritance.TestinheritancePackage#getParentOne()
  * @model
  * @generated
  */
 public interface ParentOne extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Another Property</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Another Property</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Another Property</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Another Property</em>' attribute isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Another Property</em>' attribute.
 	 * @see #setAnotherProperty(long)
 	 * @see testinheritance.TestinheritancePackage#getParentOne_AnotherProperty()
@@ -42,10 +41,11 @@ public interface ParentOne extends EObject {
 	long getAnotherProperty();
 
 	/**
-	 * Sets the value of the '{@link testinheritance.ParentOne#getAnotherProperty <em>Another Property</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Another Property</em>' attribute.
+	 * Sets the value of the '{@link testinheritance.ParentOne#getAnotherProperty
+	 * <em>Another Property</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Another Property</em>' attribute.
 	 * @see #getAnotherProperty()
 	 * @generated
 	 */

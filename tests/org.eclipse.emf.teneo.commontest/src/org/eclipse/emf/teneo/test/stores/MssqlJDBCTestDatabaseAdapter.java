@@ -16,7 +16,6 @@
 
 package org.eclipse.emf.teneo.test.stores;
 
-
 /**
  * Overrides geturl to add specific ms string: ;DatabaseName=
  * 

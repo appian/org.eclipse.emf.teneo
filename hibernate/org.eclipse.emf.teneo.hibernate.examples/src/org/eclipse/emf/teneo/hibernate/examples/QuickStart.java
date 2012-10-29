@@ -34,8 +34,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Environment;
 
 /**
- * Quick Start Tutorial for the <a
- * href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
+ * Quick Start Tutorial for the <a href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.7 $
@@ -51,9 +50,8 @@ public class QuickStart {
 	}
 
 	/**
-	 * The method performing the real action. This method is used by other
-	 * tutorials therefore has it been made public and expects the database name
-	 * and returns an instance of the HbDataStore.
+	 * The method performing the real action. This method is used by other tutorials therefore has it
+	 * been made public and expects the database name and returns an instance of the HbDataStore.
 	 */
 	public static HbDataStore doQuickStart(String dbName) {
 
@@ -75,21 +73,19 @@ public class QuickStart {
 		props.setProperty(Environment.USER, "sa");
 		props.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
 		props.setProperty(Environment.PASS, "");
-		props.setProperty(Environment.DIALECT,
-				org.hibernate.dialect.HSQLDialect.class.getName());
+		props.setProperty(Environment.DIALECT, org.hibernate.dialect.HSQLDialect.class.getName());
 
 		// set a specific option
 		// see this page
 		// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
 		// for all the available options
-		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
-				"REFRESH,PERSIST,MERGE");
+		props
+				.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, "REFRESH,PERSIST,MERGE");
 
 		// the name of the session factory
 		String hbName = "Library";
 		// create the HbDataStore using the name
-		final HbDataStore hbds = HbHelper.INSTANCE
-				.createRegisterDataStore(hbName);
+		final HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
 
 		// set the properties
 		hbds.setDataStoreProperties(props);

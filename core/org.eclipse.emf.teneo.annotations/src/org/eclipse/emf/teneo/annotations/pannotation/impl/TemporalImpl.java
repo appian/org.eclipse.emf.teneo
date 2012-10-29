@@ -14,23 +14,23 @@ import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Temporal</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Temporal</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TemporalImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TemporalImpl#getValue <em>Value
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TemporalImpl extends PAnnotationImpl implements Temporal {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -38,9 +38,9 @@ public class TemporalImpl extends PAnnotationImpl implements Temporal {
 	protected static final TemporalType VALUE_EDEFAULT = TemporalType.DATE;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -48,8 +48,8 @@ public class TemporalImpl extends PAnnotationImpl implements Temporal {
 	protected TemporalType value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TemporalImpl() {
@@ -57,8 +57,8 @@ public class TemporalImpl extends PAnnotationImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,8 +67,8 @@ public class TemporalImpl extends PAnnotationImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TemporalType getValue() {
@@ -76,83 +76,85 @@ public class TemporalImpl extends PAnnotationImpl implements Temporal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setValue(TemporalType newValue) {
 		TemporalType oldValue = value;
 		value = newValue == null ? VALUE_EDEFAULT : newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TEMPORAL__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.TEMPORAL__VALUE,
+					oldValue, value));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.TEMPORAL__VALUE:
-				return getValue();
+		case PannotationPackage.TEMPORAL__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.TEMPORAL__VALUE:
-				setValue((TemporalType)newValue);
-				return;
+		case PannotationPackage.TEMPORAL__VALUE:
+			setValue((TemporalType) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.TEMPORAL__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case PannotationPackage.TEMPORAL__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.TEMPORAL__VALUE:
-				return value != VALUE_EDEFAULT;
+		case PannotationPackage.TEMPORAL__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");
@@ -161,4 +163,4 @@ public class TemporalImpl extends PAnnotationImpl implements Temporal {
 		return result.toString();
 	}
 
-} //TemporalImpl
+} // TemporalImpl

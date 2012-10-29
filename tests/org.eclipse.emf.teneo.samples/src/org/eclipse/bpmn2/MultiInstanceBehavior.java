@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Multi Instance Behavior</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Multi Instance Behavior</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getMultiInstanceBehavior()
  * @model extendedMetaData="name='tMultiInstanceFlowCondition'"
  * @generated
  */
 public enum MultiInstanceBehavior implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 	NONE(0, "None", "None"),
 
 	/**
-	 * The '<em><b>One</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>One</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #ONE_VALUE
 	 * @generated
 	 * @ordered
@@ -51,9 +49,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 	ONE(1, "One", "One"),
 
 	/**
-	 * The '<em><b>All</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>All</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #ALL_VALUE
 	 * @generated
 	 * @ordered
@@ -61,9 +58,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 	ALL(2, "All", "All"),
 
 	/**
-	 * The '<em><b>Complex</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Complex</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #COMPLEX_VALUE
 	 * @generated
 	 * @ordered
@@ -71,13 +67,13 @@ public enum MultiInstanceBehavior implements Enumerator {
 	COMPLEX(3, "Complex", "Complex");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NONE
 	 * @model name="None"
 	 * @generated
@@ -86,13 +82,13 @@ public enum MultiInstanceBehavior implements Enumerator {
 	public static final int NONE_VALUE = 0;
 
 	/**
-	 * The '<em><b>One</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>One</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ONE
 	 * @model name="One"
 	 * @generated
@@ -101,13 +97,13 @@ public enum MultiInstanceBehavior implements Enumerator {
 	public static final int ONE_VALUE = 1;
 
 	/**
-	 * The '<em><b>All</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>All</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>All</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>All</b></em>' literal object isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ALL
 	 * @model name="All"
 	 * @generated
@@ -116,13 +112,13 @@ public enum MultiInstanceBehavior implements Enumerator {
 	public static final int ALL_VALUE = 2;
 
 	/**
-	 * The '<em><b>Complex</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Complex</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Complex</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Complex</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #COMPLEX
 	 * @model name="Complex"
 	 * @generated
@@ -131,27 +127,27 @@ public enum MultiInstanceBehavior implements Enumerator {
 	public static final int COMPLEX_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Multi Instance Behavior</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Multi Instance Behavior</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final MultiInstanceBehavior[] VALUES_ARRAY = new MultiInstanceBehavior[] {
-			NONE, ONE, ALL, COMPLEX, };
+	private static final MultiInstanceBehavior[] VALUES_ARRAY = new MultiInstanceBehavior[] { NONE,
+			ONE, ALL, COMPLEX, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Multi Instance Behavior</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Multi Instance Behavior</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<MultiInstanceBehavior> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MultiInstanceBehavior> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Multi Instance Behavior</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MultiInstanceBehavior get(String literal) {
@@ -165,9 +161,9 @@ public enum MultiInstanceBehavior implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Multi Instance Behavior</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Multi Instance Behavior</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MultiInstanceBehavior getByName(String name) {
@@ -182,8 +178,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Multi Instance Behavior</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MultiInstanceBehavior get(int value) {
@@ -201,30 +197,29 @@ public enum MultiInstanceBehavior implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private MultiInstanceBehavior(int value, String name, String literal) {
@@ -234,8 +229,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -243,8 +238,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -252,8 +247,8 @@ public enum MultiInstanceBehavior implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -261,9 +256,9 @@ public enum MultiInstanceBehavior implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,4 +266,4 @@ public enum MultiInstanceBehavior implements Enumerator {
 		return literal;
 	}
 
-} //MultiInstanceBehavior
+} // MultiInstanceBehavior

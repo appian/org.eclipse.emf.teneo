@@ -28,28 +28,27 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Domain</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Domain</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.DomainImpl#getName <em>Name</em>}</li>
- *   <li>{@link lobj.impl.DomainImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link lobj.impl.DomainImpl#getBlocktypes <em>Blocktypes</em>}</li>
- *   <li>{@link lobj.impl.DomainImpl#getCreationDate <em>Creation Date</em>}</li>
- *   <li>{@link lobj.impl.DomainImpl#getServerURL <em>Server URL</em>}</li>
- *   <li>{@link lobj.impl.DomainImpl#getId <em>Id</em>}</li>
+ * <li>{@link lobj.impl.DomainImpl#getName <em>Name</em>}</li>
+ * <li>{@link lobj.impl.DomainImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link lobj.impl.DomainImpl#getBlocktypes <em>Blocktypes</em>}</li>
+ * <li>{@link lobj.impl.DomainImpl#getCreationDate <em>Creation Date</em>}</li>
+ * <li>{@link lobj.impl.DomainImpl#getServerURL <em>Server URL</em>}</li>
+ * <li>{@link lobj.impl.DomainImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DomainImpl extends EObjectImpl implements Domain {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -57,9 +56,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -67,9 +66,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -77,9 +76,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -87,9 +86,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getBlocktypes() <em>Blocktypes</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getBlocktypes() <em>Blocktypes</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBlocktypes()
 	 * @generated
 	 * @ordered
@@ -97,9 +96,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected EList blocktypes;
 
 	/**
-	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -107,9 +106,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected static final Date CREATION_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCreationDate()
 	 * @generated
 	 * @ordered
@@ -117,9 +116,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected Date creationDate = CREATION_DATE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getServerURL() <em>Server URL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getServerURL() <em>Server URL</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getServerURL()
 	 * @generated
 	 * @ordered
@@ -127,9 +126,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected static final String SERVER_URL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getServerURL() <em>Server URL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getServerURL() <em>Server URL</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getServerURL()
 	 * @generated
 	 * @ordered
@@ -137,9 +136,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected String serverURL = SERVER_URL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -147,9 +146,9 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -157,8 +156,8 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DomainImpl() {
@@ -166,8 +165,8 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -175,8 +174,8 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -184,8 +183,8 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -196,8 +195,8 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getDescription() {
@@ -205,32 +204,34 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.DOMAIN__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.DOMAIN__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getBlocktypes() {
 		if (blocktypes == null) {
-			blocktypes = new EObjectWithInverseResolvingEList.ManyInverse(Blocktype.class, this, LobjPackage.DOMAIN__BLOCKTYPES, LobjPackage.BLOCKTYPE__DOMAINS);
+			blocktypes = new EObjectWithInverseResolvingEList.ManyInverse(Blocktype.class, this,
+					LobjPackage.DOMAIN__BLOCKTYPES, LobjPackage.BLOCKTYPE__DOMAINS);
 		}
 		return blocktypes;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getCreationDate() {
@@ -238,20 +239,21 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCreationDate(Date newCreationDate) {
 		Date oldCreationDate = creationDate;
 		creationDate = newCreationDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.DOMAIN__CREATION_DATE, oldCreationDate, creationDate));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.DOMAIN__CREATION_DATE,
+					oldCreationDate, creationDate));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getServerURL() {
@@ -259,20 +261,21 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setServerURL(String newServerURL) {
 		String oldServerURL = serverURL;
 		serverURL = newServerURL;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.DOMAIN__SERVER_URL, oldServerURL, serverURL));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.DOMAIN__SERVER_URL,
+					oldServerURL, serverURL));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -280,8 +283,8 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -292,143 +295,149 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case LobjPackage.DOMAIN__BLOCKTYPES:
-				return ((InternalEList)getBlocktypes()).basicAdd(otherEnd, msgs);
+		case LobjPackage.DOMAIN__BLOCKTYPES:
+			return ((InternalEList) getBlocktypes()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case LobjPackage.DOMAIN__BLOCKTYPES:
-				return ((InternalEList)getBlocktypes()).basicRemove(otherEnd, msgs);
+		case LobjPackage.DOMAIN__BLOCKTYPES:
+			return ((InternalEList) getBlocktypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.DOMAIN__NAME:
-				return getName();
-			case LobjPackage.DOMAIN__DESCRIPTION:
-				return getDescription();
-			case LobjPackage.DOMAIN__BLOCKTYPES:
-				return getBlocktypes();
-			case LobjPackage.DOMAIN__CREATION_DATE:
-				return getCreationDate();
-			case LobjPackage.DOMAIN__SERVER_URL:
-				return getServerURL();
-			case LobjPackage.DOMAIN__ID:
-				return getId();
+		case LobjPackage.DOMAIN__NAME:
+			return getName();
+		case LobjPackage.DOMAIN__DESCRIPTION:
+			return getDescription();
+		case LobjPackage.DOMAIN__BLOCKTYPES:
+			return getBlocktypes();
+		case LobjPackage.DOMAIN__CREATION_DATE:
+			return getCreationDate();
+		case LobjPackage.DOMAIN__SERVER_URL:
+			return getServerURL();
+		case LobjPackage.DOMAIN__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.DOMAIN__NAME:
-				setName((String)newValue);
-				return;
-			case LobjPackage.DOMAIN__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
-			case LobjPackage.DOMAIN__BLOCKTYPES:
-				getBlocktypes().clear();
-				getBlocktypes().addAll((Collection)newValue);
-				return;
-			case LobjPackage.DOMAIN__CREATION_DATE:
-				setCreationDate((Date)newValue);
-				return;
-			case LobjPackage.DOMAIN__SERVER_URL:
-				setServerURL((String)newValue);
-				return;
-			case LobjPackage.DOMAIN__ID:
-				setId((String)newValue);
-				return;
+		case LobjPackage.DOMAIN__NAME:
+			setName((String) newValue);
+			return;
+		case LobjPackage.DOMAIN__DESCRIPTION:
+			setDescription((String) newValue);
+			return;
+		case LobjPackage.DOMAIN__BLOCKTYPES:
+			getBlocktypes().clear();
+			getBlocktypes().addAll((Collection) newValue);
+			return;
+		case LobjPackage.DOMAIN__CREATION_DATE:
+			setCreationDate((Date) newValue);
+			return;
+		case LobjPackage.DOMAIN__SERVER_URL:
+			setServerURL((String) newValue);
+			return;
+		case LobjPackage.DOMAIN__ID:
+			setId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.DOMAIN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case LobjPackage.DOMAIN__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case LobjPackage.DOMAIN__BLOCKTYPES:
-				getBlocktypes().clear();
-				return;
-			case LobjPackage.DOMAIN__CREATION_DATE:
-				setCreationDate(CREATION_DATE_EDEFAULT);
-				return;
-			case LobjPackage.DOMAIN__SERVER_URL:
-				setServerURL(SERVER_URL_EDEFAULT);
-				return;
-			case LobjPackage.DOMAIN__ID:
-				setId(ID_EDEFAULT);
-				return;
+		case LobjPackage.DOMAIN__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case LobjPackage.DOMAIN__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
+		case LobjPackage.DOMAIN__BLOCKTYPES:
+			getBlocktypes().clear();
+			return;
+		case LobjPackage.DOMAIN__CREATION_DATE:
+			setCreationDate(CREATION_DATE_EDEFAULT);
+			return;
+		case LobjPackage.DOMAIN__SERVER_URL:
+			setServerURL(SERVER_URL_EDEFAULT);
+			return;
+		case LobjPackage.DOMAIN__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.DOMAIN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case LobjPackage.DOMAIN__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case LobjPackage.DOMAIN__BLOCKTYPES:
-				return blocktypes != null && !blocktypes.isEmpty();
-			case LobjPackage.DOMAIN__CREATION_DATE:
-				return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT.equals(creationDate);
-			case LobjPackage.DOMAIN__SERVER_URL:
-				return SERVER_URL_EDEFAULT == null ? serverURL != null : !SERVER_URL_EDEFAULT.equals(serverURL);
-			case LobjPackage.DOMAIN__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case LobjPackage.DOMAIN__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case LobjPackage.DOMAIN__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT
+					.equals(description);
+		case LobjPackage.DOMAIN__BLOCKTYPES:
+			return blocktypes != null && !blocktypes.isEmpty();
+		case LobjPackage.DOMAIN__CREATION_DATE:
+			return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT
+					.equals(creationDate);
+		case LobjPackage.DOMAIN__SERVER_URL:
+			return SERVER_URL_EDEFAULT == null ? serverURL != null : !SERVER_URL_EDEFAULT
+					.equals(serverURL);
+		case LobjPackage.DOMAIN__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -445,4 +454,4 @@ public class DomainImpl extends EObjectImpl implements Domain {
 		return result.toString();
 	}
 
-} //DomainImpl
+} // DomainImpl

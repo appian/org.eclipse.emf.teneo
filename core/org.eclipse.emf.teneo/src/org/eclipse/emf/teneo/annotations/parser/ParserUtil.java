@@ -43,11 +43,12 @@ public class ParserUtil {
 				try {
 					return EcoreUtil.createFromString(eType, value.substring(1 + value.indexOf('.')));
 				} catch (IllegalArgumentException x) {
-					throw new AnnotationParserException("Cannot convert '" + value + "' to '" + eType.getName() +
-							"' type", e);
+					throw new AnnotationParserException("Cannot convert '" + value + "' to '"
+							+ eType.getName() + "' type", e);
 				}
 			}
-			throw new AnnotationParserException("Cannot convert '" + value + "' to '" + eType.getName() + "' type", e);
+			throw new AnnotationParserException("Cannot convert '" + value + "' to '" + eType.getName()
+					+ "' type", e);
 		}
 	}
 
@@ -55,12 +56,13 @@ public class ParserUtil {
 	public static EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
 		try {
 			for (EStructuralFeature ef : eClass.getEAllStructuralFeatures()) {
-				if (ef.getName().compareToIgnoreCase(name) == 0) return ef;
+				if (ef.getName().compareToIgnoreCase(name) == 0)
+					return ef;
 			}
 			throw new AnnotationParserException("No efeature " + name + " for eclass " + eClass.getName());
 		} catch (IllegalArgumentException e) {
-			throw new AnnotationParserException("Cannot convert '" + name + "' to an efeature for eclass " +
-					eClass.getName());
+			throw new AnnotationParserException("Cannot convert '" + name
+					+ "' to an efeature for eclass " + eClass.getName());
 		}
 	}
 }

@@ -27,26 +27,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Receive Task</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Receive Task</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#getImplementation <em>Implementation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#isInstantiate <em>Instantiate</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#getMessageRef <em>Message Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#getOperationRef <em>Operation Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#getImplementation <em>Implementation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#isInstantiate <em>Instantiate</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#getMessageRef <em>Message Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ReceiveTaskImpl#getOperationRef <em>Operation Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	protected static final String IMPLEMENTATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	protected String implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isInstantiate()
 	 * @generated
 	 * @ordered
@@ -74,9 +73,9 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	protected static final boolean INSTANTIATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isInstantiate() <em>Instantiate</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isInstantiate()
 	 * @generated
 	 * @ordered
@@ -84,9 +83,9 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	protected boolean instantiate = INSTANTIATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMessageRef() <em>Message Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMessageRef() <em>Message Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessageRef()
 	 * @generated
 	 * @ordered
@@ -94,9 +93,9 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	protected Message messageRef;
 
 	/**
-	 * The cached value of the '{@link #getOperationRef() <em>Operation Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOperationRef() <em>Operation Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperationRef()
 	 * @generated
 	 * @ordered
@@ -104,8 +103,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	protected Operation operationRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ReceiveTaskImpl() {
@@ -113,8 +112,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -123,8 +122,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getImplementation() {
@@ -132,8 +131,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplementation(String newImplementation) {
@@ -141,13 +140,12 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RECEIVE_TASK__IMPLEMENTATION,
-					oldImplementation, implementation));
+					Bpmn2Package.RECEIVE_TASK__IMPLEMENTATION, oldImplementation, implementation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isInstantiate() {
@@ -155,22 +153,21 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInstantiate(boolean newInstantiate) {
 		boolean oldInstantiate = instantiate;
 		instantiate = newInstantiate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RECEIVE_TASK__INSTANTIATE, oldInstantiate,
-					instantiate));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RECEIVE_TASK__INSTANTIATE,
+					oldInstantiate, instantiate));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message getMessageRef() {
@@ -180,16 +177,15 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 			if (messageRef != oldMessageRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.RECEIVE_TASK__MESSAGE_REF,
-							oldMessageRef, messageRef));
+							Bpmn2Package.RECEIVE_TASK__MESSAGE_REF, oldMessageRef, messageRef));
 			}
 		}
 		return messageRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Message basicGetMessageRef() {
@@ -197,22 +193,21 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMessageRef(Message newMessageRef) {
 		Message oldMessageRef = messageRef;
 		messageRef = newMessageRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RECEIVE_TASK__MESSAGE_REF, oldMessageRef,
-					messageRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RECEIVE_TASK__MESSAGE_REF,
+					oldMessageRef, messageRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation getOperationRef() {
@@ -222,16 +217,15 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 			if (operationRef != oldOperationRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.RECEIVE_TASK__OPERATION_REF,
-							oldOperationRef, operationRef));
+							Bpmn2Package.RECEIVE_TASK__OPERATION_REF, oldOperationRef, operationRef));
 			}
 		}
 		return operationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation basicGetOperationRef() {
@@ -239,8 +233,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOperationRef(Operation newOperationRef) {
@@ -248,13 +242,12 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 		operationRef = newOperationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RECEIVE_TASK__OPERATION_REF, oldOperationRef,
-					operationRef));
+					Bpmn2Package.RECEIVE_TASK__OPERATION_REF, oldOperationRef, operationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -277,8 +270,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -301,8 +294,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -325,16 +318,16 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.RECEIVE_TASK__IMPLEMENTATION:
-			return IMPLEMENTATION_EDEFAULT == null ? implementation != null
-					: !IMPLEMENTATION_EDEFAULT.equals(implementation);
+			return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT
+					.equals(implementation);
 		case Bpmn2Package.RECEIVE_TASK__INSTANTIATE:
 			return instantiate != INSTANTIATE_EDEFAULT;
 		case Bpmn2Package.RECEIVE_TASK__MESSAGE_REF:
@@ -346,8 +339,8 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -364,4 +357,4 @@ public class ReceiveTaskImpl extends TaskImpl implements ReceiveTask {
 		return result.toString();
 	}
 
-} //ReceiveTaskImpl
+} // ReceiveTaskImpl

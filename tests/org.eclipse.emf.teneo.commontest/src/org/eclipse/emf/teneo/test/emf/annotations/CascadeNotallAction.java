@@ -109,8 +109,8 @@ public class CascadeNotallAction extends AbstractTestAction {
 				final Writer tolkien = lib.getWriters().get(0);
 
 				/*
-				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int
-				 * i = 0; i < obj.length; i++) {
+				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int i = 0; i
+				 * < obj.length; i++) {
 				 */
 
 				/*
@@ -121,8 +121,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 				 * assertTrue("Book is contained in the library", wBook.eContainer() == lib);
 				 * assertTrue("Book is contained in the library", lBook.eContainer() == lib);
 				 * 
-				 * assertTrue(lBook.getAuthor() == tolkien);
-				 * assertTrue(tolkien.getBooks().contains(lBook));
+				 * assertTrue(lBook.getAuthor() == tolkien); assertTrue(tolkien.getBooks().contains(lBook));
 				 * assertTrue(tolkien.getBooks().contains(wBook)); // ordering is the same
 				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0);
 				 * assertTrue(wBook.getPages() == lBook.getPages()); assertTrue(wBook.getCategory()

@@ -38,29 +38,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Participant</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Participant</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getIncomingConversationLinks <em>Incoming Conversation Links</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getOutgoingConversationLinks <em>Outgoing Conversation Links</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getInterfaceRefs <em>Interface Refs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getEndPointRefs <em>End Point Refs</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getParticipantMultiplicity <em>Participant Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getProcessRef <em>Process Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getIncomingConversationLinks <em>Incoming
+ * Conversation Links</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getOutgoingConversationLinks <em>Outgoing
+ * Conversation Links</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getInterfaceRefs <em>Interface Refs</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getEndPointRefs <em>End Point Refs</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getParticipantMultiplicity <em>Participant
+ * Multiplicity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ParticipantImpl#getProcessRef <em>Process Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ParticipantImpl extends BaseElementImpl implements Participant {
 	/**
 	 * The cached value of the '{@link #getInterfaceRefs() <em>Interface Refs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInterfaceRefs()
 	 * @generated
 	 * @ordered
@@ -69,8 +71,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 
 	/**
 	 * The cached value of the '{@link #getEndPointRefs() <em>End Point Refs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEndPointRefs()
 	 * @generated
 	 * @ordered
@@ -78,9 +80,10 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	protected EList<EndPoint> endPointRefs;
 
 	/**
-	 * The cached value of the '{@link #getParticipantMultiplicity() <em>Participant Multiplicity</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParticipantMultiplicity()
+	 * <em>Participant Multiplicity</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getParticipantMultiplicity()
 	 * @generated
 	 * @ordered
@@ -88,9 +91,9 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	protected ParticipantMultiplicity participantMultiplicity;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -98,9 +101,9 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -108,9 +111,9 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProcessRef() <em>Process Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProcessRef() <em>Process Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProcessRef()
 	 * @generated
 	 * @ordered
@@ -118,8 +121,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	protected org.eclipse.bpmn2.Process processRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ParticipantImpl() {
@@ -127,8 +130,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -137,61 +140,64 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationLink> getIncomingConversationLinks() {
 		// TODO: implement this method to return the 'Incoming Conversation Links' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ConversationLink> getOutgoingConversationLinks() {
 		// TODO: implement this method to return the 'Outgoing Conversation Links' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+		// org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should
+		// be used.
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Interface> getInterfaceRefs() {
 		if (interfaceRefs == null) {
-			interfaceRefs = new EObjectResolvingEList<Interface>(
-					Interface.class, this,
+			interfaceRefs = new EObjectResolvingEList<Interface>(Interface.class, this,
 					Bpmn2Package.PARTICIPANT__INTERFACE_REFS);
 		}
 		return interfaceRefs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<EndPoint> getEndPointRefs() {
 		if (endPointRefs == null) {
-			endPointRefs = new EObjectResolvingEList<EndPoint>(EndPoint.class,
-					this, Bpmn2Package.PARTICIPANT__END_POINT_REFS);
+			endPointRefs = new EObjectResolvingEList<EndPoint>(EndPoint.class, this,
+					Bpmn2Package.PARTICIPANT__END_POINT_REFS);
 		}
 		return endPointRefs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ParticipantMultiplicity getParticipantMultiplicity() {
@@ -199,20 +205,18 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetParticipantMultiplicity(
-			ParticipantMultiplicity newParticipantMultiplicity,
-			NotificationChain msgs) {
+			ParticipantMultiplicity newParticipantMultiplicity, NotificationChain msgs) {
 		ParticipantMultiplicity oldParticipantMultiplicity = participantMultiplicity;
 		participantMultiplicity = newParticipantMultiplicity;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY,
-					oldParticipantMultiplicity, newParticipantMultiplicity);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY, oldParticipantMultiplicity,
+					newParticipantMultiplicity);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -222,41 +226,33 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setParticipantMultiplicity(
-			ParticipantMultiplicity newParticipantMultiplicity) {
+	public void setParticipantMultiplicity(ParticipantMultiplicity newParticipantMultiplicity) {
 		if (newParticipantMultiplicity != participantMultiplicity) {
 			NotificationChain msgs = null;
 			if (participantMultiplicity != null)
 				msgs = ((InternalEObject) participantMultiplicity)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY,
-								null, msgs);
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+								- Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY, null, msgs);
 			if (newParticipantMultiplicity != null)
 				msgs = ((InternalEObject) newParticipantMultiplicity)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY,
-								null, msgs);
-			msgs = basicSetParticipantMultiplicity(newParticipantMultiplicity,
-					msgs);
+						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+								- Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY, null, msgs);
+			msgs = basicSetParticipantMultiplicity(newParticipantMultiplicity, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY,
-					newParticipantMultiplicity, newParticipantMultiplicity));
+					Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY, newParticipantMultiplicity,
+					newParticipantMultiplicity));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -264,21 +260,21 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PARTICIPANT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PARTICIPANT__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Process getProcessRef() {
@@ -288,16 +284,15 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 			if (processRef != oldProcessRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.PARTICIPANT__PROCESS_REF,
-							oldProcessRef, processRef));
+							Bpmn2Package.PARTICIPANT__PROCESS_REF, oldProcessRef, processRef));
 			}
 		}
 		return processRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public org.eclipse.bpmn2.Process basicGetProcessRef() {
@@ -305,27 +300,26 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setProcessRef(org.eclipse.bpmn2.Process newProcessRef) {
 		org.eclipse.bpmn2.Process oldProcessRef = processRef;
 		processRef = newProcessRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PARTICIPANT__PROCESS_REF, oldProcessRef,
-					processRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PARTICIPANT__PROCESS_REF,
+					oldProcessRef, processRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY:
 			return basicSetParticipantMultiplicity(null, msgs);
@@ -334,8 +328,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -362,8 +356,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -372,8 +366,7 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 		switch (featureID) {
 		case Bpmn2Package.PARTICIPANT__INTERFACE_REFS:
 			getInterfaceRefs().clear();
-			getInterfaceRefs().addAll(
-					(Collection<? extends Interface>) newValue);
+			getInterfaceRefs().addAll((Collection<? extends Interface>) newValue);
 			return;
 		case Bpmn2Package.PARTICIPANT__END_POINT_REFS:
 			getEndPointRefs().clear();
@@ -393,8 +386,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -420,8 +413,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -438,8 +431,7 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 		case Bpmn2Package.PARTICIPANT__PARTICIPANT_MULTIPLICITY:
 			return participantMultiplicity != null;
 		case Bpmn2Package.PARTICIPANT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.PARTICIPANT__PROCESS_REF:
 			return processRef != null;
 		}
@@ -447,8 +439,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -467,8 +459,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -487,8 +479,8 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -503,4 +495,4 @@ public class ParticipantImpl extends BaseElementImpl implements Participant {
 		return result.toString();
 	}
 
-} //ParticipantImpl
+} // ParticipantImpl

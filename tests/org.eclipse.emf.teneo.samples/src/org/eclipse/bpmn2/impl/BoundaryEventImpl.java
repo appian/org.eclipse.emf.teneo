@@ -27,24 +27,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Boundary Event</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Boundary Event</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.BoundaryEventImpl#getAttachedToRef <em>Attached To Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.BoundaryEventImpl#isCancelActivity <em>Cancel Activity</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BoundaryEventImpl#getAttachedToRef <em>Attached To Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BoundaryEventImpl#isCancelActivity <em>Cancel Activity</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	/**
-	 * The cached value of the '{@link #getAttachedToRef() <em>Attached To Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAttachedToRef() <em>Attached To Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAttachedToRef()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,9 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	protected Activity attachedToRef;
 
 	/**
-	 * The default value of the '{@link #isCancelActivity() <em>Cancel Activity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isCancelActivity() <em>Cancel Activity</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isCancelActivity()
 	 * @generated
 	 * @ordered
@@ -62,9 +61,9 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	protected static final boolean CANCEL_ACTIVITY_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isCancelActivity() <em>Cancel Activity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isCancelActivity() <em>Cancel Activity</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isCancelActivity()
 	 * @generated
 	 * @ordered
@@ -72,8 +71,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	protected boolean cancelActivity = CANCEL_ACTIVITY_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BoundaryEventImpl() {
@@ -81,8 +80,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,8 +90,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Activity getAttachedToRef() {
@@ -100,19 +99,16 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAttachedToRef(Activity newAttachedToRef,
-			NotificationChain msgs) {
+	public NotificationChain basicSetAttachedToRef(Activity newAttachedToRef, NotificationChain msgs) {
 		Activity oldAttachedToRef = attachedToRef;
 		attachedToRef = newAttachedToRef;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.BOUNDARY_EVENT__ATTACHED_TO_REF,
-					oldAttachedToRef, newAttachedToRef);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.BOUNDARY_EVENT__ATTACHED_TO_REF, oldAttachedToRef, newAttachedToRef);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -122,8 +118,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAttachedToRef(Activity newAttachedToRef) {
@@ -131,24 +127,21 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 			NotificationChain msgs = null;
 			if (attachedToRef != null)
 				msgs = ((InternalEObject) attachedToRef).eInverseRemove(this,
-						Bpmn2Package.ACTIVITY__BOUNDARY_EVENT_REFS,
-						Activity.class, msgs);
+						Bpmn2Package.ACTIVITY__BOUNDARY_EVENT_REFS, Activity.class, msgs);
 			if (newAttachedToRef != null)
 				msgs = ((InternalEObject) newAttachedToRef).eInverseAdd(this,
-						Bpmn2Package.ACTIVITY__BOUNDARY_EVENT_REFS,
-						Activity.class, msgs);
+						Bpmn2Package.ACTIVITY__BOUNDARY_EVENT_REFS, Activity.class, msgs);
 			msgs = basicSetAttachedToRef(newAttachedToRef, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.BOUNDARY_EVENT__ATTACHED_TO_REF,
-					newAttachedToRef, newAttachedToRef));
+					Bpmn2Package.BOUNDARY_EVENT__ATTACHED_TO_REF, newAttachedToRef, newAttachedToRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isCancelActivity() {
@@ -156,8 +149,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCancelActivity(boolean newCancelActivity) {
@@ -165,37 +158,35 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 		cancelActivity = newCancelActivity;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.BOUNDARY_EVENT__CANCEL_ACTIVITY,
-					oldCancelActivity, cancelActivity));
+					Bpmn2Package.BOUNDARY_EVENT__CANCEL_ACTIVITY, oldCancelActivity, cancelActivity));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.BOUNDARY_EVENT__ATTACHED_TO_REF:
 			if (attachedToRef != null)
 				msgs = ((InternalEObject) attachedToRef).eInverseRemove(this,
-						Bpmn2Package.ACTIVITY__BOUNDARY_EVENT_REFS,
-						Activity.class, msgs);
+						Bpmn2Package.ACTIVITY__BOUNDARY_EVENT_REFS, Activity.class, msgs);
 			return basicSetAttachedToRef((Activity) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.BOUNDARY_EVENT__ATTACHED_TO_REF:
 			return basicSetAttachedToRef(null, msgs);
@@ -204,8 +195,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,8 +211,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -238,8 +229,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -256,8 +247,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -272,8 +263,8 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -288,4 +279,4 @@ public class BoundaryEventImpl extends CatchEventImpl implements BoundaryEvent {
 		return result.toString();
 	}
 
-} //BoundaryEventImpl
+} // BoundaryEventImpl

@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import junit.framework.Assert;
+
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -44,7 +46,8 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class EcoreEAVAction extends AbstractTestAction {
 	/** Constructor */
 	public EcoreEAVAction() {
-		super(new EPackage[] { EcorePackage.eINSTANCE, org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE });
+		super(new EPackage[] { EcorePackage.eINSTANCE,
+				org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE });
 	}
 
 	@Override
@@ -63,12 +66,14 @@ public class EcoreEAVAction extends AbstractTestAction {
 		try {
 			// read from the resource
 			{
-				resourceOne.load(EcoreAction.class.getResourceAsStream("library.ecore"), Collections.EMPTY_MAP);
+				resourceOne.load(EcoreAction.class.getResourceAsStream("library.ecore"),
+						Collections.EMPTY_MAP);
 				// EPackage epack = (EPackage)resource.getContents().get(0);
 				// resource.unload();
 				final EPackage epack = (EPackage) resourceOne.getContents().get(0);
 
-				// some logic adds adapters (for example the EAV schema, get rid of them...)
+				// some logic adds adapters (for example the EAV schema, get rid of
+				// them...)
 				epack.eAdapters().clear();
 				for (TreeIterator<EObject> it = epack.eAllContents(); it.hasNext();) {
 					it.next().eAdapters().clear();
@@ -114,6 +119,7 @@ public class EcoreEAVAction extends AbstractTestAction {
 					it.next();
 					cnt++;
 				}
+				Assert.assertTrue(cnt >= 0);
 				// now compare the two resources
 				// compares fails for now
 				// compareResult(resourceOne, resourceTwo);
@@ -146,7 +152,8 @@ public class EcoreEAVAction extends AbstractTestAction {
 			// for (Object o : store.getObjects(EPackage.class)) {
 			// res.getContents().add((EObject) o);
 			// }
-			// final OutputStream os = new FileOutputStream("/home/mtaal/mytmp/test.ecore");
+			// final OutputStream os = new
+			// FileOutputStream("/home/mtaal/mytmp/test.ecore");
 			// res.save(os, Collections.EMPTY_MAP);
 			// store.commitTransaction();
 			// }

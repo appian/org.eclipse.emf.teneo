@@ -34,7 +34,8 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 
 	@SuppressWarnings("unchecked")
 	public void set(Object value) {
-		// set to null first, if there is at least one value then it is set to a value
+		// set to null first, if there is at least one value then it is set to a
+		// value
 		setMandatoryValue(null);
 		final List<?> values = (List<Object>) value;
 		referenceValues = new ArrayList<EAVSingleNonContainmentEReferenceValueHolder>();
@@ -61,9 +62,11 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 		if (ecoreObjectList != null) {
 			return ecoreObjectList;
 		}
-		// final DelegatingLateLoadingList<Object> lateLoadingList = new DelegatingLateLoadingList<Object>();
+		// final DelegatingLateLoadingList<Object> lateLoadingList = new
+		// DelegatingLateLoadingList<Object>();
 		// lateLoadingList.setPersistentList(referenceValues);
-		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
+		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>(
+				(InternalEObject) owner);
 		ecoreList.setValueHolderOwner(this);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
 		ecoreList.setPersistentList(referenceValues);
@@ -81,6 +84,6 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 
 	public void setReferenceValues(List<EAVSingleNonContainmentEReferenceValueHolder> referenceValues) {
 		this.referenceValues = referenceValues;
-			((EAVDelegatingList)get((InternalEObject)getOwner())).setPersistentList(referenceValues);
+		((EAVDelegatingList) get((InternalEObject) getOwner())).setPersistentList(referenceValues);
 	}
 }

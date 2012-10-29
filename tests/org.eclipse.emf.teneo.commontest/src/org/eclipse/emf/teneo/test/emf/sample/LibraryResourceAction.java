@@ -31,8 +31,8 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests the library example of emf/xsd using a resource. Actually tests bidirectional references using resources. Most
- * other aspects of resources are handled in the Catalog example.
+ * Tests the library example of emf/xsd using a resource. Actually tests bidirectional references
+ * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.20 $
@@ -105,8 +105,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 				writerURI = res.getURIFragment(tolkien);
 
 				/*
-				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int i = 0; i <
-				 * obj.length; i++) {
+				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int i = 0; i
+				 * < obj.length; i++) {
 				 */
 
 				/*
@@ -119,9 +119,10 @@ public class LibraryResourceAction extends AbstractTestAction {
 				 * 
 				 * assertTrue(lBook.getAuthor() == tolkien); assertTrue(tolkien.getBooks().contains(lBook));
 				 * assertTrue(tolkien.getBooks().contains(wBook)); // ordering is the same
-				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0); assertTrue(wBook.getPages() ==
-				 * lBook.getPages()); assertTrue(wBook.getCategory() instanceof BookCategory);
-				 * assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL);
+				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0);
+				 * assertTrue(wBook.getPages() == lBook.getPages()); assertTrue(wBook.getCategory()
+				 * instanceof BookCategory); assertTrue(wBook.getCategory() ==
+				 * BookCategory.SCIENCE_FICTION_LITERAL);
 				 */
 				// correct the mistake we made
 				Book orwellsBook = tolkien.getBooks().get(2);
@@ -196,7 +197,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			}
 
 			// {
-			//				
+			//
 			// XMLResourceImpl xi = new XMLResourceImpl();
 			// xi.getContents().add(tolkien);
 			// FileOutputStream fos = new

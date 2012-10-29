@@ -40,8 +40,8 @@ public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite(
-				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
-				HibernateTestbed.instance().getConfigurations());
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
+						.instance().getConfigurations());
 		suite.addTestSuite(DateTimeAction.class);
 		suite.addTestSuite(DateTimeEAVAction.class);
 		suite.addTestSuite(AttributesTest.class);
@@ -90,9 +90,8 @@ public class AllTests {
 
 		/*
 		 * // The anytype test is not yet supported by Hibernate //
-		 * suite.addTestSuite(AnyTypeAction.class); // Listunion types are not
-		 * yet supported by hibernate //
-		 * suite.addTestSuite(ListUnionAction.class);
+		 * suite.addTestSuite(AnyTypeAction.class); // Listunion types are not yet supported by
+		 * hibernate // suite.addTestSuite(ListUnionAction.class);
 		 */
 		// $JUnit-END$
 		return suite;

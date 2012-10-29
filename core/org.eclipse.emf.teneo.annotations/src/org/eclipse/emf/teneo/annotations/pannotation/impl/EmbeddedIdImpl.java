@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Embedded Id</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Embedded Id</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class EmbeddedIdImpl extends PAnnotationImpl implements EmbeddedId {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EmbeddedIdImpl() {
@@ -30,8 +29,8 @@ public class EmbeddedIdImpl extends PAnnotationImpl implements EmbeddedId {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class EmbeddedIdImpl extends PAnnotationImpl implements EmbeddedId {
 		return PannotationPackage.Literals.EMBEDDED_ID;
 	}
 
-} //EmbeddedIdImpl
+} // EmbeddedIdImpl

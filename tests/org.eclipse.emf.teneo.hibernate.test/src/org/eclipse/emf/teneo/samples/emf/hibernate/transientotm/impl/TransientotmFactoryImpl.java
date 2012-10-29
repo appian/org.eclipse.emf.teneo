@@ -17,35 +17,32 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmFact
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TransientotmFactoryImpl extends EFactoryImpl implements TransientotmFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static TransientotmFactory init() {
 		try {
-			TransientotmFactory theTransientotmFactory = (TransientotmFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/hibernate/transientotm"); 
+			TransientotmFactory theTransientotmFactory = (TransientotmFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/hibernate/transientotm");
 			if (theTransientotmFactory != null) {
 				return theTransientotmFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new TransientotmFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TransientotmFactoryImpl() {
@@ -53,23 +50,26 @@ public class TransientotmFactoryImpl extends EFactoryImpl implements Transientot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TransientotmPackage.TBOOK: return createTBook();
-			case TransientotmPackage.TWRITER: return createTWriter();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case TransientotmPackage.TBOOK:
+			return createTBook();
+		case TransientotmPackage.TWRITER:
+			return createTWriter();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TBook createTBook() {
@@ -78,8 +78,8 @@ public class TransientotmFactoryImpl extends EFactoryImpl implements Transientot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TWriter createTWriter() {
@@ -88,17 +88,17 @@ public class TransientotmFactoryImpl extends EFactoryImpl implements Transientot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TransientotmPackage getTransientotmPackage() {
-		return (TransientotmPackage)getEPackage();
+		return (TransientotmPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -107,4 +107,4 @@ public class TransientotmFactoryImpl extends EFactoryImpl implements Transientot
 		return TransientotmPackage.eINSTANCE;
 	}
 
-} //TransientotmFactoryImpl
+} // TransientotmFactoryImpl

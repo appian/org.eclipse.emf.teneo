@@ -44,10 +44,11 @@ import org.hibernate.collection.internal.AbstractPersistentCollection;
  * @version $Revision: 1.15 $
  */
 
-public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, ExtensionManagerAware,
-		ExtensionInitializable {
+public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint,
+		ExtensionManagerAware, ExtensionInitializable {
 
-	// is kept to do dereferencing of collections, see the description in the deReferenceCollections
+	// is kept to do dereferencing of collections, see the description in the
+	// deReferenceCollections
 	// method
 	// clear all session instances in the persistentcollection to solve
 	// this issue which still occured with Teneo in hibernate 3.2.5
@@ -85,10 +86,13 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 		deletedEObjects.get().add(eObject);
 	}
 
-	// is used to unset a session in a collection. Note that it would be better to use the
-	// AbstractPersistentCollection.unsetSession/getSession method but these give me a
+	// is used to unset a session in a collection. Note that it would be better to
+	// use the
+	// AbstractPersistentCollection.unsetSession/getSession method but these give
+	// me a
 	// java.lang.AccessError
-	private static final Field sessionField = FieldUtil.getField(AbstractPersistentCollection.class, "session");
+	private static final Field sessionField = FieldUtil.getField(AbstractPersistentCollection.class,
+			"session");
 
 	/**
 	 * Generated Serial Version ID
@@ -103,8 +107,8 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.
-	 * ExtensionManager)
+	 * @seeorg.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
+	 * (org.eclipse.emf.teneo.extension. ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
@@ -113,7 +117,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension()
+	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension ()
 	 */
 	public void initializeExtension() {
 		qualifyStrategy = extensionManager.getExtension(EntityNameStrategy.class);
@@ -185,8 +189,8 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	}
 
 	/**
-	 * Returns true if the eobject belongs to the newEObject set of a hibernateResource, in all other cases returns
-	 * null.
+	 * Returns true if the eobject belongs to the newEObject set of a hibernateResource, in all other
+	 * cases returns null.
 	 */
 	// Disabled this method because an object can be new to a resource but already
 	// exist in the database.

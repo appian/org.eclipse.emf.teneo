@@ -67,11 +67,11 @@ public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
 		dbDriver = props.getProperty("dbdriver");
 		dbUser = props.getProperty("dbuser");
 		dbPwd = props.getProperty("dbpassword");
-		optimistic = props.getProperty("optimistic") != null && props.getProperty("optimistic").compareTo("true") == 0;
-		logInfo =
-				" adapter|dbName|url|user|pwd|driver " +
-						this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|" +
-						dbName + "|" + dbUrl + "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
+		optimistic = props.getProperty("optimistic") != null
+				&& props.getProperty("optimistic").compareTo("true") == 0;
+		logInfo = " adapter|dbName|url|user|pwd|driver "
+				+ this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|"
+				+ dbName + "|" + dbUrl + "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
 	}
 
 	/*
@@ -115,10 +115,9 @@ public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
 		dbName = databaseName;
 
 		// set the loginfo
-		logInfo =
-				" adapter|dbName|url|user|pwd|driver " +
-						this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|" +
-						dbName + "|" + dbUrl + "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
+		logInfo = " adapter|dbName|url|user|pwd|driver "
+				+ this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|"
+				+ dbName + "|" + dbUrl + "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
 
 		log.debug("Initialized database adapter: " + logInfo);
 	}

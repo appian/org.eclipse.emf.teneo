@@ -57,7 +57,8 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT, "false");
-		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_CONTAINMENT, "REMOVE,MERGE,PERSIST,REFRESH");
+		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_CONTAINMENT,
+				"REMOVE,MERGE,PERSIST,REFRESH");
 		return props;
 	}
 

@@ -15,36 +15,31 @@
 package org.eclipse.dd.di.impl;
 
 import org.eclipse.dd.dc.Bounds;
-
 import org.eclipse.dd.di.DiPackage;
 import org.eclipse.dd.di.Label;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Label</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Label</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.di.impl.LabelImpl#getBounds <em>Bounds</em>}</li>
+ * <li>{@link org.eclipse.dd.di.impl.LabelImpl#getBounds <em>Bounds</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class LabelImpl extends NodeImpl implements Label {
 	/**
-	 * The cached value of the '{@link #getBounds() <em>Bounds</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getBounds() <em>Bounds</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBounds()
 	 * @generated
 	 * @ordered
@@ -52,8 +47,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	protected Bounds bounds;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LabelImpl() {
@@ -61,8 +56,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -71,8 +66,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Bounds getBounds() {
@@ -80,18 +75,16 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetBounds(Bounds newBounds,
-			NotificationChain msgs) {
+	public NotificationChain basicSetBounds(Bounds newBounds, NotificationChain msgs) {
 		Bounds oldBounds = bounds;
 		bounds = newBounds;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, DiPackage.LABEL__BOUNDS, oldBounds,
-					newBounds);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					DiPackage.LABEL__BOUNDS, oldBounds, newBounds);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -101,37 +94,35 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBounds(Bounds newBounds) {
 		if (newBounds != bounds) {
 			NotificationChain msgs = null;
 			if (bounds != null)
-				msgs = ((InternalEObject) bounds).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - DiPackage.LABEL__BOUNDS, null,
-						msgs);
+				msgs = ((InternalEObject) bounds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- DiPackage.LABEL__BOUNDS, null, msgs);
 			if (newBounds != null)
-				msgs = ((InternalEObject) newBounds).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - DiPackage.LABEL__BOUNDS, null,
-						msgs);
+				msgs = ((InternalEObject) newBounds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- DiPackage.LABEL__BOUNDS, null, msgs);
 			msgs = basicSetBounds(newBounds, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DiPackage.LABEL__BOUNDS, newBounds, newBounds));
+			eNotify(new ENotificationImpl(this, Notification.SET, DiPackage.LABEL__BOUNDS, newBounds,
+					newBounds));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case DiPackage.LABEL__BOUNDS:
 			return basicSetBounds(null, msgs);
@@ -140,8 +131,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -154,8 +145,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -169,8 +160,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -184,8 +175,8 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -197,4 +188,4 @@ public abstract class LabelImpl extends NodeImpl implements Label {
 		return super.eIsSet(featureID);
 	}
 
-} //LabelImpl
+} // LabelImpl

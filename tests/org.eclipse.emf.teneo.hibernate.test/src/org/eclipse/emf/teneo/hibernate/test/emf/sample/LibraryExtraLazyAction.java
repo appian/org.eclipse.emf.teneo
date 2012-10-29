@@ -88,11 +88,12 @@ public class LibraryExtraLazyAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
-			
+			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(
+					0);
+
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
-			
+
 			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 			testLazySize(lib.getWriters().get(0).getBooks());
 			store.commitTransaction();
@@ -103,7 +104,7 @@ public class LibraryExtraLazyAction extends AbstractTestAction {
 			store.beginTransaction();
 
 			final Writer writ = store.getObjects(Writer.class).get(0);
-			final Library lib = (Library)writ.eContainer();
+			final Library lib = (Library) writ.eContainer();
 
 			final Book book = factory.createBook();
 			book.setAuthor(writ);
@@ -119,8 +120,9 @@ public class LibraryExtraLazyAction extends AbstractTestAction {
 	}
 
 	protected void testLazySize(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 		int size = LazyCollectionUtils.size(list);
@@ -130,8 +132,9 @@ public class LibraryExtraLazyAction extends AbstractTestAction {
 	}
 
 	protected void checkIsStillLazy(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}

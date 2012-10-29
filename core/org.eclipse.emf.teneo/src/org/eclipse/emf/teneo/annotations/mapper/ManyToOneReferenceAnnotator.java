@@ -44,8 +44,10 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 		final String logStr = aReference.getModelEReference().getName() + "/"
 				+ aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null || aReference.getOneToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a ManyToOne but "
+		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null
+				|| aReference.getOneToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + logStr
+					+ " should be a ManyToOne but "
 					+ "it already has a OneToMany, ManyToMany or OneToOne annotation");
 		}
 
@@ -66,9 +68,10 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 			// mto.setOptional(!eReference.isRequired() ||
 			// eReference.isUnsettable() ||
 			// eReference.getEOpposite() != null);
-			mto.setOptional(!eReference.isRequired() || eReference.getEOpposite() != null || eReference.isUnsettable());
+			mto.setOptional(!eReference.isRequired() || eReference.getEOpposite() != null
+					|| eReference.isUnsettable());
 			mto.setEModelElement(eReference);
-		} else if (log.isDebugEnabled()){
+		} else if (log.isDebugEnabled()) {
 			log.debug("EReference + " + logStr + " does have a manytoone annotation, using it");
 		}
 
@@ -114,16 +117,19 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 				boolean hasJoinTable = false;
 				boolean isInsertableUpdatable = true;
 				if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
-					final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
+					final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(
+							eReference.getEOpposite());
 
 					hasJoinTable = (!aOpposite.getModelEReference().isContainment() && getPersistenceOptions()
-							.isJoinTableForNonContainedAssociations())
-							|| aOpposite.getJoinTable() != null;
+							.isJoinTableForNonContainedAssociations()) || aOpposite.getJoinTable() != null;
 
-					if (!hasJoinTable && aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList() && !aOpposite.getOneToMany().getFetch().equals(FetchType.EXTRA)) {
+					if (!hasJoinTable && aOpposite.getOneToMany() != null
+							&& aOpposite.getOneToMany().isList()
+							&& !aOpposite.getOneToMany().getFetch().equals(FetchType.EXTRA)) {
 						isInsertableUpdatable = false;
 					}
-					// if the refered to is stored as an eav then do the update of the columns from here.
+					// if the refered to is stored as an eav then do the update of the
+					// columns from here.
 					if (aReference.getAReferenceType().getEavMapping() != null) {
 						isInsertableUpdatable = true;
 					}

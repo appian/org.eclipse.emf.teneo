@@ -12,59 +12,62 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotation</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotation</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement <em>EModel Element</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated <em>Generated</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement <em>EModel
+ * Element</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated <em>Generated
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPAnnotation()
- * @model abstract="true"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='CompatibleEModelElementType AnnotationIsSupported'"
+ * @model abstract="true" annotation=
+ *        "http://www.eclipse.org/emf/2002/Ecore constraints='CompatibleEModelElementType AnnotationIsSupported'"
  * @generated
  */
 public interface PAnnotation extends EObject {
 	/**
-	 * Returns the value of the '<em><b>EModel Element</b></em>' reference.
-	 * <!-- begin-user-doc
-	 * -->
+	 * Returns the value of the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EModel Element</em>' reference isn't clear, there really
-	 * should be more of a description here...
+	 * If the meaning of the '<em>EModel Element</em>' reference isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>EModel Element</em>' reference.
 	 * @see #setEModelElement(EModelElement)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPAnnotation_EModelElement()
-	 * @model required="true"
-	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @model required="true" annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EModelElement getEModelElement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EModel Element</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement
+	 * <em>EModel Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>EModel Element</em>' reference.
 	 * @see #getEModelElement()
 	 * @generated
 	 */
 	void setEModelElement(EModelElement value);
 
 	/**
-	 * Returns the value of the '<em><b>Generated</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Generated</b></em>' attribute. The default value is
+	 * <code>"true"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Generated</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Generated</em>' attribute isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Generated</em>' attribute.
 	 * @see #setGenerated(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPAnnotation_Generated()
@@ -74,10 +77,12 @@ public interface PAnnotation extends EObject {
 	boolean isGenerated();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated <em>Generated</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Generated</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated
+	 * <em>Generated</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Generated</em>' attribute.
 	 * @see #isGenerated()
 	 * @generated
 	 */

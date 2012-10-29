@@ -56,7 +56,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	private static Log log = LogFactory.getLog(HibernatePersistableFeatureMap.class);
 
 	/** Constructor */
-	public HibernatePersistableFeatureMap(InternalEObject owner, EStructuralFeature feature, List<FeatureMap.Entry> list) {
+	public HibernatePersistableFeatureMap(InternalEObject owner, EStructuralFeature feature,
+			List<FeatureMap.Entry> list) {
 		super(owner, feature, list);
 
 		if (isLoaded()) {
@@ -85,7 +86,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 
 	/** Shortcut to replace entries */
 	protected FeatureMap.Entry replaceEntry(Object entry) {
-		if (entry instanceof HibernateFeatureMapEntry && ((HibernateFeatureMapEntry) entry).belongsToFeatureMap(this)) {
+		if (entry instanceof HibernateFeatureMapEntry
+				&& ((HibernateFeatureMapEntry) entry).belongsToFeatureMap(this)) {
 			return (HibernateFeatureMapEntry) entry;
 		}
 
@@ -101,8 +103,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind the scenes, this
-	 * happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind the
+	 * scenes, this happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {
@@ -114,7 +116,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 					return false;
 				}
 				if (log.isDebugEnabled()) {
-					log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+					log.debug("Persistentlist already initialized, probably eagerly loaded: "
+							+ getLogString());
 				}
 				try {
 					setIsLoading(true);
@@ -209,12 +212,12 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	@Override
 	public void replaceDelegate(List<FeatureMap.Entry> newDelegate) {
 		if (newDelegate instanceof PersistentList) {
-			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the " + " passed list",
-					((PersistentList) newDelegate).isWrapper(delegate));
+			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the "
+					+ " passed list", ((PersistentList) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else if (newDelegate instanceof PersistentBag) {
-			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the " + " passed list",
-					((PersistentBag) newDelegate).isWrapper(delegate));
+			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the "
+					+ " passed list", ((PersistentBag) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else {
 			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
@@ -232,7 +235,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	protected Entry delegateRemove(int index) {
 		final Entry old = super.delegateRemove(index);
 
-		if (old.getEStructuralFeature() instanceof EReference && getDelegate() instanceof PersistentList) {
+		if (old.getEStructuralFeature() instanceof EReference
+				&& getDelegate() instanceof PersistentList) {
 			final PersistentList pl = (PersistentList) getDelegate();
 			final EReference eref = (EReference) old.getEStructuralFeature();
 			if (eref.isContainment()) {

@@ -34,11 +34,12 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests the sun books example, is mainly used to test EList methods (move, set, contains, move, etc)
- *  
+ * Tests the sun books example, is mainly used to test EList methods (move, set, contains, move,
+ * etc)
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ 
-*/
+ * @version $Revision: 1.7 $
+ */
 @SuppressWarnings({ "unchecked", "deprecation" })
 public class SunBooksAction extends AbstractTestAction {
 	public SunBooksAction() {
@@ -79,7 +80,7 @@ public class SunBooksAction extends AbstractTestAction {
 			{
 				book1.setBookCategory(BookCategoryType1.FICTION_LITERAL);
 				book1
-					.setDescription("The first book in a brand new series from world-wide bestselling author of MAGICIAN, Raymond E. Feist....");
+						.setDescription("The first book in a brand new series from world-wide bestselling author of MAGICIAN, Raymond E. Feist....");
 				book1.setName("Flight of the Nighthawks: Darkwar (Conclave of Shadows S.)");
 				book1.setISBN(713374);
 				book1.setItemId("000713374X");
@@ -100,7 +101,7 @@ public class SunBooksAction extends AbstractTestAction {
 			{
 				book2.setBookCategory(BookCategoryType1.FICTION_LITERAL);
 				book2
-					.setDescription("Foundation marks the first of a series of tales set so far in the future that Earth is all....");
+						.setDescription("Foundation marks the first of a series of tales set so far in the future that Earth is all....");
 				book2.setName("Foundation (The Foundation Series)");
 				book2.setISBN(586010807);
 				book2.setItemId("0586010807");
@@ -147,7 +148,8 @@ public class SunBooksAction extends AbstractTestAction {
 
 			// move Isaac to the first position
 			books.getBook().move(0, 2);
-			assertTrue("Index of Isaacs book is " + books.getBook().indexOf(isaac), books.getBook().indexOf(isaac) == 0);
+			assertTrue("Index of Isaacs book is " + books.getBook().indexOf(isaac), books.getBook()
+					.indexOf(isaac) == 0);
 			assertTrue(books.getBook().size() == 3); // move does not delete
 
 			// check contains on false

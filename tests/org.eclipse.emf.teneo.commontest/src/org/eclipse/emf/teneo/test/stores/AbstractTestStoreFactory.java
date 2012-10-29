@@ -40,14 +40,15 @@ public abstract class AbstractTestStoreFactory {
 	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
 
 	/**
-	 * Request a store for the given configuration. No other store can be requested until this one
-	 * is tear down. NOTE: dbName must be a key: no equals dbName for difference usedEPackages/cfg
+	 * Request a store for the given configuration. No other store can be requested until this one is
+	 * tear down. NOTE: dbName must be a key: no equals dbName for difference usedEPackages/cfg
 	 */
-	public TestStore get(String dbName, EPackage[] usedEPackages, String mappingFilePath, TestConfiguration cfg,
-			Properties extraConfigProps, ExtensionManager extensionManager) throws FileNotFoundException {
+	public TestStore get(String dbName, EPackage[] usedEPackages, String mappingFilePath,
+			TestConfiguration cfg, Properties extraConfigProps, ExtensionManager extensionManager)
+			throws FileNotFoundException {
 		cfg.getDbAdapter().setDbName(dbName);
-		return createStoreInstance(cfg.getDbAdapter(), usedEPackages, mappingFilePath, extraConfigProps, cfg
-			.getMappingStrategy(), cfg.isEjb3(), extensionManager);
+		return createStoreInstance(cfg.getDbAdapter(), usedEPackages, mappingFilePath,
+				extraConfigProps, cfg.getMappingStrategy(), cfg.isEjb3(), extensionManager);
 	}
 
 	/** Ensures that the run directory exists, this directory contains the mapping files */
@@ -58,7 +59,7 @@ public abstract class AbstractTestStoreFactory {
 	}
 
 	/** Creates the actual specific test store */
-	protected abstract TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages,
-			String mappingFileLocation, Properties props, InheritanceType inheritanceType, boolean ejb3,
-			ExtensionManager extensionManager);
+	protected abstract TestStore createStoreInstance(TestDatabaseAdapter adapter,
+			EPackage[] epackages, String mappingFileLocation, Properties props,
+			InheritanceType inheritanceType, boolean ejb3, ExtensionManager extensionManager);
 }

@@ -41,27 +41,27 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Base Element</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Base Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getExtensionValues <em>Extension Values</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getExtensionDefinitions <em>Extension Definitions</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getAnyAttribute <em>Any Attribute</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getExtensionValues <em>Extension Values</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getDocumentation <em>Documentation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getExtensionDefinitions <em>Extension
+ * Definitions</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.BaseElementImpl#getAnyAttribute <em>Any Attribute</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	/**
-	 * The cached value of the '{@link #getExtensionValues() <em>Extension Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getExtensionValues() <em>Extension Values</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExtensionValues()
 	 * @generated
 	 * @ordered
@@ -69,9 +69,9 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	protected EList<ExtensionAttributeValue> extensionValues;
 
 	/**
-	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDocumentation()
 	 * @generated
 	 * @ordered
@@ -79,9 +79,9 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	protected EList<Documentation> documentation;
 
 	/**
-	 * The cached value of the '{@link #getExtensionDefinitions() <em>Extension Definitions</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getExtensionDefinitions() <em>Extension Definitions</em>}'
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExtensionDefinitions()
 	 * @generated
 	 * @ordered
@@ -89,9 +89,9 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	protected EList<ExtensionDefinition> extensionDefinitions;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -99,9 +99,9 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -110,8 +110,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 
 	/**
 	 * The cached value of the '{@link #getAnyAttribute() <em>Any Attribute</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAnyAttribute()
 	 * @generated
 	 * @ordered
@@ -119,8 +119,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	protected FeatureMap anyAttribute;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BaseElementImpl() {
@@ -128,8 +128,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -138,50 +138,47 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ExtensionAttributeValue> getExtensionValues() {
 		if (extensionValues == null) {
 			extensionValues = new EObjectContainmentEList<ExtensionAttributeValue>(
-					ExtensionAttributeValue.class, this,
-					Bpmn2Package.BASE_ELEMENT__EXTENSION_VALUES);
+					ExtensionAttributeValue.class, this, Bpmn2Package.BASE_ELEMENT__EXTENSION_VALUES);
 		}
 		return extensionValues;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Documentation> getDocumentation() {
 		if (documentation == null) {
-			documentation = new EObjectContainmentEList<Documentation>(
-					Documentation.class, this,
+			documentation = new EObjectContainmentEList<Documentation>(Documentation.class, this,
 					Bpmn2Package.BASE_ELEMENT__DOCUMENTATION);
 		}
 		return documentation;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ExtensionDefinition> getExtensionDefinitions() {
 		if (extensionDefinitions == null) {
 			extensionDefinitions = new EObjectResolvingEList<ExtensionDefinition>(
-					ExtensionDefinition.class, this,
-					Bpmn2Package.BASE_ELEMENT__EXTENSION_DEFINITIONS);
+					ExtensionDefinition.class, this, Bpmn2Package.BASE_ELEMENT__EXTENSION_DEFINITIONS);
 		}
 		return extensionDefinitions;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -189,56 +186,52 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.BASE_ELEMENT__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.BASE_ELEMENT__ID, oldId,
+					id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getAnyAttribute() {
 		if (anyAttribute == null) {
-			anyAttribute = new BasicFeatureMap(this,
-					Bpmn2Package.BASE_ELEMENT__ANY_ATTRIBUTE);
+			anyAttribute = new BasicFeatureMap(this, Bpmn2Package.BASE_ELEMENT__ANY_ATTRIBUTE);
 		}
 		return anyAttribute;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.BASE_ELEMENT__EXTENSION_VALUES:
-			return ((InternalEList<?>) getExtensionValues()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getExtensionValues()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.BASE_ELEMENT__DOCUMENTATION:
-			return ((InternalEList<?>) getDocumentation()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getDocumentation()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.BASE_ELEMENT__ANY_ATTRIBUTE:
-			return ((InternalEList<?>) getAnyAttribute()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getAnyAttribute()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -261,8 +254,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -271,18 +264,15 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 		switch (featureID) {
 		case Bpmn2Package.BASE_ELEMENT__EXTENSION_VALUES:
 			getExtensionValues().clear();
-			getExtensionValues().addAll(
-					(Collection<? extends ExtensionAttributeValue>) newValue);
+			getExtensionValues().addAll((Collection<? extends ExtensionAttributeValue>) newValue);
 			return;
 		case Bpmn2Package.BASE_ELEMENT__DOCUMENTATION:
 			getDocumentation().clear();
-			getDocumentation().addAll(
-					(Collection<? extends Documentation>) newValue);
+			getDocumentation().addAll((Collection<? extends Documentation>) newValue);
 			return;
 		case Bpmn2Package.BASE_ELEMENT__EXTENSION_DEFINITIONS:
 			getExtensionDefinitions().clear();
-			getExtensionDefinitions().addAll(
-					(Collection<? extends ExtensionDefinition>) newValue);
+			getExtensionDefinitions().addAll((Collection<? extends ExtensionDefinition>) newValue);
 			return;
 		case Bpmn2Package.BASE_ELEMENT__ID:
 			setId((String) newValue);
@@ -295,8 +285,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -322,8 +312,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -334,8 +324,7 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 		case Bpmn2Package.BASE_ELEMENT__DOCUMENTATION:
 			return documentation != null && !documentation.isEmpty();
 		case Bpmn2Package.BASE_ELEMENT__EXTENSION_DEFINITIONS:
-			return extensionDefinitions != null
-					&& !extensionDefinitions.isEmpty();
+			return extensionDefinitions != null && !extensionDefinitions.isEmpty();
 		case Bpmn2Package.BASE_ELEMENT__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case Bpmn2Package.BASE_ELEMENT__ANY_ATTRIBUTE:
@@ -345,8 +334,8 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -363,4 +352,4 @@ public class BaseElementImpl extends EObjectImpl implements BaseElement {
 		return result.toString();
 	}
 
-} //BaseElementImpl
+} // BaseElementImpl

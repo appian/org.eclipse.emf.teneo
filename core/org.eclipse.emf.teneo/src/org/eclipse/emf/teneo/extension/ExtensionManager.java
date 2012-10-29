@@ -33,8 +33,8 @@ public interface ExtensionManager {
 	public abstract void registerExtension(Extension extension);
 
 	/**
-	 * Return an instance of an extension, pass null if no constructor arguments are required for
-	 * this extension
+	 * Return an instance of an extension, pass null if no constructor arguments are required for this
+	 * extension
 	 */
 	public abstract ExtensionPoint getExtension(String point, Object[] initArgs);
 
@@ -51,10 +51,10 @@ public interface ExtensionManager {
 	public abstract <T> T getExtension(Class<T> clz, Object[] initArgs);
 
 	/**
-	 * Convenience method to register a user extension overriding a current extension. It will
-	 * search for an existing extension using the point. If not found then an exception is thrown.
-	 * In case a completely new extension is to be registered then use the registerExtension method.
-	 * The singleton value from the existing extension is used. value is used from that extension.
+	 * Convenience method to register a user extension overriding a current extension. It will search
+	 * for an existing extension using the point. If not found then an exception is thrown. In case a
+	 * completely new extension is to be registered then use the registerExtension method. The
+	 * singleton value from the existing extension is used. value is used from that extension.
 	 */
 	public void registerExtension(String point, String className);
 }

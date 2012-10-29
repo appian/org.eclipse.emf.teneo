@@ -105,12 +105,10 @@ public class BZ329275Action extends AbstractTestAction {
 			Item item2 = store.getObject(Item.class);
 			for (EAttribute eAttribute : item1.eClass().getEAllAttributes()) {
 				if (eAttribute.getName().toLowerCase().contains("standard")
-						|| eAttribute.getName().toLowerCase()
-								.contains("unsettable")) {
+						|| eAttribute.getName().toLowerCase().contains("unsettable")) {
 					final Object value1 = item1.eGet(eAttribute);
 					final Object value2 = item2.eGet(eAttribute);
-					assertTrue("Comparing " + eAttribute.getName(),
-							value1 == value2 || value1.equals(value2));
+					assertTrue("Comparing " + eAttribute.getName(), value1 == value2 || value1.equals(value2));
 				}
 			}
 
@@ -170,8 +168,7 @@ public class BZ329275Action extends AbstractTestAction {
 		System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		System.err.println(msg);
 		for (EAttribute eAttribute : item.eClass().getEAllAttributes()) {
-			System.err.println(eAttribute.getName() + " --> "
-					+ item.eGet(eAttribute) + " isset: "
+			System.err.println(eAttribute.getName() + " --> " + item.eGet(eAttribute) + " isset: "
 					+ item.eIsSet(eAttribute));
 		}
 	}
@@ -179,31 +176,28 @@ public class BZ329275Action extends AbstractTestAction {
 	private void compareAfterNullify(Item item1, Item item2) {
 		for (EAttribute eAttribute : item1.eClass().getEAllAttributes()) {
 			if (eAttribute.getName().toLowerCase().contains("standard")
-					|| eAttribute.getName().toLowerCase()
-							.contains("unsettable")) {
+					|| eAttribute.getName().toLowerCase().contains("unsettable")) {
 				final Object value1 = item1.eGet(eAttribute);
 				final Object value2 = item2.eGet(eAttribute);
-				assertTrue("Comparing " + eAttribute.getName() + " " + value1
-						+ " " + value2, value1 == value2
-						|| (value1 != null && value1.equals(value2)));
-				if (eAttribute.getEAttributeType() instanceof EEnum
-						&& eAttribute.isUnsettable()) {
+				assertTrue("Comparing " + eAttribute.getName() + " " + value1 + " " + value2,
+						value1 == value2 || (value1 != null && value1.equals(value2)));
+				if (eAttribute.getEAttributeType() instanceof EEnum && eAttribute.isUnsettable()) {
 					if (!isHandleUnsetAsNull() && !isConvertUnsetToNull()) {
 						assertTrue(item1.eIsSet(eAttribute));
 						assertFalse(item2.eIsSet(eAttribute));
 					} else {
-						assertEquals("Isset equal for " + eAttribute.getName(),
-								item1.eIsSet(eAttribute),
+						assertEquals("Isset equal for " + eAttribute.getName(), item1.eIsSet(eAttribute),
 								item2.eIsSet(eAttribute));
 					}
-//				} else if (!isHandleUnsetAsNull() && eAttribute.getDefaultValue() == null
-//						&& eAttribute.isUnsettable()) {
-//					// with handle unset as null, isset is always false for null values
-//					assertTrue(eAttribute.getName(), item1.eIsSet(eAttribute));
-//					assertTrue(eAttribute.getName(), item2.eIsSet(eAttribute));
+					// } else if (!isHandleUnsetAsNull() && eAttribute.getDefaultValue()
+					// == null
+					// && eAttribute.isUnsettable()) {
+					// // with handle unset as null, isset is always false for null values
+					// assertTrue(eAttribute.getName(), item1.eIsSet(eAttribute));
+					// assertTrue(eAttribute.getName(), item2.eIsSet(eAttribute));
 				} else {
-					assertEquals("Isset equal for " + eAttribute.getName(),
-							item1.eIsSet(eAttribute), item2.eIsSet(eAttribute));
+					assertEquals("Isset equal for " + eAttribute.getName(), item1.eIsSet(eAttribute),
+							item2.eIsSet(eAttribute));
 				}
 			}
 		}

@@ -38,7 +38,8 @@ import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
 /**
- * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
+ * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of
+ * Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.3 $
@@ -58,11 +59,13 @@ public class FeatureMapEntryComponentTuplizer extends AbstractComponentTuplizer 
 	}
 
 	protected Getter buildGetter(Component component, Property prop) {
-		return getPropertyAccessor(prop, component).getGetter(component.getComponentClass(), prop.getName());
+		return getPropertyAccessor(prop, component).getGetter(component.getComponentClass(),
+				prop.getName());
 	}
 
 	protected Setter buildSetter(Component component, Property prop) {
-		return getPropertyAccessor(prop, component).getSetter(component.getComponentClass(), prop.getName());
+		return getPropertyAccessor(prop, component).getSetter(component.getComponentClass(),
+				prop.getName());
 	}
 
 	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, Component component) {
@@ -73,7 +76,8 @@ public class FeatureMapEntryComponentTuplizer extends AbstractComponentTuplizer 
 			return hds.getHbContext().createFeatureMapEntryFeatureURIAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_CDATA) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.CDATA);
-		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_COMMENT) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(
+				HbMapperConstants.PROPERTY_MIXED_COMMENT) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.COMMENT);
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_TEXT) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.TEXT);
@@ -86,15 +90,16 @@ public class FeatureMapEntryComponentTuplizer extends AbstractComponentTuplizer 
 		final MetaAttribute ma = component.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
 		final String eclassUri = ma.getValue();
 		final EClass eClass = hds.getEntityNameStrategy().toEClass(eclassUri);
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass,
+				mappedProperty.getName());
 
 		if (efeature == null) {
 			throw new HbMapperException("Feature not found for property " + mappedProperty.getName());
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + eclassUri + "/"
-					+ efeature.getName());
+			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + eclassUri
+					+ "/" + efeature.getName());
 		}
 
 		return hds.getHbContext().createFeatureMapEntryAccessor(efeature);

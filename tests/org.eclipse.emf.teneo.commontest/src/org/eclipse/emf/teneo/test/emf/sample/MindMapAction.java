@@ -117,7 +117,8 @@ public class MindMapAction extends AbstractTestAction {
 
 	/** Create a default topic */
 	@SuppressWarnings("unchecked")
-	private Topic createTopic(TestStore store, List resources, MindmapFactory factory, String name, int level) {
+	private Topic createTopic(TestStore store, List resources, MindmapFactory factory, String name,
+			int level) {
 		final Topic topic = factory.createTopic();
 		topic.setEndDate(store.getDate(new Date()));
 		topic.setStartDate(store.getDate(new Date()));

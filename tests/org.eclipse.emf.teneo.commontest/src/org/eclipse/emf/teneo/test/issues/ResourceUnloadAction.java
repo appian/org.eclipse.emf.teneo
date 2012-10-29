@@ -68,9 +68,8 @@ public class ResourceUnloadAction extends AbstractTestAction {
 
 			// walk through the structure starting from the library
 			{
-				final String qry =
-						"query1=select b from " + Book.class.getName() + " as b&query2=select l from " +
-								Library.class.getName() + " as l";
+				final String qry = "query1=select b from " + Book.class.getName()
+						+ " as b&query2=select l from " + Library.class.getName() + " as l";
 				Resource res = store.getResource(qry);
 				res.load(null);
 				Library lib = null;

@@ -42,8 +42,10 @@ public class ClassClassLoaderStrategy implements ClassLoaderStrategy {
 			callerResolver = new CallerResolver();
 		} catch (SecurityException se) {
 			// set callerResolver to null and log
-			log.error("Class class loader resolver could not be created because of SecurityException " +
-					" just using the class loader of the classclassloader class, error msg: " + se.getMessage(), se);
+			log.error(
+					"Class class loader resolver could not be created because of SecurityException "
+							+ " just using the class loader of the classclassloader class, error msg: "
+							+ se.getMessage(), se);
 			callerResolver = null;
 		}
 	}
@@ -59,12 +61,11 @@ public class ClassClassLoaderStrategy implements ClassLoaderStrategy {
 	}
 
 	/**
-	 * Based on examples in
-	 * http://www.javaworld.com/javaworld/javaqa/2003-06/01-qa-0606-load-p2.html
+	 * Based on examples in http://www.javaworld.com/javaworld/javaqa/2003-06/01-qa-0606-load-p2.html
 	 * 
-	 * A helper class to get the call context. It subclasses SecurityManager to make
-	 * getClassContext() accessible. An instance of CallerResolver only needs to be created, not
-	 * installed as an actual security manager.
+	 * A helper class to get the call context. It subclasses SecurityManager to make getClassContext()
+	 * accessible. An instance of CallerResolver only needs to be created, not installed as an actual
+	 * security manager.
 	 */
 	private static final class CallerResolver extends SecurityManager {
 		protected Class<?>[] getClassContext() {
@@ -78,8 +79,8 @@ public class ClassClassLoaderStrategy implements ClassLoaderStrategy {
 	 */
 	public ClassLoader getClassLoader() {
 		/*
-		 * 0: SecurityManager.getClassContext 1: getClassContext 2: getCallerClass 3: getClassLoader
-		 * 4: ClassLoaderResolver.getClassLoader 5: app class
+		 * 0: SecurityManager.getClassContext 1: getClassContext 2: getCallerClass 3: getClassLoader 4:
+		 * ClassLoaderResolver.getClassLoader 5: app class
 		 */
 		final Class<?> clazz = getCallerClass(5);
 		return clazz.getClassLoader();

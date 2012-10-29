@@ -64,7 +64,7 @@ public class UserTypeAction extends AbstractTestAction {
 		testPerson(store);
 		testDatabase(store);
 		removePerson(store);
-		
+
 		{
 			final City c = UsertypeFactory.eINSTANCE.createCity();
 			assertTrue(c.getSize() != null);
@@ -94,8 +94,8 @@ public class UserTypeAction extends AbstractTestAction {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void storePerson(TestStore store) {
-		
 
 		Certificate c1 = UsertypeFactory.eINSTANCE.createCertificate();
 		c1.setName("c1");
@@ -106,14 +106,14 @@ public class UserTypeAction extends AbstractTestAction {
 		Certificate c3 = UsertypeFactory.eINSTANCE.createCertificate();
 		c3.setName("c3");
 		c3.setLength(3);
-				
+
 		store.beginTransaction();
 		Person person = UsertypeFactory.eINSTANCE.createPerson();
-		
+
 		person.setCertificate(c1);
 		person.getCertificates().add(c3);
 		person.getCertificates().add(c2);
-		
+
 		person.setName(NAME);
 		person.setDouble(new Double(5));
 		UsaPhoneNumber up1 = new UsaPhoneNumber(100, 200, 300);
@@ -153,18 +153,20 @@ public class UserTypeAction extends AbstractTestAction {
 		assertEquals(2, person.getAddresses().size());
 
 		assertEquals("c1", person.getCertificate().getName());
-		assertEquals("c3", ((Certificate)person.getCertificates().get(0)).getName());
-		assertEquals(3, ((Certificate)person.getCertificates().get(0)).getLength());
-		assertEquals("c2", ((Certificate)person.getCertificates().get(1)).getName());
-		assertEquals(2, ((Certificate)person.getCertificates().get(1)).getLength());
-		
+		assertEquals("c3", ((Certificate) person.getCertificates().get(0)).getName());
+		assertEquals(3, ((Certificate) person.getCertificates().get(0)).getLength());
+		assertEquals("c2", ((Certificate) person.getCertificates().get(1)).getName());
+		assertEquals(2, ((Certificate) person.getCertificates().get(1)).getLength());
+
 		store.commitTransaction();
 
-		final Query q1 = ((HibernateTestStore) store).getSession().getNamedQuery("getPersonByBirthPlace");
+		final Query q1 = ((HibernateTestStore) store).getSession().getNamedQuery(
+				"getPersonByBirthPlace");
 		q1.setString(0, "Singapore");
 		assertEquals(1, q1.list().size());
 
-		final Query q2 = ((HibernateTestStore) store).getSession().getNamedQuery("getPersonByBirthPlace2");
+		final Query q2 = ((HibernateTestStore) store).getSession().getNamedQuery(
+				"getPersonByBirthPlace2");
 		q2.setString(0, "Singapore");
 		assertEquals(1, q2.list().size());
 

@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.Conversation;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Conversation</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Conversation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class ConversationImpl extends ConversationNodeImpl implements
-		Conversation {
+public class ConversationImpl extends ConversationNodeImpl implements Conversation {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConversationImpl() {
@@ -40,8 +38,8 @@ public class ConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class ConversationImpl extends ConversationNodeImpl implements
 		return Bpmn2Package.Literals.CONVERSATION;
 	}
 
-} //ConversationImpl
+} // ConversationImpl

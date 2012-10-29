@@ -119,9 +119,10 @@ public class ENumUserType implements UserType, ParameterizedType {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
-	 *      java.lang.Object)
+	 * java.lang.Object)
 	 */
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor,
+			Object owner) throws HibernateException, SQLException {
 		final String name = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -136,12 +137,12 @@ public class ENumUserType implements UserType, ParameterizedType {
 		try {
 			enumValue = (Enumerator) getMethod.invoke(null, new Object[] { name.trim() });
 		} catch (Exception e) {
-			throw new HbMapperException("Exception when getting enum for class: " + enumType.getName() +
-					" using value: " + name, e);
+			throw new HbMapperException("Exception when getting enum for class: " + enumType.getName()
+					+ " using value: " + name, e);
 		}
 		if (enumValue == null) {
-			throw new HbMapperException("The enum value " + name + " is not valid for enumerator: " +
-					enumType.getName());
+			throw new HbMapperException("The enum value " + name + " is not valid for enumerator: "
+					+ enumType.getName());
 		}
 
 		localCache.put(name, enumValue);
@@ -151,10 +152,11 @@ public class ENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement,
-	 *      java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object,
+	 * int)
 	 */
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
@@ -166,7 +168,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object,
-	 *      java.lang.Object)
+	 * java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;

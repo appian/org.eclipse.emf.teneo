@@ -58,8 +58,8 @@ public class LibraryInterfaceQueryTest extends AbstractTestAction {
 	/** Add extensions if you want */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(EntityNameStrategy.class.getName(), EntityInterfaceNameStrategy.class
-				.getName());
+		extensionManager.registerExtension(EntityNameStrategy.class.getName(),
+				EntityInterfaceNameStrategy.class.getName());
 	}
 
 	@Override

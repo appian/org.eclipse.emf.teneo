@@ -27,18 +27,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 
 /**
- * The base class of the value stored in an EAV schema. The value in an EAV
- * schema is both the type (the EStructuralFeature) and its value. The following
- * different types of values can be identified:
+ * The base class of the value stored in an EAV schema. The value in an EAV schema is both the type
+ * (the EStructuralFeature) and its value. The following different types of values can be
+ * identified:
  * <ul>
  * <li>EAttribute: a single primitive value</li>
- * <li>EReference: a single reference to another object, containment or
- * non-containment</li>
+ * <li>EReference: a single reference to another object, containment or non-containment</li>
  * <li>MultiEAttribute: a multi-occurrence EAttribute</li>
  * <li>MultiEReference: a multi-occurrence EReference</li>
  * </ul>
- * In addition there is the FeatureMap and Map support which needs to be
- * handled. In EMF both are lists with EAttributes.
+ * In addition there is the FeatureMap and Map support which needs to be handled. In EMF both are
+ * lists with EAttributes.
  * 
  * The above structure is reflected in the EAVValueHolder class hierarchy.
  * 
@@ -52,8 +51,8 @@ public abstract class EAVValueHolder {
 
 	protected static Integer NOT_NULL_VALUE = new Integer(1);
 
-	public static EAVValueHolder create(EObject owner,
-			EStructuralFeature eFeature, HbDataStore hbDataStore) {
+	public static EAVValueHolder create(EObject owner, EStructuralFeature eFeature,
+			HbDataStore hbDataStore) {
 		final EAVValueHolder valueHolder;
 		if (eFeature instanceof EReference) {
 			final EReference eReference = (EReference) eFeature;
@@ -97,17 +96,15 @@ public abstract class EAVValueHolder {
 		return valueHolder;
 	}
 
-	protected static boolean isFeatureExtraLazy(HbDataStore hbDataStore,
-			EStructuralFeature eFeature) {
+	protected static boolean isFeatureExtraLazy(HbDataStore hbDataStore, EStructuralFeature eFeature) {
 		if (hbDataStore.getPersistenceOptions().isFetchAssociationExtraLazy()) {
 			return true;
 		}
 		try {
-			final PAnnotatedEStructuralFeature paFeature = hbDataStore
-					.getPaModel().getPAnnotated(eFeature);
+			final PAnnotatedEStructuralFeature paFeature = hbDataStore.getPaModel().getPAnnotated(
+					eFeature);
 			if (paFeature.getOneToMany() != null
-					&& paFeature.getOneToMany().getFetch().equals(
-							FetchType.EXTRA)) {
+					&& paFeature.getOneToMany().getFetch().equals(FetchType.EXTRA)) {
 				return Boolean.TRUE;
 			}
 			return false;
@@ -199,8 +196,7 @@ public abstract class EAVValueHolder {
 			return NOT_NULL_VALUE;
 		}
 		// if not required then the not-value is set always
-		if (!getEStructuralFeature().isRequired()
-				|| getEStructuralFeature().isUnsettable()) {
+		if (!getEStructuralFeature().isRequired() || getEStructuralFeature().isUnsettable()) {
 			return NOT_NULL_VALUE;
 		}
 		return mandatoryValue;

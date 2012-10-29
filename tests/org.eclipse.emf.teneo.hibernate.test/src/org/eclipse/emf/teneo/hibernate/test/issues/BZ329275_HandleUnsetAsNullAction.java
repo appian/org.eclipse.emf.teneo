@@ -28,5 +28,5 @@ public class BZ329275_HandleUnsetAsNullAction extends BZ329275Action {
 	protected boolean isHandleUnsetAsNull() {
 		return true;
 	}
-	
+
 }

@@ -33,9 +33,9 @@ import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
 /**
- * Provides a Hibernate extension (called a UserType) to support serializing EMF custom datatypes into VARCHAR columns.
- * The custom DataType mappers provided by this plugin have the job of registering Hibernate typedefs that use this
- * UserType implementation.
+ * Provides a Hibernate extension (called a UserType) to support serializing EMF custom datatypes
+ * into VARCHAR columns. The custom DataType mappers provided by this plugin have the job of
+ * registering Hibernate typedefs that use this UserType implementation.
  * 
  * This class is intended for contribution to Teneo.
  * 
@@ -84,7 +84,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * Provide a copy of the datatypes. Converts to String and then back to datatype again.
 	 * 
 	 * @param value
-	 *            the value to copy.
+	 *          the value to copy.
 	 * @return the value always.
 	 */
 	public Object deepCopy(Object value) {
@@ -96,9 +96,9 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * Are the two objects equal?
 	 * 
 	 * @param x
-	 *            an object to compare.
+	 *          an object to compare.
 	 * @param y
-	 *            an object to compare.
+	 *          an object to compare.
 	 * @return a standard equals test between the objects.
 	 */
 	public boolean equals(Object x, Object y) {
@@ -113,17 +113,19 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * Populate the model object property from the ResultSet.
 	 * 
 	 * @param resultSet
-	 *            the non-null ResultSet from which the field will be populated.
+	 *          the non-null ResultSet from which the field will be populated.
 	 * @param names
-	 *            the names of the columns.
+	 *          the names of the columns.
 	 * @param owner
-	 *            the owning object.
-	 * @return null if the column's value is null; otherwise, use the EMF factory to construct a new instance of the
-	 *         custom EMF data type from the contents of the String value of the column.
+	 *          the owning object.
+	 * @return null if the column's value is null; otherwise, use the EMF factory to construct a new
+	 *         instance of the custom EMF data type from the contents of the String value of the
+	 *         column.
 	 * @throws SQLException
-	 *             if the value cannot be retrieved from the ResultSet.
+	 *           if the value cannot be retrieved from the ResultSet.
 	 */
-	public Object nullSafeGet(ResultSet resultSet, String[] names, SessionImplementor sessionImplementor, Object owner) throws SQLException {
+	public Object nullSafeGet(ResultSet resultSet, String[] names,
+			SessionImplementor sessionImplementor, Object owner) throws SQLException {
 
 		String data = resultSet.getString(names[0]);
 		if (data == null) {
@@ -136,15 +138,16 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * Populate the database statement from the model object property.
 	 * 
 	 * @param statement
-	 *            the non-null Statement to insert the value into.
+	 *          the non-null Statement to insert the value into.
 	 * @param value
-	 *            the object to convert.
+	 *          the object to convert.
 	 * @param index
-	 *            the index into the statement where to insert the converted value.
+	 *          the index into the statement where to insert the converted value.
 	 * @throws SQLException
-	 *             if the converted value cannot be set in the statement.
+	 *           if the converted value cannot be set in the statement.
 	 */
-	public void nullSafeSet(PreparedStatement statement, Object value, int index, SessionImplementor sessionImplementor) throws SQLException {
+	public void nullSafeSet(PreparedStatement statement, Object value, int index,
+			SessionImplementor sessionImplementor) throws SQLException {
 		String pvalue = null;
 		if (value != null) {
 			pvalue = this.eFactory.convertToString(this.eDataType, value);
@@ -160,7 +163,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * No-op implementation.
 	 * 
 	 * @param value
-	 *            the value to dissemble.
+	 *          the value to dissemble.
 	 * @return the value passed in.
 	 */
 	public Serializable disassemble(Object value) {
@@ -171,9 +174,9 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * No-op implementation.
 	 * 
 	 * @param cachedValue
-	 *            the value to assemble.
+	 *          the value to assemble.
 	 * @param owner
-	 *            the owning object.
+	 *          the owning object.
 	 * @return the cachedValue passed in.
 	 */
 	public Object assemble(Serializable cachedValue, Object owner) {
@@ -184,11 +187,11 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * No-op implementation.
 	 * 
 	 * @param original
-	 *            the value to replace.
+	 *          the value to replace.
 	 * @param target
-	 *            the target object.
+	 *          the target object.
 	 * @param owner
-	 *            the owning object.
+	 *          the owning object.
 	 * @return the original value passed in.
 	 */
 	public Object replace(Object original, Object target, Object owner) {
@@ -199,7 +202,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * No-op implementation.
 	 * 
 	 * @param x
-	 *            the object to get the hashcode for.
+	 *          the object to get the hashcode for.
 	 * @return x's hashcode.
 	 */
 	public int hashCode(Object x) {
@@ -210,11 +213,13 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * ParameterizedType implementation
 	 ************************************************************************/
 	/**
-	 * Read in the type parameters from the Hibernate mapping and determine the EMF factory and custom data type to use.
+	 * Read in the type parameters from the Hibernate mapping and determine the EMF factory and custom
+	 * data type to use.
 	 * 
 	 * @param properties
-	 *            the properties containing key value pairs for the {@link #PACKAGE_IMPLEMENTATION_CLASS_NAME_PROPERTY}
-	 *            and {@link #ATTRIBUTE_NAME_PROPERTY} parameters.
+	 *          the properties containing key value pairs for the
+	 *          {@link #PACKAGE_IMPLEMENTATION_CLASS_NAME_PROPERTY} and
+	 *          {@link #ATTRIBUTE_NAME_PROPERTY} parameters.
 	 */
 	public void setParameterValues(Properties properties) {
 		final String ePackageNsUri = properties.getProperty(HbMapperConstants.EPACKAGE_PARAM);
@@ -237,11 +242,11 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 			this.eDataType = (EDataType) eclassifier;
 		} else {
 			if (eclassifier == null) {
-				throw new IllegalArgumentException("Missing attribute " + edatatypeName + " in package implementation "
-						+ epackage.getName());
+				throw new IllegalArgumentException("Missing attribute " + edatatypeName
+						+ " in package implementation " + epackage.getName());
 			} else {
-				throw new IllegalArgumentException("Found property of type " + eclassifier.getClass().getName()
-						+ " when an EDataType was expected.");
+				throw new IllegalArgumentException("Found property of type "
+						+ eclassifier.getClass().getName() + " when an EDataType was expected.");
 			}
 		}
 	}

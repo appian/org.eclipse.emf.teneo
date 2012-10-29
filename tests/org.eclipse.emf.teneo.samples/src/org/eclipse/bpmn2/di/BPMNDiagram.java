@@ -19,63 +19,63 @@ import java.util.List;
 import org.eclipse.dd.di.Diagram;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>BPMN Diagram</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>BPMN Diagram</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.di.BPMNDiagram#getPlane <em>Plane</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.di.BPMNDiagram#getLabelStyle <em>Label Style</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.di.BPMNDiagram#getPlane <em>Plane</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.di.BPMNDiagram#getLabelStyle <em>Label Style</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.bpmn2.di.BpmnDiPackage#getBPMNDiagram()
  * @model extendedMetaData="name='BPMNDiagram' kind='elementOnly'"
  * @generated
  */
 public interface BPMNDiagram extends Diagram {
 	/**
-	 * Returns the value of the '<em><b>Plane</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Plane</b></em>' containment reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Plane</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Plane</em>' containment reference isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Plane</em>' containment reference.
 	 * @see #setPlane(BPMNPlane)
 	 * @see org.eclipse.bpmn2.di.BpmnDiPackage#getBPMNDiagram_Plane()
-	 * @model containment="true" required="true" ordered="false"
-	 *        extendedMetaData="kind='element' name='BPMNPlane' namespace='http://www.omg.org/spec/BPMN/20100524/DI'"
+	 * @model containment="true" required="true" ordered="false" extendedMetaData=
+	 *        "kind='element' name='BPMNPlane' namespace='http://www.omg.org/spec/BPMN/20100524/DI'"
 	 * @generated
 	 */
 	BPMNPlane getPlane();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpmn2.di.BPMNDiagram#getPlane <em>Plane</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Plane</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.bpmn2.di.BPMNDiagram#getPlane <em>Plane</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Plane</em>' containment reference.
 	 * @see #getPlane()
 	 * @generated
 	 */
 	void setPlane(BPMNPlane value);
 
 	/**
-	 * Returns the value of the '<em><b>Label Style</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpmn2.di.BPMNLabelStyle}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Label Style</b></em>' containment reference list. The list
+	 * contents are of type {@link org.eclipse.bpmn2.di.BPMNLabelStyle}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Label Style</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Label Style</em>' containment reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Label Style</em>' containment reference list.
 	 * @see org.eclipse.bpmn2.di.BpmnDiPackage#getBPMNDiagram_LabelStyle()
-	 * @model containment="true" ordered="false"
-	 *        extendedMetaData="kind='element' name='BPMNLabelStyle' namespace='http://www.omg.org/spec/BPMN/20100524/DI'"
+	 * @model containment="true" ordered="false" extendedMetaData=
+	 *        "kind='element' name='BPMNLabelStyle' namespace='http://www.omg.org/spec/BPMN/20100524/DI'"
 	 * @generated
 	 */
 	List<BPMNLabelStyle> getLabelStyle();

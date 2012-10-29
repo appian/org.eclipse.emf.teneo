@@ -27,12 +27,11 @@ import org.hibernate.collection.spi.PersistentCollection;
 import org.hibernate.engine.spi.SessionImplementor;
 
 /**
- * The list used in instances mapped using the EAV schema. The persistentList is
- * the Hibernate list present as the referenceValues in the
- * EAVMulti*ContainmentEReferenceValueHolder.
+ * The list used in instances mapped using the EAV schema. The persistentList is the Hibernate list
+ * present as the referenceValues in the EAVMulti*ContainmentEReferenceValueHolder.
  */
-public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
-		implements EAVDelegatingList, PersistableDelegateList<E> {
+public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implements
+		EAVDelegatingList, PersistableDelegateList<E> {
 
 	private static final long serialVersionUID = 1L;
 	private EStructuralFeature eStructuralFeature;
@@ -100,8 +99,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@SuppressWarnings("unchecked")
 	public void setPersistentList(List<?> persistentList) {
 		this.persistentList = (List<EAVValueHolder>) persistentList;
-		if (isHibernateListPresent()
-				&& getHibernatePersistentList().wasInitialized()) {
+		if (isHibernateListPresent() && getHibernatePersistentList().wasInitialized()) {
 			doInitialize();
 		} else if (persistentList instanceof ArrayList<?>) {
 			// newly persisted
@@ -146,16 +144,13 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	private final boolean isConnectedToSession(SessionImplementor session) {
 		final PersistentCollection persistentCollection = (PersistentCollection) getDelegate();
-		return session != null
-				&& session.isOpen()
-				&& session.getPersistenceContext().containsCollection(
-						persistentCollection);
+		return session != null && session.isOpen()
+				&& session.getPersistenceContext().containsCollection(persistentCollection);
 	}
 
 	@Override
 	protected void delegateAdd(E object) {
-		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner()
-				.getElement(object);
+		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner().getElement(object);
 		valueHolder.setListIndex(getHibernatePersistentList().size());
 		persistentList.add(valueHolder);
 
@@ -175,15 +170,13 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		// insert in the middle, load the whole list
 		delegateList();
 
-		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner()
-				.getElement(object);
+		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner().getElement(object);
 
 		persistentList.add(index, valueHolder);
 
 		int newIndex = index;
 		// note, can not use the size() call, must do persistentList.size()
-		for (EAVValueHolder element : persistentList.subList(index,
-				persistentList.size())) {
+		for (EAVValueHolder element : persistentList.subList(index, persistentList.size())) {
 			element.setListIndex(newIndex++);
 		}
 
@@ -254,8 +247,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	@Override
 	public Iterator<E> iterator() {
-		if (!isDelegateInitialized() && isHibernateListPresent()
-				&& isConnectedToSession()) {
+		if (!isDelegateInitialized() && isHibernateListPresent() && isConnectedToSession()) {
 			boolean extraLazyLoaded = getValueHolderOwner() instanceof EAVExtraMultiContainmentEReferenceValueHolder;
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiNonContainmentEReferenceValueHolder;
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
@@ -285,16 +277,14 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		final EAVValueHolder result = persistentList.remove(sourceIndex);
 
 		int newIndex = sourceIndex;
-		for (EAVValueHolder element : persistentList.subList(sourceIndex,
-				size())) {
+		for (EAVValueHolder element : persistentList.subList(sourceIndex, size())) {
 			element.setListIndex(newIndex++);
 		}
 
 		persistentList.add(targetIndex, result);
 
 		newIndex = targetIndex;
-		for (EAVValueHolder element : persistentList.subList(sourceIndex,
-				size())) {
+		for (EAVValueHolder element : persistentList.subList(sourceIndex, size())) {
 			element.setListIndex(newIndex++);
 		}
 		return super.delegateMove(targetIndex, sourceIndex);
@@ -303,8 +293,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@Override
 	@SuppressWarnings("unchecked")
 	protected E delegateRemove(int index) {
-		final boolean reallyLazy = index == (size() - 1)
-				&& !isDelegateInitialized();
+		final boolean reallyLazy = index == (size() - 1) && !isDelegateInitialized();
 		if (!reallyLazy) {
 			// force a load before removing
 			delegateList();
@@ -321,8 +310,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		int newIndex = index;
 		// must use persistentList.size() as the delegate size has not yet been
 		// updated!
-		for (EAVValueHolder element : persistentList.subList(index,
-				persistentList.size())) {
+		for (EAVValueHolder element : persistentList.subList(index, persistentList.size())) {
 			element.setListIndex(newIndex++);
 		}
 		return super.delegateRemove(index);
@@ -331,11 +319,9 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@SuppressWarnings("unchecked")
 	@Override
 	protected E delegateSet(int index, E object) {
-		final EAVValueHolder newValueHolder = (EAVValueHolder) getValueHolderOwner()
-				.getElement(object);
+		final EAVValueHolder newValueHolder = (EAVValueHolder) getValueHolderOwner().getElement(object);
 		newValueHolder.setListIndex(index);
-		final EAVValueHolder oldValueHolder = persistentList.set(index,
-				newValueHolder);
+		final EAVValueHolder oldValueHolder = persistentList.set(index, newValueHolder);
 
 		// clear old object
 		if (oldValueHolder != null) {

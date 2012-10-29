@@ -28,26 +28,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ad Hoc Sub Process</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ad Hoc Sub Process</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.AdHocSubProcessImpl#getCompletionCondition <em>Completion Condition</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.AdHocSubProcessImpl#isCancelRemainingInstances <em>Cancel Remaining Instances</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.AdHocSubProcessImpl#getOrdering <em>Ordering</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AdHocSubProcessImpl#getCompletionCondition <em>Completion
+ * Condition</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AdHocSubProcessImpl#isCancelRemainingInstances <em>Cancel
+ * Remaining Instances</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AdHocSubProcessImpl#getOrdering <em>Ordering</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class AdHocSubProcessImpl extends SubProcessImpl implements
-		AdHocSubProcess {
+public class AdHocSubProcessImpl extends SubProcessImpl implements AdHocSubProcess {
 	/**
-	 * The cached value of the '{@link #getCompletionCondition() <em>Completion Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCompletionCondition() <em>Completion Condition</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCompletionCondition()
 	 * @generated
 	 * @ordered
@@ -55,9 +55,9 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	protected Expression completionCondition;
 
 	/**
-	 * The default value of the '{@link #isCancelRemainingInstances() <em>Cancel Remaining Instances</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isCancelRemainingInstances()
+	 * <em>Cancel Remaining Instances</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isCancelRemainingInstances()
 	 * @generated
 	 * @ordered
@@ -65,9 +65,9 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	protected static final boolean CANCEL_REMAINING_INSTANCES_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isCancelRemainingInstances() <em>Cancel Remaining Instances</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isCancelRemainingInstances()
+	 * <em>Cancel Remaining Instances</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isCancelRemainingInstances()
 	 * @generated
 	 * @ordered
@@ -75,9 +75,9 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	protected boolean cancelRemainingInstances = CANCEL_REMAINING_INSTANCES_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOrdering()
 	 * @generated
 	 * @ordered
@@ -85,9 +85,9 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	protected static final AdHocOrdering ORDERING_EDEFAULT = AdHocOrdering.PARALLEL;
 
 	/**
-	 * The cached value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOrdering() <em>Ordering</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOrdering()
 	 * @generated
 	 * @ordered
@@ -95,8 +95,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	protected AdHocOrdering ordering = ORDERING_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AdHocSubProcessImpl() {
@@ -104,8 +104,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,8 +114,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getCompletionCondition() {
@@ -123,19 +123,18 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCompletionCondition(
-			Expression newCompletionCondition, NotificationChain msgs) {
+	public NotificationChain basicSetCompletionCondition(Expression newCompletionCondition,
+			NotificationChain msgs) {
 		Expression oldCompletionCondition = completionCondition;
 		completionCondition = newCompletionCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION,
-					oldCompletionCondition, newCompletionCondition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION, oldCompletionCondition,
+					newCompletionCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -145,39 +144,31 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCompletionCondition(Expression newCompletionCondition) {
 		if (newCompletionCondition != completionCondition) {
 			NotificationChain msgs = null;
 			if (completionCondition != null)
-				msgs = ((InternalEObject) completionCondition)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) completionCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION, null, msgs);
 			if (newCompletionCondition != null)
-				msgs = ((InternalEObject) newCompletionCondition)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION,
-								null, msgs);
+				msgs = ((InternalEObject) newCompletionCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION, null, msgs);
 			msgs = basicSetCompletionCondition(newCompletionCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION,
-					newCompletionCondition, newCompletionCondition));
+					Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION, newCompletionCondition,
+					newCompletionCondition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isCancelRemainingInstances() {
@@ -185,24 +176,22 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCancelRemainingInstances(boolean newCancelRemainingInstances) {
 		boolean oldCancelRemainingInstances = cancelRemainingInstances;
 		cancelRemainingInstances = newCancelRemainingInstances;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Bpmn2Package.AD_HOC_SUB_PROCESS__CANCEL_REMAINING_INSTANCES,
-					oldCancelRemainingInstances, cancelRemainingInstances));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.AD_HOC_SUB_PROCESS__CANCEL_REMAINING_INSTANCES, oldCancelRemainingInstances,
+					cancelRemainingInstances));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdHocOrdering getOrdering() {
@@ -210,8 +199,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOrdering(AdHocOrdering newOrdering) {
@@ -219,18 +208,17 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 		ordering = newOrdering == null ? ORDERING_EDEFAULT : newOrdering;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.AD_HOC_SUB_PROCESS__ORDERING, oldOrdering,
-					ordering));
+					Bpmn2Package.AD_HOC_SUB_PROCESS__ORDERING, oldOrdering, ordering));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.AD_HOC_SUB_PROCESS__COMPLETION_CONDITION:
 			return basicSetCompletionCondition(null, msgs);
@@ -239,8 +227,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -257,8 +245,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -278,8 +266,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -299,8 +287,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -317,8 +305,8 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -335,4 +323,4 @@ public class AdHocSubProcessImpl extends SubProcessImpl implements
 		return result.toString();
 	}
 
-} //AdHocSubProcessImpl
+} // AdHocSubProcessImpl

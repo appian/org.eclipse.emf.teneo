@@ -45,8 +45,8 @@ public class JoinColumnsAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Can be overridden by subclass returns properties which control the or layer. Such as setting
-	 * of eager loading.
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of
+	 * eager loading.
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {

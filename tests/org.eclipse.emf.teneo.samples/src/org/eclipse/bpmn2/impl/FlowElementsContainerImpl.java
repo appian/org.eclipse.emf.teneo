@@ -33,25 +33,25 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Flow Elements Container</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Flow Elements Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.FlowElementsContainerImpl#getLaneSets <em>Lane Sets</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.FlowElementsContainerImpl#getFlowElements <em>Flow Elements</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FlowElementsContainerImpl#getLaneSets <em>Lane Sets</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FlowElementsContainerImpl#getFlowElements <em>Flow Elements
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public abstract class FlowElementsContainerImpl extends BaseElementImpl
-		implements FlowElementsContainer {
+public abstract class FlowElementsContainerImpl extends BaseElementImpl implements
+		FlowElementsContainer {
 	/**
 	 * The cached value of the '{@link #getLaneSets() <em>Lane Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLaneSets()
 	 * @generated
 	 * @ordered
@@ -59,9 +59,9 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 	protected EList<LaneSet> laneSets;
 
 	/**
-	 * The cached value of the '{@link #getFlowElements() <em>Flow Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFlowElements() <em>Flow Elements</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFlowElements()
 	 * @generated
 	 * @ordered
@@ -69,8 +69,8 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 	protected EList<FlowElement> flowElements;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FlowElementsContainerImpl() {
@@ -78,8 +78,8 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -88,54 +88,51 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<LaneSet> getLaneSets() {
 		if (laneSets == null) {
-			laneSets = new EObjectContainmentEList<LaneSet>(LaneSet.class,
-					this, Bpmn2Package.FLOW_ELEMENTS_CONTAINER__LANE_SETS);
+			laneSets = new EObjectContainmentEList<LaneSet>(LaneSet.class, this,
+					Bpmn2Package.FLOW_ELEMENTS_CONTAINER__LANE_SETS);
 		}
 		return laneSets;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<FlowElement> getFlowElements() {
 		if (flowElements == null) {
-			flowElements = new EObjectContainmentEList<FlowElement>(
-					FlowElement.class, this,
+			flowElements = new EObjectContainmentEList<FlowElement>(FlowElement.class, this,
 					Bpmn2Package.FLOW_ELEMENTS_CONTAINER__FLOW_ELEMENTS);
 		}
 		return flowElements;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.FLOW_ELEMENTS_CONTAINER__LANE_SETS:
-			return ((InternalEList<?>) getLaneSets()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getLaneSets()).basicRemove(otherEnd, msgs);
 		case Bpmn2Package.FLOW_ELEMENTS_CONTAINER__FLOW_ELEMENTS:
-			return ((InternalEList<?>) getFlowElements()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getFlowElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -150,8 +147,8 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -164,16 +161,15 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 			return;
 		case Bpmn2Package.FLOW_ELEMENTS_CONTAINER__FLOW_ELEMENTS:
 			getFlowElements().clear();
-			getFlowElements().addAll(
-					(Collection<? extends FlowElement>) newValue);
+			getFlowElements().addAll((Collection<? extends FlowElement>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -190,8 +186,8 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -205,4 +201,4 @@ public abstract class FlowElementsContainerImpl extends BaseElementImpl
 		return super.eIsSet(featureID);
 	}
 
-} //FlowElementsContainerImpl
+} // FlowElementsContainerImpl

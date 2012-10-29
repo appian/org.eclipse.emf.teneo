@@ -40,8 +40,7 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 	private static final long serialVersionUID = -1219767393020090471L;
 
 	/** The logger */
-	private static Log log = LogFactory
-			.getLog(FeatureMapEntryInstantiator.class);
+	private static Log log = LogFactory.getLog(FeatureMapEntryInstantiator.class);
 
 	/** The persistentclass for which we do all this */
 	private final PersistentClass persistentClass;
@@ -51,8 +50,7 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 
 	/** Constructor */
 	public FeatureMapEntryInstantiator(PersistentClass pc) {
-		AssertUtil.assertTrue(pc.getEntityName()
-				+ " does not have a meta attribute",
+		AssertUtil.assertTrue(pc.getEntityName() + " does not have a meta attribute",
 				pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null);
 		if (log.isDebugEnabled()) {
 			log.debug("Creating fme instantiator for " + pc.getEntityName());

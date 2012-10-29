@@ -14,27 +14,25 @@
  */
 package org.eclipse.dd.di.impl;
 
-import org.eclipse.dd.di.*;
-
+import org.eclipse.dd.di.DiFactory;
+import org.eclipse.dd.di.DiPackage;
+import org.eclipse.dd.di.DiagramElement;
+import org.eclipse.dd.di.DocumentRoot;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static DiFactory init() {
@@ -51,9 +49,8 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiFactoryImpl() {
@@ -61,8 +58,8 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -79,8 +76,8 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -89,8 +86,8 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiagramElement createDiagramElement() {
@@ -99,8 +96,8 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiPackage getDiPackage() {
@@ -108,8 +105,8 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -118,4 +115,4 @@ public class DiFactoryImpl extends EFactoryImpl implements DiFactory {
 		return DiPackage.eINSTANCE;
 	}
 
-} //DiFactoryImpl
+} // DiFactoryImpl

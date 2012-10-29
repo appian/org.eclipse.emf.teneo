@@ -69,8 +69,8 @@ public class EPackageConstructor {
 	}
 
 	/**
-	 * This method will read the models from the modelFiles and the EcoreModelPackages. The EPackages are initialized
-	 * and registered in the EPackage registry.
+	 * This method will read the models from the modelFiles and the EcoreModelPackages. The EPackages
+	 * are initialized and registered in the EPackage registry.
 	 * 
 	 * @return the EPackages which are read from the modelFiles or are defined in EcoreModelPackages.
 	 */
@@ -150,10 +150,12 @@ public class EPackageConstructor {
 	}
 
 	/**
-	 * Builds a list of epackages from the modelfiles, pre-normalized for duplicates and not registered.
+	 * Builds a list of epackages from the modelfiles, pre-normalized for duplicates and not
+	 * registered.
 	 */
 	private List<EPackage> buildFromModelFiles() {
-		// separate the files in xsd and ecore files and treat each of them separately
+		// separate the files in xsd and ecore files and treat each of them
+		// separately
 		final ArrayList<String> ecoreFiles = new ArrayList<String>();
 		final ArrayList<String> xsdFiles = new ArrayList<String>();
 		for (String modelFile : ecoreModelFiles) {
@@ -191,7 +193,8 @@ public class EPackageConstructor {
 	// final java.net.URI netURI = this.getClass().getResource(xsdFile).toURI();
 	// final URI uri = URI.createURI(netURI.toString());
 	//
-	// // Note: we use an inline SerializableXSDEcoreBuilder to avoid a dependency on
+	// // Note: we use an inline SerializableXSDEcoreBuilder to avoid a dependency
+	// on
 	// // XSDEcoreBuilder during
 	// // classloading.
 	// for (Object obj : new XSDEcoreBuilder().generate(uri)) {
@@ -199,19 +202,22 @@ public class EPackageConstructor {
 	// result.add(ePackage);
 	// }
 	// } catch (Exception e) {
-	// throw new StateException("Could not build ECore model from XML Schema, from file " + xsdFile, e);
+	// throw new
+	// StateException("Could not build ECore model from XML Schema, from file " +
+	// xsdFile, e);
 	// }
 	// }
 	// return result;
 	// }
 
 	/**
-	 * Reads the epackages present in the passed ecore files. Note this method does not register the epackages. It does
-	 * not check for duplicates either.
+	 * Reads the epackages present in the passed ecore files. Note this method does not register the
+	 * epackages. It does not check for duplicates either.
 	 */
 	private List<EPackage> readFromEcore(List<String> ecoreFiles) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("*", new EcoreResourceFactoryImpl());
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 		for (String ecoreFile : ecoreFiles) {
 			if (log.isDebugEnabled()) {

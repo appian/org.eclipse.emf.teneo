@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static FleetFactory init() {
 		try {
-			FleetFactory theFleetFactory = (FleetFactory)EPackage.Registry.INSTANCE.getEFactory("http:///fleet.ecore"); 
+			FleetFactory theFleetFactory = (FleetFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http:///fleet.ecore");
 			if (theFleetFactory != null) {
 				return theFleetFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new FleetFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FleetFactoryImpl() {
@@ -53,35 +50,50 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FleetPackage.VEHICLE: return createVehicle();
-			case FleetPackage.PERSON: return createPerson();
-			case FleetPackage.ADDRESS: return createAddress();
-			case FleetPackage.VEHICLE_INFO: return createVehicleInfo();
-			case FleetPackage.MANUFACTURING_PLANT: return createManufacturingPlant();
-			case FleetPackage.FLEET: return createFleet();
-			case FleetPackage.GARAGE: return createGarage();
-			case FleetPackage.TIRE: return createTire();
-			case FleetPackage.HYBRID: return createHybrid();
-			case FleetPackage.CAR: return createCar();
-			case FleetPackage.ENGINE_FACTORY: return createEngineFactory();
-			case FleetPackage.US_ADDRESS: return createUSAddress();
-			case FleetPackage.VIN: return createVin();
-			case FleetPackage.TRANSPORTATION_DEVICE: return createTransportationDevice();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case FleetPackage.VEHICLE:
+			return createVehicle();
+		case FleetPackage.PERSON:
+			return createPerson();
+		case FleetPackage.ADDRESS:
+			return createAddress();
+		case FleetPackage.VEHICLE_INFO:
+			return createVehicleInfo();
+		case FleetPackage.MANUFACTURING_PLANT:
+			return createManufacturingPlant();
+		case FleetPackage.FLEET:
+			return createFleet();
+		case FleetPackage.GARAGE:
+			return createGarage();
+		case FleetPackage.TIRE:
+			return createTire();
+		case FleetPackage.HYBRID:
+			return createHybrid();
+		case FleetPackage.CAR:
+			return createCar();
+		case FleetPackage.ENGINE_FACTORY:
+			return createEngineFactory();
+		case FleetPackage.US_ADDRESS:
+			return createUSAddress();
+		case FleetPackage.VIN:
+			return createVin();
+		case FleetPackage.TRANSPORTATION_DEVICE:
+			return createTransportationDevice();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Vehicle createVehicle() {
@@ -90,8 +102,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Person createPerson() {
@@ -100,8 +112,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Address createAddress() {
@@ -110,8 +122,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public VehicleInfo createVehicleInfo() {
@@ -120,8 +132,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ManufacturingPlant createManufacturingPlant() {
@@ -130,8 +142,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Fleet createFleet() {
@@ -140,8 +152,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Garage createGarage() {
@@ -150,8 +162,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Tire createTire() {
@@ -160,8 +172,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Hybrid createHybrid() {
@@ -170,8 +182,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Car createCar() {
@@ -180,8 +192,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EngineFactory createEngineFactory() {
@@ -190,8 +202,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public USAddress createUSAddress() {
@@ -200,8 +212,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Vin createVin() {
@@ -210,8 +222,8 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TransportationDevice createTransportationDevice() {
@@ -220,17 +232,17 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FleetPackage getFleetPackage() {
-		return (FleetPackage)getEPackage();
+		return (FleetPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -239,4 +251,4 @@ public class FleetFactoryImpl extends EFactoryImpl implements FleetFactory {
 		return FleetPackage.eINSTANCE;
 	}
 
-} //FleetFactoryImpl
+} // FleetFactoryImpl

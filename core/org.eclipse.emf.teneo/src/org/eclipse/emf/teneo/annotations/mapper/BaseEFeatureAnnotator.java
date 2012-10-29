@@ -44,7 +44,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
- * Placeholder for several utility methods which are relevant for annotating ereferences and eattributes.
+ * Placeholder for several utility methods which are relevant for annotating ereferences and
+ * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.17 $
@@ -72,8 +73,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator# setPersistenceOptions(org.eclipse
-	 * .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
+	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
@@ -89,9 +90,9 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 
 		// disabled because of bugzilla:
 		// 317479
-//		if (aAttribute.getId() != null) {
-//			aAttribute.getModelEAttribute().setLowerBound(1);
-//		}
+		// if (aAttribute.getId() != null) {
+		// aAttribute.getModelEAttribute().setLowerBound(1);
+		// }
 
 		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 
@@ -110,7 +111,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
 			boolean setUnique = false;
 			// bugzilla 249246
-			if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID() && aAttribute.getId() == null) {
+			if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID()
+					&& aAttribute.getId() == null) {
 				if (aAttribute.getPaEClass().getPaSuperEntity() != null
 						&& aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
 					setUnique = true;
@@ -151,7 +153,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		}
 
 		final Column c = aAttribute.getColumn();
-		if (isStringType(aAttribute.getModelEAttribute()) && c != null && defaultVarCharLength > 0 && !c.isSetLength()) {
+		if (isStringType(aAttribute.getModelEAttribute()) && c != null && defaultVarCharLength > 0
+				&& !c.isSetLength()) {
 			c.setLength(defaultVarCharLength);
 		}
 
@@ -187,8 +190,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	}
 
 	/** Return a list of join columns */
-	protected List<JoinColumn> getJoinColumns(List<String> names, boolean optional, boolean isUpdateInsertable,
-			PAnnotation pAnnotation) {
+	protected List<JoinColumn> getJoinColumns(List<String> names, boolean optional,
+			boolean isUpdateInsertable, PAnnotation pAnnotation) {
 		final List<JoinColumn> result = new ArrayList<JoinColumn>();
 		for (String name : names) {
 			JoinColumn jc = getFactory().createJoinColumn();
@@ -239,7 +242,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	}
 
 	/**
-	 * Determines where to place a certain annotation/characteristic, this is done by comparing names..
+	 * Determines where to place a certain annotation/characteristic, this is done by comparing
+	 * names..
 	 */
 	protected boolean compareNames(EReference here, EReference there) {
 		final String nameHere = here.eClass().getName() + here.getName();
@@ -295,8 +299,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
 		// clazz is hidden somewhere
 		if (clazz == null || Object.class.equals(clazz)) {
-			ArrayList<EClassifier> eclassifiers = EcoreDataTypes.INSTANCE.getItemTypes((EDataType) eAttribute
-					.getEType());
+			ArrayList<EClassifier> eclassifiers = EcoreDataTypes.INSTANCE
+					.getItemTypes((EDataType) eAttribute.getEType());
 			for (EClassifier eclassifier : eclassifiers) {
 				if (eclassifier.getInstanceClass() != null) {
 					clazz = eclassifier.getInstanceClass();
@@ -320,7 +324,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			aAttribute.setTemporal(temporal);
 			temporal.setEModelElement(eAttribute);
 		} else if (clazz != null
-				&& (Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+				&& (Calendar.class.isAssignableFrom(clazz)
+						|| eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
 						.getDateTime())) {
 			final Temporal temporal = getFactory().createTemporal();
 			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {

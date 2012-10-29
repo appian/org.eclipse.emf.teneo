@@ -8,7 +8,6 @@
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
-
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.1 $
@@ -27,7 +26,7 @@ public class BZ258266 {
 
 	/**
 	 * @param id
-	 *            the id to set
+	 *          the id to set
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -42,7 +41,7 @@ public class BZ258266 {
 
 	/**
 	 * @param name
-	 *            the name to set
+	 *          the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;

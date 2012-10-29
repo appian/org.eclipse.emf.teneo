@@ -26,24 +26,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Service Task</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Service Task</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ServiceTaskImpl#getImplementation <em>Implementation</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ServiceTaskImpl#getOperationRef <em>Operation Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ServiceTaskImpl#getImplementation <em>Implementation</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ServiceTaskImpl#getOperationRef <em>Operation Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -51,9 +50,9 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	protected static final String IMPLEMENTATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImplementation()
 	 * @generated
 	 * @ordered
@@ -61,9 +60,9 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	protected String implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOperationRef() <em>Operation Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOperationRef() <em>Operation Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperationRef()
 	 * @generated
 	 * @ordered
@@ -71,8 +70,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	protected Operation operationRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ServiceTaskImpl() {
@@ -80,8 +79,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -90,8 +89,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getImplementation() {
@@ -99,8 +98,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImplementation(String newImplementation) {
@@ -108,13 +107,12 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SERVICE_TASK__IMPLEMENTATION,
-					oldImplementation, implementation));
+					Bpmn2Package.SERVICE_TASK__IMPLEMENTATION, oldImplementation, implementation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation getOperationRef() {
@@ -124,16 +122,15 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 			if (operationRef != oldOperationRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.SERVICE_TASK__OPERATION_REF,
-							oldOperationRef, operationRef));
+							Bpmn2Package.SERVICE_TASK__OPERATION_REF, oldOperationRef, operationRef));
 			}
 		}
 		return operationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operation basicGetOperationRef() {
@@ -141,8 +138,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOperationRef(Operation newOperationRef) {
@@ -150,13 +147,12 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 		operationRef = newOperationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SERVICE_TASK__OPERATION_REF, oldOperationRef,
-					operationRef));
+					Bpmn2Package.SERVICE_TASK__OPERATION_REF, oldOperationRef, operationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -173,8 +169,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -191,8 +187,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -209,16 +205,16 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.SERVICE_TASK__IMPLEMENTATION:
-			return IMPLEMENTATION_EDEFAULT == null ? implementation != null
-					: !IMPLEMENTATION_EDEFAULT.equals(implementation);
+			return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT
+					.equals(implementation);
 		case Bpmn2Package.SERVICE_TASK__OPERATION_REF:
 			return operationRef != null;
 		}
@@ -226,8 +222,8 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -242,4 +238,4 @@ public class ServiceTaskImpl extends TaskImpl implements ServiceTask {
 		return result.toString();
 	}
 
-} //ServiceTaskImpl
+} // ServiceTaskImpl

@@ -11,34 +11,33 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Map</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Map</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.example.mindmap.Map#getRootTopics <em>Root Topics</em>}</li>
- *   <li>{@link org.example.mindmap.Map#getRelations <em>Relations</em>}</li>
- *   <li>{@link org.example.mindmap.Map#getResources <em>Resources</em>}</li>
- *   <li>{@link org.example.mindmap.Map#getTitle <em>Title</em>}</li>
+ * <li>{@link org.example.mindmap.Map#getRootTopics <em>Root Topics</em>}</li>
+ * <li>{@link org.example.mindmap.Map#getRelations <em>Relations</em>}</li>
+ * <li>{@link org.example.mindmap.Map#getResources <em>Resources</em>}</li>
+ * <li>{@link org.example.mindmap.Map#getTitle <em>Title</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.example.mindmap.MindmapPackage#getMap()
  * @model extendedMetaData="name='Map' kind='elementOnly'"
  * @generated
  */
 public interface Map extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Root Topics</b></em>' containment reference list.
-	 * The list contents are of type {@link org.example.mindmap.Topic}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Root Topics</b></em>' containment reference list. The list
+	 * contents are of type {@link org.example.mindmap.Topic}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Root Topics</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Root Topics</em>' containment reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Root Topics</em>' containment reference list.
 	 * @see org.example.mindmap.MindmapPackage#getMap_RootTopics()
 	 * @model type="org.example.mindmap.Topic" containment="true"
@@ -48,14 +47,14 @@ public interface Map extends EObject {
 	EList getRootTopics();
 
 	/**
-	 * Returns the value of the '<em><b>Relations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.example.mindmap.Relationship}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Relations</b></em>' containment reference list. The list
+	 * contents are of type {@link org.example.mindmap.Relationship}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Relations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Relations</em>' containment reference list isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Relations</em>' containment reference list.
 	 * @see org.example.mindmap.MindmapPackage#getMap_Relations()
 	 * @model type="org.example.mindmap.Relationship" containment="true"
@@ -65,14 +64,14 @@ public interface Map extends EObject {
 	EList getRelations();
 
 	/**
-	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
-	 * The list contents are of type {@link org.example.mindmap.Resource}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list. The list
+	 * contents are of type {@link org.example.mindmap.Resource}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.example.mindmap.MindmapPackage#getMap_Resources()
 	 * @model type="org.example.mindmap.Resource" containment="true"
@@ -82,13 +81,13 @@ public interface Map extends EObject {
 	EList getResources();
 
 	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Title</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Title</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.example.mindmap.MindmapPackage#getMap_Title()
@@ -99,10 +98,11 @@ public interface Map extends EObject {
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link org.example.mindmap.Map#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
+	 * Sets the value of the '{@link org.example.mindmap.Map#getTitle <em>Title</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Title</em>' attribute.
 	 * @see #getTitle()
 	 * @generated
 	 */

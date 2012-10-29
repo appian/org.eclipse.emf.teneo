@@ -42,8 +42,8 @@ public class TestConfiguration {
 	private final boolean xml;
 
 	/** Constructor */
-	public TestConfiguration(String name, TestDatabaseAdapter dbAdapter, InheritanceType mappingStrategy,
-			boolean optimistic, boolean ejb3, boolean xml) {
+	public TestConfiguration(String name, TestDatabaseAdapter dbAdapter,
+			InheritanceType mappingStrategy, boolean optimistic, boolean ejb3, boolean xml) {
 		this.name = name;
 		this.dbAdapter = dbAdapter;
 		this.mappingStrategy = mappingStrategy;
@@ -56,9 +56,10 @@ public class TestConfiguration {
 	@Override
 	public String toString() {
 		StringBuffer s = new StringBuffer();
-		s.append("HibernateTestConfiguration(name=").append(getName()).append(", dbAdapter=").append(getDbAdapter())
-			.append(", ").append("mappingStrategy= ").append(getMappingStrategy().toString()).append(", ").append(
-				"optimistic= ").append(isOptimistic());
+		s.append("HibernateTestConfiguration(name=").append(getName()).append(", dbAdapter=")
+				.append(getDbAdapter()).append(", ").append("mappingStrategy= ")
+				.append(getMappingStrategy().toString()).append(", ").append("optimistic= ")
+				.append(isOptimistic());
 		return s.toString();
 	}
 
@@ -73,9 +74,10 @@ public class TestConfiguration {
 	public boolean equals(Object other) {
 		if (other instanceof TestConfiguration) {
 			TestConfiguration otherCfg = (TestConfiguration) other;
-			return otherCfg.getDbAdapter() == getDbAdapter() && otherCfg.getMappingStrategy() == getMappingStrategy() &&
-					otherCfg.isOptimistic() == isOptimistic() && otherCfg.isEjb3() == isEjb3() &&
-					otherCfg.isXml() == isXml();
+			return otherCfg.getDbAdapter() == getDbAdapter()
+					&& otherCfg.getMappingStrategy() == getMappingStrategy()
+					&& otherCfg.isOptimistic() == isOptimistic() && otherCfg.isEjb3() == isEjb3()
+					&& otherCfg.isXml() == isXml();
 		}
 		;
 		return false;

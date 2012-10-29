@@ -58,9 +58,9 @@ public class OrderColumnAction extends AbstractTestAction {
 
 				for (int i = 0; i < NO_ITEMS; i++) {
 					final Item item = factory.createItem();
-					item.setName("aaa_" + (i-10));
-					item.setName2("name_" + (i-10));
-					names.add("name_" + (i-10));
+					item.setName("aaa_" + (i - 10));
+					item.setName2("name_" + (i - 10));
+					names.add("name_" + (i - 10));
 					list.getItem().add(item);
 				}
 

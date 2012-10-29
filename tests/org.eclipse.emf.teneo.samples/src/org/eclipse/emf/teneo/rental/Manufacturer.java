@@ -9,31 +9,30 @@ package org.eclipse.emf.teneo.rental;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Manufacturer</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Manufacturer</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.rental.Manufacturer#getCode <em>Code</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.rental.Manufacturer#getTrusted <em>Trusted</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.Manufacturer#getCode <em>Code</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.Manufacturer#getTrusted <em>Trusted</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.rental.RentalPackage#getManufacturer()
  * @model
  * @generated
  */
 public interface Manufacturer extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Code</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Code</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Code</em>' attribute.
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getManufacturer_Code()
@@ -44,23 +43,24 @@ public interface Manufacturer extends EObject {
 	String getCode();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.rental.Manufacturer#getCode <em>Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Code</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.rental.Manufacturer#getCode <em>Code</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Code</em>' attribute.
 	 * @see #getCode()
 	 * @generated
 	 */
 	void setCode(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Trusted</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Trusted</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Trusted</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Trusted</em>' attribute isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Trusted</em>' attribute.
 	 * @see #setTrusted(Boolean)
 	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getManufacturer_Trusted()
@@ -70,10 +70,11 @@ public interface Manufacturer extends EObject {
 	Boolean getTrusted();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.rental.Manufacturer#getTrusted <em>Trusted</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Trusted</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.rental.Manufacturer#getTrusted
+	 * <em>Trusted</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Trusted</em>' attribute.
 	 * @see #getTrusted()
 	 * @generated
 	 */

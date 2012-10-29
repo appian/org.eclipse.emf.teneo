@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>EAV Mapping</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>EAV Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class EAVMappingImpl extends PAnnotationImpl implements EAVMapping {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EAVMappingImpl() {
@@ -30,8 +29,8 @@ public class EAVMappingImpl extends PAnnotationImpl implements EAVMapping {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class EAVMappingImpl extends PAnnotationImpl implements EAVMapping {
 		return PannotationPackage.Literals.EAV_MAPPING;
 	}
 
-} //EAVMappingImpl
+} // EAVMappingImpl

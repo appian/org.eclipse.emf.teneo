@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.PotentialOwner;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Potential Owner</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Potential Owner</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class PotentialOwnerImpl extends HumanPerformerImpl implements
-		PotentialOwner {
+public class PotentialOwnerImpl extends HumanPerformerImpl implements PotentialOwner {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PotentialOwnerImpl() {
@@ -40,8 +38,8 @@ public class PotentialOwnerImpl extends HumanPerformerImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class PotentialOwnerImpl extends HumanPerformerImpl implements
 		return Bpmn2Package.Literals.POTENTIAL_OWNER;
 	}
 
-} //PotentialOwnerImpl
+} // PotentialOwnerImpl

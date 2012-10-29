@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Message Visible Kind</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Message Visible Kind</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.di.BpmnDiPackage#getMessageVisibleKind()
  * @model
  * @generated
  */
 public enum MessageVisibleKind implements Enumerator {
 	/**
-	 * The '<em><b>Initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Initiating</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,9 @@ public enum MessageVisibleKind implements Enumerator {
 	INITIATING(0, "initiating", "initiating"),
 
 	/**
-	 * The '<em><b>Non initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Non initiating</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #NON_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -51,13 +50,13 @@ public enum MessageVisibleKind implements Enumerator {
 	NON_INITIATING(1, "non_initiating", "non_initiating");
 
 	/**
-	 * The '<em><b>Initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Initiating</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #INITIATING
 	 * @model name="initiating"
 	 * @generated
@@ -66,13 +65,13 @@ public enum MessageVisibleKind implements Enumerator {
 	public static final int INITIATING_VALUE = 0;
 
 	/**
-	 * The '<em><b>Non initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Non initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Non initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Non initiating</b></em>' literal object isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NON_INITIATING
 	 * @model name="non_initiating"
 	 * @generated
@@ -81,27 +80,27 @@ public enum MessageVisibleKind implements Enumerator {
 	public static final int NON_INITIATING_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Message Visible Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Message Visible Kind</b></em>' enumerators. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final MessageVisibleKind[] VALUES_ARRAY = new MessageVisibleKind[] {
-			INITIATING, NON_INITIATING, };
+	private static final MessageVisibleKind[] VALUES_ARRAY = new MessageVisibleKind[] { INITIATING,
+			NON_INITIATING, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Message Visible Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Message Visible Kind</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<MessageVisibleKind> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MessageVisibleKind> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Message Visible Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MessageVisibleKind get(String literal) {
@@ -115,9 +114,9 @@ public enum MessageVisibleKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Message Visible Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Message Visible Kind</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MessageVisibleKind getByName(String name) {
@@ -132,8 +131,8 @@ public enum MessageVisibleKind implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Message Visible Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static MessageVisibleKind get(int value) {
@@ -147,30 +146,29 @@ public enum MessageVisibleKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private MessageVisibleKind(int value, String name, String literal) {
@@ -180,8 +178,8 @@ public enum MessageVisibleKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -189,8 +187,8 @@ public enum MessageVisibleKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -198,8 +196,8 @@ public enum MessageVisibleKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -207,9 +205,9 @@ public enum MessageVisibleKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -217,4 +215,4 @@ public enum MessageVisibleKind implements Enumerator {
 		return literal;
 	}
 
-} //MessageVisibleKind
+} // MessageVisibleKind

@@ -28,28 +28,30 @@ import org.eclipse.emf.teneo.rental.RentalPackage;
 import org.eclipse.emf.teneo.rental.RentalUnit;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Contract</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Contract</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getRentToBusinessPartner <em>Rent To Business Partner</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getStartDate <em>Start Date</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getEndDate <em>End Date</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getCost <em>Cost</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getRentalUnits <em>Rental Units</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getCurrency <em>Currency</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getRentToBusinessPartner <em>Rent
+ * To Business Partner</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getStartDate <em>Start Date</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getEndDate <em>End Date</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getCost <em>Cost</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getRentalUnits <em>Rental Units
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getCurrency <em>Currency</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	/**
-	 * The default value of the '{@link #getRentToBusinessPartner() <em>Rent To Business Partner</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getRentToBusinessPartner() <em>Rent To Business Partner</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRentToBusinessPartner()
 	 * @generated
 	 * @ordered
@@ -57,9 +59,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected static final String RENT_TO_BUSINESS_PARTNER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRentToBusinessPartner() <em>Rent To Business Partner</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRentToBusinessPartner() <em>Rent To Business Partner</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRentToBusinessPartner()
 	 * @generated
 	 * @ordered
@@ -67,9 +69,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected String rentToBusinessPartner = RENT_TO_BUSINESS_PARTNER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getStartDate() <em>Start Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getStartDate() <em>Start Date</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStartDate()
 	 * @generated
 	 * @ordered
@@ -77,9 +79,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected static final Date START_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getStartDate() <em>Start Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStartDate() <em>Start Date</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStartDate()
 	 * @generated
 	 * @ordered
@@ -87,9 +89,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected Date startDate = START_DATE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEndDate() <em>End Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getEndDate() <em>End Date</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEndDate()
 	 * @generated
 	 * @ordered
@@ -97,9 +99,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected static final Date END_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEndDate() <em>End Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEndDate() <em>End Date</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEndDate()
 	 * @generated
 	 * @ordered
@@ -107,18 +109,18 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected Date endDate = END_DATE_EDEFAULT;
 
 	/**
-	 * This is true if the End Date attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the End Date attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean endDateESet;
 
 	/**
-	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getCost()
 	 * @generated
 	 * @ordered
@@ -126,9 +128,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected static final float COST_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getCost() <em>Cost</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCost() <em>Cost</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getCost()
 	 * @generated
 	 * @ordered
@@ -136,18 +138,17 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected float cost = COST_EDEFAULT;
 
 	/**
-	 * This is true if the Cost attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the Cost attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean costESet;
 
 	/**
-	 * The cached value of the '{@link #getRentalUnits() <em>Rental Units</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRentalUnits() <em>Rental Units</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRentalUnits()
 	 * @generated
 	 * @ordered
@@ -155,9 +156,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected EList<RentalUnit> rentalUnits;
 
 	/**
-	 * The cached value of the '{@link #getCurrency() <em>Currency</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCurrency() <em>Currency</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCurrency()
 	 * @generated
 	 * @ordered
@@ -165,8 +166,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	protected Currency currency;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RentalContractImpl() {
@@ -174,8 +175,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -184,8 +185,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getRentToBusinessPartner() {
@@ -193,20 +194,22 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setRentToBusinessPartner(String newRentToBusinessPartner) {
 		String oldRentToBusinessPartner = rentToBusinessPartner;
 		rentToBusinessPartner = newRentToBusinessPartner;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER, oldRentToBusinessPartner, rentToBusinessPartner));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER, oldRentToBusinessPartner,
+					rentToBusinessPartner));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getStartDate() {
@@ -214,20 +217,21 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStartDate(Date newStartDate) {
 		Date oldStartDate = startDate;
 		startDate = newStartDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__START_DATE, oldStartDate, startDate));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					RentalPackage.RENTAL_CONTRACT__START_DATE, oldStartDate, startDate));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getEndDate() {
@@ -235,8 +239,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEndDate(Date newEndDate) {
@@ -245,12 +249,13 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 		boolean oldEndDateESet = endDateESet;
 		endDateESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__END_DATE, oldEndDate, endDate, !oldEndDateESet));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					RentalPackage.RENTAL_CONTRACT__END_DATE, oldEndDate, endDate, !oldEndDateESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetEndDate() {
@@ -259,12 +264,13 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 		endDate = END_DATE_EDEFAULT;
 		endDateESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, RentalPackage.RENTAL_CONTRACT__END_DATE, oldEndDate, END_DATE_EDEFAULT, oldEndDateESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+					RentalPackage.RENTAL_CONTRACT__END_DATE, oldEndDate, END_DATE_EDEFAULT, oldEndDateESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetEndDate() {
@@ -272,8 +278,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getCost() {
@@ -281,8 +287,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCost(float newCost) {
@@ -291,12 +297,13 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 		boolean oldCostESet = costESet;
 		costESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__COST, oldCost, cost, !oldCostESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__COST,
+					oldCost, cost, !oldCostESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetCost() {
@@ -305,12 +312,13 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 		cost = COST_EDEFAULT;
 		costESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, RentalPackage.RENTAL_CONTRACT__COST, oldCost, COST_EDEFAULT, oldCostESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, RentalPackage.RENTAL_CONTRACT__COST,
+					oldCost, COST_EDEFAULT, oldCostESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetCost() {
@@ -318,37 +326,39 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<RentalUnit> getRentalUnits() {
 		if (rentalUnits == null) {
-			rentalUnits = new EObjectResolvingEList<RentalUnit>(RentalUnit.class, this, RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS);
+			rentalUnits = new EObjectResolvingEList<RentalUnit>(RentalUnit.class, this,
+					RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS);
 		}
 		return rentalUnits;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Currency getCurrency() {
 		if (currency != null && currency.eIsProxy()) {
-			InternalEObject oldCurrency = (InternalEObject)currency;
-			currency = (Currency)eResolveProxy(oldCurrency);
+			InternalEObject oldCurrency = (InternalEObject) currency;
+			currency = (Currency) eResolveProxy(oldCurrency);
 			if (currency != oldCurrency) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RentalPackage.RENTAL_CONTRACT__CURRENCY, oldCurrency, currency));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							RentalPackage.RENTAL_CONTRACT__CURRENCY, oldCurrency, currency));
 			}
 		}
 		return currency;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Currency basicGetCurrency() {
@@ -356,136 +366,141 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCurrency(Currency newCurrency) {
 		Currency oldCurrency = currency;
 		currency = newCurrency;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__CURRENCY, oldCurrency, currency));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					RentalPackage.RENTAL_CONTRACT__CURRENCY, oldCurrency, currency));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
-				return getRentToBusinessPartner();
-			case RentalPackage.RENTAL_CONTRACT__START_DATE:
-				return getStartDate();
-			case RentalPackage.RENTAL_CONTRACT__END_DATE:
-				return getEndDate();
-			case RentalPackage.RENTAL_CONTRACT__COST:
-				return getCost();
-			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
-				return getRentalUnits();
-			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
-				if (resolve) return getCurrency();
-				return basicGetCurrency();
+		case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
+			return getRentToBusinessPartner();
+		case RentalPackage.RENTAL_CONTRACT__START_DATE:
+			return getStartDate();
+		case RentalPackage.RENTAL_CONTRACT__END_DATE:
+			return getEndDate();
+		case RentalPackage.RENTAL_CONTRACT__COST:
+			return getCost();
+		case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
+			return getRentalUnits();
+		case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+			if (resolve)
+				return getCurrency();
+			return basicGetCurrency();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
-				setRentToBusinessPartner((String)newValue);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__START_DATE:
-				setStartDate((Date)newValue);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__END_DATE:
-				setEndDate((Date)newValue);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__COST:
-				setCost((Float)newValue);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
-				getRentalUnits().clear();
-				getRentalUnits().addAll((Collection<? extends RentalUnit>)newValue);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
-				setCurrency((Currency)newValue);
-				return;
+		case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
+			setRentToBusinessPartner((String) newValue);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__START_DATE:
+			setStartDate((Date) newValue);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__END_DATE:
+			setEndDate((Date) newValue);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__COST:
+			setCost((Float) newValue);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
+			getRentalUnits().clear();
+			getRentalUnits().addAll((Collection<? extends RentalUnit>) newValue);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+			setCurrency((Currency) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
-				setRentToBusinessPartner(RENT_TO_BUSINESS_PARTNER_EDEFAULT);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__START_DATE:
-				setStartDate(START_DATE_EDEFAULT);
-				return;
-			case RentalPackage.RENTAL_CONTRACT__END_DATE:
-				unsetEndDate();
-				return;
-			case RentalPackage.RENTAL_CONTRACT__COST:
-				unsetCost();
-				return;
-			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
-				getRentalUnits().clear();
-				return;
-			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
-				setCurrency((Currency)null);
-				return;
+		case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
+			setRentToBusinessPartner(RENT_TO_BUSINESS_PARTNER_EDEFAULT);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__START_DATE:
+			setStartDate(START_DATE_EDEFAULT);
+			return;
+		case RentalPackage.RENTAL_CONTRACT__END_DATE:
+			unsetEndDate();
+			return;
+		case RentalPackage.RENTAL_CONTRACT__COST:
+			unsetCost();
+			return;
+		case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
+			getRentalUnits().clear();
+			return;
+		case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+			setCurrency((Currency) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
-				return RENT_TO_BUSINESS_PARTNER_EDEFAULT == null ? rentToBusinessPartner != null : !RENT_TO_BUSINESS_PARTNER_EDEFAULT.equals(rentToBusinessPartner);
-			case RentalPackage.RENTAL_CONTRACT__START_DATE:
-				return START_DATE_EDEFAULT == null ? startDate != null : !START_DATE_EDEFAULT.equals(startDate);
-			case RentalPackage.RENTAL_CONTRACT__END_DATE:
-				return isSetEndDate();
-			case RentalPackage.RENTAL_CONTRACT__COST:
-				return isSetCost();
-			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
-				return rentalUnits != null && !rentalUnits.isEmpty();
-			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
-				return currency != null;
+		case RentalPackage.RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER:
+			return RENT_TO_BUSINESS_PARTNER_EDEFAULT == null ? rentToBusinessPartner != null
+					: !RENT_TO_BUSINESS_PARTNER_EDEFAULT.equals(rentToBusinessPartner);
+		case RentalPackage.RENTAL_CONTRACT__START_DATE:
+			return START_DATE_EDEFAULT == null ? startDate != null : !START_DATE_EDEFAULT
+					.equals(startDate);
+		case RentalPackage.RENTAL_CONTRACT__END_DATE:
+			return isSetEndDate();
+		case RentalPackage.RENTAL_CONTRACT__COST:
+			return isSetCost();
+		case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
+			return rentalUnits != null && !rentalUnits.isEmpty();
+		case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+			return currency != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (rentToBusinessPartner: ");
@@ -493,11 +508,17 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 		result.append(", startDate: ");
 		result.append(startDate);
 		result.append(", endDate: ");
-		if (endDateESet) result.append(endDate); else result.append("<unset>");
+		if (endDateESet)
+			result.append(endDate);
+		else
+			result.append("<unset>");
 		result.append(", cost: ");
-		if (costESet) result.append(cost); else result.append("<unset>");
+		if (costESet)
+			result.append(cost);
+		else
+			result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}
 
-} //RentalContractImpl
+} // RentalContractImpl

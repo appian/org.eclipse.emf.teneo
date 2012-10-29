@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.CancelEventDefinition;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cancel Event Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Cancel Event Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class CancelEventDefinitionImpl extends EventDefinitionImpl implements
-		CancelEventDefinition {
+public class CancelEventDefinitionImpl extends EventDefinitionImpl implements CancelEventDefinition {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CancelEventDefinitionImpl() {
@@ -40,8 +38,8 @@ public class CancelEventDefinitionImpl extends EventDefinitionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class CancelEventDefinitionImpl extends EventDefinitionImpl implements
 		return Bpmn2Package.Literals.CANCEL_EVENT_DEFINITION;
 	}
 
-} //CancelEventDefinitionImpl
+} // CancelEventDefinitionImpl

@@ -44,8 +44,7 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 
 	public void setValueInOwner(InternalEObject owner) {
 		final Object curValue = owner.eGet(getEStructuralFeature());
-		final int featureId = owner.eClass().getFeatureID(
-				getEStructuralFeature());
+		final int featureId = owner.eClass().getFeatureID(getEStructuralFeature());
 		if (curValue == referenceValue) {
 			// note that == works fine if the
 			// curValue and value have been read in the same jvm.
@@ -53,26 +52,23 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 		}
 
 		if (getEReference().getEOpposite() != null
-				|| (owner instanceof DynamicEObjectImpl && getEReference()
-						.isContainment())) {
+				|| (owner instanceof DynamicEObjectImpl && getEReference().isContainment())) {
 			// these are handled a bit differently because
 			if (referenceValue == null) { // remove
 				// Note that the eInverseRemove is called on the target itself
 				// and the value is passed
 				// therefore the eReference featureid is passed and not the
 				// opposite
-				final NotificationChain nots = ((InternalEObject) owner)
-						.eInverseRemove((InternalEObject) curValue, featureId,
-								getEReference().getEType().getInstanceClass(),
-								null);
+				final NotificationChain nots = ((InternalEObject) owner).eInverseRemove(
+						(InternalEObject) curValue, featureId, getEReference().getEType().getInstanceClass(),
+						null);
 				if (nots != null) {
 					nots.dispatch();
 				}
 			} else {
-				final NotificationChain nots = ((InternalEObject) owner)
-						.eInverseAdd((InternalEObject) referenceValue,
-								featureId, getEReference().getEType()
-										.getInstanceClass(), null);
+				final NotificationChain nots = ((InternalEObject) owner).eInverseAdd(
+						(InternalEObject) referenceValue, featureId, getEReference().getEType()
+								.getInstanceClass(), null);
 				if (nots != null) {
 					nots.dispatch();
 				}
@@ -93,7 +89,7 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 		} else {
 			setEavObjectReference(null);
 		}
-		
+
 	}
 
 	public Object getValue() {
@@ -122,14 +118,12 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 
 	private boolean isEAVMapped(EClass eClass) {
 		try {
-			final PAnnotatedEClass paClass = getHbDataStore().getPaModel()
-					.getPAnnotated(eClass);
+			final PAnnotatedEClass paClass = getHbDataStore().getPaModel().getPAnnotated(eClass);
 			if (paClass.getEntity() == null) {
 				return false;
 			}
 			final String entityName = paClass.getEntity().getName();
-			final PersistentClass pc = getHbDataStore().getPersistentClass(
-					entityName);
+			final PersistentClass pc = getHbDataStore().getPersistentClass(entityName);
 			return HbUtil.isEAVMapped(pc);
 		} catch (IllegalArgumentException e) {
 			// not mapped

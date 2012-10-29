@@ -13,8 +13,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.AbstractEnumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Lob Type</b></em>',
- * and utility methods for working with them. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Lob Type</b></em>', and utility methods for working with them. <!-- end-user-doc -->
  * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getLobType()
  * @model
@@ -26,14 +26,13 @@ public final class LobType extends AbstractEnumerator {
 	 * 
 	 * @generated
 	 */
-	public static final String copyright =
-			"Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n";
+	public static final String copyright = "Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n";
 
 	/**
 	 * The '<em><b>BLOB</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>BLOB</b></em>' literal object isn't clear, there really should
-	 * be more of a description here...
+	 * If the meaning of '<em><b>BLOB</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
@@ -47,8 +46,8 @@ public final class LobType extends AbstractEnumerator {
 	/**
 	 * The '<em><b>CLOB</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>CLOB</b></em>' literal object isn't clear, there really should
-	 * be more of a description here...
+	 * If the meaning of '<em><b>CLOB</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
@@ -86,16 +85,17 @@ public final class LobType extends AbstractEnumerator {
 	private static final LobType[] VALUES_ARRAY = new LobType[] { BLOB_LITERAL, CLOB_LITERAL, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Lob Type</b></em>' enumerators. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Lob Type</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final List<LobType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<LobType> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Lob Type</b></em>' literal with the specified name. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Lob Type</b></em>' literal with the specified name. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
@@ -110,17 +110,17 @@ public final class LobType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Lob Type</b></em>' literal with the specified value. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Lob Type</b></em>' literal with the specified value. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
 	public static LobType get(int value) {
 		switch (value) {
-			case BLOB:
-				return BLOB_LITERAL;
-			case CLOB:
-				return CLOB_LITERAL;
+		case BLOB:
+			return BLOB_LITERAL;
+		case CLOB:
+			return CLOB_LITERAL;
 		}
 		return null;
 	}

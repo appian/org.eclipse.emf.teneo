@@ -17,17 +17,17 @@
 package org.eclipse.emf.teneo.hibernate;
 
 /**
- * Defines the factory interface for creating Hibernate Configuration. By
- * specifying their own configuration factory the client application can add
- * their own properties and control the creation of session factories.
+ * Defines the factory interface for creating Hibernate Configuration. By specifying their own
+ * configuration factory the client application can add their own properties and control the
+ * creation of session factories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.4 $
  */
 public interface HbDataStoreFactory {
 	/**
-	 * The method which gets called to create a EMFDataStore. The default
-	 * factory creates a standard EMFDataStore
+	 * The method which gets called to create a EMFDataStore. The default factory creates a standard
+	 * EMFDataStore
 	 */
 	public HbDataStore createHbDataStore();
 }

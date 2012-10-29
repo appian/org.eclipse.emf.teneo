@@ -13,19 +13,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Optimizer Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Optimizer Type</b></em>', and utility methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOptimizerType()
  * @model
  * @generated
  */
 public enum OptimizerType implements Enumerator {
 	/**
-	 * The '<em><b>NONE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>NONE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -33,9 +31,8 @@ public enum OptimizerType implements Enumerator {
 	NONE(1, "NONE", "NONE"),
 
 	/**
-	 * The '<em><b>HILO</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>HILO</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #HILO_VALUE
 	 * @generated
 	 * @ordered
@@ -43,25 +40,24 @@ public enum OptimizerType implements Enumerator {
 	HILO(2, "HILO", "HILO"),
 
 	/**
-	 * The '<em><b>POOLED</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>POOLED</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #POOLED_VALUE
 	 * @generated
 	 * @ordered
 	 */
 	POOLED(3, "POOLED", "POOLED"), /**
-	 * The '<em><b>POOLED LO</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>POOLED LO</b></em>' literal object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #POOLED_LO_VALUE
 	 * @generated
 	 * @ordered
 	 */
 	POOLED_LO(4, "POOLED_LO", "POOLED-LO"), /**
-	 * The '<em><b>DEFAULT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>DEFAULT</b></em>' literal object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #DEFAULT_VALUE
 	 * @generated
 	 * @ordered
@@ -69,13 +65,13 @@ public enum OptimizerType implements Enumerator {
 	DEFAULT(0, "DEFAULT", "DEFAULT");
 
 	/**
-	 * The '<em><b>NONE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>NONE</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NONE
 	 * @model
 	 * @generated
@@ -84,13 +80,13 @@ public enum OptimizerType implements Enumerator {
 	public static final int NONE_VALUE = 1;
 
 	/**
-	 * The '<em><b>HILO</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>HILO</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>HILO</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>HILO</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #HILO
 	 * @model
 	 * @generated
@@ -99,13 +95,13 @@ public enum OptimizerType implements Enumerator {
 	public static final int HILO_VALUE = 2;
 
 	/**
-	 * The '<em><b>POOLED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>POOLED</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>POOLED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>POOLED</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #POOLED
 	 * @model
 	 * @generated
@@ -114,13 +110,13 @@ public enum OptimizerType implements Enumerator {
 	public static final int POOLED_VALUE = 3;
 
 	/**
-	 * The '<em><b>POOLED LO</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>POOLED LO</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>POOLED LO</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>POOLED LO</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #POOLED_LO
 	 * @model literal="POOLED-LO"
 	 * @generated
@@ -129,13 +125,13 @@ public enum OptimizerType implements Enumerator {
 	public static final int POOLED_LO_VALUE = 4;
 
 	/**
-	 * The '<em><b>DEFAULT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>DEFAULT</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>DEFAULT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>DEFAULT</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #DEFAULT
 	 * @model
 	 * @generated
@@ -144,32 +140,27 @@ public enum OptimizerType implements Enumerator {
 	public static final int DEFAULT_VALUE = 0;
 
 	/**
-	 * An array of all the '<em><b>Optimizer Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Optimizer Type</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final OptimizerType[] VALUES_ARRAY =
-		new OptimizerType[] {
-			NONE,
-			HILO,
-			POOLED,
-			POOLED_LO,
-			DEFAULT,
-		};
+	private static final OptimizerType[] VALUES_ARRAY = new OptimizerType[] { NONE, HILO, POOLED,
+			POOLED_LO, DEFAULT, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Optimizer Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Optimizer Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<OptimizerType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<OptimizerType> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Optimizer Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Optimizer Type</b></em>' literal with the specified literal value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static OptimizerType get(String literal) {
@@ -183,9 +174,9 @@ public enum OptimizerType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Optimizer Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Optimizer Type</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static OptimizerType getByName(String name) {
@@ -199,47 +190,51 @@ public enum OptimizerType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Optimizer Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Optimizer Type</b></em>' literal with the specified integer value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static OptimizerType get(int value) {
 		switch (value) {
-			case NONE_VALUE: return NONE;
-			case HILO_VALUE: return HILO;
-			case POOLED_VALUE: return POOLED;
-			case POOLED_LO_VALUE: return POOLED_LO;
-			case DEFAULT_VALUE: return DEFAULT;
+		case NONE_VALUE:
+			return NONE;
+		case HILO_VALUE:
+			return HILO;
+		case POOLED_VALUE:
+			return POOLED;
+		case POOLED_LO_VALUE:
+			return POOLED_LO;
+		case DEFAULT_VALUE:
+			return DEFAULT;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private OptimizerType(int value, String name, String literal) {
@@ -249,41 +244,41 @@ public enum OptimizerType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //OptimizerType
+
+} // OptimizerType

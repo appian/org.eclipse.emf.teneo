@@ -41,16 +41,16 @@ import org.hibernate.collection.internal.PersistentList;
 import org.hibernate.collection.spi.PersistentCollection;
 
 /**
- * Implements the hibernate persistable elist with extra lazy behavior, most
- * operations should not load the complete list. This is targeted at very large
- * lists. Note that this list can not work in a detached mode.
+ * Implements the hibernate persistable elist with extra lazy behavior, most operations should not
+ * load the complete list. This is targeted at very large lists. Note that this list can not work in
+ * a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.18 $
  */
 
-public class HbExtraLazyPersistableEList<E> extends
-		HibernatePersistableEList<E> implements ExtensionPoint {
+public class HbExtraLazyPersistableEList<E> extends HibernatePersistableEList<E> implements
+		ExtensionPoint {
 
 	/** The logger */
 	// private static Log log =
@@ -63,8 +63,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	private boolean previousDeliverSetting = false;
 
 	/** Constructor */
-	public HbExtraLazyPersistableEList(InternalEObject owner,
-			EStructuralFeature feature, List<E> list) {
+	public HbExtraLazyPersistableEList(InternalEObject owner, EStructuralFeature feature, List<E> list) {
 		super(owner, feature, list);
 	}
 
@@ -76,7 +75,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	public boolean isUnique() {
 		return false;
 	}
-	
+
 	// done in superclass:
 	// - delegateSize and delegateIsEmpty: super implementation is already extra
 	// lazy
@@ -91,8 +90,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(int,
-	 * java.lang.Object)
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(int, java.lang.Object)
 	 */
 	@Override
 	protected void delegateAdd(int index, E object) {
@@ -110,28 +108,23 @@ public class HbExtraLazyPersistableEList<E> extends
 		for (Object element : delegateList().subList(index, size())) {
 			// for the new one set the owner
 			if (newIndex == index) {
-				StoreUtil.setSyntheticListOwner(getEStructuralFeature(),
-						element, getOwner());
+				StoreUtil.setSyntheticListOwner(getEStructuralFeature(), element, getOwner());
 			}
-			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element,
-					newIndex++);
+			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element, newIndex++);
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.common.util.DelegatingEList#delegateAdd(java.lang.Object)
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(java.lang.Object)
 	 */
 	@Override
 	protected void delegateAdd(E object) {
 		int newIndex = delegateList().size();
 		delegateList().add(object);
-		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object,
-				newIndex);
-		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
-				getOwner());
+		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object, newIndex);
+		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object, getOwner());
 	}
 
 	/*
@@ -151,19 +144,17 @@ public class HbExtraLazyPersistableEList<E> extends
 	public Iterator<E> delegateIterator() {
 		return iterator();
 	}
-	
+
 	@Override
 	public Iterator<E> iterator() {
 		// return a paging iterator
 		return LazyCollectionUtils.getPagedLoadingIterator(this, LazyCollectionUtils.DEFAULT_PAGE_SIZE);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang
-	 * .Object)
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang .Object)
 	 */
 	@Override
 	protected boolean delegateContains(Object object) {
@@ -173,9 +164,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java.
-	 * util.Collection)
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java. util.Collection)
 	 */
 	@Override
 	protected boolean delegateContainsAll(Collection<?> collection) {
@@ -224,8 +213,7 @@ public class HbExtraLazyPersistableEList<E> extends
 				// remove the removed object
 				// if the list is not initialized then cascade deletes won't
 				// work
-				final Session session = (Session) ((PersistentList) getDelegate())
-						.getSession();
+				final Session session = (Session) ((PersistentList) getDelegate()).getSession();
 				session.delete(result);
 			}
 			return result;
@@ -239,8 +227,7 @@ public class HbExtraLazyPersistableEList<E> extends
 
 		int newIndex = index;
 		for (Object element : delegateList().subList(index, size())) {
-			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element,
-					newIndex++);
+			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element, newIndex++);
 		}
 
 		return result;
@@ -249,8 +236,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSet(int,
-	 * java.lang.Object)
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSet(int, java.lang.Object)
 	 */
 	@Override
 	protected E delegateSet(int index, E object) {
@@ -258,33 +244,28 @@ public class HbExtraLazyPersistableEList<E> extends
 
 		// clear old object
 		if (oldObject != null) {
-			StoreUtil
-					.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
+			StoreUtil.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
 		}
 
 		// set new object
 		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object, index);
-		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
-				getOwner());
+		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object, getOwner());
 		return oldObject;
 	}
 
 	/**
-	 * Implements the actions which need to be done before getting/loading an
-	 * instance.
+	 * Implements the actions which need to be done before getting/loading an instance.
 	 */
 	protected synchronized void beforeLoadInstance() {
 		final Resource res = owner.eResource();
 		if (res != null && res instanceof HbResource) {
-			final SessionWrapper sessionWrapper = ((HbResource) res)
-					.getSessionWrapper();
+			final SessionWrapper sessionWrapper = ((HbResource) res).getSessionWrapper();
 			if (res.isLoaded()) // resource is loaded reopen transaction
 			{
 				// if the delegate is already loaded then no transaction is
 				// required
 				final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
-						&& ((AbstractPersistentCollection) delegate)
-								.wasInitialized();
+						&& ((AbstractPersistentCollection) delegate).wasInitialized();
 				if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
 					sessionWrapper.setFlushModeManual();
 				}
@@ -309,15 +290,14 @@ public class HbExtraLazyPersistableEList<E> extends
 		// disabled for now as containers are persisted by hibernate
 		// anyway
 		if (isContainment() && eObject.eContainer() == null) {
-			EContainerRepairControl.setContainer(owner,
-					(InternalEObject) eObject, getEStructuralFeature());
+			EContainerRepairControl.setContainer(owner, (InternalEObject) eObject,
+					getEStructuralFeature());
 		}
 		final Resource res = owner.eResource();
 		if (res != null && res instanceof HbResource) {
 			// attach the new contained objects so that they are adapted
 			// when required
-			((StoreResource) res).addToContentOrAttach(
-					(InternalEObject) eObject,
+			((StoreResource) res).addToContentOrAttach((InternalEObject) eObject,
 					(EReference) getEStructuralFeature());
 			((StoreResource) res).setIsLoading(false);
 		}
@@ -368,8 +348,7 @@ public class HbExtraLazyPersistableEList<E> extends
 		{
 
 		} else {
-			throw new HbMapperException("Type "
-					+ newDelegate.getClass().getName() + " can not be "
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
 					+ " used as a replacement for elist " + logString);
 		}
 	}

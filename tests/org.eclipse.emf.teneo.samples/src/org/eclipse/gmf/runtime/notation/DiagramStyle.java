@@ -14,13 +14,12 @@ package org.eclipse.gmf.runtime.notation;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Diagram Style</b></em>'.
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Diagram Style</b></em>'.
  * <!-- end-user-doc -->
- *
- *
+ * 
+ * 
  * @see org.eclipse.gmf.runtime.notation.NotationPackage#getDiagramStyle()
- * @model 
+ * @model
  * @generated
  */
 /*

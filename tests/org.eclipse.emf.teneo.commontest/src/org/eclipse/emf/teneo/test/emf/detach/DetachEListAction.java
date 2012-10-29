@@ -217,7 +217,8 @@ public class DetachEListAction extends AbstractTestAction {
 				final Iterator<?> it = list.iterator();
 				while (it.hasNext()) {
 					final Person person = (Person) it.next();
-					assertTrue(person.getName().compareTo("c1") != 0 && person.getName().compareTo("004.1") != 0);
+					assertTrue(person.getName().compareTo("c1") != 0
+							&& person.getName().compareTo("004.1") != 0);
 				}
 				store.commitTransaction();
 			}

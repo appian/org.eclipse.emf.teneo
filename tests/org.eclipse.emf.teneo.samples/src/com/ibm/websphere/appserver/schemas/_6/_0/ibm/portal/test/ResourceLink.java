@@ -9,31 +9,30 @@ package com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Resource Link</b></em>'.
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Resource Link</b></em>'.
  * <!-- end-user-doc -->
- *
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.ResourceLink#getName <em>Name</em>}</li>
+ * <li>{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.ResourceLink#getName <em>
+ * Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.TestPackage#getResourceLink()
- * @model abstract="true"
- *        extendedMetaData="name='ResourceLink' kind='empty'"
+ * @model abstract="true" extendedMetaData="name='ResourceLink' kind='empty'"
  * @generated
  */
 public interface ResourceLink extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.TestPackage#getResourceLink_Name()
@@ -44,10 +43,12 @@ public interface ResourceLink extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.ResourceLink#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '
+	 * {@link com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.ResourceLink#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */

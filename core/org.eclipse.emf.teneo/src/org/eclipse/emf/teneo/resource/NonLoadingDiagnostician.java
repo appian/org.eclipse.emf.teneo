@@ -39,7 +39,8 @@ public class NonLoadingDiagnostician extends Diagnostician {
 
 	/** Overriden to prevent loading of complete content */
 	@Override
-	protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		List<EObject> eContents = NonLoadingEContentsEList.create(eObject, true);
 		if (!eContents.isEmpty()) {
 			Iterator<EObject> i = eContents.iterator();

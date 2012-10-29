@@ -11,18 +11,17 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Immutable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Immutable</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class ImmutableImpl extends HbAnnotationImpl implements Immutable {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ImmutableImpl() {
@@ -30,8 +29,8 @@ public class ImmutableImpl extends HbAnnotationImpl implements Immutable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,4 +38,4 @@ public class ImmutableImpl extends HbAnnotationImpl implements Immutable {
 		return HbannotationPackage.Literals.IMMUTABLE;
 	}
 
-} //ImmutableImpl
+} // ImmutableImpl

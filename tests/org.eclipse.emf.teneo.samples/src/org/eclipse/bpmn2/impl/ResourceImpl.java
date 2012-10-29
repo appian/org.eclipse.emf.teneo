@@ -35,24 +35,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Resource</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceImpl#getResourceParameters <em>Resource Parameters</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceImpl#getResourceParameters <em>Resource Parameters
+ * </em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ResourceImpl extends RootElementImpl implements Resource {
 	/**
-	 * The cached value of the '{@link #getResourceParameters() <em>Resource Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResourceParameters() <em>Resource Parameters</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResourceParameters()
 	 * @generated
 	 * @ordered
@@ -60,9 +60,9 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	protected EList<ResourceParameter> resourceParameters;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -70,9 +70,9 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -80,8 +80,8 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResourceImpl() {
@@ -89,8 +89,8 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,22 +99,21 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ResourceParameter> getResourceParameters() {
 		if (resourceParameters == null) {
-			resourceParameters = new EObjectContainmentEList<ResourceParameter>(
-					ResourceParameter.class, this,
-					Bpmn2Package.RESOURCE__RESOURCE_PARAMETERS);
+			resourceParameters = new EObjectContainmentEList<ResourceParameter>(ResourceParameter.class,
+					this, Bpmn2Package.RESOURCE__RESOURCE_PARAMETERS);
 		}
 		return resourceParameters;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -122,37 +121,36 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RESOURCE__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.RESOURCE__RESOURCE_PARAMETERS:
-			return ((InternalEList<?>) getResourceParameters()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getResourceParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -167,8 +165,8 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -177,8 +175,7 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 		switch (featureID) {
 		case Bpmn2Package.RESOURCE__RESOURCE_PARAMETERS:
 			getResourceParameters().clear();
-			getResourceParameters().addAll(
-					(Collection<? extends ResourceParameter>) newValue);
+			getResourceParameters().addAll((Collection<? extends ResourceParameter>) newValue);
 			return;
 		case Bpmn2Package.RESOURCE__NAME:
 			setName((String) newValue);
@@ -188,8 +185,8 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -206,8 +203,8 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,15 +213,14 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 		case Bpmn2Package.RESOURCE__RESOURCE_PARAMETERS:
 			return resourceParameters != null && !resourceParameters.isEmpty();
 		case Bpmn2Package.RESOURCE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -239,4 +235,4 @@ public class ResourceImpl extends RootElementImpl implements Resource {
 		return result.toString();
 	}
 
-} //ResourceImpl
+} // ResourceImpl

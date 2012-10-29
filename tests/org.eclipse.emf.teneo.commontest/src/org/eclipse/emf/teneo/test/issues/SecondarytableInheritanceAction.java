@@ -42,9 +42,8 @@ public class SecondarytableInheritanceAction extends AbstractTestAction {
 
 	private static final byte[] PHOTO = new byte[64 * 1024];
 
-	private static final String VERIFICATION_QUERY =
-			"SELECT * FROM GENERIC as A INNER JOIN PERSON_ADDRESS as B ON A.ID = B.ID "
-					+ "INNER JOIN PERSON_PHOTO as C ON A.ID = C.ID";
+	private static final String VERIFICATION_QUERY = "SELECT * FROM GENERIC as A INNER JOIN PERSON_ADDRESS as B ON A.ID = B.ID "
+			+ "INNER JOIN PERSON_PHOTO as C ON A.ID = C.ID";
 
 	public SecondarytableInheritanceAction() {
 		super(SecondaryPackage.eINSTANCE);

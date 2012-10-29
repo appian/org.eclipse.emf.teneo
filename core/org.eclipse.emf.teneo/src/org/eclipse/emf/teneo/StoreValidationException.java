@@ -36,8 +36,8 @@ public class StoreValidationException extends TeneoException {
 
 			for (Diagnostic childDiagnostic : diagnostics[i].getChildren()) {
 				switch (childDiagnostic.getSeverity()) {
-					case Diagnostic.ERROR:
-						result.append("\n\t" + childDiagnostic.getMessage());
+				case Diagnostic.ERROR:
+					result.append("\n\t" + childDiagnostic.getMessage());
 				}
 			}
 		}

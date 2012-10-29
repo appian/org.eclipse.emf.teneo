@@ -65,7 +65,8 @@ public class MultiCfgTestSuite extends TestSuite {
 	}
 
 	/**
-	 * Adds a persistence XML test suite if the TestAction has an associated "&ltActionClass&gt;.persistence.xml" file.
+	 * Adds a persistence XML test suite if the TestAction has an associated
+	 * "&ltActionClass&gt;.persistence.xml" file.
 	 * 
 	 * @param testActionClass
 	 * @param testConfiguration
@@ -100,7 +101,8 @@ public class MultiCfgTestSuite extends TestSuite {
 	/** Add a test class */
 	@Override
 	public void addTestSuite(Class testClass) {
-		if (AbstractTest.class.isAssignableFrom(testClass) || AbstractTestAction.class.isAssignableFrom(testClass)) {
+		if (AbstractTest.class.isAssignableFrom(testClass)
+				|| AbstractTestAction.class.isAssignableFrom(testClass)) {
 			for (Iterator i = suitesByCfg.keySet().iterator(); i.hasNext();) {
 				final TestConfiguration testConfiguration = (TestConfiguration) i.next();
 				if (!testConfiguration.isXml()) {
@@ -125,7 +127,7 @@ public class MultiCfgTestSuite extends TestSuite {
 					}
 					final Properties properties = test.getProperties();
 					properties.setProperty(PersistenceOptions.PERSISTENCE_XML, test.getTestAction()
-						.getPersistenceXmlPath());
+							.getPersistenceXmlPath());
 					properties.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
 					addTest(test, tc);
 				}

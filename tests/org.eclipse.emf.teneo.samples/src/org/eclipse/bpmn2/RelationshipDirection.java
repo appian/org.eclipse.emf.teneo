@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Relationship Direction</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Relationship Direction</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getRelationshipDirection()
  * @model extendedMetaData="name='tRelationshipDirection'"
  * @generated
  */
 public enum RelationshipDirection implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum RelationshipDirection implements Enumerator {
 	NONE(0, "None", "None"),
 
 	/**
-	 * The '<em><b>Forward</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Forward</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #FORWARD_VALUE
 	 * @generated
 	 * @ordered
@@ -51,9 +49,8 @@ public enum RelationshipDirection implements Enumerator {
 	FORWARD(1, "Forward", "Forward"),
 
 	/**
-	 * The '<em><b>Backward</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Backward</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #BACKWARD_VALUE
 	 * @generated
 	 * @ordered
@@ -61,9 +58,8 @@ public enum RelationshipDirection implements Enumerator {
 	BACKWARD(2, "Backward", "Backward"),
 
 	/**
-	 * The '<em><b>Both</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Both</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #BOTH_VALUE
 	 * @generated
 	 * @ordered
@@ -71,13 +67,13 @@ public enum RelationshipDirection implements Enumerator {
 	BOTH(3, "Both", "Both");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NONE
 	 * @model name="None"
 	 * @generated
@@ -86,13 +82,13 @@ public enum RelationshipDirection implements Enumerator {
 	public static final int NONE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Forward</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Forward</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Forward</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Forward</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #FORWARD
 	 * @model name="Forward"
 	 * @generated
@@ -101,13 +97,13 @@ public enum RelationshipDirection implements Enumerator {
 	public static final int FORWARD_VALUE = 1;
 
 	/**
-	 * The '<em><b>Backward</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Backward</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Backward</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Backward</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BACKWARD
 	 * @model name="Backward"
 	 * @generated
@@ -116,13 +112,13 @@ public enum RelationshipDirection implements Enumerator {
 	public static final int BACKWARD_VALUE = 2;
 
 	/**
-	 * The '<em><b>Both</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Both</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Both</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Both</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BOTH
 	 * @model name="Both"
 	 * @generated
@@ -131,27 +127,27 @@ public enum RelationshipDirection implements Enumerator {
 	public static final int BOTH_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Relationship Direction</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Relationship Direction</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final RelationshipDirection[] VALUES_ARRAY = new RelationshipDirection[] {
-			NONE, FORWARD, BACKWARD, BOTH, };
+	private static final RelationshipDirection[] VALUES_ARRAY = new RelationshipDirection[] { NONE,
+			FORWARD, BACKWARD, BOTH, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Relationship Direction</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Relationship Direction</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<RelationshipDirection> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<RelationshipDirection> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Relationship Direction</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static RelationshipDirection get(String literal) {
@@ -165,9 +161,9 @@ public enum RelationshipDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Relationship Direction</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Relationship Direction</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static RelationshipDirection getByName(String name) {
@@ -182,8 +178,8 @@ public enum RelationshipDirection implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Relationship Direction</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static RelationshipDirection get(int value) {
@@ -201,30 +197,29 @@ public enum RelationshipDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private RelationshipDirection(int value, String name, String literal) {
@@ -234,8 +229,8 @@ public enum RelationshipDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -243,8 +238,8 @@ public enum RelationshipDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -252,8 +247,8 @@ public enum RelationshipDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -261,9 +256,9 @@ public enum RelationshipDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,4 +266,4 @@ public enum RelationshipDirection implements Enumerator {
 		return literal;
 	}
 
-} //RelationshipDirection
+} // RelationshipDirection

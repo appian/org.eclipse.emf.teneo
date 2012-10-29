@@ -44,14 +44,12 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	// The logger
 	protected static final Log log = LogFactory.getLog(HbEClassAnnotator.class);
 
-	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE
-			.getName();
+	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE.getName();
 	private boolean optionSetProxy = false;
 
 	/**
-	 * Returns the annotated version of an EClass, Returns false if no efeatures
-	 * of this eclass should be annotated, true if its features can be
-	 * annotated.
+	 * Returns the annotated version of an EClass, Returns false if no efeatures of this eclass should
+	 * be annotated, true if its features can be annotated.
 	 */
 	@Override
 	protected boolean annotate(PAnnotatedEClass aClass) {
@@ -62,8 +60,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		Class<?> concreteClass = EModelResolver.instance().getJavaClass(eclass);
 
 		// automatically add the proxy annotation
-		if ((optionSetProxy || getPersistenceOptions().isForceLazy())
-				&& hbClass.getHbProxy() == null) {
+		if ((optionSetProxy || getPersistenceOptions().isForceLazy()) && hbClass.getHbProxy() == null) {
 			// in this case use the DynamicEObjectImpl
 			if (concreteClass == null) {
 				concreteClass = DynamicEObjectImpl.class;
@@ -73,8 +70,8 @@ public class HbEClassAnnotator extends EClassAnnotator {
 				proxy.setLazy(true);
 				// interface class is set below.
 				((HbAnnotatedEClass) aClass).setHbProxy(proxy);
-				log.debug("Set proxy to true (" + proxy.getProxyClass()
-						+ ") for eclass " + aClass.getModelEClass().getName());
+				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass "
+						+ aClass.getModelEClass().getName());
 			}
 		}
 
@@ -85,8 +82,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 			// set interfacename if not set
 			if (!getPersistenceOptions().isForceLazy()) {
 				final Proxy proxy = hbClass.getHbProxy();
-				final Class<?> interfaceClass = EModelResolver.instance()
-						.getJavaInterfaceClass(eclass);
+				final Class<?> interfaceClass = EModelResolver.instance().getJavaInterfaceClass(eclass);
 				if (interfaceClass != null) {
 					proxy.setProxyClass(interfaceClass.getName());
 				} else { // set the class itself
@@ -100,24 +96,18 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		boolean hasCache = ((HbAnnotatedEClass) aClass).getHbCache() != null;
 
 		if (aClass.getPaSuperEntity() != null && hasCache) {
-			log.warn("EClass: "
-					+ aClass.getModelEClass().getName()
+			log.warn("EClass: " + aClass.getModelEClass().getName()
 					+ " has a cache strategy defined while it has a superclass, this strategy is ignored.");
 			return res;
 		}
 
 		if (!hasCache
-				&& defaultCacheStrategy
-						.compareToIgnoreCase(CacheConcurrencyStrategy.NONE
-								.getName()) != 0) {
-			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy
-					.getByName(defaultCacheStrategy);
+				&& defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE.getName()) != 0) {
+			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy.getByName(defaultCacheStrategy);
 			if (ccs == null) {
-				throw new StoreMappingException(
-						"The default cache strategy: "
-								+ defaultCacheStrategy
-								+ " is not one of the allowed values (uppercase) "
-								+ "as defined in the JPA Hibernate Annotation Extensions.");
+				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy
+						+ " is not one of the allowed values (uppercase) "
+						+ "as defined in the JPA Hibernate Annotation Extensions.");
 			}
 
 			log.debug("Setting cache strategy " + defaultCacheStrategy + " on "
@@ -157,8 +147,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		assert (aClass.getPaSuperEntity() == null);
 
 		// let the superclass do it
-		if (aClass.getEntity() != null
-				&& aClass.getEntity().getExtends() != null) {
+		if (aClass.getEntity() != null && aClass.getEntity().getExtends() != null) {
 			super.setSuperEntity(aClass);
 			return;
 		}
@@ -177,8 +166,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	}
 
 	/** Compute the annotated superclass, ignore interfaces if parameterized */
-	private PAnnotatedEClass getPaSuperEntity(PAnnotatedEClass aClass,
-			boolean allowInterfaces) {
+	private PAnnotatedEClass getPaSuperEntity(PAnnotatedEClass aClass, boolean allowInterfaces) {
 		final PAnnotatedModel model = aClass.getPaModel();
 		for (EClass superEClass : aClass.getModelEClass().getESuperTypes()) {
 			final PAnnotatedEClass x = model.getPAnnotated(superEClass);
@@ -191,8 +179,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	}
 
 	/**
-	 * Map Interface EClasses, default false, overridden by hibernate to return
-	 * true
+	 * Map Interface EClasses, default false, overridden by hibernate to return true
 	 */
 	@Override
 	protected boolean mapInterfaceEClass() {

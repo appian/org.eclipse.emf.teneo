@@ -52,11 +52,11 @@ public class ExtraLazyAction extends AbstractTestAction {
 			Writer w3 = factory.createWriter();
 			w3.setName("name2");
 			b.getAuthors().add(w3);
-			
+
 			for (int i = 0; i < 100; i++) {
 				b.getSubTitles().add("subtitle" + i);
 			}
-			
+
 			store.beginTransaction();
 			store.store(b);
 			store.commitTransaction();
@@ -78,23 +78,23 @@ public class ExtraLazyAction extends AbstractTestAction {
 				assertEquals(writer.getName(), "name" + i);
 				i++;
 			}
-			
+
 			final PersistableDelegateList<?> subTitleList = (PersistableDelegateList<?>) b.getSubTitles();
 			assertEquals(100, LazyCollectionUtils.size(b.getSubTitles()));
-			assertFalse(subTitleList.isInitialized());			
+			assertFalse(subTitleList.isInitialized());
 			assertEquals(100, b.getSubTitles().size());
 			assertFalse(subTitleList.isInitialized());
 			b.getSubTitles().get(50);
 			assertFalse(subTitleList.isInitialized());
 			b.getSubTitles().add("subtitle100");
 			if (isEAVMapped()) {
-				assertFalse(subTitleList.isInitialized());				
+				assertFalse(subTitleList.isInitialized());
 			} else {
-				assertTrue(subTitleList.isInitialized());				
+				assertTrue(subTitleList.isInitialized());
 			}
 			b.getSubTitles().add(0, "subtitle-1");
-			assertTrue(subTitleList.isInitialized());				
-			
+			assertTrue(subTitleList.isInitialized());
+
 			store.commitTransaction();
 		}
 		{
@@ -110,7 +110,7 @@ public class ExtraLazyAction extends AbstractTestAction {
 			store.store(b);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			Book b = store.getObject(Book.class);
@@ -119,12 +119,12 @@ public class ExtraLazyAction extends AbstractTestAction {
 			final int size = b.getAuthors().size();
 			int cnt = 0;
 			while (iterator.hasNext()) {
-				final Writer w = (Writer)iterator.next();
+				final Writer w = (Writer) iterator.next();
 				assertTrue(w != null);
 				cnt++;
 			}
 			assertEquals(size, cnt);
-			assertFalse(pList.isInitialized());			
+			assertFalse(pList.isInitialized());
 			store.commitTransaction();
 		}
 		{
@@ -135,16 +135,16 @@ public class ExtraLazyAction extends AbstractTestAction {
 			final int size = b.getAuthors().size();
 			int cnt = 0;
 			while (iterator.hasNext()) {
-				final Writer w = (Writer)iterator.next();
+				final Writer w = (Writer) iterator.next();
 				assertTrue(w != null);
 				cnt++;
 			}
 			assertEquals(size, cnt);
-			assertFalse(pList.isInitialized());			
+			assertFalse(pList.isInitialized());
 			store.commitTransaction();
-		}		
+		}
 	}
-	
+
 	protected boolean isEAVMapped() {
 		return false;
 	}

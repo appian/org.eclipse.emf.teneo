@@ -33,20 +33,22 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * @version $Revision: 1.9 $
  */
 
-public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
+public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements
+		ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(UnidirectionalManyToManyAnnotator.class);
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String featureLogStr =
-				aReference.getModelEReference().getName() + "/" +
-						aReference.getModelEReference().getEContainingClass().getName();
+		final String featureLogStr = aReference.getModelEReference().getName() + "/"
+				+ aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
-					"it already has a OneToMany, OneToOne or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null
+				|| aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + featureLogStr
+					+ " should be a ManyToMany but "
+					+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();

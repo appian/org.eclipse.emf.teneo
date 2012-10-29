@@ -64,7 +64,8 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 	 * followed (the entity name of the value is returned.
 	 */
 	public String getEntityName(EClass eClass) {
-		return StrategyUtil.getEntityName(entityNameStrategy, persistenceOptions, annotatedModel, eClass);
+		return StrategyUtil.getEntityName(entityNameStrategy, persistenceOptions, annotatedModel,
+				eClass);
 	}
 
 	/**
@@ -76,7 +77,7 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 
 	/**
 	 * @param extensionManager
-	 *            the extensionManager to set
+	 *          the extensionManager to set
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
@@ -91,7 +92,7 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 
 	/**
 	 * @param annotatedModel
-	 *            the annotatedModel to set
+	 *          the annotatedModel to set
 	 */
 	public void setAnnotatedModel(PAnnotatedModel annotatedModel) {
 		this.annotatedModel = annotatedModel;
@@ -106,7 +107,7 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 
 	/**
 	 * @param factory
-	 *            the factory to set
+	 *          the factory to set
 	 */
 	public void setFactory(PannotationFactory factory) {
 		this.factory = factory;
@@ -135,7 +136,7 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 
 	/**
 	 * @param persistenceOptions
-	 *            the persistenceOptions to set
+	 *          the persistenceOptions to set
 	 */
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
 		this.persistenceOptions = persistenceOptions;
@@ -161,7 +162,7 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 
 	/**
 	 * @param featureAnnotator
-	 *            the eFeatureAnnotator to set
+	 *          the eFeatureAnnotator to set
 	 */
 	public void setEFeatureAnnotator(EFeatureAnnotator featureAnnotator) {
 		eFeatureAnnotator = featureAnnotator;

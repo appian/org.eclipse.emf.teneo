@@ -175,10 +175,11 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 	/** Specific Hibernate flush test */
 	protected void testFlush(Resource res) {
 		/*
-		 * if (res instanceof HibernateResource) { HibernateResource hres = (HibernateResource)res; Session session =
-		 * hres.getSession(); Transaction tx = session.beginTransaction(); // this should not fail! try { tx.commit(); }
-		 * // there should be a finally block but this is only a test catch (Exception e) { fail("The transaction commit
-		 * should not flush illegal objects to the database"); } }
+		 * if (res instanceof HibernateResource) { HibernateResource hres = (HibernateResource)res;
+		 * Session session = hres.getSession(); Transaction tx = session.beginTransaction(); // this
+		 * should not fail! try { tx.commit(); } // there should be a finally block but this is only a
+		 * test catch (Exception e) { fail("The transaction commit should not flush illegal objects to
+		 * the database"); } }
 		 */
 	}
 }

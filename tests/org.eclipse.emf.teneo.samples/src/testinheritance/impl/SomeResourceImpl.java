@@ -25,24 +25,23 @@ import testinheritance.SomeResource;
 import testinheritance.TestinheritancePackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Some Resource</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Some Resource</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link testinheritance.impl.SomeResourceImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link testinheritance.impl.SomeResourceImpl#getNameValuePairs <em>Name Value Pairs</em>}</li>
+ * <li>{@link testinheritance.impl.SomeResourceImpl#getProperty <em>Property</em>}</li>
+ * <li>{@link testinheritance.impl.SomeResourceImpl#getNameValuePairs <em>Name Value Pairs</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource {
 	/**
-	 * The default value of the '{@link #getProperty() <em>Property</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getProperty() <em>Property</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProperty()
 	 * @generated
 	 * @ordered
@@ -50,9 +49,9 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	protected static final String PROPERTY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getProperty() <em>Property</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProperty() <em>Property</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProperty()
 	 * @generated
 	 * @ordered
@@ -60,9 +59,9 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	protected String property = PROPERTY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getNameValuePairs() <em>Name Value Pairs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getNameValuePairs() <em>Name Value Pairs</em>}' reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getNameValuePairs()
 	 * @generated
 	 * @ordered
@@ -70,8 +69,8 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	protected EList<NameValuePair> nameValuePairs;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SomeResourceImpl() {
@@ -79,8 +78,8 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,8 +88,8 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getProperty() {
@@ -98,141 +97,150 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setProperty(String newProperty) {
 		String oldProperty = property;
 		property = newProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestinheritancePackage.SOME_RESOURCE__PROPERTY, oldProperty, property));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TestinheritancePackage.SOME_RESOURCE__PROPERTY, oldProperty, property));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<NameValuePair> getNameValuePairs() {
 		if (nameValuePairs == null) {
-			nameValuePairs = new EObjectResolvingEList<NameValuePair>(NameValuePair.class, this, TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS);
+			nameValuePairs = new EObjectResolvingEList<NameValuePair>(NameValuePair.class, this,
+					TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS);
 		}
 		return nameValuePairs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
-				return getProperty();
-			case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
-				return getNameValuePairs();
+		case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
+			return getProperty();
+		case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
+			return getNameValuePairs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
-				setProperty((String)newValue);
-				return;
-			case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
-				getNameValuePairs().clear();
-				getNameValuePairs().addAll((Collection<? extends NameValuePair>)newValue);
-				return;
+		case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
+			setProperty((String) newValue);
+			return;
+		case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
+			getNameValuePairs().clear();
+			getNameValuePairs().addAll((Collection<? extends NameValuePair>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
-				setProperty(PROPERTY_EDEFAULT);
-				return;
-			case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
-				getNameValuePairs().clear();
-				return;
+		case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
+			setProperty(PROPERTY_EDEFAULT);
+			return;
+		case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
+			getNameValuePairs().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
-				return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
-			case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
-				return nameValuePairs != null && !nameValuePairs.isEmpty();
+		case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
+			return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
+		case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
+			return nameValuePairs != null && !nameValuePairs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == SomeOtherBaseClass.class) {
 			switch (derivedFeatureID) {
-				case TestinheritancePackage.SOME_RESOURCE__PROPERTY: return TestinheritancePackage.SOME_OTHER_BASE_CLASS__PROPERTY;
-				case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS: return TestinheritancePackage.SOME_OTHER_BASE_CLASS__NAME_VALUE_PAIRS;
-				default: return -1;
+			case TestinheritancePackage.SOME_RESOURCE__PROPERTY:
+				return TestinheritancePackage.SOME_OTHER_BASE_CLASS__PROPERTY;
+			case TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS:
+				return TestinheritancePackage.SOME_OTHER_BASE_CLASS__NAME_VALUE_PAIRS;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == SomeOtherBaseClass.class) {
 			switch (baseFeatureID) {
-				case TestinheritancePackage.SOME_OTHER_BASE_CLASS__PROPERTY: return TestinheritancePackage.SOME_RESOURCE__PROPERTY;
-				case TestinheritancePackage.SOME_OTHER_BASE_CLASS__NAME_VALUE_PAIRS: return TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS;
-				default: return -1;
+			case TestinheritancePackage.SOME_OTHER_BASE_CLASS__PROPERTY:
+				return TestinheritancePackage.SOME_RESOURCE__PROPERTY;
+			case TestinheritancePackage.SOME_OTHER_BASE_CLASS__NAME_VALUE_PAIRS:
+				return TestinheritancePackage.SOME_RESOURCE__NAME_VALUE_PAIRS;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (property: ");
@@ -241,4 +249,4 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 		return result.toString();
 	}
 
-} //SomeResourceImpl
+} // SomeResourceImpl

@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Ad Hoc Ordering</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Ad Hoc Ordering</b></em>', and utility methods for working with them. <!-- end-user-doc
+ * -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getAdHocOrdering()
  * @model extendedMetaData="name='tAdHocOrdering'"
  * @generated
  */
 public enum AdHocOrdering implements Enumerator {
 	/**
-	 * The '<em><b>Parallel</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Parallel</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #PARALLEL_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum AdHocOrdering implements Enumerator {
 	PARALLEL(0, "Parallel", "Parallel"),
 
 	/**
-	 * The '<em><b>Sequential</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Sequential</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #SEQUENTIAL_VALUE
 	 * @generated
 	 * @ordered
@@ -51,13 +49,13 @@ public enum AdHocOrdering implements Enumerator {
 	SEQUENTIAL(1, "Sequential", "Sequential");
 
 	/**
-	 * The '<em><b>Parallel</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Parallel</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Parallel</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Parallel</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PARALLEL
 	 * @model name="Parallel"
 	 * @generated
@@ -66,13 +64,13 @@ public enum AdHocOrdering implements Enumerator {
 	public static final int PARALLEL_VALUE = 0;
 
 	/**
-	 * The '<em><b>Sequential</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Sequential</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Sequential</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Sequential</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SEQUENTIAL
 	 * @model name="Sequential"
 	 * @generated
@@ -81,27 +79,26 @@ public enum AdHocOrdering implements Enumerator {
 	public static final int SEQUENTIAL_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Ad Hoc Ordering</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Ad Hoc Ordering</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final AdHocOrdering[] VALUES_ARRAY = new AdHocOrdering[] {
-			PARALLEL, SEQUENTIAL, };
+	private static final AdHocOrdering[] VALUES_ARRAY = new AdHocOrdering[] { PARALLEL, SEQUENTIAL, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Ad Hoc Ordering</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Ad Hoc Ordering</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<AdHocOrdering> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<AdHocOrdering> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Ad Hoc Ordering</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Ad Hoc Ordering</b></em>' literal with the specified literal value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AdHocOrdering get(String literal) {
@@ -115,9 +112,9 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Ad Hoc Ordering</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Ad Hoc Ordering</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AdHocOrdering getByName(String name) {
@@ -131,9 +128,9 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Ad Hoc Ordering</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Ad Hoc Ordering</b></em>' literal with the specified integer value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AdHocOrdering get(int value) {
@@ -147,30 +144,29 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private AdHocOrdering(int value, String name, String literal) {
@@ -180,8 +176,8 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -189,8 +185,8 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -198,8 +194,8 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -207,9 +203,9 @@ public enum AdHocOrdering implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -217,4 +213,4 @@ public enum AdHocOrdering implements Enumerator {
 		return literal;
 	}
 
-} //AdHocOrdering
+} // AdHocOrdering

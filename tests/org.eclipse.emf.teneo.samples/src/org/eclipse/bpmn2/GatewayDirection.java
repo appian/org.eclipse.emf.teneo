@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Gateway Direction</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Gateway Direction</b></em>', and utility methods for working with them. <!-- end-user-doc
+ * -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getGatewayDirection()
  * @model extendedMetaData="name='tGatewayDirection'"
  * @generated
  */
 public enum GatewayDirection implements Enumerator {
 	/**
-	 * The '<em><b>Unspecified</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Unspecified</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #UNSPECIFIED_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum GatewayDirection implements Enumerator {
 	UNSPECIFIED(0, "Unspecified", "Unspecified"),
 
 	/**
-	 * The '<em><b>Converging</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Converging</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #CONVERGING_VALUE
 	 * @generated
 	 * @ordered
@@ -51,9 +49,8 @@ public enum GatewayDirection implements Enumerator {
 	CONVERGING(1, "Converging", "Converging"),
 
 	/**
-	 * The '<em><b>Diverging</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Diverging</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #DIVERGING_VALUE
 	 * @generated
 	 * @ordered
@@ -61,9 +58,8 @@ public enum GatewayDirection implements Enumerator {
 	DIVERGING(2, "Diverging", "Diverging"),
 
 	/**
-	 * The '<em><b>Mixed</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Mixed</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #MIXED_VALUE
 	 * @generated
 	 * @ordered
@@ -71,13 +67,13 @@ public enum GatewayDirection implements Enumerator {
 	MIXED(3, "Mixed", "Mixed");
 
 	/**
-	 * The '<em><b>Unspecified</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Unspecified</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Unspecified</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Unspecified</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #UNSPECIFIED
 	 * @model name="Unspecified"
 	 * @generated
@@ -86,13 +82,13 @@ public enum GatewayDirection implements Enumerator {
 	public static final int UNSPECIFIED_VALUE = 0;
 
 	/**
-	 * The '<em><b>Converging</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Converging</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Converging</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Converging</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #CONVERGING
 	 * @model name="Converging"
 	 * @generated
@@ -101,13 +97,13 @@ public enum GatewayDirection implements Enumerator {
 	public static final int CONVERGING_VALUE = 1;
 
 	/**
-	 * The '<em><b>Diverging</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Diverging</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Diverging</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Diverging</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #DIVERGING
 	 * @model name="Diverging"
 	 * @generated
@@ -116,13 +112,13 @@ public enum GatewayDirection implements Enumerator {
 	public static final int DIVERGING_VALUE = 2;
 
 	/**
-	 * The '<em><b>Mixed</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Mixed</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Mixed</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Mixed</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MIXED
 	 * @model name="Mixed"
 	 * @generated
@@ -131,27 +127,27 @@ public enum GatewayDirection implements Enumerator {
 	public static final int MIXED_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Gateway Direction</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Gateway Direction</b></em>' enumerators. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final GatewayDirection[] VALUES_ARRAY = new GatewayDirection[] {
-			UNSPECIFIED, CONVERGING, DIVERGING, MIXED, };
+	private static final GatewayDirection[] VALUES_ARRAY = new GatewayDirection[] { UNSPECIFIED,
+			CONVERGING, DIVERGING, MIXED, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Gateway Direction</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Gateway Direction</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<GatewayDirection> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<GatewayDirection> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Gateway Direction</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Gateway Direction</b></em>' literal with the specified literal value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static GatewayDirection get(String literal) {
@@ -165,9 +161,9 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Gateway Direction</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Gateway Direction</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static GatewayDirection getByName(String name) {
@@ -181,9 +177,9 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Gateway Direction</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Gateway Direction</b></em>' literal with the specified integer value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static GatewayDirection get(int value) {
@@ -201,30 +197,29 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private GatewayDirection(int value, String name, String literal) {
@@ -234,8 +229,8 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -243,8 +238,8 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -252,8 +247,8 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -261,9 +256,9 @@ public enum GatewayDirection implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,4 +266,4 @@ public enum GatewayDirection implements Enumerator {
 		return literal;
 	}
 
-} //GatewayDirection
+} // GatewayDirection

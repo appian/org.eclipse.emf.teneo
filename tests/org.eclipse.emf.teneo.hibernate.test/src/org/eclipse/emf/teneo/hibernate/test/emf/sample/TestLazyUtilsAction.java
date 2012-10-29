@@ -40,7 +40,7 @@ import org.hibernate.collection.spi.PersistentCollection;
 public class TestLazyUtilsAction extends AbstractTestAction {
 
 	private static int BOOK_COUNT = 100;
-	
+
 	public TestLazyUtilsAction() {
 		super(LibraryPackage.eINSTANCE);
 	}
@@ -82,16 +82,17 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
-			
+			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(
+					0);
+
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
-			
+
 			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 			testLazySize(lib.getWriters().get(0).getBooks());
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			final Library library = store.getObject(Library.class);
@@ -113,7 +114,8 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final Library library = store.getObject(Library.class);
-			final Iterator<Book> books = LazyCollectionUtils.getPagedLoadingIterator(library.getBooks(), 10);
+			final Iterator<Book> books = LazyCollectionUtils.getPagedLoadingIterator(library.getBooks(),
+					10);
 			int bkCount = 0;
 			while (books.hasNext()) {
 				final Book bk = books.next();
@@ -122,12 +124,13 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 			}
 			checkIsStillLazy(library.getBooks());
 			assertEquals(BOOK_COUNT, bkCount);
-		}		
+		}
 	}
 
 	protected void testLazySize(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 		int size = LazyCollectionUtils.size(list);
@@ -137,8 +140,9 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 	}
 
 	protected void checkIsStillLazy(List<?> list) {
-		final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
-		final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
+		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
+				.getDelegate();
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 	}

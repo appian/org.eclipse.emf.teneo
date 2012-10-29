@@ -19,33 +19,31 @@ import java.util.List;
 import org.eclipse.dd.dc.Point;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Edge</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Edge</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.dd.di.Edge#getSource <em>Source</em>}</li>
- *   <li>{@link org.eclipse.dd.di.Edge#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.dd.di.Edge#getWaypoint <em>Waypoint</em>}</li>
+ * <li>{@link org.eclipse.dd.di.Edge#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.dd.di.Edge#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.dd.di.Edge#getWaypoint <em>Waypoint</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.dd.di.DiPackage#getEdge()
- * @model abstract="true"
- *        extendedMetaData="name='Edge' kind='elementOnly'"
+ * @model abstract="true" extendedMetaData="name='Edge' kind='elementOnly'"
  * @generated
  */
 public interface Edge extends DiagramElement {
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Source</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Source</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see org.eclipse.dd.di.DiPackage#getEdge_Source()
 	 * @model transient="true" changeable="false" derived="true" ordered="false"
@@ -54,13 +52,13 @@ public interface Edge extends DiagramElement {
 	DiagramElement getSource();
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Target</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see org.eclipse.dd.di.DiPackage#getEdge_Target()
 	 * @model transient="true" changeable="false" derived="true" ordered="false"
@@ -69,18 +67,18 @@ public interface Edge extends DiagramElement {
 	DiagramElement getTarget();
 
 	/**
-	 * Returns the value of the '<em><b>Waypoint</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.dd.dc.Point}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Waypoint</b></em>' containment reference list. The list
+	 * contents are of type {@link org.eclipse.dd.dc.Point}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Waypoint</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Waypoint</em>' containment reference list isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Waypoint</em>' containment reference list.
 	 * @see org.eclipse.dd.di.DiPackage#getEdge_Waypoint()
-	 * @model containment="true" lower="2"
-	 *        extendedMetaData="kind='element' name='waypoint' namespace='http://www.omg.org/spec/DD/20100524/DI'"
+	 * @model containment="true" lower="2" extendedMetaData=
+	 *        "kind='element' name='waypoint' namespace='http://www.omg.org/spec/DD/20100524/DI'"
 	 * @generated
 	 */
 	List<Point> getWaypoint();

@@ -9,8 +9,8 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotation</b></em>'. <!-- end-user-doc
- * -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Hb Annotation</b></em>'.
+ * <!-- end-user-doc -->
  * 
  * 
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getHbAnnotation()

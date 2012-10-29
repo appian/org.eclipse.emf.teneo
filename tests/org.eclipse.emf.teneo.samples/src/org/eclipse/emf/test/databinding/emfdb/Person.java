@@ -11,32 +11,31 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Person</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Person</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.test.databinding.emfdb.Person#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.eclipse.emf.test.databinding.emfdb.Person#getParents <em>Parents</em>}</li>
+ * <li>{@link org.eclipse.emf.test.databinding.emfdb.Person#getNotes <em>Notes</em>}</li>
+ * <li>{@link org.eclipse.emf.test.databinding.emfdb.Person#getParents <em>Parents</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.test.databinding.emfdb.EmfdbPackage#getPerson()
  * @model
  * @generated
  */
 public interface Person extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.test.databinding.emfdb.Note}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list. The list contents
+	 * are of type {@link org.eclipse.emf.test.databinding.emfdb.Note}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Notes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Notes</em>' containment reference list isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Notes</em>' containment reference list.
 	 * @see org.eclipse.emf.test.databinding.emfdb.EmfdbPackage#getPerson_Notes()
 	 * @model containment="true"
@@ -45,14 +44,14 @@ public interface Person extends EObject {
 	EList<Note> getNotes();
 
 	/**
-	 * Returns the value of the '<em><b>Parents</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.emf.test.databinding.emfdb.Person}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Parents</b></em>' reference list. The list contents are of
+	 * type {@link org.eclipse.emf.test.databinding.emfdb.Person}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parents</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Parents</em>' reference list isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Parents</em>' reference list.
 	 * @see org.eclipse.emf.test.databinding.emfdb.EmfdbPackage#getPerson_Parents()
 	 * @model

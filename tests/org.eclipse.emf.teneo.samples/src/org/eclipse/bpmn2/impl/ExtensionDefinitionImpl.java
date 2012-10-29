@@ -36,25 +36,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Extension Definition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Extension Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ExtensionDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ExtensionDefinitionImpl#getExtensionAttributeDefinitions <em>Extension Attribute Definitions</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ExtensionDefinitionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ExtensionDefinitionImpl#getExtensionAttributeDefinitions <em>
+ * Extension Attribute Definitions</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ExtensionDefinitionImpl extends EObjectImpl implements
-		ExtensionDefinition {
+public class ExtensionDefinitionImpl extends EObjectImpl implements ExtensionDefinition {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,9 +61,9 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -72,9 +71,10 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getExtensionAttributeDefinitions() <em>Extension Attribute Definitions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getExtensionAttributeDefinitions()
+	 * <em>Extension Attribute Definitions</em>}' containment reference list. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getExtensionAttributeDefinitions()
 	 * @generated
 	 * @ordered
@@ -82,8 +82,8 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	protected EList<ExtensionAttributeDefinition> extensionAttributeDefinitions;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExtensionDefinitionImpl() {
@@ -91,8 +91,8 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -101,8 +101,8 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -110,8 +110,8 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -123,15 +123,14 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ExtensionAttributeDefinition> getExtensionAttributeDefinitions() {
 		if (extensionAttributeDefinitions == null) {
 			extensionAttributeDefinitions = new EObjectContainmentWithInverseEList<ExtensionAttributeDefinition>(
-					ExtensionAttributeDefinition.class,
-					this,
+					ExtensionAttributeDefinition.class, this,
 					Bpmn2Package.EXTENSION_DEFINITION__EXTENSION_ATTRIBUTE_DEFINITIONS,
 					Bpmn2Package.EXTENSION_ATTRIBUTE_DEFINITION__EXTENSION_DEFINITION);
 		}
@@ -139,14 +138,14 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.EXTENSION_DEFINITION__EXTENSION_ATTRIBUTE_DEFINITIONS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getExtensionAttributeDefinitions())
@@ -156,24 +155,23 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.EXTENSION_DEFINITION__EXTENSION_ATTRIBUTE_DEFINITIONS:
-			return ((InternalEList<?>) getExtensionAttributeDefinitions())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getExtensionAttributeDefinitions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -188,8 +186,8 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -201,16 +199,16 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 			return;
 		case Bpmn2Package.EXTENSION_DEFINITION__EXTENSION_ATTRIBUTE_DEFINITIONS:
 			getExtensionAttributeDefinitions().clear();
-			getExtensionAttributeDefinitions()
-					.addAll((Collection<? extends ExtensionAttributeDefinition>) newValue);
+			getExtensionAttributeDefinitions().addAll(
+					(Collection<? extends ExtensionAttributeDefinition>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -227,26 +225,24 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.EXTENSION_DEFINITION__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.EXTENSION_DEFINITION__EXTENSION_ATTRIBUTE_DEFINITIONS:
-			return extensionAttributeDefinitions != null
-					&& !extensionAttributeDefinitions.isEmpty();
+			return extensionAttributeDefinitions != null && !extensionAttributeDefinitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -261,4 +257,4 @@ public class ExtensionDefinitionImpl extends EObjectImpl implements
 		return result.toString();
 	}
 
-} //ExtensionDefinitionImpl
+} // ExtensionDefinitionImpl

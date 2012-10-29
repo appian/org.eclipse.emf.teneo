@@ -65,7 +65,8 @@ public class EAVFeatureMapEntryValueHolder extends EAVSingleEAttributeValueHolde
 			return featureMapEntry;
 		}
 
-		featureMapEntry = ((EStructuralFeatureImpl) getEStructuralFeature()).getFeatureMapEntryPrototype();
+		featureMapEntry = ((EStructuralFeatureImpl) getEStructuralFeature())
+				.getFeatureMapEntryPrototype();
 		if (isEReference) {
 			featureMapEntry = FeatureMapUtil.createEntry(getEStructuralFeature(), referenceValue);
 		} else {

@@ -36,25 +36,26 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Call Conversation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Call Conversation</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.CallConversationImpl#getParticipantAssociations <em>Participant Associations</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.CallConversationImpl#getCalledCollaborationRef <em>Called Collaboration Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CallConversationImpl#getParticipantAssociations <em>Participant
+ * Associations</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CallConversationImpl#getCalledCollaborationRef <em>Called
+ * Collaboration Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class CallConversationImpl extends ConversationNodeImpl implements
-		CallConversation {
+public class CallConversationImpl extends ConversationNodeImpl implements CallConversation {
 	/**
-	 * The cached value of the '{@link #getParticipantAssociations() <em>Participant Associations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParticipantAssociations()
+	 * <em>Participant Associations</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getParticipantAssociations()
 	 * @generated
 	 * @ordered
@@ -62,9 +63,9 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	protected EList<ParticipantAssociation> participantAssociations;
 
 	/**
-	 * The cached value of the '{@link #getCalledCollaborationRef() <em>Called Collaboration Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCalledCollaborationRef() <em>Called Collaboration Ref</em>}
+	 * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCalledCollaborationRef()
 	 * @generated
 	 * @ordered
@@ -72,8 +73,8 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	protected Collaboration calledCollaborationRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CallConversationImpl() {
@@ -81,8 +82,8 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,8 +92,8 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<ParticipantAssociation> getParticipantAssociations() {
@@ -105,8 +106,8 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Collaboration getCalledCollaborationRef() {
@@ -115,19 +116,17 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 			calledCollaborationRef = (Collaboration) eResolveProxy(oldCalledCollaborationRef);
 			if (calledCollaborationRef != oldCalledCollaborationRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.CALL_CONVERSATION__CALLED_COLLABORATION_REF,
-							oldCalledCollaborationRef, calledCollaborationRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.CALL_CONVERSATION__CALLED_COLLABORATION_REF, oldCalledCollaborationRef,
+							calledCollaborationRef));
 			}
 		}
 		return calledCollaborationRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Collaboration basicGetCalledCollaborationRef() {
@@ -135,39 +134,37 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setCalledCollaborationRef(
-			Collaboration newCalledCollaborationRef) {
+	public void setCalledCollaborationRef(Collaboration newCalledCollaborationRef) {
 		Collaboration oldCalledCollaborationRef = calledCollaborationRef;
 		calledCollaborationRef = newCalledCollaborationRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CALL_CONVERSATION__CALLED_COLLABORATION_REF,
-					oldCalledCollaborationRef, calledCollaborationRef));
+					Bpmn2Package.CALL_CONVERSATION__CALLED_COLLABORATION_REF, oldCalledCollaborationRef,
+					calledCollaborationRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.CALL_CONVERSATION__PARTICIPANT_ASSOCIATIONS:
-			return ((InternalEList<?>) getParticipantAssociations())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getParticipantAssociations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -184,8 +181,8 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -194,8 +191,7 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 		switch (featureID) {
 		case Bpmn2Package.CALL_CONVERSATION__PARTICIPANT_ASSOCIATIONS:
 			getParticipantAssociations().clear();
-			getParticipantAssociations().addAll(
-					(Collection<? extends ParticipantAssociation>) newValue);
+			getParticipantAssociations().addAll((Collection<? extends ParticipantAssociation>) newValue);
 			return;
 		case Bpmn2Package.CALL_CONVERSATION__CALLED_COLLABORATION_REF:
 			setCalledCollaborationRef((Collaboration) newValue);
@@ -205,8 +201,8 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -223,20 +219,19 @@ public class CallConversationImpl extends ConversationNodeImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.CALL_CONVERSATION__PARTICIPANT_ASSOCIATIONS:
-			return participantAssociations != null
-					&& !participantAssociations.isEmpty();
+			return participantAssociations != null && !participantAssociations.isEmpty();
 		case Bpmn2Package.CALL_CONVERSATION__CALLED_COLLABORATION_REF:
 			return calledCollaborationRef != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CallConversationImpl
+} // CallConversationImpl

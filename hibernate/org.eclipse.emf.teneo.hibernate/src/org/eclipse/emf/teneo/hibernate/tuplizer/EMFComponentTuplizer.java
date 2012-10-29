@@ -47,14 +47,14 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	private static final long serialVersionUID = 6316160569897347041L;
 
 	private EClass eClass;
-	
+
 	/** The logger */
 	// private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
 	/** Constructor */
 	public EMFComponentTuplizer(Component component) {
 		super(component);
 	}
-	
+
 	private EClass getEClass(Component component) {
 		if (eClass == null) {
 			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
@@ -67,7 +67,8 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 			}
 		}
 		if (eClass == null) {
-			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
+			throw new HbMapperException("No eclass found for entityname: "
+					+ component.getComponentClassName());
 		}
 		return eClass;
 	}
@@ -86,8 +87,8 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate.mapping.Property,
-	 * org.hibernate.mapping.PersistentClass)
+	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate
+	 * .mapping.Property, org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
 	protected Getter buildGetter(Component component, Property mappedProperty) {
@@ -97,8 +98,8 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate.mapping.Property,
-	 * org.hibernate.mapping.PersistentClass)
+	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate
+	 * .mapping.Property, org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
 	protected Setter buildSetter(Component component, Property mappedProperty) {
@@ -108,7 +109,8 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	/** Returns the correct accessor on the basis of the type of property */
 	public PropertyAccessor getPropertyAccessor(Property mappedProperty, Component comp) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(comp);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, comp.getComponentClassName(), getEClass(comp));
+		return HbUtil.getPropertyAccessor(mappedProperty, ds, comp.getComponentClassName(),
+				getEClass(comp));
 	}
 
 	/*

@@ -69,10 +69,10 @@ public class HbConstants {
 
 	/** The ex/import format from and to xmi */
 	public final static int EXCHANGE_FORMAT_XMI = 1;
-	
+
 	public final static String EAV_TABLE_PREFIX_PARAMETER_REGEX = "\\{tableprefix\\}";
-	
+
 	public final static String EAV_COLLECTIONLAZY_REGEX = "\\{collectionLazySetting\\}";
-	
+
 	public final static String SYNTHETIC_PROPERTY_INDICATOR = "synthetic-property";
 }

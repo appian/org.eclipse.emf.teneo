@@ -9,32 +9,31 @@ package lobj;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Category</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Category</b></em>'. <!--
+ * end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link lobj.Category#getTitleMeta <em>Title Meta</em>}</li>
- *   <li>{@link lobj.Category#getCourse <em>Course</em>}</li>
+ * <li>{@link lobj.Category#getTitleMeta <em>Title Meta</em>}</li>
+ * <li>{@link lobj.Category#getCourse <em>Course</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see lobj.LobjPackage#getCategory()
  * @model extendedMetaData="kind='elementOnly'"
  * @generated
  */
 public interface Category extends LearningObject {
 	/**
-	 * Returns the value of the '<em><b>Title Meta</b></em>' containment reference list.
-	 * The list contents are of type {@link lobj.TitleMeta}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Title Meta</b></em>' containment reference list. The list
+	 * contents are of type {@link lobj.TitleMeta}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Title Meta</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Title Meta</em>' containment reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Title Meta</em>' containment reference list.
 	 * @see lobj.LobjPackage#getCategory_TitleMeta()
 	 * @model type="lobj.TitleMeta" containment="true"
@@ -45,14 +44,14 @@ public interface Category extends LearningObject {
 	EList getTitleMeta();
 
 	/**
-	 * Returns the value of the '<em><b>Course</b></em>' containment reference list.
-	 * The list contents are of type {@link lobj.Course}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Course</b></em>' containment reference list. The list contents
+	 * are of type {@link lobj.Course}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Course</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Course</em>' containment reference list isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Course</em>' containment reference list.
 	 * @see lobj.LobjPackage#getCategory_Course()
 	 * @model type="lobj.Course" containment="true"

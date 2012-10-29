@@ -80,8 +80,8 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 			log.error(e);
-			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error Occured", e
-				.getMessage());
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					"Error Occured", e.getMessage());
 		}
 	}
 
@@ -107,7 +107,8 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 		if (editorDesc == null) {
 			IFileEditorMapping[] mappings = workbench.getEditorRegistry().getFileEditorMappings();
 			for (IFileEditorMapping map : mappings) {
-				// System.err.println(map.getExtension() + "-->" + map.getEditors()[0].getId());
+				// System.err.println(map.getExtension() + "-->" +
+				// map.getEditors()[0].getId());
 				if (map.getExtension().compareTo(propExtension.toLowerCase()) == 0) {
 					editorDesc = map.getEditors()[0];
 					break;
@@ -121,9 +122,12 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 		return editorDesc.getId();
 	}
 
-	/** Creates a dummy file which is used to 'fool' the editor to open a specific rdb resource */
+	/**
+	 * Creates a dummy file which is used to 'fool' the editor to open a specific rdb resource
+	 */
 	public IFile getModelFile(IFile ehbFile, String extension) {
-		return ResourcesPlugin.getWorkspace().getRoot().getFile(ehbFile.getFullPath().append("hibernate." + extension));
+		return ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(ehbFile.getFullPath().append("hibernate." + extension));
 	}
 
 	/**

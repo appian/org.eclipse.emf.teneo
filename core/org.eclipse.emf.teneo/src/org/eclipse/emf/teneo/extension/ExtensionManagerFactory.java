@@ -36,7 +36,7 @@ public class ExtensionManagerFactory {
 
 	/**
 	 * @param instance
-	 *            the instance to set
+	 *          the instance to set
 	 */
 	public static void setInstance(ExtensionManagerFactory instance) {
 		ExtensionManagerFactory.instance = instance;

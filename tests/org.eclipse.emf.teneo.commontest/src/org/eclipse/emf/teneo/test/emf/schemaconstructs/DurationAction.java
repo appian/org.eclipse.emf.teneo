@@ -71,7 +71,8 @@ public class DurationAction extends AbstractTestAction {
 			store.refresh();
 			{
 				@SuppressWarnings("unchecked")
-				final List<DurationTest> durations = (List<DurationTest>) store.getObjects(DurationTest.class);
+				final List<DurationTest> durations = (List<DurationTest>) store
+						.getObjects(DurationTest.class);
 				for (DurationTest dt : durations) {
 					final int index = Integer.parseInt(dt.getName());
 					final Duration d = dt.getDuration();

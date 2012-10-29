@@ -26,26 +26,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Conversation Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Conversation Link</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationLinkImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationLinkImpl#getSourceRef <em>Source Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationLinkImpl#getTargetRef <em>Target Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationLinkImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationLinkImpl#getSourceRef <em>Source Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationLinkImpl#getTargetRef <em>Target Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ConversationLinkImpl extends BaseElementImpl implements
-		ConversationLink {
+public class ConversationLinkImpl extends BaseElementImpl implements ConversationLink {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,9 +51,9 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -63,9 +61,9 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSourceRef()
 	 * @generated
 	 * @ordered
@@ -73,9 +71,9 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	protected InteractionNode sourceRef;
 
 	/**
-	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetRef()
 	 * @generated
 	 * @ordered
@@ -83,8 +81,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	protected InteractionNode targetRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConversationLinkImpl() {
@@ -92,8 +90,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,8 +100,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -111,21 +109,21 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CONVERSATION_LINK__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.CONVERSATION_LINK__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode getSourceRef() {
@@ -135,16 +133,15 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 			if (sourceRef != oldSourceRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.CONVERSATION_LINK__SOURCE_REF,
-							oldSourceRef, sourceRef));
+							Bpmn2Package.CONVERSATION_LINK__SOURCE_REF, oldSourceRef, sourceRef));
 			}
 		}
 		return sourceRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode basicGetSourceRef() {
@@ -152,8 +149,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSourceRef(InteractionNode newSourceRef) {
@@ -161,13 +158,12 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 		sourceRef = newSourceRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CONVERSATION_LINK__SOURCE_REF, oldSourceRef,
-					sourceRef));
+					Bpmn2Package.CONVERSATION_LINK__SOURCE_REF, oldSourceRef, sourceRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode getTargetRef() {
@@ -177,16 +173,15 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 			if (targetRef != oldTargetRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.CONVERSATION_LINK__TARGET_REF,
-							oldTargetRef, targetRef));
+							Bpmn2Package.CONVERSATION_LINK__TARGET_REF, oldTargetRef, targetRef));
 			}
 		}
 		return targetRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InteractionNode basicGetTargetRef() {
@@ -194,8 +189,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetRef(InteractionNode newTargetRef) {
@@ -203,13 +198,12 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 		targetRef = newTargetRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.CONVERSATION_LINK__TARGET_REF, oldTargetRef,
-					targetRef));
+					Bpmn2Package.CONVERSATION_LINK__TARGET_REF, oldTargetRef, targetRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -230,8 +224,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -251,8 +245,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -272,16 +266,15 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Bpmn2Package.CONVERSATION_LINK__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.CONVERSATION_LINK__SOURCE_REF:
 			return sourceRef != null;
 		case Bpmn2Package.CONVERSATION_LINK__TARGET_REF:
@@ -291,8 +284,8 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -307,4 +300,4 @@ public class ConversationLinkImpl extends BaseElementImpl implements
 		return result.toString();
 	}
 
-} //ConversationLinkImpl
+} // ConversationLinkImpl

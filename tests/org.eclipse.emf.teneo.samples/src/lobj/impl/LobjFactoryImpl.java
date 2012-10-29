@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static LobjFactory init() {
 		try {
-			LobjFactory theLobjFactory = (LobjFactory)EPackage.Registry.INSTANCE.getEFactory("lobj.ecore"); 
+			LobjFactory theLobjFactory = (LobjFactory) EPackage.Registry.INSTANCE
+					.getEFactory("lobj.ecore");
 			if (theLobjFactory != null) {
 				return theLobjFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new LobjFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LobjFactoryImpl() {
@@ -53,69 +50,119 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case LobjPackage.HYPERTEXT_BLOCK: return createHypertextBlock();
-			case LobjPackage.HYPERTEXT_CONTENT: return createHypertextContent();
-			case LobjPackage.BLOCK_FOLDER: return createBlockFolder();
-			case LobjPackage.CATEGORY: return createCategory();
-			case LobjPackage.CORR_BLOCK: return createCorrBlock();
-			case LobjPackage.COURSE: return createCourse();
-			case LobjPackage.ITEM: return createItem();
-			case LobjPackage.LEARNING_UNIT: return createLearningUnit();
-			case LobjPackage.LU_FOLDER: return createLuFolder();
-			case LobjPackage.MODULE: return createModule();
-			case LobjPackage.MODULE_FOLDER: return createModuleFolder();
-			case LobjPackage.RESRC_FOLDER: return createResrcFolder();
-			case LobjPackage.THEME: return createTheme();
-			case LobjPackage.PRESENTATION_BLOCK: return createPresentationBlock();
-			case LobjPackage.THEME_NODE: return createThemeNode();
-			case LobjPackage.LU_NODE: return createLuNode();
-			case LobjPackage.RESRC_FILE: return createResrcFile();
-			case LobjPackage.BLOCK_AUDIOFILE: return createBlockAudiofile();
-			case LobjPackage.RESRC_FILETYPE: return createResrcFiletype();
-			case LobjPackage.ACCESS_CONTROL: return createAccessControl();
-			case LobjPackage.ADDRESS: return createAddress();
-			case LobjPackage.AFFILIATION: return createAffiliation();
-			case LobjPackage.AUTHOR: return createAuthor();
-			case LobjPackage.BLOCK_META: return createBlockMeta();
-			case LobjPackage.BLOCKTYPE: return createBlocktype();
-			case LobjPackage.TITLE_META: return createTitleMeta();
-			case LobjPackage.COURSE_META: return createCourseMeta();
-			case LobjPackage.SIMPLE_DIDAC_META: return createSimpleDidacMeta();
-			case LobjPackage.DIDAC_META: return createDidacMeta();
-			case LobjPackage.DOMAIN: return createDomain();
-			case LobjPackage.EDITION: return createEdition();
-			case LobjPackage.FOLDER_META: return createFolderMeta();
-			case LobjPackage.LU_META: return createLuMeta();
-			case LobjPackage.USERAUTHORIZATION: return createUserauthorization();
-			case LobjPackage.NOTE: return createNote();
-			case LobjPackage.PERSON: return createPerson();
-			case LobjPackage.PUBLISHER: return createPublisher();
-			case LobjPackage.PUBLISH_INFO: return createPublishInfo();
-			case LobjPackage.RESRC_META: return createResrcMeta();
-			case LobjPackage.SHAREDNOTES: return createSharednotes();
-			case LobjPackage.COURSETYPE: return createCoursetype();
-			case LobjPackage.EXTERNAL_METADATA: return createExternalMetadata();
-			case LobjPackage.LANGUAGE: return createLanguage();
-			case LobjPackage.PRECOGNITION: return createPrecognition();
-			case LobjPackage.INTERNAL_REF: return createInternalRef();
-			case LobjPackage.MODULE_META: return createModuleMeta();
-			case LobjPackage.SOURCE: return createSource();
-			case LobjPackage.AUTHORIZATION_TYPES: return createAuthorizationTypes();
-			case LobjPackage.USER: return createUser();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case LobjPackage.HYPERTEXT_BLOCK:
+			return createHypertextBlock();
+		case LobjPackage.HYPERTEXT_CONTENT:
+			return createHypertextContent();
+		case LobjPackage.BLOCK_FOLDER:
+			return createBlockFolder();
+		case LobjPackage.CATEGORY:
+			return createCategory();
+		case LobjPackage.CORR_BLOCK:
+			return createCorrBlock();
+		case LobjPackage.COURSE:
+			return createCourse();
+		case LobjPackage.ITEM:
+			return createItem();
+		case LobjPackage.LEARNING_UNIT:
+			return createLearningUnit();
+		case LobjPackage.LU_FOLDER:
+			return createLuFolder();
+		case LobjPackage.MODULE:
+			return createModule();
+		case LobjPackage.MODULE_FOLDER:
+			return createModuleFolder();
+		case LobjPackage.RESRC_FOLDER:
+			return createResrcFolder();
+		case LobjPackage.THEME:
+			return createTheme();
+		case LobjPackage.PRESENTATION_BLOCK:
+			return createPresentationBlock();
+		case LobjPackage.THEME_NODE:
+			return createThemeNode();
+		case LobjPackage.LU_NODE:
+			return createLuNode();
+		case LobjPackage.RESRC_FILE:
+			return createResrcFile();
+		case LobjPackage.BLOCK_AUDIOFILE:
+			return createBlockAudiofile();
+		case LobjPackage.RESRC_FILETYPE:
+			return createResrcFiletype();
+		case LobjPackage.ACCESS_CONTROL:
+			return createAccessControl();
+		case LobjPackage.ADDRESS:
+			return createAddress();
+		case LobjPackage.AFFILIATION:
+			return createAffiliation();
+		case LobjPackage.AUTHOR:
+			return createAuthor();
+		case LobjPackage.BLOCK_META:
+			return createBlockMeta();
+		case LobjPackage.BLOCKTYPE:
+			return createBlocktype();
+		case LobjPackage.TITLE_META:
+			return createTitleMeta();
+		case LobjPackage.COURSE_META:
+			return createCourseMeta();
+		case LobjPackage.SIMPLE_DIDAC_META:
+			return createSimpleDidacMeta();
+		case LobjPackage.DIDAC_META:
+			return createDidacMeta();
+		case LobjPackage.DOMAIN:
+			return createDomain();
+		case LobjPackage.EDITION:
+			return createEdition();
+		case LobjPackage.FOLDER_META:
+			return createFolderMeta();
+		case LobjPackage.LU_META:
+			return createLuMeta();
+		case LobjPackage.USERAUTHORIZATION:
+			return createUserauthorization();
+		case LobjPackage.NOTE:
+			return createNote();
+		case LobjPackage.PERSON:
+			return createPerson();
+		case LobjPackage.PUBLISHER:
+			return createPublisher();
+		case LobjPackage.PUBLISH_INFO:
+			return createPublishInfo();
+		case LobjPackage.RESRC_META:
+			return createResrcMeta();
+		case LobjPackage.SHAREDNOTES:
+			return createSharednotes();
+		case LobjPackage.COURSETYPE:
+			return createCoursetype();
+		case LobjPackage.EXTERNAL_METADATA:
+			return createExternalMetadata();
+		case LobjPackage.LANGUAGE:
+			return createLanguage();
+		case LobjPackage.PRECOGNITION:
+			return createPrecognition();
+		case LobjPackage.INTERNAL_REF:
+			return createInternalRef();
+		case LobjPackage.MODULE_META:
+			return createModuleMeta();
+		case LobjPackage.SOURCE:
+			return createSource();
+		case LobjPackage.AUTHORIZATION_TYPES:
+			return createAuthorizationTypes();
+		case LobjPackage.USER:
+			return createUser();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HypertextBlock createHypertextBlock() {
@@ -124,8 +171,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HypertextContent createHypertextContent() {
@@ -134,8 +181,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BlockFolder createBlockFolder() {
@@ -144,8 +191,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Category createCategory() {
@@ -154,8 +201,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CorrBlock createCorrBlock() {
@@ -164,8 +211,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Course createCourse() {
@@ -174,8 +221,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Item createItem() {
@@ -184,8 +231,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LearningUnit createLearningUnit() {
@@ -194,8 +241,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LuFolder createLuFolder() {
@@ -204,8 +251,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Module createModule() {
@@ -214,8 +261,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ModuleFolder createModuleFolder() {
@@ -224,8 +271,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResrcFolder createResrcFolder() {
@@ -234,8 +281,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Theme createTheme() {
@@ -244,8 +291,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PresentationBlock createPresentationBlock() {
@@ -254,8 +301,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ThemeNode createThemeNode() {
@@ -264,8 +311,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LuNode createLuNode() {
@@ -274,8 +321,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResrcFile createResrcFile() {
@@ -284,8 +331,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BlockAudiofile createBlockAudiofile() {
@@ -294,8 +341,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResrcFiletype createResrcFiletype() {
@@ -304,8 +351,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AccessControl createAccessControl() {
@@ -314,8 +361,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Address createAddress() {
@@ -324,8 +371,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Affiliation createAffiliation() {
@@ -334,8 +381,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Author createAuthor() {
@@ -344,8 +391,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BlockMeta createBlockMeta() {
@@ -354,8 +401,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Blocktype createBlocktype() {
@@ -364,8 +411,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TitleMeta createTitleMeta() {
@@ -374,8 +421,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CourseMeta createCourseMeta() {
@@ -384,8 +431,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimpleDidacMeta createSimpleDidacMeta() {
@@ -394,8 +441,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DidacMeta createDidacMeta() {
@@ -404,8 +451,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Domain createDomain() {
@@ -414,8 +461,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Edition createEdition() {
@@ -424,8 +471,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FolderMeta createFolderMeta() {
@@ -434,8 +481,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LuMeta createLuMeta() {
@@ -444,8 +491,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Userauthorization createUserauthorization() {
@@ -454,8 +501,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Note createNote() {
@@ -464,8 +511,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Person createPerson() {
@@ -474,8 +521,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Publisher createPublisher() {
@@ -484,8 +531,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PublishInfo createPublishInfo() {
@@ -494,8 +541,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResrcMeta createResrcMeta() {
@@ -504,8 +551,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Sharednotes createSharednotes() {
@@ -514,8 +561,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Coursetype createCoursetype() {
@@ -524,8 +571,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExternalMetadata createExternalMetadata() {
@@ -534,8 +581,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Language createLanguage() {
@@ -544,8 +591,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Precognition createPrecognition() {
@@ -554,8 +601,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public InternalRef createInternalRef() {
@@ -564,8 +611,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ModuleMeta createModuleMeta() {
@@ -574,8 +621,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Source createSource() {
@@ -584,8 +631,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AuthorizationTypes createAuthorizationTypes() {
@@ -594,8 +641,8 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public User createUser() {
@@ -604,17 +651,17 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LobjPackage getLobjPackage() {
-		return (LobjPackage)getEPackage();
+		return (LobjPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -622,4 +669,4 @@ public class LobjFactoryImpl extends EFactoryImpl implements LobjFactory {
 		return LobjPackage.eINSTANCE;
 	}
 
-} //LobjFactoryImpl
+} // LobjFactoryImpl

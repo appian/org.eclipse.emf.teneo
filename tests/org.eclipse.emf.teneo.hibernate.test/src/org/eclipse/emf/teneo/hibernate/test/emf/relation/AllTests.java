@@ -34,8 +34,9 @@ import org.eclipse.emf.teneo.test.emf.relation.RelationntomAction;
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.relation", HibernateTestbed.instance()
-				.getConfigurations());
+		TestSuite suite = new MultiCfgTestSuite(
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.relation", HibernateTestbed.instance()
+						.getConfigurations());
 
 		suite.addTestSuite(Relation1to1Action.class);
 		suite.addTestSuite(Relation1tonAction.class);

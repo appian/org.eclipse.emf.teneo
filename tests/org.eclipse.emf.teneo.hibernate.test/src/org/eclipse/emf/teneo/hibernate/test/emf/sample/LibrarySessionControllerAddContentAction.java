@@ -123,8 +123,10 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 			SessionController.registerSessionController("testsc", sc);
 
 			{
-				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select b from Book b");
-				HibernateResource res2 = (HibernateResource) getResource(resourceSet, "query1=select w from Writer w");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet,
+						"query1=select b from Book b");
+				HibernateResource res2 = (HibernateResource) getResource(resourceSet,
+						"query1=select w from Writer w");
 				sc.getSessionWrapper().beginTransaction();
 				res1.load(options);
 
@@ -158,7 +160,8 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 			}
 
 			{
-				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select w from Writer w");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet,
+						"query1=select w from Writer w");
 				sc.getSessionWrapper().beginTransaction();
 				res1.load(options);
 				assertTrue(res1.getContents().get(0) instanceof Writer);
@@ -183,7 +186,8 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 
 			{
 				// check load of books into lazy load
-				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select w from Writer w");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet,
+						"query1=select w from Writer w");
 				sc.getSessionWrapper().beginTransaction();
 				res1.load(options);
 				assertTrue(res1.getContents().get(0) instanceof Writer);

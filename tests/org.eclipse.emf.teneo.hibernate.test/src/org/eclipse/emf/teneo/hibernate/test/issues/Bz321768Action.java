@@ -76,12 +76,10 @@ public class Bz321768Action extends AbstractTestAction {
 			embeddedEPackage = efactory.createEPackage();
 			embeddedEPackage.setName("elv");
 			embeddedEPackage.setNsPrefix("elv");
-			embeddedEPackage.setNsURI("http:///www.elver.org/"
-					+ Bz321768Action.class.getName());
+			embeddedEPackage.setNsURI("http:///www.elver.org/" + Bz321768Action.class.getName());
 			embeddedEPackage.getEClassifiers().add(nameEClass);
 			embeddedEPackage.getEClassifiers().add(personEClass);
-			EPackage.Registry.INSTANCE.put(embeddedEPackage.getNsURI(),
-					embeddedEPackage);
+			EPackage.Registry.INSTANCE.put(embeddedEPackage.getNsURI(), embeddedEPackage);
 		}
 
 	}

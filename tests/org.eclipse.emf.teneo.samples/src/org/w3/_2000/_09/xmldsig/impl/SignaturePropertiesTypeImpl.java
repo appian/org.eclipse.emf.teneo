@@ -27,24 +27,24 @@ import org.w3._2000._09.xmldsig.SignaturePropertyType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Signature Properties Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Signature Properties Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.SignaturePropertiesTypeImpl#getSignatureProperty <em>Signature Property</em>}</li>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.SignaturePropertiesTypeImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.SignaturePropertiesTypeImpl#getSignatureProperty <em>
+ * Signature Property</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.SignaturePropertiesTypeImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SignaturePropertiesTypeImpl extends EObjectImpl implements SignaturePropertiesType {
 	/**
-	 * The cached value of the '{@link #getSignatureProperty() <em>Signature Property</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSignatureProperty() <em>Signature Property</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSignatureProperty()
 	 * @generated
 	 * @ordered
@@ -52,9 +52,9 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 	protected EList<SignaturePropertyType> signatureProperty;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -62,9 +62,9 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -72,8 +72,8 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SignaturePropertiesTypeImpl() {
@@ -81,8 +81,8 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,20 +91,22 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<SignaturePropertyType> getSignatureProperty() {
 		if (signatureProperty == null) {
-			signatureProperty = new EObjectContainmentEList<SignaturePropertyType>(SignaturePropertyType.class, this, XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY);
+			signatureProperty = new EObjectContainmentEList<SignaturePropertyType>(
+					SignaturePropertyType.class, this,
+					XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY);
 		}
 		return signatureProperty;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -112,109 +114,112 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID, oldId, id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
-				return ((InternalEList<?>)getSignatureProperty()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
+			return ((InternalEList<?>) getSignatureProperty()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
-				return getSignatureProperty();
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
-				return getId();
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
+			return getSignatureProperty();
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
-				getSignatureProperty().clear();
-				getSignatureProperty().addAll((Collection<? extends SignaturePropertyType>)newValue);
-				return;
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
-				setId((String)newValue);
-				return;
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
+			getSignatureProperty().clear();
+			getSignatureProperty().addAll((Collection<? extends SignaturePropertyType>) newValue);
+			return;
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
+			setId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
-				getSignatureProperty().clear();
-				return;
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
-				setId(ID_EDEFAULT);
-				return;
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
+			getSignatureProperty().clear();
+			return;
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
-				return signatureProperty != null && !signatureProperty.isEmpty();
-			case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__SIGNATURE_PROPERTY:
+			return signatureProperty != null && !signatureProperty.isEmpty();
+		case XmldsigPackage.SIGNATURE_PROPERTIES_TYPE__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
@@ -223,4 +228,4 @@ public class SignaturePropertiesTypeImpl extends EObjectImpl implements Signatur
 		return result.toString();
 	}
 
-} //SignaturePropertiesTypeImpl
+} // SignaturePropertiesTypeImpl

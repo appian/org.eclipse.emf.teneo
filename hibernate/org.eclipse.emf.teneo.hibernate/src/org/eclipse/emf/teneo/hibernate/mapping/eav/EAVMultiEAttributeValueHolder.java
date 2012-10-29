@@ -33,7 +33,8 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 	private EAVDelegatingList ecoreObjectList = null;
 
 	public void set(Object value) {
-		// set to null first, if there is at least one value then it is set to a value
+		// set to null first, if there is at least one value then it is set to a
+		// value
 		setMandatoryValue(null);
 		final List<?> listValues = (List<?>) value;
 		values = new ArrayList<EAVSingleEAttributeValueHolder>();
@@ -64,7 +65,8 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 		if (ecoreObjectList != null) {
 			return ecoreObjectList;
 		}
-		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
+		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>(
+				(InternalEObject) owner);
 		ecoreList.setValueHolderOwner(this);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
 		ecoreList.setPersistentList(values);
@@ -78,6 +80,6 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 
 	public void setValues(List<EAVSingleEAttributeValueHolder> values) {
 		this.values = values;
-		((EAVDelegatingList)get((InternalEObject)getOwner())).setPersistentList(values);
+		((EAVDelegatingList) get((InternalEObject) getOwner())).setPersistentList(values);
 	}
 }

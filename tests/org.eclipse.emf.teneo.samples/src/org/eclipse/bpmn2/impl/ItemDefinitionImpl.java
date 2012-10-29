@@ -28,27 +28,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Item Definition</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Item Definition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#isIsCollection <em>Is Collection</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#getImport <em>Import</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#getItemKind <em>Item Kind</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#getStructureRef <em>Structure Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#isIsCollection <em>Is Collection</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#getImport <em>Import</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#getItemKind <em>Item Kind</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ItemDefinitionImpl#getStructureRef <em>Structure Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ItemDefinitionImpl extends RootElementImpl implements
-		ItemDefinition {
+public class ItemDefinitionImpl extends RootElementImpl implements ItemDefinition {
 	/**
-	 * The default value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsCollection()
 	 * @generated
 	 * @ordered
@@ -56,9 +54,9 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	protected static final boolean IS_COLLECTION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsCollection() <em>Is Collection</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsCollection()
 	 * @generated
 	 * @ordered
@@ -66,9 +64,9 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	protected boolean isCollection = IS_COLLECTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getImport() <em>Import</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getImport() <em>Import</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getImport()
 	 * @generated
 	 * @ordered
@@ -76,9 +74,9 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	protected Import import_;
 
 	/**
-	 * The default value of the '{@link #getItemKind() <em>Item Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getItemKind() <em>Item Kind</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getItemKind()
 	 * @generated
 	 * @ordered
@@ -86,9 +84,9 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	protected static final ItemKind ITEM_KIND_EDEFAULT = ItemKind.INFORMATION;
 
 	/**
-	 * The cached value of the '{@link #getItemKind() <em>Item Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getItemKind() <em>Item Kind</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getItemKind()
 	 * @generated
 	 * @ordered
@@ -96,9 +94,9 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	protected ItemKind itemKind = ITEM_KIND_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStructureRef() <em>Structure Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStructureRef() <em>Structure Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStructureRef()
 	 * @generated
 	 * @ordered
@@ -106,8 +104,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	protected EObject structureRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ItemDefinitionImpl() {
@@ -115,8 +113,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -125,8 +123,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsCollection() {
@@ -134,8 +132,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsCollection(boolean newIsCollection) {
@@ -143,13 +141,12 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 		isCollection = newIsCollection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ITEM_DEFINITION__IS_COLLECTION,
-					oldIsCollection, isCollection));
+					Bpmn2Package.ITEM_DEFINITION__IS_COLLECTION, oldIsCollection, isCollection));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Import getImport() {
@@ -159,16 +156,15 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 			if (import_ != oldImport) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.ITEM_DEFINITION__IMPORT, oldImport,
-							import_));
+							Bpmn2Package.ITEM_DEFINITION__IMPORT, oldImport, import_));
 			}
 		}
 		return import_;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Import basicGetImport() {
@@ -176,21 +172,21 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setImport(Import newImport) {
 		Import oldImport = import_;
 		import_ = newImport;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ITEM_DEFINITION__IMPORT, oldImport, import_));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.ITEM_DEFINITION__IMPORT,
+					oldImport, import_));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemKind getItemKind() {
@@ -198,8 +194,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setItemKind(ItemKind newItemKind) {
@@ -207,13 +203,12 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 		itemKind = newItemKind == null ? ITEM_KIND_EDEFAULT : newItemKind;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ITEM_DEFINITION__ITEM_KIND, oldItemKind,
-					itemKind));
+					Bpmn2Package.ITEM_DEFINITION__ITEM_KIND, oldItemKind, itemKind));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object getStructureRef() {
@@ -223,16 +218,15 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 			if (structureRef != oldStructureRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.ITEM_DEFINITION__STRUCTURE_REF,
-							oldStructureRef, structureRef));
+							Bpmn2Package.ITEM_DEFINITION__STRUCTURE_REF, oldStructureRef, structureRef));
 			}
 		}
 		return structureRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object basicGetStructureRef() {
@@ -240,8 +234,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStructureRef(Object newStructureRef) {
@@ -249,13 +243,12 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 		structureRef = (EObject) newStructureRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ITEM_DEFINITION__STRUCTURE_REF,
-					oldStructureRef, structureRef));
+					Bpmn2Package.ITEM_DEFINITION__STRUCTURE_REF, oldStructureRef, structureRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -278,8 +271,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -302,8 +295,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -326,8 +319,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -346,8 +339,8 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -364,4 +357,4 @@ public class ItemDefinitionImpl extends RootElementImpl implements
 		return result.toString();
 	}
 
-} //ItemDefinitionImpl
+} // ItemDefinitionImpl

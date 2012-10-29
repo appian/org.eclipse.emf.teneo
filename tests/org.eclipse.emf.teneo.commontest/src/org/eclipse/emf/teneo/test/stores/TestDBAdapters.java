@@ -60,9 +60,10 @@ public class TestDBAdapters {
 				final Class adapterClass = Class.forName(dbAdapterClassName);
 				testAdapter = (BaseTestDatabaseAdapter) adapterClass.newInstance();
 			} catch (Exception e) {
-				throw new StoreTestException("Exception when creating TestDatabaseAdapter using classname: " +
-						dbAdapterClassName + ", db identifier used in property file: " +
-						initProps.getProperty(Utils.DATABASE_PROP_NAME), e);
+				throw new StoreTestException(
+						"Exception when creating TestDatabaseAdapter using classname: " + dbAdapterClassName
+								+ ", db identifier used in property file: "
+								+ initProps.getProperty(Utils.DATABASE_PROP_NAME), e);
 			}
 		}
 		testAdapter.initialize(initProps);

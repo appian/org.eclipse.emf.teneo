@@ -32,8 +32,8 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private static final String EMPLOYEE_NAME = "Piet Pietersen";
 
-	private static final String EMPLOYEE_VERIFICATION_QUERY =
-			"SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.MYID".toLowerCase();
+	private static final String EMPLOYEE_VERIFICATION_QUERY = "SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.MYID"
+			.toLowerCase();
 
 	private static final AssociationoverrideFactory FACTORY = AssociationoverrideFactory.eINSTANCE;
 
@@ -42,8 +42,8 @@ public class AssociationOverrideAction extends AbstractTestAction {
 	private static final String STUDENT_FACULTY = "Biology";
 	private static final String STUDENT_NAME = "Jan Janssen";
 
-	private static final String STUDENT_VERIFICATION_QUERY =
-			"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ADDRESS_E_ID = B.MYID".toLowerCase();
+	private static final String STUDENT_VERIFICATION_QUERY = "SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ADDRESS_E_ID = B.MYID"
+			.toLowerCase();
 
 	static {
 		DEFAULT_ADDRESS.setStreet("Amsterdamseweg 123");

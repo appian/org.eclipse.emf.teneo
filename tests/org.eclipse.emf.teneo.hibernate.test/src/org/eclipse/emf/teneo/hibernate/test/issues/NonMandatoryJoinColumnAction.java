@@ -10,32 +10,8 @@ package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import java.util.Properties;
 
-import org.eclipse.bpmn2.Bpmn2Factory;
-import org.eclipse.bpmn2.Bpmn2Package;
-import org.eclipse.bpmn2.Definitions;
-import org.eclipse.bpmn2.DocumentRoot;
-import org.eclipse.bpmn2.EndEvent;
-import org.eclipse.bpmn2.Process;
-import org.eclipse.bpmn2.SequenceFlow;
-import org.eclipse.bpmn2.StartEvent;
-import org.eclipse.bpmn2.di.BPMNDiagram;
-import org.eclipse.bpmn2.di.BPMNEdge;
-import org.eclipse.bpmn2.di.BPMNPlane;
-import org.eclipse.bpmn2.di.BPMNShape;
-import org.eclipse.bpmn2.di.BpmnDiFactory;
-import org.eclipse.bpmn2.di.BpmnDiPackage;
-import org.eclipse.dd.dc.Bounds;
-import org.eclipse.dd.dc.DcFactory;
-import org.eclipse.dd.dc.DcPackage;
-import org.eclipse.dd.dc.Point;
-import org.eclipse.dd.di.DiPackage;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.extension.ExtensionManager;
-import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
-import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
-import org.eclipse.emf.teneo.samples.issues.nonmandatoryjoincolumn.Bar;
 import org.eclipse.emf.teneo.samples.issues.nonmandatoryjoincolumn.Foo;
 import org.eclipse.emf.teneo.samples.issues.nonmandatoryjoincolumn.NonmandatoryjoincolumnFactory;
 import org.eclipse.emf.teneo.samples.issues.nonmandatoryjoincolumn.NonmandatoryjoincolumnPackage;
@@ -55,8 +31,7 @@ public class NonMandatoryJoinColumnAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(
-				PersistenceOptions.PERSISTENCE_XML,
+		props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 				"org/eclipse/emf/teneo/hibernate/test/issues/nonmandatoryjoincolumn.persistence.xml");
 		return props;
 	}

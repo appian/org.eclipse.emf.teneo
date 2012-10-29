@@ -32,24 +32,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Partner Role</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Partner Role</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.PartnerRoleImpl#getParticipantRef <em>Participant Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.PartnerRoleImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.PartnerRoleImpl#getParticipantRef <em>Participant Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.PartnerRoleImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	/**
 	 * The cached value of the '{@link #getParticipantRef() <em>Participant Ref</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getParticipantRef()
 	 * @generated
 	 * @ordered
@@ -57,9 +56,9 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	protected EList<Participant> participantRef;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -67,9 +66,9 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -77,8 +76,8 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PartnerRoleImpl() {
@@ -86,8 +85,8 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -96,22 +95,21 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<Participant> getParticipantRef() {
 		if (participantRef == null) {
-			participantRef = new EObjectResolvingEList<Participant>(
-					Participant.class, this,
+			participantRef = new EObjectResolvingEList<Participant>(Participant.class, this,
 					Bpmn2Package.PARTNER_ROLE__PARTICIPANT_REF);
 		}
 		return participantRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -119,21 +117,21 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.PARTNER_ROLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.PARTNER_ROLE__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -148,8 +146,8 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -158,8 +156,7 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 		switch (featureID) {
 		case Bpmn2Package.PARTNER_ROLE__PARTICIPANT_REF:
 			getParticipantRef().clear();
-			getParticipantRef().addAll(
-					(Collection<? extends Participant>) newValue);
+			getParticipantRef().addAll((Collection<? extends Participant>) newValue);
 			return;
 		case Bpmn2Package.PARTNER_ROLE__NAME:
 			setName((String) newValue);
@@ -169,8 +166,8 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -187,8 +184,8 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -197,15 +194,14 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 		case Bpmn2Package.PARTNER_ROLE__PARTICIPANT_REF:
 			return participantRef != null && !participantRef.isEmpty();
 		case Bpmn2Package.PARTNER_ROLE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,4 +216,4 @@ public class PartnerRoleImpl extends RootElementImpl implements PartnerRole {
 		return result.toString();
 	}
 
-} //PartnerRoleImpl
+} // PartnerRoleImpl

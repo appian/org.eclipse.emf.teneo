@@ -63,8 +63,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	private EFeatureAnnotator eFeatureAnnotator = null;
 
 	/**
-	 * Returns the annotated version of an EClass, Returns false if no efeatures of this eclass should be annotated,
-	 * true if its features can be annotated.
+	 * Returns the annotated version of an EClass, Returns false if no efeatures of this eclass should
+	 * be annotated, true if its features can be annotated.
 	 */
 	protected boolean annotate(PAnnotatedEClass aClass) {
 		if (aClass == null) {
@@ -82,7 +82,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		}
 
 		// do not process the document root
-		if (!getPersistenceOptions().isMapDocumentRoot() && ExtendedMetaData.INSTANCE.isDocumentRoot(eclass)) {
+		if (!getPersistenceOptions().isMapDocumentRoot()
+				&& ExtendedMetaData.INSTANCE.isDocumentRoot(eclass)) {
 			return false;
 		}
 
@@ -144,7 +145,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(getEntityNameStrategy().toEntityName(eclass));
 		}
-		// if (aClass.getEavMapping() != null && EModelResolver.instance().getJavaClass(aClass.getModelEClass()) !=
+		// if (aClass.getEavMapping() != null &&
+		// EModelResolver.instance().getJavaClass(aClass.getModelEClass()) !=
 		// null) {
 		// aClass.getEntity().setName(EModelResolver.instance().getJavaClass(aClass.getModelEClass()).getName());
 		// }
@@ -197,7 +199,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (aClass.getTable() == null
 				&& ((isInheritanceRoot && inheritanceType.equals(InheritanceType.SINGLE_TABLE))
 						|| inheritanceType.equals(InheritanceType.JOINED) || inheritanceType
-						.equals(InheritanceType.TABLE_PER_CLASS))) {
+							.equals(InheritanceType.TABLE_PER_CLASS))) {
 			final Table table = getFactory().createTable();
 			table.setEModelElement(eclass);
 			// name is set in next step
@@ -230,12 +232,14 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 					col.setNullable(false);
 				}
 				if (aClass.getDiscriminatorColumn().getColumn().getName() == null) {
-					aClass.getDiscriminatorColumn().getColumn().setName(aClass.getDiscriminatorColumn().getName());
+					aClass.getDiscriminatorColumn().getColumn()
+							.setName(aClass.getDiscriminatorColumn().getName());
 				}
 			}
 
 			// add a discriminator value
-			if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
+			if (aClass.getDiscriminatorValue() == null
+					&& inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
 				final DiscriminatorValue dv = getFactory().createDiscriminatorValue();
 
 				final DiscriminatorColumn dc = getDiscriminatorColumn(aClass);
@@ -245,10 +249,9 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 					// use the entityname to translate to an int value,
 					// hopefully hashcode is more or less unique...
 					final String entityName = getEntityName(eclass);
-					log
-							.warn("Generating an integer discriminator value for entity "
-									+ entityName
-									+ ". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
+					log.warn("Generating an integer discriminator value for entity "
+							+ entityName
+							+ ". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
 					dv.setValue("" + entityName.hashCode());
 				} else {
 					dv.setValue(getEntityName(eclass));
@@ -267,8 +270,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 				// attributes of the primary table.
 				final List<PAnnotatedEStructuralFeature> aIdFeatures = aClass.getPaIdFeatures();
 				for (PAnnotatedEStructuralFeature idef : aIdFeatures) {
-					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-					pkJoinColumn.setName(getSqlNameStrategy().getSecondaryTablePrimaryKeyJoinColumnName(idef));
+					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE
+							.createPrimaryKeyJoinColumn();
+					pkJoinColumn
+							.setName(getSqlNameStrategy().getSecondaryTablePrimaryKeyJoinColumnName(idef));
 					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
@@ -335,7 +340,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			return;
 		}
 
-		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass.getESuperTypes().get(0));
+		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(
+				eclass.getESuperTypes().get(0));
 		if (superAClass.getEntity() != null || superAClass.getMappedSuperclass() != null) {
 			aClass.setPaSuperEntity(superAClass);
 		}
@@ -360,8 +366,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (!getPersistenceOptions().isSetEntityAutomatically() && aClass.getEntity() == null
 				&& aClass.getEmbeddable() == null) {
 			if (log.isDebugEnabled()) {
-				log.debug("Entities are not added automatically and this eclass: " + aClass.getModelEClass().getName()
-					+ " does not have an entity/embeddable annotation.");
+				log.debug("Entities are not added automatically and this eclass: "
+						+ aClass.getModelEClass().getName() + " does not have an entity/embeddable annotation.");
 			}
 			return false;
 		}
@@ -369,10 +375,9 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		// ignore these
 		if (!mapMappedSuperEClass() && aClass.getMappedSuperclass() != null) {
 			if (aClass.getEntity() != null) {
-				log
-						.warn("EClass "
-								+ eclass.getName()
-								+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
+				log.warn("EClass "
+						+ eclass.getName()
+						+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
 			}
 			return false;
 		}
@@ -395,8 +400,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator# setPersistenceOptions(org.eclipse
-	 * .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
+	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {

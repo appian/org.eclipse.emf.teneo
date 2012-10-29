@@ -26,24 +26,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Message</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageImpl#getItemRef <em>Item Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.MessageImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageImpl#getItemRef <em>Item Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.MessageImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MessageImpl extends RootElementImpl implements Message {
 	/**
-	 * The cached value of the '{@link #getItemRef() <em>Item Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getItemRef() <em>Item Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getItemRef()
 	 * @generated
 	 * @ordered
@@ -51,9 +50,9 @@ public class MessageImpl extends RootElementImpl implements Message {
 	protected ItemDefinition itemRef;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -61,9 +60,9 @@ public class MessageImpl extends RootElementImpl implements Message {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -71,8 +70,8 @@ public class MessageImpl extends RootElementImpl implements Message {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MessageImpl() {
@@ -80,8 +79,8 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -90,8 +89,8 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getItemRef() {
@@ -100,16 +99,16 @@ public class MessageImpl extends RootElementImpl implements Message {
 			itemRef = (ItemDefinition) eResolveProxy(oldItemRef);
 			if (itemRef != oldItemRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.MESSAGE__ITEM_REF, oldItemRef, itemRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Bpmn2Package.MESSAGE__ITEM_REF,
+							oldItemRef, itemRef));
 			}
 		}
 		return itemRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition basicGetItemRef() {
@@ -117,21 +116,21 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setItemRef(ItemDefinition newItemRef) {
 		ItemDefinition oldItemRef = itemRef;
 		itemRef = newItemRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE__ITEM_REF, oldItemRef, itemRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.MESSAGE__ITEM_REF,
+					oldItemRef, itemRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -139,21 +138,21 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.MESSAGE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.MESSAGE__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -170,8 +169,8 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -188,8 +187,8 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -206,8 +205,8 @@ public class MessageImpl extends RootElementImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,15 +215,14 @@ public class MessageImpl extends RootElementImpl implements Message {
 		case Bpmn2Package.MESSAGE__ITEM_REF:
 			return itemRef != null;
 		case Bpmn2Package.MESSAGE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -239,4 +237,4 @@ public class MessageImpl extends RootElementImpl implements Message {
 		return result.toString();
 	}
 
-} //MessageImpl
+} // MessageImpl

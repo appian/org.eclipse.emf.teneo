@@ -38,8 +38,7 @@ import org.hibernate.property.Setter;
  * @version $Revision: 1.11 $
  */
 @SuppressWarnings("unchecked")
-public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
-		ExtensionPoint {
+public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 
 	private static final long serialVersionUID = -3712366809398761331L;
 
@@ -48,24 +47,20 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 * java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 * java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -98,23 +93,23 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
-	 * java.util.Map, org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getForInsert(Object owner, Map mergeMap,
-			SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session)
+			throws HibernateException {
 		return get(owner);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object,
-	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
 		final EObject eOwner = (EObject) target;
 		for (Adapter adapter : eOwner.eAdapters()) {
 			if (adapter instanceof EAVObjectAdapter) {
@@ -170,14 +165,11 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 
 	private List<EAVValueHolder> createValueList(EObject target) {
 		final List<EAVValueHolder> valueHolders = new ArrayList<EAVValueHolder>();
-		for (EStructuralFeature eFeature : target.eClass()
-				.getEAllStructuralFeatures()) {
-			if (eFeature.isDerived() || eFeature.isTransient()
-					|| eFeature.isVolatile()) {
+		for (EStructuralFeature eFeature : target.eClass().getEAllStructuralFeatures()) {
+			if (eFeature.isDerived() || eFeature.isTransient() || eFeature.isVolatile()) {
 				continue;
 			}
-			final EAVValueHolder valueHolder = EAVValueHolder.create(target,
-					eFeature, hbDataStore);
+			final EAVValueHolder valueHolder = EAVValueHolder.create(target, eFeature, hbDataStore);
 			valueHolder.set(target.eGet(eFeature));
 			if (eFeature.isUnsettable()) {
 				valueHolder.setValueIsSet(target.eIsSet(eFeature));
@@ -230,8 +222,7 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 		}
 
 		public void notifyChanged(Notification notification) {
-			final EStructuralFeature eFeature = (EStructuralFeature) notification
-					.getFeature();
+			final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
 
 			final EAVValueHolder valueHolder = getValueHolder(eFeature);
 			EAVMultiValueHolder multiValueHolder = null;
@@ -247,8 +238,7 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 				return;
 			}
 
-			final Object currentEMFValue = valueHolder.getOwner()
-					.eGet(eFeature);
+			final Object currentEMFValue = valueHolder.getOwner().eGet(eFeature);
 			if (currentEMFValue instanceof EAVDelegatingEcoreEList<?>) {
 				// this type of list manages the changes directly
 				return;
@@ -267,12 +257,11 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 			case Notification.ADD: {
 				if (notification.getPosition() != Notification.NO_INDEX) {
 					repairFromIndex = notification.getPosition();
-					list.add(notification.getPosition(), multiValueHolder
-							.getElement(notification.getNewValue()));
+					list.add(notification.getPosition(),
+							multiValueHolder.getElement(notification.getNewValue()));
 				} else {
 					repairFromIndex = list.size();
-					list.add(multiValueHolder.getElement(notification
-							.getNewValue()));
+					list.add(multiValueHolder.getElement(notification.getNewValue()));
 				}
 			}
 				break;
@@ -320,8 +309,7 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 					if (removeIndex == Notification.NO_INDEX) {
 						for (Object o : list) {
 							final EAVValueHolder elemValue = (EAVValueHolder) o;
-							if (elemValue.getValue() != null
-									&& oldValue != null
+							if (elemValue.getValue() != null && oldValue != null
 									&& elemValue.getValue().equals(oldValue)) {
 								removeIndex = list.indexOf(o);
 								break;
@@ -343,8 +331,7 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 				break;
 			case Notification.MOVE:
 				if (list != null) {
-					final int oldPosition = (Integer) notification
-							.getOldValue();
+					final int oldPosition = (Integer) notification.getOldValue();
 					final int newPosition = notification.getPosition();
 					final Object o = list.remove(oldPosition);
 					list.add(newPosition, o);
@@ -358,9 +345,8 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 			case Notification.SET:
 				if (eFeature.isMany()) {
 					final int position = notification.getPosition();
-					final EAVValueHolder elementValueHolder = (EAVValueHolder) list
-							.set(position, multiValueHolder
-									.getElement(notification.getNewValue()));
+					final EAVValueHolder elementValueHolder = (EAVValueHolder) list.set(position,
+							multiValueHolder.getElement(notification.getNewValue()));
 					repairFromIndex = notification.getPosition();
 					if (elementValueHolder != null) {
 						elementValueHolder.setListIndex(0);
@@ -383,14 +369,12 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 
 					if (o instanceof EObject) {
 						StoreUtil.setSyntheticListIndex(eFeature, o, index++);
-						StoreUtil.setSyntheticListOwner(eFeature, o,
-								notification.getNotifier());
+						StoreUtil.setSyntheticListOwner(eFeature, o, notification.getNotifier());
 					}
 					if (o instanceof EAVValueHolder) {
 						final EAVValueHolder eavValueHolder = (EAVValueHolder) o;
 						eavValueHolder.setListIndex(index++);
-						eavValueHolder
-								.setValueOwner((EAVMultiValueHolder) valueHolder);
+						eavValueHolder.setValueOwner((EAVMultiValueHolder) valueHolder);
 					}
 				}
 			}

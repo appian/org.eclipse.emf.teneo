@@ -56,11 +56,13 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension
+	 * .ExtensionManager)
 	 */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(SQLNameStrategy.class.getName(), ClassicSQLNameStrategy.class.getName());
+		extensionManager.registerExtension(SQLNameStrategy.class.getName(),
+				ClassicSQLNameStrategy.class.getName());
 		extensionManager.registerExtension("org.eclipse.emf.teneo.hibernate.mapper.MappingContext",
 				"org.eclipse.emf.teneo.hibernate.mapper.classic.ClassicMappingContext");
 		super.setExtensions(extensionManager);

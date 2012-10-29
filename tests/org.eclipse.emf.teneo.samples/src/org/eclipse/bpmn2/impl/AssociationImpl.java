@@ -27,25 +27,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Association</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Association</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.AssociationImpl#getAssociationDirection <em>Association Direction</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.AssociationImpl#getSourceRef <em>Source Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.AssociationImpl#getTargetRef <em>Target Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AssociationImpl#getAssociationDirection <em>Association
+ * Direction</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AssociationImpl#getSourceRef <em>Source Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.AssociationImpl#getTargetRef <em>Target Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AssociationImpl extends ArtifactImpl implements Association {
 	/**
-	 * The default value of the '{@link #getAssociationDirection() <em>Association Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getAssociationDirection() <em>Association Direction</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAssociationDirection()
 	 * @generated
 	 * @ordered
@@ -53,9 +53,9 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	protected static final AssociationDirection ASSOCIATION_DIRECTION_EDEFAULT = AssociationDirection.NONE;
 
 	/**
-	 * The cached value of the '{@link #getAssociationDirection() <em>Association Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAssociationDirection() <em>Association Direction</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAssociationDirection()
 	 * @generated
 	 * @ordered
@@ -63,9 +63,9 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	protected AssociationDirection associationDirection = ASSOCIATION_DIRECTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSourceRef()
 	 * @generated
 	 * @ordered
@@ -73,9 +73,9 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	protected BaseElement sourceRef;
 
 	/**
-	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetRef()
 	 * @generated
 	 * @ordered
@@ -83,8 +83,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	protected BaseElement targetRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AssociationImpl() {
@@ -92,8 +92,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,8 +102,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AssociationDirection getAssociationDirection() {
@@ -111,24 +111,23 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setAssociationDirection(
-			AssociationDirection newAssociationDirection) {
+	public void setAssociationDirection(AssociationDirection newAssociationDirection) {
 		AssociationDirection oldAssociationDirection = associationDirection;
 		associationDirection = newAssociationDirection == null ? ASSOCIATION_DIRECTION_EDEFAULT
 				: newAssociationDirection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ASSOCIATION__ASSOCIATION_DIRECTION,
-					oldAssociationDirection, associationDirection));
+					Bpmn2Package.ASSOCIATION__ASSOCIATION_DIRECTION, oldAssociationDirection,
+					associationDirection));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement getSourceRef() {
@@ -138,16 +137,15 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 			if (sourceRef != oldSourceRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.ASSOCIATION__SOURCE_REF, oldSourceRef,
-							sourceRef));
+							Bpmn2Package.ASSOCIATION__SOURCE_REF, oldSourceRef, sourceRef));
 			}
 		}
 		return sourceRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement basicGetSourceRef() {
@@ -155,22 +153,21 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSourceRef(BaseElement newSourceRef) {
 		BaseElement oldSourceRef = sourceRef;
 		sourceRef = newSourceRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ASSOCIATION__SOURCE_REF, oldSourceRef,
-					sourceRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.ASSOCIATION__SOURCE_REF,
+					oldSourceRef, sourceRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement getTargetRef() {
@@ -180,16 +177,15 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 			if (targetRef != oldTargetRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.ASSOCIATION__TARGET_REF, oldTargetRef,
-							targetRef));
+							Bpmn2Package.ASSOCIATION__TARGET_REF, oldTargetRef, targetRef));
 			}
 		}
 		return targetRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BaseElement basicGetTargetRef() {
@@ -197,22 +193,21 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetRef(BaseElement newTargetRef) {
 		BaseElement oldTargetRef = targetRef;
 		targetRef = newTargetRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.ASSOCIATION__TARGET_REF, oldTargetRef,
-					targetRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.ASSOCIATION__TARGET_REF,
+					oldTargetRef, targetRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -233,8 +228,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -254,8 +249,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -275,8 +270,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -293,8 +288,8 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -309,4 +304,4 @@ public class AssociationImpl extends ArtifactImpl implements Association {
 		return result.toString();
 	}
 
-} //AssociationImpl
+} // AssociationImpl

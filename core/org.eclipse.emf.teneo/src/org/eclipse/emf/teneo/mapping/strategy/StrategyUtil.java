@@ -32,8 +32,8 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 public class StrategyUtil {
 
 	/** Returns the entity name based on a specific logic */
-	public static String getEntityName(EntityNameStrategy ens,
-			PersistenceOptions po, PAnnotatedModel paModel, EClass eclass) {
+	public static String getEntityName(EntityNameStrategy ens, PersistenceOptions po,
+			PAnnotatedModel paModel, EClass eclass) {
 		if (eclass == null) {
 			throw new IllegalArgumentException(
 					"Passed eclass is null."
@@ -44,18 +44,16 @@ public class StrategyUtil {
 
 		// ok, here we figure out if it is an EMap. if so, we return the
 		// destination child name, not the keyToValueEntry wrapper
-		final PAnnotatedEClass aclass = (paModel != null ? paModel
-				.getPAnnotated(eclass) : null);
+		final PAnnotatedEClass aclass = (paModel != null ? paModel.getPAnnotated(eclass) : null);
 		if (aclass == null && paModel != null) { // happens when the eclass is
-													// EObject itself
+			// EObject itself
 			return ens.toEntityName(eclass);
 		}
 		if (po.isMapEMapAsTrueMap() && StoreUtil.isMapEntry(eclass)) {
 			// ok, it is an EMAp, get the annotaetd class of the child
 			EStructuralFeature feature = eclass.getEStructuralFeature("value");
 			if (feature instanceof EReference) {
-				return getEntityName(ens, po, paModel, ((EReference) feature)
-						.getEReferenceType());
+				return getEntityName(ens, po, paModel, ((EReference) feature).getEReferenceType());
 			}
 			return ((EAttribute) feature).getEType().getInstanceClassName();
 		}
@@ -75,9 +73,9 @@ public class StrategyUtil {
 		return getIDFeaturesNames(aClass, optionDefaultIDFeatureName, null);
 	}
 
-		/**
-	 * Returns the list of names of id props of the eclass, walks the
-	 * inheritance tree to find the id feature, if none is found then the
+	/**
+	 * Returns the list of names of id props of the eclass, walks the inheritance tree to find the id
+	 * feature, if none is found then the
 	 */
 	public static List<String> getIDFeaturesNames(PAnnotatedEClass aClass,
 			String optionDefaultIDFeatureName, PersistenceOptions po) {
@@ -90,19 +88,17 @@ public class StrategyUtil {
 	}
 
 	/** Internal will walk the inheritance tree to find the id feature */
-	private static List<String> getIDFeaturesNamesRecurse(
-			PAnnotatedEClass aClass, PersistenceOptions po) {
+	private static List<String> getIDFeaturesNamesRecurse(PAnnotatedEClass aClass,
+			PersistenceOptions po) {
 		final boolean useIDFeatures = po != null ? po.isIDFeatureAsPrimaryKey() : false;
-		
+
 		final ArrayList<String> list = new ArrayList<String>();
-		for (EStructuralFeature feature : aClass.getModelEClass()
-				.getEStructuralFeatures()) {
-			final PAnnotatedEStructuralFeature aStructuralFeature = aClass
-					.getPaModel().getPAnnotated(feature);
+		for (EStructuralFeature feature : aClass.getModelEClass().getEStructuralFeatures()) {
+			final PAnnotatedEStructuralFeature aStructuralFeature = aClass.getPaModel().getPAnnotated(
+					feature);
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
-				final String attrName = aAttribute.getModelEAttribute()
-						.getName();
+				final String attrName = aAttribute.getModelEAttribute().getName();
 				if (list.contains(attrName)) {
 					continue;
 				}
@@ -114,11 +110,9 @@ public class StrategyUtil {
 			}
 		}
 
-		if (list.isEmpty()
-				&& aClass.getModelEClass().getESuperTypes().size() > 0) {
+		if (list.isEmpty() && aClass.getModelEClass().getESuperTypes().size() > 0) {
 			for (EClass eClass : aClass.getModelEClass().getESuperTypes()) {
-				final PAnnotatedEClass aSuperClass = aClass.getPaModel()
-						.getPAnnotated(eClass);
+				final PAnnotatedEClass aSuperClass = aClass.getPaModel().getPAnnotated(eClass);
 				if (aSuperClass != null) {
 					final List<String> superList = getIDFeaturesNamesRecurse(aSuperClass, po);
 					list.removeAll(superList);

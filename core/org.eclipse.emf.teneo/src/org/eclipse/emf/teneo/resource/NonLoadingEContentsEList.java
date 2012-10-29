@@ -60,15 +60,17 @@ public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
 
 				if ((list instanceof PersistableEList<?>) && ((PersistableEList<?>) list).isLoaded()) {
 					result.add(eref);
-				} else if ((list instanceof PersistableEMap<?,?>) && ((PersistableEMap<?, ?>) list).isLoaded()) {
+				} else if ((list instanceof PersistableEMap<?, ?>)
+						&& ((PersistableEMap<?, ?>) list).isLoaded()) {
 					result.add(eref);
-				} else if ((list instanceof PersistableFeatureMap) && ((PersistableFeatureMap) list).isLoaded()) {
+				} else if ((list instanceof PersistableFeatureMap)
+						&& ((PersistableFeatureMap) list).isLoaded()) {
 					result.add(eref);
 				} else if (eref.getLowerBound() > 0 && forValidation) {
 					result.add(eref);
 				}
-				if (!(list instanceof PersistableEList<?>) && !(list instanceof PersistableFeatureMap) &&
-						!(list instanceof PersistableEMap<?,?>)) {
+				if (!(list instanceof PersistableEList<?>) && !(list instanceof PersistableFeatureMap)
+						&& !(list instanceof PersistableEMap<?, ?>)) {
 					result.add(eref);
 				}
 
@@ -79,7 +81,8 @@ public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
 		return new NonLoadingEContentsEList<EObject>(eObject, result);
 	}
 
-	private NonLoadingEContentsEList(EObject eObject, List<? extends EStructuralFeature> eStructuralFeatures) {
+	private NonLoadingEContentsEList(EObject eObject,
+			List<? extends EStructuralFeature> eStructuralFeatures) {
 		super(eObject, eStructuralFeatures);
 	}
 }

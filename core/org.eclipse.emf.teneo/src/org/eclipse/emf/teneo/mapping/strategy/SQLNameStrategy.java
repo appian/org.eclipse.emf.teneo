@@ -27,11 +27,10 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Takes care of creating correct names for sql artifacts such as tables,
- * columns, foreign keys, etc.
+ * Takes care of creating correct names for sql artifacts such as tables, columns, foreign keys,
+ * etc.
  * 
- * Note that strategies are normally created once for each instance of
- * persistenceoptions.
+ * Note that strategies are normally created once for each instance of persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.11 $
@@ -39,27 +38,23 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
 public interface SQLNameStrategy extends ExtensionPoint {
 
 	/**
-	 * Converts the name to the required sql setting (length and case). If the
-	 * name is too long (see option maximum sql name length) then the prefix is
-	 * trunced away.
+	 * Converts the name to the required sql setting (length and case). If the name is too long (see
+	 * option maximum sql name length) then the prefix is trunced away.
 	 */
 	public abstract String convert(String name);
 
 	/**
-	 * Converts the name to the required sql setting (length and case). If the
-	 * name is too long (see the option maximum sql name length) then: if
-	 * truncPrefix = false then the part after the _ is trunced. if truncPrefix
-	 * = true then the part before the _ is trunced. An underscore often occurs
-	 * in the name of a join table.
+	 * Converts the name to the required sql setting (length and case). If the name is too long (see
+	 * the option maximum sql name length) then: if truncPrefix = false then the part after the _ is
+	 * trunced. if truncPrefix = true then the part before the _ is trunced. An underscore often
+	 * occurs in the name of a join table.
 	 */
 	public String convert(String name, boolean truncPrefix);
 
 	/**
-	 * The join column name used to join a joined-subclass table with its parent
-	 * table
+	 * The join column name used to join a joined-subclass table with its parent table
 	 */
-	public abstract String getPrimaryKeyJoinColumnName(
-			PAnnotatedEClass aSuperClass, String idFeature);
+	public abstract String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature);
 
 	/** The join colum name for the secondary table */
 	public abstract String getSecondaryTablePrimaryKeyJoinColumnName(
@@ -69,42 +64,36 @@ public interface SQLNameStrategy extends ExtensionPoint {
 	public abstract String getTableName(PAnnotatedEClass aClass);
 
 	/** Simple column name with optional prefix */
-	public abstract String getColumnName(
-			PAnnotatedEStructuralFeature aStructuralFeature, String prefix);
+	public abstract String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature,
+			String prefix);
 
 	/**
-	 * Return the name of the foreign key used for this aReference. If null is
-	 * returned then the name of the foreign key is not set. Returns the
-	 * concatenation of the entityname of the aclass to which the areference
-	 * belongs.
+	 * Return the name of the foreign key used for this aReference. If null is returned then the name
+	 * of the foreign key is not set. Returns the concatenation of the entityname of the aclass to
+	 * which the areference belongs.
 	 * 
-	 * This method is normally called when the PersistenceOption
-	 * CREATE_READABLE_FOREIGN_KEY_NAMES is true.
+	 * This method is normally called when the PersistenceOption CREATE_READABLE_FOREIGN_KEY_NAMES is
+	 * true.
 	 */
-	public abstract String getForeignKeyName(
-			PAnnotatedEStructuralFeature aFeature);
+	public abstract String getForeignKeyName(PAnnotatedEStructuralFeature aFeature);
 
-	public abstract String getForeignKeyName(
-			PAnnotatedEClass aOwningClass,
+	public abstract String getForeignKeyName(PAnnotatedEClass aOwningClass,
 			PAnnotatedEStructuralFeature aFeature);
 
 	/** Return joincolumn names for many-to-one */
-	public abstract List<String> getManyToOneJoinColumnNames(
-			PAnnotatedEReference aReference);
+	public abstract List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference);
 
 	/** Return a list of join columns for a many is eAttribute */
-	public abstract List<String> getOneToManyEAttributeJoinColumns(
-			PAnnotatedEAttribute aAttribute);
+	public abstract List<String> getOneToManyEAttributeJoinColumns(PAnnotatedEAttribute aAttribute);
 
 	/** Return a list of join columns for a many is eReference */
-	public abstract List<String> getOneToManyEReferenceJoinColumns(
-			PAnnotatedEReference aReference);
+	public abstract List<String> getOneToManyEReferenceJoinColumns(PAnnotatedEReference aReference);
 
 	/**
 	 * Return a list of join columns for a join table for a many to many
 	 */
-	public abstract List<String> getJoinTableJoinColumns(
-			PAnnotatedEReference aReference, boolean inverse);
+	public abstract List<String> getJoinTableJoinColumns(PAnnotatedEReference aReference,
+			boolean inverse);
 
 	/** Return the name of the join table in case of a list of simpletypes */
 	public abstract String getJoinTableName(PAnnotatedEAttribute aAttribute);
@@ -131,9 +120,8 @@ public interface SQLNameStrategy extends ExtensionPoint {
 	public abstract String getSyntheticIDColumnName();
 
 	/**
-	 * Sets the PersistenceOptions used. This is mainly to support backward
-	 * compatibility with older version in which the naming strategy was
-	 * controlled by options.
+	 * Sets the PersistenceOptions used. This is mainly to support backward compatibility with older
+	 * version in which the naming strategy was controlled by options.
 	 */
 	public abstract void setPersistenceOptions(PersistenceOptions po);
 }

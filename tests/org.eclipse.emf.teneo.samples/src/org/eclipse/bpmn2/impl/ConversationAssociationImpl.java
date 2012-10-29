@@ -26,25 +26,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Conversation Association</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Conversation Association</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationAssociationImpl#getInnerConversationNodeRef <em>Inner Conversation Node Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ConversationAssociationImpl#getOuterConversationNodeRef <em>Outer Conversation Node Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationAssociationImpl#getInnerConversationNodeRef <em>
+ * Inner Conversation Node Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ConversationAssociationImpl#getOuterConversationNodeRef <em>
+ * Outer Conversation Node Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ConversationAssociationImpl extends BaseElementImpl implements
-		ConversationAssociation {
+public class ConversationAssociationImpl extends BaseElementImpl implements ConversationAssociation {
 	/**
-	 * The cached value of the '{@link #getInnerConversationNodeRef() <em>Inner Conversation Node Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInnerConversationNodeRef()
+	 * <em>Inner Conversation Node Ref</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInnerConversationNodeRef()
 	 * @generated
 	 * @ordered
@@ -52,9 +52,9 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	protected ConversationNode innerConversationNodeRef;
 
 	/**
-	 * The cached value of the '{@link #getOuterConversationNodeRef() <em>Outer Conversation Node Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOuterConversationNodeRef()
+	 * <em>Outer Conversation Node Ref</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOuterConversationNodeRef()
 	 * @generated
 	 * @ordered
@@ -62,8 +62,8 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	protected ConversationNode outerConversationNodeRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConversationAssociationImpl() {
@@ -71,8 +71,8 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,31 +81,27 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationNode getInnerConversationNodeRef() {
-		if (innerConversationNodeRef != null
-				&& innerConversationNodeRef.eIsProxy()) {
+		if (innerConversationNodeRef != null && innerConversationNodeRef.eIsProxy()) {
 			InternalEObject oldInnerConversationNodeRef = (InternalEObject) innerConversationNodeRef;
 			innerConversationNodeRef = (ConversationNode) eResolveProxy(oldInnerConversationNodeRef);
 			if (innerConversationNodeRef != oldInnerConversationNodeRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.CONVERSATION_ASSOCIATION__INNER_CONVERSATION_NODE_REF,
-							oldInnerConversationNodeRef,
-							innerConversationNodeRef));
+							oldInnerConversationNodeRef, innerConversationNodeRef));
 			}
 		}
 		return innerConversationNodeRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationNode basicGetInnerConversationNodeRef() {
@@ -113,48 +109,41 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setInnerConversationNodeRef(
-			ConversationNode newInnerConversationNodeRef) {
+	public void setInnerConversationNodeRef(ConversationNode newInnerConversationNodeRef) {
 		ConversationNode oldInnerConversationNodeRef = innerConversationNodeRef;
 		innerConversationNodeRef = newInnerConversationNodeRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					Bpmn2Package.CONVERSATION_ASSOCIATION__INNER_CONVERSATION_NODE_REF,
 					oldInnerConversationNodeRef, innerConversationNodeRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationNode getOuterConversationNodeRef() {
-		if (outerConversationNodeRef != null
-				&& outerConversationNodeRef.eIsProxy()) {
+		if (outerConversationNodeRef != null && outerConversationNodeRef.eIsProxy()) {
 			InternalEObject oldOuterConversationNodeRef = (InternalEObject) outerConversationNodeRef;
 			outerConversationNodeRef = (ConversationNode) eResolveProxy(oldOuterConversationNodeRef);
 			if (outerConversationNodeRef != oldOuterConversationNodeRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.CONVERSATION_ASSOCIATION__OUTER_CONVERSATION_NODE_REF,
-							oldOuterConversationNodeRef,
-							outerConversationNodeRef));
+							oldOuterConversationNodeRef, outerConversationNodeRef));
 			}
 		}
 		return outerConversationNodeRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversationNode basicGetOuterConversationNodeRef() {
@@ -162,25 +151,22 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setOuterConversationNodeRef(
-			ConversationNode newOuterConversationNodeRef) {
+	public void setOuterConversationNodeRef(ConversationNode newOuterConversationNodeRef) {
 		ConversationNode oldOuterConversationNodeRef = outerConversationNodeRef;
 		outerConversationNodeRef = newOuterConversationNodeRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					Bpmn2Package.CONVERSATION_ASSOCIATION__OUTER_CONVERSATION_NODE_REF,
 					oldOuterConversationNodeRef, outerConversationNodeRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -199,8 +185,8 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -217,8 +203,8 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -235,8 +221,8 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -250,4 +236,4 @@ public class ConversationAssociationImpl extends BaseElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //ConversationAssociationImpl
+} // ConversationAssociationImpl

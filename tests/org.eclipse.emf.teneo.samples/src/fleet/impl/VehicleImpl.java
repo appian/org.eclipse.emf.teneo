@@ -19,33 +19,32 @@ import org.eclipse.emf.ecore.EClass;
 import temporal.mod.TemporalBaseEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Vehicle</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Vehicle</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fleet.impl.VehicleImpl#getBrand <em>Brand</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getModel <em>Model</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getMake <em>Make</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getColor <em>Color</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getPlate <em>Plate</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getId <em>Id</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getYear <em>Year</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getLength <em>Length</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getAvailableColors <em>Available Colors</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getManufacturedAt <em>Manufactured At</em>}</li>
- *   <li>{@link fleet.impl.VehicleImpl#getTireSpec <em>Tire Spec</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getBrand <em>Brand</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getModel <em>Model</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getMake <em>Make</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getColor <em>Color</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getPlate <em>Plate</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getId <em>Id</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getYear <em>Year</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getLength <em>Length</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getAvailableColors <em>Available Colors</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getOwner <em>Owner</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getManufacturedAt <em>Manufactured At</em>}</li>
+ * <li>{@link fleet.impl.VehicleImpl#getTireSpec <em>Tire Spec</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected VehicleImpl() {
@@ -53,8 +52,8 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -63,8 +62,8 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -73,17 +72,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getBrand() {
-		return (String)eGet(FleetPackage.Literals.VEHICLE__BRAND, true);
+		return (String) eGet(FleetPackage.Literals.VEHICLE__BRAND, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBrand(String newBrand) {
@@ -91,17 +90,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getModel() {
-		return (String)eGet(FleetPackage.Literals.VEHICLE__MODEL, true);
+		return (String) eGet(FleetPackage.Literals.VEHICLE__MODEL, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setModel(String newModel) {
@@ -109,17 +108,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getMake() {
-		return (String)eGet(FleetPackage.Literals.VEHICLE__MAKE, true);
+		return (String) eGet(FleetPackage.Literals.VEHICLE__MAKE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMake(String newMake) {
@@ -127,17 +126,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getColor() {
-		return (String)eGet(FleetPackage.Literals.VEHICLE__COLOR, true);
+		return (String) eGet(FleetPackage.Literals.VEHICLE__COLOR, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setColor(String newColor) {
@@ -145,17 +144,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getPlate() {
-		return (String)eGet(FleetPackage.Literals.VEHICLE__PLATE, true);
+		return (String) eGet(FleetPackage.Literals.VEHICLE__PLATE, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPlate(String newPlate) {
@@ -163,17 +162,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eGet(FleetPackage.Literals.VEHICLE__ID, true);
+		return (String) eGet(FleetPackage.Literals.VEHICLE__ID, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -181,17 +180,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getYear() {
-		return ((Integer)eGet(FleetPackage.Literals.VEHICLE__YEAR, true)).intValue();
+		return ((Integer) eGet(FleetPackage.Literals.VEHICLE__YEAR, true)).intValue();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setYear(int newYear) {
@@ -199,17 +198,17 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public long getLength() {
-		return ((Long)eGet(FleetPackage.Literals.VEHICLE__LENGTH, true)).longValue();
+		return ((Long) eGet(FleetPackage.Literals.VEHICLE__LENGTH, true)).longValue();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLength(long newLength) {
@@ -217,27 +216,27 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList getAvailableColors() {
-		return (EList)eGet(FleetPackage.Literals.VEHICLE__AVAILABLE_COLORS, true);
+		return (EList) eGet(FleetPackage.Literals.VEHICLE__AVAILABLE_COLORS, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Person getOwner() {
-		return (Person)eGet(FleetPackage.Literals.VEHICLE__OWNER, true);
+		return (Person) eGet(FleetPackage.Literals.VEHICLE__OWNER, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOwner(Person newOwner) {
@@ -245,31 +244,31 @@ public class VehicleImpl extends TemporalBaseEObjectImpl implements Vehicle {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList getManufacturedAt() {
-		return (EList)eGet(FleetPackage.Literals.VEHICLE__MANUFACTURED_AT, true);
+		return (EList) eGet(FleetPackage.Literals.VEHICLE__MANUFACTURED_AT, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Tire getTireSpec() {
-		return (Tire)eGet(FleetPackage.Literals.VEHICLE__TIRE_SPEC, true);
+		return (Tire) eGet(FleetPackage.Literals.VEHICLE__TIRE_SPEC, true);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTireSpec(Tire newTireSpec) {
 		eSet(FleetPackage.Literals.VEHICLE__TIRE_SPEC, newTireSpec);
 	}
 
-} //VehicleImpl
+} // VehicleImpl

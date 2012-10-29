@@ -40,7 +40,7 @@ class ReferenceValueNode extends NamedParserNode {
 
 	/**
 	 * @param value
-	 *            the value to set
+	 *          the value to set
 	 */
 	public void setValue(NamedParserNode value) {
 		this.value = value;
@@ -50,7 +50,8 @@ class ReferenceValueNode extends NamedParserNode {
 	Object convert(EClassResolver ecr) {
 		log.debug("Converting reference node " + getName());
 		if (!(value instanceof ComplexNode)) {
-			throw new AnnotationParserException("A reference annotation value may only " + "contain a typename");
+			throw new AnnotationParserException("A reference annotation value may only "
+					+ "contain a typename");
 		}
 		final ComplexNode cn = (ComplexNode) value;
 		return cn.convert(ecr);

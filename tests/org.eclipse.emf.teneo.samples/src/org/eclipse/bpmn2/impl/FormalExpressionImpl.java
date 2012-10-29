@@ -31,27 +31,26 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Formal Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Formal Expression</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getBody <em>Body</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getEvaluatesToTypeRef <em>Evaluates To Type Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getLanguage <em>Language</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getMixed <em>Mixed</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getBody <em>Body</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getEvaluatesToTypeRef <em>Evaluates To
+ * Type Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.FormalExpressionImpl#getLanguage <em>Language</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class FormalExpressionImpl extends ExpressionImpl implements
-		FormalExpression {
+public class FormalExpressionImpl extends ExpressionImpl implements FormalExpression {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -59,9 +58,9 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	protected FeatureMap mixed;
 
 	/**
-	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getBody()
 	 * @generated
 	 * @ordered
@@ -69,9 +68,9 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	protected static final String BODY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEvaluatesToTypeRef() <em>Evaluates To Type Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEvaluatesToTypeRef() <em>Evaluates To Type Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEvaluatesToTypeRef()
 	 * @generated
 	 * @ordered
@@ -79,9 +78,9 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	protected ItemDefinition evaluatesToTypeRef;
 
 	/**
-	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLanguage()
 	 * @generated
 	 * @ordered
@@ -89,9 +88,9 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	protected static final String LANGUAGE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLanguage()
 	 * @generated
 	 * @ordered
@@ -99,8 +98,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	protected String language = LANGUAGE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FormalExpressionImpl() {
@@ -108,8 +107,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,21 +117,20 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
 		if (mixed == null) {
-			mixed = new BasicFeatureMap(this,
-					Bpmn2Package.FORMAL_EXPRESSION__MIXED);
+			mixed = new BasicFeatureMap(this, Bpmn2Package.FORMAL_EXPRESSION__MIXED);
 		}
 		return mixed;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getBody() {
@@ -142,8 +140,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBody(String newBody) {
@@ -153,8 +151,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getEvaluatesToTypeRef() {
@@ -163,19 +161,17 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 			evaluatesToTypeRef = (ItemDefinition) eResolveProxy(oldEvaluatesToTypeRef);
 			if (evaluatesToTypeRef != oldEvaluatesToTypeRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Bpmn2Package.FORMAL_EXPRESSION__EVALUATES_TO_TYPE_REF,
-							oldEvaluatesToTypeRef, evaluatesToTypeRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Bpmn2Package.FORMAL_EXPRESSION__EVALUATES_TO_TYPE_REF, oldEvaluatesToTypeRef,
+							evaluatesToTypeRef));
 			}
 		}
 		return evaluatesToTypeRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition basicGetEvaluatesToTypeRef() {
@@ -183,8 +179,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEvaluatesToTypeRef(ItemDefinition newEvaluatesToTypeRef) {
@@ -192,13 +188,13 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 		evaluatesToTypeRef = newEvaluatesToTypeRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.FORMAL_EXPRESSION__EVALUATES_TO_TYPE_REF,
-					oldEvaluatesToTypeRef, evaluatesToTypeRef));
+					Bpmn2Package.FORMAL_EXPRESSION__EVALUATES_TO_TYPE_REF, oldEvaluatesToTypeRef,
+					evaluatesToTypeRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLanguage() {
@@ -206,8 +202,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLanguage(String newLanguage) {
@@ -215,18 +211,17 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 		language = newLanguage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.FORMAL_EXPRESSION__LANGUAGE, oldLanguage,
-					language));
+					Bpmn2Package.FORMAL_EXPRESSION__LANGUAGE, oldLanguage, language));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.FORMAL_EXPRESSION__MIXED:
 			return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
@@ -235,8 +230,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -259,8 +254,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -283,8 +278,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -307,8 +302,8 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -317,20 +312,18 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 		case Bpmn2Package.FORMAL_EXPRESSION__MIXED:
 			return mixed != null && !mixed.isEmpty();
 		case Bpmn2Package.FORMAL_EXPRESSION__BODY:
-			return BODY_EDEFAULT == null ? getBody() != null : !BODY_EDEFAULT
-					.equals(getBody());
+			return BODY_EDEFAULT == null ? getBody() != null : !BODY_EDEFAULT.equals(getBody());
 		case Bpmn2Package.FORMAL_EXPRESSION__EVALUATES_TO_TYPE_REF:
 			return evaluatesToTypeRef != null;
 		case Bpmn2Package.FORMAL_EXPRESSION__LANGUAGE:
-			return LANGUAGE_EDEFAULT == null ? language != null
-					: !LANGUAGE_EDEFAULT.equals(language);
+			return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -347,4 +340,4 @@ public class FormalExpressionImpl extends ExpressionImpl implements
 		return result.toString();
 	}
 
-} //FormalExpressionImpl
+} // FormalExpressionImpl

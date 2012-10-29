@@ -87,22 +87,15 @@ public class EnumTestAction extends AbstractTestAction {
 			}
 			store.commitTransaction();
 		}
-/*		
-		// do save action with a resource
-		try {
-			final Resource rs = store.getResource();
-			final Item item1 = EnumtestFactory.eINSTANCE.createItem();
-			item1.setItemType(ItemType.PRODUCT_FAMILY_LITERAL);
-			item1.setNullableItemType(null);
-			rs.getContents().add(item1);
-			final Item item2 = EnumtestFactory.eINSTANCE.createItem();
-			item2.setItemType(ItemType.PRODUCT_FAMILY_LITERAL);
-			item2.setNullableItemType(ItemType.PRODUCT_LITERAL);
-			rs.getContents().add(item2);
-			rs.save(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			throw new StoreTestException("Exception while saving resource", e);
-		}
-*/
+		/*
+		 * // do save action with a resource try { final Resource rs = store.getResource(); final Item
+		 * item1 = EnumtestFactory.eINSTANCE.createItem();
+		 * item1.setItemType(ItemType.PRODUCT_FAMILY_LITERAL); item1.setNullableItemType(null);
+		 * rs.getContents().add(item1); final Item item2 = EnumtestFactory.eINSTANCE.createItem();
+		 * item2.setItemType(ItemType.PRODUCT_FAMILY_LITERAL);
+		 * item2.setNullableItemType(ItemType.PRODUCT_LITERAL); rs.getContents().add(item2);
+		 * rs.save(Collections.EMPTY_MAP); } catch (IOException e) { throw new
+		 * StoreTestException("Exception while saving resource", e); }
+		 */
 	}
 }

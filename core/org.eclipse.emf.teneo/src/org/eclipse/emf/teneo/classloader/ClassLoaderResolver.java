@@ -67,7 +67,7 @@ public class ClassLoaderResolver {
 
 	/**
 	 * @param classLoaderStrategy
-	 *            The classLoaderStrategy to set.
+	 *          The classLoaderStrategy to set.
 	 */
 	public static void setClassLoaderStrategy(ClassLoaderStrategy classLoaderStrategy) {
 		ClassLoaderResolver.classLoaderStrategy = classLoaderStrategy;

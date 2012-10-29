@@ -17,35 +17,32 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static CarFactory init() {
 		try {
-			CarFactory theCarFactory = (CarFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.example.com/car.xsd"); 
+			CarFactory theCarFactory = (CarFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.example.com/car.xsd");
 			if (theCarFactory != null) {
 				return theCarFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new CarFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarFactoryImpl() {
@@ -53,28 +50,36 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CarPackage.CAR_FRAME: return createCarFrame();
-			case CarPackage.CAR_LINK: return createCarLink();
-			case CarPackage.CARS_LIST: return createCarsList();
-			case CarPackage.CAR_TIRE: return createCarTire();
-			case CarPackage.CAR_TYPE: return createCarType();
-			case CarPackage.CAR_WHEEL: return createCarWheel();
-			case CarPackage.DOCUMENT_ROOT: return createDocumentRoot();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case CarPackage.CAR_FRAME:
+			return createCarFrame();
+		case CarPackage.CAR_LINK:
+			return createCarLink();
+		case CarPackage.CARS_LIST:
+			return createCarsList();
+		case CarPackage.CAR_TIRE:
+			return createCarTire();
+		case CarPackage.CAR_TYPE:
+			return createCarType();
+		case CarPackage.CAR_WHEEL:
+			return createCarWheel();
+		case CarPackage.DOCUMENT_ROOT:
+			return createDocumentRoot();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarFrame createCarFrame() {
@@ -83,8 +88,8 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarLink createCarLink() {
@@ -93,8 +98,8 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarsList createCarsList() {
@@ -103,8 +108,8 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarTire createCarTire() {
@@ -113,8 +118,8 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarType createCarType() {
@@ -123,8 +128,8 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarWheel createCarWheel() {
@@ -133,8 +138,8 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -143,17 +148,17 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CarPackage getCarPackage() {
-		return (CarPackage)getEPackage();
+		return (CarPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -162,4 +167,4 @@ public class CarFactoryImpl extends EFactoryImpl implements CarFactory {
 		return CarPackage.eINSTANCE;
 	}
 
-} //CarFactoryImpl
+} // CarFactoryImpl

@@ -45,8 +45,8 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class Bz387421Action extends AbstractTestAction {
 
 	public Bz387421Action() {
-		super(new EPackage[] { Bpmn2Package.eINSTANCE, BpmnDiPackage.eINSTANCE,
-				DcPackage.eINSTANCE, DiPackage.eINSTANCE });
+		super(new EPackage[] { Bpmn2Package.eINSTANCE, BpmnDiPackage.eINSTANCE, DcPackage.eINSTANCE,
+				DiPackage.eINSTANCE });
 	}
 
 	@Override
@@ -54,12 +54,12 @@ public class Bz387421Action extends AbstractTestAction {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 				"org/eclipse/emf/teneo/hibernate/test/issues/bz387421.persistence.xml");
-//		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		// props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS,
+		// "true");
 		props.setProperty(PersistenceOptions.MAP_DOCUMENT_ROOT, "true");
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
-		props.setProperty(PersistenceOptions.AUTO_ADD_REFERENCED_EPACKAGES,
-				"true");
+		props.setProperty(PersistenceOptions.AUTO_ADD_REFERENCED_EPACKAGES, "true");
 		return props;
 	}
 
@@ -80,7 +80,7 @@ public class Bz387421Action extends AbstractTestAction {
 		Definitions defs = Bpmn2Factory.eINSTANCE.createDefinitions();
 		defs.setId("12");
 		defs.setTargetNamespace("http://wiki.eclipse.org");
-			
+
 		docRoot.setDefinitions(defs);
 		Process process = Bpmn2Factory.eINSTANCE.createProcess();
 		defs.getRootElements().add(process);
@@ -97,7 +97,7 @@ public class Bz387421Action extends AbstractTestAction {
 
 		// create SequenceFlow
 		SequenceFlow flow = Bpmn2Factory.eINSTANCE.createSequenceFlow();
-		
+
 		process.getFlowElements().add(flow);
 		flow.setId("526");
 		// create EndEvent
@@ -163,8 +163,7 @@ public class Bz387421Action extends AbstractTestAction {
 
 		// add to BPMNDiagram
 
-		final BPMNDiagram bpmnDiagram = BpmnDiFactory.eINSTANCE
-				.createBPMNDiagram();
+		final BPMNDiagram bpmnDiagram = BpmnDiFactory.eINSTANCE.createBPMNDiagram();
 		bpmnDiagram.setId("124");
 
 		plane.setBpmnElement(process);
@@ -177,12 +176,11 @@ public class Bz387421Action extends AbstractTestAction {
 
 	}
 
-	public static class DocumentRootHandlingNameStrategy extends
-			QualifyingEntityNameStrategy {
+	public static class DocumentRootHandlingNameStrategy extends QualifyingEntityNameStrategy {
 		public EClass toEClass(String eClassStr) {
 			if (eClassStr.startsWith("dd_di")) {
-				return (EClass) DiPackage.eINSTANCE.getEClassifier(eClassStr
-						.substring(eClassStr.indexOf(".") + 1));
+				return (EClass) DiPackage.eINSTANCE.getEClassifier(eClassStr.substring(eClassStr
+						.indexOf(".") + 1));
 			}
 			return super.toEClass(eClassStr);
 		}

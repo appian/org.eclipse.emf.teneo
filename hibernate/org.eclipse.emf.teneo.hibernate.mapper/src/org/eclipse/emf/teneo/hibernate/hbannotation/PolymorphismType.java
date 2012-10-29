@@ -13,19 +13,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Polymorphism Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Polymorphism Type</b></em>', and utility methods for working with them. <!-- end-user-doc
+ * -->
+ * 
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getPolymorphismType()
  * @model
  * @generated
  */
 public enum PolymorphismType implements Enumerator {
 	/**
-	 * The '<em><b>IMPLICIT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>IMPLICIT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #IMPLICIT_VALUE
 	 * @generated
 	 * @ordered
@@ -33,9 +32,8 @@ public enum PolymorphismType implements Enumerator {
 	IMPLICIT(0, "IMPLICIT", "IMPLICIT"),
 
 	/**
-	 * The '<em><b>EXPLICIT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>EXPLICIT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #EXPLICIT_VALUE
 	 * @generated
 	 * @ordered
@@ -43,13 +41,13 @@ public enum PolymorphismType implements Enumerator {
 	EXPLICIT(1, "EXPLICIT", "EXPLICIT");
 
 	/**
-	 * The '<em><b>IMPLICIT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>IMPLICIT</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>IMPLICIT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>IMPLICIT</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #IMPLICIT
 	 * @model
 	 * @generated
@@ -58,13 +56,13 @@ public enum PolymorphismType implements Enumerator {
 	public static final int IMPLICIT_VALUE = 0;
 
 	/**
-	 * The '<em><b>EXPLICIT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>EXPLICIT</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>EXPLICIT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>EXPLICIT</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #EXPLICIT
 	 * @model
 	 * @generated
@@ -73,29 +71,27 @@ public enum PolymorphismType implements Enumerator {
 	public static final int EXPLICIT_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Polymorphism Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Polymorphism Type</b></em>' enumerators. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final PolymorphismType[] VALUES_ARRAY =
-		new PolymorphismType[] {
-			IMPLICIT,
-			EXPLICIT,
-		};
+	private static final PolymorphismType[] VALUES_ARRAY = new PolymorphismType[] { IMPLICIT,
+			EXPLICIT, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Polymorphism Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Polymorphism Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<PolymorphismType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<PolymorphismType> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Polymorphism Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Polymorphism Type</b></em>' literal with the specified literal value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PolymorphismType get(String literal) {
@@ -109,9 +105,9 @@ public enum PolymorphismType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Polymorphism Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Polymorphism Type</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PolymorphismType getByName(String name) {
@@ -125,44 +121,45 @@ public enum PolymorphismType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Polymorphism Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Polymorphism Type</b></em>' literal with the specified integer value. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PolymorphismType get(int value) {
 		switch (value) {
-			case IMPLICIT_VALUE: return IMPLICIT;
-			case EXPLICIT_VALUE: return EXPLICIT;
+		case IMPLICIT_VALUE:
+			return IMPLICIT;
+		case EXPLICIT_VALUE:
+			return EXPLICIT;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private PolymorphismType(int value, String name, String literal) {
@@ -172,41 +169,41 @@ public enum PolymorphismType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //PolymorphismType
+
+} // PolymorphismType

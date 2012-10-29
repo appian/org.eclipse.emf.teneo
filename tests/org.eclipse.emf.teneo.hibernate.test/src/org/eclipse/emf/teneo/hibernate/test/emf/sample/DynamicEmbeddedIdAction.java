@@ -80,8 +80,7 @@ public class DynamicEmbeddedIdAction extends AbstractTestAction {
 					+ DynamicEmbeddedIdAction.class.getName());
 			embeddedIdEPackage.getEClassifiers().add(nameEClass);
 			embeddedIdEPackage.getEClassifiers().add(personEClass);
-			EPackage.Registry.INSTANCE.put(embeddedIdEPackage.getNsURI(),
-					embeddedIdEPackage);
+			EPackage.Registry.INSTANCE.put(embeddedIdEPackage.getNsURI(), embeddedIdEPackage);
 		}
 
 	}
@@ -121,8 +120,7 @@ public class DynamicEmbeddedIdAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			SerializableDynamicEObjectImpl name = new SerializableDynamicEObjectImpl(
-					nameEClass);
+			SerializableDynamicEObjectImpl name = new SerializableDynamicEObjectImpl(nameEClass);
 			name.eSet(firstName, "Martin");
 			name.eSet(lastName, "Taal");
 			final SerializableDynamicEObjectImpl person = (SerializableDynamicEObjectImpl) store

@@ -119,9 +119,11 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[], java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
+	 * java.lang.Object)
 	 */
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor,
+			Object owner) throws HibernateException, SQLException {
 		final String name = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -144,9 +146,11 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object,
+	 * int)
 	 */
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
@@ -157,7 +161,8 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object, java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object,
+	 * java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;

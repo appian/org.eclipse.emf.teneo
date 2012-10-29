@@ -52,1058 +52,1056 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected String packageFilename = "bpmn2.ecore";
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass documentRootEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass activityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass adHocSubProcessEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass artifactEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass assignmentEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass associationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass auditingEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass baseElementEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass boundaryEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass businessRuleTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass callActivityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass callChoreographyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass callConversationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass callableElementEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass cancelEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass catchEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass categoryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass categoryValueEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass choreographyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass choreographyActivityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass choreographyTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass collaborationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass compensateEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass complexBehaviorDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass complexGatewayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass conditionalEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass conversationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass conversationAssociationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass conversationLinkEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass conversationNodeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass correlationKeyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass correlationPropertyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass correlationPropertyBindingEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass correlationPropertyRetrievalExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass correlationSubscriptionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataAssociationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataInputEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataInputAssociationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataObjectEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataObjectReferenceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataOutputEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataOutputAssociationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataStateEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataStoreEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dataStoreReferenceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass definitionsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass documentationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass endEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass endPointEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass errorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass errorEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass escalationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass escalationEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass eventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass eventBasedGatewayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass eventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass exclusiveGatewayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass expressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass extensionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass extensionAttributeDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass extensionAttributeValueEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass extensionDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass flowElementEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass flowElementsContainerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass flowNodeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass formalExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass gatewayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalBusinessRuleTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalChoreographyTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalConversationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalManualTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalScriptTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass globalUserTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass groupEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass humanPerformerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass implicitThrowEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass importEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass inclusiveGatewayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass inputOutputBindingEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass inputOutputSpecificationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass inputSetEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass interactionNodeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass interfaceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass intermediateCatchEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass intermediateThrowEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass itemAwareElementEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass itemDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass laneEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass laneSetEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass linkEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass loopCharacteristicsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass manualTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass messageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass messageEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass messageFlowEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass messageFlowAssociationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass monitoringEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass multiInstanceLoopCharacteristicsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass operationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass outputSetEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass parallelGatewayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass participantEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass participantAssociationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass participantMultiplicityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass partnerEntityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass partnerRoleEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass performerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass potentialOwnerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass processEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass propertyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass receiveTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass relationshipEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass renderingEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resourceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resourceAssignmentExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resourceParameterEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resourceParameterBindingEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resourceRoleEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass rootElementEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass scriptTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass sendTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass sequenceFlowEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass serviceTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass signalEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass signalEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass standardLoopCharacteristicsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass startEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass subChoreographyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass subConversationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass subProcessEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass taskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass terminateEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass textAnnotationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass throwEventEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass timerEventDefinitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass transactionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass userTaskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum adHocOrderingEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum associationDirectionEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum choreographyLoopTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum eventBasedGatewayTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum gatewayDirectionEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum itemKindEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum multiInstanceBehaviorEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum processTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum relationshipDirectionEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package package URI
+	 * value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory method {@link #init
+	 * init()}, which also performs initialization of the package, or returns the registered package,
+	 * if one already exists. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.bpmn2.Bpmn2Package#eNS_URI
 	 * @see #init()
@@ -1114,30 +1112,30 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon
+	 * which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link Bpmn2Package#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link Bpmn2Package#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain
+	 * the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @generated
 	 */
 	public static Bpmn2Package init() {
 		if (isInited)
-			return (Bpmn2Package) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI);
+			return (Bpmn2Package) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI);
 
 		// Obtain or create and register package
-		Bpmn2PackageImpl theBpmn2Package = (Bpmn2PackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof Bpmn2PackageImpl ? EPackage.Registry.INSTANCE
+		Bpmn2PackageImpl theBpmn2Package = (Bpmn2PackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Bpmn2PackageImpl ? EPackage.Registry.INSTANCE
 				.get(eNS_URI) : new Bpmn2PackageImpl());
 
 		isInited = true;
@@ -1181,21 +1179,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDocumentRoot() {
 		if (documentRootEClass == null) {
-			documentRootEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(0);
+			documentRootEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(0);
 		}
 		return documentRootEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDocumentRoot_Mixed() {
@@ -1203,8 +1201,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_XMLNSPrefixMap() {
@@ -1212,8 +1210,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_XSISchemaLocation() {
@@ -1221,8 +1219,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Activity() {
@@ -1230,8 +1228,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_AdHocSubProcess() {
@@ -1239,8 +1237,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_FlowElement() {
@@ -1248,8 +1246,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Artifact() {
@@ -1257,8 +1255,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Assignment() {
@@ -1266,8 +1264,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Association() {
@@ -1275,8 +1273,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Auditing() {
@@ -1284,8 +1282,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_BaseElement() {
@@ -1293,8 +1291,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_BaseElementWithMixedContent() {
@@ -1302,8 +1300,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_BoundaryEvent() {
@@ -1311,8 +1309,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_BusinessRuleTask() {
@@ -1320,8 +1318,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CallableElement() {
@@ -1329,8 +1327,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CallActivity() {
@@ -1338,8 +1336,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CallChoreography() {
@@ -1347,8 +1345,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CallConversation() {
@@ -1356,8 +1354,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ConversationNode() {
@@ -1365,8 +1363,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CancelEventDefinition() {
@@ -1374,8 +1372,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_EventDefinition() {
@@ -1383,8 +1381,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_RootElement() {
@@ -1392,8 +1390,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CatchEvent() {
@@ -1401,8 +1399,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Category() {
@@ -1410,8 +1408,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CategoryValue() {
@@ -1419,8 +1417,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Choreography() {
@@ -1428,8 +1426,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Collaboration() {
@@ -1437,8 +1435,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ChoreographyActivity() {
@@ -1446,8 +1444,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ChoreographyTask() {
@@ -1455,8 +1453,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CompensateEventDefinition() {
@@ -1464,8 +1462,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ComplexBehaviorDefinition() {
@@ -1473,8 +1471,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ComplexGateway() {
@@ -1482,8 +1480,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ConditionalEventDefinition() {
@@ -1491,8 +1489,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Conversation() {
@@ -1500,8 +1498,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ConversationAssociation() {
@@ -1509,8 +1507,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ConversationLink() {
@@ -1518,8 +1516,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CorrelationKey() {
@@ -1527,8 +1525,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CorrelationProperty() {
@@ -1536,8 +1534,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CorrelationPropertyBinding() {
@@ -1545,8 +1543,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CorrelationPropertyRetrievalExpression() {
@@ -1554,8 +1552,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_CorrelationSubscription() {
@@ -1563,8 +1561,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataAssociation() {
@@ -1572,8 +1570,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataInput() {
@@ -1581,8 +1579,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataInputAssociation() {
@@ -1590,8 +1588,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataObject() {
@@ -1599,8 +1597,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataObjectReference() {
@@ -1608,8 +1606,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataOutput() {
@@ -1617,8 +1615,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataOutputAssociation() {
@@ -1626,8 +1624,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataState() {
@@ -1635,8 +1633,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataStore() {
@@ -1644,8 +1642,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_DataStoreReference() {
@@ -1653,8 +1651,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Definitions() {
@@ -1662,8 +1660,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Documentation() {
@@ -1671,8 +1669,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_EndEvent() {
@@ -1680,8 +1678,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_EndPoint() {
@@ -1689,8 +1687,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Error() {
@@ -1698,8 +1696,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ErrorEventDefinition() {
@@ -1707,8 +1705,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Escalation() {
@@ -1716,8 +1714,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_EscalationEventDefinition() {
@@ -1725,8 +1723,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Event() {
@@ -1734,8 +1732,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_EventBasedGateway() {
@@ -1743,8 +1741,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ExclusiveGateway() {
@@ -1752,8 +1750,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Expression() {
@@ -1761,8 +1759,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Extension() {
@@ -1770,8 +1768,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ExtensionElements() {
@@ -1779,8 +1777,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_FlowNode() {
@@ -1788,8 +1786,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_FormalExpression() {
@@ -1797,8 +1795,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Gateway() {
@@ -1806,8 +1804,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalBusinessRuleTask() {
@@ -1815,8 +1813,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalChoreographyTask() {
@@ -1824,8 +1822,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalConversation() {
@@ -1833,8 +1831,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalManualTask() {
@@ -1842,8 +1840,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalScriptTask() {
@@ -1851,8 +1849,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalTask() {
@@ -1860,8 +1858,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_GlobalUserTask() {
@@ -1869,8 +1867,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Group() {
@@ -1878,8 +1876,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_HumanPerformer() {
@@ -1887,8 +1885,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Performer() {
@@ -1896,8 +1894,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ResourceRole() {
@@ -1905,8 +1903,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ImplicitThrowEvent() {
@@ -1914,8 +1912,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Import() {
@@ -1923,8 +1921,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_InclusiveGateway() {
@@ -1932,8 +1930,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_InputSet() {
@@ -1941,8 +1939,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Interface() {
@@ -1950,8 +1948,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_IntermediateCatchEvent() {
@@ -1959,8 +1957,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_IntermediateThrowEvent() {
@@ -1968,8 +1966,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_IoBinding() {
@@ -1977,8 +1975,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_IoSpecification() {
@@ -1986,8 +1984,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ItemDefinition() {
@@ -1995,8 +1993,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Lane() {
@@ -2004,8 +2002,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_LaneSet() {
@@ -2013,8 +2011,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_LinkEventDefinition() {
@@ -2022,8 +2020,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_LoopCharacteristics() {
@@ -2031,8 +2029,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ManualTask() {
@@ -2040,8 +2038,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Message() {
@@ -2049,8 +2047,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_MessageEventDefinition() {
@@ -2058,8 +2056,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_MessageFlow() {
@@ -2067,8 +2065,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_MessageFlowAssociation() {
@@ -2076,8 +2074,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Monitoring() {
@@ -2085,8 +2083,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_MultiInstanceLoopCharacteristics() {
@@ -2094,8 +2092,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Operation() {
@@ -2103,8 +2101,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_OutputSet() {
@@ -2112,8 +2110,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ParallelGateway() {
@@ -2121,8 +2119,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Participant() {
@@ -2130,8 +2128,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ParticipantAssociation() {
@@ -2139,8 +2137,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ParticipantMultiplicity() {
@@ -2148,8 +2146,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_PartnerEntity() {
@@ -2157,8 +2155,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_PartnerRole() {
@@ -2166,8 +2164,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_PotentialOwner() {
@@ -2175,8 +2173,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Process() {
@@ -2184,8 +2182,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Property() {
@@ -2193,8 +2191,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ReceiveTask() {
@@ -2202,8 +2200,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Relationship() {
@@ -2211,8 +2209,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Rendering() {
@@ -2220,8 +2218,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Resource() {
@@ -2229,8 +2227,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ResourceAssignmentExpression() {
@@ -2238,8 +2236,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ResourceParameter() {
@@ -2247,8 +2245,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ResourceParameterBinding() {
@@ -2256,8 +2254,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Script() {
@@ -2265,8 +2263,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ScriptTask() {
@@ -2274,8 +2272,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_SendTask() {
@@ -2283,8 +2281,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_SequenceFlow() {
@@ -2292,8 +2290,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ServiceTask() {
@@ -2301,8 +2299,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Signal() {
@@ -2310,8 +2308,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_SignalEventDefinition() {
@@ -2319,8 +2317,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_StandardLoopCharacteristics() {
@@ -2328,8 +2326,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_StartEvent() {
@@ -2337,8 +2335,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_SubChoreography() {
@@ -2346,8 +2344,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_SubConversation() {
@@ -2355,8 +2353,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_SubProcess() {
@@ -2364,8 +2362,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Task() {
@@ -2373,8 +2371,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_TerminateEventDefinition() {
@@ -2382,8 +2380,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Text() {
@@ -2391,8 +2389,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_TextAnnotation() {
@@ -2400,8 +2398,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_ThrowEvent() {
@@ -2409,8 +2407,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_TimerEventDefinition() {
@@ -2418,8 +2416,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_Transaction() {
@@ -2427,8 +2425,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDocumentRoot_UserTask() {
@@ -2436,21 +2434,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getActivity() {
 		if (activityEClass == null) {
-			activityEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(1);
+			activityEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(1);
 		}
 		return activityEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_IoSpecification() {
@@ -2458,8 +2456,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_BoundaryEventRefs() {
@@ -2467,8 +2465,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_Properties() {
@@ -2476,8 +2474,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_DataInputAssociations() {
@@ -2485,8 +2483,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_DataOutputAssociations() {
@@ -2494,8 +2492,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_Resources() {
@@ -2503,8 +2501,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_LoopCharacteristics() {
@@ -2512,8 +2510,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getActivity_CompletionQuantity() {
@@ -2521,8 +2519,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getActivity_Default() {
@@ -2530,8 +2528,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getActivity_IsForCompensation() {
@@ -2539,8 +2537,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getActivity_StartQuantity() {
@@ -2548,77 +2546,74 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAdHocSubProcess() {
 		if (adHocSubProcessEClass == null) {
-			adHocSubProcessEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(3);
+			adHocSubProcessEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(3);
 		}
 		return adHocSubProcessEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdHocSubProcess_CompletionCondition() {
-		return (EReference) getAdHocSubProcess().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getAdHocSubProcess().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAdHocSubProcess_CancelRemainingInstances() {
-		return (EAttribute) getAdHocSubProcess().getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) getAdHocSubProcess().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAdHocSubProcess_Ordering() {
-		return (EAttribute) getAdHocSubProcess().getEStructuralFeatures()
-				.get(2);
+		return (EAttribute) getAdHocSubProcess().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getArtifact() {
 		if (artifactEClass == null) {
-			artifactEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(4);
+			artifactEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(4);
 		}
 		return artifactEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAssignment() {
 		if (assignmentEClass == null) {
-			assignmentEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(5);
+			assignmentEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(5);
 		}
 		return assignmentEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAssignment_From() {
@@ -2626,8 +2621,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAssignment_To() {
@@ -2635,21 +2630,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAssociation() {
 		if (associationEClass == null) {
-			associationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(6);
+			associationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(6);
 		}
 		return associationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAssociation_AssociationDirection() {
@@ -2657,8 +2652,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAssociation_SourceRef() {
@@ -2666,8 +2661,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAssociation_TargetRef() {
@@ -2675,34 +2670,34 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAuditing() {
 		if (auditingEClass == null) {
-			auditingEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(8);
+			auditingEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(8);
 		}
 		return auditingEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBaseElement() {
 		if (baseElementEClass == null) {
-			baseElementEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(9);
+			baseElementEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(9);
 		}
 		return baseElementEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBaseElement_ExtensionValues() {
@@ -2710,8 +2705,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBaseElement_Documentation() {
@@ -2719,8 +2714,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBaseElement_ExtensionDefinitions() {
@@ -2728,8 +2723,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBaseElement_Id() {
@@ -2737,8 +2732,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBaseElement_AnyAttribute() {
@@ -2746,22 +2741,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBoundaryEvent() {
 		if (boundaryEventEClass == null) {
-			boundaryEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(10);
+			boundaryEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(10);
 		}
 		return boundaryEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getBoundaryEvent_AttachedToRef() {
@@ -2769,8 +2763,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBoundaryEvent_CancelActivity() {
@@ -2778,46 +2772,43 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBusinessRuleTask() {
 		if (businessRuleTaskEClass == null) {
 			businessRuleTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(11);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(11);
 		}
 		return businessRuleTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBusinessRuleTask_Implementation() {
-		return (EAttribute) getBusinessRuleTask().getEStructuralFeatures().get(
-				0);
+		return (EAttribute) getBusinessRuleTask().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCallActivity() {
 		if (callActivityEClass == null) {
-			callActivityEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(12);
+			callActivityEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(12);
 		}
 		return callActivityEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallActivity_CalledElementRef() {
@@ -2825,158 +2816,145 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCallChoreography() {
 		if (callChoreographyEClass == null) {
 			callChoreographyEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(13);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(13);
 		}
 		return callChoreographyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallChoreography_ParticipantAssociations() {
-		return (EReference) getCallChoreography().getEStructuralFeatures().get(
-				0);
+		return (EReference) getCallChoreography().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallChoreography_CalledChoreographyRef() {
-		return (EReference) getCallChoreography().getEStructuralFeatures().get(
-				1);
+		return (EReference) getCallChoreography().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCallConversation() {
 		if (callConversationEClass == null) {
 			callConversationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(14);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(14);
 		}
 		return callConversationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallConversation_ParticipantAssociations() {
-		return (EReference) getCallConversation().getEStructuralFeatures().get(
-				0);
+		return (EReference) getCallConversation().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallConversation_CalledCollaborationRef() {
-		return (EReference) getCallConversation().getEStructuralFeatures().get(
-				1);
+		return (EReference) getCallConversation().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCallableElement() {
 		if (callableElementEClass == null) {
-			callableElementEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(15);
+			callableElementEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(15);
 		}
 		return callableElementEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallableElement_SupportedInterfaceRefs() {
-		return (EReference) getCallableElement().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getCallableElement().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallableElement_IoSpecification() {
-		return (EReference) getCallableElement().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getCallableElement().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCallableElement_IoBinding() {
-		return (EReference) getCallableElement().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getCallableElement().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCallableElement_Name() {
-		return (EAttribute) getCallableElement().getEStructuralFeatures()
-				.get(3);
+		return (EAttribute) getCallableElement().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCancelEventDefinition() {
 		if (cancelEventDefinitionEClass == null) {
 			cancelEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(16);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(16);
 		}
 		return cancelEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCatchEvent() {
 		if (catchEventEClass == null) {
-			catchEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(17);
+			catchEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(17);
 		}
 		return catchEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCatchEvent_DataOutputs() {
@@ -2984,8 +2962,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCatchEvent_DataOutputAssociation() {
@@ -2993,8 +2971,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCatchEvent_OutputSet() {
@@ -3002,8 +2980,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCatchEvent_EventDefinitions() {
@@ -3011,8 +2989,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCatchEvent_EventDefinitionRefs() {
@@ -3020,8 +2998,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCatchEvent_ParallelMultiple() {
@@ -3029,22 +3007,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCategory() {
 		if (categoryEClass == null) {
-			categoryEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(18);
+			categoryEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(18);
 		}
 		return categoryEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCategory_CategoryValue() {
@@ -3052,8 +3029,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCategory_Name() {
@@ -3061,22 +3038,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCategoryValue() {
 		if (categoryValueEClass == null) {
-			categoryValueEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(19);
+			categoryValueEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(19);
 		}
 		return categoryValueEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCategoryValue_Value() {
@@ -3084,8 +3060,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCategoryValue_CategorizedFlowElements() {
@@ -3093,114 +3069,105 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getChoreography() {
 		if (choreographyEClass == null) {
-			choreographyEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(20);
+			choreographyEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(20);
 		}
 		return choreographyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getChoreographyActivity() {
 		if (choreographyActivityEClass == null) {
 			choreographyActivityEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(21);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(21);
 		}
 		return choreographyActivityEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getChoreographyActivity_ParticipantRefs() {
-		return (EReference) getChoreographyActivity().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getChoreographyActivity().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getChoreographyActivity_CorrelationKeys() {
-		return (EReference) getChoreographyActivity().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getChoreographyActivity().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getChoreographyActivity_InitiatingParticipantRef() {
-		return (EReference) getChoreographyActivity().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getChoreographyActivity().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getChoreographyActivity_LoopType() {
-		return (EAttribute) getChoreographyActivity().getEStructuralFeatures()
-				.get(3);
+		return (EAttribute) getChoreographyActivity().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getChoreographyTask() {
 		if (choreographyTaskEClass == null) {
 			choreographyTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(23);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(23);
 		}
 		return choreographyTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getChoreographyTask_MessageFlowRef() {
-		return (EReference) getChoreographyTask().getEStructuralFeatures().get(
-				0);
+		return (EReference) getChoreographyTask().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCollaboration() {
 		if (collaborationEClass == null) {
-			collaborationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(24);
+			collaborationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(24);
 		}
 		return collaborationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_Participants() {
@@ -3208,8 +3175,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_MessageFlows() {
@@ -3217,8 +3184,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_Artifacts() {
@@ -3226,8 +3193,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_Conversations() {
@@ -3235,8 +3202,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_ConversationAssociations() {
@@ -3244,8 +3211,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_ParticipantAssociations() {
@@ -3253,8 +3220,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_MessageFlowAssociations() {
@@ -3262,8 +3229,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_CorrelationKeys() {
@@ -3271,8 +3238,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_ChoreographyRef() {
@@ -3280,8 +3247,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCollaboration_ConversationLinks() {
@@ -3289,8 +3256,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCollaboration_IsClosed() {
@@ -3298,8 +3265,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCollaboration_Name() {
@@ -3307,90 +3274,83 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCompensateEventDefinition() {
 		if (compensateEventDefinitionEClass == null) {
 			compensateEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(25);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(25);
 		}
 		return compensateEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCompensateEventDefinition_ActivityRef() {
-		return (EReference) getCompensateEventDefinition()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getCompensateEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCompensateEventDefinition_WaitForCompletion() {
-		return (EAttribute) getCompensateEventDefinition()
-				.getEStructuralFeatures().get(1);
+		return (EAttribute) getCompensateEventDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getComplexBehaviorDefinition() {
 		if (complexBehaviorDefinitionEClass == null) {
 			complexBehaviorDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(26);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(26);
 		}
 		return complexBehaviorDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getComplexBehaviorDefinition_Condition() {
-		return (EReference) getComplexBehaviorDefinition()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getComplexBehaviorDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getComplexBehaviorDefinition_Event() {
-		return (EReference) getComplexBehaviorDefinition()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getComplexBehaviorDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getComplexGateway() {
 		if (complexGatewayEClass == null) {
-			complexGatewayEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(27);
+			complexGatewayEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(27);
 		}
 		return complexGatewayEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getComplexGateway_ActivationCondition() {
@@ -3398,8 +3358,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getComplexGateway_Default() {
@@ -3407,192 +3367,176 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getConditionalEventDefinition() {
 		if (conditionalEventDefinitionEClass == null) {
 			conditionalEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(28);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(28);
 		}
 		return conditionalEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConditionalEventDefinition_Condition() {
-		return (EReference) getConditionalEventDefinition()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getConditionalEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getConversation() {
 		if (conversationEClass == null) {
-			conversationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(29);
+			conversationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(29);
 		}
 		return conversationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getConversationAssociation() {
 		if (conversationAssociationEClass == null) {
 			conversationAssociationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(30);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(30);
 		}
 		return conversationAssociationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationAssociation_InnerConversationNodeRef() {
-		return (EReference) getConversationAssociation()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getConversationAssociation().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationAssociation_OuterConversationNodeRef() {
-		return (EReference) getConversationAssociation()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getConversationAssociation().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getConversationLink() {
 		if (conversationLinkEClass == null) {
 			conversationLinkEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(31);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(31);
 		}
 		return conversationLinkEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getConversationLink_Name() {
-		return (EAttribute) getConversationLink().getEStructuralFeatures().get(
-				0);
+		return (EAttribute) getConversationLink().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationLink_SourceRef() {
-		return (EReference) getConversationLink().getEStructuralFeatures().get(
-				1);
+		return (EReference) getConversationLink().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationLink_TargetRef() {
-		return (EReference) getConversationLink().getEStructuralFeatures().get(
-				2);
+		return (EReference) getConversationLink().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getConversationNode() {
 		if (conversationNodeEClass == null) {
 			conversationNodeEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(32);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(32);
 		}
 		return conversationNodeEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationNode_ParticipantRefs() {
-		return (EReference) getConversationNode().getEStructuralFeatures().get(
-				0);
+		return (EReference) getConversationNode().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationNode_MessageFlowRefs() {
-		return (EReference) getConversationNode().getEStructuralFeatures().get(
-				1);
+		return (EReference) getConversationNode().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getConversationNode_CorrelationKeys() {
-		return (EReference) getConversationNode().getEStructuralFeatures().get(
-				2);
+		return (EReference) getConversationNode().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getConversationNode_Name() {
-		return (EAttribute) getConversationNode().getEStructuralFeatures().get(
-				3);
+		return (EAttribute) getConversationNode().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCorrelationKey() {
 		if (correlationKeyEClass == null) {
-			correlationKeyEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(33);
+			correlationKeyEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(33);
 		}
 		return correlationKeyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationKey_CorrelationPropertyRef() {
@@ -3600,8 +3544,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCorrelationKey_Name() {
@@ -3609,222 +3553,203 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCorrelationProperty() {
 		if (correlationPropertyEClass == null) {
 			correlationPropertyEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(34);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(34);
 		}
 		return correlationPropertyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationProperty_CorrelationPropertyRetrievalExpression() {
-		return (EReference) getCorrelationProperty().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getCorrelationProperty().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCorrelationProperty_Name() {
-		return (EAttribute) getCorrelationProperty().getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) getCorrelationProperty().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationProperty_Type() {
-		return (EReference) getCorrelationProperty().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getCorrelationProperty().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCorrelationPropertyBinding() {
 		if (correlationPropertyBindingEClass == null) {
 			correlationPropertyBindingEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(35);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(35);
 		}
 		return correlationPropertyBindingEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationPropertyBinding_DataPath() {
-		return (EReference) getCorrelationPropertyBinding()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getCorrelationPropertyBinding().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationPropertyBinding_CorrelationPropertyRef() {
-		return (EReference) getCorrelationPropertyBinding()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getCorrelationPropertyBinding().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCorrelationPropertyRetrievalExpression() {
 		if (correlationPropertyRetrievalExpressionEClass == null) {
 			correlationPropertyRetrievalExpressionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(36);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(36);
 		}
 		return correlationPropertyRetrievalExpressionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationPropertyRetrievalExpression_MessagePath() {
-		return (EReference) getCorrelationPropertyRetrievalExpression()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getCorrelationPropertyRetrievalExpression().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationPropertyRetrievalExpression_MessageRef() {
-		return (EReference) getCorrelationPropertyRetrievalExpression()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getCorrelationPropertyRetrievalExpression().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCorrelationSubscription() {
 		if (correlationSubscriptionEClass == null) {
 			correlationSubscriptionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(37);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(37);
 		}
 		return correlationSubscriptionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationSubscription_CorrelationPropertyBinding() {
-		return (EReference) getCorrelationSubscription()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getCorrelationSubscription().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getCorrelationSubscription_CorrelationKeyRef() {
-		return (EReference) getCorrelationSubscription()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getCorrelationSubscription().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataAssociation() {
 		if (dataAssociationEClass == null) {
-			dataAssociationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(38);
+			dataAssociationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(38);
 		}
 		return dataAssociationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataAssociation_SourceRef() {
-		return (EReference) getDataAssociation().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getDataAssociation().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataAssociation_TargetRef() {
-		return (EReference) getDataAssociation().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getDataAssociation().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataAssociation_Transformation() {
-		return (EReference) getDataAssociation().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getDataAssociation().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataAssociation_Assignment() {
-		return (EReference) getDataAssociation().getEStructuralFeatures()
-				.get(3);
+		return (EReference) getDataAssociation().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataInput() {
 		if (dataInputEClass == null) {
-			dataInputEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(39);
+			dataInputEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(39);
 		}
 		return dataInputEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataInput_InputSetWithOptional() {
@@ -3832,8 +3757,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataInput_InputSetWithWhileExecuting() {
@@ -3841,8 +3766,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataInput_InputSetRefs() {
@@ -3850,8 +3775,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataInput_IsCollection() {
@@ -3859,8 +3784,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataInput_Name() {
@@ -3868,36 +3793,34 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataInputAssociation() {
 		if (dataInputAssociationEClass == null) {
 			dataInputAssociationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(40);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(40);
 		}
 		return dataInputAssociationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataObject() {
 		if (dataObjectEClass == null) {
-			dataObjectEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(41);
+			dataObjectEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(41);
 		}
 		return dataObjectEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataObject_IsCollection() {
@@ -3905,46 +3828,43 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataObjectReference() {
 		if (dataObjectReferenceEClass == null) {
 			dataObjectReferenceEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(42);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(42);
 		}
 		return dataObjectReferenceEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataObjectReference_DataObjectRef() {
-		return (EReference) getDataObjectReference().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getDataObjectReference().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataOutput() {
 		if (dataOutputEClass == null) {
-			dataOutputEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(43);
+			dataOutputEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(43);
 		}
 		return dataOutputEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataOutput_OutputSetWithOptional() {
@@ -3952,8 +3872,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataOutput_OutputSetWithWhileExecuting() {
@@ -3961,8 +3881,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataOutput_OutputSetRefs() {
@@ -3970,8 +3890,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataOutput_IsCollection() {
@@ -3979,8 +3899,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataOutput_Name() {
@@ -3988,36 +3908,34 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataOutputAssociation() {
 		if (dataOutputAssociationEClass == null) {
 			dataOutputAssociationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(44);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(44);
 		}
 		return dataOutputAssociationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataState() {
 		if (dataStateEClass == null) {
-			dataStateEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(45);
+			dataStateEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(45);
 		}
 		return dataStateEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataState_Name() {
@@ -4025,22 +3943,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataStore() {
 		if (dataStoreEClass == null) {
-			dataStoreEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(46);
+			dataStoreEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(46);
 		}
 		return dataStoreEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataStore_Capacity() {
@@ -4048,8 +3965,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataStore_IsUnlimited() {
@@ -4057,8 +3974,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDataStore_Name() {
@@ -4066,46 +3983,43 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDataStoreReference() {
 		if (dataStoreReferenceEClass == null) {
 			dataStoreReferenceEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(47);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(47);
 		}
 		return dataStoreReferenceEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDataStoreReference_DataStoreRef() {
-		return (EReference) getDataStoreReference().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getDataStoreReference().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDefinitions() {
 		if (definitionsEClass == null) {
-			definitionsEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(48);
+			definitionsEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(48);
 		}
 		return definitionsEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDefinitions_Imports() {
@@ -4113,8 +4027,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDefinitions_Extensions() {
@@ -4122,8 +4036,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDefinitions_RootElements() {
@@ -4131,8 +4045,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDefinitions_Diagrams() {
@@ -4140,8 +4054,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDefinitions_Relationships() {
@@ -4149,8 +4063,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDefinitions_Exporter() {
@@ -4158,8 +4072,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDefinitions_ExporterVersion() {
@@ -4167,8 +4081,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDefinitions_ExpressionLanguage() {
@@ -4176,8 +4090,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDefinitions_Name() {
@@ -4185,8 +4099,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDefinitions_TargetNamespace() {
@@ -4194,8 +4108,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDefinitions_TypeLanguage() {
@@ -4203,22 +4117,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDocumentation() {
 		if (documentationEClass == null) {
-			documentationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(49);
+			documentationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(49);
 		}
 		return documentationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDocumentation_Mixed() {
@@ -4226,8 +4139,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDocumentation_Text() {
@@ -4235,8 +4148,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDocumentation_TextFormat() {
@@ -4244,50 +4157,47 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEndEvent() {
 		if (endEventEClass == null) {
-			endEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(50);
+			endEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(50);
 		}
 		return endEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEndPoint() {
 		if (endPointEClass == null) {
-			endPointEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(51);
+			endPointEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(51);
 		}
 		return endPointEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getError() {
 		if (errorEClass == null) {
-			errorEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(52);
+			errorEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(52);
 		}
 		return errorEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getError_ErrorCode() {
@@ -4295,8 +4205,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getError_Name() {
@@ -4304,8 +4214,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getError_StructureRef() {
@@ -4313,46 +4223,43 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getErrorEventDefinition() {
 		if (errorEventDefinitionEClass == null) {
 			errorEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(53);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(53);
 		}
 		return errorEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getErrorEventDefinition_ErrorRef() {
-		return (EReference) getErrorEventDefinition().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getErrorEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEscalation() {
 		if (escalationEClass == null) {
-			escalationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(54);
+			escalationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(54);
 		}
 		return escalationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEscalation_EscalationCode() {
@@ -4360,8 +4267,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEscalation_Name() {
@@ -4369,8 +4276,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEscalation_StructureRef() {
@@ -4378,46 +4285,43 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEscalationEventDefinition() {
 		if (escalationEventDefinitionEClass == null) {
 			escalationEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(55);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(55);
 		}
 		return escalationEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEscalationEventDefinition_EscalationRef() {
-		return (EReference) getEscalationEventDefinition()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getEscalationEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEvent() {
 		if (eventEClass == null) {
-			eventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(56);
+			eventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(56);
 		}
 		return eventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEvent_Properties() {
@@ -4425,108 +4329,100 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEventBasedGateway() {
 		if (eventBasedGatewayEClass == null) {
 			eventBasedGatewayEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(57);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(57);
 		}
 		return eventBasedGatewayEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEventBasedGateway_EventGatewayType() {
-		return (EAttribute) getEventBasedGateway().getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) getEventBasedGateway().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEventBasedGateway_Instantiate() {
-		return (EAttribute) getEventBasedGateway().getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) getEventBasedGateway().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEventDefinition() {
 		if (eventDefinitionEClass == null) {
-			eventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(59);
+			eventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(59);
 		}
 		return eventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExclusiveGateway() {
 		if (exclusiveGatewayEClass == null) {
 			exclusiveGatewayEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(60);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(60);
 		}
 		return exclusiveGatewayEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getExclusiveGateway_Default() {
-		return (EReference) getExclusiveGateway().getEStructuralFeatures().get(
-				0);
+		return (EReference) getExclusiveGateway().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExpression() {
 		if (expressionEClass == null) {
-			expressionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(61);
+			expressionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(61);
 		}
 		return expressionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExtension() {
 		if (extensionEClass == null) {
-			extensionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(62);
+			extensionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(62);
 		}
 		return extensionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getExtension_Definition() {
@@ -4534,8 +4430,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtension_MustUnderstand() {
@@ -4543,8 +4439,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtension_XsdDefinition() {
@@ -4552,154 +4448,141 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExtensionAttributeDefinition() {
 		if (extensionAttributeDefinitionEClass == null) {
 			extensionAttributeDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(63);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(63);
 		}
 		return extensionAttributeDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtensionAttributeDefinition_Name() {
-		return (EAttribute) getExtensionAttributeDefinition()
-				.getEStructuralFeatures().get(0);
+		return (EAttribute) getExtensionAttributeDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtensionAttributeDefinition_Type() {
-		return (EAttribute) getExtensionAttributeDefinition()
-				.getEStructuralFeatures().get(1);
+		return (EAttribute) getExtensionAttributeDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtensionAttributeDefinition_IsReference() {
-		return (EAttribute) getExtensionAttributeDefinition()
-				.getEStructuralFeatures().get(2);
+		return (EAttribute) getExtensionAttributeDefinition().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getExtensionAttributeDefinition_ExtensionDefinition() {
-		return (EReference) getExtensionAttributeDefinition()
-				.getEStructuralFeatures().get(3);
+		return (EReference) getExtensionAttributeDefinition().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExtensionAttributeValue() {
 		if (extensionAttributeValueEClass == null) {
 			extensionAttributeValueEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(64);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(64);
 		}
 		return extensionAttributeValueEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getExtensionAttributeValue_ValueRef() {
-		return (EReference) getExtensionAttributeValue()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getExtensionAttributeValue().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtensionAttributeValue_Value() {
-		return (EAttribute) getExtensionAttributeValue()
-				.getEStructuralFeatures().get(1);
+		return (EAttribute) getExtensionAttributeValue().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getExtensionAttributeValue_ExtensionAttributeDefinition() {
-		return (EReference) getExtensionAttributeValue()
-				.getEStructuralFeatures().get(2);
+		return (EReference) getExtensionAttributeValue().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getExtensionDefinition() {
 		if (extensionDefinitionEClass == null) {
 			extensionDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(65);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(65);
 		}
 		return extensionDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getExtensionDefinition_Name() {
-		return (EAttribute) getExtensionDefinition().getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) getExtensionDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getExtensionDefinition_ExtensionAttributeDefinitions() {
-		return (EReference) getExtensionDefinition().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getExtensionDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFlowElement() {
 		if (flowElementEClass == null) {
-			flowElementEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(66);
+			flowElementEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(66);
 		}
 		return flowElementEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowElement_Auditing() {
@@ -4707,8 +4590,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowElement_Monitoring() {
@@ -4716,8 +4599,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowElement_CategoryValueRef() {
@@ -4725,8 +4608,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFlowElement_Name() {
@@ -4734,56 +4617,52 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFlowElementsContainer() {
 		if (flowElementsContainerEClass == null) {
 			flowElementsContainerEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(67);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(67);
 		}
 		return flowElementsContainerEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowElementsContainer_LaneSets() {
-		return (EReference) getFlowElementsContainer().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getFlowElementsContainer().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowElementsContainer_FlowElements() {
-		return (EReference) getFlowElementsContainer().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getFlowElementsContainer().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFlowNode() {
 		if (flowNodeEClass == null) {
-			flowNodeEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(68);
+			flowNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(68);
 		}
 		return flowNodeEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowNode_Incoming() {
@@ -4791,8 +4670,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowNode_Lanes() {
@@ -4800,8 +4679,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFlowNode_Outgoing() {
@@ -4809,76 +4688,70 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFormalExpression() {
 		if (formalExpressionEClass == null) {
 			formalExpressionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(69);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(69);
 		}
 		return formalExpressionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFormalExpression_Mixed() {
-		return (EAttribute) getFormalExpression().getEStructuralFeatures().get(
-				0);
+		return (EAttribute) getFormalExpression().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFormalExpression_Body() {
-		return (EAttribute) getFormalExpression().getEStructuralFeatures().get(
-				1);
+		return (EAttribute) getFormalExpression().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFormalExpression_EvaluatesToTypeRef() {
-		return (EReference) getFormalExpression().getEStructuralFeatures().get(
-				2);
+		return (EReference) getFormalExpression().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFormalExpression_Language() {
-		return (EAttribute) getFormalExpression().getEStructuralFeatures().get(
-				3);
+		return (EAttribute) getFormalExpression().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGateway() {
 		if (gatewayEClass == null) {
-			gatewayEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(70);
+			gatewayEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(70);
 		}
 		return gatewayEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGateway_GatewayDirection() {
@@ -4886,132 +4759,122 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalBusinessRuleTask() {
 		if (globalBusinessRuleTaskEClass == null) {
 			globalBusinessRuleTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(72);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(72);
 		}
 		return globalBusinessRuleTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGlobalBusinessRuleTask_Implementation() {
-		return (EAttribute) getGlobalBusinessRuleTask()
-				.getEStructuralFeatures().get(0);
+		return (EAttribute) getGlobalBusinessRuleTask().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalChoreographyTask() {
 		if (globalChoreographyTaskEClass == null) {
 			globalChoreographyTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(73);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(73);
 		}
 		return globalChoreographyTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getGlobalChoreographyTask_InitiatingParticipantRef() {
-		return (EReference) getGlobalChoreographyTask()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getGlobalChoreographyTask().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalConversation() {
 		if (globalConversationEClass == null) {
 			globalConversationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(74);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(74);
 		}
 		return globalConversationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalManualTask() {
 		if (globalManualTaskEClass == null) {
 			globalManualTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(75);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(75);
 		}
 		return globalManualTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalScriptTask() {
 		if (globalScriptTaskEClass == null) {
 			globalScriptTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(76);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(76);
 		}
 		return globalScriptTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGlobalScriptTask_Script() {
-		return (EAttribute) getGlobalScriptTask().getEStructuralFeatures().get(
-				0);
+		return (EAttribute) getGlobalScriptTask().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGlobalScriptTask_ScriptLanguage() {
-		return (EAttribute) getGlobalScriptTask().getEStructuralFeatures().get(
-				1);
+		return (EAttribute) getGlobalScriptTask().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalTask() {
 		if (globalTaskEClass == null) {
-			globalTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(77);
+			globalTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(77);
 		}
 		return globalTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getGlobalTask_Resources() {
@@ -5019,22 +4882,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGlobalUserTask() {
 		if (globalUserTaskEClass == null) {
-			globalUserTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(78);
+			globalUserTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(78);
 		}
 		return globalUserTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getGlobalUserTask_Renderings() {
@@ -5042,8 +4904,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGlobalUserTask_Implementation() {
@@ -5051,22 +4913,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGroup() {
 		if (groupEClass == null) {
-			groupEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(79);
+			groupEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(79);
 		}
 		return groupEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getGroup_CategoryValueRef() {
@@ -5074,50 +4935,47 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getHumanPerformer() {
 		if (humanPerformerEClass == null) {
-			humanPerformerEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(80);
+			humanPerformerEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(80);
 		}
 		return humanPerformerEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getImplicitThrowEvent() {
 		if (implicitThrowEventEClass == null) {
 			implicitThrowEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(81);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(81);
 		}
 		return implicitThrowEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getImport() {
 		if (importEClass == null) {
-			importEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(82);
+			importEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(82);
 		}
 		return importEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getImport_ImportType() {
@@ -5125,8 +4983,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getImport_Location() {
@@ -5134,8 +4992,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getImport_Namespace() {
@@ -5143,144 +5001,132 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInclusiveGateway() {
 		if (inclusiveGatewayEClass == null) {
 			inclusiveGatewayEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(83);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(83);
 		}
 		return inclusiveGatewayEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInclusiveGateway_Default() {
-		return (EReference) getInclusiveGateway().getEStructuralFeatures().get(
-				0);
+		return (EReference) getInclusiveGateway().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInputOutputBinding() {
 		if (inputOutputBindingEClass == null) {
 			inputOutputBindingEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(84);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(84);
 		}
 		return inputOutputBindingEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputBinding_InputDataRef() {
-		return (EReference) getInputOutputBinding().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getInputOutputBinding().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputBinding_OperationRef() {
-		return (EReference) getInputOutputBinding().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getInputOutputBinding().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputBinding_OutputDataRef() {
-		return (EReference) getInputOutputBinding().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getInputOutputBinding().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInputOutputSpecification() {
 		if (inputOutputSpecificationEClass == null) {
 			inputOutputSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(85);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(85);
 		}
 		return inputOutputSpecificationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputSpecification_DataInputs() {
-		return (EReference) getInputOutputSpecification()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getInputOutputSpecification().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputSpecification_DataOutputs() {
-		return (EReference) getInputOutputSpecification()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getInputOutputSpecification().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputSpecification_InputSets() {
-		return (EReference) getInputOutputSpecification()
-				.getEStructuralFeatures().get(2);
+		return (EReference) getInputOutputSpecification().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputOutputSpecification_OutputSets() {
-		return (EReference) getInputOutputSpecification()
-				.getEStructuralFeatures().get(3);
+		return (EReference) getInputOutputSpecification().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInputSet() {
 		if (inputSetEClass == null) {
-			inputSetEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(86);
+			inputSetEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(86);
 		}
 		return inputSetEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputSet_DataInputRefs() {
@@ -5288,8 +5134,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputSet_OptionalInputRefs() {
@@ -5297,8 +5143,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputSet_WhileExecutingInputRefs() {
@@ -5306,8 +5152,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInputSet_OutputSetRefs() {
@@ -5315,8 +5161,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getInputSet_Name() {
@@ -5324,56 +5170,52 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInteractionNode() {
 		if (interactionNodeEClass == null) {
-			interactionNodeEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(87);
+			interactionNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(87);
 		}
 		return interactionNodeEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInteractionNode_IncomingConversationLinks() {
-		return (EReference) getInteractionNode().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getInteractionNode().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInteractionNode_OutgoingConversationLinks() {
-		return (EReference) getInteractionNode().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getInteractionNode().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getInterface() {
 		if (interfaceEClass == null) {
-			interfaceEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(88);
+			interfaceEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(88);
 		}
 		return interfaceEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInterface_Operations() {
@@ -5381,8 +5223,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getInterface_ImplementationRef() {
@@ -5390,8 +5232,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getInterface_Name() {
@@ -5399,84 +5241,78 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getIntermediateCatchEvent() {
 		if (intermediateCatchEventEClass == null) {
 			intermediateCatchEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(89);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(89);
 		}
 		return intermediateCatchEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getIntermediateThrowEvent() {
 		if (intermediateThrowEventEClass == null) {
 			intermediateThrowEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(90);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(90);
 		}
 		return intermediateThrowEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getItemAwareElement() {
 		if (itemAwareElementEClass == null) {
 			itemAwareElementEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(91);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(91);
 		}
 		return itemAwareElementEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getItemAwareElement_DataState() {
-		return (EReference) getItemAwareElement().getEStructuralFeatures().get(
-				0);
+		return (EReference) getItemAwareElement().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getItemAwareElement_ItemSubjectRef() {
-		return (EReference) getItemAwareElement().getEStructuralFeatures().get(
-				1);
+		return (EReference) getItemAwareElement().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getItemDefinition() {
 		if (itemDefinitionEClass == null) {
-			itemDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(92);
+			itemDefinitionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(92);
 		}
 		return itemDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getItemDefinition_IsCollection() {
@@ -5484,8 +5320,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getItemDefinition_Import() {
@@ -5493,8 +5329,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getItemDefinition_ItemKind() {
@@ -5502,8 +5338,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getItemDefinition_StructureRef() {
@@ -5511,22 +5347,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLane() {
 		if (laneEClass == null) {
-			laneEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(94);
+			laneEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(94);
 		}
 		return laneEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLane_PartitionElement() {
@@ -5534,8 +5369,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLane_FlowNodeRefs() {
@@ -5543,8 +5378,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLane_ChildLaneSet() {
@@ -5552,8 +5387,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLane_Name() {
@@ -5561,8 +5396,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLane_PartitionElementRef() {
@@ -5570,22 +5405,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLaneSet() {
 		if (laneSetEClass == null) {
-			laneSetEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(95);
+			laneSetEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(95);
 		}
 		return laneSetEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLaneSet_Lanes() {
@@ -5593,8 +5427,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLaneSet_Name() {
@@ -5602,94 +5436,87 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLinkEventDefinition() {
 		if (linkEventDefinitionEClass == null) {
 			linkEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(96);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(96);
 		}
 		return linkEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLinkEventDefinition_Source() {
-		return (EReference) getLinkEventDefinition().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getLinkEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getLinkEventDefinition_Target() {
-		return (EReference) getLinkEventDefinition().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getLinkEventDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLinkEventDefinition_Name() {
-		return (EAttribute) getLinkEventDefinition().getEStructuralFeatures()
-				.get(2);
+		return (EAttribute) getLinkEventDefinition().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getLoopCharacteristics() {
 		if (loopCharacteristicsEClass == null) {
 			loopCharacteristicsEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(97);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(97);
 		}
 		return loopCharacteristicsEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getManualTask() {
 		if (manualTaskEClass == null) {
-			manualTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(98);
+			manualTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(98);
 		}
 		return manualTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMessage() {
 		if (messageEClass == null) {
-			messageEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(99);
+			messageEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(99);
 		}
 		return messageEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessage_ItemRef() {
@@ -5697,8 +5524,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMessage_Name() {
@@ -5706,56 +5533,52 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMessageEventDefinition() {
 		if (messageEventDefinitionEClass == null) {
 			messageEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(100);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(100);
 		}
 		return messageEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageEventDefinition_OperationRef() {
-		return (EReference) getMessageEventDefinition()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getMessageEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageEventDefinition_MessageRef() {
-		return (EReference) getMessageEventDefinition()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getMessageEventDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMessageFlow() {
 		if (messageFlowEClass == null) {
-			messageFlowEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(101);
+			messageFlowEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(101);
 		}
 		return messageFlowEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageFlow_MessageRef() {
@@ -5763,8 +5586,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMessageFlow_Name() {
@@ -5772,8 +5595,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageFlow_SourceRef() {
@@ -5781,8 +5604,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageFlow_TargetRef() {
@@ -5790,194 +5613,177 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMessageFlowAssociation() {
 		if (messageFlowAssociationEClass == null) {
 			messageFlowAssociationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(102);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(102);
 		}
 		return messageFlowAssociationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageFlowAssociation_InnerMessageFlowRef() {
-		return (EReference) getMessageFlowAssociation()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getMessageFlowAssociation().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMessageFlowAssociation_OuterMessageFlowRef() {
-		return (EReference) getMessageFlowAssociation()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getMessageFlowAssociation().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMonitoring() {
 		if (monitoringEClass == null) {
-			monitoringEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(103);
+			monitoringEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(103);
 		}
 		return monitoringEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMultiInstanceLoopCharacteristics() {
 		if (multiInstanceLoopCharacteristicsEClass == null) {
 			multiInstanceLoopCharacteristicsEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(105);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(105);
 		}
 		return multiInstanceLoopCharacteristicsEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_LoopCardinality() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_LoopDataInputRef() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_LoopDataOutputRef() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(2);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_InputDataItem() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(3);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_OutputDataItem() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(4);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_ComplexBehaviorDefinition() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(5);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_CompletionCondition() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(6);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMultiInstanceLoopCharacteristics_Behavior() {
-		return (EAttribute) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(7);
+		return (EAttribute) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(7);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMultiInstanceLoopCharacteristics_IsSequential() {
-		return (EAttribute) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(8);
+		return (EAttribute) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(8);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_NoneBehaviorEventRef() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(9);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(9);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMultiInstanceLoopCharacteristics_OneBehaviorEventRef() {
-		return (EReference) getMultiInstanceLoopCharacteristics()
-				.getEStructuralFeatures().get(10);
+		return (EReference) getMultiInstanceLoopCharacteristics().getEStructuralFeatures().get(10);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOperation() {
 		if (operationEClass == null) {
-			operationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(106);
+			operationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(106);
 		}
 		return operationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOperation_InMessageRef() {
@@ -5985,8 +5791,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOperation_OutMessageRef() {
@@ -5994,8 +5800,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOperation_ErrorRefs() {
@@ -6003,8 +5809,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOperation_ImplementationRef() {
@@ -6012,8 +5818,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getOperation_Name() {
@@ -6021,22 +5827,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOutputSet() {
 		if (outputSetEClass == null) {
-			outputSetEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(107);
+			outputSetEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(107);
 		}
 		return outputSetEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOutputSet_DataOutputRefs() {
@@ -6044,8 +5849,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOutputSet_OptionalOutputRefs() {
@@ -6053,8 +5858,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOutputSet_WhileExecutingOutputRefs() {
@@ -6062,8 +5867,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOutputSet_InputSetRefs() {
@@ -6071,8 +5876,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getOutputSet_Name() {
@@ -6080,36 +5885,34 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getParallelGateway() {
 		if (parallelGatewayEClass == null) {
-			parallelGatewayEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(108);
+			parallelGatewayEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(108);
 		}
 		return parallelGatewayEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getParticipant() {
 		if (participantEClass == null) {
-			participantEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(109);
+			participantEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(109);
 		}
 		return participantEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getParticipant_InterfaceRefs() {
@@ -6117,8 +5920,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getParticipant_EndPointRefs() {
@@ -6126,8 +5929,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getParticipant_ParticipantMultiplicity() {
@@ -6135,8 +5938,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParticipant_Name() {
@@ -6144,8 +5947,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getParticipant_ProcessRef() {
@@ -6153,90 +5956,83 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getParticipantAssociation() {
 		if (participantAssociationEClass == null) {
 			participantAssociationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(110);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(110);
 		}
 		return participantAssociationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getParticipantAssociation_InnerParticipantRef() {
-		return (EReference) getParticipantAssociation()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getParticipantAssociation().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getParticipantAssociation_OuterParticipantRef() {
-		return (EReference) getParticipantAssociation()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getParticipantAssociation().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getParticipantMultiplicity() {
 		if (participantMultiplicityEClass == null) {
 			participantMultiplicityEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(111);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(111);
 		}
 		return participantMultiplicityEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParticipantMultiplicity_Maximum() {
-		return (EAttribute) getParticipantMultiplicity()
-				.getEStructuralFeatures().get(0);
+		return (EAttribute) getParticipantMultiplicity().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParticipantMultiplicity_Minimum() {
-		return (EAttribute) getParticipantMultiplicity()
-				.getEStructuralFeatures().get(1);
+		return (EAttribute) getParticipantMultiplicity().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPartnerEntity() {
 		if (partnerEntityEClass == null) {
-			partnerEntityEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(112);
+			partnerEntityEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(112);
 		}
 		return partnerEntityEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPartnerEntity_ParticipantRef() {
@@ -6244,8 +6040,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPartnerEntity_Name() {
@@ -6253,22 +6049,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPartnerRole() {
 		if (partnerRoleEClass == null) {
-			partnerRoleEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(113);
+			partnerRoleEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(113);
 		}
 		return partnerRoleEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getPartnerRole_ParticipantRef() {
@@ -6276,8 +6071,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPartnerRole_Name() {
@@ -6285,50 +6080,47 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPerformer() {
 		if (performerEClass == null) {
-			performerEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(114);
+			performerEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(114);
 		}
 		return performerEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getPotentialOwner() {
 		if (potentialOwnerEClass == null) {
-			potentialOwnerEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(115);
+			potentialOwnerEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(115);
 		}
 		return potentialOwnerEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getProcess() {
 		if (processEClass == null) {
-			processEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(116);
+			processEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(116);
 		}
 		return processEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_Auditing() {
@@ -6336,8 +6128,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_Monitoring() {
@@ -6345,8 +6137,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_Properties() {
@@ -6354,8 +6146,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_Artifacts() {
@@ -6363,8 +6155,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_Resources() {
@@ -6372,8 +6164,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_CorrelationSubscriptions() {
@@ -6381,8 +6173,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_Supports() {
@@ -6390,8 +6182,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getProcess_DefinitionalCollaborationRef() {
@@ -6399,8 +6191,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getProcess_IsClosed() {
@@ -6408,8 +6200,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getProcess_IsExecutable() {
@@ -6417,8 +6209,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getProcess_ProcessType() {
@@ -6426,22 +6218,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getProperty() {
 		if (propertyEClass == null) {
-			propertyEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(118);
+			propertyEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(118);
 		}
 		return propertyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getProperty_Name() {
@@ -6449,22 +6240,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReceiveTask() {
 		if (receiveTaskEClass == null) {
-			receiveTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(119);
+			receiveTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(119);
 		}
 		return receiveTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReceiveTask_Implementation() {
@@ -6472,8 +6262,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReceiveTask_Instantiate() {
@@ -6481,8 +6271,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getReceiveTask_MessageRef() {
@@ -6490,8 +6280,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getReceiveTask_OperationRef() {
@@ -6499,22 +6289,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRelationship() {
 		if (relationshipEClass == null) {
-			relationshipEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(120);
+			relationshipEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(120);
 		}
 		return relationshipEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelationship_Sources() {
@@ -6522,8 +6311,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelationship_Targets() {
@@ -6531,8 +6320,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelationship_Direction() {
@@ -6540,8 +6329,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelationship_Type() {
@@ -6549,36 +6338,34 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRendering() {
 		if (renderingEClass == null) {
-			renderingEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(122);
+			renderingEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(122);
 		}
 		return renderingEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResource() {
 		if (resourceEClass == null) {
-			resourceEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(123);
+			resourceEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(123);
 		}
 		return resourceEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResource_ResourceParameters() {
@@ -6586,8 +6373,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResource_Name() {
@@ -6595,124 +6382,114 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResourceAssignmentExpression() {
 		if (resourceAssignmentExpressionEClass == null) {
 			resourceAssignmentExpressionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(124);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(124);
 		}
 		return resourceAssignmentExpressionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceAssignmentExpression_Expression() {
-		return (EReference) getResourceAssignmentExpression()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getResourceAssignmentExpression().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResourceParameter() {
 		if (resourceParameterEClass == null) {
 			resourceParameterEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(125);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(125);
 		}
 		return resourceParameterEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResourceParameter_IsRequired() {
-		return (EAttribute) getResourceParameter().getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) getResourceParameter().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResourceParameter_Name() {
-		return (EAttribute) getResourceParameter().getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) getResourceParameter().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceParameter_Type() {
-		return (EReference) getResourceParameter().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getResourceParameter().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResourceParameterBinding() {
 		if (resourceParameterBindingEClass == null) {
 			resourceParameterBindingEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(126);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(126);
 		}
 		return resourceParameterBindingEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceParameterBinding_Expression() {
-		return (EReference) getResourceParameterBinding()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getResourceParameterBinding().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceParameterBinding_ParameterRef() {
-		return (EReference) getResourceParameterBinding()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getResourceParameterBinding().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResourceRole() {
 		if (resourceRoleEClass == null) {
-			resourceRoleEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(127);
+			resourceRoleEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(127);
 		}
 		return resourceRoleEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceRole_ResourceRef() {
@@ -6720,8 +6497,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceRole_ResourceParameterBindings() {
@@ -6729,8 +6506,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResourceRole_ResourceAssignmentExpression() {
@@ -6738,8 +6515,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getResourceRole_Name() {
@@ -6747,36 +6524,34 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRootElement() {
 		if (rootElementEClass == null) {
-			rootElementEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(128);
+			rootElementEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(128);
 		}
 		return rootElementEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getScriptTask() {
 		if (scriptTaskEClass == null) {
-			scriptTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(129);
+			scriptTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(129);
 		}
 		return scriptTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getScriptTask_Script() {
@@ -6784,8 +6559,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getScriptTask_ScriptFormat() {
@@ -6793,22 +6568,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSendTask() {
 		if (sendTaskEClass == null) {
-			sendTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(130);
+			sendTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(130);
 		}
 		return sendTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSendTask_Implementation() {
@@ -6816,8 +6590,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSendTask_MessageRef() {
@@ -6825,8 +6599,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSendTask_OperationRef() {
@@ -6834,22 +6608,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSequenceFlow() {
 		if (sequenceFlowEClass == null) {
-			sequenceFlowEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(131);
+			sequenceFlowEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(131);
 		}
 		return sequenceFlowEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSequenceFlow_ConditionExpression() {
@@ -6857,8 +6630,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSequenceFlow_IsImmediate() {
@@ -6866,8 +6639,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSequenceFlow_SourceRef() {
@@ -6875,8 +6648,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSequenceFlow_TargetRef() {
@@ -6884,22 +6657,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getServiceTask() {
 		if (serviceTaskEClass == null) {
-			serviceTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(132);
+			serviceTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(132);
 		}
 		return serviceTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getServiceTask_Implementation() {
@@ -6907,8 +6679,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getServiceTask_OperationRef() {
@@ -6916,22 +6688,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSignal() {
 		if (signalEClass == null) {
-			signalEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(133);
+			signalEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(133);
 		}
 		return signalEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSignal_Name() {
@@ -6939,8 +6710,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSignal_StructureRef() {
@@ -6948,90 +6719,83 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSignalEventDefinition() {
 		if (signalEventDefinitionEClass == null) {
 			signalEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(134);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(134);
 		}
 		return signalEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSignalEventDefinition_SignalRef() {
-		return (EReference) getSignalEventDefinition().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getSignalEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getStandardLoopCharacteristics() {
 		if (standardLoopCharacteristicsEClass == null) {
 			standardLoopCharacteristicsEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(135);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(135);
 		}
 		return standardLoopCharacteristicsEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStandardLoopCharacteristics_LoopCondition() {
-		return (EReference) getStandardLoopCharacteristics()
-				.getEStructuralFeatures().get(0);
+		return (EReference) getStandardLoopCharacteristics().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStandardLoopCharacteristics_LoopMaximum() {
-		return (EReference) getStandardLoopCharacteristics()
-				.getEStructuralFeatures().get(1);
+		return (EReference) getStandardLoopCharacteristics().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStandardLoopCharacteristics_TestBefore() {
-		return (EAttribute) getStandardLoopCharacteristics()
-				.getEStructuralFeatures().get(2);
+		return (EAttribute) getStandardLoopCharacteristics().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getStartEvent() {
 		if (startEventEClass == null) {
-			startEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(136);
+			startEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(136);
 		}
 		return startEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStartEvent_IsInterrupting() {
@@ -7039,70 +6803,65 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSubChoreography() {
 		if (subChoreographyEClass == null) {
-			subChoreographyEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(137);
+			subChoreographyEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(137);
 		}
 		return subChoreographyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSubChoreography_Artifacts() {
-		return (EReference) getSubChoreography().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getSubChoreography().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSubConversation() {
 		if (subConversationEClass == null) {
-			subConversationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(138);
+			subConversationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(138);
 		}
 		return subConversationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSubConversation_ConversationNodes() {
-		return (EReference) getSubConversation().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getSubConversation().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSubProcess() {
 		if (subProcessEClass == null) {
-			subProcessEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(139);
+			subProcessEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(139);
 		}
 		return subProcessEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getSubProcess_Artifacts() {
@@ -7110,8 +6869,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getSubProcess_TriggeredByEvent() {
@@ -7119,50 +6878,47 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTask() {
 		if (taskEClass == null) {
-			taskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(140);
+			taskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(140);
 		}
 		return taskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTerminateEventDefinition() {
 		if (terminateEventDefinitionEClass == null) {
 			terminateEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(141);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(141);
 		}
 		return terminateEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTextAnnotation() {
 		if (textAnnotationEClass == null) {
-			textAnnotationEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(142);
+			textAnnotationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(142);
 		}
 		return textAnnotationEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTextAnnotation_Text() {
@@ -7170,8 +6926,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTextAnnotation_TextFormat() {
@@ -7179,22 +6935,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getThrowEvent() {
 		if (throwEventEClass == null) {
-			throwEventEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(143);
+			throwEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(143);
 		}
 		return throwEventEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThrowEvent_DataInputs() {
@@ -7202,8 +6957,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThrowEvent_DataInputAssociation() {
@@ -7211,8 +6966,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThrowEvent_InputSet() {
@@ -7220,8 +6975,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThrowEvent_EventDefinitions() {
@@ -7229,8 +6984,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getThrowEvent_EventDefinitionRefs() {
@@ -7238,66 +6993,61 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTimerEventDefinition() {
 		if (timerEventDefinitionEClass == null) {
 			timerEventDefinitionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(144);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(144);
 		}
 		return timerEventDefinitionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTimerEventDefinition_TimeDate() {
-		return (EReference) getTimerEventDefinition().getEStructuralFeatures()
-				.get(0);
+		return (EReference) getTimerEventDefinition().getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTimerEventDefinition_TimeDuration() {
-		return (EReference) getTimerEventDefinition().getEStructuralFeatures()
-				.get(1);
+		return (EReference) getTimerEventDefinition().getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTimerEventDefinition_TimeCycle() {
-		return (EReference) getTimerEventDefinition().getEStructuralFeatures()
-				.get(2);
+		return (EReference) getTimerEventDefinition().getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTransaction() {
 		if (transactionEClass == null) {
-			transactionEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(145);
+			transactionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(145);
 		}
 		return transactionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTransaction_Protocol() {
@@ -7305,8 +7055,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTransaction_Method() {
@@ -7314,22 +7064,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getUserTask() {
 		if (userTaskEClass == null) {
-			userTaskEClass = (EClass) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(146);
+			userTaskEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(146);
 		}
 		return userTaskEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getUserTask_Renderings() {
@@ -7337,8 +7086,8 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getUserTask_Implementation() {
@@ -7346,21 +7095,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getAdHocOrdering() {
 		if (adHocOrderingEEnum == null) {
-			adHocOrderingEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(2);
+			adHocOrderingEEnum = (EEnum) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(2);
 		}
 		return adHocOrderingEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getAssociationDirection() {
@@ -7372,106 +7121,99 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getChoreographyLoopType() {
 		if (choreographyLoopTypeEEnum == null) {
 			choreographyLoopTypeEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(22);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(22);
 		}
 		return choreographyLoopTypeEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getEventBasedGatewayType() {
 		if (eventBasedGatewayTypeEEnum == null) {
 			eventBasedGatewayTypeEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(58);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(58);
 		}
 		return eventBasedGatewayTypeEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getGatewayDirection() {
 		if (gatewayDirectionEEnum == null) {
-			gatewayDirectionEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(71);
+			gatewayDirectionEEnum = (EEnum) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(71);
 		}
 		return gatewayDirectionEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getItemKind() {
 		if (itemKindEEnum == null) {
-			itemKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(93);
+			itemKindEEnum = (EEnum) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(93);
 		}
 		return itemKindEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getMultiInstanceBehavior() {
 		if (multiInstanceBehaviorEEnum == null) {
 			multiInstanceBehaviorEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(104);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(104);
 		}
 		return multiInstanceBehaviorEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getProcessType() {
 		if (processTypeEEnum == null) {
-			processTypeEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(117);
+			processTypeEEnum = (EEnum) EPackage.Registry.INSTANCE.getEPackage(Bpmn2Package.eNS_URI)
+					.getEClassifiers().get(117);
 		}
 		return processTypeEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getRelationshipDirection() {
 		if (relationshipDirectionEEnum == null) {
 			relationshipDirectionEEnum = (EEnum) EPackage.Registry.INSTANCE
-					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers()
-					.get(121);
+					.getEPackage(Bpmn2Package.eNS_URI).getEClassifiers().get(121);
 		}
 		return relationshipDirectionEEnum;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Bpmn2Factory getBpmn2Factory() {
@@ -7479,16 +7221,16 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isLoaded = false;
 
 	/**
-	 * Laods the package and any sub-packages from their serialized form.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Laods the package and any sub-packages from their serialized form. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void loadPackage() {
@@ -7498,8 +7240,7 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 
 		URL url = getClass().getResource(packageFilename);
 		if (url == null) {
-			throw new RuntimeException("Missing serialized package: "
-					+ packageFilename);
+			throw new RuntimeException("Missing serialized package: " + packageFilename);
 		}
 		URI uri = URI.createURI(url.toString());
 		Resource resource = new EcoreResourceFactoryImpl().createResource(uri);
@@ -7508,22 +7249,21 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 		} catch (IOException exception) {
 			throw new WrappedException(exception);
 		}
-		initializeFromLoadedEPackage(this, (EPackage) resource.getContents()
-				.get(0));
+		initializeFromLoadedEPackage(this, (EPackage) resource.getContents().get(0));
 		createResource(eNS_URI);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isFixed = false;
 
 	/**
-	 * Fixes up the loaded package, to make it appear as if it had been programmatically built.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Fixes up the loaded package, to make it appear as if it had been programmatically built. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void fixPackageContents() {
@@ -7534,18 +7274,16 @@ public class Bpmn2PackageImpl extends EPackageImpl implements Bpmn2Package {
 	}
 
 	/**
-	 * Sets the instance class on the given classifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Sets the instance class on the given classifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void fixInstanceClass(EClassifier eClassifier) {
 		if (eClassifier.getInstanceClassName() == null) {
-			eClassifier.setInstanceClassName("org.eclipse.bpmn2."
-					+ eClassifier.getName());
+			eClassifier.setInstanceClassName("org.eclipse.bpmn2." + eClassifier.getName());
 			setGeneratedClassName(eClassifier);
 		}
 	}
 
-} //Bpmn2PackageImpl
+} // Bpmn2PackageImpl

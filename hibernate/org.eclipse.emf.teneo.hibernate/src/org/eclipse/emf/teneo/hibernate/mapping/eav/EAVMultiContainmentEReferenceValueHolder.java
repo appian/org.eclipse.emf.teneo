@@ -30,8 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
-public class EAVMultiContainmentEReferenceValueHolder extends
-		EAVMultiValueHolder {
+public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolder {
 
 	private List<EAVSingleContainmentEReferenceValueHolder> referenceValues;
 	private EAVDelegatingList ecoreObjectList = null;
@@ -72,20 +71,16 @@ public class EAVMultiContainmentEReferenceValueHolder extends
 
 	private void setEcoreObjectList() {
 		if (StoreUtil.isMap(getEStructuralFeature())) {
-			final EClass entryEClass = (EClass) getEStructuralFeature()
-					.getEType();
+			final EClass entryEClass = (EClass) getEStructuralFeature().getEType();
 			Class<?> entryClass = entryEClass.getInstanceClass();
 			// prevents a failing assertion in the EcoreEMap
-			if (entryClass == null
-					|| !BasicEMap.Entry.class.isAssignableFrom(entryClass)) {
+			if (entryClass == null || !BasicEMap.Entry.class.isAssignableFrom(entryClass)) {
 				entryClass = BasicEMap.Entry.class;
 			}
 
-			final int featureID = getOwner().eClass().getFeatureID(
-					getEStructuralFeature());
+			final int featureID = getOwner().eClass().getFeatureID(getEStructuralFeature());
 			final EAVDelegatingEMap<Object, Object> eMap = new EAVDelegatingEMap<Object, Object>(
-					entryEClass, entryClass, (InternalEObject) getOwner(),
-					featureID);
+					entryEClass, entryClass, (InternalEObject) getOwner(), featureID);
 			eMap.setValueHolderOwner(this);
 			ecoreObjectList = eMap;
 			eMap.setEStructuralFeature(getEStructuralFeature());
@@ -112,8 +107,7 @@ public class EAVMultiContainmentEReferenceValueHolder extends
 		return referenceValues;
 	}
 
-	public void setReferenceValues(
-			List<EAVSingleContainmentEReferenceValueHolder> referenceValues) {
+	public void setReferenceValues(List<EAVSingleContainmentEReferenceValueHolder> referenceValues) {
 		this.referenceValues = referenceValues;
 		if (ecoreObjectList == null) {
 			setEcoreObjectList();

@@ -16,35 +16,31 @@ package org.eclipse.dd.dc.impl;
 
 import org.eclipse.dd.dc.Bounds;
 import org.eclipse.dd.dc.DcPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Bounds</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Bounds</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getX <em>X</em>}</li>
- *   <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getY <em>Y</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getHeight <em>Height</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getX <em>X</em>}</li>
+ * <li>{@link org.eclipse.dd.dc.impl.BoundsImpl#getY <em>Y</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class BoundsImpl extends EObjectImpl implements Bounds {
 	/**
-	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -52,9 +48,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected static final float HEIGHT_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -62,9 +58,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected float height = HEIGHT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWidth()
 	 * @generated
 	 * @ordered
@@ -72,9 +68,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected static final float WIDTH_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getWidth()
 	 * @generated
 	 * @ordered
@@ -82,9 +78,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected float width = WIDTH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getX() <em>X</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getX()
 	 * @generated
 	 * @ordered
@@ -92,9 +88,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected static final float X_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getX() <em>X</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getX()
 	 * @generated
 	 * @ordered
@@ -102,9 +98,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected float x = X_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getY()
 	 * @generated
 	 * @ordered
@@ -112,9 +108,9 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected static final float Y_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getY()
 	 * @generated
 	 * @ordered
@@ -122,8 +118,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	protected float y = Y_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BoundsImpl() {
@@ -131,8 +127,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -141,8 +137,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getHeight() {
@@ -150,21 +146,21 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setHeight(float newHeight) {
 		float oldHeight = height;
 		height = newHeight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.BOUNDS__HEIGHT, oldHeight, height));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.BOUNDS__HEIGHT, oldHeight,
+					height));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getWidth() {
@@ -172,21 +168,21 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setWidth(float newWidth) {
 		float oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.BOUNDS__WIDTH, oldWidth, width));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.BOUNDS__WIDTH, oldWidth,
+					width));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getX() {
@@ -194,21 +190,20 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setX(float newX) {
 		float oldX = x;
 		x = newX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.BOUNDS__X, oldX, x));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.BOUNDS__X, oldX, x));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public float getY() {
@@ -216,21 +211,20 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setY(float newY) {
 		float oldY = y;
 		y = newY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					DcPackage.BOUNDS__Y, oldY, y));
+			eNotify(new ENotificationImpl(this, Notification.SET, DcPackage.BOUNDS__Y, oldY, y));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -249,8 +243,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -273,8 +267,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -297,8 +291,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -317,8 +311,8 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -339,4 +333,4 @@ public class BoundsImpl extends EObjectImpl implements Bounds {
 		return result.toString();
 	}
 
-} //BoundsImpl
+} // BoundsImpl

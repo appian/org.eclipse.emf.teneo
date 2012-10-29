@@ -90,7 +90,8 @@ public class XSDDate extends XSDDateTime {
 	 */
 	@Override
 	public void set(PreparedStatement statement, Object value, int index) throws SQLException {
-		java.sql.Date d = new java.sql.Date(((XMLGregorianCalendar) value).toGregorianCalendar().getTime().getTime());
+		java.sql.Date d = new java.sql.Date(((XMLGregorianCalendar) value).toGregorianCalendar()
+				.getTime().getTime());
 		statement.setDate(index, d);
 	}
 

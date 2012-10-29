@@ -20,26 +20,25 @@ import org.example.mindmap.RelationshipType;
 import org.example.mindmap.Topic;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Relationship</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.example.mindmap.impl.RelationshipImpl#getLabel <em>Label</em>}</li>
- *   <li>{@link org.example.mindmap.impl.RelationshipImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.example.mindmap.impl.RelationshipImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.example.mindmap.impl.RelationshipImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.example.mindmap.impl.RelationshipImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.example.mindmap.impl.RelationshipImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.example.mindmap.impl.RelationshipImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.example.mindmap.impl.RelationshipImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RelationshipImpl extends EObjectImpl implements Relationship {
 	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLabel()
 	 * @generated
 	 * @ordered
@@ -47,9 +46,9 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	protected static final String LABEL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getLabel()
 	 * @generated
 	 * @ordered
@@ -57,9 +56,9 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	protected String label = LABEL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -67,9 +66,9 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	protected Topic source = null;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -77,9 +76,9 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	protected Topic target = null;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -87,9 +86,9 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	protected static final RelationshipType TYPE_EDEFAULT = RelationshipType.DEPENDENCY_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -97,17 +96,16 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	protected RelationshipType type = TYPE_EDEFAULT;
 
 	/**
-	 * This is true if the Type attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is true if the Type attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean typeESet = false;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RelationshipImpl() {
@@ -115,8 +113,8 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -124,8 +122,8 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLabel() {
@@ -133,37 +131,39 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLabel(String newLabel) {
 		String oldLabel = label;
 		label = newLabel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__LABEL, oldLabel, label));
+			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__LABEL,
+					oldLabel, label));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Topic getSource() {
 		if (source != null && source.eIsProxy()) {
-			InternalEObject oldSource = (InternalEObject)source;
-			source = (Topic)eResolveProxy(oldSource);
+			InternalEObject oldSource = (InternalEObject) source;
+			source = (Topic) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MindmapPackage.RELATIONSHIP__SOURCE, oldSource, source));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MindmapPackage.RELATIONSHIP__SOURCE, oldSource, source));
 			}
 		}
 		return source;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Topic basicGetSource() {
@@ -171,37 +171,39 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSource(Topic newSource) {
 		Topic oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__SOURCE,
+					oldSource, source));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Topic getTarget() {
 		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (Topic)eResolveProxy(oldTarget);
+			InternalEObject oldTarget = (InternalEObject) target;
+			target = (Topic) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MindmapPackage.RELATIONSHIP__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MindmapPackage.RELATIONSHIP__TARGET, oldTarget, target));
 			}
 		}
 		return target;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Topic basicGetTarget() {
@@ -209,20 +211,21 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTarget(Topic newTarget) {
 		Topic oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__TARGET,
+					oldTarget, target));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RelationshipType getType() {
@@ -230,8 +233,8 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(RelationshipType newType) {
@@ -240,12 +243,13 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 		boolean oldTypeESet = typeESet;
 		typeESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__TYPE, oldType, type, !oldTypeESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, MindmapPackage.RELATIONSHIP__TYPE,
+					oldType, type, !oldTypeESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void unsetType() {
@@ -254,12 +258,13 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 		type = TYPE_EDEFAULT;
 		typeESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, MindmapPackage.RELATIONSHIP__TYPE, oldType, TYPE_EDEFAULT, oldTypeESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, MindmapPackage.RELATIONSHIP__TYPE,
+					oldType, TYPE_EDEFAULT, oldTypeESet));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isSetType() {
@@ -267,106 +272,112 @@ public class RelationshipImpl extends EObjectImpl implements Relationship {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MindmapPackage.RELATIONSHIP__LABEL:
-				return getLabel();
-			case MindmapPackage.RELATIONSHIP__SOURCE:
-				if (resolve) return getSource();
-				return basicGetSource();
-			case MindmapPackage.RELATIONSHIP__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
-			case MindmapPackage.RELATIONSHIP__TYPE:
-				return getType();
+		case MindmapPackage.RELATIONSHIP__LABEL:
+			return getLabel();
+		case MindmapPackage.RELATIONSHIP__SOURCE:
+			if (resolve)
+				return getSource();
+			return basicGetSource();
+		case MindmapPackage.RELATIONSHIP__TARGET:
+			if (resolve)
+				return getTarget();
+			return basicGetTarget();
+		case MindmapPackage.RELATIONSHIP__TYPE:
+			return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MindmapPackage.RELATIONSHIP__LABEL:
-				setLabel((String)newValue);
-				return;
-			case MindmapPackage.RELATIONSHIP__SOURCE:
-				setSource((Topic)newValue);
-				return;
-			case MindmapPackage.RELATIONSHIP__TARGET:
-				setTarget((Topic)newValue);
-				return;
-			case MindmapPackage.RELATIONSHIP__TYPE:
-				setType((RelationshipType)newValue);
-				return;
+		case MindmapPackage.RELATIONSHIP__LABEL:
+			setLabel((String) newValue);
+			return;
+		case MindmapPackage.RELATIONSHIP__SOURCE:
+			setSource((Topic) newValue);
+			return;
+		case MindmapPackage.RELATIONSHIP__TARGET:
+			setTarget((Topic) newValue);
+			return;
+		case MindmapPackage.RELATIONSHIP__TYPE:
+			setType((RelationshipType) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MindmapPackage.RELATIONSHIP__LABEL:
-				setLabel(LABEL_EDEFAULT);
-				return;
-			case MindmapPackage.RELATIONSHIP__SOURCE:
-				setSource((Topic)null);
-				return;
-			case MindmapPackage.RELATIONSHIP__TARGET:
-				setTarget((Topic)null);
-				return;
-			case MindmapPackage.RELATIONSHIP__TYPE:
-				unsetType();
-				return;
+		case MindmapPackage.RELATIONSHIP__LABEL:
+			setLabel(LABEL_EDEFAULT);
+			return;
+		case MindmapPackage.RELATIONSHIP__SOURCE:
+			setSource((Topic) null);
+			return;
+		case MindmapPackage.RELATIONSHIP__TARGET:
+			setTarget((Topic) null);
+			return;
+		case MindmapPackage.RELATIONSHIP__TYPE:
+			unsetType();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MindmapPackage.RELATIONSHIP__LABEL:
-				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
-			case MindmapPackage.RELATIONSHIP__SOURCE:
-				return source != null;
-			case MindmapPackage.RELATIONSHIP__TARGET:
-				return target != null;
-			case MindmapPackage.RELATIONSHIP__TYPE:
-				return isSetType();
+		case MindmapPackage.RELATIONSHIP__LABEL:
+			return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+		case MindmapPackage.RELATIONSHIP__SOURCE:
+			return source != null;
+		case MindmapPackage.RELATIONSHIP__TARGET:
+			return target != null;
+		case MindmapPackage.RELATIONSHIP__TYPE:
+			return isSetType();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (label: ");
 		result.append(label);
 		result.append(", type: ");
-		if (typeESet) result.append(type); else result.append("<unset>");
+		if (typeESet)
+			result.append(type);
+		else
+			result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}
 
-} //RelationshipImpl
+} // RelationshipImpl

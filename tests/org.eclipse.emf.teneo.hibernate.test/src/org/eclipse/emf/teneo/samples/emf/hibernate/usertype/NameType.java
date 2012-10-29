@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.type.StringType;
@@ -49,15 +48,15 @@ public class NameType implements UserType {
 		return true;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names,
-			SessionImplementor session, Object owner)
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		String first = StringType.INSTANCE.nullSafeGet(rs, names[0], session);
 		String last = StringType.INSTANCE.nullSafeGet(rs, names[1], session);
 		return new Name(first, last);
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		Name name = (Name) value;
 		StringType.INSTANCE.nullSafeSet(st, name.getFirst(), index, sessionImplementor);
 		StringType.INSTANCE.nullSafeSet(st, name.getLast(), index + 1, sessionImplementor);

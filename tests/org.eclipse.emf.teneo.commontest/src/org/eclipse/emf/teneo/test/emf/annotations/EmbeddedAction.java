@@ -120,7 +120,7 @@ public class EmbeddedAction extends AbstractTestAction {
 			final NestedEmbeddable nestedEmbeddable = factory.createNestedEmbeddable();
 			nestedEmbeddable.setNestedName("nestName");
 			anotherEmbeddable.setNestedEmbedded(nestedEmbeddable);
-			
+
 			embedder.setAnotherEmbedded(anotherEmbeddable);
 
 			final AlsoEmbeddable ae = factory.createAlsoEmbeddable();
@@ -148,8 +148,8 @@ public class EmbeddedAction extends AbstractTestAction {
 			assertEquals("1", ae.getAOneToMany().get(0).getName());
 			assertEquals("2", ae.getAOneToMany().get(1).getName());
 			assertNotNull(ae.getNestedEmbedded());
-			assertEquals("nestName", ae.getNestedEmbedded().getNestedName());			
-			
+			assertEquals("nestName", ae.getNestedEmbedded().getNestedName());
+
 			store.commitTransaction();
 		}
 	}

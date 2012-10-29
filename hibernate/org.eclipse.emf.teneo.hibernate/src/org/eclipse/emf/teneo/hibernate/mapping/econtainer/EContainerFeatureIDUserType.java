@@ -33,8 +33,8 @@ import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.usertype.UserType;
 
 /**
- * Persists an EContainerFeatureID as a varchar which contains both the EClass of the container as the complete
- * reference to the EFeature.
+ * Persists an EContainerFeatureID as a varchar which contains both the EClass of the container as
+ * the complete reference to the EFeature.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.5 $ $Date: 2010/05/02 14:24:11 $
@@ -108,7 +108,8 @@ public class EContainerFeatureIDUserType implements UserType {
 		return false;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor,
+			Object owner) throws HibernateException, SQLException {
 		final String value = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -118,7 +119,8 @@ public class EContainerFeatureIDUserType implements UserType {
 		return holder;
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
@@ -151,7 +153,7 @@ public class EContainerFeatureIDUserType implements UserType {
 
 		/**
 		 * @param feature
-		 *            the eFeature to set
+		 *          the eFeature to set
 		 */
 		public void setEFeature(EStructuralFeature feature) {
 			eFeature = feature;
@@ -186,7 +188,7 @@ public class EContainerFeatureIDUserType implements UserType {
 
 		/**
 		 * @param class1
-		 *            the eClass to set
+		 *          the eClass to set
 		 */
 		public void setEClass(EClass class1) {
 			eClass = class1;

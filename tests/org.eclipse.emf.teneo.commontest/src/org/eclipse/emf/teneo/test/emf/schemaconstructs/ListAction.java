@@ -27,10 +27,10 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Simple test for: xsd:list  
+ * Simple test for: xsd:list
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
+ * @version $Revision: 1.5 $
  */
 public class ListAction extends AbstractTestAction {
 	/** The number of test objects created */
@@ -38,6 +38,7 @@ public class ListAction extends AbstractTestAction {
 
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public ListAction() {

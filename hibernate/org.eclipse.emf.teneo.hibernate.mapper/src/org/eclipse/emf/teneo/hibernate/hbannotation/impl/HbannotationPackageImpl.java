@@ -63,281 +63,299 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbmodelPackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class HbannotationPackageImpl extends EPackageImpl implements HbannotationPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass hbAnnotationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass cascadeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass collectionOfElementsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass hbMapKeyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass parameterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass typeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass whereEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass idBagEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass genericGeneratorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass cacheEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass typeDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass fetchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass onDeleteEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass proxyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass indexEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass generatedEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass namedQueryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass filterEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass paramDefEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass filterDefEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass discriminatorFormulaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass naturalIdEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass mapKeyManyToManyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass forceDiscriminatorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass immutableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass formulaEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass notFoundEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass hbEntityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass batchSizeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass anyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass metaValueEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass anyMetaDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum cacheConcurrencyStrategyEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum hbFetchTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum onDeleteActionEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum generationTimeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum notFoundActionEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum optimisticLockTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum polymorphismTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum hbCascadeTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package package URI
+	 * value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory method {@link #init
+	 * init()}, which also performs initialization of the package, or returns the registered package,
+	 * if one already exists. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#eNS_URI
 	 * @see #init()
@@ -349,26 +367,34 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon
+	 * which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link HbannotationPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link HbannotationPackage#eINSTANCE} when that field is
+	 * accessed. Clients should not invoke it directly. Instead, they should simply access that field
+	 * to obtain the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static HbannotationPackage init() {
-		if (isInited) return (HbannotationPackage)EPackage.Registry.INSTANCE.getEPackage(HbannotationPackage.eNS_URI);
+		if (isInited)
+			return (HbannotationPackage) EPackage.Registry.INSTANCE
+					.getEPackage(HbannotationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		HbannotationPackageImpl theHbannotationPackage = (HbannotationPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof HbannotationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new HbannotationPackageImpl());
+		HbannotationPackageImpl theHbannotationPackage = (HbannotationPackageImpl) (EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof HbannotationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+				: new HbannotationPackageImpl());
 
 		isInited = true;
 
@@ -377,7 +403,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		PannotationPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		HbmodelPackageImpl theHbmodelPackage = (HbmodelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(HbmodelPackage.eNS_URI) instanceof HbmodelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(HbmodelPackage.eNS_URI) : HbmodelPackage.eINSTANCE);
+		HbmodelPackageImpl theHbmodelPackage = (HbmodelPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(HbmodelPackage.eNS_URI) instanceof HbmodelPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(HbmodelPackage.eNS_URI) : HbmodelPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theHbannotationPackage.createPackageContents();
@@ -388,18 +416,15 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		theHbmodelPackage.initializePackageContents();
 
 		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theHbannotationPackage, 
-			 new EValidator.Descriptor() {
-				 public EValidator getEValidator() {
-					 return HbannotationValidator.INSTANCE;
-				 }
-			 });
+		EValidator.Registry.INSTANCE.put(theHbannotationPackage, new EValidator.Descriptor() {
+			public EValidator getEValidator() {
+				return HbannotationValidator.INSTANCE;
+			}
+		});
 
 		// Mark meta-data to indicate it can't be changed
 		theHbannotationPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(HbannotationPackage.eNS_URI, theHbannotationPackage);
 		return theHbannotationPackage;
@@ -407,6 +432,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getHbAnnotation() {
@@ -415,6 +441,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCascade() {
@@ -423,14 +450,16 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCascade_Value() {
-		return (EAttribute)cascadeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) cascadeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCollectionOfElements() {
@@ -439,23 +468,25 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCollectionOfElements_TargetElement() {
-		return (EAttribute)collectionOfElementsEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) collectionOfElementsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCollectionOfElements_Fetch() {
-		return (EAttribute)collectionOfElementsEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) collectionOfElementsEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getHbMapKey() {
@@ -463,16 +494,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getHbMapKey_Columns() {
-		return (EReference)hbMapKeyEClass.getEStructuralFeatures().get(0);
+		return (EReference) hbMapKeyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getParameter() {
@@ -481,22 +513,25 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParameter_Name() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParameter_Value() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getType() {
@@ -505,22 +540,25 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getType_Type() {
-		return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) typeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getType_Parameters() {
-		return (EReference)typeEClass.getEStructuralFeatures().get(1);
+		return (EReference) typeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getWhere() {
@@ -529,14 +567,16 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getWhere_Clause() {
-		return (EAttribute)whereEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) whereEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getIdBag() {
@@ -545,30 +585,34 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getIdBag_Generator() {
-		return (EAttribute)idBagEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) idBagEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getIdBag_Type() {
-		return (EAttribute)idBagEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) idBagEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getIdBag_Table() {
-		return (EAttribute)idBagEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) idBagEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGenericGenerator() {
@@ -577,30 +621,34 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGenericGenerator_Name() {
-		return (EAttribute)genericGeneratorEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) genericGeneratorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGenericGenerator_Strategy() {
-		return (EAttribute)genericGeneratorEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) genericGeneratorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getGenericGenerator_Parameters() {
-		return (EReference)genericGeneratorEClass.getEStructuralFeatures().get(2);
+		return (EReference) genericGeneratorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getCache() {
@@ -609,30 +657,34 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCache_Usage() {
-		return (EAttribute)cacheEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) cacheEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCache_Region() {
-		return (EAttribute)cacheEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) cacheEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getCache_Include() {
-		return (EAttribute)cacheEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) cacheEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTypeDef() {
@@ -641,30 +693,34 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTypeDef_Name() {
-		return (EAttribute)typeDefEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) typeDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTypeDef_Parameters() {
-		return (EReference)typeDefEClass.getEStructuralFeatures().get(1);
+		return (EReference) typeDefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTypeDef_TypeClass() {
-		return (EAttribute)typeDefEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) typeDefEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFetch() {
@@ -673,14 +729,16 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFetch_Value() {
-		return (EAttribute)fetchEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) fetchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOnDelete() {
@@ -689,14 +747,16 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getOnDelete_Action() {
-		return (EAttribute)onDeleteEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) onDeleteEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getProxy() {
@@ -705,22 +765,25 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getProxy_ProxyClass() {
-		return (EAttribute)proxyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) proxyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getProxy_Lazy() {
-		return (EAttribute)proxyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) proxyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getIndex() {
@@ -729,15 +792,16 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getIndex_Name() {
-		return (EAttribute)indexEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) indexEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getGenerated() {
@@ -745,17 +809,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGenerated_Value() {
-		return (EAttribute)generatedEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) generatedEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getNamedQuery() {
@@ -763,26 +827,26 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNamedQuery_Name() {
-		return (EAttribute)namedQueryEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) namedQueryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNamedQuery_Query() {
-		return (EAttribute)namedQueryEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) namedQueryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFilter() {
@@ -790,26 +854,26 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFilter_Name() {
-		return (EAttribute)filterEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) filterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFilter_Condition() {
-		return (EAttribute)filterEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) filterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getParamDef() {
@@ -817,26 +881,26 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParamDef_Name() {
-		return (EAttribute)paramDefEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) paramDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getParamDef_Type() {
-		return (EAttribute)paramDefEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) paramDefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFilterDef() {
@@ -844,35 +908,35 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFilterDef_Name() {
-		return (EAttribute)filterDefEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) filterDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFilterDef_DefaultCondition() {
-		return (EAttribute)filterDefEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) filterDefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getFilterDef_Parameters() {
-		return (EReference)filterDefEClass.getEStructuralFeatures().get(2);
+		return (EReference) filterDefEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDiscriminatorFormula() {
@@ -880,17 +944,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getDiscriminatorFormula_Value() {
-		return (EAttribute)discriminatorFormulaEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) discriminatorFormulaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getNaturalId() {
@@ -898,17 +962,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNaturalId_Mutable() {
-		return (EAttribute)naturalIdEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) naturalIdEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMapKeyManyToMany() {
@@ -916,26 +980,26 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMapKeyManyToMany_JoinColumns() {
-		return (EReference)mapKeyManyToManyEClass.getEStructuralFeatures().get(0);
+		return (EReference) mapKeyManyToManyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMapKeyManyToMany_TargetEntity() {
-		return (EAttribute)mapKeyManyToManyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) mapKeyManyToManyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getForceDiscriminator() {
@@ -943,8 +1007,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getImmutable() {
@@ -952,8 +1016,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getFormula() {
@@ -961,17 +1025,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFormula_Value() {
-		return (EAttribute)formulaEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) formulaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getNotFound() {
@@ -979,17 +1043,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getNotFound_Action() {
-		return (EAttribute)notFoundEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) notFoundEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getHbEntity() {
@@ -997,71 +1061,71 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_DynamicInsert() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_DynamicUpdate() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_SelectBeforeUpdate() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_Mutable() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_Persister() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_OptimisticLock() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getHbEntity_Polymorphism() {
-		return (EAttribute)hbEntityEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) hbEntityEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getBatchSize() {
@@ -1069,17 +1133,17 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getBatchSize_Size() {
-		return (EAttribute)batchSizeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) batchSizeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAny() {
@@ -1087,44 +1151,44 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAny_MetaDef() {
-		return (EAttribute)anyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) anyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAny_MetaColumn() {
-		return (EReference)anyEClass.getEStructuralFeatures().get(1);
+		return (EReference) anyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAny_Fetch() {
-		return (EAttribute)anyEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) anyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAny_Optional() {
-		return (EAttribute)anyEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) anyEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMetaValue() {
@@ -1132,26 +1196,26 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMetaValue_TargetEntity() {
-		return (EAttribute)metaValueEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) metaValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMetaValue_Value() {
-		return (EAttribute)metaValueEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) metaValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAnyMetaDef() {
@@ -1159,43 +1223,44 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAnyMetaDef_Name() {
-		return (EAttribute)anyMetaDefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnyMetaDef_MetaType() {
-		return (EAttribute)anyMetaDefEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnyMetaDef_IdType() {
-		return (EAttribute)anyMetaDefEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnyMetaDef_MetaValues() {
-		return (EReference)anyMetaDefEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) anyMetaDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getAnyMetaDef_MetaType() {
+		return (EAttribute) anyMetaDefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getAnyMetaDef_IdType() {
+		return (EAttribute) anyMetaDefEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getAnyMetaDef_MetaValues() {
+		return (EReference) anyMetaDefEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getCacheConcurrencyStrategy() {
@@ -1204,6 +1269,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getHbFetchType() {
@@ -1212,6 +1278,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getOnDeleteAction() {
@@ -1219,8 +1286,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getGenerationTime() {
@@ -1228,8 +1295,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getNotFoundAction() {
@@ -1237,8 +1304,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getOptimisticLockType() {
@@ -1246,8 +1313,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getPolymorphismType() {
@@ -1255,8 +1322,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EEnum getHbCascadeType() {
@@ -1265,26 +1332,29 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbannotationFactory getHbannotationFactory() {
-		return (HbannotationFactory)getEFactoryInstance();
+		return (HbannotationFactory) getEFactoryInstance();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates the meta-model objects for the package. This method is guarded to have no affect on any
+	 * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -1425,18 +1495,20 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This method is guarded to have
+	 * no affect on any invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -1445,7 +1517,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		PannotationPackage thePannotationPackage = (PannotationPackage)EPackage.Registry.INSTANCE.getEPackage(PannotationPackage.eNS_URI);
+		PannotationPackage thePannotationPackage = (PannotationPackage) EPackage.Registry.INSTANCE
+				.getEPackage(PannotationPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1486,132 +1559,286 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		anyMetaDefEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(cascadeEClass, Cascade.class, "Cascade", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCascade_Value(), this.getHbCascadeType(), "value", null, 0, -1, Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cascadeEClass, Cascade.class, "Cascade", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCascade_Value(), this.getHbCascadeType(), "value", null, 0, -1,
+				Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(collectionOfElementsEClass, CollectionOfElements.class, "CollectionOfElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCollectionOfElements_TargetElement(), ecorePackage.getEString(), "targetElement", null, 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCollectionOfElements_Fetch(), thePannotationPackage.getFetchType(), "fetch", "LAZY", 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(collectionOfElementsEClass, CollectionOfElements.class, "CollectionOfElements",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCollectionOfElements_TargetElement(), ecorePackage.getEString(),
+				"targetElement", null, 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCollectionOfElements_Fetch(), thePannotationPackage.getFetchType(), "fetch",
+				"LAZY", 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hbMapKeyEClass, HbMapKey.class, "HbMapKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHbMapKey_Columns(), thePannotationPackage.getColumn(), null, "columns", null, 0, -1, HbMapKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(hbMapKeyEClass, HbMapKey.class, "HbMapKey", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHbMapKey_Columns(), thePannotationPackage.getColumn(), null, "columns", null,
+				0, -1, HbMapKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Value(), ecorePackage.getEString(), "value", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Value(), ecorePackage.getEString(), "value", null, 1, 1,
+				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getType_Type(), ecorePackage.getEString(), "type", null, 1, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getType_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getType_Type(), ecorePackage.getEString(), "type", null, 1, 1, Type.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getType_Parameters(), this.getParameter(), null, "parameters", null, 0, -1,
+				Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(whereEClass, Where.class, "Where", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWhere_Clause(), ecorePackage.getEString(), "clause", null, 0, 1, Where.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(whereEClass, Where.class, "Where", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWhere_Clause(), ecorePackage.getEString(), "clause", null, 0, 1, Where.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(idBagEClass, IdBag.class, "IdBag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIdBag_Generator(), ecorePackage.getEString(), "generator", "increment", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIdBag_Type(), ecorePackage.getEString(), "type", "long", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIdBag_Table(), ecorePackage.getEString(), "table", null, 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(idBagEClass, IdBag.class, "IdBag", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdBag_Generator(), ecorePackage.getEString(), "generator", "increment", 0, 1,
+				IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdBag_Type(), ecorePackage.getEString(), "type", "long", 0, 1, IdBag.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getIdBag_Table(), ecorePackage.getEString(), "table", null, 0, 1, IdBag.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(genericGeneratorEClass, GenericGenerator.class, "GenericGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenericGenerator_Name(), ecorePackage.getEString(), "name", null, 1, 1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGenericGenerator_Strategy(), ecorePackage.getEString(), "strategy", null, 1, 1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGenericGenerator_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(genericGeneratorEClass, GenericGenerator.class, "GenericGenerator", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGenericGenerator_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenericGenerator_Strategy(), ecorePackage.getEString(), "strategy", null, 1,
+				1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGenericGenerator_Parameters(), this.getParameter(), null, "parameters", null,
+				0, -1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(cacheEClass, Cache.class, "Cache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCache_Usage(), this.getCacheConcurrencyStrategy(), "usage", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCache_Region(), ecorePackage.getEString(), "region", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCache_Include(), ecorePackage.getEString(), "include", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cacheEClass, Cache.class, "Cache", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCache_Usage(), this.getCacheConcurrencyStrategy(), "usage", null, 0, 1,
+				Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCache_Region(), ecorePackage.getEString(), "region", null, 0, 1, Cache.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getCache_Include(), ecorePackage.getEString(), "include", null, 0, 1,
+				Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(typeDefEClass, TypeDef.class, "TypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTypeDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTypeDef_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypeDef_TypeClass(), ecorePackage.getEString(), "typeClass", null, 1, 1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(typeDefEClass, TypeDef.class, "TypeDef", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTypeDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDef.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getTypeDef_Parameters(), this.getParameter(), null, "parameters", null, 0, -1,
+				TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeDef_TypeClass(), ecorePackage.getEString(), "typeClass", null, 1, 1,
+				TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(fetchEClass, Fetch.class, "Fetch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFetch_Value(), this.getHbFetchType(), "value", null, 0, 1, Fetch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(fetchEClass, Fetch.class, "Fetch", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFetch_Value(), this.getHbFetchType(), "value", null, 0, 1, Fetch.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(onDeleteEClass, OnDelete.class, "OnDelete", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOnDelete_Action(), this.getOnDeleteAction(), "action", null, 0, 1, OnDelete.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(onDeleteEClass, OnDelete.class, "OnDelete", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOnDelete_Action(), this.getOnDeleteAction(), "action", null, 0, 1,
+				OnDelete.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(proxyEClass, Proxy.class, "Proxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProxy_ProxyClass(), ecorePackage.getEString(), "proxyClass", null, 0, 1, Proxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProxy_Lazy(), ecorePackage.getEBoolean(), "lazy", "true", 0, 1, Proxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(proxyEClass, Proxy.class, "Proxy", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProxy_ProxyClass(), ecorePackage.getEString(), "proxyClass", null, 0, 1,
+				Proxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProxy_Lazy(), ecorePackage.getEBoolean(), "lazy", "true", 0, 1, Proxy.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(indexEClass, Index.class, "Index", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIndex_Name(), ecorePackage.getEString(), "name", null, 0, 1, Index.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(indexEClass, Index.class, "Index", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIndex_Name(), ecorePackage.getEString(), "name", null, 0, 1, Index.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(generatedEClass, Generated.class, "Generated", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenerated_Value(), this.getGenerationTime(), "value", null, 0, 1, Generated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(generatedEClass, Generated.class, "Generated", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGenerated_Value(), this.getGenerationTime(), "value", null, 0, 1,
+				Generated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(namedQueryEClass, NamedQuery.class, "NamedQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedQuery_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNamedQuery_Query(), ecorePackage.getEString(), "query", null, 0, 1, NamedQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(namedQueryEClass, NamedQuery.class, "NamedQuery", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedQuery_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				NamedQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedQuery_Query(), ecorePackage.getEString(), "query", null, 0, 1,
+				NamedQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(filterEClass, Filter.class, "Filter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFilter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFilter_Condition(), ecorePackage.getEString(), "condition", null, 0, 1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(filterEClass, Filter.class, "Filter", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFilter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Filter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getFilter_Condition(), ecorePackage.getEString(), "condition", null, 0, 1,
+				Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(paramDefEClass, ParamDef.class, "ParamDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParamDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, ParamDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParamDef_Type(), ecorePackage.getEString(), "type", null, 1, 1, ParamDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(paramDefEClass, ParamDef.class, "ParamDef", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParamDef_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				ParamDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParamDef_Type(), ecorePackage.getEString(), "type", null, 1, 1,
+				ParamDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(filterDefEClass, FilterDef.class, "FilterDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFilterDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFilterDef_DefaultCondition(), ecorePackage.getEString(), "defaultCondition", null, 0, 1, FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFilterDef_Parameters(), this.getParamDef(), null, "parameters", null, 0, -1, FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(filterDefEClass, FilterDef.class, "FilterDef", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFilterDef_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFilterDef_DefaultCondition(), ecorePackage.getEString(), "defaultCondition",
+				null, 0, 1, FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFilterDef_Parameters(), this.getParamDef(), null, "parameters", null, 0, -1,
+				FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(discriminatorFormulaEClass, DiscriminatorFormula.class, "DiscriminatorFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscriminatorFormula_Value(), ecorePackage.getEString(), "value", null, 0, 1, DiscriminatorFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discriminatorFormulaEClass, DiscriminatorFormula.class, "DiscriminatorFormula",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscriminatorFormula_Value(), ecorePackage.getEString(), "value", null, 0, 1,
+				DiscriminatorFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(naturalIdEClass, NaturalId.class, "NaturalId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNaturalId_Mutable(), ecorePackage.getEBoolean(), "mutable", null, 1, 1, NaturalId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(naturalIdEClass, NaturalId.class, "NaturalId", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNaturalId_Mutable(), ecorePackage.getEBoolean(), "mutable", null, 1, 1,
+				NaturalId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mapKeyManyToManyEClass, MapKeyManyToMany.class, "MapKeyManyToMany", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMapKeyManyToMany_JoinColumns(), thePannotationPackage.getJoinColumn(), null, "joinColumns", null, 0, -1, MapKeyManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getMapKeyManyToMany_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, MapKeyManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(mapKeyManyToManyEClass, MapKeyManyToMany.class, "MapKeyManyToMany", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMapKeyManyToMany_JoinColumns(), thePannotationPackage.getJoinColumn(), null,
+				"joinColumns", null, 0, -1, MapKeyManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_ORDERED);
+		initEAttribute(getMapKeyManyToMany_TargetEntity(), ecorePackage.getEString(), "targetEntity",
+				null, 0, 1, MapKeyManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(forceDiscriminatorEClass, ForceDiscriminator.class, "ForceDiscriminator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(forceDiscriminatorEClass, ForceDiscriminator.class, "ForceDiscriminator",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(immutableEClass, Immutable.class, "Immutable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(immutableEClass, Immutable.class, "Immutable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(formulaEClass, Formula.class, "Formula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFormula_Value(), ecorePackage.getEString(), "value", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(formulaEClass, Formula.class, "Formula", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFormula_Value(), ecorePackage.getEString(), "value", null, 0, 1,
+				Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(notFoundEClass, NotFound.class, "NotFound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNotFound_Action(), this.getNotFoundAction(), "action", null, 1, 1, NotFound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(notFoundEClass, NotFound.class, "NotFound", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNotFound_Action(), this.getNotFoundAction(), "action", null, 1, 1,
+				NotFound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hbEntityEClass, HbEntity.class, "HbEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHbEntity_DynamicInsert(), ecorePackage.getEBoolean(), "dynamicInsert", null, 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHbEntity_DynamicUpdate(), ecorePackage.getEBoolean(), "dynamicUpdate", null, 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHbEntity_SelectBeforeUpdate(), ecorePackage.getEBoolean(), "selectBeforeUpdate", null, 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHbEntity_Mutable(), ecorePackage.getEBoolean(), "mutable", "true", 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHbEntity_Persister(), ecorePackage.getEString(), "persister", null, 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHbEntity_OptimisticLock(), this.getOptimisticLockType(), "optimisticLock", "VERSION", 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHbEntity_Polymorphism(), this.getPolymorphismType(), "polymorphism", "IMPLICIT", 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hbEntityEClass, HbEntity.class, "HbEntity", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHbEntity_DynamicInsert(), ecorePackage.getEBoolean(), "dynamicInsert", null,
+				0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHbEntity_DynamicUpdate(), ecorePackage.getEBoolean(), "dynamicUpdate", null,
+				0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHbEntity_SelectBeforeUpdate(), ecorePackage.getEBoolean(),
+				"selectBeforeUpdate", null, 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHbEntity_Mutable(), ecorePackage.getEBoolean(), "mutable", "true", 0, 1,
+				HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHbEntity_Persister(), ecorePackage.getEString(), "persister", null, 0, 1,
+				HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHbEntity_OptimisticLock(), this.getOptimisticLockType(), "optimisticLock",
+				"VERSION", 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHbEntity_Polymorphism(), this.getPolymorphismType(), "polymorphism",
+				"IMPLICIT", 0, 1, HbEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(batchSizeEClass, BatchSize.class, "BatchSize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBatchSize_Size(), ecorePackage.getEInt(), "size", null, 1, 1, BatchSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(batchSizeEClass, BatchSize.class, "BatchSize", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBatchSize_Size(), ecorePackage.getEInt(), "size", null, 1, 1,
+				BatchSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(anyEClass, Any.class, "Any", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAny_MetaDef(), ecorePackage.getEString(), "metaDef", null, 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAny_MetaColumn(), thePannotationPackage.getColumn(), null, "metaColumn", null, 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAny_Fetch(), thePannotationPackage.getFetchType(), "fetch", "EAGER", 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAny_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(anyEClass, Any.class, "Any", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAny_MetaDef(), ecorePackage.getEString(), "metaDef", null, 0, 1, Any.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getAny_MetaColumn(), thePannotationPackage.getColumn(), null, "metaColumn",
+				null, 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAny_Fetch(), thePannotationPackage.getFetchType(), "fetch", "EAGER", 0, 1,
+				Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAny_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1,
+				Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(metaValueEClass, MetaValue.class, "MetaValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMetaValue_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, MetaValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMetaValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, MetaValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(metaValueEClass, MetaValue.class, "MetaValue", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMetaValue_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0,
+				1, MetaValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetaValue_Value(), ecorePackage.getEString(), "value", null, 0, 1,
+				MetaValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(anyMetaDefEClass, AnyMetaDef.class, "AnyMetaDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAnyMetaDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnyMetaDef_MetaType(), ecorePackage.getEString(), "metaType", "string", 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnyMetaDef_IdType(), ecorePackage.getEString(), "idType", "string", 1, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnyMetaDef_MetaValues(), this.getMetaValue(), null, "metaValues", null, 0, -1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(anyMetaDefEClass, AnyMetaDef.class, "AnyMetaDef", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnyMetaDef_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyMetaDef_MetaType(), ecorePackage.getEString(), "metaType", "string", 0, 1,
+				AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyMetaDef_IdType(), ecorePackage.getEString(), "idType", "string", 1, 1,
+				AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnyMetaDef_MetaValues(), this.getMetaValue(), null, "metaValues", null, 0,
+				-1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
+		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class,
+				"CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE);
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.READ_ONLY);
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONSTRICT_READ_WRITE);
@@ -1676,19 +1903,14 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo.mapping.source</b>.
-	 * <!-- begin-user-doc --> <!--
+	 * Initializes the annotations for <b>teneo.mapping.source</b>. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.mapping.source";		
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "1", "http://hibernate.elver.org/"
-		   });																																	
+		String source = "teneo.mapping.source";
+		addAnnotation(this, source, new String[] { "1", "http://hibernate.elver.org/" });
 	}
 
 	/**
@@ -1698,13 +1920,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";			
-		addAnnotation
-		  (hbAnnotationEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });																																
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(hbAnnotationEClass, source, new String[] { "constraints",
+				"CompatibleEModelElementType AnnotationIsSupported" });
 	}
 
 	/**
@@ -1714,169 +1932,36 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	protected void createTargetAnnotations() {
-		String source = "http://annotation.elver.org/internal/Target";				
-		addAnnotation
-		  (cascadeEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (collectionOfElementsEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (hbMapKeyEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });			
-		addAnnotation
-		  (parameterEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature",
-			 "1", "EClass",
-			 "2", "EPackage"
-		   });		
-		addAnnotation
-		  (typeEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (whereEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (idBagEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (genericGeneratorEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature",
-			 "1", "EClass",
-			 "2", "EPackage"
-		   });			
-		addAnnotation
-		  (cacheEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EReference",
-			 "1", "EClass"
-		   });		
-		addAnnotation
-		  (typeDefEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature",
-			 "1", "EClass",
-			 "2", "EPackage"
-		   });		
-		addAnnotation
-		  (fetchEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (onDeleteEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (proxyEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass"
-		   });		
-		addAnnotation
-		  (indexEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (generatedEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EAttribute"
-		   });		
-		addAnnotation
-		  (namedQueryEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass"
-		   });		
-		addAnnotation
-		  (filterEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass",
-			 "1", "EReference"
-		   });		
-		addAnnotation
-		  (paramDefEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass",
-			 "1", "EReference"
-		   });		
-		addAnnotation
-		  (filterDefEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass",
-			 "1", "EReference"
-		   });			
-		addAnnotation
-		  (naturalIdEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (mapKeyManyToManyEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EReference"
-		   });					
-		addAnnotation
-		  (notFoundEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EReference"
-		   });		
-		addAnnotation
-		  (hbEntityEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });			
-		addAnnotation
-		  (anyEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (anyMetaDefEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature",
-			 "1", "EClass",
-			 "2", "EPackage"
-		   });
+		String source = "http://annotation.elver.org/internal/Target";
+		addAnnotation(cascadeEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(collectionOfElementsEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(hbMapKeyEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(parameterEClass, source, new String[] { "0", "EStructuralFeature", "1", "EClass",
+				"2", "EPackage" });
+		addAnnotation(typeEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(whereEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(idBagEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(genericGeneratorEClass, source, new String[] { "0", "EStructuralFeature", "1",
+				"EClass", "2", "EPackage" });
+		addAnnotation(cacheEClass, source, new String[] { "0", "EReference", "1", "EClass" });
+		addAnnotation(typeDefEClass, source, new String[] { "0", "EStructuralFeature", "1", "EClass",
+				"2", "EPackage" });
+		addAnnotation(fetchEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(onDeleteEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(proxyEClass, source, new String[] { "0", "EClass" });
+		addAnnotation(indexEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(generatedEClass, source, new String[] { "0", "EAttribute" });
+		addAnnotation(namedQueryEClass, source, new String[] { "0", "EClass" });
+		addAnnotation(filterEClass, source, new String[] { "0", "EClass", "1", "EReference" });
+		addAnnotation(paramDefEClass, source, new String[] { "0", "EClass", "1", "EReference" });
+		addAnnotation(filterDefEClass, source, new String[] { "0", "EClass", "1", "EReference" });
+		addAnnotation(naturalIdEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(mapKeyManyToManyEClass, source, new String[] { "0", "EReference" });
+		addAnnotation(notFoundEClass, source, new String[] { "0", "EReference" });
+		addAnnotation(hbEntityEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(anyEClass, source, new String[] { "0", "EStructuralFeature" });
+		addAnnotation(anyMetaDefEClass, source, new String[] { "0", "EStructuralFeature", "1",
+				"EClass", "2", "EPackage" });
 	}
 
 	/**
@@ -1886,63 +1971,26 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	protected void createCollectionAnnotations() {
-		String source = "http://annotation.elver.org/internal/Collection";							
-		addAnnotation
-		  (parameterEClass, 
-		   source, 
-		   new String[] {
-			 "name", "Parameters",
-			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });							
-		addAnnotation
-		  (genericGeneratorEClass, 
-		   source, 
-		   new String[] {
-			 "name", "GenericGenerators",
-			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });																						
+		String source = "http://annotation.elver.org/internal/Collection";
+		addAnnotation(parameterEClass, source, new String[] { "name", "Parameters", "packageNS",
+				"http://www.eclipse.org/emf/teneo/2006/HbAnnotation" });
+		addAnnotation(genericGeneratorEClass, source, new String[] { "name", "GenericGenerators",
+				"packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation" });
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo/internal/Target</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>teneo/internal/Target</b>. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createTarget_1Annotations() {
-		String source = "teneo/internal/Target";																									
-		addAnnotation
-		  (discriminatorFormulaEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass"
-		   });				
-		addAnnotation
-		  (forceDiscriminatorEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass"
-		   });		
-		addAnnotation
-		  (immutableEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass",
-			 "1", "EReference"
-		   });		
-		addAnnotation
-		  (formulaEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EAttribute"
-		   });				
-		addAnnotation
-		  (batchSizeEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EClass",
-			 "1", "EReference"
-		   });		
+		String source = "teneo/internal/Target";
+		addAnnotation(discriminatorFormulaEClass, source, new String[] { "0", "EClass" });
+		addAnnotation(forceDiscriminatorEClass, source, new String[] { "0", "EClass" });
+		addAnnotation(immutableEClass, source, new String[] { "0", "EClass", "1", "EReference" });
+		addAnnotation(formulaEClass, source, new String[] { "0", "EAttribute" });
+		addAnnotation(batchSizeEClass, source, new String[] { "0", "EClass", "1", "EReference" });
 	}
 
 } // HbannotationPackageImpl

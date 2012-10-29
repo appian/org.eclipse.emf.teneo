@@ -127,8 +127,8 @@ public class GeneralTestAction extends AbstractTestAction {
 				assertNotNull("econtainer should be set", c.eContainer());
 				assertNotNull("econtainer should be set", contact.eContainer());
 				assertNotNull("econtainer should be set", tc.eContainer());
-				assertTrue("contained object should be part of parent container", ((Address) tc.eContainer()).getTc()
-					.contains(tc));
+				assertTrue("contained object should be part of parent container",
+						((Address) tc.eContainer()).getTc().contains(tc));
 			}
 
 			// check default transient

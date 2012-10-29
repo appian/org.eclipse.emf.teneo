@@ -28,26 +28,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sequence Flow</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sequence Flow</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#getConditionExpression <em>Condition Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#isIsImmediate <em>Is Immediate</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#getSourceRef <em>Source Ref</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#getTargetRef <em>Target Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#getConditionExpression <em>Condition
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#isIsImmediate <em>Is Immediate</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#getSourceRef <em>Source Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.SequenceFlowImpl#getTargetRef <em>Target Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	/**
-	 * The cached value of the '{@link #getConditionExpression() <em>Condition Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getConditionExpression() <em>Condition Expression</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConditionExpression()
 	 * @generated
 	 * @ordered
@@ -55,9 +55,9 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	protected Expression conditionExpression;
 
 	/**
-	 * The default value of the '{@link #isIsImmediate() <em>Is Immediate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsImmediate() <em>Is Immediate</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsImmediate()
 	 * @generated
 	 * @ordered
@@ -65,9 +65,9 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	protected static final boolean IS_IMMEDIATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsImmediate() <em>Is Immediate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsImmediate() <em>Is Immediate</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsImmediate()
 	 * @generated
 	 * @ordered
@@ -75,9 +75,9 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	protected boolean isImmediate = IS_IMMEDIATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSourceRef() <em>Source Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSourceRef()
 	 * @generated
 	 * @ordered
@@ -85,9 +85,9 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	protected FlowNode sourceRef;
 
 	/**
-	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetRef() <em>Target Ref</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetRef()
 	 * @generated
 	 * @ordered
@@ -95,8 +95,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	protected FlowNode targetRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SequenceFlowImpl() {
@@ -104,8 +104,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,8 +114,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Expression getConditionExpression() {
@@ -123,19 +123,18 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetConditionExpression(
-			Expression newConditionExpression, NotificationChain msgs) {
+	public NotificationChain basicSetConditionExpression(Expression newConditionExpression,
+			NotificationChain msgs) {
 		Expression oldConditionExpression = conditionExpression;
 		conditionExpression = newConditionExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION,
-					oldConditionExpression, newConditionExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION, oldConditionExpression,
+					newConditionExpression);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -145,39 +144,31 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConditionExpression(Expression newConditionExpression) {
 		if (newConditionExpression != conditionExpression) {
 			NotificationChain msgs = null;
 			if (conditionExpression != null)
-				msgs = ((InternalEObject) conditionExpression)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION,
-								null, msgs);
+				msgs = ((InternalEObject) conditionExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION, null, msgs);
 			if (newConditionExpression != null)
-				msgs = ((InternalEObject) newConditionExpression)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION,
-								null, msgs);
+				msgs = ((InternalEObject) newConditionExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION, null, msgs);
 			msgs = basicSetConditionExpression(newConditionExpression, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION,
-					newConditionExpression, newConditionExpression));
+					Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION, newConditionExpression,
+					newConditionExpression));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsImmediate() {
@@ -185,8 +176,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsImmediate(boolean newIsImmediate) {
@@ -194,13 +185,12 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 		isImmediate = newIsImmediate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SEQUENCE_FLOW__IS_IMMEDIATE, oldIsImmediate,
-					isImmediate));
+					Bpmn2Package.SEQUENCE_FLOW__IS_IMMEDIATE, oldIsImmediate, isImmediate));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FlowNode getSourceRef() {
@@ -208,18 +198,16 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetSourceRef(FlowNode newSourceRef,
-			NotificationChain msgs) {
+	public NotificationChain basicSetSourceRef(FlowNode newSourceRef, NotificationChain msgs) {
 		FlowNode oldSourceRef = sourceRef;
 		sourceRef = newSourceRef;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF,
-					oldSourceRef, newSourceRef);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF, oldSourceRef, newSourceRef);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -229,31 +217,30 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSourceRef(FlowNode newSourceRef) {
 		if (newSourceRef != sourceRef) {
 			NotificationChain msgs = null;
 			if (sourceRef != null)
-				msgs = ((InternalEObject) sourceRef).eInverseRemove(this,
-						Bpmn2Package.FLOW_NODE__OUTGOING, FlowNode.class, msgs);
+				msgs = ((InternalEObject) sourceRef).eInverseRemove(this, Bpmn2Package.FLOW_NODE__OUTGOING,
+						FlowNode.class, msgs);
 			if (newSourceRef != null)
-				msgs = ((InternalEObject) newSourceRef).eInverseAdd(this,
-						Bpmn2Package.FLOW_NODE__OUTGOING, FlowNode.class, msgs);
+				msgs = ((InternalEObject) newSourceRef).eInverseAdd(this, Bpmn2Package.FLOW_NODE__OUTGOING,
+						FlowNode.class, msgs);
 			msgs = basicSetSourceRef(newSourceRef, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF, newSourceRef,
-					newSourceRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF,
+					newSourceRef, newSourceRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FlowNode getTargetRef() {
@@ -261,18 +248,16 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetTargetRef(FlowNode newTargetRef,
-			NotificationChain msgs) {
+	public NotificationChain basicSetTargetRef(FlowNode newTargetRef, NotificationChain msgs) {
 		FlowNode oldTargetRef = targetRef;
 		targetRef = newTargetRef;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Bpmn2Package.SEQUENCE_FLOW__TARGET_REF,
-					oldTargetRef, newTargetRef);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Bpmn2Package.SEQUENCE_FLOW__TARGET_REF, oldTargetRef, newTargetRef);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -282,59 +267,58 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetRef(FlowNode newTargetRef) {
 		if (newTargetRef != targetRef) {
 			NotificationChain msgs = null;
 			if (targetRef != null)
-				msgs = ((InternalEObject) targetRef).eInverseRemove(this,
-						Bpmn2Package.FLOW_NODE__INCOMING, FlowNode.class, msgs);
+				msgs = ((InternalEObject) targetRef).eInverseRemove(this, Bpmn2Package.FLOW_NODE__INCOMING,
+						FlowNode.class, msgs);
 			if (newTargetRef != null)
-				msgs = ((InternalEObject) newTargetRef).eInverseAdd(this,
-						Bpmn2Package.FLOW_NODE__INCOMING, FlowNode.class, msgs);
+				msgs = ((InternalEObject) newTargetRef).eInverseAdd(this, Bpmn2Package.FLOW_NODE__INCOMING,
+						FlowNode.class, msgs);
 			msgs = basicSetTargetRef(newTargetRef, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.SEQUENCE_FLOW__TARGET_REF, newTargetRef,
-					newTargetRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.SEQUENCE_FLOW__TARGET_REF,
+					newTargetRef, newTargetRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.SEQUENCE_FLOW__SOURCE_REF:
 			if (sourceRef != null)
-				msgs = ((InternalEObject) sourceRef).eInverseRemove(this,
-						Bpmn2Package.FLOW_NODE__OUTGOING, FlowNode.class, msgs);
+				msgs = ((InternalEObject) sourceRef).eInverseRemove(this, Bpmn2Package.FLOW_NODE__OUTGOING,
+						FlowNode.class, msgs);
 			return basicSetSourceRef((FlowNode) otherEnd, msgs);
 		case Bpmn2Package.SEQUENCE_FLOW__TARGET_REF:
 			if (targetRef != null)
-				msgs = ((InternalEObject) targetRef).eInverseRemove(this,
-						Bpmn2Package.FLOW_NODE__INCOMING, FlowNode.class, msgs);
+				msgs = ((InternalEObject) targetRef).eInverseRemove(this, Bpmn2Package.FLOW_NODE__INCOMING,
+						FlowNode.class, msgs);
 			return basicSetTargetRef((FlowNode) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.SEQUENCE_FLOW__CONDITION_EXPRESSION:
 			return basicSetConditionExpression(null, msgs);
@@ -347,8 +331,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -367,8 +351,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -391,8 +375,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -415,8 +399,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -435,8 +419,8 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -451,4 +435,4 @@ public class SequenceFlowImpl extends FlowElementImpl implements SequenceFlow {
 		return result.toString();
 	}
 
-} //SequenceFlowImpl
+} // SequenceFlowImpl

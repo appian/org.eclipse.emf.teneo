@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.annotations.pamodel.*;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -22,35 +21,32 @@ import org.eclipse.emf.teneo.annotations.pamodel.PamodelFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PamodelFactory init() {
 		try {
-			PamodelFactory thePamodelFactory = (PamodelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/elver/2005/pamodel"); 
+			PamodelFactory thePamodelFactory = (PamodelFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/teneo/elver/2005/pamodel");
 			if (thePamodelFactory != null) {
 				return thePamodelFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new PamodelFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PamodelFactoryImpl() {
@@ -58,27 +54,34 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case PamodelPackage.PANNOTATED_MODEL: return createPAnnotatedModel();
-			case PamodelPackage.PANNOTATED_EPACKAGE: return createPAnnotatedEPackage();
-			case PamodelPackage.PANNOTATED_ECLASS: return createPAnnotatedEClass();
-			case PamodelPackage.PANNOTATED_EATTRIBUTE: return createPAnnotatedEAttribute();
-			case PamodelPackage.PANNOTATED_EREFERENCE: return createPAnnotatedEReference();
-			case PamodelPackage.PANNOTATED_EDATA_TYPE: return createPAnnotatedEDataType();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case PamodelPackage.PANNOTATED_MODEL:
+			return createPAnnotatedModel();
+		case PamodelPackage.PANNOTATED_EPACKAGE:
+			return createPAnnotatedEPackage();
+		case PamodelPackage.PANNOTATED_ECLASS:
+			return createPAnnotatedEClass();
+		case PamodelPackage.PANNOTATED_EATTRIBUTE:
+			return createPAnnotatedEAttribute();
+		case PamodelPackage.PANNOTATED_EREFERENCE:
+			return createPAnnotatedEReference();
+		case PamodelPackage.PANNOTATED_EDATA_TYPE:
+			return createPAnnotatedEDataType();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedModel createPAnnotatedModel() {
@@ -87,8 +90,8 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedEPackage createPAnnotatedEPackage() {
@@ -97,8 +100,8 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedEClass createPAnnotatedEClass() {
@@ -107,8 +110,8 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedEAttribute createPAnnotatedEAttribute() {
@@ -117,8 +120,8 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedEDataType createPAnnotatedEDataType() {
@@ -127,8 +130,8 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedEReference createPAnnotatedEReference() {
@@ -137,17 +140,17 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PamodelPackage getPamodelPackage() {
-		return (PamodelPackage)getEPackage();
+		return (PamodelPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -156,4 +159,4 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 		return PamodelPackage.eINSTANCE;
 	}
 
-} //PamodelFactoryImpl
+} // PamodelFactoryImpl

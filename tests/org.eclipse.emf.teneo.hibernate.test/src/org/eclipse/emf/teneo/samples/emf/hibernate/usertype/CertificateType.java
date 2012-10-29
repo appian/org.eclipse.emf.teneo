@@ -50,8 +50,7 @@ public class CertificateType implements UserType {
 		return true;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names,
-			SessionImplementor session, Object owner)
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		String name = StringType.INSTANCE.nullSafeGet(rs, names[0], session);
 		Integer length = IntegerType.INSTANCE.nullSafeGet(rs, names[1], session);
@@ -61,7 +60,8 @@ public class CertificateType implements UserType {
 		return certificate;
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		Certificate certificate = (Certificate) value;
 		StringType.INSTANCE.nullSafeSet(st, certificate.getName(), index, sessionImplementor);
 		IntegerType.INSTANCE.nullSafeSet(st, certificate.getLength(), index + 1, sessionImplementor);

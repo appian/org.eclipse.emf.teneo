@@ -40,8 +40,7 @@ public class ExtraLazySetAction extends SetAction {
 		final Properties props = new Properties();
 		// this option is required, see comment in superclass
 		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
-		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY,
-				"true");
+		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY, "true");
 		return props;
 	}
 
@@ -58,12 +57,13 @@ public class ExtraLazySetAction extends SetAction {
 
 		doCleanListItem(store);
 	}
-	
+
 	protected void cleanListItem(TestStore store) {
-		
+
 	}
 
-	// delete, this prevents an error in hsqldb when SetAction and ExtraLazySetAction
+	// delete, this prevents an error in hsqldb when SetAction and
+	// ExtraLazySetAction
 	// are both run
 	protected void doCleanListItem(TestStore store) {
 		store.beginTransaction();
@@ -75,9 +75,9 @@ public class ExtraLazySetAction extends SetAction {
 			store.deleteObject(o);
 		}
 		store.deleteObject(itemList);
-		store.commitTransaction();		
+		store.commitTransaction();
 	}
-	
+
 	protected void testLazyList(List<?> list) {
 		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
 		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList
@@ -92,7 +92,7 @@ public class ExtraLazySetAction extends SetAction {
 		assertTrue(size > 0);
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
-		
+
 		// test the iterator
 		int index = 0;
 		for (Object o : list) {
@@ -103,8 +103,7 @@ public class ExtraLazySetAction extends SetAction {
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
 
-		final Iterator<?> iterator = LazyCollectionUtils
-				.getPagedLoadingIterator(list, 5);
+		final Iterator<?> iterator = LazyCollectionUtils.getPagedLoadingIterator(list, 5);
 		index = 0;
 		while (iterator.hasNext()) {
 			index++;

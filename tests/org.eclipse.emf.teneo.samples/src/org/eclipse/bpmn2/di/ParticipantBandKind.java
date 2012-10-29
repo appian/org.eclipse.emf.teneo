@@ -21,19 +21,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Participant Band Kind</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Participant Band Kind</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.di.BpmnDiPackage#getParticipantBandKind()
  * @model
  * @generated
  */
 public enum ParticipantBandKind implements Enumerator {
 	/**
-	 * The '<em><b>Top initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Top initiating</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #TOP_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +41,9 @@ public enum ParticipantBandKind implements Enumerator {
 	TOP_INITIATING(0, "top_initiating", "top_initiating"),
 
 	/**
-	 * The '<em><b>Middle initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Middle initiating</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #MIDDLE_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -51,9 +51,9 @@ public enum ParticipantBandKind implements Enumerator {
 	MIDDLE_INITIATING(1, "middle_initiating", "middle_initiating"),
 
 	/**
-	 * The '<em><b>Bottom initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Bottom initiating</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #BOTTOM_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -61,9 +61,9 @@ public enum ParticipantBandKind implements Enumerator {
 	BOTTOM_INITIATING(2, "bottom_initiating", "bottom_initiating"),
 
 	/**
-	 * The '<em><b>Top non initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Top non initiating</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #TOP_NON_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -71,9 +71,9 @@ public enum ParticipantBandKind implements Enumerator {
 	TOP_NON_INITIATING(3, "top_non_initiating", "top_non_initiating"),
 
 	/**
-	 * The '<em><b>Middle non initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Middle non initiating</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #MIDDLE_NON_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -81,9 +81,9 @@ public enum ParticipantBandKind implements Enumerator {
 	MIDDLE_NON_INITIATING(4, "middle_non_initiating", "middle_non_initiating"),
 
 	/**
-	 * The '<em><b>Bottom non initiating</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Bottom non initiating</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #BOTTOM_NON_INITIATING_VALUE
 	 * @generated
 	 * @ordered
@@ -91,13 +91,13 @@ public enum ParticipantBandKind implements Enumerator {
 	BOTTOM_NON_INITIATING(5, "bottom_non_initiating", "bottom_non_initiating");
 
 	/**
-	 * The '<em><b>Top initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Top initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Top initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Top initiating</b></em>' literal object isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #TOP_INITIATING
 	 * @model name="top_initiating"
 	 * @generated
@@ -106,13 +106,13 @@ public enum ParticipantBandKind implements Enumerator {
 	public static final int TOP_INITIATING_VALUE = 0;
 
 	/**
-	 * The '<em><b>Middle initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Middle initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Middle initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Middle initiating</b></em>' literal object isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MIDDLE_INITIATING
 	 * @model name="middle_initiating"
 	 * @generated
@@ -121,13 +121,13 @@ public enum ParticipantBandKind implements Enumerator {
 	public static final int MIDDLE_INITIATING_VALUE = 1;
 
 	/**
-	 * The '<em><b>Bottom initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Bottom initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Bottom initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Bottom initiating</b></em>' literal object isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BOTTOM_INITIATING
 	 * @model name="bottom_initiating"
 	 * @generated
@@ -136,13 +136,13 @@ public enum ParticipantBandKind implements Enumerator {
 	public static final int BOTTOM_INITIATING_VALUE = 2;
 
 	/**
-	 * The '<em><b>Top non initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Top non initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Top non initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Top non initiating</b></em>' literal object isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #TOP_NON_INITIATING
 	 * @model name="top_non_initiating"
 	 * @generated
@@ -151,13 +151,13 @@ public enum ParticipantBandKind implements Enumerator {
 	public static final int TOP_NON_INITIATING_VALUE = 3;
 
 	/**
-	 * The '<em><b>Middle non initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Middle non initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Middle non initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Middle non initiating</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MIDDLE_NON_INITIATING
 	 * @model name="middle_non_initiating"
 	 * @generated
@@ -166,13 +166,13 @@ public enum ParticipantBandKind implements Enumerator {
 	public static final int MIDDLE_NON_INITIATING_VALUE = 4;
 
 	/**
-	 * The '<em><b>Bottom non initiating</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Bottom non initiating</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Bottom non initiating</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Bottom non initiating</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BOTTOM_NON_INITIATING
 	 * @model name="bottom_non_initiating"
 	 * @generated
@@ -181,28 +181,28 @@ public enum ParticipantBandKind implements Enumerator {
 	public static final int BOTTOM_NON_INITIATING_VALUE = 5;
 
 	/**
-	 * An array of all the '<em><b>Participant Band Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Participant Band Kind</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static final ParticipantBandKind[] VALUES_ARRAY = new ParticipantBandKind[] {
-			TOP_INITIATING, MIDDLE_INITIATING, BOTTOM_INITIATING,
-			TOP_NON_INITIATING, MIDDLE_NON_INITIATING, BOTTOM_NON_INITIATING, };
+			TOP_INITIATING, MIDDLE_INITIATING, BOTTOM_INITIATING, TOP_NON_INITIATING,
+			MIDDLE_NON_INITIATING, BOTTOM_NON_INITIATING, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Participant Band Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Participant Band Kind</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<ParticipantBandKind> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ParticipantBandKind> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Participant Band Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ParticipantBandKind get(String literal) {
@@ -216,9 +216,9 @@ public enum ParticipantBandKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Participant Band Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Participant Band Kind</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ParticipantBandKind getByName(String name) {
@@ -233,8 +233,8 @@ public enum ParticipantBandKind implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Participant Band Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ParticipantBandKind get(int value) {
@@ -256,30 +256,29 @@ public enum ParticipantBandKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ParticipantBandKind(int value, String name, String literal) {
@@ -289,8 +288,8 @@ public enum ParticipantBandKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -298,8 +297,8 @@ public enum ParticipantBandKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -307,8 +306,8 @@ public enum ParticipantBandKind implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -316,9 +315,9 @@ public enum ParticipantBandKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -326,4 +325,4 @@ public enum ParticipantBandKind implements Enumerator {
 		return literal;
 	}
 
-} //ParticipantBandKind
+} // ParticipantBandKind

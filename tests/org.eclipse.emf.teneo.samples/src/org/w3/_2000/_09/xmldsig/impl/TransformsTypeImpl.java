@@ -25,23 +25,22 @@ import org.w3._2000._09.xmldsig.TransformsType;
 import org.w3._2000._09.xmldsig.XmldsigPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Transforms Type</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Transforms Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.w3._2000._09.xmldsig.impl.TransformsTypeImpl#getTransform <em>Transform</em>}</li>
+ * <li>{@link org.w3._2000._09.xmldsig.impl.TransformsTypeImpl#getTransform <em>Transform</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TransformsTypeImpl extends EObjectImpl implements TransformsType {
 	/**
-	 * The cached value of the '{@link #getTransform() <em>Transform</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTransform() <em>Transform</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTransform()
 	 * @generated
 	 * @ordered
@@ -49,8 +48,8 @@ public class TransformsTypeImpl extends EObjectImpl implements TransformsType {
 	protected EList<TransformType> transform;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TransformsTypeImpl() {
@@ -58,8 +57,8 @@ public class TransformsTypeImpl extends EObjectImpl implements TransformsType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,89 +67,91 @@ public class TransformsTypeImpl extends EObjectImpl implements TransformsType {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<TransformType> getTransform() {
 		if (transform == null) {
-			transform = new EObjectContainmentEList<TransformType>(TransformType.class, this, XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM);
+			transform = new EObjectContainmentEList<TransformType>(TransformType.class, this,
+					XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM);
 		}
 		return transform;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
-				return ((InternalEList<?>)getTransform()).basicRemove(otherEnd, msgs);
+		case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
+			return ((InternalEList<?>) getTransform()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
-				return getTransform();
+		case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
+			return getTransform();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
-				getTransform().clear();
-				getTransform().addAll((Collection<? extends TransformType>)newValue);
-				return;
+		case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
+			getTransform().clear();
+			getTransform().addAll((Collection<? extends TransformType>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
-				getTransform().clear();
-				return;
+		case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
+			getTransform().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
-				return transform != null && !transform.isEmpty();
+		case XmldsigPackage.TRANSFORMS_TYPE__TRANSFORM:
+			return transform != null && !transform.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //TransformsTypeImpl
+} // TransformsTypeImpl

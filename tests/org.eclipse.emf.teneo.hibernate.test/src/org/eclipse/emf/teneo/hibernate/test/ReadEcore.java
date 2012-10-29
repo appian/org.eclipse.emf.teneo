@@ -67,8 +67,7 @@ public class ReadEcore {
 
 			// epackages.add(RandLPackage.eINSTANCE);
 
-			EPackage[] epacks = (EPackage[]) epackages
-					.toArray(new EPackage[epackages.size()]);
+			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 			// epacks =
 			// new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
 			// customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
@@ -106,8 +105,8 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT,
-				org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props
+				.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 		// "org/eclipse/emf/teneo/hibernate/test/ops_persistence.xml");
 		// props.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
@@ -149,15 +148,13 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/claim");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT,
-				org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props
+				.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS,
-				"true");
-		hbds.getExtensionManager().registerExtension(
-				EntityNameStrategy.class.getName(),
+		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		hbds.getExtensionManager().registerExtension(EntityNameStrategy.class.getName(),
 				QualifyingEntityNameStrategy.class.getName());
 		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 		// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
@@ -165,8 +162,7 @@ public class ReadEcore {
 		hbds.setDataStoreProperties(props);
 
 		// sets its epackages stored in this datastore
-		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE,
-				XMLTypePackage.eINSTANCE });
+		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE, XMLTypePackage.eINSTANCE });
 
 		// initialize, also creates the database tables
 		try {
@@ -180,8 +176,7 @@ public class ReadEcore {
 			s.getTransaction().commit();
 
 			s = hbds.getSessionFactory().openSession();
-			final List<?> l = s.createQuery("select e from ecore.EPackage e")
-					.list();
+			final List<?> l = s.createQuery("select e from ecore.EPackage e").list();
 			final EPackage[] newEpacks = new EPackage[l.size()];
 			int i = 0;
 			for (Object o : l) {
@@ -206,15 +201,13 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT,
-				org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props
+				.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS,
-				"true");
-		hbds.getExtensionManager().registerExtension(
-				EntityNameStrategy.class.getName(),
+		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		hbds.getExtensionManager().registerExtension(EntityNameStrategy.class.getName(),
 				QualifyingEntityNameStrategy.class.getName());
 		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 		// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");

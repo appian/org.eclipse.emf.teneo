@@ -23,29 +23,27 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
-*/
-public class NestedGroupAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.4 $
+ */
+public class NestedGroupAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
-	public NestedGroupAction() 
-	{
+	public NestedGroupAction() {
 		super(NestedgroupPackage.eINSTANCE);
 	}
 
 	/** Creates simple types and tests against */
-	public void doAction(TestStore store)
-	{
+	public void doAction(TestStore store) {
 		// test a simple type
-//        final RestrictionFactory factory = RestrictionFactory.eINSTANCE;
-    	{
-    		{
-		        store.beginTransaction();
-		        store.commitTransaction();
-    		}
-    	}
+		// final RestrictionFactory factory = RestrictionFactory.eINSTANCE;
+		{
+			{
+				store.beginTransaction();
+				store.commitTransaction();
+			}
+		}
 	}
 }

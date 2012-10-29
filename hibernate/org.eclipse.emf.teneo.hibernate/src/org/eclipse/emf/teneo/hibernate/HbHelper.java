@@ -64,7 +64,7 @@ public class HbHelper {
 
 	/**
 	 * @param emfDataStoreFactory
-	 *            the emfDataStoreFactory to set
+	 *          the emfDataStoreFactory to set
 	 */
 	public static void setHbDataStoreFactory(HbDataStoreFactory hbDataStoreFactory) {
 		HbHelper.emfDataStoreFactory = hbDataStoreFactory;
@@ -76,7 +76,8 @@ public class HbHelper {
 			final PersistentClass pc = (PersistentClass) it.next();
 			if (dataStoreByPersistentClass.get(pc) != null) {
 				throw new HbMapperException("There is already a datastore registered for this pc: "
-						+ pc.getEntityName() + (dataStoreByPersistentClass.get(pc)).getName() + "/" + ds.getName());
+						+ pc.getEntityName() + (dataStoreByPersistentClass.get(pc)).getName() + "/"
+						+ ds.getName());
 			}
 			if (log.isDebugEnabled()) {
 				log.debug("Datastore: " + ds.getName() + " registered for pc: " + pc.getEntityName());
@@ -88,7 +89,8 @@ public class HbHelper {
 	/** Register the datastore also for the components */
 	void registerDataStoreByComponent(HbDataStore ds, Component component) {
 		if (log.isDebugEnabled()) {
-			log.debug("Datastore: " + ds.getName() + " registered for component: " + component.getComponentClassName());
+			log.debug("Datastore: " + ds.getName() + " registered for component: "
+					+ component.getComponentClassName());
 		}
 		dataStoreByPersistentClass.put(component, ds);
 	}
@@ -124,7 +126,8 @@ public class HbHelper {
 	/** Deregisters a session factory from the registry */
 	public synchronized void deRegisterDataStore(String name) {
 		if (name == null) {
-			throw new HbMapperException("An unique name should be specified when deregistering a session factory");
+			throw new HbMapperException(
+					"An unique name should be specified when deregistering a session factory");
 		}
 		final HbDataStore emfds = emfDataStores.get(name);
 		if (emfds == null) {
@@ -148,9 +151,9 @@ public class HbHelper {
 		if (emfds.getName() != null) {
 			emfDataStores.remove(emfds.getName());
 		}
-		
+
 		EModelResolver.instance().unregisterOwnerShip(emfds, emfds.getEPackages());
-		
+
 		if (emfds.isInitialized()) {
 			emfds.close();
 		}
@@ -190,18 +193,21 @@ public class HbHelper {
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The hibernate.hbm.xml
-	 * is returned as a string. The mapping is not registered or used in any other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The
+	 * hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any other
+	 * way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props) {
 		return generateMapping(epackages, props, ExtensionManagerFactory.getInstance().create());
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The hibernate.hbm.xml
-	 * is returned as a string. The mapping is not registered or used in any other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The
+	 * hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any other
+	 * way by Elver.
 	 */
-	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
+	public String generateMapping(EPackage[] epackages, Properties props,
+			ExtensionManager extensionManager) {
 		MappingUtil.registerHbExtensions(extensionManager);
 
 		if (log.isDebugEnabled()) {
@@ -210,10 +216,12 @@ public class HbHelper {
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of
 		// Hibernate-specific annotations.
-		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
-		final PAnnotatedModel paModel = extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(
-				epackages, po, extensionManager);
-		final HibernateMappingGenerator hmg = extensionManager.getExtension(HibernateMappingGenerator.class);
+		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class,
+				new Object[] { props });
+		final PAnnotatedModel paModel = extensionManager.getExtension(PersistenceMappingBuilder.class)
+				.buildMapping(epackages, po, extensionManager);
+		final HibernateMappingGenerator hmg = extensionManager
+				.getExtension(HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);
 
 		return hmg.generateToString(paModel);

@@ -41,8 +41,7 @@ import org.hibernate.collection.spi.PersistentCollection;
 import org.hibernate.engine.spi.SessionImplementor;
 
 /**
- * The emap which initializes itself from the persistent collection when first
- * accessed.
+ * The emap which initializes itself from the persistent collection when first accessed.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
@@ -50,7 +49,6 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		InternalEList.Unsettable<Map.Entry<K, V>>, EStructuralFeature.Setting,
 		PersistableDelegateList<Map.Entry<K, V>> {
 
-	private static final long serialVersionUID = 1L;
 	private List<EAVValueHolder> persistentList;
 	private EcoreEMap<K, V> delegatingEMap;
 	private EClass entryEClass;
@@ -60,8 +58,8 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 	private EStructuralFeature eStructuralFeature;
 	private EAVMultiValueHolder valueHolderOwner;
 
-	public EAVDelegatingEMap(EClass entryEClass, Class<?> entryClass,
-			InternalEObject owner, int featureID) {
+	public EAVDelegatingEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner,
+			int featureID) {
 		this.entryClass = entryClass;
 		this.entryEClass = entryEClass;
 		this.owner = owner;
@@ -77,16 +75,14 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		if (delegatingEMap != null) {
 			return;
 		}
-		delegatingEMap = new EcoreEMap<K, V>(entryEClass, entryClass, owner,
-				featureID);
+		delegatingEMap = new EcoreEMap<K, V>(entryEClass, entryClass, owner, featureID);
 
 		int index = 0;
 		for (Object obj : persistentList) {
 			EAVSingleContainmentEReferenceValueHolder valueHolder = (EAVSingleContainmentEReferenceValueHolder) obj;
 			valueHolder.setListIndex(index++);
 			valueHolder.setValueOwner(getValueHolderOwner());
-			delegatingEMap.basicAdd((BasicEMap.Entry<K, V>) valueHolder
-					.getReferenceValue(), null);
+			delegatingEMap.basicAdd((BasicEMap.Entry<K, V>) valueHolder.getReferenceValue(), null);
 		}
 		// force the map to be computed, this sets the internal entrydata/size
 		// member
@@ -108,8 +104,7 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		return delegatingEMap.addAll(collection);
 	}
 
-	public boolean addAll(int index,
-			Collection<? extends Entry<K, V>> collection) {
+	public boolean addAll(int index, Collection<? extends Entry<K, V>> collection) {
 		initialize();
 		return delegatingEMap.addAll(index, collection);
 	}
@@ -119,8 +114,7 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		return delegatingEMap.addAllUnique(collection);
 	}
 
-	public boolean addAllUnique(int index,
-			Collection<? extends Entry<K, V>> collection) {
+	public boolean addAllUnique(int index, Collection<? extends Entry<K, V>> collection) {
 		initialize();
 		return delegatingEMap.addAllUnique(index, collection);
 	}
@@ -135,8 +129,7 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		delegatingEMap.addUnique(index, object);
 	}
 
-	public NotificationChain basicAdd(Entry<K, V> object,
-			NotificationChain notifications) {
+	public NotificationChain basicAdd(Entry<K, V> object, NotificationChain notifications) {
 		initialize();
 		return delegatingEMap.basicAdd(object, notifications);
 	}
@@ -186,8 +179,7 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		return delegatingEMap.basicListIterator(index);
 	}
 
-	public NotificationChain basicRemove(Object object,
-			NotificationChain notifications) {
+	public NotificationChain basicRemove(Object object, NotificationChain notifications) {
 		initialize();
 		return delegatingEMap.basicRemove(object, notifications);
 	}
@@ -258,59 +250,63 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 			final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
 			final SessionImplementor sessionImplementor = ((AbstractPersistentCollection) persistentCollection)
 					.getSession();
-			final Session session = (Session)sessionImplementor;
+			final Session session = (Session) sessionImplementor;
 			session.flush();
-			
-			// create a query 
+
+			// create a query
 			// the owner is a EAVMultiValueHolder which has a list of referenceValues
-			// each referenceValue is an EAV_Object which has a values containing 
-			// the key and value values. The key can be a primitive or a 
-			
+			// each referenceValue is an EAV_Object which has a values containing
+			// the key and value values. The key can be a primitive or a
+
 			final StringBuilder qryStr = new StringBuilder();
-			if (((EReference)getEStructuralFeature()).isContainment()) {
-				qryStr.append("select singleValue from EAVSingleContainmentEReferenceValueHolder singleValue left join fetch singleValue.eavObjectReference");				
+			if (((EReference) getEStructuralFeature()).isContainment()) {
+				qryStr
+						.append("select singleValue from EAVSingleContainmentEReferenceValueHolder singleValue left join fetch singleValue.eavObjectReference");
 			} else {
-				qryStr.append("select singleValue.referenceValue from EAVSingleNonContainmentEReferenceValueHolder singleValue left join fetch singleValue.eavObjectReference");				
+				qryStr
+						.append("select singleValue.referenceValue from EAVSingleNonContainmentEReferenceValueHolder singleValue left join fetch singleValue.eavObjectReference");
 			}
 			final EStructuralFeature keyFeature = entryEClass.getEStructuralFeature("key");
 			final Object keyParameter;
 			if (keyFeature instanceof EReference) {
-				final EReference eReference = (EReference)keyFeature;
+				final EReference eReference = (EReference) keyFeature;
 				if (eReference.isContainment()) {
-					qryStr.append(", EAVSingleContainmentEReferenceValueHolder keyValue where");			
+					qryStr.append(", EAVSingleContainmentEReferenceValueHolder keyValue where");
 				} else {
-					qryStr.append(", EAVSingleNonContainmentEReferenceValueHolder keyValue where");					
+					qryStr.append(", EAVSingleNonContainmentEReferenceValueHolder keyValue where");
 				}
-				
+
 				// a reference
 				qryStr.append(" keyValue.referenceValue=:keyParameter ");
 				keyParameter = key;
 			} else {
-				qryStr.append(", EAVSingleEAttributeValueHolder keyValue where");					
+				qryStr.append(", EAVSingleEAttributeValueHolder keyValue where");
 				qryStr.append(" keyValue.typeNeutralValue=:keyParameter");
-				final EAttribute eAttribute = (EAttribute)keyFeature;
-				final EFactory eFactory = eAttribute.getEAttributeType().getEPackage().getEFactoryInstance();
+				final EAttribute eAttribute = (EAttribute) keyFeature;
+				final EFactory eFactory = eAttribute.getEAttributeType().getEPackage()
+						.getEFactoryInstance();
 				keyParameter = eFactory.convertToString(eAttribute.getEAttributeType(), key);
 			}
-			qryStr.append( " and keyValue.feature=:feature and singleValue.eavObjectReference=keyValue.owner and singleValue.valueOwner=:owner");
-			
+			qryStr
+					.append(" and keyValue.feature=:feature and singleValue.eavObjectReference=keyValue.owner and singleValue.valueOwner=:owner");
+
 			final Query qry = session.createQuery(qryStr.toString());
 			qry.setParameter("keyParameter", keyParameter);
 			qry.setParameter("feature", keyFeature);
 			qry.setParameter("owner", persistentCollection.getOwner());
 			for (Object o : qry.list()) {
-				final EAVSingleEReferenceValueHolder valueHolder = (EAVSingleEReferenceValueHolder)o;
+				final EAVSingleEReferenceValueHolder valueHolder = (EAVSingleEReferenceValueHolder) o;
 				final Object result = valueHolder.getReferenceValue();
 				if (!(result instanceof EObject)) {
 					continue;
 				}
-				
-				final EObject eContainer = ((EObject)result).eContainer();
+
+				final EObject eContainer = ((EObject) result).eContainer();
 				final EObject owner = getEObject();
 				if (result instanceof Map.Entry<?, ?> && eContainer == owner) {
-					final Map.Entry<K, V> entry = (Map.Entry<K, V>)result;
+					final Map.Entry<K, V> entry = (Map.Entry<K, V>) result;
 					return entry.getValue();
-				}				
+				}
 			}
 			return null;
 		}
@@ -398,14 +394,13 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 	public V put(K key, V value) {
 		if (isExtraLazyAndNotInitialized()) {
 			final Map.Entry<K, V> entry = (Map.Entry<K, V>) get(key);
-			if (entry != null
-					&& entry instanceof org.eclipse.emf.common.util.BasicEMap.Entry<?, ?>) {
+			if (entry != null && entry instanceof org.eclipse.emf.common.util.BasicEMap.Entry<?, ?>) {
 				final V result = entry.getValue();
 				entry.setValue(value);
 				return result;
 			} else {
-				final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner()
-						.getElement(newEntry(key, value));
+				final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner().getElement(
+						newEntry(key, value));
 				valueHolder.setListIndex(getPersistentList().size());
 				getPersistentList().add(valueHolder);
 				return null;
@@ -514,7 +509,8 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		this.persistentList = (List<EAVValueHolder>) persistentList;
 		if (isHibernateListPresent() && getHibernatePersistentList().wasInitialized()) {
 			initialize();
-		} if (persistentList instanceof ArrayList<?>) {
+		}
+		if (persistentList instanceof ArrayList<?>) {
 			// newly persisted
 			initialize();
 		}
@@ -560,15 +556,12 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 
 	private final boolean isConnectedToSession(SessionImplementor session) {
 		final PersistentCollection persistentCollection = (PersistentCollection) getDelegate();
-		return session != null
-				&& session.isOpen()
-				&& session.getPersistenceContext().containsCollection(
-						persistentCollection);
+		return session != null && session.isOpen()
+				&& session.getPersistenceContext().containsCollection(persistentCollection);
 	}
 
 	private boolean isExtraLazyAndNotInitialized() {
-		if (!isInitialized() && isHibernateListPresent()
-				&& isConnectedToSession()) {
+		if (!isInitialized() && isHibernateListPresent() && isConnectedToSession()) {
 			boolean extraLazyLoaded = getValueHolderOwner() instanceof EAVExtraMultiContainmentEReferenceValueHolder;
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiNonContainmentEReferenceValueHolder;
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
@@ -579,8 +572,8 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 
 	protected org.eclipse.emf.common.util.BasicEMap.Entry<K, V> newEntry(K key, V value) {
 		@SuppressWarnings("unchecked")
-		org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry = (org.eclipse.emf.common.util.BasicEMap.Entry<K, V>) entryEClass.getEPackage()
-				.getEFactoryInstance().create(entryEClass);
+		org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry = (org.eclipse.emf.common.util.BasicEMap.Entry<K, V>) entryEClass
+				.getEPackage().getEFactoryInstance().create(entryEClass);
 		entry.setHash(key.hashCode());
 		entry.setKey(key);
 		entry.setValue(value);

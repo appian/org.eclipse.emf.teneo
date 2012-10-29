@@ -47,7 +47,8 @@ public class HbSequenceIdAction extends AbstractTestAction {
 	@Override
 	public void doAction(TestStore store) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("*", new EcoreResourceFactoryImpl());
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 		try {
 			final Resource res = resourceSet.createResource(URI.createURI("test.ecore"));
@@ -64,8 +65,8 @@ public class HbSequenceIdAction extends AbstractTestAction {
 					epackages.add(epack);
 				}
 			}
-			System.err.println(HbHelper.INSTANCE.generateMapping(epackages.toArray(new EPackage[epackages.size()]),
-				new Properties()));
+			System.err.println(HbHelper.INSTANCE.generateMapping(
+					epackages.toArray(new EPackage[epackages.size()]), new Properties()));
 		} catch (Exception e) {
 			throw new Error(e);
 		}

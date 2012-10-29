@@ -27,26 +27,25 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Item</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Item</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link lobj.impl.ItemImpl#getCorrBlock <em>Corr Block</em>}</li>
- *   <li>{@link lobj.impl.ItemImpl#getChilditems <em>Childitems</em>}</li>
- *   <li>{@link lobj.impl.ItemImpl#getLuRef <em>Lu Ref</em>}</li>
- *   <li>{@link lobj.impl.ItemImpl#getId <em>Id</em>}</li>
+ * <li>{@link lobj.impl.ItemImpl#getCorrBlock <em>Corr Block</em>}</li>
+ * <li>{@link lobj.impl.ItemImpl#getChilditems <em>Childitems</em>}</li>
+ * <li>{@link lobj.impl.ItemImpl#getLuRef <em>Lu Ref</em>}</li>
+ * <li>{@link lobj.impl.ItemImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ItemImpl extends EObjectImpl implements Item {
 	/**
-	 * The cached value of the '{@link #getCorrBlock() <em>Corr Block</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCorrBlock() <em>Corr Block</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCorrBlock()
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	protected EList corrBlock;
 
 	/**
-	 * The cached value of the '{@link #getChilditems() <em>Childitems</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getChilditems() <em>Childitems</em>}' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getChilditems()
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	protected EList childitems;
 
 	/**
-	 * The default value of the '{@link #getLuRef() <em>Lu Ref</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLuRef() <em>Lu Ref</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLuRef()
 	 * @generated
 	 * @ordered
@@ -74,9 +73,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	protected static final String LU_REF_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLuRef() <em>Lu Ref</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLuRef() <em>Lu Ref</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLuRef()
 	 * @generated
 	 * @ordered
@@ -84,9 +83,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	protected String luRef = LU_REF_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -94,9 +93,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -104,8 +103,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ItemImpl() {
@@ -113,8 +112,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
@@ -122,8 +121,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getCorrBlock() {
@@ -134,8 +133,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList getChilditems() {
@@ -146,8 +145,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLuRef() {
@@ -155,20 +154,21 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLuRef(String newLuRef) {
 		String oldLuRef = luRef;
 		luRef = newLuRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ITEM__LU_REF, oldLuRef, luRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, LobjPackage.ITEM__LU_REF, oldLuRef,
+					luRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -176,8 +176,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -188,113 +188,115 @@ public class ItemImpl extends EObjectImpl implements Item {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
-			case LobjPackage.ITEM__CORR_BLOCK:
-				return ((InternalEList)getCorrBlock()).basicRemove(otherEnd, msgs);
-			case LobjPackage.ITEM__CHILDITEMS:
-				return ((InternalEList)getChilditems()).basicRemove(otherEnd, msgs);
+		case LobjPackage.ITEM__CORR_BLOCK:
+			return ((InternalEList) getCorrBlock()).basicRemove(otherEnd, msgs);
+		case LobjPackage.ITEM__CHILDITEMS:
+			return ((InternalEList) getChilditems()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LobjPackage.ITEM__CORR_BLOCK:
-				return getCorrBlock();
-			case LobjPackage.ITEM__CHILDITEMS:
-				return getChilditems();
-			case LobjPackage.ITEM__LU_REF:
-				return getLuRef();
-			case LobjPackage.ITEM__ID:
-				return getId();
+		case LobjPackage.ITEM__CORR_BLOCK:
+			return getCorrBlock();
+		case LobjPackage.ITEM__CHILDITEMS:
+			return getChilditems();
+		case LobjPackage.ITEM__LU_REF:
+			return getLuRef();
+		case LobjPackage.ITEM__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LobjPackage.ITEM__CORR_BLOCK:
-				getCorrBlock().clear();
-				getCorrBlock().addAll((Collection)newValue);
-				return;
-			case LobjPackage.ITEM__CHILDITEMS:
-				getChilditems().clear();
-				getChilditems().addAll((Collection)newValue);
-				return;
-			case LobjPackage.ITEM__LU_REF:
-				setLuRef((String)newValue);
-				return;
-			case LobjPackage.ITEM__ID:
-				setId((String)newValue);
-				return;
+		case LobjPackage.ITEM__CORR_BLOCK:
+			getCorrBlock().clear();
+			getCorrBlock().addAll((Collection) newValue);
+			return;
+		case LobjPackage.ITEM__CHILDITEMS:
+			getChilditems().clear();
+			getChilditems().addAll((Collection) newValue);
+			return;
+		case LobjPackage.ITEM__LU_REF:
+			setLuRef((String) newValue);
+			return;
+		case LobjPackage.ITEM__ID:
+			setId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LobjPackage.ITEM__CORR_BLOCK:
-				getCorrBlock().clear();
-				return;
-			case LobjPackage.ITEM__CHILDITEMS:
-				getChilditems().clear();
-				return;
-			case LobjPackage.ITEM__LU_REF:
-				setLuRef(LU_REF_EDEFAULT);
-				return;
-			case LobjPackage.ITEM__ID:
-				setId(ID_EDEFAULT);
-				return;
+		case LobjPackage.ITEM__CORR_BLOCK:
+			getCorrBlock().clear();
+			return;
+		case LobjPackage.ITEM__CHILDITEMS:
+			getChilditems().clear();
+			return;
+		case LobjPackage.ITEM__LU_REF:
+			setLuRef(LU_REF_EDEFAULT);
+			return;
+		case LobjPackage.ITEM__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LobjPackage.ITEM__CORR_BLOCK:
-				return corrBlock != null && !corrBlock.isEmpty();
-			case LobjPackage.ITEM__CHILDITEMS:
-				return childitems != null && !childitems.isEmpty();
-			case LobjPackage.ITEM__LU_REF:
-				return LU_REF_EDEFAULT == null ? luRef != null : !LU_REF_EDEFAULT.equals(luRef);
-			case LobjPackage.ITEM__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case LobjPackage.ITEM__CORR_BLOCK:
+			return corrBlock != null && !corrBlock.isEmpty();
+		case LobjPackage.ITEM__CHILDITEMS:
+			return childitems != null && !childitems.isEmpty();
+		case LobjPackage.ITEM__LU_REF:
+			return LU_REF_EDEFAULT == null ? luRef != null : !LU_REF_EDEFAULT.equals(luRef);
+		case LobjPackage.ITEM__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (luRef: ");
@@ -305,4 +307,4 @@ public class ItemImpl extends EObjectImpl implements Item {
 		return result.toString();
 	}
 
-} //ItemImpl
+} // ItemImpl

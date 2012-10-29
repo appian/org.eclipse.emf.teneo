@@ -25,7 +25,8 @@ import org.hibernate.dialect.HSQLDialect;
  * @version $Revision: 1.5 $
  */
 
-public class HibernateHsqlDBAdapter extends HsqldbTestDatabaseAdapter implements HibernateTestDBAdapter {
+public class HibernateHsqlDBAdapter extends HsqldbTestDatabaseAdapter implements
+		HibernateTestDBAdapter {
 	/** Return the hibernate dialted */
 	public String getDialect() {
 		return HSQLDialect.class.getName();

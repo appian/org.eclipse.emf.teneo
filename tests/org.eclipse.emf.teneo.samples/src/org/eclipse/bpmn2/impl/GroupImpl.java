@@ -26,23 +26,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Group</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Group</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.GroupImpl#getCategoryValueRef <em>Category Value Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GroupImpl#getCategoryValueRef <em>Category Value Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class GroupImpl extends ArtifactImpl implements Group {
 	/**
 	 * The cached value of the '{@link #getCategoryValueRef() <em>Category Value Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCategoryValueRef()
 	 * @generated
 	 * @ordered
@@ -50,8 +49,8 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	protected CategoryValue categoryValueRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GroupImpl() {
@@ -59,8 +58,8 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,8 +68,8 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CategoryValue getCategoryValueRef() {
@@ -80,16 +79,15 @@ public class GroupImpl extends ArtifactImpl implements Group {
 			if (categoryValueRef != oldCategoryValueRef) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.GROUP__CATEGORY_VALUE_REF,
-							oldCategoryValueRef, categoryValueRef));
+							Bpmn2Package.GROUP__CATEGORY_VALUE_REF, oldCategoryValueRef, categoryValueRef));
 			}
 		}
 		return categoryValueRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CategoryValue basicGetCategoryValueRef() {
@@ -97,22 +95,21 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCategoryValueRef(CategoryValue newCategoryValueRef) {
 		CategoryValue oldCategoryValueRef = categoryValueRef;
 		categoryValueRef = newCategoryValueRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.GROUP__CATEGORY_VALUE_REF,
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.GROUP__CATEGORY_VALUE_REF,
 					oldCategoryValueRef, categoryValueRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,8 +124,8 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,8 +139,8 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -157,8 +154,8 @@ public class GroupImpl extends ArtifactImpl implements Group {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -170,4 +167,4 @@ public class GroupImpl extends ArtifactImpl implements Group {
 		return super.eIsSet(featureID);
 	}
 
-} //GroupImpl
+} // GroupImpl

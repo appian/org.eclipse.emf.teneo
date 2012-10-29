@@ -20,19 +20,17 @@ import org.eclipse.bpmn2.DataInputAssociation;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Input Association</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Data Input Association</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
-public class DataInputAssociationImpl extends DataAssociationImpl implements
-		DataInputAssociation {
+public class DataInputAssociationImpl extends DataAssociationImpl implements DataInputAssociation {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataInputAssociationImpl() {
@@ -40,8 +38,8 @@ public class DataInputAssociationImpl extends DataAssociationImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,4 +47,4 @@ public class DataInputAssociationImpl extends DataAssociationImpl implements
 		return Bpmn2Package.Literals.DATA_INPUT_ASSOCIATION;
 	}
 
-} //DataInputAssociationImpl
+} // DataInputAssociationImpl

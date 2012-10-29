@@ -36,26 +36,27 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Correlation Property</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Correlation Property</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.CorrelationPropertyImpl#getCorrelationPropertyRetrievalExpression <em>Correlation Property Retrieval Expression</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.CorrelationPropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.CorrelationPropertyImpl#getType <em>Type</em>}</li>
+ * <li>
+ * {@link org.eclipse.bpmn2.impl.CorrelationPropertyImpl#getCorrelationPropertyRetrievalExpression
+ * <em>Correlation Property Retrieval Expression</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CorrelationPropertyImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.CorrelationPropertyImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class CorrelationPropertyImpl extends RootElementImpl implements
-		CorrelationProperty {
+public class CorrelationPropertyImpl extends RootElementImpl implements CorrelationProperty {
 	/**
-	 * The cached value of the '{@link #getCorrelationPropertyRetrievalExpression() <em>Correlation Property Retrieval Expression</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCorrelationPropertyRetrievalExpression()
+	 * <em>Correlation Property Retrieval Expression</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCorrelationPropertyRetrievalExpression()
 	 * @generated
 	 * @ordered
@@ -63,9 +64,9 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	protected EList<CorrelationPropertyRetrievalExpression> correlationPropertyRetrievalExpression;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -73,9 +74,9 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -83,9 +84,9 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -93,8 +94,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	protected ItemDefinition type;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CorrelationPropertyImpl() {
@@ -102,8 +103,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,23 +113,22 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public List<CorrelationPropertyRetrievalExpression> getCorrelationPropertyRetrievalExpression() {
 		if (correlationPropertyRetrievalExpression == null) {
 			correlationPropertyRetrievalExpression = new EObjectContainmentEList<CorrelationPropertyRetrievalExpression>(
-					CorrelationPropertyRetrievalExpression.class,
-					this,
+					CorrelationPropertyRetrievalExpression.class, this,
 					Bpmn2Package.CORRELATION_PROPERTY__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION);
 		}
 		return correlationPropertyRetrievalExpression;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -136,8 +136,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -149,8 +149,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getType() {
@@ -160,16 +160,15 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.CORRELATION_PROPERTY__TYPE, oldType,
-							type));
+							Bpmn2Package.CORRELATION_PROPERTY__TYPE, oldType, type));
 			}
 		}
 		return type;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition basicGetType() {
@@ -177,8 +176,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(ItemDefinition newType) {
@@ -190,24 +189,24 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+			NotificationChain msgs) {
 		switch (featureID) {
 		case Bpmn2Package.CORRELATION_PROPERTY__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION:
-			return ((InternalEList<?>) getCorrelationPropertyRetrievalExpression())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getCorrelationPropertyRetrievalExpression()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -226,8 +225,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -236,8 +235,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 		switch (featureID) {
 		case Bpmn2Package.CORRELATION_PROPERTY__CORRELATION_PROPERTY_RETRIEVAL_EXPRESSION:
 			getCorrelationPropertyRetrievalExpression().clear();
-			getCorrelationPropertyRetrievalExpression()
-					.addAll((Collection<? extends CorrelationPropertyRetrievalExpression>) newValue);
+			getCorrelationPropertyRetrievalExpression().addAll(
+					(Collection<? extends CorrelationPropertyRetrievalExpression>) newValue);
 			return;
 		case Bpmn2Package.CORRELATION_PROPERTY__NAME:
 			setName((String) newValue);
@@ -250,8 +249,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,8 +270,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -282,8 +281,7 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 			return correlationPropertyRetrievalExpression != null
 					&& !correlationPropertyRetrievalExpression.isEmpty();
 		case Bpmn2Package.CORRELATION_PROPERTY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.CORRELATION_PROPERTY__TYPE:
 			return type != null;
 		}
@@ -291,8 +289,8 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -307,4 +305,4 @@ public class CorrelationPropertyImpl extends RootElementImpl implements
 		return result.toString();
 	}
 
-} //CorrelationPropertyImpl
+} // CorrelationPropertyImpl

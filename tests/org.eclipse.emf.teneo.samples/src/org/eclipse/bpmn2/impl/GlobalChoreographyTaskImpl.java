@@ -26,24 +26,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Choreography Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Global Choreography Task</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.GlobalChoreographyTaskImpl#getInitiatingParticipantRef <em>Initiating Participant Ref</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GlobalChoreographyTaskImpl#getInitiatingParticipantRef <em>
+ * Initiating Participant Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
-		GlobalChoreographyTask {
+public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements GlobalChoreographyTask {
 	/**
-	 * The cached value of the '{@link #getInitiatingParticipantRef() <em>Initiating Participant Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInitiatingParticipantRef()
+	 * <em>Initiating Participant Ref</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInitiatingParticipantRef()
 	 * @generated
 	 * @ordered
@@ -51,8 +50,8 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	protected Participant initiatingParticipantRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GlobalChoreographyTaskImpl() {
@@ -60,8 +59,8 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,31 +69,27 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant getInitiatingParticipantRef() {
-		if (initiatingParticipantRef != null
-				&& initiatingParticipantRef.eIsProxy()) {
+		if (initiatingParticipantRef != null && initiatingParticipantRef.eIsProxy()) {
 			InternalEObject oldInitiatingParticipantRef = (InternalEObject) initiatingParticipantRef;
 			initiatingParticipantRef = (Participant) eResolveProxy(oldInitiatingParticipantRef);
 			if (initiatingParticipantRef != oldInitiatingParticipantRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Bpmn2Package.GLOBAL_CHOREOGRAPHY_TASK__INITIATING_PARTICIPANT_REF,
-							oldInitiatingParticipantRef,
-							initiatingParticipantRef));
+							oldInitiatingParticipantRef, initiatingParticipantRef));
 			}
 		}
 		return initiatingParticipantRef;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Participant basicGetInitiatingParticipantRef() {
@@ -102,25 +97,22 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setInitiatingParticipantRef(
-			Participant newInitiatingParticipantRef) {
+	public void setInitiatingParticipantRef(Participant newInitiatingParticipantRef) {
 		Participant oldInitiatingParticipantRef = initiatingParticipantRef;
 		initiatingParticipantRef = newInitiatingParticipantRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					Bpmn2Package.GLOBAL_CHOREOGRAPHY_TASK__INITIATING_PARTICIPANT_REF,
 					oldInitiatingParticipantRef, initiatingParticipantRef));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -135,8 +127,8 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -150,8 +142,8 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -165,8 +157,8 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -178,4 +170,4 @@ public class GlobalChoreographyTaskImpl extends ChoreographyImpl implements
 		return super.eIsSet(featureID);
 	}
 
-} //GlobalChoreographyTaskImpl
+} // GlobalChoreographyTaskImpl

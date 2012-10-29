@@ -49,7 +49,8 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 	public void annotate(PAnnotatedEAttribute aAttribute) {
 
 		if (log.isDebugEnabled()) {
-			log.debug(" Adding default annotations for EAttribute " + aAttribute.getModelElement().getName());
+			log.debug(" Adding default annotations for EAttribute "
+					+ aAttribute.getModelElement().getName());
 		}
 
 		final EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
@@ -63,17 +64,17 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 			aAttribute.setEnumerated(enumerated);
 		}
 
-		if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID() && aAttribute.getId() == null) {
+		if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID()
+				&& aAttribute.getId() == null) {
 			// bugzilla 249246
 			if (aAttribute.getPaEClass().getPaSuperEntity() != null
 					&& aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
-				log
-						.warn("The eclass "
-								+ aAttribute.getPaEClass().getModelEClass().getName()
-								+ " has an efeature ("
-								+ aAttribute.getModelEAttribute().getName()
-								+ ")"
-								+ " which has type ID, Teneo will not annotate this efeature with @Id because it is an efeature of a subtype");
+				log.warn("The eclass "
+						+ aAttribute.getPaEClass().getModelEClass().getName()
+						+ " has an efeature ("
+						+ aAttribute.getModelEAttribute().getName()
+						+ ")"
+						+ " which has type ID, Teneo will not annotate this efeature with @Id because it is an efeature of a subtype");
 			} else {
 				final Id id = getFactory().createId();
 				id.setEModelElement(eAttribute);
@@ -139,8 +140,8 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator# setPersistenceOptions(org.eclipse
-	 * .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
+	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
@@ -148,7 +149,8 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 
 		optionDefaultTemporal = TemporalType.get(persistenceOptions.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
-			throw new StoreMappingException("Temporal value not found: " + persistenceOptions.getDefaultTemporalValue());
+			throw new StoreMappingException("Temporal value not found: "
+					+ persistenceOptions.getDefaultTemporalValue());
 		}
 	}
 

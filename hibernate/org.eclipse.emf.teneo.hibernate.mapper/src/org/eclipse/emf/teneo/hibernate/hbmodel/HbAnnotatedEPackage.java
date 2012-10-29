@@ -15,20 +15,30 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotated EPackage</b></em>'. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Hb Annotated EPackage</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbGenericGenerators <em>Hb Generic Generators</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbTypeDef <em>Hb Type Def</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbNamedQuery <em>Hb Named Query</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getFilterDef <em>Filter Def</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getAnyMetaDef <em>Any Meta Def</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbGenericGenerators <em>Hb
+ * Generic Generators</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbTypeDef <em>Hb Type Def
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbNamedQuery <em>Hb Named
+ * Query</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getFilterDef <em>Filter Def
+ * </em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getAnyMetaDef <em>Any Meta Def
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage()
  * @model
  * @generated
@@ -36,14 +46,14 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	/**
 	 * Returns the value of the '<em><b>Hb Generic Generators</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator}.
-	 * <!-- begin-user-doc
-	 * -->
+	 * The list contents are of type
+	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Generic Generators</em>' containment reference isn't clear, there really should
-	 * be more of a description here...
+	 * If the meaning of the '<em>Hb Generic Generators</em>' containment reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb Generic Generators</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_HbGenericGenerators()
 	 * @model containment="true"
@@ -52,14 +62,15 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	EList<GenericGenerator> getHbGenericGenerators();
 
 	/**
-	 * Returns the value of the '<em><b>Hb Type Def</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Hb Type Def</b></em>' containment reference list. The list
+	 * contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Type Def</em>' containment reference list isn't clear, there really should be
-	 * more of a description here...
+	 * If the meaning of the '<em>Hb Type Def</em>' containment reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb Type Def</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_HbTypeDef()
 	 * @model containment="true"
@@ -68,14 +79,15 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	EList<TypeDef> getHbTypeDef();
 
 	/**
-	 * Returns the value of the '<em><b>Hb Named Query</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Hb Named Query</b></em>' reference list. The list contents are
+	 * of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Named Query</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Hb Named Query</em>' reference list isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Hb Named Query</em>' reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_HbNamedQuery()
 	 * @model
@@ -84,14 +96,14 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	EList<NamedQuery> getHbNamedQuery();
 
 	/**
-	 * Returns the value of the '<em><b>Filter Def</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Filter Def</b></em>' reference list. The list contents are of
+	 * type {@link org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Filter Def</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Filter Def</em>' reference list isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Filter Def</em>' reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_FilterDef()
 	 * @model
@@ -100,14 +112,15 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	EList<FilterDef> getFilterDef();
 
 	/**
-	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference list. The list contents are
+	 * of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Any Meta Def</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Any Meta Def</em>' reference list isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Any Meta Def</em>' reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_AnyMetaDef()
 	 * @model

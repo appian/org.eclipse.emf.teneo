@@ -26,39 +26,37 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests for the mixed construction.  
+ * Tests for the mixed construction.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
-*/
-public class SubstitutionzvonAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.3 $
+ */
+public class SubstitutionzvonAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
-	public SubstitutionzvonAction()  
-	{
+	public SubstitutionzvonAction() {
 		super(SubstitutionzvonPackage.eINSTANCE);
 	}
-	
+
 	/** Creates simple types and tests against */
-	public void doAction(TestStore store)
-	{
+	public void doAction(TestStore store) {
 		// test a simple type
-        final SubstitutionzvonFactory factory = SubstitutionzvonFactory.eINSTANCE;
-        final SubstitutionzvonPackage pack = SubstitutionzvonPackage.eINSTANCE;
-    	{
-    		{
-		        store.beginTransaction();
-		        RootType root = factory.createRootType();
-		        root.getMyAbstractGroup().add(pack.getDocumentRoot_Odd(), new BigInteger("5"));
-		        ComplexOddType complexOdd = factory.createComplexOddType();
-		        complexOdd.setValue(39);
-		        root.getMyComplexAbstractGroup().add(pack.getDocumentRoot_ComplexOdd(), complexOdd);
-		        store.store(root);
-		        store.commitTransaction();
-    		}
-    	}
+		final SubstitutionzvonFactory factory = SubstitutionzvonFactory.eINSTANCE;
+		final SubstitutionzvonPackage pack = SubstitutionzvonPackage.eINSTANCE;
+		{
+			{
+				store.beginTransaction();
+				RootType root = factory.createRootType();
+				root.getMyAbstractGroup().add(pack.getDocumentRoot_Odd(), new BigInteger("5"));
+				ComplexOddType complexOdd = factory.createComplexOddType();
+				complexOdd.setValue(39);
+				root.getMyComplexAbstractGroup().add(pack.getDocumentRoot_ComplexOdd(), complexOdd);
+				store.store(root);
+				store.commitTransaction();
+			}
+		}
 	}
 }

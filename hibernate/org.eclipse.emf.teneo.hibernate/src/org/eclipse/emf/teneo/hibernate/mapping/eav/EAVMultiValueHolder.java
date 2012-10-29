@@ -32,18 +32,20 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
 public abstract class EAVMultiValueHolder extends EAVValueHolder {
-	
+
 	public abstract Object getElement(Object value);
 
 	public void setValueInOwner(InternalEObject owner) {
 
 		if (!EcoreAccess.isStaticFeature(getEStructuralFeature(), (BasicEObjectImpl) owner)) {
-			Object currentValue = EcoreAccess.getManyEFeatureValue(getEStructuralFeature(), (BasicEObjectImpl) owner);
+			Object currentValue = EcoreAccess.getManyEFeatureValue(getEStructuralFeature(),
+					(BasicEObjectImpl) owner);
 
 			if (StoreUtil.isEStoreList(currentValue)) {
 				final EStore eStore = owner.eStore();
 				if (eStore.size(owner, getEStructuralFeature()) != -1) {
-					currentValue = eStore.get((InternalEObject) owner, getEStructuralFeature(), EStore.NO_INDEX);
+					currentValue = eStore.get((InternalEObject) owner, getEStructuralFeature(),
+							EStore.NO_INDEX);
 				}
 			}
 
@@ -54,7 +56,8 @@ public abstract class EAVMultiValueHolder extends EAVValueHolder {
 			final Object newValue = get(owner);
 			EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) owner);
 		} else {
-			final Field javaField = FieldUtil.getField(owner.getClass(), getEStructuralFeature().getName());
+			final Field javaField = FieldUtil.getField(owner.getClass(), getEStructuralFeature()
+					.getName());
 
 			try {
 				final Object currentValue = javaField.get(owner);

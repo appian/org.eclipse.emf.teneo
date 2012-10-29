@@ -21,19 +21,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Event Based Gateway Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Event Based Gateway Type</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see org.eclipse.bpmn2.Bpmn2Package#getEventBasedGatewayType()
  * @model extendedMetaData="name='tEventBasedGatewayType'"
  * @generated
  */
 public enum EventBasedGatewayType implements Enumerator {
 	/**
-	 * The '<em><b>Parallel</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Parallel</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #PARALLEL_VALUE
 	 * @generated
 	 * @ordered
@@ -41,9 +40,8 @@ public enum EventBasedGatewayType implements Enumerator {
 	PARALLEL(0, "Parallel", "Parallel"),
 
 	/**
-	 * The '<em><b>Exclusive</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Exclusive</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #EXCLUSIVE_VALUE
 	 * @generated
 	 * @ordered
@@ -51,13 +49,13 @@ public enum EventBasedGatewayType implements Enumerator {
 	EXCLUSIVE(1, "Exclusive", "Exclusive");
 
 	/**
-	 * The '<em><b>Parallel</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Parallel</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Parallel</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Parallel</b></em>' literal object isn't clear, there really should be
+	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PARALLEL
 	 * @model name="Parallel"
 	 * @generated
@@ -66,13 +64,13 @@ public enum EventBasedGatewayType implements Enumerator {
 	public static final int PARALLEL_VALUE = 0;
 
 	/**
-	 * The '<em><b>Exclusive</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Exclusive</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Exclusive</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Exclusive</b></em>' literal object isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #EXCLUSIVE
 	 * @model name="Exclusive"
 	 * @generated
@@ -81,27 +79,27 @@ public enum EventBasedGatewayType implements Enumerator {
 	public static final int EXCLUSIVE_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Event Based Gateway Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Event Based Gateway Type</b></em>' enumerators. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static final EventBasedGatewayType[] VALUES_ARRAY = new EventBasedGatewayType[] {
 			PARALLEL, EXCLUSIVE, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Event Based Gateway Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Event Based Gateway Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<EventBasedGatewayType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EventBasedGatewayType> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Event Based Gateway Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Event Based Gateway Type</b></em>' literal with the specified literal
+	 * value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static EventBasedGatewayType get(String literal) {
@@ -115,9 +113,9 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Event Based Gateway Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Event Based Gateway Type</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static EventBasedGatewayType getByName(String name) {
@@ -131,9 +129,9 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Event Based Gateway Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Event Based Gateway Type</b></em>' literal with the specified integer
+	 * value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static EventBasedGatewayType get(int value) {
@@ -147,30 +145,29 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EventBasedGatewayType(int value, String name, String literal) {
@@ -180,8 +177,8 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -189,8 +186,8 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -198,8 +195,8 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -207,9 +204,9 @@ public enum EventBasedGatewayType implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -217,4 +214,4 @@ public enum EventBasedGatewayType implements Enumerator {
 		return literal;
 	}
 
-} //EventBasedGatewayType
+} // EventBasedGatewayType

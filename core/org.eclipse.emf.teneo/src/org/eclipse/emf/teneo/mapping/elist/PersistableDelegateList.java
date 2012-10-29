@@ -35,6 +35,6 @@ public interface PersistableDelegateList<E> {
 
 	/** If the delegate has been initialized */
 	public boolean isInitialized();
-	
+
 	public EStructuralFeature getEStructuralFeature();
 }

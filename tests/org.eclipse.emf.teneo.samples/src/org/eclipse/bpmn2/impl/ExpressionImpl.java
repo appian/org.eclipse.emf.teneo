@@ -20,18 +20,17 @@ import org.eclipse.bpmn2.Expression;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Expression</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class ExpressionImpl extends BaseElementImpl implements Expression {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExpressionImpl() {
@@ -39,8 +38,8 @@ public class ExpressionImpl extends BaseElementImpl implements Expression {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +47,4 @@ public class ExpressionImpl extends BaseElementImpl implements Expression {
 		return Bpmn2Package.Literals.EXPRESSION;
 	}
 
-} //ExpressionImpl
+} // ExpressionImpl

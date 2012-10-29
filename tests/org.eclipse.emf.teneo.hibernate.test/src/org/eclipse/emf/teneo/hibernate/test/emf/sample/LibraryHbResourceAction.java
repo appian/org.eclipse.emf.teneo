@@ -33,7 +33,8 @@ public class LibraryHbResourceAction extends LibraryResourceAction {
 
 	/** Base method to get a resource belonging to the session of this test case */
 	protected Resource getResource(TestStore store) {
-		String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM + "=" + store.getDataStore().getName();
+		String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM + "="
+				+ store.getDataStore().getName();
 		final URI uri = URI.createURI(uriStr);
 		return new HbResourceImpl(uri);
 	}

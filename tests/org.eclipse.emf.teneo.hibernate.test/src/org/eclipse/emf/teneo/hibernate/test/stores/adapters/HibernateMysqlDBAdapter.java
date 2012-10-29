@@ -28,7 +28,8 @@ import org.hibernate.dialect.MySQL5InnoDBDialect;
  * @version $Revision: 1.7 $
  */
 
-public class HibernateMysqlDBAdapter extends BaseTestDatabaseAdapter implements HibernateTestDBAdapter {
+public class HibernateMysqlDBAdapter extends BaseTestDatabaseAdapter implements
+		HibernateTestDBAdapter {
 	/** Return the hibernate dialted */
 	public String getDialect() {
 		return MySQL5InnoDBDialect.class.getName();

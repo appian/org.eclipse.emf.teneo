@@ -15,9 +15,9 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 
 /**
- * Exception used to signal errors in mapping TODO is there an elver hierarchy
- * of exceptions? MT: no there is no real hierarchy, I tend to use have one
- * general exception which always logs the exception
+ * Exception used to signal errors in mapping TODO is there an elver hierarchy of exceptions? MT: no
+ * there is no real hierarchy, I tend to use have one general exception which always logs the
+ * exception
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -39,8 +39,7 @@ public class MappingException extends TeneoException {
 	/** Constructor */
 	public MappingException(String msg, PAnnotatedEModelElement paElement) {
 		super(msg + ", " + paElement);
-		log.error("EXCEPTION: " + msg + " element "
-				+ paElement.getModelElement().getName());
+		log.error("EXCEPTION: " + msg + " element " + paElement.getModelElement().getName());
 	}
 
 	public MappingException(String msg, Exception cause) {
@@ -55,7 +54,7 @@ public class MappingException extends TeneoException {
 				+ " element "
 				+ pAnnotation.eClass().getName()
 				+ " "
-				+ (pAnnotation.getEModelElement() != null ? pAnnotation
-						.getEModelElement().eClass().getName() : ""));
+				+ (pAnnotation.getEModelElement() != null ? pAnnotation.getEModelElement().eClass()
+						.getName() : ""));
 	}
 }

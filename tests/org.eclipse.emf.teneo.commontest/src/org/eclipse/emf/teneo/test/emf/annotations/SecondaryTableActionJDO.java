@@ -32,12 +32,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations for SecondaryTable
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
+ * @version $Revision: 1.5 $
  */
 public class SecondaryTableActionJDO extends AbstractTestAction {
 
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public SecondaryTableActionJDO() {

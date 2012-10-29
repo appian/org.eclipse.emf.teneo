@@ -60,8 +60,7 @@ public class HbSessionWrapper implements SessionWrapper {
 	}
 
 	/**
-	 * Return the session, return is an object to support both session as well
-	 * as entitymanager.
+	 * Return the session, return is an object to support both session as well as entitymanager.
 	 */
 	public Object getSession() {
 		if (session == null) {
@@ -102,8 +101,7 @@ public class HbSessionWrapper implements SessionWrapper {
 	}
 
 	/** Query */
-	public List<?> executeQuery(String qry, String entityParameter,
-			Object entity) {
+	public List<?> executeQuery(String qry, String entityParameter, Object entity) {
 		final Query query = getSessionInternal().createQuery(qry);
 		query.setEntity(entityParameter, entity);
 		return query.list();
@@ -189,10 +187,8 @@ public class HbSessionWrapper implements SessionWrapper {
 	/** Check if a certain class is mapped using a certain inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy) {
 		final String clsName = cls.getName();
-		final String realName = clsName.substring(clsName.lastIndexOf('.') + 1,
-				clsName.length() - 4);
-		final ClassMetadata cmd = hbDataStore.getSessionFactory()
-				.getClassMetadata(realName);
+		final String realName = clsName.substring(clsName.lastIndexOf('.') + 1, clsName.length() - 4);
+		final ClassMetadata cmd = hbDataStore.getSessionFactory().getClassMetadata(realName);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE)) {
 			return cmd instanceof SingleTableEntityPersister;
 		}
@@ -202,8 +198,7 @@ public class HbSessionWrapper implements SessionWrapper {
 		if (strategy.equals(InheritanceType.TABLE_PER_CLASS)) {
 			return cmd instanceof UnionSubclassEntityPersister;
 		}
-		throw new HbStoreException("Strategy: " + strategy.toString()
-				+ " not supported ");
+		throw new HbStoreException("Strategy: " + strategy.toString() + " not supported ");
 	}
 
 	/** Clear the session */

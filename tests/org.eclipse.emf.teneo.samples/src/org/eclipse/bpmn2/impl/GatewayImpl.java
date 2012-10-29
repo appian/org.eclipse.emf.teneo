@@ -25,23 +25,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Gateway</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Gateway</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.GatewayImpl#getGatewayDirection <em>Gateway Direction</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.GatewayImpl#getGatewayDirection <em>Gateway Direction</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	/**
 	 * The default value of the '{@link #getGatewayDirection() <em>Gateway Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGatewayDirection()
 	 * @generated
 	 * @ordered
@@ -50,8 +49,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 
 	/**
 	 * The cached value of the '{@link #getGatewayDirection() <em>Gateway Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getGatewayDirection()
 	 * @generated
 	 * @ordered
@@ -59,8 +58,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	protected GatewayDirection gatewayDirection = GATEWAY_DIRECTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GatewayImpl() {
@@ -68,8 +67,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -78,8 +77,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GatewayDirection getGatewayDirection() {
@@ -87,8 +86,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGatewayDirection(GatewayDirection newGatewayDirection) {
@@ -97,13 +96,12 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 				: newGatewayDirection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.GATEWAY__GATEWAY_DIRECTION,
-					oldGatewayDirection, gatewayDirection));
+					Bpmn2Package.GATEWAY__GATEWAY_DIRECTION, oldGatewayDirection, gatewayDirection));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,8 +114,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -131,8 +129,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,8 +144,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,8 +158,8 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -176,4 +174,4 @@ public abstract class GatewayImpl extends FlowNodeImpl implements Gateway {
 		return result.toString();
 	}
 
-} //GatewayImpl
+} // GatewayImpl

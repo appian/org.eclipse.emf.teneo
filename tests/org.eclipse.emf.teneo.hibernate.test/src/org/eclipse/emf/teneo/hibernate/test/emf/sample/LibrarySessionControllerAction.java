@@ -120,8 +120,10 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 
 			// walk through the structure starting from the library
 			{
-				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select b from Book b");
-				HibernateResource res2 = (HibernateResource) getResource(resourceSet, "query1=select w from Writer w");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet,
+						"query1=select b from Book b");
+				HibernateResource res2 = (HibernateResource) getResource(resourceSet,
+						"query1=select w from Writer w");
 				sc.getSessionWrapper().beginTransaction();
 				res1.load(Collections.EMPTY_MAP);
 				res2.load(Collections.EMPTY_MAP);
@@ -151,7 +153,8 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 			// test https://bugs.eclipse.org/bugs/show_bug.cgi?id=297687
 			{
 				sc.getSessionWrapper().beginTransaction();
-				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select l from Library l");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet,
+						"query1=select l from Library l");
 				final Library library = factory.createLibrary();
 				library.setName("Science_Fiction");
 				res1.getContents().add(library);

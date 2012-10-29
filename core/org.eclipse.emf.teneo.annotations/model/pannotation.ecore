@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pannotation"
-    nsURI="http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation" nsPrefix="org.elver.annotation">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pannotation" nsURI="http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation"
+    nsPrefix="org.elver.annotation">
   <eAnnotations source="http://www.eclipse.org/emf/2004/EmfaticAnnotationMap">
     <details key="Target" value="teneo/internal/Target"/>
     <details key="Unsupported" value="teneo/internal/Unsupported"/>

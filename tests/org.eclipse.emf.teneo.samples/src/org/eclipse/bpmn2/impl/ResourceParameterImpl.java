@@ -26,26 +26,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resource Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Resource Parameter</b></em>
+ * '. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceParameterImpl#isIsRequired <em>Is Required</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.bpmn2.impl.ResourceParameterImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceParameterImpl#isIsRequired <em>Is Required</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceParameterImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.bpmn2.impl.ResourceParameterImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class ResourceParameterImpl extends BaseElementImpl implements
-		ResourceParameter {
+public class ResourceParameterImpl extends BaseElementImpl implements ResourceParameter {
 	/**
-	 * The default value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsRequired()
 	 * @generated
 	 * @ordered
@@ -53,9 +51,9 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	protected static final boolean IS_REQUIRED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsRequired()
 	 * @generated
 	 * @ordered
@@ -63,9 +61,9 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	protected boolean isRequired = IS_REQUIRED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -73,9 +71,9 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -83,9 +81,9 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -93,8 +91,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	protected ItemDefinition type;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResourceParameterImpl() {
@@ -102,8 +100,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,8 +110,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsRequired() {
@@ -121,8 +119,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsRequired(boolean newIsRequired) {
@@ -130,13 +128,12 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 		isRequired = newIsRequired;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_PARAMETER__IS_REQUIRED,
-					oldIsRequired, isRequired));
+					Bpmn2Package.RESOURCE_PARAMETER__IS_REQUIRED, oldIsRequired, isRequired));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -144,21 +141,21 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_PARAMETER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RESOURCE_PARAMETER__NAME,
+					oldName, name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition getType() {
@@ -168,16 +165,15 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Bpmn2Package.RESOURCE_PARAMETER__TYPE, oldType,
-							type));
+							Bpmn2Package.RESOURCE_PARAMETER__TYPE, oldType, type));
 			}
 		}
 		return type;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ItemDefinition basicGetType() {
@@ -185,21 +181,21 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(ItemDefinition newType) {
 		ItemDefinition oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Bpmn2Package.RESOURCE_PARAMETER__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bpmn2Package.RESOURCE_PARAMETER__TYPE,
+					oldType, type));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -218,8 +214,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -239,8 +235,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -260,8 +256,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -270,8 +266,7 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 		case Bpmn2Package.RESOURCE_PARAMETER__IS_REQUIRED:
 			return isRequired != IS_REQUIRED_EDEFAULT;
 		case Bpmn2Package.RESOURCE_PARAMETER__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Bpmn2Package.RESOURCE_PARAMETER__TYPE:
 			return type != null;
 		}
@@ -279,8 +274,8 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -297,4 +292,4 @@ public class ResourceParameterImpl extends BaseElementImpl implements
 		return result.toString();
 	}
 
-} //ResourceParameterImpl
+} // ResourceParameterImpl
