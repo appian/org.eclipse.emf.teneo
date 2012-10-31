@@ -119,9 +119,6 @@ public abstract class HbDataStore implements DataStore {
 		initializeTypes();
 	}
 
-	private boolean enableAuditing = false;
-	private List<EClass> auditedEClasses = new ArrayList<EClass>();
-
 	/** Initializes emf types with jpox */
 	private static synchronized void initializeTypes() {
 		if (log.isDebugEnabled()) {
@@ -350,6 +347,8 @@ public abstract class HbDataStore implements DataStore {
 			log.debug("Determine referers for each class");
 		}
 
+		setEntityNameAnnotationDetermineAuditPcs();
+
 		referers = computeReferers();
 
 		topEntities = computeTopEntities();
@@ -363,8 +362,6 @@ public abstract class HbDataStore implements DataStore {
 		addExtraLazyInverseProperties();
 
 		setTuplizer();
-
-		setEntityNameAnnotation();
 
 		if (getPersistenceOptions().isUpdateSchema() && log.isWarnEnabled()) {
 			log.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
@@ -619,6 +616,21 @@ public abstract class HbDataStore implements DataStore {
 		return result;
 	}
 
+	protected boolean isAuditEClass(EClass eClass) {
+		if (eClass == null) {
+			return false;
+		}
+
+		// don't consider the auditing eclasses to be a top eclass
+		if (AuditHandler.getInstance().getModelElement(eClass) != null) {
+			return true;
+		}
+		if (TeneoauditingPackage.eNS_URI.equals(eClass.getEPackage().getNsURI())) {
+			return true;
+		}
+		return false;
+	}
+
 	/** Compute the top eclasses */
 	protected String[] computeTopEntities() {
 		final ArrayList<String> result = new ArrayList<String>();
@@ -633,6 +645,11 @@ public abstract class HbDataStore implements DataStore {
 			}
 
 			if (eclass == null && !pc.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
+				continue;
+			}
+
+			// don't consider the auditing eclasses to be a top eclass
+			if (isAuditEClass(eclass)) {
 				continue;
 			}
 
@@ -1335,7 +1352,7 @@ public abstract class HbDataStore implements DataStore {
 		}
 	}
 
-	private void setEntityNameAnnotation() {
+	private void setEntityNameAnnotationDetermineAuditPcs() {
 		final Iterator<?> it = getClassMappings();
 		while (it.hasNext()) {
 			final PersistentClass pc = (PersistentClass) it.next();
@@ -1826,22 +1843,6 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public void setResetConfigurationOnInitialization(boolean resetConfigurationOnInitialization) {
 		this.resetConfigurationOnInitialization = resetConfigurationOnInitialization;
-	}
-
-	public boolean isEnableAuditing() {
-		return enableAuditing;
-	}
-
-	public void setEnableAuditing(boolean enableAuditing) {
-		this.enableAuditing = enableAuditing;
-	}
-
-	public List<EClass> getAuditedEClasses() {
-		return auditedEClasses;
-	}
-
-	public void setAuditedEClasses(List<EClass> auditedEClasses) {
-		this.auditedEClasses = auditedEClasses;
 	}
 
 	public boolean isAuditing() {

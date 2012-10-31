@@ -33,6 +33,7 @@ import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.action.spi.AfterTransactionCompletionProcess;
 import org.hibernate.action.spi.BeforeTransactionCompletionProcess;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.event.spi.EventSource;
@@ -50,8 +51,9 @@ import org.hibernate.event.spi.PostUpdateEventListener;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
-public class AuditProcessHandler implements BeforeTransactionCompletionProcess,
-		PostDeleteEventListener, PostInsertEventListener, PostUpdateEventListener, ExtensionPoint {
+public class AuditProcessHandler implements AfterTransactionCompletionProcess,
+		BeforeTransactionCompletionProcess, PostDeleteEventListener, PostInsertEventListener,
+		PostUpdateEventListener, ExtensionPoint {
 
 	private static final long serialVersionUID = 1L;
 	private HbDataStore dataStore;
@@ -85,7 +87,8 @@ public class AuditProcessHandler implements BeforeTransactionCompletionProcess,
 
 			// let the handler be called at the end of the transaction
 			// to do the transaction work
-			session.getActionQueue().registerProcess(this);
+			session.getActionQueue().registerProcess((AfterTransactionCompletionProcess) this);
+			session.getActionQueue().registerProcess((BeforeTransactionCompletionProcess) this);
 		}
 
 		// remove existing one if the same entity
@@ -119,24 +122,44 @@ public class AuditProcessHandler implements BeforeTransactionCompletionProcess,
 
 	@Override
 	public void doBeforeTransactionCompletion(SessionImplementor session) {
+		// see: http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4178431
+		if (!FlushMode.isManualFlushMode(session.getFlushMode())) {
+			final List<AuditWork> auditWorks = getRemoveQueue((Session) session);
+			if (auditWorks == null) {
+				return;
+			}
+			doAuditWorkInSession((Session) session, auditWorks);
+		}
+	}
+
+	@Override
+	public void doAfterTransactionCompletion(boolean success, SessionImplementor session) {
+		if (!success) {
+			return;
+		}
 		final List<AuditWork> auditWorks = getRemoveQueue((Session) session);
 		if (auditWorks == null) {
 			return;
 		}
-
 		// see: http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4178431
-		if (FlushMode.isManualFlushMode(session.getFlushMode())) {
-			Session tmpSession = null;
+		Session tmpSession = null;
+		boolean err = true;
+		try {
+			tmpSession = session.getFactory().openSession();
+			tmpSession.beginTransaction();
+			doAuditWorkInSession(tmpSession, auditWorks);
+			tmpSession.getTransaction().commit();
+			err = false;
+		} finally {
 			try {
-				tmpSession = session.getFactory().openTemporarySession();
-				doAuditWorkInSession(tmpSession, auditWorks);
+				if (tmpSession != null && err) {
+					tmpSession.getTransaction().rollback();
+				}
 			} finally {
 				if (tmpSession != null) {
 					tmpSession.close();
 				}
 			}
-		} else {
-			doAuditWorkInSession((Session) session, auditWorks);
 		}
 	}
 
@@ -146,6 +169,7 @@ public class AuditProcessHandler implements BeforeTransactionCompletionProcess,
 
 		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
 				.createTeneoAuditCommitInfo();
+		session.flush();
 		session.save(commitInfo);
 
 		int i = 0;

@@ -57,7 +57,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	// START: ++++++++++++++++++++++ AUDITING Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
 
-	public static final String ENABLE_AUDITING = NAMING_PREFIX + "auditing.enable";
+	public static final String ENABLE_AUDITING = MAPPING_PREFIX + "auditing.enable";
 	public static final String AUDITING_ENTITY_PREFIX = NAMING_PREFIX + "auditing.entity.prefix";
 	public static final String AUDITING_ENTITY_POSTFIX = NAMING_PREFIX + "auditing.entity.postfix";
 

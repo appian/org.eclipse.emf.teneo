@@ -313,6 +313,10 @@ public class AuditHandler {
 					} else {
 						eAttribute = (EAttribute) EcoreUtil.copy(eFeature);
 					}
+					// get rid of all teneo.jpa eannotations
+					eAttribute.getEAnnotations().remove(
+							eAttribute.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
+
 					for (EAttribute eSAttribute : EcorePackage.eINSTANCE.getEStructuralFeature()
 							.getEAllAttributes()) {
 						if (eSAttribute.isDerived() || eSAttribute.isVolatile()) {
