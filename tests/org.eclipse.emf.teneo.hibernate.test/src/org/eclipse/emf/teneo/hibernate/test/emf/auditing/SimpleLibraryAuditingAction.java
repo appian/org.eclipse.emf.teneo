@@ -92,19 +92,33 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			store.beginTransaction();
 			final Writer writer = LibraryFactory.eINSTANCE.createWriter();
 			writer.setName("0");
+			final Book bk1 = LibraryFactory.eINSTANCE.createBook();
+			bk1.setTitle("1");
+			bk1.setPages(0);
+			final Book bk2 = LibraryFactory.eINSTANCE.createBook();
+			bk2.setTitle("2");
+			bk2.setPages(0);
+			writer.getBooks().add(bk1);
+			writer.getBooks().add(bk2);
 			store.store(writer);
+			store.store(bk1);
+			store.store(bk2);
 			store.commitTransaction();
 			final Object id = IdentifierCacheHandler.getInstance().getID(writer);
 			for (int i = 0; i < 5; i++) {
 				store.beginTransaction();
 				final Writer w = store.getObject(Writer.class);
 				w.setName("" + (i + 1));
+				w.getBooks().get(0).setPages(i + 1);
+				w.getBooks().get(1).setPages(i + 1);
 				store.commitTransaction();
 			}
 
 			// and delete
 			store.beginTransaction();
 			final Writer w = store.getObject(Writer.class);
+			store.deleteObject(w.getBooks().get(1));
+			store.deleteObject(w.getBooks().get(0));
 			store.deleteObject(w);
 			store.commitTransaction();
 
@@ -112,7 +126,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			final HibernateTestStore testStore = (HibernateTestStore) store;
 			final AuditVersionProvider auditVersionProvider = testStore.getEmfDataStore()
 					.getAuditVersionProvider();
-			final List<TeneoAuditObject> revisions = auditVersionProvider.getAllVersions(
+			final List<TeneoAuditObject> revisions = auditVersionProvider.getAllRevisions(
 					LibraryPackage.eINSTANCE.getWriter(), id);
 			assertTrue(revisions.size() == 7);
 			for (int i = 0; i < 7; i++) {
@@ -129,9 +143,15 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
 			for (int i = 0; i < 6; i++) {
 				final TeneoAuditObject audit = revisions.get(i);
-				final Writer testW = (Writer) vp.getVersion(LibraryPackage.eINSTANCE.getWriter(), id,
+				final Writer testW = (Writer) vp.getEObject(LibraryPackage.eINSTANCE.getWriter(), id,
 						audit.getTeneo_start());
+
 				assertTrue(testW.getName().equals("" + i));
+				// check the books that they are in the correct revision to
+				assertFalse(testW.getBooks().get(0).eIsProxy());
+				assertFalse(testW.getBooks().get(1).eIsProxy());
+				assertTrue(testW.getBooks().get(0).getPages() == i);
+				assertTrue(testW.getBooks().get(1).getPages() == i);
 			}
 
 			store.commitTransaction();

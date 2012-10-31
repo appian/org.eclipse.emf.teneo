@@ -47,22 +47,22 @@ import org.hibernate.engine.spi.SessionFactoryImplementor;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
 public class AuditVersionProvider implements ExtensionPoint {
-	
+
 	private static final String URI_STR = "http://www.eclipse.org/teneo/auditing";
-	
+
 	private Session session;
 	private AuditResource auditResource;
 	private ResourceSet resourceSet;
 	private HbDataStore dataStore;
-	
-	public AuditVersionProvider () {
+
+	public AuditVersionProvider() {
 		auditResource = new AuditResource(URI.createURI(URI_STR));
-		
+
 		resourceSet = new ResourceSetImpl() {
 			@Override
 			public void eNotify(Notification notification) {
 			}
-			
+
 			@Override
 			public boolean eDeliver() {
 				return false;
@@ -72,61 +72,74 @@ public class AuditVersionProvider implements ExtensionPoint {
 			public Resource getResource(URI uri, boolean loadOnDemand) {
 				return auditResource;
 			}
-			
+
 			@Override
 			public EObject getEObject(URI uri, boolean loadOnDemand) {
-				// TODO Auto-generated method stub
-				return null;
+				return auditResource.getEObject(uri.fragment());
 			}
-			
+
 			@Override
 			public Resource createResource(URI uri, String contentType) {
 				return auditResource;
 			}
-			
+
 			@Override
 			public Resource createResource(URI uri) {
 				return auditResource;
 			}
 		};
-		
+
 		resourceSet.getResources().add(auditResource);
 	}
-	
+
 	protected void checkState() {
 		AssertUtil.assertTrue("data store must be set", dataStore != null);
 	}
-	
-	public List<TeneoAuditObject> getAllVersions(EClass eClass, Object id) {
+
+	public List<TeneoAuditObject> getAllRevisions(EClass eClass, Object id) {
 		checkState();
-		
+
 		final EClass auditingEClass = AuditHandler.getInstance().getAuditingModelElement(eClass);
-		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA).getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
-		final Query qry = getSession().createQuery("select e from " + entityName + " e where teneo_object_id=:objectId order by e.teneo_start");
+		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+		final Query qry = getSession()
+				.createQuery(
+						"select e from " + entityName
+								+ " e where teneo_object_id=:objectId order by e.teneo_start");
 		final String idAsString = AuditHandler.getInstance().idToString(eClass, id);
 		qry.setParameter("objectId", idAsString);
 		final List<TeneoAuditObject> result = new ArrayList<TeneoAuditObject>();
 		for (Object o : qry.list()) {
-			result.add((TeneoAuditObject)o);
+			result.add((TeneoAuditObject) o);
 		}
 		return result;
 	}
 
 	@SuppressWarnings("unchecked")
-	public EObject getVersion(EClass eClass, Object id, long timeStamp) {
+	public EObject getEObject(EClass eClass, Object id, long timeStamp) {
 		checkState();
-		
+
 		final String idAsString = AuditHandler.getInstance().idToString(eClass, id);
+		final String fullId = timeStamp + AuditHandler.ID_SEPARATOR + idAsString;
+		if (auditResource.getEObjectFromCache(fullId) != null) {
+			return auditResource.getEObjectFromCache(fullId);
+		}
 		final EClass auditingEClass = AuditHandler.getInstance().getAuditingModelElement(eClass);
-		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA).getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
-		final Query qry = getSession().createQuery("select e from " + entityName + " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end=-1 or teneo_end>:end)");
+		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+		final Query qry = getSession()
+				.createQuery(
+						"select e from "
+								+ entityName
+								+ " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end=-1 or teneo_end>:end)");
 		qry.setParameter("objectId", idAsString);
 		qry.setParameter("start", timeStamp);
 		qry.setParameter("end", timeStamp);
-		final TeneoAuditObject auditObject = (TeneoAuditObject)qry.uniqueResult();
+		final TeneoAuditObject auditObject = (TeneoAuditObject) qry.uniqueResult();
 		final EObject target = eClass.getEPackage().getEFactoryInstance().create(eClass);
 		for (EStructuralFeature targetEFeature : target.eClass().getEAllStructuralFeatures()) {
-			final EStructuralFeature sourceEFeature = auditingEClass.getEStructuralFeature(targetEFeature.getName());
+			final EStructuralFeature sourceEFeature = auditingEClass.getEStructuralFeature(targetEFeature
+					.getName());
 			if (sourceEFeature == null) {
 				continue;
 			}
@@ -135,7 +148,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 			}
 			if (targetEFeature instanceof EReference) {
 				if (targetEFeature.isMany()) {
-					for (Object value : ((Collection<?>)auditObject.eGet(sourceEFeature))) {
+					for (Object value : ((Collection<?>) auditObject.eGet(sourceEFeature))) {
 						((Collection<Object>) target.eGet(targetEFeature)).add(createProxyEObject(
 								(String) value, timeStamp));
 					}
@@ -145,37 +158,42 @@ public class AuditVersionProvider implements ExtensionPoint {
 				}
 			} else {
 				if (targetEFeature.isMany()) {
-					for (Object value : ((Collection<?>)auditObject.eGet(sourceEFeature))) {
-						((Collection<Object>)target.eGet(targetEFeature)).add(value);
+					for (Object value : ((Collection<?>) auditObject.eGet(sourceEFeature))) {
+						((Collection<Object>) target.eGet(targetEFeature)).add(value);
 					}
 				} else {
 					target.eSet(targetEFeature, auditObject.eGet(sourceEFeature));
 				}
 			}
 		}
+
+		((InternalEObject) target).eSetResource(auditResource, null);
+		auditResource.putEObjectInCache(fullId, target);
+
 		return target;
 	}
-	
+
 	private EObject createProxyEObject(String value, long timeStamp) {
 		if (value == null) {
 			return null;
 		}
-		EObject eObject = auditResource.getEObjectFromCache(value);
+		final String idStr = timeStamp
+				+ AuditHandler.ID_SEPARATOR + value;
+		EObject eObject = auditResource.getEObjectFromCache(idStr);
 		if (eObject != null) {
 			return eObject;
 		}
-		final AuditReference reference = AuditHandler.getInstance().fromString((String)value);
+		final AuditReference reference = AuditHandler.getInstance().fromString(idStr);
 		final EClass refEClass = dataStore.getEClassFromEntityName(reference.getEntityName());
 		eObject = refEClass.getEPackage().getEFactoryInstance().create(refEClass);
-		((InternalEObject) eObject)
-.eSetProxyURI(URI.createURI(URI_STR + "#" + timeStamp
-				+ AuditHandler.ID_SEPARATOR + value));
+		((InternalEObject) eObject).eSetProxyURI(URI.createURI(URI_STR + "#" + idStr ));
+		((InternalEObject) eObject).eSetResource(auditResource, null);
 		return eObject;
 	}
-	
+
 	protected Session getSession() {
 		if (session == null) {
-			session = ((SessionFactoryImplementor)dataStore.getSessionFactory()).openTemporarySession();			
+			session = ((SessionFactoryImplementor) dataStore.getSessionFactory()).openTemporarySession();
 		}
 		return session;
 	}
@@ -191,11 +209,11 @@ public class AuditVersionProvider implements ExtensionPoint {
 	public void setSession(Session session) {
 		this.session = session;
 	}
-	
+
 	private class AuditResource extends ResourceImpl {
-		
+
 		private Map<String, EObject> idToEObjectMap = new HashMap<String, EObject>();
-		
+
 		public AuditResource(URI uri) {
 			super(uri);
 		}
@@ -203,20 +221,25 @@ public class AuditVersionProvider implements ExtensionPoint {
 		public EObject getEObjectFromCache(String idStr) {
 			return idToEObjectMap.get(idStr);
 		}
-		
+
+		public void putEObjectInCache(String idStr, EObject eObject) {
+			idToEObjectMap.put(idStr, eObject);
+		}
+
 		@Override
 		public EObject getEObject(String uriFragment) {
-			
+
 			if (idToEObjectMap.containsKey(uriFragment)) {
 				return idToEObjectMap.get(uriFragment);
 			}
-			
+
 			// read the auditobject from the session
 			final AuditReference reference = AuditHandler.getInstance().fromString(uriFragment);
 			final EClass eClass = dataStore.getEClassFromEntityName(reference.getEntityName());
-			EObject version = getVersion(eClass, reference.getId(), reference.getTimeStamp());
+			EObject version = AuditVersionProvider.this.getEObject(eClass, reference.getId(),
+					reference.getTimeStamp());
 			if (version == null) {
-				version = (EObject)getSession().get(reference.getEntityName(), reference.getId());
+				version = (EObject) getSession().get(reference.getEntityName(), reference.getId());
 			}
 
 			if (version.eResource() == null) {

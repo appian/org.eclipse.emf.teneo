@@ -131,8 +131,9 @@ public class AuditHandler {
 	public AuditReference fromString(String idString) {
 		final String[] parts = idString.split(ID_SEPARATOR);
 		final AuditReference auditReference = new AuditReference();
-		auditReference.setEntityName(parts[0]);
-		auditReference.setId(getId(parts[2], parts[1]));
+		auditReference.setTimeStamp(Long.parseLong(parts[0]));
+		auditReference.setEntityName(parts[1]);
+		auditReference.setId(getId(parts[3], parts[2]));
 		return auditReference;
 	}
 
