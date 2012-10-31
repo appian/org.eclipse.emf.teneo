@@ -24,6 +24,9 @@
         eType="#//TeneoAuditCommitInfo"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_audit_kind" lowerBound="1"
         eType="#//TeneoAuditKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_container_id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_container_feature_id"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TeneoAuditCommitInfo">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">

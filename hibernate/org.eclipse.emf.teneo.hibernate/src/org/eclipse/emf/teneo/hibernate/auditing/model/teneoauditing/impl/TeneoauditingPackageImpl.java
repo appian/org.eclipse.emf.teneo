@@ -171,6 +171,24 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditObject_Teneo_container_id() {
+		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditObject_Teneo_container_feature_id() {
+		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -252,6 +270,8 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_END);
 		createEReference(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_COMMIT_INFO);
 		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND);
+		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID);
+		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID);
 
 		teneoAuditCommitInfoEClass = createEClass(TENEO_AUDIT_COMMIT_INFO);
 		createEAttribute(teneoAuditCommitInfoEClass, TENEO_AUDIT_COMMIT_INFO__ID);
@@ -300,6 +320,8 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		initEAttribute(getTeneoAuditObject_Teneo_end(), ecorePackage.getELong(), "teneo_end", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTeneoAuditObject_Teneo_commit_info(), this.getTeneoAuditCommitInfo(), null, "teneo_commit_info", null, 1, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTeneoAuditObject_Teneo_audit_kind(), this.getTeneoAuditKind(), "teneo_audit_kind", null, 1, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditObject_Teneo_container_id(), ecorePackage.getEString(), "teneo_container_id", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditObject_Teneo_container_feature_id(), ecorePackage.getEInt(), "teneo_container_feature_id", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(teneoAuditCommitInfoEClass, TeneoAuditCommitInfo.class, "TeneoAuditCommitInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTeneoAuditCommitInfo_Id(), ecorePackage.getELong(), "id", null, 0, 1, TeneoAuditCommitInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -332,7 +354,7 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		  (teneoAuditObjectEClass, 
 		   source, 
 		   new String[] {
-			 "value", "@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})"
+			 "value", "@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})"
 		   });		
 		addAnnotation
 		  (getTeneoAuditObject_Teneo_audit_id(), 

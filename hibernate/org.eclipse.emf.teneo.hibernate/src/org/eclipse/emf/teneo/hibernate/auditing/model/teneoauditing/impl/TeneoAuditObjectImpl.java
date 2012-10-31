@@ -29,6 +29,8 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.Teneoauditin
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl#getTeneo_end <em>Teneo end</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl#getTeneo_commit_info <em>Teneo commit info</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl#getTeneo_audit_kind <em>Teneo audit kind</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl#getTeneo_container_id <em>Teneo container id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl#getTeneo_container_feature_id <em>Teneo container feature id</em>}</li>
  * </ul>
  * </p>
  *
@@ -179,6 +181,46 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 	 * @ordered
 	 */
 	protected TeneoAuditKind teneo_audit_kind = TENEO_AUDIT_KIND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTeneo_container_id() <em>Teneo container id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_container_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TENEO_CONTAINER_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTeneo_container_id() <em>Teneo container id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_container_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected String teneo_container_id = TENEO_CONTAINER_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTeneo_container_feature_id() <em>Teneo container feature id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_container_feature_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TENEO_CONTAINER_FEATURE_ID_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getTeneo_container_feature_id() <em>Teneo container feature id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_container_feature_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected int teneo_container_feature_id = TENEO_CONTAINER_FEATURE_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -368,6 +410,48 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTeneo_container_id() {
+		return teneo_container_id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTeneo_container_id(String newTeneo_container_id) {
+		String oldTeneo_container_id = teneo_container_id;
+		teneo_container_id = newTeneo_container_id;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID, oldTeneo_container_id, teneo_container_id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getTeneo_container_feature_id() {
+		return teneo_container_feature_id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTeneo_container_feature_id(int newTeneo_container_feature_id) {
+		int oldTeneo_container_feature_id = teneo_container_feature_id;
+		teneo_container_feature_id = newTeneo_container_feature_id;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID, oldTeneo_container_feature_id, teneo_container_feature_id));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -391,6 +475,10 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 				return basicGetTeneo_commit_info();
 			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND:
 				return getTeneo_audit_kind();
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID:
+				return getTeneo_container_id();
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID:
+				return getTeneo_container_feature_id();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -425,6 +513,12 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 				return;
 			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND:
 				setTeneo_audit_kind((TeneoAuditKind)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID:
+				setTeneo_container_id((String)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID:
+				setTeneo_container_feature_id((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -461,6 +555,12 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND:
 				setTeneo_audit_kind(TENEO_AUDIT_KIND_EDEFAULT);
 				return;
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID:
+				setTeneo_container_id(TENEO_CONTAINER_ID_EDEFAULT);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID:
+				setTeneo_container_feature_id(TENEO_CONTAINER_FEATURE_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -488,6 +588,10 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 				return teneo_commit_info != null;
 			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND:
 				return teneo_audit_kind != TENEO_AUDIT_KIND_EDEFAULT;
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID:
+				return TENEO_CONTAINER_ID_EDEFAULT == null ? teneo_container_id != null : !TENEO_CONTAINER_ID_EDEFAULT.equals(teneo_container_id);
+			case TeneoauditingPackage.TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID:
+				return teneo_container_feature_id != TENEO_CONTAINER_FEATURE_ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -515,6 +619,10 @@ public class TeneoAuditObjectImpl extends EObjectImpl implements TeneoAuditObjec
 		result.append(teneo_end);
 		result.append(", teneo_audit_kind: ");
 		result.append(teneo_audit_kind);
+		result.append(", teneo_container_id: ");
+		result.append(teneo_container_id);
+		result.append(", teneo_container_feature_id: ");
+		result.append(teneo_container_feature_id);
 		result.append(')');
 		return result.toString();
 	}

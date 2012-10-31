@@ -167,7 +167,16 @@ public class AuditVersionProvider implements ExtensionPoint {
 			}
 		}
 
-		((InternalEObject) target).eSetResource(auditResource, null);
+		if (auditObject.getTeneo_container_id() != null) {
+			final InternalEObject container = (InternalEObject) createProxyEObject(
+					auditObject.getTeneo_container_id(), timeStamp);
+			((InternalEObject) target).eBasicSetContainer(container,
+					auditObject.getTeneo_container_feature_id(), null);
+		}
+		
+		if (target.eResource() == null) {
+			((InternalEObject) target).eSetResource(auditResource, null);
+		}
 		auditResource.putEObjectInCache(fullId, target);
 
 		return target;

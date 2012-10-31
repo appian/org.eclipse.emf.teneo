@@ -18,7 +18,6 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditOb
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
-import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
@@ -55,39 +54,10 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
 		testSimpleChange(store);
-
-		{
-			store.beginTransaction();
-			final Library library = factory.createLibrary();
-			library.setName("library");
-			for (int i = 0; i < 3; i++) {
-				final Writer writer = factory.createWriter();
-				writer.setName("George " + i);
-				library.getWriters().add(writer);
-				for (int j = 0; j < 3; j++) {
-					final Book book = factory.createBook();
-					book.setTitle("title " + i + " " + j);
-					book.setPages(i * j);
-					book.setCategory(BookCategory.get(j));
-					writer.getBooks().add(book);
-					library.getBooks().add(book);
-				}
-			}
-			store.store(library);
-			store.commitTransaction();
-		}
-
-		{
-			store.beginTransaction();
-			final Library library = store.getObject(Library.class);
-			library.setName(library.getName() + "1");
-			store.commitTransaction();
-		}
-
+		testContainer(store);
 	}
 
 	private void testSimpleChange(TestStore store) {
-
 		{
 			store.beginTransaction();
 			final Writer writer = LibraryFactory.eINSTANCE.createWriter();
@@ -157,4 +127,59 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 	}
+
+	private void testContainer(TestStore store) {
+
+		{
+			store.beginTransaction();
+			final Library library = LibraryFactory.eINSTANCE.createLibrary();
+			library.setName("0");
+			final Writer writer = LibraryFactory.eINSTANCE.createWriter();
+			writer.setName("0");
+			final Book bk1 = LibraryFactory.eINSTANCE.createBook();
+			bk1.setTitle("1");
+			bk1.setPages(0);
+			writer.getBooks().add(bk1);
+			library.getWriters().add(writer);
+			library.getBooks().add(bk1);
+			store.store(library);
+			store.store(bk1);
+			store.commitTransaction();
+			final Object id = IdentifierCacheHandler.getInstance().getID(writer);
+			for (int i = 0; i < 5; i++) {
+				store.beginTransaction();
+				final Writer w = store.getObject(Writer.class);
+				w.setName("" + (i + 1));
+				w.getBooks().get(0).setPages(i + 1);
+				store.commitTransaction();
+			}
+
+			{
+				// and delete
+				store.beginTransaction();
+				final Library l = store.getObject(Library.class);
+				store.deleteObject(l);
+				store.commitTransaction();
+			}
+
+			store.beginTransaction();
+			final HibernateTestStore testStore = (HibernateTestStore) store;
+			final AuditVersionProvider auditVersionProvider = testStore.getEmfDataStore()
+					.getAuditVersionProvider();
+			final List<TeneoAuditObject> revisions = auditVersionProvider.getAllRevisions(
+					LibraryPackage.eINSTANCE.getWriter(), id);
+
+			// now get the revisions one by one, not the last one
+			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
+			for (int i = 0; i < 6; i++) {
+				final TeneoAuditObject audit = revisions.get(i);
+				final Writer testW = (Writer) vp.getEObject(LibraryPackage.eINSTANCE.getWriter(), id,
+						audit.getTeneo_start());
+				assertTrue(testW.eContainer() instanceof Library);
+			}
+
+			store.commitTransaction();
+		}
+	}
+
 }

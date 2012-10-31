@@ -19,11 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end <em>Teneo end</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info <em>Teneo commit info</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind <em>Teneo audit kind</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_container_id <em>Teneo container id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_container_feature_id <em>Teneo container feature id</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject()
- * @model annotation="teneo.jpa value='@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})'"
+ * @model annotation="teneo.jpa value='@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})'"
  * @generated
  */
 public interface TeneoAuditObject extends EObject {
@@ -232,5 +234,57 @@ public interface TeneoAuditObject extends EObject {
 	 * @generated
 	 */
 	void setTeneo_audit_kind(TeneoAuditKind value);
+
+	/**
+	 * Returns the value of the '<em><b>Teneo container id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Teneo container id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Teneo container id</em>' attribute.
+	 * @see #setTeneo_container_id(String)
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_container_id()
+	 * @model
+	 * @generated
+	 */
+	String getTeneo_container_id();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_container_id <em>Teneo container id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo container id</em>' attribute.
+	 * @see #getTeneo_container_id()
+	 * @generated
+	 */
+	void setTeneo_container_id(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Teneo container feature id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Teneo container feature id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Teneo container feature id</em>' attribute.
+	 * @see #setTeneo_container_feature_id(int)
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_container_feature_id()
+	 * @model
+	 * @generated
+	 */
+	int getTeneo_container_feature_id();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_container_feature_id <em>Teneo container feature id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo container feature id</em>' attribute.
+	 * @see #getTeneo_container_feature_id()
+	 * @generated
+	 */
+	void setTeneo_container_feature_id(int value);
 
 } // TeneoAuditObject

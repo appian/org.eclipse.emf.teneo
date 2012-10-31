@@ -22,6 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
@@ -170,6 +171,14 @@ public class AuditProcessHandler implements BeforeTransactionCompletionProcess,
 			auditObject.setTeneo_start(commitTime);
 			auditObject.setTeneo_object_id(AuditHandler.getInstance().idToString(session,
 					auditWork.getEntity()));
+
+			if (auditWork.getEntity() instanceof EObject
+					&& null != ((EObject) auditWork.getEntity()).eContainer()) {
+				auditObject.setTeneo_container_id(AuditHandler.getInstance().idToString(session,
+						((EObject) auditWork.getEntity()).eContainer()));
+				auditObject.setTeneo_container_feature_id(((InternalEObject) auditWork.getEntity())
+						.eContainerFeatureID());
+			}
 
 			AuditHandler.getInstance().copyContent(session, (EObject) auditWork.getEntity(), auditObject,
 					auditWork.getAuditKind() != TeneoAuditKind.DELETE);
