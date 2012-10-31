@@ -97,6 +97,13 @@ public class Constants {
 	public final static String ANNOTATION_SOURCE_TENEO_MAPPING = "teneo.mapping";
 
 	public final static String ANNOTATION_SOURCE_AUDITING = "teneo.auditing";
+
+	public final static String ANNOTATION_KEY_ENTITY_NAME = "teneo.entity.name";
+
+	public final static String ANNOTATION_KEY_VALUE = "value";
+
+	public final static String ANNOTATION_KEY_APPINFO = "appinfo";
+
 	public final static String ANNOTATION_AUDITING_MODELELEMENT = "teneo.auditing.modelelement";
 	public final static String ANNOTATION_AUDITING_MODELELEMENT_AUDITING = "teneo.auditing.modelelement.auditing";
 

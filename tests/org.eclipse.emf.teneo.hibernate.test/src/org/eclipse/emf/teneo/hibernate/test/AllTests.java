@@ -29,6 +29,7 @@ public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite("All tests for hibernate");
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.auditing.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.jpa2.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.detach.AllTests.suite());

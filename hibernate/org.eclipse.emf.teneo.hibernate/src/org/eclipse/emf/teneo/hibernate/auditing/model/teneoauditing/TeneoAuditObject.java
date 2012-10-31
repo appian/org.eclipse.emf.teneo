@@ -7,47 +7,34 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Teneo Audit Object</b></em>
  * '. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id
- * <em>Teneo audit id</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version
- * <em>Teneo version</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id
- * <em>Teneo object id</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start
- * <em>Teneo start</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end
- * <em>Teneo end</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info
- * <em>Teneo commit info</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind
- * <em>Teneo audit kind</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id <em>Teneo audit id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version <em>Teneo version</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id <em>Teneo object id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_previous_start <em>Teneo previous start</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start <em>Teneo start</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end <em>Teneo end</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info <em>Teneo commit info</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind <em>Teneo audit kind</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject()
- * @model annotation="teneo.jpa value='@MappedSuperclass'"
+ * @model annotation="teneo.jpa value='@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})'"
  * @generated
  */
 public interface TeneoAuditObject extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Teneo audit id</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Teneo audit id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Teneo audit id</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Teneo audit id</em>' attribute.
 	 * @see #setTeneo_audit_id(long)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_audit_id()
@@ -57,25 +44,22 @@ public interface TeneoAuditObject extends EObject {
 	long getTeneo_audit_id();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id
-	 * <em>Teneo audit id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo audit id</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id <em>Teneo audit id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo audit id</em>' attribute.
 	 * @see #getTeneo_audit_id()
 	 * @generated
 	 */
 	void setTeneo_audit_id(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Teneo version</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Teneo version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Teneo version</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Teneo version</em>' attribute.
 	 * @see #setTeneo_version(long)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_version()
@@ -85,25 +69,22 @@ public interface TeneoAuditObject extends EObject {
 	long getTeneo_version();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version
-	 * <em>Teneo version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo version</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version <em>Teneo version</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo version</em>' attribute.
 	 * @see #getTeneo_version()
 	 * @generated
 	 */
 	void setTeneo_version(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Teneo object id</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Teneo object id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Teneo object id</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Teneo object id</em>' attribute.
 	 * @see #setTeneo_object_id(String)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_object_id()
@@ -113,25 +94,48 @@ public interface TeneoAuditObject extends EObject {
 	String getTeneo_object_id();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id
-	 * <em>Teneo object id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo object id</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id <em>Teneo object id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo object id</em>' attribute.
 	 * @see #getTeneo_object_id()
 	 * @generated
 	 */
 	void setTeneo_object_id(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Teneo start</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Teneo previous start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Teneo previous start</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Teneo previous start</em>' attribute.
+	 * @see #setTeneo_previous_start(long)
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_previous_start()
+	 * @model
+	 * @generated
+	 */
+	long getTeneo_previous_start();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_previous_start <em>Teneo previous start</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo previous start</em>' attribute.
+	 * @see #getTeneo_previous_start()
+	 * @generated
+	 */
+	void setTeneo_previous_start(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Teneo start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Teneo start</em>' attribute isn't clear, there really should be more
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Teneo start</em>' attribute.
 	 * @see #setTeneo_start(long)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_start()
@@ -141,25 +145,22 @@ public interface TeneoAuditObject extends EObject {
 	long getTeneo_start();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start
-	 * <em>Teneo start</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo start</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start <em>Teneo start</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo start</em>' attribute.
 	 * @see #getTeneo_start()
 	 * @generated
 	 */
 	void setTeneo_start(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Teneo end</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Teneo end</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Teneo end</em>' attribute isn't clear, there really should be more
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Teneo end</em>' attribute.
 	 * @see #setTeneo_end(long)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_end()
@@ -169,25 +170,22 @@ public interface TeneoAuditObject extends EObject {
 	long getTeneo_end();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end
-	 * <em>Teneo end</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo end</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end <em>Teneo end</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo end</em>' attribute.
 	 * @see #getTeneo_end()
 	 * @generated
 	 */
 	void setTeneo_end(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Teneo commit info</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Teneo commit info</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Teneo commit info</em>' reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Teneo commit info</em>' reference.
 	 * @see #setTeneo_commit_info(TeneoAuditCommitInfo)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditObject_Teneo_commit_info()
@@ -197,12 +195,9 @@ public interface TeneoAuditObject extends EObject {
 	TeneoAuditCommitInfo getTeneo_commit_info();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info
-	 * <em>Teneo commit info</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo commit info</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info <em>Teneo commit info</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo commit info</em>' reference.
 	 * @see #getTeneo_commit_info()
 	 * @generated
 	 */
@@ -229,12 +224,9 @@ public interface TeneoAuditObject extends EObject {
 	TeneoAuditKind getTeneo_audit_kind();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind
-	 * <em>Teneo audit kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Teneo audit kind</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind <em>Teneo audit kind</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo audit kind</em>' attribute.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
 	 * @see #getTeneo_audit_kind()
 	 * @generated

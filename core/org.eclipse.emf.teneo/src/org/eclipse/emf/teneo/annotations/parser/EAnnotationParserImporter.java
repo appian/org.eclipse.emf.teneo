@@ -173,7 +173,8 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 		for (Map.Entry<String, String> pAnnotationDetails : ea.getDetails().entrySet()) {
 			final String fName = pAnnotationDetails.getKey();
 			// todo externalize
-			if (fName.compareToIgnoreCase("appinfo") == 0 || fName.compareToIgnoreCase("value") == 0) {
+			if (fName.compareToIgnoreCase(Constants.ANNOTATION_KEY_APPINFO) == 0
+					|| fName.compareToIgnoreCase(Constants.ANNOTATION_KEY_VALUE) == 0) {
 				log.debug("Annotation content: \n " + pAnnotationDetails.getValue());
 				final String content = removeCommentLines(pAnnotationDetails.getValue());
 				result.addAll(annotationParser.parse(ene, content));

@@ -129,6 +129,13 @@ public class ExtensionUtil {
 				ManyToOneReferenceAnnotator.class));
 
 		// from the hibernate plugin
+		em.registerExtension(createExtension(
+				"org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler",
+				"org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler", false));
+		em.registerExtension(createExtension(
+				"org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider",
+				"org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider", false));
+
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.HbContext", true));
 		em.registerExtension(createExtension(
 				"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor", false));

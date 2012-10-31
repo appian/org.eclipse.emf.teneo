@@ -11,6 +11,10 @@ Require-Bundle: org.eclipse.emf.teneo;bundle-version="[2.0.0,3.0.0)";visibility:
  org.eclipse.emf.teneo.annotations;bundle-version="[2.0.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.teneo.hibernate.mapper;bundle-version="[2.0.0,3.0.0)";visibility:=reexport
 Export-Package: org.eclipse.emf.teneo.hibernate;version="2.0.0",
+ org.eclipse.emf.teneo.hibernate.auditing;version="2.0.0",
+ org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing;version="2.0.0",
+ org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl;version="2.0.0",
+ org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.util;version="2.0.0",
  org.eclipse.emf.teneo.hibernate.mapping;version="2.0.0",
  org.eclipse.emf.teneo.hibernate.mapping.eav;version="2.0.0",
  org.eclipse.emf.teneo.hibernate.mapping.econtainer;version="2.0.0",

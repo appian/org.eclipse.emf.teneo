@@ -16,47 +16,17 @@
 package org.eclipse.emf.teneo.hibernate.auditing;
 
 import java.io.Serializable;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.dom4j.Node;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
-import org.hibernate.EntityMode;
-import org.hibernate.FetchMode;
-import org.hibernate.HibernateException;
-import org.hibernate.MappingException;
-import org.hibernate.engine.internal.ForeignKeys;
-import org.hibernate.engine.spi.CascadeStyle;
-import org.hibernate.engine.spi.Mapping;
-import org.hibernate.engine.spi.SessionFactoryImplementor;
-import org.hibernate.engine.spi.SessionImplementor;
-import org.hibernate.metamodel.relational.Size;
-import org.hibernate.persister.entity.Joinable;
-import org.hibernate.type.AbstractType;
-import org.hibernate.type.AssociationType;
-import org.hibernate.type.CompositeType;
-import org.hibernate.type.ForeignKeyDirection;
-import org.hibernate.type.StandardBasicTypes;
-import org.hibernate.type.Type;
 
 /**
- * A reference used to get an audit record.
+ * Helper class used when converting a string to an entityname and id.
  * 
- * @author <a href="mailto:mkanaley@tibco.com">Mike Kanaley</a>
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
 public class AuditReference {
 
 	private String entityName;
 	private Serializable id;
-	private long timestamp = -1;
+	private long timeStamp;
 
 	public String getEntityName() {
 		return entityName;
@@ -74,11 +44,11 @@ public class AuditReference {
 		this.id = id;
 	}
 
-	public long getTimestamp() {
-		return timestamp;
+	public long getTimeStamp() {
+		return timeStamp;
 	}
 
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
+	public void setTimeStamp(long timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 }

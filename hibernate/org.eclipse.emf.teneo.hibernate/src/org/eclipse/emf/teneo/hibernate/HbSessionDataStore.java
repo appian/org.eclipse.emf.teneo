@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceFileProvider;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
@@ -131,8 +132,17 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 				.getServiceRegistry();
 		final EventListenerRegistry eventListenerRegistry = serviceRegistry
 				.getService(EventListenerRegistry.class);
-		eventListenerRegistry
-				.setListeners(EventType.INIT_COLLECTION, initializeCollectionEventListener);
+		eventListenerRegistry.appendListeners(EventType.INIT_COLLECTION,
+				initializeCollectionEventListener);
+
+		if (isAuditing()) {
+			final AuditProcessHandler auditProcessHandler = getExtensionManager().getExtension(
+					AuditProcessHandler.class);
+			auditProcessHandler.setDataStore(this);
+			eventListenerRegistry.appendListeners(EventType.POST_DELETE, auditProcessHandler);
+			eventListenerRegistry.appendListeners(EventType.POST_INSERT, auditProcessHandler);
+			eventListenerRegistry.appendListeners(EventType.POST_UPDATE, auditProcessHandler);
+		}
 	}
 
 	/*

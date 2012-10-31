@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.xml.sax.Attributes;
@@ -58,7 +59,7 @@ public class XmlElementToEStructuralFeatureMapper implements ExtensionPoint {
 				throws SAXException {
 			if (localName.equals("attribute") || localName.equals("element")) {
 				xmlElementName = attributes.getValue("name");
-			} else if (localName.equals("appinfo")
+			} else if (localName.equals(Constants.ANNOTATION_KEY_APPINFO)
 					&& PersistenceMappingSchemaGenerator.ESTRUCTURAL_FEATURE_SOURCE_NAME.equals(attributes
 							.getValue("source"))) {
 				appInfoValue = true;

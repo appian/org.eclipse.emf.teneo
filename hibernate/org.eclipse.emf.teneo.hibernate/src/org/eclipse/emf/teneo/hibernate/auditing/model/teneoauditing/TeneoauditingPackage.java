@@ -18,46 +18,42 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingFactory
  * @model kind="package"
  * @generated
  */
 public interface TeneoauditingPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "teneoauditing";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.eclipse.org/emf/teneo/hibernate/auditing";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "teneoauditing";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	TeneoauditingPackage eINSTANCE = org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl
-			.init();
+	TeneoauditingPackage eINSTANCE = org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl.init();
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl
-	 * <em>Teneo Audit Object</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl <em>Teneo Audit Object</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl#getTeneoAuditObject()
 	 * @generated
@@ -65,67 +61,76 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_OBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Teneo audit id</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Teneo audit id</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TENEO_AUDIT_OBJECT__TENEO_AUDIT_ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Teneo version</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Teneo version</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TENEO_AUDIT_OBJECT__TENEO_VERSION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Teneo object id</b></em>' attribute. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Teneo object id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TENEO_AUDIT_OBJECT__TENEO_OBJECT_ID = 2;
 
 	/**
-	 * The feature id for the '<em><b>Teneo start</b></em>' attribute. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TENEO_AUDIT_OBJECT__TENEO_START = 3;
-
-	/**
-	 * The feature id for the '<em><b>Teneo end</b></em>' attribute. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TENEO_AUDIT_OBJECT__TENEO_END = 4;
-
-	/**
-	 * The feature id for the '<em><b>Teneo commit info</b></em>' reference. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Teneo previous start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_OBJECT__TENEO_COMMIT_INFO = 5;
+	int TENEO_AUDIT_OBJECT__TENEO_PREVIOUS_START = 3;
 
 	/**
-	 * The feature id for the '<em><b>Teneo audit kind</b></em>' attribute. <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Teneo start</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND = 6;
+	int TENEO_AUDIT_OBJECT__TENEO_START = 4;
+
+	/**
+	 * The feature id for the '<em><b>Teneo end</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TENEO_AUDIT_OBJECT__TENEO_END = 5;
+
+	/**
+	 * The feature id for the '<em><b>Teneo commit info</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TENEO_AUDIT_OBJECT__TENEO_COMMIT_INFO = 6;
+
+	/**
+	 * The feature id for the '<em><b>Teneo audit kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND = 7;
 
 	/**
 	 * The number of structural features of the '<em>Teneo Audit Object</em>' class. <!--
@@ -134,13 +139,11 @@ public interface TeneoauditingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_OBJECT_FEATURE_COUNT = 7;
+	int TENEO_AUDIT_OBJECT_FEATURE_COUNT = 8;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl
-	 * <em>Teneo Audit Commit Info</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl#getTeneoAuditCommitInfo()
 	 * @generated
@@ -148,36 +151,36 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_COMMIT_INFO = 1;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TENEO_AUDIT_COMMIT_INFO__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TENEO_AUDIT_COMMIT_INFO__VERSION = 1;
 
 	/**
-	 * The feature id for the '<em><b>User</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>User</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TENEO_AUDIT_COMMIT_INFO__USER = 2;
 
 	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -193,10 +196,8 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_COMMIT_INFO_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
-	 * <em>Teneo Audit Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind <em>Teneo Audit Kind</em>}' enum.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl#getTeneoAuditKind()
 	 * @generated
@@ -204,10 +205,8 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_KIND = 2;
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject
-	 * <em>Teneo Audit Object</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject <em>Teneo Audit Object</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Teneo Audit Object</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject
 	 * @generated
@@ -215,10 +214,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EClass getTeneoAuditObject();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id
-	 * <em>Teneo audit id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id <em>Teneo audit id</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Teneo audit id</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_id()
 	 * @see #getTeneoAuditObject()
@@ -227,10 +224,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditObject_Teneo_audit_id();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version
-	 * <em>Teneo version</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version <em>Teneo version</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Teneo version</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_version()
 	 * @see #getTeneoAuditObject()
@@ -239,10 +234,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditObject_Teneo_version();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id
-	 * <em>Teneo object id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id <em>Teneo object id</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Teneo object id</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_object_id()
 	 * @see #getTeneoAuditObject()
@@ -251,10 +244,19 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditObject_Teneo_object_id();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start
-	 * <em>Teneo start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_previous_start <em>Teneo previous start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Teneo previous start</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_previous_start()
+	 * @see #getTeneoAuditObject()
+	 * @generated
+	 */
+	EAttribute getTeneoAuditObject_Teneo_previous_start();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start <em>Teneo start</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Teneo start</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_start()
 	 * @see #getTeneoAuditObject()
@@ -263,10 +265,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditObject_Teneo_start();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end
-	 * <em>Teneo end</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end <em>Teneo end</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Teneo end</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_end()
 	 * @see #getTeneoAuditObject()
@@ -275,10 +275,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditObject_Teneo_end();
 
 	/**
-	 * Returns the meta object for the reference '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info
-	 * <em>Teneo commit info</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info <em>Teneo commit info</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Teneo commit info</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_commit_info()
 	 * @see #getTeneoAuditObject()
@@ -287,10 +285,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EReference getTeneoAuditObject_Teneo_commit_info();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind
-	 * <em>Teneo audit kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind <em>Teneo audit kind</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Teneo audit kind</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject#getTeneo_audit_kind()
 	 * @see #getTeneoAuditObject()
@@ -299,10 +295,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditObject_Teneo_audit_kind();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo
-	 * <em>Teneo Audit Commit Info</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo <em>Teneo Audit Commit Info</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Teneo Audit Commit Info</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo
 	 * @generated
@@ -310,10 +304,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EClass getTeneoAuditCommitInfo();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getId
-	 * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getId()
 	 * @see #getTeneoAuditCommitInfo()
@@ -322,10 +314,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditCommitInfo_Id();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getVersion
-	 * <em>Version</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Version</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getVersion()
 	 * @see #getTeneoAuditCommitInfo()
@@ -334,10 +324,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditCommitInfo_Version();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getUser
-	 * <em>User</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getUser <em>User</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>User</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getUser()
 	 * @see #getTeneoAuditCommitInfo()
@@ -346,10 +334,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditCommitInfo_User();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getComment
-	 * <em>Comment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getComment <em>Comment</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Comment</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo#getComment()
 	 * @see #getTeneoAuditCommitInfo()
@@ -358,10 +344,8 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditCommitInfo_Comment();
 
 	/**
-	 * Returns the meta object for enum '
-	 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
-	 * <em>Teneo Audit Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind <em>Teneo Audit Kind</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Teneo Audit Kind</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
 	 * @generated
@@ -369,9 +353,9 @@ public interface TeneoauditingPackage extends EPackage {
 	EEnum getTeneoAuditKind();
 
 	/**
-	 * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!--
+	 * Returns the factory that creates the instances of the model.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -386,15 +370,12 @@ public interface TeneoauditingPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl
-		 * <em>Teneo Audit Object</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl <em>Teneo Audit Object</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditObjectImpl
 		 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl#getTeneoAuditObject()
 		 * @generated
@@ -423,8 +404,15 @@ public interface TeneoauditingPackage extends EPackage {
 		 * 
 		 * @generated
 		 */
-		EAttribute TENEO_AUDIT_OBJECT__TENEO_OBJECT_ID = eINSTANCE
-				.getTeneoAuditObject_Teneo_object_id();
+		EAttribute TENEO_AUDIT_OBJECT__TENEO_OBJECT_ID = eINSTANCE.getTeneoAuditObject_Teneo_object_id();
+
+		/**
+		 * The meta object literal for the '<em><b>Teneo previous start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TENEO_AUDIT_OBJECT__TENEO_PREVIOUS_START = eINSTANCE.getTeneoAuditObject_Teneo_previous_start();
 
 		/**
 		 * The meta object literal for the '<em><b>Teneo start</b></em>' attribute feature. <!--
@@ -448,8 +436,7 @@ public interface TeneoauditingPackage extends EPackage {
 		 * 
 		 * @generated
 		 */
-		EReference TENEO_AUDIT_OBJECT__TENEO_COMMIT_INFO = eINSTANCE
-				.getTeneoAuditObject_Teneo_commit_info();
+		EReference TENEO_AUDIT_OBJECT__TENEO_COMMIT_INFO = eINSTANCE.getTeneoAuditObject_Teneo_commit_info();
 
 		/**
 		 * The meta object literal for the '<em><b>Teneo audit kind</b></em>' attribute feature. <!--
@@ -457,14 +444,11 @@ public interface TeneoauditingPackage extends EPackage {
 		 * 
 		 * @generated
 		 */
-		EAttribute TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND = eINSTANCE
-				.getTeneoAuditObject_Teneo_audit_kind();
+		EAttribute TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND = eINSTANCE.getTeneoAuditObject_Teneo_audit_kind();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl
-		 * <em>Teneo Audit Commit Info</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl
 		 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl#getTeneoAuditCommitInfo()
 		 * @generated
@@ -472,9 +456,9 @@ public interface TeneoauditingPackage extends EPackage {
 		EClass TENEO_AUDIT_COMMIT_INFO = eINSTANCE.getTeneoAuditCommitInfo();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute TENEO_AUDIT_COMMIT_INFO__ID = eINSTANCE.getTeneoAuditCommitInfo_Id();
@@ -488,9 +472,9 @@ public interface TeneoauditingPackage extends EPackage {
 		EAttribute TENEO_AUDIT_COMMIT_INFO__VERSION = eINSTANCE.getTeneoAuditCommitInfo_Version();
 
 		/**
-		 * The meta object literal for the '<em><b>User</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>User</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute TENEO_AUDIT_COMMIT_INFO__USER = eINSTANCE.getTeneoAuditCommitInfo_User();
@@ -504,10 +488,8 @@ public interface TeneoauditingPackage extends EPackage {
 		EAttribute TENEO_AUDIT_COMMIT_INFO__COMMENT = eINSTANCE.getTeneoAuditCommitInfo_Comment();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
-		 * <em>Teneo Audit Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind <em>Teneo Audit Kind</em>}' enum.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind
 		 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingPackageImpl#getTeneoAuditKind()
 		 * @generated

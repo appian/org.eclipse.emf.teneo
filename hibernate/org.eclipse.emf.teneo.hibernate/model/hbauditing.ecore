@@ -4,7 +4,7 @@
     nsPrefix="teneoauditing">
   <eClassifiers xsi:type="ecore:EClass" name="TeneoAuditObject">
     <eAnnotations source="teneo.jpa">
-      <details key="value" value="@MappedSuperclass"/>
+      <details key="value" value="@MappedSuperclass&#xA;@Table(uniqueConstraints={@UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_previous_end&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_previous_start&quot;})})"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_audit_id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
       <eAnnotations source="teneo.jpa">
@@ -17,6 +17,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_object_id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_previous_start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="teneo_commit_info" lowerBound="1"

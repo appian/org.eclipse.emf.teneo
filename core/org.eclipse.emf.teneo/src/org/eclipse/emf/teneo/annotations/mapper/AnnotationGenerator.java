@@ -118,7 +118,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 						for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
 							if (eFeature.getName().compareTo("eSuperTypes") == 0) {
 								if (eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) == null) {
-									EcoreUtil.setAnnotation(eFeature, Constants.ANNOTATION_SOURCE_TENEO_JPA, "value",
+									EcoreUtil.setAnnotation(eFeature, Constants.ANNOTATION_SOURCE_TENEO_JPA,
+											Constants.ANNOTATION_KEY_VALUE,
 											"@ManyToMany");
 									break;
 								}

@@ -24,6 +24,7 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
@@ -56,6 +58,7 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditHandler;
+import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
@@ -193,6 +196,8 @@ public abstract class HbDataStore implements DataStore {
 
 	private boolean auditing = false;
 	private List<EPackage> auditingEPackages = new ArrayList<EPackage>();
+
+	private Map<String, EClass> entityNameEClassMap = new HashMap<String, EClass>();
 
 	public EPackage.Registry getPackageRegistry() {
 		if (packageRegistry == null) {
@@ -358,6 +363,8 @@ public abstract class HbDataStore implements DataStore {
 		addExtraLazyInverseProperties();
 
 		setTuplizer();
+
+		setEntityNameAnnotation();
 
 		if (getPersistenceOptions().isUpdateSchema() && log.isWarnEnabled()) {
 			log.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
@@ -1328,6 +1335,38 @@ public abstract class HbDataStore implements DataStore {
 		}
 	}
 
+	private void setEntityNameAnnotation() {
+		final Iterator<?> it = getClassMappings();
+		while (it.hasNext()) {
+			final PersistentClass pc = (PersistentClass) it.next();
+			EClass eClass;
+			if (pc.getEntityName() != null) {
+				eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+				if (eClass != null) {
+					EAnnotation eAnnotation = eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+					if (eAnnotation == null) {
+						eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+						eAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+						eClass.getEAnnotations().add(eAnnotation);
+					}
+					eAnnotation.getDetails().put(Constants.ANNOTATION_KEY_ENTITY_NAME, pc.getEntityName());
+					entityNameEClassMap.put(pc.getEntityName(), eClass);
+				}
+			}
+		}
+	}
+
+	public AuditVersionProvider getAuditVersionProvider() {
+		final AuditVersionProvider auditVersionProvider = getExtensionManager().getExtension(
+				AuditVersionProvider.class);
+		auditVersionProvider.setDataStore(this);
+		return auditVersionProvider;
+	}
+
+	public EClass getEClassFromEntityName(String entityName) {
+		return entityNameEClassMap.get(entityName);
+	}
+
 	/**
 	 * Computes the referers, handles the lazy for containment
 	 */
@@ -1807,6 +1846,7 @@ public abstract class HbDataStore implements DataStore {
 
 	public boolean isAuditing() {
 		if (getPersistenceOptions().isEnableAuditing()) {
+			auditing = true;
 			return true;
 		}
 		return auditing;

@@ -19,8 +19,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum TeneoAuditKind implements Enumerator {
 	/**
-	 * The '<em><b>ADD</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>ADD</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #ADD_VALUE
 	 * @generated
 	 * @ordered
@@ -28,8 +28,8 @@ public enum TeneoAuditKind implements Enumerator {
 	ADD(0, "ADD", "ADD"),
 
 	/**
-	 * The '<em><b>UPDATE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>UPDATE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #UPDATE_VALUE
 	 * @generated
 	 * @ordered
@@ -37,8 +37,8 @@ public enum TeneoAuditKind implements Enumerator {
 	UPDATE(1, "UPDATE", "UPDATE"),
 
 	/**
-	 * The '<em><b>DELETE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>DELETE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #DELETE_VALUE
 	 * @generated
 	 * @ordered
@@ -46,13 +46,13 @@ public enum TeneoAuditKind implements Enumerator {
 	DELETE(2, "DELETE", "DELETE");
 
 	/**
-	 * The '<em><b>ADD</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>ADD</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ADD</b></em>' literal object isn't clear, there really should be more
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #ADD
 	 * @model
 	 * @generated
@@ -61,13 +61,13 @@ public enum TeneoAuditKind implements Enumerator {
 	public static final int ADD_VALUE = 0;
 
 	/**
-	 * The '<em><b>UPDATE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>UPDATE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>UPDATE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #UPDATE
 	 * @model
 	 * @generated
@@ -76,13 +76,13 @@ public enum TeneoAuditKind implements Enumerator {
 	public static final int UPDATE_VALUE = 1;
 
 	/**
-	 * The '<em><b>DELETE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>DELETE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>DELETE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #DELETE
 	 * @model
 	 * @generated
@@ -91,12 +91,16 @@ public enum TeneoAuditKind implements Enumerator {
 	public static final int DELETE_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Teneo Audit Kind</b></em>' enumerators. <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Teneo Audit Kind</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final TeneoAuditKind[] VALUES_ARRAY = new TeneoAuditKind[] { ADD, UPDATE, DELETE, };
+	private static final TeneoAuditKind[] VALUES_ARRAY = new TeneoAuditKind[] {
+			ADD,
+			UPDATE,
+			DELETE,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Teneo Audit Kind</b></em>' enumerators. <!--
@@ -104,8 +108,7 @@ public enum TeneoAuditKind implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<TeneoAuditKind> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<TeneoAuditKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Teneo Audit Kind</b></em>' literal with the specified literal value. <!--
@@ -147,40 +150,34 @@ public enum TeneoAuditKind implements Enumerator {
 	 */
 	public static TeneoAuditKind get(int value) {
 		switch (value) {
-		case ADD_VALUE:
-			return ADD;
-		case UPDATE_VALUE:
-			return UPDATE;
-		case DELETE_VALUE:
-			return DELETE;
+			case ADD_VALUE: return ADD;
+			case UPDATE_VALUE: return UPDATE;
+			case DELETE_VALUE: return DELETE;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private TeneoAuditKind(int value, String name, String literal) {
@@ -191,29 +188,26 @@ public enum TeneoAuditKind implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**
