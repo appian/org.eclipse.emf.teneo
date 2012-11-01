@@ -218,33 +218,33 @@
 		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`TITLE`"/>
 		</property>
-		<list name="writers" table="`BOOKAUDITING_WRITERS`" lazy="extra" cascade="all,delete-orphan">
-			<key update="true">
+		<list name="writers" inverse="true" lazy="extra" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BOOKAUDITING_WRITERS">
 				<column name="`BOOKAUDITING_WRITERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_WRITERS_IDX`"/>
-			<element type="java.lang.String"/>
+			<one-to-many entity-name="StringToWriterMapEntry"/>
 		</list>
-		<list name="keyWords" table="`BOOKAUDITING_KEYWORDS`" lazy="extra" cascade="all,delete-orphan">
-			<key update="true">
+		<list name="keyWords" inverse="true" lazy="extra" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BOOKAUDITING_KEYWORDS">
 				<column name="`BOOKAUDITING_KEYWORDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_KEYWORDS_IDX`"/>
-			<element type="java.lang.String"/>
+			<one-to-many entity-name="StringToStringMapEntry"/>
 		</list>
-		<list name="cityByWriter" table="`BOOKAUDITING_CITYBYWRITER`" lazy="extra" cascade="all,delete-orphan">
-			<key update="true">
+		<list name="cityByWriter" inverse="true" lazy="extra" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BOOKAUDITING_CITYBYWRITER">
 				<column name="`BOOKAUDITING_CITYBYWRITER_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_CITYBYWRITER_IDX`"/>
-			<element type="java.lang.String"/>
+			<one-to-many entity-name="WriterToStringMapEntry"/>
 		</list>
-		<list name="categoryByDate" table="`BOOKAUDITING_CATEGORYBYDATE`" lazy="extra" cascade="all,delete-orphan">
-			<key update="true">
+		<list name="categoryByDate" inverse="true" lazy="extra" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BOOKAUDITING_CATEGORYBYDATE">
 				<column name="`BOOKAUDITING_CATEGORYBYDATE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_CATEGORYBYDATE_IDX`"/>
-			<element type="java.lang.String"/>
+			<one-to-many entity-name="DateToCategoryMapEntry"/>
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DateToCategoryMapEntryAuditing" abstract="false" lazy="false" discriminator-value="DateToCategoryMapEntryAuditing" table="`DATETOCATEGORYMAPENTRYAUDITING`">
