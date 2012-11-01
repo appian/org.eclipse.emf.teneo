@@ -341,6 +341,10 @@ public abstract class HbDataStore implements DataStore {
 		// is set in the List properties.
 		buildMappings();
 
+		entityNameStrategy = null;
+		// create a new one
+		getEntityNameStrategy();
+
 		setInterceptor();
 
 		if (log.isDebugEnabled()) {

@@ -114,4 +114,10 @@ public class ClaimAction extends AbstractTestAction {
 		cl.setClaimLineCompositeKey(clkey);
 		return cl;
 	}
+	
+	@Override
+	public boolean supportAuditing() {
+		// compose key not supported
+		return false;
+	}
 }

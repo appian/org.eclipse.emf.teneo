@@ -203,6 +203,7 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;
+		entityNameToEClass.clear();
 	}
 
 	/*

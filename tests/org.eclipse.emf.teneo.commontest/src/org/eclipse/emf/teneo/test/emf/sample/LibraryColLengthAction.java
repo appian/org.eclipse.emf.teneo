@@ -148,4 +148,12 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	protected String getTestQuery() {
 		return "SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0".toLowerCase();
 	}
+	
+	@Override 
+	public boolean supportAuditing() {
+		// not supported because the small col length results in
+		// name clashes in the collection tables, this can be 
+		// solved with annotations, leaving that for another development.
+		return false;
+	}
 }
