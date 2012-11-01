@@ -26,7 +26,7 @@ public class EmbeddedIdAction extends AbstractTestAction {
 	public EmbeddedIdAction() {
 		super(EmbeddedidPackage.eINSTANCE);
 	}
-
+	
 	@Override
 	public void doAction(TestStore store) {
 		storePerson(store);
@@ -56,4 +56,9 @@ public class EmbeddedIdAction extends AbstractTestAction {
 		store.commitTransaction();
 	}
 
+	@Override
+	public boolean supportAuditing() {
+		return false;
+	}
+	
 }

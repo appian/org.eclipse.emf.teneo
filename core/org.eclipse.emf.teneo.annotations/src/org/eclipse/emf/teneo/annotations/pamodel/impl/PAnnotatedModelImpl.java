@@ -139,7 +139,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/** Set to true if initialized */
 	private boolean initialized = false;
-
+	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -654,4 +654,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 	}
 
+	
+	
 } // PAnnotatedModelImpl

@@ -79,7 +79,7 @@ public class UserTypeAction extends AbstractTestAction {
 			assertTrue(c.getSize() != null);
 			assertTrue(!c.isSetSize());
 			assertEquals(105, c.getId());
-			c.setSize(CitySize.MEDIUM_LITERAL);
+			c.setSize(CitySize.MEDIUM);
 			assertTrue(c.isSetSize());
 			store.beginTransaction();
 			store.store(c);
@@ -89,7 +89,7 @@ public class UserTypeAction extends AbstractTestAction {
 		{
 			final City c = store.getObject(City.class);
 			assertEquals(105, c.getId());
-			assertEquals(CitySize.MEDIUM_LITERAL, c.getSize());
+			assertEquals(CitySize.MEDIUM, c.getSize());
 			assertTrue(c.isSetSize());
 		}
 	}

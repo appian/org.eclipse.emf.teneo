@@ -228,6 +228,10 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 			}
 		}
 
+		if (source.equals(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING)) {
+			return false;
+		}
+
 		return source.startsWith(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 				|| source.startsWith(Constants.ANNOTATION_SOURCE_TENEO_MAPPING);
 	}

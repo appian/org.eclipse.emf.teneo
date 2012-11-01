@@ -143,7 +143,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case AttroverridesecondarytablePackage.PERSON__NAME:
 				return getName();
 			case AttroverridesecondarytablePackage.PERSON__AGE:
-				return new Integer(getAge());
+				return getAge();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,7 +160,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 				setName((String)newValue);
 				return;
 			case AttroverridesecondarytablePackage.PERSON__AGE:
-				setAge(((Integer)newValue).intValue());
+				setAge((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -7,12 +7,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
-import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingFactory;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 
@@ -25,7 +23,7 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass teneoAuditObjectEClass = null;
+	private EClass teneoAuditEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,32 +99,80 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTeneoAuditObject() {
-		return teneoAuditObjectEClass;
+	public EClass getTeneoAuditEntry() {
+		return teneoAuditEntryEClass;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTeneoAuditObject_Teneo_audit_id() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTeneoAuditEntry_Teneo_audit_id() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTeneoAuditObject_Teneo_version() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(1);
+	public EAttribute getTeneoAuditEntry_Teneo_version() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTeneoAuditObject_Teneo_object_id() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(2);
+	public EAttribute getTeneoAuditEntry_Teneo_object_id() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditEntry_Teneo_start() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditEntry_Teneo_end() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTeneoAuditEntry_Teneo_commit_info() {
+		return (EReference)teneoAuditEntryEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditEntry_Teneo_audit_kind() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditEntry_Teneo_container_id() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditEntry_Teneo_container_feature_id() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -134,58 +180,8 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTeneoAuditObject_Teneo_previous_start() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTeneoAuditObject_Teneo_start() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTeneoAuditObject_Teneo_end() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTeneoAuditObject_Teneo_commit_info() {
-		return (EReference)teneoAuditObjectEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTeneoAuditObject_Teneo_audit_kind() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTeneoAuditObject_Teneo_container_id() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTeneoAuditObject_Teneo_container_feature_id() {
-		return (EAttribute)teneoAuditObjectEClass.getEStructuralFeatures().get(9);
+	public EAttribute getTeneoAuditEntry_Teneo_previous_start() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -261,17 +257,17 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		isCreated = true;
 
 		// Create classes and their features
-		teneoAuditObjectEClass = createEClass(TENEO_AUDIT_OBJECT);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_AUDIT_ID);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_VERSION);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_OBJECT_ID);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_PREVIOUS_START);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_START);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_END);
-		createEReference(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_COMMIT_INFO);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_AUDIT_KIND);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_CONTAINER_ID);
-		createEAttribute(teneoAuditObjectEClass, TENEO_AUDIT_OBJECT__TENEO_CONTAINER_FEATURE_ID);
+		teneoAuditEntryEClass = createEClass(TENEO_AUDIT_ENTRY);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_AUDIT_ID);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_VERSION);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_OBJECT_ID);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_START);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_END);
+		createEReference(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_COMMIT_INFO);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_AUDIT_KIND);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_CONTAINER_ID);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START);
 
 		teneoAuditCommitInfoEClass = createEClass(TENEO_AUDIT_COMMIT_INFO);
 		createEAttribute(teneoAuditCommitInfoEClass, TENEO_AUDIT_COMMIT_INFO__ID);
@@ -311,17 +307,17 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(teneoAuditObjectEClass, TeneoAuditObject.class, "TeneoAuditObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTeneoAuditObject_Teneo_audit_id(), ecorePackage.getELong(), "teneo_audit_id", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_version(), ecorePackage.getELong(), "teneo_version", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_object_id(), ecorePackage.getEString(), "teneo_object_id", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_previous_start(), ecorePackage.getELong(), "teneo_previous_start", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_start(), ecorePackage.getELong(), "teneo_start", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_end(), ecorePackage.getELong(), "teneo_end", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTeneoAuditObject_Teneo_commit_info(), this.getTeneoAuditCommitInfo(), null, "teneo_commit_info", null, 1, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_audit_kind(), this.getTeneoAuditKind(), "teneo_audit_kind", null, 1, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_container_id(), ecorePackage.getEString(), "teneo_container_id", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTeneoAuditObject_Teneo_container_feature_id(), ecorePackage.getEInt(), "teneo_container_feature_id", null, 0, 1, TeneoAuditObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(teneoAuditEntryEClass, TeneoAuditEntry.class, "TeneoAuditEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTeneoAuditEntry_Teneo_audit_id(), ecorePackage.getELong(), "teneo_audit_id", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_version(), ecorePackage.getELong(), "teneo_version", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_object_id(), ecorePackage.getEString(), "teneo_object_id", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_start(), ecorePackage.getELong(), "teneo_start", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_end(), ecorePackage.getELong(), "teneo_end", "-1", 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTeneoAuditEntry_Teneo_commit_info(), this.getTeneoAuditCommitInfo(), null, "teneo_commit_info", null, 1, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_audit_kind(), this.getTeneoAuditKind(), "teneo_audit_kind", null, 1, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_container_id(), ecorePackage.getEString(), "teneo_container_id", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_container_feature_id(), ecorePackage.getEInt(), "teneo_container_feature_id", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_previous_start(), ecorePackage.getELong(), "teneo_previous_start", "-1", 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(teneoAuditCommitInfoEClass, TeneoAuditCommitInfo.class, "TeneoAuditCommitInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTeneoAuditCommitInfo_Id(), ecorePackage.getELong(), "id", null, 0, 1, TeneoAuditCommitInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -351,22 +347,28 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 	protected void createTeneoAnnotations() {
 		String source = "teneo.jpa";		
 		addAnnotation
-		  (teneoAuditObjectEClass, 
+		  (teneoAuditEntryEClass, 
 		   source, 
 		   new String[] {
-			 "value", "@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})"
+			 "value", "@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_start\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})"
 		   });		
 		addAnnotation
-		  (getTeneoAuditObject_Teneo_audit_id(), 
+		  (getTeneoAuditEntry_Teneo_audit_id(), 
 		   source, 
 		   new String[] {
 			 "value", "@Id\n@GeneratedValue"
 		   });		
 		addAnnotation
-		  (getTeneoAuditObject_Teneo_version(), 
+		  (getTeneoAuditEntry_Teneo_version(), 
 		   source, 
 		   new String[] {
 			 "value", "@Version"
+		   });		
+		addAnnotation
+		  (teneoAuditCommitInfoEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@Entity"
 		   });		
 		addAnnotation
 		  (getTeneoAuditCommitInfo_Id(), 

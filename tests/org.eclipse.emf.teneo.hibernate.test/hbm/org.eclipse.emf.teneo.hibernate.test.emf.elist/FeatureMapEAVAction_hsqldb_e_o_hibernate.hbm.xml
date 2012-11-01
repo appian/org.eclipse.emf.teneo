@@ -10,4 +10,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.ProductTypeImpl" entity-name="ProductType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ProductType"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.SupplierPriceTypeImpl" entity-name="SupplierPriceType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="SupplierPriceType"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.TranslatedDescriptionTypeImpl" entity-name="TranslatedDescriptionType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TranslatedDescriptionType"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

@@ -41,6 +41,7 @@ public interface Item extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.CollectiontablePackage#getItem_Names()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        annotation="teneo.jpa value='@CollectionTable(name=\"NamesTable\" joinColumns={@JoinColumn(name=\"joinColumn1\")})\n'"
+	 *        annotation="teneo.jpa.auditing value='@CollectionTable(name=\"AuditNamesTable\" joinColumns={@JoinColumn(name=\"joinColumn1\")})\n'"
 	 * @generated
 	 */
 	EList<String> getNames();
@@ -57,6 +58,7 @@ public interface Item extends EObject {
 	 * @return the value of the '<em>Items</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.CollectiontablePackage#getItem_Items()
 	 * @model annotation="teneo.jpa value='@Embedded\n@CollectionTable(name=\"EmbeddedItemsTable\" joinColumns={@JoinColumn(name=\"MYJC\")})\n'"
+	 *        annotation="teneo.jpa.auditing value='@Embedded\n@CollectionTable(name=\"EmbItemsAuditTable\" joinColumns={@JoinColumn(name=\"MYJC\")})\n'"
 	 * @generated
 	 */
 	EList<EmbeddedItem> getItems();

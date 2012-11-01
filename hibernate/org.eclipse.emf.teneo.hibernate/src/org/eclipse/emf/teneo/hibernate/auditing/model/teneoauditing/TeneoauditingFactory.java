@@ -19,13 +19,13 @@ public interface TeneoauditingFactory extends EFactory {
 	TeneoauditingFactory eINSTANCE = org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoauditingFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Teneo Audit Object</em>'.
+	 * Returns a new object of class '<em>Teneo Audit Entry</em>'.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @return a new object of class '<em>Teneo Audit Object</em>'.
+	 * @return a new object of class '<em>Teneo Audit Entry</em>'.
 	 * @generated
 	 */
-	TeneoAuditObject createTeneoAuditObject();
+	TeneoAuditEntry createTeneoAuditEntry();
 
 	/**
 	 * Returns a new object of class '<em>Teneo Audit Commit Info</em>'.

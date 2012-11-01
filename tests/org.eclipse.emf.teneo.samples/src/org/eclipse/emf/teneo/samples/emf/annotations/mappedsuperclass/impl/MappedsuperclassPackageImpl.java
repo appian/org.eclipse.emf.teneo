@@ -333,6 +333,8 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa.auditing
+		createTeneo_1Annotations();
 	}
 
 	/**
@@ -372,7 +374,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   source, 
 		   new String[] {
 			 "appinfo", "@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t"
-		   });				
+		   });					
 		addAnnotation
 		  (testReferenceEClass, 
 		   source, 
@@ -437,7 +439,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   new String[] {
 			 "kind", "element",
 			 "name", "myName"
-		   });			
+		   });				
 		addAnnotation
 		  (specificDocumentEClass, 
 		   source, 
@@ -466,6 +468,22 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 			 "kind", "element",
 			 "name", "name"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa.auditing</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.jpa.auditing";														
+		addAnnotation
+		  (specificDocumentEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t"
+		   });					
 	}
 
 } //MappedsuperclassPackageImpl

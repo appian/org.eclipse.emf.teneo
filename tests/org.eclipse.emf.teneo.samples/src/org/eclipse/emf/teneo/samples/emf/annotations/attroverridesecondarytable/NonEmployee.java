@@ -36,6 +36,7 @@ public interface NonEmployee extends Person {
 	 * @see #setAddress(Address)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attroverridesecondarytable.AttroverridesecondarytablePackage#getNonEmployee_Address()
 	 * @model annotation="teneo.jpa value='@Embedded'"
+	 *        annotation="teneo.jpa.auditing value='@Embedded'"
 	 * @generated
 	 */
 	Address getAddress();

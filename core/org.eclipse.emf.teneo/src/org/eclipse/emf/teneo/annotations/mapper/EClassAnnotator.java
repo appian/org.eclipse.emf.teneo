@@ -41,6 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Sets the annotation on an eclass.
@@ -109,6 +110,11 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 
 		if (getPersistenceOptions().isEAVMapping() && aClass.getNoEAVMapping() == null) {
 			aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
+		}
+
+		// prevent eav mapping for audit entry classes
+		if (StoreUtil.isAuditEntryEClass(eclass)) {
+			aClass.setNoEAVMapping(PannotationFactory.eINSTANCE.createNoEAVMapping());
 		}
 
 		if (log.isDebugEnabled()) {

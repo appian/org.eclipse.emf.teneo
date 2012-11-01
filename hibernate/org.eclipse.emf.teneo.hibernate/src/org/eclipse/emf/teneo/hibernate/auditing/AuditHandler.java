@@ -16,6 +16,7 @@
 package org.eclipse.emf.teneo.hibernate.auditing;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,14 +33,18 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
-import org.hibernate.engine.internal.ForeignKeys;
 import org.hibernate.engine.spi.SessionImplementor;
 
 /**
@@ -70,35 +75,59 @@ public class AuditHandler {
 	 * {@link EReference} values to a String containing the id.
 	 */
 	@SuppressWarnings("unchecked")
-	public void copyContent(Session session, EObject source, EObject target, boolean copyCollections) {
+	public void copyContentToAuditEntry(Session session, EObject source, TeneoAuditEntry auditEntry,
+			boolean copyCollections) {
 		final EClass sourceEClass = source.eClass();
-		final EClass targetEClass = target.eClass();
+		final EClass targetEClass = auditEntry.eClass();
 		for (EStructuralFeature targetEFeature : targetEClass.getEAllStructuralFeatures()) {
+
+			if (!copyCollections && targetEFeature.isMany()) {
+				continue;
+			}
+
+			// initialize with new arrays always to prevent hibernate from complaining if the
+			// same array is re-used accross entities
+			if (targetEFeature.getEType().getInstanceClass() != null
+					&& targetEFeature.getEType().getInstanceClass().isArray()) {
+				auditEntry.eSet(targetEFeature,
+						Array.newInstance(targetEFeature.getEType().getInstanceClass().getComponentType(), 0));
+			}
+
 			final EStructuralFeature sourceEFeature = sourceEClass.getEStructuralFeature(targetEFeature
 					.getName());
 			if (sourceEFeature != null && (sourceEFeature.isMany() || source.eIsSet(sourceEFeature))) {
-				if (sourceEFeature instanceof EReference) {
+				if (targetEFeature instanceof EAttribute && sourceEFeature instanceof EReference) {
 					if (sourceEFeature.isMany()) {
-						if (copyCollections) {
-							for (Object value : (Collection<?>) source.eGet(sourceEFeature)) {
-								final String idAsString = AuditHandler.getInstance().idToString(session, value);
-								((Collection<Object>) target.eGet(targetEFeature)).add(idAsString);
-							}
+						for (Object value : (Collection<?>) source.eGet(sourceEFeature)) {
+							final String idAsString = AuditHandler.getInstance().entityToIdString(session, value);
+							((Collection<Object>) auditEntry.eGet(targetEFeature)).add(idAsString);
 						}
 					} else {
-						final String idAsString = AuditHandler.getInstance().idToString(session,
+						final String idAsString = AuditHandler.getInstance().entityToIdString(session,
 								source.eGet(sourceEFeature));
-						target.eSet(targetEFeature, idAsString);
+						auditEntry.eSet(targetEFeature, idAsString);
 					}
 				} else {
 					if (sourceEFeature.isMany()) {
-						if (copyCollections) {
+						if (FeatureMapUtil.isFeatureMap(sourceEFeature)) {
+							for (Object value : ((Collection<?>) source.eGet(sourceEFeature))) {
+								final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
+								final EStructuralFeature targetEntryFeature = AuditHandler.getInstance()
+										.getAuditingModelElement(sourceEntry.getEStructuralFeature(),
+												auditEntry.eClass().getName());
+								final FeatureMap.Entry targetEntry = createFeatureMapEntry(session,
+										targetEntryFeature, sourceEntry);
+								((Collection<Object>) auditEntry.eGet(targetEFeature)).add(targetEntry);
+							}
+						} else {
 							for (Object value : (Collection<?>) source.eGet(sourceEFeature)) {
-								((Collection<Object>) target.eGet(targetEFeature)).add(value);
+								((Collection<Object>) auditEntry.eGet(targetEFeature)).add(convertValue(
+										targetEFeature, value));
 							}
 						}
 					} else {
-						target.eSet(targetEFeature, source.eGet(sourceEFeature));
+						auditEntry.eSet(targetEFeature,
+								convertValue(targetEFeature, source.eGet(sourceEFeature)));
 					}
 				}
 			}
@@ -106,12 +135,45 @@ public class AuditHandler {
 	}
 
 	/**
+	 * Clones an array if the value is an array, otherwise just returns the value.
+	 */
+	public Object convertValue(EStructuralFeature eFeature, Object value) {
+		if (value == null) {
+			return value;
+		}
+
+		if (eFeature instanceof EReference && ((EReference) eFeature).isContainment()) {
+			return EcoreUtil.copy((EObject) value);
+		}
+
+		// copy the array
+		if (value.getClass().isArray()) {
+			final int length = Array.getLength(value);
+			final Object newArray = Array.newInstance(value.getClass().getComponentType(), length);
+			for (int i = 0; i < length; i++) {
+				Array.set(newArray, i, Array.get(value, i));
+			}
+			return newArray;
+		}
+		return value;
+	}
+
+	private FeatureMap.Entry createFeatureMapEntry(Session session, EStructuralFeature eFeature,
+			FeatureMap.Entry sourceEntry) {
+		Object value = sourceEntry.getValue();
+		if (sourceEntry.getEStructuralFeature() instanceof EReference) {
+			value = AuditHandler.getInstance().entityToIdString(session, value);
+		}
+		return FeatureMapUtil.createEntry(eFeature, value);
+	}
+
+	/**
 	 * Create a string which reflects the id of the entity.
 	 */
-	public String idToString(Session session, Object entity) {
+	public String entityToIdString(Session session, Object entity) {
 		final String entityName = ((SessionImplementor) session).bestGuessEntityName(entity);
-		final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, entity,
-				(SessionImplementor) session);
+		final Serializable id = ((SessionImplementor) session).getEntityPersister(entityName, entity)
+				.getIdentifier(entity, (SessionImplementor) session);
 		return entityName + ID_SEPARATOR + id.getClass().getName() + ID_SEPARATOR + id;
 	}
 
@@ -174,20 +236,30 @@ public class AuditHandler {
 		return (T) StoreUtil.stringToStructureFeature(id);
 	}
 
+	public EClass getAuditingModelElement(EClass modelElement) {
+		return getAuditingModelElement(modelElement, null);
+	}
+
 	/**
 	 * Return the audit model element used to audit the passed in model element.
+	 * 
+	 * The qualifier is used to handle an efeature in a super class which is copied multiple times to
+	 * auditing subclasses.
 	 * 
 	 * @see #setAuditingAssociation(EModelElement, EModelElement)
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends EModelElement> T getAuditingModelElement(T modelElement) {
+	public <T extends EModelElement> T getAuditingModelElement(T modelElement, String qualifier) {
 		final EAnnotation eAnnotation = modelElement
 				.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING);
 		if (eAnnotation == null) {
 			return null;
 		}
+		// note a qualifier is needed because a feature is created
+		// multiple times for an audit feature in the audit table
+		// so qualify using the audit eclass
 		final String id = eAnnotation.getDetails().get(
-				Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING);
+				Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING + (qualifier == null ? "" : qualifier));
 		if (id == null) {
 			return null;
 		}
@@ -200,24 +272,39 @@ public class AuditHandler {
 	/**
 	 * Returns true if the model element should not be audited.
 	 */
-	public <T extends EModelElement> boolean isNoAuditing(T modelElement) {
+	public <T extends EModelElement> boolean isNoAuditing(PersistenceOptions po, T modelElement) {
+
 		final EAnnotation teneoAnnotation = modelElement
 				.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
-		if (teneoAnnotation == null) {
-			return false;
-		}
-
-		for (String value : teneoAnnotation.getDetails().values()) {
-			if (value != null
-					&& (value.contains("@Transient") || value.contains(Constants.ANNOTATION_AUDITING_NOT))) {
+		if (teneoAnnotation != null) {
+			// note check all keys, see EClassAnnotator
+			boolean noEAVPresent = false;
+			for (String value : teneoAnnotation.getDetails().values()) {
+				if (value != null
+						&& (value.contains("@EAV") || value.contains("@Transient") || value
+								.contains(Constants.ANNOTATION_AUDITING_NOT))) {
+					return true;
+				}
+				noEAVPresent = noEAVPresent || (value != null && value.contains("@NoEAV"));
+			}
+			// eav mapped
+			if (po.isEAVMapping() && !noEAVPresent) {
 				return true;
 			}
+		} else if (po.isEAVMapping()) {
+			return true;
 		}
 
 		if (modelElement instanceof EStructuralFeature) {
 			final EStructuralFeature eStructuralFeature = (EStructuralFeature) modelElement;
 
-			if (eStructuralFeature.isVolatile() || eStructuralFeature.isDerived()) {
+			// part of a featuremap, still incorporate in auditing
+			if (ExtendedMetaData.INSTANCE.getGroup(eStructuralFeature) != null) {
+				return false;
+			}
+
+			if (!eStructuralFeature.isChangeable() || eStructuralFeature.isVolatile()
+					|| eStructuralFeature.isDerived()) {
 				return true;
 			}
 
@@ -236,7 +323,8 @@ public class AuditHandler {
 	 * @see #getAuditingModelElement(EModelElement)
 	 * @see #getModelElement(EModelElement)
 	 */
-	public <T extends EModelElement> void setAuditingAssociation(T source, T auditing) {
+	public <T extends EModelElement> void setAuditingAssociation(T source, T auditing,
+			String qualifier) {
 		{
 			EAnnotation eAnnotation = auditing.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING);
 			if (eAnnotation == null) {
@@ -259,11 +347,18 @@ public class AuditHandler {
 				eAnnotation.setSource(Constants.ANNOTATION_SOURCE_AUDITING);
 				source.getEAnnotations().add(eAnnotation);
 			}
+
+			// note a qualifier is needed because a feature is created
+			// multiple times for an audit feature in the audit table
+			// so qualify using the audit eclass
+			final String localQualifier = qualifier != null ? qualifier : "";
 			if (auditing instanceof EClass) {
-				eAnnotation.getDetails().put(Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING,
+				eAnnotation.getDetails().put(
+						Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING + localQualifier,
 						StoreUtil.eClassToString((EClass) auditing));
 			} else {
-				eAnnotation.getDetails().put(Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING,
+				eAnnotation.getDetails().put(
+						Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING + localQualifier,
 						StoreUtil.structuralFeatureToString((EStructuralFeature) auditing));
 			}
 		}
@@ -272,73 +367,94 @@ public class AuditHandler {
 	/**
 	 * Entry point for creating all auditing types needed to audit the sourceEPackage.
 	 */
-	public EPackage createAuditingEPackage(EPackage sourceEPackage, EPackage.Registry registry,
-			PersistenceOptions po) {
+	public EPackage createAuditingEPackage(HbDataStore dataStore, EPackage sourceEPackage,
+			EPackage.Registry registry, PersistenceOptions po) {
 		final EPackage eAuditingPackage = EcoreFactory.eINSTANCE.createEPackage();
-		eAuditingPackage.setName(sourceEPackage.getName() + "-auditing");
-		eAuditingPackage.setNsPrefix(sourceEPackage.getNsPrefix() + "-auditing");
-		eAuditingPackage.setNsURI(sourceEPackage.getNsURI() + "/auditing");
+		eAuditingPackage.setName(sourceEPackage.getName() + "Auditing");
+		eAuditingPackage.setNsPrefix(sourceEPackage.getNsPrefix() + "Auditing");
+		eAuditingPackage.setNsURI(sourceEPackage.getNsURI() + "Auditing");
 		for (EClassifier eClassifier : sourceEPackage.getEClassifiers()) {
 			if (eClassifier instanceof EClass) {
-				if (isNoAuditing(eClassifier)) {
+
+				if (isNoAuditing(po, eClassifier)) {
 					continue;
 				}
 
 				final EClass eClass = (EClass) eClassifier;
 				final EClass auditingEClass = EcoreFactory.eINSTANCE.createEClass();
-				auditingEClass.setName(eClass.getName());
-				auditingEClass.getESuperTypes().add(TeneoauditingPackage.eINSTANCE.getTeneoAuditObject());
+				auditingEClass.setName(po.getAuditingEntityPrefix() + eClass.getName()
+						+ po.getAuditingEntityPostfix());
+				auditingEClass.getESuperTypes().add(TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry());
 
 				eAuditingPackage.getEClassifiers().add(auditingEClass);
-				setAuditingAssociation(eClass, auditingEClass);
+				setAuditingAssociation(eClass, auditingEClass, null);
 
 				if (eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
 					final EAnnotation teneoAnnotation = EcoreUtil.copy(eClass
 							.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
 					teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 					auditingEClass.getEAnnotations().add(teneoAnnotation);
+				} else {
+					// at least add an entity annotation
+					final EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+					eAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+					eAnnotation.getDetails().put("value", "@Entity");
+					auditingEClass.getEAnnotations().add(eAnnotation);
 				}
 
-				// set the entity name
-				setEntityNameAndNamedQuery(auditingEClass, po);
-
 				for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
-					if (isNoAuditing(eFeature)) {
+					if (isNoAuditing(po, eFeature)) {
 						continue;
 					}
-					EAttribute eAttribute;
-					if (eFeature instanceof EReference) {
-						eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
-						eAttribute.setEType(XMLTypePackage.eINSTANCE.getString());
+					EStructuralFeature auditingEFeature;
+
+					if (eFeature instanceof EReference && StoreUtil.isMap(eFeature)) {
+						auditingEFeature = EcoreUtil.copy(eFeature);
+					} else if (eFeature instanceof EReference && dataStore.isEmbedded((EReference) eFeature)) {
+						auditingEFeature = EcoreUtil.copy(eFeature);
+					} else if (eFeature instanceof EReference) {
+						auditingEFeature = EcoreFactory.eINSTANCE.createEAttribute();
+						auditingEFeature.setEType(XMLTypePackage.eINSTANCE.getString());
+						for (EAnnotation eAnnotation : eFeature.getEAnnotations()) {
+							auditingEFeature.getEAnnotations().add(EcoreUtil.copy(eAnnotation));
+						}
+
+						// copy all values
+						for (EAttribute eSAttribute : EcorePackage.eINSTANCE.getEStructuralFeature()
+								.getEAllAttributes()) {
+							if (eSAttribute.isDerived() || eSAttribute.isVolatile()) {
+								continue;
+							}
+							if (eFeature.eIsSet(eSAttribute)) {
+								auditingEFeature.eSet(eSAttribute, eFeature.eGet(eSAttribute));
+							}
+						}
 					} else {
-						eAttribute = (EAttribute) EcoreUtil.copy(eFeature);
+						auditingEFeature = EcoreUtil.copy(eFeature);
 					}
+
 					// get rid of all teneo.jpa eannotations
-					eAttribute.getEAnnotations().remove(
-							eAttribute.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
-
-					for (EAttribute eSAttribute : EcorePackage.eINSTANCE.getEStructuralFeature()
-							.getEAllAttributes()) {
-						if (eSAttribute.isDerived() || eSAttribute.isVolatile()) {
-							continue;
-						}
-						if (eFeature.eIsSet(eSAttribute)) {
-							eAttribute.eSet(eSAttribute, eFeature.eGet(eSAttribute));
-						}
-					}
-					// never be an id
-					eAttribute.setID(false);
-					// remove later...
-					eAttribute.setLowerBound(0);
-
+					auditingEFeature.getEAnnotations().remove(
+							auditingEFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
+					auditingEFeature.getEAnnotations().remove(
+							auditingEFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_HIBERNATE));
+					// re-use the other ones
 					if (eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
 						final EAnnotation teneoAnnotation = EcoreUtil.copy(eFeature
-								.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
+								.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING));
 						teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
-						eAttribute.getEAnnotations().add(teneoAnnotation);
+						auditingEFeature.getEAnnotations().add(teneoAnnotation);
 					}
 
-					auditingEClass.getEStructuralFeatures().add(eAttribute);
+					// never be an id
+					if (auditingEFeature instanceof EAttribute) {
+						((EAttribute) auditingEFeature).setID(false);
+					}
+					// remove later...
+					auditingEFeature.setLowerBound(0);
+
+					auditingEClass.getEStructuralFeatures().add(auditingEFeature);
+					setAuditingAssociation(eFeature, auditingEFeature, auditingEClass.getName());
 				}
 			}
 		}
@@ -346,57 +462,5 @@ public class AuditHandler {
 		registry.put(eAuditingPackage.getNsURI(), eAuditingPackage);
 
 		return eAuditingPackage;
-	}
-
-	/**
-	 * Return the correct entity name using pre and postfix options.
-	 * 
-	 * @see PersistenceOptions#getAuditingEntityPostfix()
-	 * @see PersistenceOptions#getAuditingEntityPrefix()
-	 */
-	public String getEntityName(EClass auditingEClass, PersistenceOptions po) {
-		return po.getAuditingEntityPrefix() + auditingEClass.getName() + po.getAuditingEntityPostfix();
-	}
-
-	private void setEntityNameAndNamedQuery(EClass auditingEClass, PersistenceOptions po) {
-		final String entityName = getEntityName(auditingEClass, po);
-		final String entityNameJPA = "@Entity(name=\"" + entityName + "\")";
-		final String namedQuery = "@NamedQuery(name=\"" + entityName + ".previousVersion\", "
-				+ "	query=\"select e from " + entityName
-				+ " e where teneo_object_id=:objectId and teneo_end=-1\")";
-		if (auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) != null) {
-			final EAnnotation eAnnotation = auditingEClass
-					.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
-			boolean addEntity = true;
-			String foundKey = null;
-			String foundValue = null;
-			for (String key : eAnnotation.getDetails().keySet()) {
-				final String value = eAnnotation.getDetails().get(key);
-				if (value.contains("@Entity")) {
-					addEntity = false;
-					eAnnotation.getDetails().put(key, value + "\n" + namedQuery);
-				}
-				if (key.equals(Constants.ANNOTATION_KEY_VALUE)
-						|| key.equals(Constants.ANNOTATION_KEY_APPINFO)) {
-					foundKey = key;
-					foundValue = value;
-				}
-			}
-			if (addEntity) {
-				if (foundKey != null) {
-					eAnnotation.getDetails().put(foundKey,
-							foundValue + "\n" + entityNameJPA + "\n" + namedQuery);
-				} else {
-					eAnnotation.getDetails().put(Constants.ANNOTATION_KEY_VALUE,
-							entityNameJPA + "\n" + namedQuery);
-				}
-			}
-		} else {
-			final EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
-			eAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
-			eAnnotation.getDetails().put(Constants.ANNOTATION_KEY_VALUE,
-					entityNameJPA + "\n" + namedQuery);
-			auditingEClass.getEAnnotations().add(eAnnotation);
-		}
 	}
 }

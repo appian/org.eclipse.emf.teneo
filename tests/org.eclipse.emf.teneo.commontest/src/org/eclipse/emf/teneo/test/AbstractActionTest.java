@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.test;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 
@@ -102,6 +103,10 @@ public class AbstractActionTest extends AbstractTest {
 	public Properties getExtraConfigurationProperties() {
 		Properties allProperties = getTestAction().getExtraConfigurationProperties();
 
+		if (!getTestAction().supportAuditing()) {
+			allProperties.setProperty(Constants.ANNOTATION_AUDITING_NOT, "true");
+		}
+		
 		// override some defaults
 		if (allProperties.get(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT) == null) {
 			allProperties.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
@@ -114,6 +119,7 @@ public class AbstractActionTest extends AbstractTest {
 		if (this.properties != null) {
 			allProperties.putAll(this.properties);
 		}
+		
 		return allProperties;
 	}
 

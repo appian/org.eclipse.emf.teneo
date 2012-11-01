@@ -25,9 +25,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
-import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingFactory;
 import org.hibernate.FlushMode;
 import org.hibernate.Query;
@@ -55,6 +56,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		BeforeTransactionCompletionProcess, PostDeleteEventListener, PostInsertEventListener,
 		PostUpdateEventListener, ExtensionPoint {
 
+	public static final long DEFAULT_END_TIMESTAMP = -1;
+
 	private static final long serialVersionUID = 1L;
 	private HbDataStore dataStore;
 
@@ -74,6 +77,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		if (!isAudited(entity)) {
 			return;
 		}
+
 		final AuditWork auditWork = new AuditWork();
 		auditWork.setAuditKind(auditKind);
 		auditWork.setEntity(entity);
@@ -99,10 +103,21 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				break;
 			}
 		}
-		auditWorks.remove(existingAuditWork);
 
-		// and add the new one
-		auditWorks.add(auditWork);
+		// check if there is already an add
+		if (existingAuditWork != null
+				&& (existingAuditWork.getAuditKind() == TeneoAuditKind.ADD && auditWork.getAuditKind() == TeneoAuditKind.UPDATE)) {
+			// don't add the audit work then, keep the add
+		} else if (existingAuditWork != null
+				&& (existingAuditWork.getAuditKind() == TeneoAuditKind.ADD && auditWork.getAuditKind() == TeneoAuditKind.DELETE)) {
+			// delete with a preceding add, don't do anything, get rid of it
+			auditWorks.remove(existingAuditWork);
+		} else {
+			auditWorks.remove(existingAuditWork);
+
+			// and add the new one
+			auditWorks.add(auditWork);
+		}
 	}
 
 	@Override
@@ -124,7 +139,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	public void doBeforeTransactionCompletion(SessionImplementor session) {
 		// see: http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4178431
 		if (!FlushMode.isManualFlushMode(session.getFlushMode())) {
-			final List<AuditWork> auditWorks = getRemoveQueue((Session) session);
+			session.flush();
+			final List<AuditWork> auditWorks = getRemoveQueue((Session) session, false);
 			if (auditWorks == null) {
 				return;
 			}
@@ -137,7 +153,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		if (!success) {
 			return;
 		}
-		final List<AuditWork> auditWorks = getRemoveQueue((Session) session);
+		final List<AuditWork> auditWorks = getRemoveQueue((Session) session, true);
 		if (auditWorks == null) {
 			return;
 		}
@@ -167,79 +183,85 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		final long commitTime = System.currentTimeMillis();
 
+		final List<Object> evictObjects = new ArrayList<Object>();
+
 		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
 				.createTeneoAuditCommitInfo();
-		session.flush();
 		session.save(commitInfo);
-
-		int i = 0;
+		evictObjects.add(commitInfo);
 
 		EClass lastEClass = null;
-		EClass auditingEClass = null;
-		String auditingEntityName = null;
-		final List<TeneoAuditObject> auditObjects = new ArrayList<TeneoAuditObject>();
+		EClass auditEntryEClass = null;
 		for (AuditWork auditWork : auditWorks) {
 			final EObject eObject = (EObject) auditWork.getEntity();
 			if (lastEClass != eObject.eClass()) {
-				auditingEClass = AuditHandler.getInstance().getAuditingModelElement(eObject.eClass());
-				auditingEntityName = AuditHandler.getInstance().getEntityName(auditingEClass,
-						dataStore.getPersistenceOptions());
+				auditEntryEClass = AuditHandler.getInstance().getAuditingModelElement(eObject.eClass());
 				lastEClass = eObject.eClass();
 			}
-			// create the auditObject
-			final TeneoAuditObject auditObject = (TeneoAuditObject) auditingEClass.getEPackage()
-					.getEFactoryInstance().create(auditingEClass);
-			auditObject.setTeneo_audit_kind(auditWork.getAuditKind());
-			auditObject.setTeneo_commit_info(commitInfo);
-			auditObject.setTeneo_end(-1);
-			auditObject.setTeneo_start(commitTime);
-			auditObject.setTeneo_object_id(AuditHandler.getInstance().idToString(session,
+			final String auditEntryEntityName = HbUtil.getEntityName(auditEntryEClass);
+
+			// create the auditEntry
+			final TeneoAuditEntry auditEntry = (TeneoAuditEntry) auditEntryEClass.getEPackage()
+					.getEFactoryInstance().create(auditEntryEClass);
+			auditEntry.setTeneo_audit_kind(auditWork.getAuditKind());
+			auditEntry.setTeneo_commit_info(commitInfo);
+			auditEntry.setTeneo_end(DEFAULT_END_TIMESTAMP);
+			auditEntry.setTeneo_start(commitTime);
+			auditEntry.setTeneo_object_id(AuditHandler.getInstance().entityToIdString(session,
 					auditWork.getEntity()));
 
 			if (auditWork.getEntity() instanceof EObject
 					&& null != ((EObject) auditWork.getEntity()).eContainer()) {
-				auditObject.setTeneo_container_id(AuditHandler.getInstance().idToString(session,
+				auditEntry.setTeneo_container_id(AuditHandler.getInstance().entityToIdString(session,
 						((EObject) auditWork.getEntity()).eContainer()));
-				auditObject.setTeneo_container_feature_id(((InternalEObject) auditWork.getEntity())
+				auditEntry.setTeneo_container_feature_id(((InternalEObject) auditWork.getEntity())
 						.eContainerFeatureID());
 			}
 
-			AuditHandler.getInstance().copyContent(session, (EObject) auditWork.getEntity(), auditObject,
-					auditWork.getAuditKind() != TeneoAuditKind.DELETE);
+			AuditHandler.getInstance().copyContentToAuditEntry(session, (EObject) auditWork.getEntity(),
+					auditEntry, auditWork.getAuditKind() != TeneoAuditKind.DELETE);
 
-			if (auditWork.getAuditKind() == TeneoAuditKind.ADD) {
-				auditObject.setTeneo_previous_start(-1);
-			} else {
+			if (auditWork.getAuditKind() != TeneoAuditKind.ADD) {
 				// get info from the previous entry
-				final Query infoQuery = session.getNamedQuery(auditingEntityName + ".previousVersion");
+				// Note: apparently hibernate has a query plan cache, so
+				// it does not give a performance benefit to use a namedquery
+				// at least not that much..
+				// http://stackoverflow.com/questions/3578711/jpa-caching-queries
+				final Query infoQuery = session.createQuery("select e from " + auditEntryEntityName
+						+ " e where teneo_object_id=:objectId and teneo_end="
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
 				infoQuery.setMaxResults(1);
-				infoQuery.setString("objectId", auditObject.getTeneo_object_id());
+				infoQuery.setString("objectId", auditEntry.getTeneo_object_id());
 
-				final TeneoAuditObject previousEntry = (TeneoAuditObject) infoQuery.list().get(0);
-				auditObject.setTeneo_previous_start(previousEntry.getTeneo_start());
+				final TeneoAuditEntry previousEntry = (TeneoAuditEntry) infoQuery.list().get(0);
 				previousEntry.setTeneo_end(commitTime - 1);
-				auditObject.setTeneo_previous_start(previousEntry.getTeneo_start());
+				evictObjects.add(previousEntry);
+
+				auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
+
 				session.update(previousEntry);
 			}
-			auditObjects.add(auditObject);
-			session.save(auditingEntityName, auditObject);
-			i++;
-			if ((i % 1000) == 0) {
-				session.flush();
-			}
+			session.save(auditEntryEntityName, auditEntry);
+			evictObjects.add(auditEntry);
 		}
+
 		session.flush();
 
 		// clear the cache from these audit objects
-		for (Object object : auditObjects) {
+		for (Object object : evictObjects) {
 			session.evict(object);
 		}
 	}
 
-	private synchronized List<AuditWork> getRemoveQueue(Session session) {
+	private synchronized List<AuditWork> getRemoveQueue(Session session, boolean remove) {
 		final List<AuditWork> auditWorks = workQueue.get(session.getTransaction());
-		if (auditWorks != null) {
+		if (auditWorks != null && remove) {
 			workQueue.remove(session.getTransaction());
+		} else {
+			// set a new queue so that it won't be refilled during the audit process
+			// any extra actions which are done during the audit process are illegal
+			// (an error in hibernate dirty detection) this is for now ignored
+			workQueue.put(session.getTransaction(), new ArrayList<AuditWork>());
 		}
 		return auditWorks;
 	}

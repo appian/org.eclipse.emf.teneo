@@ -97,10 +97,15 @@ public class ExternalType implements UserType, ParameterizedType {
 		String pvalue = null;
 		if (value != null) {
 			final Resource res = ((InternalEObject) value).eResource();
-			URI uri = res.getURI();
-			final String fragment = res.getURIFragment((EObject) value);
-			uri = uri.appendFragment(fragment);
-			pvalue = uri.toString();
+			// unresolved proxy, just use that
+			if (res == null && ((EObject) value).eIsProxy()) {
+				pvalue = ((InternalEObject) value).eProxyURI().toString();
+			} else {
+				URI uri = res.getURI();
+				final String fragment = res.getURIFragment((EObject) value);
+				uri = uri.appendFragment(fragment);
+				pvalue = uri.toString();
+			}
 		}
 		if (pvalue != null) {
 			statement.setString(index, pvalue);

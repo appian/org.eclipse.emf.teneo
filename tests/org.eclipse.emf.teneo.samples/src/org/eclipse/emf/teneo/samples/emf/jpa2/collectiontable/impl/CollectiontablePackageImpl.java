@@ -232,6 +232,8 @@ public class CollectiontablePackageImpl extends EPackageImpl implements Collecti
 		// Create annotations
 		// teneo.jpa
 		createTeneoAnnotations();
+		// teneo.jpa.auditing
+		createTeneo_1Annotations();
 	}
 
 	/**
@@ -247,12 +249,34 @@ public class CollectiontablePackageImpl extends EPackageImpl implements Collecti
 		   source, 
 		   new String[] {
 			 "value", "@CollectionTable(name=\"NamesTable\" joinColumns={@JoinColumn(name=\"joinColumn1\")})\n"
-		   });		
+		   });			
 		addAnnotation
 		  (getItem_Items(), 
 		   source, 
 		   new String[] {
 			 "value", "@Embedded\n@CollectionTable(name=\"EmbeddedItemsTable\" joinColumns={@JoinColumn(name=\"MYJC\")})\n"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa.auditing</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.jpa.auditing";			
+		addAnnotation
+		  (getItem_Names(), 
+		   source, 
+		   new String[] {
+			 "value", "@CollectionTable(name=\"AuditNamesTable\" joinColumns={@JoinColumn(name=\"joinColumn1\")})\n"
+		   });			
+		addAnnotation
+		  (getItem_Items(), 
+		   source, 
+		   new String[] {
+			 "value", "@Embedded\n@CollectionTable(name=\"EmbItemsAuditTable\" joinColumns={@JoinColumn(name=\"MYJC\")})\n"
 		   });
 	}
 

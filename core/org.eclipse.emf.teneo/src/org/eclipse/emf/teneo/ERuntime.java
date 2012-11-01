@@ -59,9 +59,6 @@ public class ERuntime extends EModelResolver {
 	/** The list of epackages processed here */
 	private final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 
-	/** Count of times that an epackage got registered */
-	private final ArrayList<Integer> registrationCount = new ArrayList<Integer>();
-
 	/** The mapping from concrete classes to eclass and back */
 	private final HashMap<Class<?>, EClass> concreteToEClass = new HashMap<Class<?>, EClass>();
 

@@ -129,4 +129,8 @@ public class DynamicEmbeddedIdAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 	}
+
+	protected boolean supportAuditing() {
+		return false;
+	}
 }

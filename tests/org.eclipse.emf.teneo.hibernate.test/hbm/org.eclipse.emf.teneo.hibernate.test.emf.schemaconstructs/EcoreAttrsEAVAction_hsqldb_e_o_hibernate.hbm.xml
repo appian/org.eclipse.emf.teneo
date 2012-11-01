@@ -6,4 +6,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.FeatureImpl" entity-name="Feature" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Feature"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.MixedImpl" entity-name="Mixed" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Mixed"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.NameListImpl" entity-name="NameList" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="NameList"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

@@ -37,6 +37,7 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Implements the sql naming strategy of older versions of Teneo. This
@@ -363,7 +364,13 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 		String truncedName = getEntityName(aClass.getPaModel(),
 				aClass.getModelEClass())
 				+ "_" + aAttribute.getModelEAttribute().getName();
-		return optionTableNamePrefix + convert(truncedName, true);
+
+		String auditPostFix = "";
+		if (StoreUtil.isAuditEntryEClass(aAttribute.getModelEAttribute().getEContainingClass())) {
+			auditPostFix = persistenceOptions.getAuditingJoinTablePostfix();
+		}
+
+		return optionTableNamePrefix + convert(truncedName + auditPostFix, true);
 	}
 
 	/*
@@ -623,6 +630,10 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 		}
 
 		return correctedName.substring(0, optionMaximumSqlLength);
+	}
+
+	public PersistenceOptions getPersistenceOptions() {
+		return persistenceOptions;
 	}
 
 }

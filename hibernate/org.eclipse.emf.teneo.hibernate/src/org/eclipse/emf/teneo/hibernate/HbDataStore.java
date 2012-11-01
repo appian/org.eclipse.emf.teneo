@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -194,8 +195,6 @@ public abstract class HbDataStore implements DataStore {
 	private boolean auditing = false;
 	private List<EPackage> auditingEPackages = new ArrayList<EPackage>();
 
-	private Map<String, EClass> entityNameEClassMap = new HashMap<String, EClass>();
-
 	public EPackage.Registry getPackageRegistry() {
 		if (packageRegistry == null) {
 			return PackageRegistryProvider.getInstance().getPackageRegistry();
@@ -294,7 +293,7 @@ public abstract class HbDataStore implements DataStore {
 		final List<EPackage> epacks = new ArrayList<EPackage>(Arrays.asList(getEPackages()));
 		auditingEPackages.clear();
 		for (EPackage ePackage : originalEPackages) {
-			auditingEPackages.add(AuditHandler.getInstance().createAuditingEPackage(ePackage,
+			auditingEPackages.add(AuditHandler.getInstance().createAuditingEPackage(this, ePackage,
 					getPackageRegistry(), getPersistenceOptions()));
 		}
 		epacks.add(TeneoauditingPackage.eINSTANCE);
@@ -336,6 +335,7 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Initializes this Data Store */
 	protected void initializeDataStore() {
+
 		// buildmappings has to be done before setting the tuplizers because
 		// buildMappings will ensure that the element
 		// is set in the List properties.
@@ -1098,6 +1098,34 @@ public abstract class HbDataStore implements DataStore {
 		}
 	}
 
+	public boolean isEmbedded(EModelElement modelElement) {
+		if (modelElement.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) != null) {
+			final EAnnotation eAnnotation = modelElement
+					.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+			for (String value : eAnnotation.getDetails().values()) {
+				if (value.contains("@External")) {
+					return true;
+				}
+				if (value.contains("@Embeddable")) {
+					return true;
+				}
+				if (value.contains("@Embedded")) {
+					return true;
+				}
+				if (value.contains("@Type")) {
+					return true;
+				}
+				if (value.contains("@TypeDef")) {
+					return true;
+				}
+			}
+		}
+		if (modelElement instanceof EReference) {
+			return isEmbedded(((EReference) modelElement).getEReferenceType());
+		}
+		return false;
+	}
+
 	/** Recursively check the container prop in the super hierarchy */
 	private boolean hasEContainerProp(PersistentClass pc) {
 		final Iterator<?> it = pc.getPropertyIterator();
@@ -1367,7 +1395,6 @@ public abstract class HbDataStore implements DataStore {
 						eClass.getEAnnotations().add(eAnnotation);
 					}
 					eAnnotation.getDetails().put(Constants.ANNOTATION_KEY_ENTITY_NAME, pc.getEntityName());
-					entityNameEClassMap.put(pc.getEntityName(), eClass);
 				}
 			}
 		}
@@ -1378,10 +1405,6 @@ public abstract class HbDataStore implements DataStore {
 				AuditVersionProvider.class);
 		auditVersionProvider.setDataStore(this);
 		return auditVersionProvider;
-	}
-
-	public EClass getEClassFromEntityName(String entityName) {
-		return entityNameEClassMap.get(entityName);
 	}
 
 	/**
@@ -1854,6 +1877,8 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	public void setAuditing(boolean auditing) {
+		getPersistenceOptions().getProperties().setProperty(PersistenceOptions.ENABLE_AUDITING,
+				Boolean.toString(auditing));
 		this.auditing = auditing;
 	}
 }

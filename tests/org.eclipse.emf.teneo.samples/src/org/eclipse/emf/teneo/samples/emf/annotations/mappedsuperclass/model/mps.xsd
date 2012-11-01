@@ -63,6 +63,10 @@
        @AttributeOverrides({@AttributeOverride(name="myName",  
 		column=@Column(name="PARENTDOCUMENT_NAME", length="50"))})
 			</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa.auditing">@Entity
+       @AttributeOverrides({@AttributeOverride(name="myName",  
+		column=@Column(name="PARENTDOCUMENT_NAME", length="50"))})
+			</xsd:appinfo>
 	    </xsd:annotation>
 		<xsd:complexContent>
 			<xsd:extension base="this:ParentDocument">

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="attributeoverrides"
-    nsURI="http:///org/eclipse/emf/teneo/samples/emf/annotations/attributeoverrides.ecore"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="attributeoverrides" nsURI="http:///org/eclipse/emf/teneo/samples/emf/annotations/attributeoverrides.ecore"
     nsPrefix="org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides">
   <eClassifiers xsi:type="ecore:EClass" name="Person">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -14,10 +12,16 @@
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Embedded&#xA;@AttributeOverride(name=&quot;name&quot; column=@Column(name=&quot;bornNameColumn&quot;))"/>
       </eAnnotations>
+      <eAnnotations source="teneo.jpa.auditing">
+        <details key="appinfo" value="@Embedded&#xA;@AttributeOverride(name=&quot;name&quot; column=@Column(name=&quot;bornNameColumn&quot;))"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="livesIn" lowerBound="1"
         eType="#//City">
       <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Embedded&#xA;@AttributeOverrides({&#xA;&#x9;@AttributeOverride(name=&quot;name&quot; column=@Column(name=&quot;nameColumn&quot;)),&#xA;&#x9;@AttributeOverride(name=&quot;country&quot; column=@Column(name=&quot;countryColumn&quot;))&#xA;})"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa.auditing">
         <details key="appinfo" value="@Embedded&#xA;@AttributeOverrides({&#xA;&#x9;@AttributeOverride(name=&quot;name&quot; column=@Column(name=&quot;nameColumn&quot;)),&#xA;&#x9;@AttributeOverride(name=&quot;country&quot; column=@Column(name=&quot;countryColumn&quot;))&#xA;})"/>
       </eAnnotations>
     </eStructuralFeatures>

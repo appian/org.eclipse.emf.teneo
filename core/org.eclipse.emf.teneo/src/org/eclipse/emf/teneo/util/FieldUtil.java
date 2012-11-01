@@ -10,7 +10,6 @@ package org.eclipse.emf.teneo.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Hashtable;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.teneo.TeneoException;

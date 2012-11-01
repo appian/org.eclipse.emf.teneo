@@ -6,4 +6,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexEvenTypeImpl" entity-name="ComplexEvenType" abstract="false" lazy="false" extends="ComplexAAA" discriminator-value="ComplexEvenType"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexOddTypeImpl" entity-name="ComplexOddType" abstract="false" lazy="false" extends="ComplexAAA" discriminator-value="ComplexOddType"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.RootTypeImpl" entity-name="RootType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="RootType"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

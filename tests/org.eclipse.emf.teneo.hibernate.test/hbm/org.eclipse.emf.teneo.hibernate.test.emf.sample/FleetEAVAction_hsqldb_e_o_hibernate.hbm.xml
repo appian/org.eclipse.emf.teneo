@@ -19,4 +19,5 @@
 	<subclass entity-name="Vin" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Vin"/>
 	<subclass entity-name="TransportationDevice" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TransportationDevice"/>
 	<subclass entity-name="VersionHolder" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="VersionHolder"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

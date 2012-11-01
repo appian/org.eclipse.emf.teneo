@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage#getExternalObject()
  * @model annotation="teneo.jpa value='@External'"
+ *        annotation="teneo.jpa.auditing value='@External'"
  * @generated
  */
 public interface ExternalObject extends EObject {

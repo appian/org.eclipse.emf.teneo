@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="usertype"
-    nsURI="http://www.elver.org/samples/emf/hibernate/usertype" nsPrefix="usertype">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="usertype" nsURI="http://www.elver.org/samples/emf/hibernate/usertype"
+    nsPrefix="usertype">
   <eAnnotations source="teneo.hibernate">
     <details key="appinfo" value="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@NamedQuery(name=&quot;getPersonByBirthPlace2&quot; query=&quot;select p from Person p where p.birthPlace=?&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
   </eAnnotations>
@@ -57,12 +56,18 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="certificate" eType="#//Certificate">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@Columns({@Column(name=&quot;cert_name&quot;), @Column(name=&quot;cert_length&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+        <details key="appinfo" value="@Columns({@Column(name=&quot;cert_name&quot;), @Column(name=&quot;cert_length&quot;)})&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa.auditing">
+        <details key="appinfo" value="@Columns({@Column(name=&quot;cert_name&quot;), @Column(name=&quot;cert_length&quot;)})&#x9;&#x9;"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="certificates" upperBound="-1"
         eType="#//Certificate">
       <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Columns({@Column(name=&quot;cert_name&quot;), @Column(name=&quot;cert_length&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa.auditing">
         <details key="appinfo" value="@Columns({@Column(name=&quot;cert_name&quot;), @Column(name=&quot;cert_length&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -116,7 +121,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Certificate">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="@Type(type=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CertificateType&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      <details key="appinfo" value="@Type(type=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CertificateType&quot;)&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.jpa.auditing">
+      <details key="appinfo" value="@Type(type=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CertificateType&quot;)&#x9;&#x9;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

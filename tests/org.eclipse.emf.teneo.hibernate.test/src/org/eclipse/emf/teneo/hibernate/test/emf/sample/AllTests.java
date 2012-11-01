@@ -66,8 +66,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryEAVAction.class);
 		suite.addTestSuite(DynamicEAVNoDBSchemaAction.class);
 		suite.addTestSuite(DynamicNoDbSchemaUpdateAction.class);
-		suite.addTestSuite(DynamicNoDbSchemaUpdateAction.class);
-		suite.addTestSuite(DynamicEAVNoDBSchemaAction.class);
 		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(DynamicEAVAction.class);
 		suite.addTestSuite(DynamicEmbeddedIdAction.class);

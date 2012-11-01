@@ -90,20 +90,10 @@ public class AttroverridesecondarytablePackageImpl extends EPackageImpl implemen
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link AttroverridesecondarytablePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -115,7 +105,7 @@ public class AttroverridesecondarytablePackageImpl extends EPackageImpl implemen
 		if (isInited) return (AttroverridesecondarytablePackage)EPackage.Registry.INSTANCE.getEPackage(AttroverridesecondarytablePackage.eNS_URI);
 
 		// Obtain or create and register package
-		AttroverridesecondarytablePackageImpl theAttroverridesecondarytablePackage = (AttroverridesecondarytablePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof AttroverridesecondarytablePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new AttroverridesecondarytablePackageImpl());
+		AttroverridesecondarytablePackageImpl theAttroverridesecondarytablePackage = (AttroverridesecondarytablePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AttroverridesecondarytablePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AttroverridesecondarytablePackageImpl());
 
 		isInited = true;
 
@@ -128,6 +118,9 @@ public class AttroverridesecondarytablePackageImpl extends EPackageImpl implemen
 		// Mark meta-data to indicate it can't be changed
 		theAttroverridesecondarytablePackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(AttroverridesecondarytablePackage.eNS_URI, theAttroverridesecondarytablePackage);
 		return theAttroverridesecondarytablePackage;
 	}
 
@@ -373,6 +366,8 @@ public class AttroverridesecondarytablePackageImpl extends EPackageImpl implemen
 		// Create annotations
 		// teneo.jpa
 		createTeneoAnnotations();
+		// teneo.jpa.auditing
+		createTeneo_1Annotations();
 	}
 
 	/**
@@ -388,7 +383,7 @@ public class AttroverridesecondarytablePackageImpl extends EPackageImpl implemen
 		   source, 
 		   new String[] {
 			 "value", "@Embeddable"
-		   });		
+		   });			
 		addAnnotation
 		  (personEClass, 
 		   source, 
@@ -406,13 +401,41 @@ public class AttroverridesecondarytablePackageImpl extends EPackageImpl implemen
 		   source, 
 		   new String[] {
 			 "value", "@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"other_name\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"street\" column=@Column(name=\"other_street\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"city\" column=@Column(name=\"other_city\" table=\"secondary_table\"))\n})\n@AssociationOverrides({\n\t@AssociationOverride(name=\"country\" joinColumns=@JoinColumn(name=\"addr_country\" table=\"secondary_table\"))\n})"
-		   });		
+		   });			
 		addAnnotation
 		  (getEmployee_EmployeeNumber(), 
 		   source, 
 		   new String[] {
 			 "value", "@Column(name=\"emp_num\" table=\"secondary_table\")"
 		   });		
+		addAnnotation
+		  (getNonEmployee_Address(), 
+		   source, 
+		   new String[] {
+			 "value", "@Embedded"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa.auditing</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.jpa.auditing";			
+		addAnnotation
+		  (addressEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@Embeddable"
+		   });					
+		addAnnotation
+		  (getEmployee_Address(), 
+		   source, 
+		   new String[] {
+			 "value", "@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"other_name\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"street\" column=@Column(name=\"other_street\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"city\" column=@Column(name=\"other_city\" table=\"secondary_table\"))\n})\n@AssociationOverrides({\n\t@AssociationOverride(name=\"country\" joinColumns=@JoinColumn(name=\"addr_country\" table=\"secondary_table\"))\n})"
+		   });				
 		addAnnotation
 		  (getNonEmployee_Address(), 
 		   source, 

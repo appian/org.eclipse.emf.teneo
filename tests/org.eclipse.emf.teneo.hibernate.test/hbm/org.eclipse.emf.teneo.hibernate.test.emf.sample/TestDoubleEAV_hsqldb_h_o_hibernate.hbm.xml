@@ -3,4 +3,5 @@
 
 <hibernate-mapping auto-import="false">
 	<subclass entity-name="TestType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TestType"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

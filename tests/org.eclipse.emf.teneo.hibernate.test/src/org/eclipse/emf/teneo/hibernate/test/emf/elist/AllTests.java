@@ -34,14 +34,11 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.elist", HibernateTestbed.instance()
 						.getConfigurations());
-		suite.addTestSuite(FeatureMapEAVAction.class);
-		suite.addTestSuite(FeatureMapComponentAction.class);
+
 		suite.addTestSuite(FeatureMapAction.class);
+		suite.addTestSuite(FeatureMapComponentAction.class);
+		suite.addTestSuite(FeatureMapEAVAction.class);
 
-		// $JUnit-BEGIN$
-
-		// $JUnit-END$
 		return suite;
 	}
-
 }

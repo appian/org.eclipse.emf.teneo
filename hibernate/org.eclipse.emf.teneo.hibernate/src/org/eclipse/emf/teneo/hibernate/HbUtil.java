@@ -72,6 +72,15 @@ public class HbUtil {
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbUtil.class);
 
+	/**
+	 * Returns the name stored in the teneo annotation using the
+	 * {@link Constants#ANNOTATION_KEY_ENTITY_NAME} key.
+	 */
+	public static String getEntityName(EClass eClass) {
+		return eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA).getDetails()
+				.get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+	}
+
 	public static EClass getEClassFromMeta(Component component) {
 		final MetaAttribute ePackageMetaAttribute = component
 				.getMetaAttribute(HbMapperConstants.EPACKAGE_PARAM);

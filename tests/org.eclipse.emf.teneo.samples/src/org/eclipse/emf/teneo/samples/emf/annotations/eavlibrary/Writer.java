@@ -161,6 +161,7 @@ public interface Writer extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage#getWriter_Abstract()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        annotation="teneo.jpa appinfo='@Lob'"
+	 *        annotation="teneo.jpa.auditing appinfo='@Lob'"
 	 * @generated
 	 */
 	String getAbstract();

@@ -48,7 +48,7 @@ public interface EntityNameStrategy extends ExtensionPoint, ExtensionManagerAwar
 	/**
 	 * Return the EClass for a certain name, searches in the array of epackages
 	 */
-	public EClass toEClass(String eClassName);
+	public EClass toEClass(String entityName);
 
 	/**
 	 * @param paModel

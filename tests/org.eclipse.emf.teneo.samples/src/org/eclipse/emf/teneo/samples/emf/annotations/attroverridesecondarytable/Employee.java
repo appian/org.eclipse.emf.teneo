@@ -37,6 +37,7 @@ public interface Employee extends Person {
 	 * @see #setAddress(Address)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attroverridesecondarytable.AttroverridesecondarytablePackage#getEmployee_Address()
 	 * @model annotation="teneo.jpa value='@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"other_name\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"street\" column=@Column(name=\"other_street\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"city\" column=@Column(name=\"other_city\" table=\"secondary_table\"))\n})\n@AssociationOverrides({\n\t@AssociationOverride(name=\"country\" joinColumns=@JoinColumn(name=\"addr_country\" table=\"secondary_table\"))\n})'"
+	 *        annotation="teneo.jpa.auditing value='@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"other_name\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"street\" column=@Column(name=\"other_street\" table=\"secondary_table\")),\n\t@AttributeOverride(name=\"city\" column=@Column(name=\"other_city\" table=\"secondary_table\"))\n})\n@AssociationOverrides({\n\t@AssociationOverride(name=\"country\" joinColumns=@JoinColumn(name=\"addr_country\" table=\"secondary_table\"))\n})'"
 	 * @generated
 	 */
 	Address getAddress();

@@ -20,20 +20,18 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl#getId <em>Id</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CityImpl extends EObjectImpl implements City {
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -41,9 +39,9 @@ public class CityImpl extends EObjectImpl implements City {
 	protected static final long ID_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -51,19 +49,19 @@ public class CityImpl extends EObjectImpl implements City {
 	protected long id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CitySize SIZE_EDEFAULT = CitySize.MEDIUM_LITERAL;
+	protected static final CitySize SIZE_EDEFAULT = CitySize.MEDIUM;
 
 	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
@@ -71,8 +69,8 @@ public class CityImpl extends EObjectImpl implements City {
 	protected CitySize size = SIZE_EDEFAULT;
 
 	/**
-	 * This is true if the Size attribute has been set. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This is true if the Size attribute has been set.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
@@ -80,7 +78,6 @@ public class CityImpl extends EObjectImpl implements City {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CityImpl() {
@@ -89,16 +86,15 @@ public class CityImpl extends EObjectImpl implements City {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UsertypePackage.Literals.CITY;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public long getId() {
@@ -107,7 +103,6 @@ public class CityImpl extends EObjectImpl implements City {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(long newId) {
@@ -119,7 +114,6 @@ public class CityImpl extends EObjectImpl implements City {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CitySize getSize() {
@@ -128,7 +122,6 @@ public class CityImpl extends EObjectImpl implements City {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setSize(CitySize newSize) {
@@ -137,13 +130,11 @@ public class CityImpl extends EObjectImpl implements City {
 		boolean oldSizeESet = sizeESet;
 		sizeESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UsertypePackage.CITY__SIZE, oldSize,
-					size, !oldSizeESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, UsertypePackage.CITY__SIZE, oldSize, size, !oldSizeESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void unsetSize() {
@@ -152,13 +143,11 @@ public class CityImpl extends EObjectImpl implements City {
 		size = SIZE_EDEFAULT;
 		sizeESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, UsertypePackage.CITY__SIZE, oldSize,
-					SIZE_EDEFAULT, oldSizeESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, UsertypePackage.CITY__SIZE, oldSize, SIZE_EDEFAULT, oldSizeESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isSetSize() {
@@ -167,85 +156,81 @@ public class CityImpl extends EObjectImpl implements City {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case UsertypePackage.CITY__ID:
-			return new Long(getId());
-		case UsertypePackage.CITY__SIZE:
-			return getSize();
+			case UsertypePackage.CITY__ID:
+				return getId();
+			case UsertypePackage.CITY__SIZE:
+				return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case UsertypePackage.CITY__ID:
-			setId(((Long) newValue).longValue());
-			return;
-		case UsertypePackage.CITY__SIZE:
-			setSize((CitySize) newValue);
-			return;
+			case UsertypePackage.CITY__ID:
+				setId((Long)newValue);
+				return;
+			case UsertypePackage.CITY__SIZE:
+				setSize((CitySize)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case UsertypePackage.CITY__ID:
-			setId(ID_EDEFAULT);
-			return;
-		case UsertypePackage.CITY__SIZE:
-			unsetSize();
-			return;
+			case UsertypePackage.CITY__ID:
+				setId(ID_EDEFAULT);
+				return;
+			case UsertypePackage.CITY__SIZE:
+				unsetSize();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case UsertypePackage.CITY__ID:
-			return id != ID_EDEFAULT;
-		case UsertypePackage.CITY__SIZE:
-			return isSetSize();
+			case UsertypePackage.CITY__ID:
+				return id != ID_EDEFAULT;
+			case UsertypePackage.CITY__SIZE:
+				return isSetSize();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
 		result.append(", size: ");
-		if (sizeESet)
-			result.append(size);
-		else
-			result.append("<unset>");
+		if (sizeESet) result.append(size); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

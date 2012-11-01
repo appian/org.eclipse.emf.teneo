@@ -7,4 +7,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressListImpl" entity-name="AddressList" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="AddressList"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.SimpleAllMapTypeImpl" entity-name="SimpleAllMapType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="SimpleAllMapType"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.SimpleAllTypeImpl" entity-name="SimpleAllType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="SimpleAllType"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

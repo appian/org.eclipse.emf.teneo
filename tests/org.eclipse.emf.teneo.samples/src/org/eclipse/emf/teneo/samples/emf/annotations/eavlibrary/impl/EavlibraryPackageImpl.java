@@ -492,6 +492,8 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		createTeneoAnnotations();
 		// teneo.hibernate
 		createTeneo_1Annotations();
+		// teneo.jpa.auditing
+		createTeneo_2Annotations();
 	}
 
 	/**
@@ -626,7 +628,7 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   new String[] {
 			 "kind", "element",
 			 "name", "city"
-		   });	
+		   });		
 	}
 
 	/**
@@ -660,7 +662,7 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   source, 
 		   new String[] {
 			 "appinfo", "@Lob"
-		   });
+		   });	
 	}
 
 	/**
@@ -676,7 +678,23 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   source, 
 		   new String[] {
 			 "appinfo", "@Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")"
-		   });								
+		   });									
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa.auditing</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_2Annotations() {
+		String source = "teneo.jpa.auditing";																									
+		addAnnotation
+		  (getWriter_Abstract(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Lob"
+		   });
 	}
 
 } //EavlibraryPackageImpl

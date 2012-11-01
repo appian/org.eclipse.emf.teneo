@@ -116,18 +116,6 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			initEntityNames(hbmContext, paModel);
 			processTypedefs(paModel);
 			processPersistentClasses(paModel);
-			// Process Named Queries
-			// Added by PhaneeshN
-			// This will emit the named query implementation into the mapping
-			// based on model annotation @NamedQuery(name={name},
-			// query={query});
-			// Named queries can be parameterized
-			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
-				processPANamedQueries(paPackage);
-				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
-					processPANamedQueries(paEClass);
-				}
-			}
 			return hbmContext.endDocument();
 		} catch (MappingException exc) {
 			throw new MappingException("Hibernate mapping generation failed", exc);
@@ -168,8 +156,26 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 					// here, we eliminate map.enties
 					if (!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getModelEClass())) {
 						processPAClass(paEClass);
-
 					}
+				}
+			}
+
+			// Process Named Queries
+			// Added by PhaneeshN
+			// This will emit the named query implementation into the mapping
+			// based on model annotation @NamedQuery(name={name},
+			// query={query});
+			// Named queries can be parameterized
+			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
+				processPANamedQueries(paPackage);
+				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
+					processPANamedQueries(paEClass);
+				}
+			}
+
+			
+			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
+				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
 					mapFilterDef(hbmContext.getCurrent(), ((HbAnnotatedEClass) paEClass).getFilterDef());
 				}
 				mapFilterDef(hbmContext.getCurrent(), ((HbAnnotatedEPackage) paPackage).getFilterDef());

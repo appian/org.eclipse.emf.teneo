@@ -21,6 +21,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getSpecificDocument()
  * @model annotation="teneo.jpa appinfo='@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t'"
+ *        annotation="teneo.jpa.auditing appinfo='@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t'"
  *        extendedMetaData="name='SpecificDocument' kind='elementOnly'"
  * @generated
  */

@@ -66,4 +66,9 @@ public class IdTypeTestOneAction extends AbstractTestAction {
 		store.commitTransaction();
 	}
 
+	@Override
+	public boolean supportAuditing() {
+		return false;
+	}
+
 }

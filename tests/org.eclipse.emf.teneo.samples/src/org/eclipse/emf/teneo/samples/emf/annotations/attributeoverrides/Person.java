@@ -70,6 +70,7 @@ public interface Person extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage#getPerson_BornIn()
 	 * @model required="true"
 	 *        annotation="teneo.jpa appinfo='@Embedded\n@AttributeOverride(name=\"name\" column=@Column(name=\"bornNameColumn\"))'"
+	 *        annotation="teneo.jpa.auditing appinfo='@Embedded\n@AttributeOverride(name=\"name\" column=@Column(name=\"bornNameColumn\"))'"
 	 * @generated
 	 */
 	City getBornIn();
@@ -97,6 +98,7 @@ public interface Person extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage#getPerson_LivesIn()
 	 * @model required="true"
 	 *        annotation="teneo.jpa appinfo='@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"nameColumn\")),\n\t@AttributeOverride(name=\"country\" column=@Column(name=\"countryColumn\"))\n})'"
+	 *        annotation="teneo.jpa.auditing appinfo='@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"nameColumn\")),\n\t@AttributeOverride(name=\"country\" column=@Column(name=\"countryColumn\"))\n})'"
 	 * @generated
 	 */
 	City getLivesIn();

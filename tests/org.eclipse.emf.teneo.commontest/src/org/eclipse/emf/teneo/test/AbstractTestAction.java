@@ -120,4 +120,8 @@ public abstract class AbstractTestAction extends TestCase {
 	protected boolean isEAVTest() {
 		return this.getClass().getName().contains("EAV");
 	}
+	
+	protected boolean supportAuditing() {
+		return true;
+	}
 }

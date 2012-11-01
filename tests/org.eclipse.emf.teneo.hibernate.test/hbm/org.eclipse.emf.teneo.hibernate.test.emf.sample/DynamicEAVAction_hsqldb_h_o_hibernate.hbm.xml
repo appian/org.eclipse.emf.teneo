@@ -8,4 +8,5 @@
 	<subclass entity-name="Department" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Department" proxy="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"/>
 	<subclass entity-name="Office" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Office" proxy="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"/>
 	<subclass entity-name="Address" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Address" proxy="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo" proxy="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo"/>
 </hibernate-mapping>

@@ -60,6 +60,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String ENABLE_AUDITING = MAPPING_PREFIX + "auditing.enable";
 	public static final String AUDITING_ENTITY_PREFIX = NAMING_PREFIX + "auditing.entity.prefix";
 	public static final String AUDITING_ENTITY_POSTFIX = NAMING_PREFIX + "auditing.entity.postfix";
+	public static final String AUDITING_JOINTABLE_POSTFIX = NAMING_PREFIX
+			+ "auditing.jointable.postfix";
 
 	// START: ++++++++++++++++++++++ SQL Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
@@ -463,6 +465,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(ENABLE_AUDITING, "false");
 		props.setProperty(AUDITING_ENTITY_PREFIX, "");
 		props.setProperty(AUDITING_ENTITY_POSTFIX, "Auditing");
+		props.setProperty(AUDITING_JOINTABLE_POSTFIX, "Auditing");
 
 		props.setProperty(HANDLE_UNSET_AS_NULL, "false");
 		props.setProperty(CONVERT_UNSET_TO_NULL, "false");
@@ -547,14 +550,33 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * @return value of {@link #AUDITING_ENTITY_PREFIX}
 	 */
 	public String getAuditingEntityPrefix() {
-		return properties.getProperty(AUDITING_ENTITY_PREFIX);
+		final String value = properties.getProperty(AUDITING_ENTITY_PREFIX);
+		if (value == null) {
+			return "";
+		}
+		return value;
 	}
 
 	/**
 	 * @return value of {@link #AUDITING_ENTITY_POSTFIX}
 	 */
 	public String getAuditingEntityPostfix() {
-		return properties.getProperty(AUDITING_ENTITY_POSTFIX);
+		final String value = properties.getProperty(AUDITING_ENTITY_POSTFIX);
+		if (value == null) {
+			return "";
+		}
+		return value;
+	}
+
+	/**
+	 * @return value of {@link #AUDITING_JOINTABLE_POSTFIX}
+	 */
+	public String getAuditingJoinTablePostfix() {
+		final String value = properties.getProperty(AUDITING_JOINTABLE_POSTFIX);
+		if (value == null) {
+			return "";
+		}
+		return value;
 	}
 
 	/**

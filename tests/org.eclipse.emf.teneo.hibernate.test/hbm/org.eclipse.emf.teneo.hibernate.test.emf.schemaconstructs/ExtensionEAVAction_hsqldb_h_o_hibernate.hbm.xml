@@ -13,4 +13,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.FirstAddressHolderImpl" entity-name="FirstAddressHolder" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="FirstAddressHolder"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.InternationalPriceImpl" entity-name="InternationalPrice" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="InternationalPrice"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.USAddressImpl" entity-name="USAddress" abstract="false" lazy="false" extends="Address" discriminator-value="USAddress"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

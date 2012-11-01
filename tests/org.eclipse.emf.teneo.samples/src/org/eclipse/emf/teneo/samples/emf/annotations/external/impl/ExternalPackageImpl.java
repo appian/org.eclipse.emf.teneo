@@ -267,6 +267,8 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		createExtendedMetaDataAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
+		// teneo.jpa.auditing
+		createTeneo_1Annotations();
 	}
 
 	/**
@@ -283,7 +285,7 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "city"
-		   });				
+		   });								
 	}
 
 	/**
@@ -299,19 +301,53 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		   source, 
 		   new String[] {
 			 "value", "@External"
-		   });		
+		   });			
 		addAnnotation
 		  (getExternalTest_EObjects(), 
 		   source, 
 		   new String[] {
 			 "value", "@External"
-		   });		
+		   });			
 		addAnnotation
 		  (getExternalTest_EClass(), 
 		   source, 
 		   new String[] {
 			 "value", "@External(type=\"org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType\")"
-		   });		
+		   });			
+		addAnnotation
+		  (externalObjectEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@External"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa.auditing</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.jpa.auditing";				
+		addAnnotation
+		  (getExternalTest_EObject(), 
+		   source, 
+		   new String[] {
+			 "value", "@External"
+		   });			
+		addAnnotation
+		  (getExternalTest_EObjects(), 
+		   source, 
+		   new String[] {
+			 "value", "@External"
+		   });			
+		addAnnotation
+		  (getExternalTest_EClass(), 
+		   source, 
+		   new String[] {
+			 "value", "@External(type=\"org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType\")"
+		   });			
 		addAnnotation
 		  (externalObjectEClass, 
 		   source, 

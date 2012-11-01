@@ -43,7 +43,6 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  */
 
 public class PersistentStoreAdapter implements Adapter {
-	private static final long serialVersionUID = 1L;
 
 	private Notifier target;
 	private boolean targetCreatedByORM;

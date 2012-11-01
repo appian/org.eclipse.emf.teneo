@@ -113,4 +113,5 @@
 	<subclass name="org.eclipse.emf.ecore.xml.type.impl.AnyTypeImpl" entity-name="AnyType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="AnyType"/>
 	<subclass name="org.eclipse.emf.ecore.xml.type.impl.ProcessingInstructionImpl" entity-name="ProcessingInstruction" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ProcessingInstruction"/>
 	<subclass name="org.eclipse.emf.ecore.xml.type.impl.SimpleAnyTypeImpl" entity-name="SimpleAnyType" abstract="false" lazy="false" extends="AnyType" discriminator-value="SimpleAnyType"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

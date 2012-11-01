@@ -179,5 +179,4 @@ public class EcoreEAVAction extends AbstractTestAction {
 		}
 		assertTrue(!new_iterator.hasNext());
 	}
-
 }

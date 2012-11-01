@@ -24,11 +24,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -117,12 +120,33 @@ public class HibernateTestStore extends AbstractTestStore {
 		for (EPackage element : epackages) {
 			log.debug("Creating HibernateTeststore for " + element.getName() + " adapter "
 					+ adapter.getClass().getName());
+
+			cleanUpAuditingAnnotations(element);
 		}
 
 		setDataStore();
 
 		log.debug("HibernateTestStore initialized");
 		resourceSet = new ResourceSetImpl();
+	}
+
+	private void cleanUpAuditingAnnotations(EPackage ePackage) {
+		for (EClassifier eClassifier : ePackage.getEClassifiers()) {
+			if (eClassifier instanceof EClass) {
+				final EClass eClass = (EClass) eClassifier;
+				eClass.getEAnnotations()
+						.remove(eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING));
+				for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
+					eFeature.getEAnnotations().remove(
+							eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING));
+					if (eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) != null) {
+						eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA).getDetails()
+								.remove(Constants.ANNOTATION_AUDITING_NOT);
+					}
+				}
+
+			}
+		}
 	}
 
 	/** Creates a Hibernate property set from the databaseadapter */
@@ -179,6 +203,10 @@ public class HibernateTestStore extends AbstractTestStore {
 
 		if (isEntityManagerStore()) {
 			props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "true");
+		}
+
+		if (!props.containsKey(Constants.ANNOTATION_AUDITING_NOT)) {
+			props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
 		}
 
 		emfDataStore.setDataStoreProperties(props);

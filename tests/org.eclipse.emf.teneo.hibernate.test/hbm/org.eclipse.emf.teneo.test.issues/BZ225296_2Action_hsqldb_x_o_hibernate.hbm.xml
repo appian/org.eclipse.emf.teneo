@@ -631,4 +631,626 @@
 			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
 		</property>
 	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="TeneoAuditEntry" abstract="false" lazy="false" discriminator-value="TeneoAuditEntry" table="`TENEOAUDITENTRY`">
+		<meta attribute="eclassName" inherit="false">TeneoAuditEntry</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/hibernate/auditing</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TENEOAUDITENTRYDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="teneo_audit_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_AUDIT_ID`"/>
+		</property>
+		<property name="teneo_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_VERSION`"/>
+		</property>
+		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+		</property>
+		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_START`"/>
+		</property>
+		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_END`"/>
+		</property>
+		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TENEOAUDITENTRY_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_E_ID`"/>
+		</many-to-one>
+		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
+				<param name="eclassifier">TeneoAuditKind</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
+			</type>
+		</property>
+		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
+		</property>
+		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
+		</property>
+		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" discriminator-value="TeneoAuditCommitInfo" table="`TENEOAUDITCOMMITINFO`">
+		<meta attribute="eclassName" inherit="false">TeneoAuditCommitInfo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/hibernate/auditing</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TENEOAUDITCOMMITINFODTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`VERSION`"/>
+		</property>
+		<property name="user" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`USER`"/>
+		</property>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMMENT`"/>
+		</property>
+	</class>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="BlockAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="BlockAuditing">
+		<meta attribute="eclassName" inherit="false">BlockAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="vserver" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`VSERVER`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="agent" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`AGENT`"/>
+		</property>
+		<property name="service" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SERVICE`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DataCenterAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="DataCenterAuditing">
+		<meta attribute="eclassName" inherit="false">DataCenterAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="host" table="`DATACENTERAUDITING_HOST`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DATACENTERAUDITING_HOST_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DATACENTERAUDITING_HOST_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DomainAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="DomainAuditing">
+		<meta attribute="eclassName" inherit="false">DomainAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="systems" table="`DOMAINAUDITING_SYSTEMS`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DOMAINAUDITING_SYSTEMS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DOMAINAUDITING_SYSTEMS_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DomainSystemAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="DomainSystemAuditing">
+		<meta attribute="eclassName" inherit="false">DomainSystemAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<list name="domains" table="`DOMAINSYSTEMAUDITING_DOMAINS`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DOMAINSYSTEMAUDITING_DOMAINS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DOMAINSYSTEMAUDITING_DOMAINS_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="opsSystem" table="`DOMAINSYSTEMAUDITING_OPSSYSTEM`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DOMAINSYSTEMAUDITING_OPSSYSTEM_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DOMAINSYSTEMAUDITING_OPSSYSTEM_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="interface" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INTERFACE`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="forwardEmail" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FORWARDEMAIL`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="FailoverTypeAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="FailoverTypeAuditing">
+		<meta attribute="eclassName" inherit="false">FailoverTypeAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="HostAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="HostAuditing">
+		<meta attribute="eclassName" inherit="false">HostAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="dataCenter" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATACENTER`"/>
+		</property>
+		<list name="vserver" table="`HOSTAUDITING_VSERVER`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`HOSTAUDITING_VSERVER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`HOSTAUDITING_VSERVER_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="ip" table="`HOSTAUDITING_IP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`HOSTAUDITING_IP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`HOSTAUDITING_IP_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="ownIp" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OWNIP`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<property name="network" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NETWORK`"/>
+		</property>
+		<property name="providerId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PROVIDERID`"/>
+		</property>
+		<property name="gateway" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GATEWAY`"/>
+		</property>
+		<list name="block" table="`HOSTAUDITING_BLOCK`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`HOSTAUDITING_BLOCK_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`HOSTAUDITING_BLOCK_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="HostBlockAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="HostBlockAuditing">
+		<meta attribute="eclassName" inherit="false">HostBlockAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="host" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`HOST`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="agent" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`AGENT`"/>
+		</property>
+		<property name="service" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SERVICE`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="InterfaceAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="InterfaceAuditing">
+		<meta attribute="eclassName" inherit="false">InterfaceAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="role" table="`INTERFACEAUDITING_ROLE`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`INTERFACEAUDITING_ROLE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`INTERFACEAUDITING_ROLE_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="domainSystem" table="`INTERFACEAUDITING_DOMAINSYSTEM`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`INTERFACEAUDITING_DOMAINSYSTEM_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`INTERFACEAUDITING_DOMAINSYSTEM_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="failoverType" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FAILOVERTYPE`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="port" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`PORT`"/>
+		</property>
+		<property name="external" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`EXTERNAL`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="IPAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="IPAuditing">
+		<meta attribute="eclassName" inherit="false">IPAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="ip" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IP`"/>
+		</property>
+		<property name="host" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`HOST`"/>
+		</property>
+		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.IpType</param>
+				<param name="eclassifier">IpType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</param>
+			</type>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="shared" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`SHARED`"/>
+		</property>
+		<list name="ipName" table="`IPAUDITING_IPNAME`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`IPAUDITING_IPNAME_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`IPAUDITING_IPNAME_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="vserver" table="`IPAUDITING_VSERVER`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`IPAUDITING_VSERVER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`IPAUDITING_VSERVER_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="MuninInfoAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="MuninInfoAuditing">
+		<meta attribute="eclassName" inherit="false">MuninInfoAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="pluginName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PLUGINNAME`"/>
+		</property>
+		<property name="warningLevel" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`WARNINGLEVEL`"/>
+		</property>
+		<property name="criticalLevel" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CRITICALLEVEL`"/>
+		</property>
+		<property name="monitorableByNagios" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`MONITORABLEBYNAGIOS`"/>
+		</property>
+		<property name="displaySummary" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`DISPLAYSUMMARY`"/>
+		</property>
+		<property name="role" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ROLE`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="IPNameAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="IPNameAuditing">
+		<meta attribute="eclassName" inherit="false">IPNameAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="ip" table="`IPNAMEAUDITING_IP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`IPNAMEAUDITING_IP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`IPNAMEAUDITING_IP_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ParameterAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="ParameterAuditing">
+		<meta attribute="eclassName" inherit="false">ParameterAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="key" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`KEY`"/>
+		</property>
+		<property name="value" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`VALUE`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RoleAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="RoleAuditing">
+		<meta attribute="eclassName" inherit="false">RoleAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="interface" table="`ROLEAUDITING_INTERFACE`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`ROLEAUDITING_INTERFACE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`ROLEAUDITING_INTERFACE_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="vserver" table="`ROLEAUDITING_VSERVER`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`ROLEAUDITING_VSERVER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`ROLEAUDITING_VSERVER_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="requiredInterface" table="`ROLEAUDITING_REQUIREDINTERFACE`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`ROLEAUDITING_REQUIREDINTERFACE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`ROLEAUDITING_REQUIREDINTERFACE_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<list name="muninInfo" table="`ROLEAUDITING_MUNININFO`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`ROLEAUDITING_MUNININFO_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`ROLEAUDITING_MUNININFO_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="OpsSystemAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="OpsSystemAuditing">
+		<meta attribute="eclassName" inherit="false">OpsSystemAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="ownVserver" table="`OPSSYSTEMAUDITING_OWNVSERVER`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`OPSSYSTEMAUDITING_OWNVSERVER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`OPSSYSTEMAUDITING_OWNVSERVER_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="servingVserver" table="`OPSSYSTEMAUDITING_SERVINGVSERVER`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`OPSSYSTEMAUDITING_SERVINGVSERVER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`OPSSYSTEMAUDITING_SERVINGVSERVER_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="domainSystem" table="`OPSSYSTEMAUDITING_DOMAINSYSTEM`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`OPSSYSTEMAUDITING_DOMAINSYSTEM_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`OPSSYSTEMAUDITING_DOMAINSYSTEM_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="VServerAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="VServerAuditing">
+		<meta attribute="eclassName" inherit="false">VServerAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="block" table="`VSERVERAUDITING_BLOCK`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`VSERVERAUDITING_BLOCK_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`VSERVERAUDITING_BLOCK_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="ownSystem" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OWNSYSTEM`"/>
+		</property>
+		<list name="servedSystem" table="`VSERVERAUDITING_SERVEDSYSTEM`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`VSERVERAUDITING_SERVEDSYSTEM_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`VSERVERAUDITING_SERVEDSYSTEM_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="ip" table="`VSERVERAUDITING_IP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`VSERVERAUDITING_IP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`VSERVERAUDITING_IP_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="host" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`HOST`"/>
+		</property>
+		<property name="role" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ROLE`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DWHClusterAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="DWHClusterAuditing">
+		<meta attribute="eclassName" inherit="false">DWHClusterAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="instance" table="`DWHCLUSTERAUDITING_INSTANCE`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DWHCLUSTERAUDITING_INSTANCE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DWHCLUSTERAUDITING_INSTANCE_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DWHInstanceAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="DWHInstanceAuditing">
+		<meta attribute="eclassName" inherit="false">DWHInstanceAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2Auditing</meta>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<list name="etl" table="`DWHINSTANCEAUDITING_ETL`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DWHINSTANCEAUDITING_ETL_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DWHINSTANCEAUDITING_ETL_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="modified" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`"/>
+		</property>
+		<property name="revision" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`REVISION`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+	</subclass>
 </hibernate-mapping>

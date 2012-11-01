@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.attroverridesecondarytable.AttroverridesecondarytablePackage#getAddress()
  * @model annotation="teneo.jpa value='@Embeddable'"
+ *        annotation="teneo.jpa.auditing value='@Embeddable'"
  * @generated
  */
 public interface Address extends EObject {

@@ -936,13 +936,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			log.error("Unsupported unique constraints in " + joinTable);
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
-		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
-																																						 * == null ? new
-																																						 * ArrayList ( ) : (
-																																						 * List ) joinTable .
-																																						 * getJoinColumns ( ) .
-																																						 * getValue ( )
-																																						 */);
+		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()
+		/*
+		 * == null ? new ArrayList ( ) : ( List ) joinTable . getJoinColumns ( ) . getValue ( )
+		 */);
 	}
 
 	protected JoinTable getJoinTable(PAnnotatedEReference paReference) {

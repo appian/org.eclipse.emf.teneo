@@ -11,17 +11,17 @@
       <genEnumLiterals ecoreEnumLiteral="hbauditing.ecore#//TeneoAuditKind/UPDATE"/>
       <genEnumLiterals ecoreEnumLiteral="hbauditing.ecore#//TeneoAuditKind/DELETE"/>
     </genEnums>
-    <genClasses ecoreClass="hbauditing.ecore#//TeneoAuditObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_audit_id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_object_id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_previous_start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_end"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbauditing.ecore#//TeneoAuditObject/teneo_commit_info"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_audit_kind"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_container_id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditObject/teneo_container_feature_id"/>
+    <genClasses ecoreClass="hbauditing.ecore#//TeneoAuditEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_audit_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_object_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_end"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbauditing.ecore#//TeneoAuditEntry/teneo_commit_info"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_audit_kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_feature_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_previous_start"/>
     </genClasses>
     <genClasses ecoreClass="hbauditing.ecore#//TeneoAuditCommitInfo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditCommitInfo/id"/>

@@ -110,4 +110,9 @@ public class AnyAction extends AbstractTestAction {
 		return FeatureMapUtil.createEntry(AnyPackage.eINSTANCE.getAnyObject_Any1(),
 				FeatureMapUtil.createEntry(eFeature, value));
 	}
+
+	@Override
+	public boolean supportAuditing() {
+		return false;
+	}
 }

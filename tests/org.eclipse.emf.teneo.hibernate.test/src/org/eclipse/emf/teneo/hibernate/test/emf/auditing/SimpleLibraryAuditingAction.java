@@ -13,8 +13,8 @@ import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
-import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
@@ -96,7 +96,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			final HibernateTestStore testStore = (HibernateTestStore) store;
 			final AuditVersionProvider auditVersionProvider = testStore.getEmfDataStore()
 					.getAuditVersionProvider();
-			final List<TeneoAuditObject> revisions = auditVersionProvider.getAllRevisions(
+			final List<TeneoAuditEntry> revisions = auditVersionProvider.getAllAuditEntries(
 					LibraryPackage.eINSTANCE.getWriter(), id);
 			assertTrue(revisions.size() == 7);
 			for (int i = 0; i < 7; i++) {
@@ -112,8 +112,8 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			// now get the revisions one by one, not the last one
 			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
 			for (int i = 0; i < 6; i++) {
-				final TeneoAuditObject audit = revisions.get(i);
-				final Writer testW = (Writer) vp.getEObject(LibraryPackage.eINSTANCE.getWriter(), id,
+				final TeneoAuditEntry audit = revisions.get(i);
+				final Writer testW = (Writer) vp.getRevision(LibraryPackage.eINSTANCE.getWriter(), id,
 						audit.getTeneo_start());
 
 				assertTrue(testW.getName().equals("" + i));
@@ -166,14 +166,14 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			final HibernateTestStore testStore = (HibernateTestStore) store;
 			final AuditVersionProvider auditVersionProvider = testStore.getEmfDataStore()
 					.getAuditVersionProvider();
-			final List<TeneoAuditObject> revisions = auditVersionProvider.getAllRevisions(
+			final List<TeneoAuditEntry> auditEntries = auditVersionProvider.getAllAuditEntries(
 					LibraryPackage.eINSTANCE.getWriter(), id);
 
 			// now get the revisions one by one, not the last one
 			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
 			for (int i = 0; i < 6; i++) {
-				final TeneoAuditObject audit = revisions.get(i);
-				final Writer testW = (Writer) vp.getEObject(LibraryPackage.eINSTANCE.getWriter(), id,
+				final TeneoAuditEntry audit = auditEntries.get(i);
+				final Writer testW = (Writer) vp.getRevision(LibraryPackage.eINSTANCE.getWriter(), id,
 						audit.getTeneo_start());
 				assertTrue(testW.eContainer() instanceof Library);
 			}

@@ -112,4 +112,8 @@ public class MapsIdAction extends AbstractTestAction {
 		store.commitTransaction();
 	}
 
+	@Override
+	public boolean supportAuditing() {
+		return false;
+	}
 }

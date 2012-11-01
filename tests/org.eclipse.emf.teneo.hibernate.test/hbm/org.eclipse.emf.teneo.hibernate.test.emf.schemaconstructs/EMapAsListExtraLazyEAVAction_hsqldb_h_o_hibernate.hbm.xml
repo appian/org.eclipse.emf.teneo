@@ -12,4 +12,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.StringToWriterMapEntryImpl" entity-name="StringToWriterMapEntry" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="StringToWriterMapEntry"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Writer"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.WriterToStringMapEntryImpl" entity-name="WriterToStringMapEntry" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="WriterToStringMapEntry"/>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TeneoAuditCommitInfo"/>
 </hibernate-mapping>

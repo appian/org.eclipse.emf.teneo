@@ -94,6 +94,7 @@ public class Constants {
 	public final static String COLUMN_ECONTAINER_FEATURE_NAME = "e_container_feature_name";
 
 	public final static String ANNOTATION_SOURCE_TENEO_JPA = "teneo.jpa";
+	public final static String ANNOTATION_SOURCE_TENEO_HIBERNATE = "teneo.hibernate";
 	public final static String ANNOTATION_SOURCE_TENEO_MAPPING = "teneo.mapping";
 
 	public final static String ANNOTATION_SOURCE_AUDITING = "teneo.auditing";

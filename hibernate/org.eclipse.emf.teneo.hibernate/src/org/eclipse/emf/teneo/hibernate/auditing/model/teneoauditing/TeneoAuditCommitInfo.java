@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditCommitInfo()
- * @model
+ * @model annotation="teneo.jpa value='@Entity'"
  * @generated
  */
 public interface TeneoAuditCommitInfo extends EObject {

@@ -72,6 +72,7 @@ public interface ExternalTest extends EObject {
 	 * @see #setEObject(EObject)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage#getExternalTest_EObject()
 	 * @model annotation="teneo.jpa value='@External'"
+	 *        annotation="teneo.jpa.auditing value='@External'"
 	 * @generated
 	 */
 	EObject getEObject();
@@ -98,6 +99,7 @@ public interface ExternalTest extends EObject {
 	 * @return the value of the '<em>EObjects</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage#getExternalTest_EObjects()
 	 * @model annotation="teneo.jpa value='@External'"
+	 *        annotation="teneo.jpa.auditing value='@External'"
 	 * @generated
 	 */
 	EList<EObject> getEObjects();
@@ -114,6 +116,7 @@ public interface ExternalTest extends EObject {
 	 * @see #setEClass(EClass)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage#getExternalTest_EClass()
 	 * @model annotation="teneo.jpa value='@External(type=\"org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType\")'"
+	 *        annotation="teneo.jpa.auditing value='@External(type=\"org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType\")'"
 	 * @generated
 	 */
 	EClass getEClass();

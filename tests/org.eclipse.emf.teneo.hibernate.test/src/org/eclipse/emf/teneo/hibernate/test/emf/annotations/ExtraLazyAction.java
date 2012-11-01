@@ -37,6 +37,7 @@ public class ExtraLazyAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@SuppressWarnings("unused")
 	@Override
 	public void doAction(TestStore store) {
 		final ExtralazyFactory factory = ExtralazyFactory.eINSTANCE;
@@ -93,6 +94,16 @@ public class ExtraLazyAction extends AbstractTestAction {
 				assertTrue(subTitleList.isInitialized());
 			}
 			b.getSubTitles().add(0, "subtitle-1");
+			if (false) {
+				// note iteration is not supported for extra-lazy
+				// primitive collections
+				int cnt = 0;
+				for (String subTitle : b.getSubTitles()) {
+					// iterate
+					cnt++;
+				}
+				assertTrue(cnt == b.getSubTitles().size());
+			}
 			assertTrue(subTitleList.isInitialized());
 
 			store.commitTransaction();
@@ -143,6 +154,11 @@ public class ExtraLazyAction extends AbstractTestAction {
 			assertFalse(pList.isInitialized());
 			store.commitTransaction();
 		}
+	}
+
+	@Override
+	public boolean supportAuditing() {
+		return false;
 	}
 
 	protected boolean isEAVMapped() {

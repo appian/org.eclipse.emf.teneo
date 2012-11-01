@@ -6,12 +6,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.*;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingFactory;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -52,7 +54,7 @@ public class TeneoauditingFactoryImpl extends EFactoryImpl implements Teneoaudit
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TeneoauditingPackage.TENEO_AUDIT_OBJECT: return createTeneoAuditObject();
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY: return createTeneoAuditEntry();
 			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO: return createTeneoAuditCommitInfo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -91,9 +93,9 @@ public class TeneoauditingFactoryImpl extends EFactoryImpl implements Teneoaudit
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TeneoAuditObject createTeneoAuditObject() {
-		TeneoAuditObjectImpl teneoAuditObject = new TeneoAuditObjectImpl();
-		return teneoAuditObject;
+	public TeneoAuditEntry createTeneoAuditEntry() {
+		TeneoAuditEntryImpl teneoAuditEntry = new TeneoAuditEntryImpl();
+		return teneoAuditEntry;
 	}
 
 	/**

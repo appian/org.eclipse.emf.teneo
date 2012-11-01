@@ -59,7 +59,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected City bornIn = null;
+	protected City bornIn;
 
 	/**
 	 * The cached value of the '{@link #getLivesIn() <em>Lives In</em>}' reference.
@@ -69,7 +69,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected City livesIn = null;
+	protected City livesIn;
 
 	/**
 	 * <!-- begin-user-doc -->

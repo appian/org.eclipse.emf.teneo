@@ -63,8 +63,8 @@ public class TeneoauditingAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected TeneoauditingSwitch<Adapter> modelSwitch = new TeneoauditingSwitch<Adapter>() {
 			@Override
-			public Adapter caseTeneoAuditObject(TeneoAuditObject object) {
-				return createTeneoAuditObjectAdapter();
+			public Adapter caseTeneoAuditEntry(TeneoAuditEntry object) {
+				return createTeneoAuditEntryAdapter();
 			}
 			@Override
 			public Adapter caseTeneoAuditCommitInfo(TeneoAuditCommitInfo object) {
@@ -89,15 +89,15 @@ public class TeneoauditingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject <em>Teneo Audit Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry <em>Teneo Audit Entry</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditObject
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry
 	 * @generated
 	 */
-	public Adapter createTeneoAuditObjectAdapter() {
+	public Adapter createTeneoAuditEntryAdapter() {
 		return null;
 	}
 

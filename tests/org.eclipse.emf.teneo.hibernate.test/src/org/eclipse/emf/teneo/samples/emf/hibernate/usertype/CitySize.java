@@ -10,106 +10,105 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>City Size</b></em>', and utility methods for working with them. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getCitySize()
  * @model
  * @generated
  */
-public final class CitySize extends AbstractEnumerator {
+public enum CitySize implements Enumerator {
 	/**
-	 * The '<em><b>SMALL</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>SMALL</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #SMALL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SMALL(0, "SMALL", "SMALL"),
+	/**
+	 * The '<em><b>MEDIUM</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #MEDIUM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MEDIUM(1, "MEDIUM", "MEDIUM"),
+	/**
+	 * The '<em><b>LARGE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #LARGE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LARGE(2, "LARGE", "LARGE");
+	/**
+	 * The '<em><b>SMALL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SMALL</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @see #SMALL_LITERAL
+	 * @see #SMALL
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SMALL = 0;
+	public static final int SMALL_VALUE = 0;
 
 	/**
-	 * The '<em><b>MEDIUM</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>MEDIUM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MEDIUM</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @see #MEDIUM_LITERAL
+	 * @see #MEDIUM
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MEDIUM = 1;
+	public static final int MEDIUM_VALUE = 1;
 
 	/**
-	 * The '<em><b>LARGE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>LARGE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>LARGE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @see #LARGE_LITERAL
+	 * @see #LARGE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LARGE = 2;
+	public static final int LARGE_VALUE = 2;
 
 	/**
-	 * The '<em><b>SMALL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #SMALL
-	 * @generated
-	 * @ordered
-	 */
-	public static final CitySize SMALL_LITERAL = new CitySize(SMALL, "SMALL", "SMALL");
-
-	/**
-	 * The '<em><b>MEDIUM</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #MEDIUM
-	 * @generated
-	 * @ordered
-	 */
-	public static final CitySize MEDIUM_LITERAL = new CitySize(MEDIUM, "MEDIUM", "MEDIUM");
-
-	/**
-	 * The '<em><b>LARGE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #LARGE
-	 * @generated
-	 * @ordered
-	 */
-	public static final CitySize LARGE_LITERAL = new CitySize(LARGE, "LARGE", "LARGE");
-
-	/**
-	 * An array of all the '<em><b>City Size</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * An array of all the '<em><b>City Size</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final CitySize[] VALUES_ARRAY = new CitySize[] { SMALL_LITERAL, MEDIUM_LITERAL,
-			LARGE_LITERAL, };
+	private static final CitySize[] VALUES_ARRAY = new CitySize[] {
+			SMALL,
+			MEDIUM,
+			LARGE,
+		};
 
 	/**
-	 * A public read-only list of all the '<em><b>City Size</b></em>' enumerators. <!-- begin-user-doc
+	 * A public read-only list of all the '<em><b>City Size</b></em>' enumerators.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<CitySize> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>City Size</b></em>' literal with the specified literal value. <!--
@@ -128,9 +127,9 @@ public final class CitySize extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>City Size</b></em>' literal with the specified name. <!-- begin-user-doc
+	 * Returns the '<em><b>City Size</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static CitySize getByName(String name) {
@@ -151,23 +150,74 @@ public final class CitySize extends AbstractEnumerator {
 	 */
 	public static CitySize get(int value) {
 		switch (value) {
-		case SMALL:
-			return SMALL_LITERAL;
-		case MEDIUM:
-			return MEDIUM_LITERAL;
-		case LARGE:
-			return LARGE_LITERAL;
+			case SMALL_VALUE: return SMALL;
+			case MEDIUM_VALUE: return MEDIUM;
+			case LARGE_VALUE: return LARGE;
 		}
 		return null;
 	}
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private CitySize(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} // CitySize
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}
