@@ -162,8 +162,6 @@ public class AuditHandler implements ExtensionPoint {
 			final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
 			final EStructuralFeature targetEntryFeature = getAuditingModelElement(
 					sourceEntry.getEStructuralFeature(), auditEntry.eClass().getName());
-			final EStructuralFeature targetEntryFeaturew = getAuditingModelElement(
-					sourceEntry.getEStructuralFeature(), auditEntry.eClass().getName());
 			final FeatureMap.Entry targetEntry = createFeatureMapEntry(session, targetEntryFeature,
 					sourceEntry);
 			((Collection<Object>) auditEntry.eGet(targetEFeature)).add(targetEntry);
