@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
@@ -43,9 +44,9 @@ import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.engine.internal.ForeignKeys;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.engine.spi.SessionImplementor;
 
@@ -117,9 +118,9 @@ public class AuditVersionProvider implements ExtensionPoint {
 	 */
 	public List<TeneoAuditEntry> getAllAuditEntries(EObject entity) {
 		final EClass eClass = entity.eClass();
-		final String entityName = ((SessionImplementor) session).bestGuessEntityName(entity);
-		final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, entity,
-				(SessionImplementor) session);
+		final String entityName = ((SessionImplementor) getSession()).bestGuessEntityName(entity);
+		final Serializable id = ((SessionImplementor) getSession()).getEntityPersister(entityName,
+				entity).getIdentifier(entity, (SessionImplementor) getSession());
 		return getAllAuditEntries(eClass, id);
 	}
 
@@ -169,6 +170,15 @@ public class AuditVersionProvider implements ExtensionPoint {
 	}
 
 	/**
+	 * Resolve an {@link EObject} against the internal resource used here. This method is usefull in
+	 * case the EReference does not automatically resolve proxies.
+	 */
+	@SuppressWarnings("unchecked")
+	public <T extends EObject> T resolve(T proxy) {
+		return (T) EcoreUtil.resolve(proxy, auditResource);
+	}
+
+	/**
 	 * Get the actual object representing a certain state defined by the auditEntry. Note that all
 	 * references and values of the returned {@link EObject} represent the state at the
 	 * {@link TeneoAuditEntry#getTeneo_start()}.
@@ -191,11 +201,9 @@ public class AuditVersionProvider implements ExtensionPoint {
 		if (entry.getTeneo_previous_start() < 0) {
 			return null;
 		}
-		final Query qry = getSession()
-				.createQuery(
-						"select e from "
-								+ HbUtil.getEntityName(entry.eClass())
-								+ " e where teneo_object_id=:objectId and teneo_start=:start");
+		final Query qry = getSession().createQuery(
+				"select e from " + HbUtil.getEntityName(entry.eClass())
+						+ " e where teneo_object_id=:objectId and teneo_start=:start");
 		qry.setParameter("objectId", entry.getTeneo_object_id());
 		qry.setParameter("start", entry.getTeneo_previous_start());
 		qry.setMaxResults(1);
@@ -209,7 +217,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 	 */
 	public TeneoAuditEntry getNextEntry(TeneoAuditEntry entry) {
 		// the first entry
-		if (entry.getTeneo_previous_start() < 0) {
+		if (entry.getTeneo_end() < 0) {
 			return null;
 		}
 		final Query qry = getSession().createQuery(
@@ -241,11 +249,10 @@ public class AuditVersionProvider implements ExtensionPoint {
 		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 
-		final Query qry = getSession()
-				.createQuery(
-						"select e from "
-								+ entityName
-								+ " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end=-1 or teneo_end>:end)");
+		final Query qry = getSession().createQuery(
+				"select e from " + entityName
+						+ " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end="
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>:end)");
 		qry.setParameter("objectId", idAsString);
 		qry.setParameter("start", timeStamp);
 		qry.setParameter("end", timeStamp);
@@ -271,15 +278,19 @@ public class AuditVersionProvider implements ExtensionPoint {
 				if (sourceEFeature.isMany()) {
 					for (Object value : ((Collection<?>) auditEntry.eGet(sourceEFeature))) {
 						((Collection<Object>) target.eGet(targetEFeature)).add(createProxyEObject(
-								(String) value,
-								timeStamp));
+								(String) value, timeStamp));
 					}
 				} else {
 					target.eSet(targetEFeature,
 							createProxyEObject((String) auditEntry.eGet(sourceEFeature), timeStamp));
 				}
 			} else {
-				if (FeatureMapUtil.isFeatureMap(targetEFeature)) {
+				if (StoreUtil.isMap(targetEFeature)) {
+					for (Object value : ((Collection<?>) auditEntry.eGet(sourceEFeature))) {
+						((Collection<Object>) target.eGet(targetEFeature)).add(createEMapEntry(
+								(EReference) targetEFeature, (EObject) value, timeStamp));
+					}
+				} else if (FeatureMapUtil.isFeatureMap(targetEFeature)) {
 					for (Object value : ((Collection<?>) auditEntry.eGet(sourceEFeature))) {
 						final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
 						final EStructuralFeature targetEntryFeature = dataStore.getAuditHandler()
@@ -294,7 +305,8 @@ public class AuditVersionProvider implements ExtensionPoint {
 								.convertValue(targetEFeature, value));
 					}
 				} else {
-					target.eSet(targetEFeature,
+					target.eSet(
+							targetEFeature,
 							dataStore.getAuditHandler().convertValue(targetEFeature,
 									auditEntry.eGet(sourceEFeature)));
 				}
@@ -314,6 +326,36 @@ public class AuditVersionProvider implements ExtensionPoint {
 		auditResource.putEObjectInCache(fullId, target);
 
 		return target;
+	}
+
+	private Object createEMapEntry(EReference targetEFeature, EObject sourceEntry, long timeStamp) {
+		final EObject targetEntry = EcoreUtil.create(targetEFeature.getEReferenceType());
+		final Object value = sourceEntry.eGet(sourceEntry.eClass().getEStructuralFeature("value"));
+		final Object key = sourceEntry.eGet(sourceEntry.eClass().getEStructuralFeature("key"));
+		final EStructuralFeature keyEFeature = targetEntry.eClass().getEStructuralFeature("key");
+		final EStructuralFeature valueEFeature = targetEntry.eClass().getEStructuralFeature("value");
+
+		final Object newKey;
+		if (keyEFeature instanceof EAttribute) {
+			newKey = dataStore.getAuditHandler().convertValue(keyEFeature, key);
+		} else if (key instanceof EObject) {
+			newKey = key;
+		} else {
+			newKey = createProxyEObject((String) key, timeStamp);
+		}
+		targetEntry.eSet(keyEFeature, newKey);
+
+		final Object newValue;
+		if (valueEFeature instanceof EAttribute) {
+			newValue = dataStore.getAuditHandler().convertValue(valueEFeature, value);
+		} else if (value instanceof EObject) {
+			newValue = value;
+		} else {
+			newValue = createProxyEObject((String) value, timeStamp);
+		}
+		targetEntry.eSet(valueEFeature, newValue);
+
+		return targetEntry;
 	}
 
 	private FeatureMap.Entry createFeatureMapEntry(EStructuralFeature eFeature,
@@ -359,6 +401,12 @@ public class AuditVersionProvider implements ExtensionPoint {
 
 	public void setSession(Session session) {
 		this.session = session;
+	}
+
+	public void close() {
+		if (session != null) {
+			session.close();
+		}
 	}
 
 	private class AuditResource extends ResourceImpl {

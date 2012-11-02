@@ -16,12 +16,14 @@
 package org.eclipse.emf.teneo.hibernate.auditing;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -30,6 +32,7 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCo
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingFactory;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -244,13 +247,15 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 					// an update event and not an add event
 					final TeneoAuditEntry previousEntry = (TeneoAuditEntry) list.get(0);
 					previousEntry.setTeneo_end(commitTime - 1);
+					setCommitInfoInReferencedObjects(previousEntry, evictObjects);
 					evictObjects.add(previousEntry);
 
 					auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
 
-					session.update(previousEntry);
+					session.update(auditEntryEntityName, previousEntry);
 				}
 			}
+			setCommitInfoInReferencedObjects(auditEntry, evictObjects);
 			session.save(auditEntryEntityName, auditEntry);
 			evictObjects.add(auditEntry);
 		}
@@ -261,6 +266,37 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		for (Object object : evictObjects) {
 			session.evict(object);
 		}
+	}
+
+	// is called/used in case of emap entries which are themselves
+	// audit objects
+	private void setCommitInfoInReferencedObjects(TeneoAuditEntry source, List<Object> evictObjects) {
+		for (EReference eReference : source.eClass().getEAllReferences()) {
+			if (TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry().isSuperTypeOf(
+					eReference.getEReferenceType())) {
+				if (eReference.isMany()) {
+					int i = 0;
+					for (Object value : (Collection<?>) source.eGet(eReference)) {
+						final TeneoAuditEntry target = (TeneoAuditEntry) value;
+						evictObjects.add(target);
+						setAuditEntryValues(eReference.getName() + "_" + i++, source, target);
+					}
+				} else if (source.eIsSet(eReference) && null != source.eGet(eReference)) {
+					setAuditEntryValues(eReference.getName() + "_", source,
+							(TeneoAuditEntry) source.eGet(eReference));
+					evictObjects.add((TeneoAuditEntry) source.eGet(eReference));
+				}
+			}
+		}
+	}
+
+	private void setAuditEntryValues(String prefix, TeneoAuditEntry source, TeneoAuditEntry target) {
+		target.setTeneo_commit_info(source.getTeneo_commit_info());
+		target.setTeneo_audit_kind(source.getTeneo_audit_kind());
+		target.setTeneo_start(source.getTeneo_start());
+		target.setTeneo_end(source.getTeneo_end());
+		target.setTeneo_object_id(prefix + "_" + source.getTeneo_object_id());
+		target.setTeneo_previous_start(source.getTeneo_previous_start());
 	}
 
 	private synchronized List<AuditWork> getRemoveQueue(Session session, boolean remove) {

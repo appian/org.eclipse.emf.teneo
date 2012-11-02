@@ -406,7 +406,7 @@ public interface EmapPackage extends EPackage {
 	 * @see java.util.Map.Entry
 	 * @model keyDataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Date"
 	 *        keyExtendedMetaData="kind='attribute' name='key'"
-	 *        valueDefault="Complex" valueUnsettable="true" valueDataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category"
+	 *        valueUnsettable="true" valueDataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category"
 	 *        valueExtendedMetaData="kind='attribute' name='value'"
 	 *        extendedMetaData="name='dateToCategoryMapEntry' kind='empty'"
 	 * @generated

@@ -471,7 +471,7 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 
 	@Override
 	public void clear() {
-		this.isLoaded = false;
+		load();
 		super.clear();
 	}
 

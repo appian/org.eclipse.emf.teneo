@@ -51,8 +51,6 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		final LibraryFactory factory = LibraryFactory.eINSTANCE;
-
 		testSimpleChange(store);
 		testContainer(store);
 	}

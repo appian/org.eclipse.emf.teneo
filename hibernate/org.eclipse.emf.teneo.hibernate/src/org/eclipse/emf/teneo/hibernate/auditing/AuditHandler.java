@@ -101,15 +101,11 @@ public class AuditHandler implements ExtensionPoint {
 					}
 				} else {
 					if (sourceEFeature.isMany()) {
-						if (FeatureMapUtil.isFeatureMap(sourceEFeature)) {
-							for (Object value : ((Collection<?>) source.eGet(sourceEFeature))) {
-								final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
-								final EStructuralFeature targetEntryFeature = getAuditingModelElement(
-										sourceEntry.getEStructuralFeature(), auditEntry.eClass().getName());
-								final FeatureMap.Entry targetEntry = createFeatureMapEntry(session,
-										targetEntryFeature, sourceEntry);
-								((Collection<Object>) auditEntry.eGet(targetEFeature)).add(targetEntry);
-							}
+						if (StoreUtil.isMap(sourceEFeature)) {
+							convertEMap(session, source, (EReference) sourceEFeature, auditEntry,
+									(EReference) targetEFeature);
+						} else if (FeatureMapUtil.isFeatureMap(sourceEFeature)) {
+							convertFeatureMap(session, source, sourceEFeature, auditEntry, targetEFeature);
 						} else {
 							for (Object value : (Collection<?>) source.eGet(sourceEFeature)) {
 								((Collection<Object>) auditEntry.eGet(targetEFeature)).add(convertValue(
@@ -122,6 +118,53 @@ public class AuditHandler implements ExtensionPoint {
 					}
 				}
 			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void convertEMap(Session session, EObject source, EReference sourceEReference,
+			TeneoAuditEntry auditEntry, EReference targetEReference) {
+
+		final EStructuralFeature keySourceEFeature = sourceEReference.getEReferenceType()
+				.getEStructuralFeature("key");
+		final EStructuralFeature valueSourceEFeature = sourceEReference.getEReferenceType()
+				.getEStructuralFeature("value");
+		final EStructuralFeature keyTargetEFeature = targetEReference.getEReferenceType()
+				.getEStructuralFeature("key");
+		final EStructuralFeature valueTargetEFeature = targetEReference.getEReferenceType()
+				.getEStructuralFeature("value");
+		for (Object sourceEntry : ((Collection<?>) source.eGet(sourceEReference))) {
+			final EObject sourceMapEntry = (EObject) sourceEntry;
+			final EObject mapEntry = EcoreUtil.create(targetEReference.getEReferenceType());
+			final Object key;
+			if (keySourceEFeature instanceof EReference) {
+				key = entityToIdString(session, sourceMapEntry.eGet(keySourceEFeature));
+			} else {
+				key = convertValue(keyTargetEFeature, sourceMapEntry.eGet(keySourceEFeature));
+			}
+			final Object value;
+			if (valueSourceEFeature instanceof EReference) {
+				value = entityToIdString(session, sourceMapEntry.eGet(valueSourceEFeature));
+			} else {
+				value = convertValue(valueTargetEFeature, sourceMapEntry.eGet(valueSourceEFeature));
+			}
+			mapEntry.eSet(keyTargetEFeature, key);
+			mapEntry.eSet(valueTargetEFeature, value);
+			((Collection<Object>) auditEntry.eGet(targetEReference)).add(mapEntry);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void convertFeatureMap(Session session, EObject source,
+			EStructuralFeature sourceEFeature, TeneoAuditEntry auditEntry,
+			EStructuralFeature targetEFeature) {
+		for (Object value : ((Collection<?>) source.eGet(sourceEFeature))) {
+			final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
+			final EStructuralFeature targetEntryFeature = getAuditingModelElement(
+					sourceEntry.getEStructuralFeature(), auditEntry.eClass().getName());
+			final FeatureMap.Entry targetEntry = createFeatureMapEntry(session, targetEntryFeature,
+					sourceEntry);
+			((Collection<Object>) auditEntry.eGet(targetEFeature)).add(targetEntry);
 		}
 	}
 
@@ -394,9 +437,16 @@ public class AuditHandler implements ExtensionPoint {
 				}
 
 				final EClass eClass = (EClass) eClassifier;
-				final EClass auditingEClass = EcoreFactory.eINSTANCE.createEClass();
-				auditingEClass.setName(po.getAuditingEntityPrefix() + eClass.getName()
-						+ po.getAuditingEntityPostfix());
+				final String auditEClassName = po.getAuditingEntityPrefix() + eClass.getName()
+						+ po.getAuditingEntityPostfix();
+
+				final EClass auditingEClass;
+				if (eAuditingPackage.getEClassifier(auditEClassName) != null) {
+					auditingEClass = (EClass) eAuditingPackage.getEClassifier(auditEClassName);
+				} else {
+					auditingEClass = EcoreFactory.eINSTANCE.createEClass();
+					auditingEClass.setName(auditEClassName);
+				}
 				auditingEClass.getESuperTypes().add(TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry());
 
 				eAuditingPackage.getEClassifiers().add(auditingEClass);
@@ -428,6 +478,17 @@ public class AuditHandler implements ExtensionPoint {
 
 					if (eFeature instanceof EReference && StoreUtil.isMap(eFeature)) {
 						auditingEFeature = EcoreUtil.copy(eFeature);
+
+						// create the audit emap class
+						final EClass eMapEClass = ((EReference) eFeature).getEReferenceType();
+						final String auditEMapClassName = po.getAuditingEntityPrefix() + eMapEClass.getName()
+								+ po.getAuditingEntityPostfix();
+						final EClass auditingEMapEClass = EcoreFactory.eINSTANCE.createEClass();
+						auditingEMapEClass.setName(auditEMapClassName);
+						eAuditingPackage.getEClassifiers().add(auditingEMapEClass);
+
+						// and use it
+						auditingEFeature.setEType(auditingEMapEClass);
 					} else if (eFeature instanceof EReference && dataStore.isEmbedded((EReference) eFeature)) {
 						auditingEFeature = EcoreUtil.copy(eFeature);
 					} else if (eFeature instanceof EReference) {
