@@ -85,7 +85,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<sequential>
 			<eclipse.launch app="buckminster">
 				<args>
-					<jvmarg value="-Xmx2024m" />
+					<jvmarg value="-Xmx3024m" />
 					<jvmarg value="-Dbugfix.288796=true" />
 					<jvmarg value="-Declipse.p2.mirrors=false" />
 					<jvmarg value="-Declipse.p2.unsignedPolicy=allow" />
