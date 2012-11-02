@@ -42,6 +42,11 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
 						.instance().getConfigurations());
+		// suite.addTestSuite(SubstitutionAction.class);
+		// if (true) {
+		// return suite;
+		// }
+
 		suite.addTestSuite(DateTimeAction.class);
 		suite.addTestSuite(DateTimeEAVAction.class);
 		suite.addTestSuite(AttributesTest.class);
