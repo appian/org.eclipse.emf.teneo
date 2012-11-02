@@ -81,15 +81,13 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<map name="testMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+		<list name="testMap" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="TESTELEMENTAUDITING_TESTMAP">
 				<column name="`TESTELEMENTAUDITING_TESTMAP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
-			<map-key type="java.lang.String"/>
-			<element not-null="false" unique="false" type="text">
-				<column not-null="false" unique="false" name="`VALUE`" length="1000000"/>
-			</element>
-		</map>
+			<list-index column="`TESTELEMENTAUDITING_TESTMAP_IDX`"/>
+			<one-to-many entity-name="StringToStringMapAuditing"/>
+		</list>
 		<property name="testProp" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
 			<column not-null="false" unique="false" name="`TESTPROP`" length="1000000"/>
 		</property>

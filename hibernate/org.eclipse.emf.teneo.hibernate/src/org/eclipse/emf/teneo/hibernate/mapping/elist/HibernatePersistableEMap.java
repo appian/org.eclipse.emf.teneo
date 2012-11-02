@@ -218,7 +218,6 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 
 			@Override
 			protected void didClear(int size, Object[] oldObjects) {
-				doClear();
 			}
 
 			@Override

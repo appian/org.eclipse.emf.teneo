@@ -156,6 +156,8 @@ public class EMapAuditingTrueEMapAction extends AbstractTestAction {
 						w = auditVersionProvider.resolve(w);
 						assertTrue(w.getName().startsWith(pre2));
 					}
+					assertTrue(bkAdd.getCategoryByDate().size() == 1);
+					assertTrue(bkUpdate.getCategoryByDate().size() == 0);
 
 					List<Writer> writers = new ArrayList<Writer>();
 					for (Writer w : bkUpdate.getWriters().values()) {
