@@ -483,9 +483,14 @@ public class AuditHandler implements ExtensionPoint {
 						final EClass eMapEClass = ((EReference) eFeature).getEReferenceType();
 						final String auditEMapClassName = po.getAuditingEntityPrefix() + eMapEClass.getName()
 								+ po.getAuditingEntityPostfix();
-						final EClass auditingEMapEClass = EcoreFactory.eINSTANCE.createEClass();
-						auditingEMapEClass.setName(auditEMapClassName);
-						eAuditingPackage.getEClassifiers().add(auditingEMapEClass);
+						final EClass auditingEMapEClass;
+						if (eAuditingPackage.getEClassifier(auditEMapClassName) == null) {
+							auditingEMapEClass = EcoreFactory.eINSTANCE.createEClass();
+							auditingEMapEClass.setName(auditEMapClassName);
+							eAuditingPackage.getEClassifiers().add(auditingEMapEClass);
+						} else {
+							auditingEMapEClass = (EClass) eAuditingPackage.getEClassifier(auditEMapClassName);
+						}
 
 						// and use it
 						auditingEFeature.setEType(auditingEMapEClass);

@@ -260,12 +260,11 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<map name="mapChannels" lazy="true" cascade="all,delete-orphan">
+		<bag name="mapChannels" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="NEAUDITING_MAPCHANNELS">
 				<column name="`NEAUDITING_MAPCHANNELS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
-			<map-key-many-to-many entity-name="ChannelMap"/>
-			<one-to-many entity-name="ChannelMapService"/>
-		</map>
+			<one-to-many entity-name="ChanelMapToChanelMapServiceAuditing"/>
+		</bag>
 	</class>
 </hibernate-mapping>
