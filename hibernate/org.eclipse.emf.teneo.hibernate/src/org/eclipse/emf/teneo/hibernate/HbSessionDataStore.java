@@ -244,7 +244,7 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 				}
 			}
 
-			System.err.println(getMappingXML());
+			// System.err.println(getMappingXML());
 
 			getConfiguration().addXML(getMappingXML());
 		}

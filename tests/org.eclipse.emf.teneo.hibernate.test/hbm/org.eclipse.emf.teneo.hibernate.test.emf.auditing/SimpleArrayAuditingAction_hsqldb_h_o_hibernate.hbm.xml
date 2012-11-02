@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.simplearray.impl.SimpleListImpl" entity-name="SimpleList" abstract="false" lazy="false" discriminator-value="SimpleList" table="`SIMPLELIST`">
+		<meta attribute="eclassName" inherit="false">SimpleList</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/simplearray</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="SIMPLELISTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<array name="intArray" table="`SIMPLELIST_INTARRAY`" cascade="all">
+			<key update="true">
+				<column name="`SIMPLELIST_INTARRAY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIMPLELIST_INTARRAY_IDX`"/>
+			<element type="int"/>
+		</array>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" discriminator-value="TeneoAuditCommitInfo" table="`TENEOAUDITCOMMITINFO`">
+		<meta attribute="eclassName" inherit="false">TeneoAuditCommitInfo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/hibernate/auditing</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TENEOAUDITCOMMITINFODTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="version" type="long">
+			<column not-null="true" unique="false" name="`VERSION`"/>
+		</version>
+		<property name="user" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`USER`"/>
+		</property>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`COMMENT`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="SimpleListAuditing" abstract="false" lazy="false" discriminator-value="SimpleListAuditing" table="`SIMPLELISTAUDITING`">
+		<meta attribute="eclassName" inherit="false">SimpleListAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/simplearrayAuditing</meta>
+		<id name="teneo_audit_id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="SIMPLELISTAUDITINGDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="teneo_version" type="long">
+			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
+		</version>
+		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+		</property>
+		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_START`"/>
+		</property>
+		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_END`"/>
+		</property>
+		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="SIMPLELISTAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
+		</many-to-one>
+		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
+				<param name="eclassifier">TeneoAuditKind</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
+			</type>
+		</property>
+		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
+		</property>
+		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
+		</property>
+		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+		</property>
+		<array name="intArray" table="`SIMPLELISTAUDITING_INTARRAY`" cascade="all">
+			<key update="true">
+				<column name="`SIMPLELISTAUDITING_INTARRAY_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIMPLELISTAUDITING_INTARRAY_IDX`"/>
+			<element type="int"/>
+		</array>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+	</class>
+</hibernate-mapping>

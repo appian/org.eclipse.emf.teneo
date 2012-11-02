@@ -257,21 +257,21 @@
 		<property name="height" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`HEIGHT`"/>
 		</property>
-		<list name="nodes" table="`WORKFLOWAUDITING_NODES`" lazy="true" cascade="all,delete-orphan">
+		<list name="nodes" table="`WORKFLOWAUDITING_NODES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`WORKFLOWAUDITING_NODES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWAUDITING_NODES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="edges" table="`WORKFLOWAUDITING_EDGES`" lazy="true" cascade="all,delete-orphan">
+		<list name="edges" table="`WORKFLOWAUDITING_EDGES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`WORKFLOWAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWAUDITING_EDGES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="comments" table="`WORKFLOWAUDITING_COMMENTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="comments" table="`WORKFLOWAUDITING_COMMENTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`WORKFLOWAUDITING_COMMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -342,14 +342,14 @@
 		<property name="workflow" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
-		<list name="outputs" table="`WORKFLOWNODEAUDITING_OUTPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="outputs" table="`WORKFLOWNODEAUDITING_OUTPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`WORKFLOWNODEAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWNODEAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="inputs" table="`WORKFLOWNODEAUDITING_INPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="inputs" table="`WORKFLOWNODEAUDITING_INPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`WORKFLOWNODEAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -496,7 +496,7 @@
 		<property name="node" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NODE`"/>
 		</property>
-		<list name="edges" table="`INPUTPORTAUDITING_EDGES`" lazy="true" cascade="all,delete-orphan">
+		<list name="edges" table="`INPUTPORTAUDITING_EDGES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`INPUTPORTAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -567,7 +567,7 @@
 		<property name="node" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NODE`"/>
 		</property>
-		<list name="edges" table="`OUTPUTPORTAUDITING_EDGES`" lazy="true" cascade="all,delete-orphan">
+		<list name="edges" table="`OUTPUTPORTAUDITING_EDGES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`OUTPUTPORTAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -638,7 +638,7 @@
 		<property name="node" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NODE`"/>
 		</property>
-		<list name="edges" table="`FAULTAUDITING_EDGES`" lazy="true" cascade="all,delete-orphan">
+		<list name="edges" table="`FAULTAUDITING_EDGES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`FAULTAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -709,14 +709,14 @@
 		<property name="workflow" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
-		<list name="outputs" table="`COMPOUNDTASKAUDITING_OUTPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="outputs" table="`COMPOUNDTASKAUDITING_OUTPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`COMPOUNDTASKAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`COMPOUNDTASKAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="inputs" table="`COMPOUNDTASKAUDITING_INPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="inputs" table="`COMPOUNDTASKAUDITING_INPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`COMPOUNDTASKAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -857,14 +857,14 @@
 		<property name="workflow" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
-		<list name="outputs" table="`TRANSFORMATIONTASKAUDITING_OUTPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="outputs" table="`TRANSFORMATIONTASKAUDITING_OUTPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TRANSFORMATIONTASKAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TRANSFORMATIONTASKAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="inputs" table="`TRANSFORMATIONTASKAUDITING_INPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="inputs" table="`TRANSFORMATIONTASKAUDITING_INPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TRANSFORMATIONTASKAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -944,14 +944,14 @@
 		<property name="workflow" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
-		<list name="outputs" table="`CONDITIONALTASKAUDITING_OUTPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="outputs" table="`CONDITIONALTASKAUDITING_OUTPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CONDITIONALTASKAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CONDITIONALTASKAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="inputs" table="`CONDITIONALTASKAUDITING_INPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="inputs" table="`CONDITIONALTASKAUDITING_INPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CONDITIONALTASKAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -1028,14 +1028,14 @@
 		<property name="workflow" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
-		<list name="outputs" table="`LOOPTASKAUDITING_OUTPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="outputs" table="`LOOPTASKAUDITING_OUTPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`LOOPTASKAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LOOPTASKAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="inputs" table="`LOOPTASKAUDITING_INPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="inputs" table="`LOOPTASKAUDITING_INPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`LOOPTASKAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -1179,7 +1179,7 @@
 		<property name="node" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NODE`"/>
 		</property>
-		<list name="edges" table="`CONDITIONALOUTPUTPORTAUDITING_EDGES`" lazy="true" cascade="all,delete-orphan">
+		<list name="edges" table="`CONDITIONALOUTPUTPORTAUDITING_EDGES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CONDITIONALOUTPUTPORTAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -1317,14 +1317,14 @@
 		<property name="workflow" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
-		<list name="outputs" table="`TASKAUDITING_OUTPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="outputs" table="`TASKAUDITING_OUTPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TASKAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TASKAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="inputs" table="`TASKAUDITING_INPUTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="inputs" table="`TASKAUDITING_INPUTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TASKAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

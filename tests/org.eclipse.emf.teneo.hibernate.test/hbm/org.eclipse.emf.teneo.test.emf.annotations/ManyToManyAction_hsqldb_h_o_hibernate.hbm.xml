@@ -140,14 +140,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="rght" table="`CNTRAUDITING_RGHT`" lazy="true" cascade="all,delete-orphan">
+		<list name="rght" table="`CNTRAUDITING_RGHT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CNTRAUDITING_RGHT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CNTRAUDITING_RGHT_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="lft" table="`CNTRAUDITING_LFT`" lazy="true" cascade="all,delete-orphan">
+		<list name="lft" table="`CNTRAUDITING_LFT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CNTRAUDITING_LFT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -197,7 +197,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="cntr" table="`LFTAUDITING_CNTR`" lazy="true" cascade="all,delete-orphan">
+		<list name="cntr" table="`LFTAUDITING_CNTR`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`LFTAUDITING_CNTR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -247,7 +247,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="cntr" table="`RGHTAUDITING_CNTR`" lazy="true" cascade="all,delete-orphan">
+		<list name="cntr" table="`RGHTAUDITING_CNTR`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`RGHTAUDITING_CNTR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

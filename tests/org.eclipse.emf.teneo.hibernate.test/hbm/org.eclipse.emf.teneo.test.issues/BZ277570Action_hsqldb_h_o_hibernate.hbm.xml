@@ -161,14 +161,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="bars" table="`FOOAUDITING_BARS`" lazy="true" cascade="all,delete-orphan">
+		<list name="bars" table="`FOOAUDITING_BARS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`FOOAUDITING_BARS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FOOAUDITING_BARS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="biffs" table="`FOOAUDITING_BIFFS`" lazy="true" cascade="all,delete-orphan">
+		<list name="biffs" table="`FOOAUDITING_BIFFS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`FOOAUDITING_BIFFS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

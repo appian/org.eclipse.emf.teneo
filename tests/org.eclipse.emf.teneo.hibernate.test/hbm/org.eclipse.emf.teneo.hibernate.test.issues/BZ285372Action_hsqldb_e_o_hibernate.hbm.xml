@@ -121,7 +121,7 @@
 		<property name="string" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`STRING`"/>
 		</property>
-		<list name="persons" table="`FAMILYAUDITING_PERSONS`" lazy="true" cascade="all,delete-orphan">
+		<list name="persons" table="`FAMILYAUDITING_PERSONS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`FAMILYAUDITING_PERSONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -168,14 +168,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="notes" table="`PERSONAUDITING_NOTES`" lazy="true" cascade="all,delete-orphan">
+		<list name="notes" table="`PERSONAUDITING_NOTES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_NOTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_NOTES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="parents" table="`PERSONAUDITING_PARENTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="parents" table="`PERSONAUDITING_PARENTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_PARENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

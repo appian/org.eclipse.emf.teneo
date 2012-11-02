@@ -143,7 +143,7 @@
 		<property name="AnyOne" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ANYONE`"/>
 		</property>
-		<list name="AnyList" table="`PRODUCTTYPEAUDITING_ANYLIST`" lazy="true" cascade="all,delete-orphan">
+		<list name="AnyList" table="`PRODUCTTYPEAUDITING_ANYLIST`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PRODUCTTYPEAUDITING_ANYLIST_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

@@ -208,7 +208,7 @@
 		<property name="myDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDate">
 			<column not-null="false" unique="false" name="`MYDATE`"/>
 		</property>
-		<list name="testB" table="`TESTCAUDITING_TESTB`" lazy="true" cascade="all,delete-orphan">
+		<list name="testB" table="`TESTCAUDITING_TESTB`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TESTCAUDITING_TESTB_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

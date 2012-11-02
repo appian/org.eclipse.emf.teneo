@@ -354,7 +354,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="account" table="`ACCOUNTGROUPAUDITING_ACCOUNT`" lazy="true" cascade="all,delete-orphan">
+		<list name="account" table="`ACCOUNTGROUPAUDITING_ACCOUNT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ACCOUNTGROUPAUDITING_ACCOUNT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -407,14 +407,14 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="accountGroup" table="`ACCOUNTINGAUDITING_ACCOUNTGROUP`" lazy="true" cascade="all,delete-orphan">
+		<list name="accountGroup" table="`ACCOUNTINGAUDITING_ACCOUNTGROUP`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ACCOUNTINGAUDITING_ACCOUNTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTINGAUDITING_ACCOUNTGROUP_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="vat" table="`ACCOUNTINGAUDITING_VAT`" lazy="true" cascade="all,delete-orphan">
+		<list name="vat" table="`ACCOUNTINGAUDITING_VAT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ACCOUNTINGAUDITING_VAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -427,7 +427,7 @@
 		<property name="report" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`REPORT`"/>
 		</property>
-		<list name="journalGroup" table="`ACCOUNTINGAUDITING_JOURNALGROUP`" lazy="true" cascade="all,delete-orphan">
+		<list name="journalGroup" table="`ACCOUNTINGAUDITING_JOURNALGROUP`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ACCOUNTINGAUDITING_JOURNALGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -480,7 +480,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="report" table="`BALANCEACCOUNTAUDITING_REPORT`" lazy="true" cascade="all,delete-orphan">
+		<list name="report" table="`BALANCEACCOUNTAUDITING_REPORT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`BALANCEACCOUNTAUDITING_REPORT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -533,14 +533,14 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="journalGroups" table="`JOURNALGROUPAUDITING_JOURNALGROUPS`" lazy="true" cascade="all,delete-orphan">
+		<list name="journalGroups" table="`JOURNALGROUPAUDITING_JOURNALGROUPS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`JOURNALGROUPAUDITING_JOURNALGROUPS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`JOURNALGROUPAUDITING_JOURNALGROUPS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="journalStatements" table="`JOURNALGROUPAUDITING_JOURNALSTATEMENTS`" lazy="true" cascade="all,delete-orphan">
+		<list name="journalStatements" table="`JOURNALGROUPAUDITING_JOURNALSTATEMENTS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`JOURNALGROUPAUDITING_JOURNALSTATEMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -752,14 +752,14 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="reportGroup" table="`REPORTGROUPAUDITING_REPORTGROUP`" lazy="true" cascade="all,delete-orphan">
+		<list name="reportGroup" table="`REPORTGROUPAUDITING_REPORTGROUP`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`REPORTGROUPAUDITING_REPORTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`REPORTGROUPAUDITING_REPORTGROUP_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="account" table="`REPORTGROUPAUDITING_ACCOUNT`" lazy="true" cascade="all,delete-orphan">
+		<list name="account" table="`REPORTGROUPAUDITING_ACCOUNT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`REPORTGROUPAUDITING_ACCOUNT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

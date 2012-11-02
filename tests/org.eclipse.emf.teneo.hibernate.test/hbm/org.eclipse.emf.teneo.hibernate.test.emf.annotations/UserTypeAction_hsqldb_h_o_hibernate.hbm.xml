@@ -28,7 +28,7 @@
 		<property name="numbers" lazy="false" insert="true" update="true" not-null="true" unique="false" type="intArrayType">
 			<column not-null="true" unique="false" name="`NUMBERS`"/>
 		</property>
-		<list name="phoneNumbers" table="`PERSON_PHONENUMBERS`" lazy="true" cascade="all,delete-orphan">
+		<list name="phoneNumbers" table="`PERSON_PHONENUMBERS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSON_PHONENUMBERS_E_ID`" unique="false"/>
 			</key>
@@ -182,7 +182,7 @@
 		<property name="numbers" lazy="false" insert="true" update="true" not-null="false" unique="false" type="intArrayType">
 			<column not-null="false" unique="false" name="`NUMBERS`"/>
 		</property>
-		<list name="phoneNumbers" table="`PERSONAUDITING_PHONENUMBERS`" lazy="true" cascade="all,delete-orphan">
+		<list name="phoneNumbers" table="`PERSONAUDITING_PHONENUMBERS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_PHONENUMBERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -192,7 +192,7 @@
 		<property name="emergencyContact" lazy="false" insert="true" update="true" not-null="false" unique="false" type="usertype.PhoneNumber">
 			<column not-null="false" unique="false" name="`EMERGENCYCONTACT`"/>
 		</property>
-		<list name="addresses" table="`PERSONAUDITING_ADDRESSES`" lazy="true" cascade="all,delete-orphan">
+		<list name="addresses" table="`PERSONAUDITING_ADDRESSES`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_ADDRESSES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

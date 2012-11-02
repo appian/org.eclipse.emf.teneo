@@ -119,7 +119,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="you" table="`MEAUDITING_YOU`" lazy="true" cascade="all,delete-orphan">
+		<list name="you" table="`MEAUDITING_YOU`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`MEAUDITING_YOU_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -172,7 +172,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="me" table="`YOUAUDITING_ME`" lazy="true" cascade="all,delete-orphan">
+		<list name="me" table="`YOUAUDITING_ME`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`YOUAUDITING_ME_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

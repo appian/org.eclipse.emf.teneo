@@ -115,7 +115,7 @@
 		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ADDRESS`"/>
 		</property>
-		<array name="photo" table="`PERSONAUDITING_PHOTO`" cascade="all,delete-orphan">
+		<array name="photo" table="`PERSONAUDITING_PHOTO`" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_PHOTO_E_ID`" unique="false"/>
 			</key>

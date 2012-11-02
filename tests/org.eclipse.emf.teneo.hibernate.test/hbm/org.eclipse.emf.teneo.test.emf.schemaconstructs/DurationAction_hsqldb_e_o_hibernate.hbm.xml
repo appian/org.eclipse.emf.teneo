@@ -14,7 +14,7 @@
 		<property name="duration" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration">
 			<column not-null="false" unique="false" name="`DURATION`"/>
 		</property>
-		<list name="durations" table="`DURATIONTEST_DURATIONS`" lazy="true" cascade="all,delete-orphan">
+		<list name="durations" table="`DURATIONTEST_DURATIONS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`DURATIONTEST_DURATIONS_NAME`" unique="false"/>
 			</key>
@@ -84,7 +84,7 @@
 		<property name="duration" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration">
 			<column not-null="false" unique="false" name="`DURATION`"/>
 		</property>
-		<list name="durations" table="`DURATIONTESTAUDITING_DURATIONS`" lazy="true" cascade="all,delete-orphan">
+		<list name="durations" table="`DURATIONTESTAUDITING_DURATIONS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`DURATIONTESTAUDITING_DURATIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

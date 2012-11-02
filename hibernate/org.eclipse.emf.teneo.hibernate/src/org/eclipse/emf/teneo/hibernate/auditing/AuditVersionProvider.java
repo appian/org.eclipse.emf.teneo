@@ -106,6 +106,25 @@ public class AuditVersionProvider implements ExtensionPoint {
 	}
 
 	/**
+	 * Creates an id string which can be used to query for {@link TeneoAuditEntry} objects. The id
+	 * string can be used as a filter value for references to other objects.
+	 */
+	public String getIdString(EObject entity) {
+		final EClass eClass = entity.eClass();
+		final String entityName = ((SessionImplementor) getSession()).bestGuessEntityName(entity);
+		final Serializable id = ((SessionImplementor) getSession()).getEntityPersister(entityName,
+				entity).getIdentifier(entity, (SessionImplementor) getSession());
+		return getIdString(eClass, id);
+	}
+
+	/**
+	 * @see #getIdString(EObject)
+	 */
+	public String getIdString(EClass eClass, Serializable id) {
+		return dataStore.getAuditHandler().idToString(eClass, id);
+	}
+
+	/**
 	 * Return all audit entries ({@link TeneoAuditEntry}) for a certain version. The audit entries are
 	 * ordered by increasing commit time. The latest version is the last.
 	 * 

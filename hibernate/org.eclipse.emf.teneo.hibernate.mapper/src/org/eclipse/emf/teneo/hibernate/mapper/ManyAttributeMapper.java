@@ -88,8 +88,9 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 		if (!isArray) {
 			addFetchType(collElement, otm.getFetch());
 		}
-		addCascadesForMany(collElement,
-				getCascades(hbAttribute.getHbCascade(), otm.getCascade(), false));
+		final boolean addOrphanDelete = FeatureMapUtil.isFeatureMap(paAttribute.getModelEAttribute());
+		addCascades(collElement,
+				getCascades(hbAttribute.getHbCascade(), otm.getCascade(), addOrphanDelete), addOrphanDelete);
 
 		if (FeatureMapUtil.isFeatureMap(paAttribute.getModelEAttribute())) {
 			if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {

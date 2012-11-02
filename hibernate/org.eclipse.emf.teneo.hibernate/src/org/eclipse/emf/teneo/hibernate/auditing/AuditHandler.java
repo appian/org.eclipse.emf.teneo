@@ -301,10 +301,20 @@ public class AuditHandler implements ExtensionPoint {
 		// note a qualifier is needed because a feature is created
 		// multiple times for an audit feature in the audit table
 		// so qualify using the audit eclass
-		final String id = eAnnotation.getDetails().get(
+		String id = eAnnotation.getDetails().get(
 				Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING + (qualifier == null ? "" : qualifier));
 		if (id == null) {
-			return null;
+			if (modelElement instanceof EStructuralFeature) {
+				final EClass containingEClass = ((EStructuralFeature) modelElement).getEContainingClass();
+				final EClass auditEClass = getAuditingModelElement(containingEClass);
+				if (auditEClass != null) {
+					id = eAnnotation.getDetails().get(
+							Constants.ANNOTATION_AUDITING_MODELELEMENT_AUDITING + auditEClass.getName());
+				}
+			}
+			if (id == null) {
+				return null;
+			}
 		}
 		if (modelElement instanceof EClass) {
 			return (T) StoreUtil.stringToEClass(dataStore.getPackageRegistry(), id);
@@ -536,6 +546,8 @@ public class AuditHandler implements ExtensionPoint {
 					if (auditingEFeature instanceof EAttribute) {
 						((EAttribute) auditingEFeature).setID(false);
 					}
+					// always changeable
+					auditingEFeature.setChangeable(true);
 					// remove later...
 					auditingEFeature.setLowerBound(0);
 

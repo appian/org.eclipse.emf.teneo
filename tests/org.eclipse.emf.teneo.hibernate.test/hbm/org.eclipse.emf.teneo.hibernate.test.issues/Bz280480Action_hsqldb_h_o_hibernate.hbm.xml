@@ -139,49 +139,49 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<array name="p" table="`DSAKEYVALUETYPE_P`" cascade="all,delete-orphan">
+		<array name="p" table="`DSAKEYVALUETYPE_P`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_P_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_P_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="q" table="`DSAKEYVALUETYPE_Q`" cascade="all,delete-orphan">
+		<array name="q" table="`DSAKEYVALUETYPE_Q`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_Q_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_Q_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="g" table="`DSAKEYVALUETYPE_G`" cascade="all,delete-orphan">
+		<array name="g" table="`DSAKEYVALUETYPE_G`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_G_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_G_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="y" table="`DSAKEYVALUETYPE_Y`" cascade="all,delete-orphan">
+		<array name="y" table="`DSAKEYVALUETYPE_Y`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_Y_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_Y_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="j" table="`DSAKEYVALUETYPE_J`" cascade="all,delete-orphan">
+		<array name="j" table="`DSAKEYVALUETYPE_J`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_J_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_J_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="seed" table="`DSAKEYVALUETYPE_SEED`" cascade="all,delete-orphan">
+		<array name="seed" table="`DSAKEYVALUETYPE_SEED`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_SEED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_SEED_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="pgenCounter" table="`DSAKEYVALUETYPE_PGENCOUNTER`" cascade="all,delete-orphan">
+		<array name="pgenCounter" table="`DSAKEYVALUETYPE_PGENCOUNTER`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPE_PGENCOUNTER_E_ID`" unique="false"/>
 			</key>
@@ -478,14 +478,14 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<array name="pGPKeyID" table="`PGPDATATYPE_PGPKEYID`" cascade="all,delete-orphan">
+		<array name="pGPKeyID" table="`PGPDATATYPE_PGPKEYID`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPE_PGPKEYID_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPE_PGPKEYID_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="pGPKeyPacket" table="`PGPDATATYPE_PGPKEYPACKET`" cascade="all,delete-orphan">
+		<array name="pGPKeyPacket" table="`PGPDATATYPE_PGPKEYPACKET`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPE_PGPKEYPACKET_E_ID`" unique="false"/>
 			</key>
@@ -499,7 +499,7 @@
 			<list-index column="`PGPDATATYPE_ANY_IDX`"/>
 			<one-to-many entity-name="PGPDataType_any"/>
 		</list>
-		<array name="pGPKeyPacket1" table="`PGPDATATYPE_PGPKEYPACKET1`" cascade="all,delete-orphan">
+		<array name="pGPKeyPacket1" table="`PGPDATATYPE_PGPKEYPACKET1`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPE_PGPKEYPACKET1_E_ID`" unique="false"/>
 			</key>
@@ -562,7 +562,7 @@
 		<many-to-one name="digestMethod" entity-name="DigestMethodType" lazy="false" cascade="all" foreign-key="REFERENCETYPE_DIGESTMETHOD" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`DIGESTMETHODTYPE_DIGESTMETHOD_E_ID`"/>
 		</many-to-one>
-		<array name="digestValue" table="`REFERENCETYPE_DIGESTVALUE`" cascade="all,delete-orphan">
+		<array name="digestValue" table="`REFERENCETYPE_DIGESTVALUE`" cascade="all">
 			<key update="true">
 				<column name="`REFERENCETYPE_DIGESTVALUE_ID`" unique="false"/>
 			</key>
@@ -612,14 +612,14 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<array name="modulus" table="`RSAKEYVALUETYPE_MODULUS`" cascade="all,delete-orphan">
+		<array name="modulus" table="`RSAKEYVALUETYPE_MODULUS`" cascade="all">
 			<key update="true">
 				<column name="`RSAKEYVALUETYPE_MODULUS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`RSAKEYVALUETYPE_MODULUS_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="exponent" table="`RSAKEYVALUETYPE_EXPONENT`" cascade="all,delete-orphan">
+		<array name="exponent" table="`RSAKEYVALUETYPE_EXPONENT`" cascade="all">
 			<key update="true">
 				<column name="`RSAKEYVALUETYPE_EXPONENT_E_ID`" unique="false"/>
 			</key>
@@ -829,7 +829,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<array name="value" table="`SIGNATUREVALUETYPE_VALUE`" cascade="all,delete-orphan">
+		<array name="value" table="`SIGNATUREVALUETYPE_VALUE`" cascade="all">
 			<key update="true">
 				<column name="`SIGNATUREVALUETYPE_VALUE_ID`" unique="false"/>
 			</key>
@@ -1538,49 +1538,49 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<array name="p" table="`DSAKEYVALUETYPEAUDITING_P`" cascade="all,delete-orphan">
+		<array name="p" table="`DSAKEYVALUETYPEAUDITING_P`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_P_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="q" table="`DSAKEYVALUETYPEAUDITING_Q`" cascade="all,delete-orphan">
+		<array name="q" table="`DSAKEYVALUETYPEAUDITING_Q`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_Q_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_Q_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="g" table="`DSAKEYVALUETYPEAUDITING_G`" cascade="all,delete-orphan">
+		<array name="g" table="`DSAKEYVALUETYPEAUDITING_G`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_G_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_G_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="y" table="`DSAKEYVALUETYPEAUDITING_Y`" cascade="all,delete-orphan">
+		<array name="y" table="`DSAKEYVALUETYPEAUDITING_Y`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_Y_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_Y_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="j" table="`DSAKEYVALUETYPEAUDITING_J`" cascade="all,delete-orphan">
+		<array name="j" table="`DSAKEYVALUETYPEAUDITING_J`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_J_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_J_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="seed" table="`DSAKEYVALUETYPEAUDITING_SEED`" cascade="all,delete-orphan">
+		<array name="seed" table="`DSAKEYVALUETYPEAUDITING_SEED`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_SEED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_SEED_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="pgenCounter" table="`DSAKEYVALUETYPEAUDITING_PGENCOUNTER`" cascade="all,delete-orphan">
+		<array name="pgenCounter" table="`DSAKEYVALUETYPEAUDITING_PGENCOUNTER`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_PGENCOUNTER_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -1866,7 +1866,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="reference" table="`MANIFESTTYPEAUDITING_REFERENCE`" lazy="true" cascade="all,delete-orphan">
+		<list name="reference" table="`MANIFESTTYPEAUDITING_REFERENCE`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`MANIFESTTYPEAUDITING_REFERENCE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2034,14 +2034,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<array name="pGPKeyID" table="`PGPDATATYPEAUDITING_PGPKEYID`" cascade="all,delete-orphan">
+		<array name="pGPKeyID" table="`PGPDATATYPEAUDITING_PGPKEYID`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYID_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPEAUDITING_PGPKEYID_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="pGPKeyPacket" table="`PGPDATATYPEAUDITING_PGPKEYPACKET`" cascade="all,delete-orphan">
+		<array name="pGPKeyPacket" table="`PGPDATATYPEAUDITING_PGPKEYPACKET`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYPACKET_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2055,7 +2055,7 @@
 			<list-index column="`PGPDATATYPEAUDITING_ANY_IDX`"/>
 			<one-to-many entity-name="PGPDataTypeAuditing_any"/>
 		</list>
-		<array name="pGPKeyPacket1" table="`PGPDATATYPEAUDITING_PGPKEYPACKET1`" cascade="all,delete-orphan">
+		<array name="pGPKeyPacket1" table="`PGPDATATYPEAUDITING_PGPKEYPACKET1`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYPACKET1_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2148,7 +2148,7 @@
 		<property name="digestMethod" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`DIGESTMETHOD`"/>
 		</property>
-		<array name="digestValue" table="`REFERENCETYPEAUDITING_DIGESTVALUE`" cascade="all,delete-orphan">
+		<array name="digestValue" table="`REFERENCETYPEAUDITING_DIGESTVALUE`" cascade="all">
 			<key update="true">
 				<column name="`REFERENCETYPEAUDITING_DIGESTVALUE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2259,14 +2259,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<array name="modulus" table="`RSAKEYVALUETYPEAUDITING_MODULUS`" cascade="all,delete-orphan">
+		<array name="modulus" table="`RSAKEYVALUETYPEAUDITING_MODULUS`" cascade="all">
 			<key update="true">
 				<column name="`RSAKEYVALUETYPEAUDITING_MODULUS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RSAKEYVALUETYPEAUDITING_MODULUS_IDX`"/>
 			<element type="byte"/>
 		</array>
-		<array name="exponent" table="`RSAKEYVALUETYPEAUDITING_EXPONENT`" cascade="all,delete-orphan">
+		<array name="exponent" table="`RSAKEYVALUETYPEAUDITING_EXPONENT`" cascade="all">
 			<key update="true">
 				<column name="`RSAKEYVALUETYPEAUDITING_EXPONENT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2410,7 +2410,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="signatureProperty" table="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY`" lazy="true" cascade="all,delete-orphan">
+		<list name="signatureProperty" table="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2581,7 +2581,7 @@
 		<property name="keyInfo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`KEYINFO`"/>
 		</property>
-		<list name="object" table="`SIGNATURETYPEAUDITING_OBJECT`" lazy="true" cascade="all,delete-orphan">
+		<list name="object" table="`SIGNATURETYPEAUDITING_OBJECT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`SIGNATURETYPEAUDITING_OBJECT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2634,7 +2634,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<array name="value" table="`SIGNATUREVALUETYPEAUDITING_VALUE`" cascade="all,delete-orphan">
+		<array name="value" table="`SIGNATUREVALUETYPEAUDITING_VALUE`" cascade="all">
 			<key update="true">
 				<column name="`SIGNATUREVALUETYPEAUDITING_VALUE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2693,7 +2693,7 @@
 		<property name="signatureMethod" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`SIGNATUREMETHOD`"/>
 		</property>
-		<list name="reference" table="`SIGNEDINFOTYPEAUDITING_REFERENCE`" lazy="true" cascade="all,delete-orphan">
+		<list name="reference" table="`SIGNEDINFOTYPEAUDITING_REFERENCE`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`SIGNEDINFOTYPEAUDITING_REFERENCE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -2825,7 +2825,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="transform" table="`TRANSFORMSTYPEAUDITING_TRANSFORM`" lazy="true" cascade="all,delete-orphan">
+		<list name="transform" table="`TRANSFORMSTYPEAUDITING_TRANSFORM`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TRANSFORMSTYPEAUDITING_TRANSFORM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

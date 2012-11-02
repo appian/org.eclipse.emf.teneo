@@ -9,9 +9,7 @@
 package org.eclipse.emf.teneo.hibernate.test.emf.auditing;
 
 import java.util.List;
-import java.util.Properties;
 
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
@@ -24,6 +22,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.hibernate.Query;
 
 /**
  * Simple testcase to test auditing.
@@ -41,18 +40,12 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.put(PersistenceOptions.ENABLE_AUDITING, "true");
-		return props;
-	}
-
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
 		testSimpleChange(store);
 		testContainer(store);
+		testQuery(store);
 	}
 
 	private void testSimpleChange(TestStore store) {
@@ -180,4 +173,61 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 		}
 	}
 
+	private void testQuery(TestStore store) {
+
+		Writer w = null;
+		{
+			store.beginTransaction();
+			final Library library = LibraryFactory.eINSTANCE.createLibrary();
+			library.setName("0");
+			final Writer writer = LibraryFactory.eINSTANCE.createWriter();
+			writer.setName("0");
+			final Book bk1 = LibraryFactory.eINSTANCE.createBook();
+			bk1.setTitle("0");
+			bk1.setPages(0);
+			writer.getBooks().add(bk1);
+			w = writer;
+			library.getWriters().add(writer);
+			library.getBooks().add(bk1);
+			store.store(library);
+			store.store(bk1);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Book bk = store.getObject(Book.class);
+			bk.setPages(1);
+			store.commitTransaction();
+		}
+		{
+			final HibernateTestStore testStore = (HibernateTestStore) store;
+			{
+				store.beginTransaction();
+				final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
+				final Query qry = testStore.getSession().createQuery(
+						"select e from BookAuditing e where author=:author");
+				final String idString = vp.getIdString(w);
+				qry.setParameter("author", idString);
+				final List<?> list = qry.list();
+				assertTrue(list.size() == 2);
+				Book bk1 = (Book) vp.getRevision((TeneoAuditEntry) list.get(0));
+				assertTrue(bk1.getPages() == 0);
+				Book bk2 = (Book) vp.getRevision((TeneoAuditEntry) list.get(1));
+				assertTrue(bk2.getPages() == 1);
+				store.commitTransaction();
+			}
+			{
+				store.beginTransaction();
+				final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
+				final Query qry = testStore.getSession().createQuery(
+						"select e from BookAuditing e where pages=1 and author=:author");
+				qry.setParameter("author", vp.getIdString(w));
+				final List<?> list = qry.list();
+				assertTrue(list.size() == 1);
+				Book bk1 = (Book) vp.getRevision((TeneoAuditEntry) list.get(0));
+				assertTrue(bk1.getPages() == 1);
+				store.commitTransaction();
+			}
+		}
+	}
 }

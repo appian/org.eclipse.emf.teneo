@@ -192,7 +192,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="carWheel" table="`CARFRAMEAUDITING_CARWHEEL`" lazy="true" cascade="all,delete-orphan">
+		<list name="carWheel" table="`CARFRAMEAUDITING_CARWHEEL`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CARFRAMEAUDITING_CARWHEEL_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -297,14 +297,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="carType" table="`CARSLISTAUDITING_CARTYPE`" lazy="true" cascade="all,delete-orphan">
+		<list name="carType" table="`CARSLISTAUDITING_CARTYPE`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CARSLISTAUDITING_CARTYPE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARSLISTAUDITING_CARTYPE_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="carLink" table="`CARSLISTAUDITING_CARLINK`" lazy="true" cascade="all,delete-orphan">
+		<list name="carLink" table="`CARSLISTAUDITING_CARLINK`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CARSLISTAUDITING_CARLINK_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -400,7 +400,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="carFrame" table="`CARTYPEAUDITING_CARFRAME`" lazy="true" cascade="all,delete-orphan">
+		<list name="carFrame" table="`CARTYPEAUDITING_CARFRAME`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CARTYPEAUDITING_CARFRAME_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -453,7 +453,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="carTire" table="`CARWHEELAUDITING_CARTIRE`" lazy="true" cascade="all,delete-orphan">
+		<list name="carTire" table="`CARWHEELAUDITING_CARTIRE`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CARWHEELAUDITING_CARTIRE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

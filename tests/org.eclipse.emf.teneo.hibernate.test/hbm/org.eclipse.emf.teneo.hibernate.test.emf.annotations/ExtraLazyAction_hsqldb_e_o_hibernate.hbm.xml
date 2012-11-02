@@ -22,7 +22,7 @@
 			<list-index column="`BOOK_AUTHORS_IDX`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
-		<list name="subTitles" table="`BOOK_SUBTITLES`" lazy="extra" cascade="all,delete-orphan">
+		<list name="subTitles" table="`BOOK_SUBTITLES`" lazy="extra" cascade="all">
 			<key update="true">
 				<column name="`BOOK_SUBTITLES_E_ID`" unique="false"/>
 			</key>

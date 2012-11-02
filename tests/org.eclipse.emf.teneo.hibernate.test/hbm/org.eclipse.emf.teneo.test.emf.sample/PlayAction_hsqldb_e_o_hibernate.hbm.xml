@@ -36,7 +36,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<list name="p" table="`FMTYPE_P`" lazy="true" cascade="all,delete-orphan">
+		<list name="p" table="`FMTYPE_P`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`FMTYPE_P_E_ID`" unique="false"/>
 			</key>
@@ -91,7 +91,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<list name="persona" table="`PERSONAGROUPTYPE_PERSONA`" lazy="true" cascade="all,delete-orphan">
+		<list name="persona" table="`PERSONAGROUPTYPE_PERSONA`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAGROUPTYPE_PERSONA_E_ID`" unique="false"/>
 			</key>
@@ -268,7 +268,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="scene" table="`ACTTYPEAUDITING_SCENE`" lazy="true" cascade="all,delete-orphan">
+		<list name="scene" table="`ACTTYPEAUDITING_SCENE`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ACTTYPEAUDITING_SCENE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -471,7 +471,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="p" table="`FMTYPEAUDITING_P`" lazy="true" cascade="all,delete-orphan">
+		<list name="p" table="`FMTYPEAUDITING_P`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`FMTYPEAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -584,7 +584,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
-		<list name="persona" table="`PERSONAGROUPTYPEAUDITING_PERSONA`" lazy="true" cascade="all,delete-orphan">
+		<list name="persona" table="`PERSONAGROUPTYPEAUDITING_PERSONA`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAGROUPTYPEAUDITING_PERSONA_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -649,7 +649,7 @@
 		<property name="playSubTitle" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`PLAYSUBTITLE`"/>
 		</property>
-		<list name="act" table="`PLAYTYPEAUDITING_ACT`" lazy="true" cascade="all,delete-orphan">
+		<list name="act" table="`PLAYTYPEAUDITING_ACT`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PLAYTYPEAUDITING_ACT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

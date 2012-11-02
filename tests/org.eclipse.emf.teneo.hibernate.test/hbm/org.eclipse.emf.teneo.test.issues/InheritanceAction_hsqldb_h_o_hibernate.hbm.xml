@@ -116,7 +116,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="things" table="`ANNOTATIONAUDITING_THINGS`" lazy="true" cascade="all,delete-orphan">
+		<list name="things" table="`ANNOTATIONAUDITING_THINGS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ANNOTATIONAUDITING_THINGS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -169,7 +169,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="things" table="`INTERESTAUDITING_THINGS`" lazy="true" cascade="all,delete-orphan">
+		<list name="things" table="`INTERESTAUDITING_THINGS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`INTERESTAUDITING_THINGS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -222,7 +222,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="things" table="`SUBONEAUDITING_THINGS`" lazy="true" cascade="all,delete-orphan">
+		<list name="things" table="`SUBONEAUDITING_THINGS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`SUBONEAUDITING_THINGS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -321,7 +321,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="things" table="`SUBTWOAUDITING_THINGS`" lazy="true" cascade="all,delete-orphan">
+		<list name="things" table="`SUBTWOAUDITING_THINGS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`SUBTWOAUDITING_THINGS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -374,7 +374,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<list name="things" table="`THINGAUDITING_THINGS`" lazy="true" cascade="all,delete-orphan">
+		<list name="things" table="`THINGAUDITING_THINGS`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`THINGAUDITING_THINGS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

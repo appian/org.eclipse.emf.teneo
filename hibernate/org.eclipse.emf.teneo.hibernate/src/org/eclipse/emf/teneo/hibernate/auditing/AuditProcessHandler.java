@@ -266,6 +266,9 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		for (Object object : evictObjects) {
 			session.evict(object);
 		}
+
+		// clear the work queue
+		getRemoveQueue(session, false);
 	}
 
 	// is called/used in case of emap entries which are themselves
