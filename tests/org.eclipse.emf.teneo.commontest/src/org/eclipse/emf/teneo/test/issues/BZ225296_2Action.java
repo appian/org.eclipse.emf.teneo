@@ -35,4 +35,10 @@ public class BZ225296_2Action extends AbstractTestAction {
 	@Override
 	public void doAction(TestStore store) {
 	}
+	
+	@Override
+	public boolean supportAuditing() {
+		// non-relevant testcase
+		return false;
+	}
 }

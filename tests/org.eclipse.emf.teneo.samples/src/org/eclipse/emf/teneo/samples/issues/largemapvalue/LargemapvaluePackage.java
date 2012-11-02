@@ -175,6 +175,7 @@ public interface LargemapvaluePackage extends EPackage {
 	 * @model keyDataType="org.eclipse.emf.ecore.EString"
 	 *        valueDataType="org.eclipse.emf.ecore.EString"
 	 *        valueAnnotation="teneo.jpa value='@Lob\n@Column(length=1000000)'"
+	 *        valueAnnotation="teneo.jpa.auditing value='@Lob\n@Column(length=1000000)'"
 	 * @generated
 	 */
 	EClass getStringToStringMap();

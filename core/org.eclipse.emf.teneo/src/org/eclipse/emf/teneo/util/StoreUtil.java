@@ -379,7 +379,7 @@ public class StoreUtil {
 	}
 
 	/** Translates a string to a eclass */
-	public static EClass stringToEClass(String strid) {
+	public static EClass stringToEClass(EPackage.Registry registry, String strid) {
 		int lastIndex = strid.lastIndexOf(PATH_SEPARATOR);
 
 		if (lastIndex == -1) {
@@ -389,8 +389,7 @@ public class StoreUtil {
 		final String nsuri = strid.substring(0, lastIndex);
 		final String eclassName = strid.substring(lastIndex + 1);
 
-		final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry()
-				.getEPackage(nsuri);
+		final EPackage epack = registry.getEPackage(nsuri);
 		if (epack == null) {
 			throw new TeneoException("The strid " + strid + " and nsuri: " + nsuri
 					+ " does not resolve to an epackage");

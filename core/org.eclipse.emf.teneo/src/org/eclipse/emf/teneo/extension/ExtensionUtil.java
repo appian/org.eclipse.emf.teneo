@@ -130,6 +130,9 @@ public class ExtensionUtil {
 
 		// from the hibernate plugin
 		em.registerExtension(createExtension(
+"org.eclipse.emf.teneo.hibernate.auditing.AuditHandler",
+				"org.eclipse.emf.teneo.hibernate.auditing.AuditHandler", false));
+		em.registerExtension(createExtension(
 				"org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler",
 				"org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler", false));
 		em.registerExtension(createExtension(

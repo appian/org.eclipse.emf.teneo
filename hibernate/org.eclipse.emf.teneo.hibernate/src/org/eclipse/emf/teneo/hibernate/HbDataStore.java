@@ -195,6 +195,8 @@ public abstract class HbDataStore implements DataStore {
 	private boolean auditing = false;
 	private List<EPackage> auditingEPackages = new ArrayList<EPackage>();
 
+	private AuditHandler auditHandler = null;
+
 	public EPackage.Registry getPackageRegistry() {
 		if (packageRegistry == null) {
 			return PackageRegistryProvider.getInstance().getPackageRegistry();
@@ -293,7 +295,7 @@ public abstract class HbDataStore implements DataStore {
 		final List<EPackage> epacks = new ArrayList<EPackage>(Arrays.asList(getEPackages()));
 		auditingEPackages.clear();
 		for (EPackage ePackage : originalEPackages) {
-			auditingEPackages.add(AuditHandler.getInstance().createAuditingEPackage(this, ePackage,
+			auditingEPackages.add(getAuditHandler().createAuditingEPackage(this, ePackage,
 					getPackageRegistry(), getPersistenceOptions()));
 		}
 		epacks.add(TeneoauditingPackage.eINSTANCE);
@@ -626,7 +628,7 @@ public abstract class HbDataStore implements DataStore {
 		}
 
 		// don't consider the auditing eclasses to be a top eclass
-		if (AuditHandler.getInstance().getModelElement(eClass) != null) {
+		if (getAuditHandler().getModelElement(eClass) != null) {
 			return true;
 		}
 		if (TeneoauditingPackage.eNS_URI.equals(eClass.getEPackage().getNsURI())) {
@@ -1884,5 +1886,17 @@ public abstract class HbDataStore implements DataStore {
 		getPersistenceOptions().getProperties().setProperty(PersistenceOptions.ENABLE_AUDITING,
 				Boolean.toString(auditing));
 		this.auditing = auditing;
+	}
+
+	public AuditHandler getAuditHandler() {
+		if (auditHandler == null) {
+			auditHandler = getExtensionManager().getExtension(AuditHandler.class);
+			auditHandler.setDataStore(this);
+		}
+		return auditHandler;
+	}
+
+	public void setAuditHandler(AuditHandler auditHandler) {
+		this.auditHandler = auditHandler;
 	}
 }

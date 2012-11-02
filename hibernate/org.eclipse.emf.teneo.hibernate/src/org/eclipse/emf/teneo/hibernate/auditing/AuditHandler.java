@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
@@ -53,22 +54,14 @@ import org.hibernate.engine.spi.SessionImplementor;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
-public class AuditHandler {
+public class AuditHandler implements ExtensionPoint {
 
 	public static final String ID_SEPARATOR = ";";
 
-	private static AuditHandler instance = new AuditHandler();
-
-	public static AuditHandler getInstance() {
-		return instance;
-	}
-
-	public static void setInstance(AuditHandler instance) {
-		AuditHandler.instance = instance;
-	}
-
 	/** Constructor by id */
 	private final ConcurrentHashMap<String, Constructor<?>> constructors = new ConcurrentHashMap<String, Constructor<?>>();
+
+	private HbDataStore dataStore;
 
 	/**
 	 * Copy the content from the source to the target, the copy action will translate all
@@ -99,12 +92,11 @@ public class AuditHandler {
 				if (targetEFeature instanceof EAttribute && sourceEFeature instanceof EReference) {
 					if (sourceEFeature.isMany()) {
 						for (Object value : (Collection<?>) source.eGet(sourceEFeature)) {
-							final String idAsString = AuditHandler.getInstance().entityToIdString(session, value);
+							final String idAsString = entityToIdString(session, value);
 							((Collection<Object>) auditEntry.eGet(targetEFeature)).add(idAsString);
 						}
 					} else {
-						final String idAsString = AuditHandler.getInstance().entityToIdString(session,
-								source.eGet(sourceEFeature));
+						final String idAsString = entityToIdString(session, source.eGet(sourceEFeature));
 						auditEntry.eSet(targetEFeature, idAsString);
 					}
 				} else {
@@ -112,9 +104,8 @@ public class AuditHandler {
 						if (FeatureMapUtil.isFeatureMap(sourceEFeature)) {
 							for (Object value : ((Collection<?>) source.eGet(sourceEFeature))) {
 								final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
-								final EStructuralFeature targetEntryFeature = AuditHandler.getInstance()
-										.getAuditingModelElement(sourceEntry.getEStructuralFeature(),
-												auditEntry.eClass().getName());
+								final EStructuralFeature targetEntryFeature = getAuditingModelElement(
+										sourceEntry.getEStructuralFeature(), auditEntry.eClass().getName());
 								final FeatureMap.Entry targetEntry = createFeatureMapEntry(session,
 										targetEntryFeature, sourceEntry);
 								((Collection<Object>) auditEntry.eGet(targetEFeature)).add(targetEntry);
@@ -162,7 +153,7 @@ public class AuditHandler {
 			FeatureMap.Entry sourceEntry) {
 		Object value = sourceEntry.getValue();
 		if (sourceEntry.getEStructuralFeature() instanceof EReference) {
-			value = AuditHandler.getInstance().entityToIdString(session, value);
+			value = entityToIdString(session, value);
 		}
 		return FeatureMapUtil.createEntry(eFeature, value);
 	}
@@ -231,7 +222,7 @@ public class AuditHandler {
 			return null;
 		}
 		if (auditModelElement instanceof EClass) {
-			return (T) StoreUtil.stringToEClass(id);
+			return (T) StoreUtil.stringToEClass(dataStore.getPackageRegistry(), id);
 		}
 		return (T) StoreUtil.stringToStructureFeature(id);
 	}
@@ -252,6 +243,13 @@ public class AuditHandler {
 	public <T extends EModelElement> T getAuditingModelElement(T modelElement, String qualifier) {
 		final EAnnotation eAnnotation = modelElement
 				.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING);
+
+		if (eAnnotation == null
+				&& modelElement instanceof EStructuralFeature
+				&& ((EStructuralFeature) modelElement).getEContainingClass().getEPackage() == XMLTypePackage.eINSTANCE) {
+			return modelElement;
+		}
+
 		if (eAnnotation == null) {
 			return null;
 		}
@@ -264,7 +262,7 @@ public class AuditHandler {
 			return null;
 		}
 		if (modelElement instanceof EClass) {
-			return (T) StoreUtil.stringToEClass(id);
+			return (T) StoreUtil.stringToEClass(dataStore.getPackageRegistry(), id);
 		}
 		return (T) StoreUtil.stringToStructureFeature(id);
 	}
@@ -302,10 +300,25 @@ public class AuditHandler {
 			if (ExtendedMetaData.INSTANCE.getGroup(eStructuralFeature) != null) {
 				return false;
 			}
+			if (ExtendedMetaData.INSTANCE.getAffiliation(eStructuralFeature) != null) {
+				return false;
+			}
 
 			if (!eStructuralFeature.isChangeable() || eStructuralFeature.isVolatile()
 					|| eStructuralFeature.isDerived()) {
+				// special case the eclass is mixed
+				if (ExtendedMetaData.INSTANCE.getMixedFeature(eStructuralFeature.getEContainingClass()) != null) {
+					return false;
+				}
+
 				return true;
+			}
+
+			if (eStructuralFeature instanceof EReference) {
+				final EReference eReference = (EReference) eStructuralFeature;
+				if (isNoAuditing(po, eReference.getEType())) {
+					return true;
+				}
 			}
 
 			return eStructuralFeature.isTransient()
@@ -389,6 +402,11 @@ public class AuditHandler {
 				eAuditingPackage.getEClassifiers().add(auditingEClass);
 				setAuditingAssociation(eClass, auditingEClass, null);
 
+				if (null != eClass.getEAnnotation(ExtendedMetaData.ANNOTATION_URI)) {
+					auditingEClass.getEAnnotations().add(
+							EcoreUtil.copy(eClass.getEAnnotation(ExtendedMetaData.ANNOTATION_URI)));
+				}
+
 				if (eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
 					final EAnnotation teneoAnnotation = EcoreUtil.copy(eClass
 							.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
@@ -462,5 +480,13 @@ public class AuditHandler {
 		registry.put(eAuditingPackage.getNsURI(), eAuditingPackage);
 
 		return eAuditingPackage;
+	}
+
+	public HbDataStore getDataStore() {
+		return dataStore;
+	}
+
+	public void setDataStore(HbDataStore dataStore) {
+		this.dataStore = dataStore;
 	}
 }

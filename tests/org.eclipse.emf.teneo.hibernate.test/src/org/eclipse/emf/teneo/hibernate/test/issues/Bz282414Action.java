@@ -66,4 +66,10 @@ public class Bz282414Action extends AbstractTestAction {
 		bar.setBarKey(barKey);
 		return bar;
 	}
+
+	@Override
+	public boolean supportAuditing() {
+		// composite key is not supported
+		return false;
+	}
 }

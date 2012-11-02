@@ -75,6 +75,9 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	@Override
 	public void initialize() {
 
+		// start with a fresh one
+		setAuditHandler(null);
+
 		if (hbConfiguration != null && isResetConfigurationOnInitialization()) {
 			hbConfiguration = null;
 		}
@@ -241,7 +244,7 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 				}
 			}
 
-			System.err.println(getMappingXML());
+			// System.err.println(getMappingXML());
 
 			getConfiguration().addXML(getMappingXML());
 		}

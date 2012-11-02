@@ -69,7 +69,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			return false;
 		}
 		final EObject eObject = (EObject) entity;
-		final EClass auditEClass = AuditHandler.getInstance().getAuditingModelElement(eObject.eClass());
+		final EClass auditEClass = dataStore.getAuditHandler()
+				.getAuditingModelElement(eObject.eClass());
 		return auditEClass != null;
 	}
 
@@ -111,6 +112,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		} else if (existingAuditWork != null
 				&& (existingAuditWork.getAuditKind() == TeneoAuditKind.ADD && auditWork.getAuditKind() == TeneoAuditKind.DELETE)) {
 			// delete with a preceding add, don't do anything, get rid of it
+			auditWorks.remove(existingAuditWork);
+		} else if (existingAuditWork != null
+				&& (existingAuditWork.getAuditKind() == TeneoAuditKind.UPDATE && auditWork.getAuditKind() == TeneoAuditKind.ADD)) {
+			// happens if the id has been set manually
 			auditWorks.remove(existingAuditWork);
 		} else {
 			auditWorks.remove(existingAuditWork);
@@ -180,7 +185,6 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	}
 
 	private void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
-
 		final long commitTime = System.currentTimeMillis();
 
 		final List<Object> evictObjects = new ArrayList<Object>();
@@ -195,7 +199,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		for (AuditWork auditWork : auditWorks) {
 			final EObject eObject = (EObject) auditWork.getEntity();
 			if (lastEClass != eObject.eClass()) {
-				auditEntryEClass = AuditHandler.getInstance().getAuditingModelElement(eObject.eClass());
+				auditEntryEClass = dataStore.getAuditHandler().getAuditingModelElement(eObject.eClass());
 				lastEClass = eObject.eClass();
 			}
 			final String auditEntryEntityName = HbUtil.getEntityName(auditEntryEClass);
@@ -207,18 +211,18 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			auditEntry.setTeneo_commit_info(commitInfo);
 			auditEntry.setTeneo_end(DEFAULT_END_TIMESTAMP);
 			auditEntry.setTeneo_start(commitTime);
-			auditEntry.setTeneo_object_id(AuditHandler.getInstance().entityToIdString(session,
+			auditEntry.setTeneo_object_id(dataStore.getAuditHandler().entityToIdString(session,
 					auditWork.getEntity()));
 
 			if (auditWork.getEntity() instanceof EObject
 					&& null != ((EObject) auditWork.getEntity()).eContainer()) {
-				auditEntry.setTeneo_container_id(AuditHandler.getInstance().entityToIdString(session,
+				auditEntry.setTeneo_container_id(dataStore.getAuditHandler().entityToIdString(session,
 						((EObject) auditWork.getEntity()).eContainer()));
 				auditEntry.setTeneo_container_feature_id(((InternalEObject) auditWork.getEntity())
 						.eContainerFeatureID());
 			}
 
-			AuditHandler.getInstance().copyContentToAuditEntry(session, (EObject) auditWork.getEntity(),
+			dataStore.getAuditHandler().copyContentToAuditEntry(session, (EObject) auditWork.getEntity(),
 					auditEntry, auditWork.getAuditKind() != TeneoAuditKind.DELETE);
 
 			if (auditWork.getAuditKind() != TeneoAuditKind.ADD) {
@@ -233,13 +237,19 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				infoQuery.setMaxResults(1);
 				infoQuery.setString("objectId", auditEntry.getTeneo_object_id());
 
-				final TeneoAuditEntry previousEntry = (TeneoAuditEntry) infoQuery.list().get(0);
-				previousEntry.setTeneo_end(commitTime - 1);
-				evictObjects.add(previousEntry);
+				@SuppressWarnings("unchecked")
+				final List<Object> list = infoQuery.list();
+				if (!list.isEmpty()) {
+					// list can be empty this happens if the item has an id set, then hibernate fires
+					// an update event and not an add event
+					final TeneoAuditEntry previousEntry = (TeneoAuditEntry) list.get(0);
+					previousEntry.setTeneo_end(commitTime - 1);
+					evictObjects.add(previousEntry);
 
-				auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
+					auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
 
-				session.update(previousEntry);
+					session.update(previousEntry);
+				}
 			}
 			session.save(auditEntryEntityName, auditEntry);
 			evictObjects.add(auditEntry);

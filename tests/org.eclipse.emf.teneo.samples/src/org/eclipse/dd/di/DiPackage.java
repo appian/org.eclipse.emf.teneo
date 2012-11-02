@@ -52,9 +52,9 @@ public interface DiPackage extends EPackage {
 	/**
 	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generatedNOT
 	 */
-	String eNS_PREFIX = "di";
+	String eNS_PREFIX = "dddi";
 
 	/**
 	 * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->

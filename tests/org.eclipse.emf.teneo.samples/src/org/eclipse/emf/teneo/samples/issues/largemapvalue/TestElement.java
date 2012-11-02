@@ -57,6 +57,7 @@ public interface TestElement extends EObject {
 	 * @see #setTestProp(String)
 	 * @see org.eclipse.emf.teneo.samples.issues.largemapvalue.LargemapvaluePackage#getTestElement_TestProp()
 	 * @model annotation="teneo.jpa value='@Lob\n@Column(length=1000000)'"
+	 *        annotation="teneo.jpa.auditing value='@Lob\n@Column(length=1000000)'"
 	 * @generated
 	 */
 	String getTestProp();

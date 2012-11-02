@@ -89,6 +89,10 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	/** Initializes this Data Store */
 	@Override
 	public void initialize() {
+
+		// start with a fresh one
+		setAuditHandler(null);
+
 		if (ejb3Configuration != null && isResetConfigurationOnInitialization()) {
 			ejb3Configuration = null;
 		}

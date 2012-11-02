@@ -70,4 +70,9 @@ public class Bz321765Action extends AbstractTestAction {
 		}
 	}
 
+	@Override
+	public boolean supportAuditing() {
+		// has embedded id, not supported by auditing
+		return false;
+	}
 }

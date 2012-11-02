@@ -129,14 +129,14 @@ public class AuditVersionProvider implements ExtensionPoint {
 	public List<TeneoAuditEntry> getAllAuditEntries(EClass eClass, Object id) {
 		checkState();
 
-		final EClass auditingEClass = AuditHandler.getInstance().getAuditingModelElement(eClass);
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
 		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 		final Query qry = getSession()
 				.createQuery(
 						"select e from " + entityName
 								+ " e where teneo_object_id=:objectId order by e.teneo_start");
-		final String idAsString = AuditHandler.getInstance().idToString(eClass, id);
+		final String idAsString = dataStore.getAuditHandler().idToString(eClass, id);
 		qry.setParameter("objectId", idAsString);
 		final List<TeneoAuditEntry> result = new ArrayList<TeneoAuditEntry>();
 		for (Object o : qry.list()) {
@@ -156,13 +156,13 @@ public class AuditVersionProvider implements ExtensionPoint {
 	public TeneoAuditEntry getLatestAuditEntry(EClass eClass, Object id) {
 		checkState();
 
-		final EClass auditingEClass = AuditHandler.getInstance().getAuditingModelElement(eClass);
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
 		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 		final Query qry = getSession().createQuery(
 				"select e from " + entityName + " e where teneo_object_id=:objectId and teneo_end="
 						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
-		final String idAsString = AuditHandler.getInstance().idToString(eClass, id);
+		final String idAsString = dataStore.getAuditHandler().idToString(eClass, id);
 		qry.setParameter("objectId", idAsString);
 		qry.setMaxResults(1);
 		return (TeneoAuditEntry) qry.uniqueResult();
@@ -174,9 +174,9 @@ public class AuditVersionProvider implements ExtensionPoint {
 	 * {@link TeneoAuditEntry#getTeneo_start()}.
 	 */
 	public EObject getRevision(TeneoAuditEntry auditEntry) {
-		final EClass eClass = AuditHandler.getInstance().getModelElement(auditEntry.eClass());
+		final EClass eClass = dataStore.getAuditHandler().getModelElement(auditEntry.eClass());
 		final long timeStamp = auditEntry.getTeneo_start();
-		final AuditReference auditReference = AuditHandler.getInstance().fromString(
+		final AuditReference auditReference = dataStore.getAuditHandler().fromString(
 				timeStamp + AuditHandler.ID_SEPARATOR + auditEntry.getTeneo_object_id());
 		return getRevision(eClass, auditReference.getId(), timeStamp);
 	}
@@ -232,12 +232,12 @@ public class AuditVersionProvider implements ExtensionPoint {
 	public EObject getRevision(EClass eClass, Object id, long timeStamp) {
 		checkState();
 
-		final String idAsString = AuditHandler.getInstance().idToString(eClass, id);
+		final String idAsString = dataStore.getAuditHandler().idToString(eClass, id);
 		final String fullId = timeStamp + AuditHandler.ID_SEPARATOR + idAsString;
 		if (auditResource.getEObjectFromCache(fullId) != null) {
 			return auditResource.getEObjectFromCache(fullId);
 		}
-		final EClass auditingEClass = AuditHandler.getInstance().getAuditingModelElement(eClass);
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
 		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 
@@ -282,7 +282,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 				if (FeatureMapUtil.isFeatureMap(targetEFeature)) {
 					for (Object value : ((Collection<?>) auditEntry.eGet(sourceEFeature))) {
 						final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
-						final EStructuralFeature targetEntryFeature = AuditHandler.getInstance()
+						final EStructuralFeature targetEntryFeature = dataStore.getAuditHandler()
 								.getModelElement(sourceEntry.getEStructuralFeature());
 						final FeatureMap.Entry targetEntry = createFeatureMapEntry(targetEntryFeature,
 								sourceEntry, timeStamp);
@@ -290,12 +290,12 @@ public class AuditVersionProvider implements ExtensionPoint {
 					}
 				} else if (targetEFeature.isMany()) {
 					for (Object value : ((Collection<?>) auditEntry.eGet(sourceEFeature))) {
-						((Collection<Object>) target.eGet(targetEFeature)).add(AuditHandler.getInstance()
+						((Collection<Object>) target.eGet(targetEFeature)).add(dataStore.getAuditHandler()
 								.convertValue(targetEFeature, value));
 					}
 				} else {
 					target.eSet(targetEFeature,
-							AuditHandler.getInstance().convertValue(targetEFeature,
+							dataStore.getAuditHandler().convertValue(targetEFeature,
 									auditEntry.eGet(sourceEFeature)));
 				}
 			}
@@ -334,7 +334,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 		if (eObject != null) {
 			return eObject;
 		}
-		final AuditReference reference = AuditHandler.getInstance().fromString(idStr);
+		final AuditReference reference = dataStore.getAuditHandler().fromString(idStr);
 		final EClass refEClass = dataStore.getEntityNameStrategy().toEClass(reference.getEntityName());
 		eObject = refEClass.getEPackage().getEFactoryInstance().create(refEClass);
 		((InternalEObject) eObject).eSetProxyURI(URI.createURI(URI_STR + "#" + idStr));
@@ -385,7 +385,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 			}
 
 			// read the auditEntry from the session
-			final AuditReference reference = AuditHandler.getInstance().fromString(uriFragment);
+			final AuditReference reference = dataStore.getAuditHandler().fromString(uriFragment);
 			final EClass eClass = dataStore.getEntityNameStrategy().toEClass(reference.getEntityName());
 			EObject version = AuditVersionProvider.this.getRevision(eClass, reference.getId(),
 					reference.getTimeStamp());

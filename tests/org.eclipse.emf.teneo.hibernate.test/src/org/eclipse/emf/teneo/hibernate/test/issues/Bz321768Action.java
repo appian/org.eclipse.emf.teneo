@@ -46,10 +46,18 @@ public class Bz321768Action extends AbstractTestAction {
 		{
 			nameEClass = efactory.createEClass();
 			nameEClass.setName("Name");
-			EAnnotation teneoAnnotation = efactory.createEAnnotation();
-			teneoAnnotation.setSource("teneo.jpa");
-			teneoAnnotation.getDetails().put("value", "@Embeddable");
-			nameEClass.getEAnnotations().add(teneoAnnotation);
+			{
+				EAnnotation teneoAnnotation = efactory.createEAnnotation();
+				teneoAnnotation.setSource("teneo.jpa");
+				teneoAnnotation.getDetails().put("value", "@Embeddable");
+				nameEClass.getEAnnotations().add(teneoAnnotation);
+			}
+			{
+				EAnnotation teneoAnnotation = efactory.createEAnnotation();
+				teneoAnnotation.setSource("teneo.jpa.auditing");
+				teneoAnnotation.getDetails().put("value", "@Embeddable");
+				nameEClass.getEAnnotations().add(teneoAnnotation);
+			}
 
 			firstName = efactory.createEAttribute();
 			firstName.setName("firstName");
@@ -67,10 +75,18 @@ public class Bz321768Action extends AbstractTestAction {
 			nameRef.setName("name");
 			nameRef.setEType(nameEClass);
 			nameRef.setContainment(true);
-			EAnnotation teneoAnnotation2 = efactory.createEAnnotation();
-			teneoAnnotation2.setSource("teneo.jpa");
-			teneoAnnotation2.getDetails().put("value", "@Embedded");
-			nameRef.getEAnnotations().add(teneoAnnotation2);
+			{
+				EAnnotation teneoAnnotation2 = efactory.createEAnnotation();
+				teneoAnnotation2.setSource("teneo.jpa");
+				teneoAnnotation2.getDetails().put("value", "@Embedded");
+				nameRef.getEAnnotations().add(teneoAnnotation2);
+			}
+			{
+				EAnnotation teneoAnnotation2 = efactory.createEAnnotation();
+				teneoAnnotation2.setSource("teneo.jpa.auditing");
+				teneoAnnotation2.getDetails().put("value", "@Embedded");
+				nameRef.getEAnnotations().add(teneoAnnotation2);
+			}
 			personEClass.getEStructuralFeatures().add(nameRef);
 
 			embeddedEPackage = efactory.createEPackage();

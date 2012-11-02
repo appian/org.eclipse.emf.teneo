@@ -14,6 +14,7 @@ import java.util.Properties;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -36,7 +37,10 @@ public class Bz294201Action extends AbstractTestAction {
 					.toString()));
 			for (EObject ecoreObject : eCoreObjects) {
 				if (ecoreObject instanceof EPackage) {
-					return (EPackage) ecoreObject;
+					final EPackage ePackage = (EPackage) ecoreObject;
+					PackageRegistryProvider.getInstance().getPackageRegistry()
+							.put(ePackage.getNsURI(), ePackage);
+					return ePackage;
 				}
 			}
 		} catch (Exception e) {
