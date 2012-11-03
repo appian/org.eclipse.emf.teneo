@@ -88,6 +88,9 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			// TODO: support featuremap entries
 			return false;
 		}
+		if (!dataStore.isAuditing()) {
+			return false;
+		}
 		final EObject eObject = (EObject) entity;
 		final EClass auditEClass = dataStore.getAuditHandler()
 				.getAuditingModelElement(eObject.eClass());
