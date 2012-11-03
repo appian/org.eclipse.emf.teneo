@@ -362,14 +362,14 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
-		<list name="myAbstractGroup" table="`ROOTTYPEAUDITING_MYABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
+		<list name="myAbstractGroup" table="`ROOTTYPEAUDITING_MYABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`ROOTTYPEAUDITING_MYABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ROOTTYPEAUDITING_MYABSTRACTGROUP_IDX`"/>
 			<one-to-many entity-name="RootTypeAuditing_myAbstractGroup"/>
 		</list>
-		<list name="myComplexAbstractGroup" table="`ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
+		<list name="myComplexAbstractGroup" table="`ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

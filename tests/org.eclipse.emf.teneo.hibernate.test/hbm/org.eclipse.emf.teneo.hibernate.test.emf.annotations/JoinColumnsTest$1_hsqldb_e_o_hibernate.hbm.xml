@@ -148,21 +148,21 @@
 		<property name="lastName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`LASTNAME`"/>
 		</property>
-		<list name="friends" table="`PARENTAUDITING_FRIENDS`" lazy="true" cascade="all">
+		<list name="friends" table="`PARENTAUDITING_FRIENDSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PARENTAUDITING_FRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_FRIENDS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="oppositeFriends" table="`PARENTAUDITING_OPPOSITEFRIENDS`" lazy="true" cascade="all">
+		<list name="oppositeFriends" table="`PARENTAUDITING_OPPOSITEFRIENDSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PARENTAUDITING_OPPOSITEFRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_OPPOSITEFRIENDS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="children" table="`PARENTAUDITING_CHILDREN`" lazy="true" cascade="all">
+		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -215,14 +215,14 @@
 		<property name="lastName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`LASTNAME`"/>
 		</property>
-		<list name="friends" table="`CHILDAUDITING_FRIENDS`" lazy="true" cascade="all">
+		<list name="friends" table="`CHILDAUDITING_FRIENDSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CHILDAUDITING_FRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CHILDAUDITING_FRIENDS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="oppositeFriends" table="`CHILDAUDITING_OPPOSITEFRIENDS`" lazy="true" cascade="all">
+		<list name="oppositeFriends" table="`CHILDAUDITING_OPPOSITEFRIENDSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`CHILDAUDITING_OPPOSITEFRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -275,14 +275,14 @@
 		<property name="lastName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`LASTNAME`"/>
 		</property>
-		<list name="friends" table="`PERSONAUDITING_FRIENDS`" lazy="true" cascade="all">
+		<list name="friends" table="`PERSONAUDITING_FRIENDSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_FRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_FRIENDS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<list name="oppositeFriends" table="`PERSONAUDITING_OPPOSITEFRIENDS`" lazy="true" cascade="all">
+		<list name="oppositeFriends" table="`PERSONAUDITING_OPPOSITEFRIENDSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`PERSONAUDITING_OPPOSITEFRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -332,7 +332,7 @@
 		<property name="owner" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
-		<list name="visitors" table="`HOUSEAUDITING_VISITORS`" lazy="true" cascade="all">
+		<list name="visitors" table="`HOUSEAUDITING_VISITORSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`HOUSEAUDITING_VISITORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

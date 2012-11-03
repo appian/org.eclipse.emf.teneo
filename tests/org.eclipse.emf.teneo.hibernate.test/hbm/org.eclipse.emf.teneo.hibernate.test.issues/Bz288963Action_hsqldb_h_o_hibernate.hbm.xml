@@ -140,7 +140,7 @@
 		<property name="citation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`CITATION`"/>
 		</property>
-		<list name="paralist" table="`BOOKAUDITING_PARALIST`" lazy="true" cascade="all">
+		<list name="paralist" table="`BOOKAUDITING_PARALISTAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`BOOKAUDITING_PARALIST_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

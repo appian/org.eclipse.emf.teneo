@@ -84,7 +84,7 @@
 		<property name="duration" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration">
 			<column not-null="false" unique="false" name="`DURATION`"/>
 		</property>
-		<list name="durations" table="`DURATIONTESTAUDITING_DURATIONS`" lazy="true" cascade="all">
+		<list name="durations" table="`DURATIONTESTAUDITING_DURATIONSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`DURATIONTESTAUDITING_DURATIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

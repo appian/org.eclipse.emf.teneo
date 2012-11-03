@@ -90,7 +90,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
-		<list name="manies" table="`ONEAUDITING_MANIES`" lazy="true" cascade="all">
+		<list name="manies" table="`ONEAUDITING_MANIESAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`ONEAUDITING_MANIES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

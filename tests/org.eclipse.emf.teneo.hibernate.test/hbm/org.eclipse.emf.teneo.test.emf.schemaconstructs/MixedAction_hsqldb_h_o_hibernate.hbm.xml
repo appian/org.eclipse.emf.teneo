@@ -207,7 +207,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
-		<list name="mixed" table="`LETTERBODYTYPEAUDITING_MIXED`" lazy="true" cascade="all,delete-orphan">
+		<list name="mixed" table="`LETTERBODYTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`LETTERBODYTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -282,7 +282,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
-		<list name="mixed" table="`SALUTATIONTYPEAUDITING_MIXED`" lazy="true" cascade="all,delete-orphan">
+		<list name="mixed" table="`SALUTATIONTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`SALUTATIONTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
