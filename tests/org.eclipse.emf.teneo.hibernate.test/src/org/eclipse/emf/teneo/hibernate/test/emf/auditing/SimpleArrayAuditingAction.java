@@ -8,6 +8,9 @@
 
 package org.eclipse.emf.teneo.hibernate.test.emf.auditing;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.issues.simplearray.SimpleList;
 import org.eclipse.emf.teneo.samples.issues.simplearray.SimplearrayFactory;
 import org.eclipse.emf.teneo.samples.issues.simplearray.SimplearrayPackage;
@@ -24,6 +27,13 @@ public class SimpleArrayAuditingAction extends AbstractTestAction {
 
 	public SimpleArrayAuditingAction() {
 		super(SimplearrayPackage.eINSTANCE);
+	}
+
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
+		return props;
 	}
 
 	/** Creates simple types and tests against */

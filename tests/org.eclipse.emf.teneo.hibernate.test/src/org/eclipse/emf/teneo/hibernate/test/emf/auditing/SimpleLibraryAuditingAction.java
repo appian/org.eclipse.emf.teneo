@@ -54,6 +54,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 		// props.put(PersistenceOptions.AUDITING_DB_SCHEMA, "dbschema");
 		props.put(PersistenceOptions.AUDITING_PRUNE_OLD_ENTRIES_DAYS, "1");
 		props.put(PersistenceOptions.AUDITING_PRUNE_COMMIT_INTERVAL, "10");
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
 		return props;
 	}
 

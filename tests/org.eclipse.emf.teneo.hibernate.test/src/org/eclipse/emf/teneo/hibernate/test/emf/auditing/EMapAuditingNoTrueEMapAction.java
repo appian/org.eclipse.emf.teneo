@@ -37,6 +37,7 @@ public class EMapAuditingNoTrueEMapAction extends EMapAuditingTrueEMapAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
 		return props;
 	}
 }

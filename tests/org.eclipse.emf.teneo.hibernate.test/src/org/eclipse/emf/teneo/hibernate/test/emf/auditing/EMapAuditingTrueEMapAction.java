@@ -66,6 +66,7 @@ public class EMapAuditingTrueEMapAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
 		return props;
 	}
 

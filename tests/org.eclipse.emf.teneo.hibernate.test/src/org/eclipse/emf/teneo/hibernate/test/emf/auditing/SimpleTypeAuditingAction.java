@@ -12,9 +12,11 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import junit.framework.Assert;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
@@ -67,6 +69,13 @@ public class SimpleTypeAuditingAction extends AbstractTestAction {
 	 */
 	public SimpleTypeAuditingAction() {
 		super(SimpletypesPackage.eINSTANCE);
+	}
+
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
+		return props;
 	}
 
 	/** Creates simple types and tests against */
