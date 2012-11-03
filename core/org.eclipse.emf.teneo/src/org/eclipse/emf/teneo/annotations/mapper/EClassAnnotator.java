@@ -212,20 +212,25 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			// check if there is a table annotation on a higher level
 			Table table = getTableFromMappedSuperClass(aClass);
 			if (table == null) {
-				table = getFactory().createTable();				
+				table = getFactory().createTable();
 			}
 			table.setEModelElement(eclass);
 			// name is set in next step
 			aClass.setTable(table);
-
-			if (StoreUtil.isAuditEntryEClass(eclass)
-					&& getPersistenceOptions().getAuditingDBSchema() != null
-					&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
-				table.setSchema(getPersistenceOptions().getAuditingDBSchema());
-			}
 		}
 		if (aClass.getTable() != null && aClass.getTable().getName() == null) {
 			aClass.getTable().setName(getSqlNameStrategy().getTableName(aClass));
+		}
+
+		// set the schema
+		if (aClass.getTable() != null
+				&& aClass.getTable().getSchema() == null
+				&& (eclass.getName().equals("TeneoAuditEntry")
+						|| eclass.getName().equals("TeneoAuditCommitInfo") || StoreUtil
+							.isAuditEntryEClass(eclass))
+				&& getPersistenceOptions().getAuditingDBSchema() != null
+				&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
+			aClass.getTable().setSchema(getPersistenceOptions().getAuditingDBSchema());
 		}
 
 		if (addDiscriminator(aClass)) {

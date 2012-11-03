@@ -9,7 +9,10 @@
 package org.eclipse.emf.teneo.hibernate.test.emf.auditing;
 
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
@@ -40,12 +43,27 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties ()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		// props.put(PersistenceOptions.AUDITING_DB_SCHEMA, "dbschema");
+		props.put(PersistenceOptions.AUDITING_PRUNE_OLD_ENTRIES_DAYS, "1");
+		props.put(PersistenceOptions.AUDITING_PRUNE_COMMIT_INTERVAL, "10");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
 		testSimpleChange(store);
 		testContainer(store);
 		testQuery(store);
+		testEntryPruning(store);
 	}
 
 	private void testSimpleChange(TestStore store) {
@@ -228,6 +246,71 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 				assertTrue(bk1.getPages() == 1);
 				store.commitTransaction();
 			}
+		}
+	}
+
+	private void testEntryPruning(TestStore store) {
+		{
+			store.beginTransaction();
+			final Library library = store.getObject(Library.class);
+			store.deleteObject(library);
+			store.commitTransaction();
+		}
+
+		final HibernateTestStore testStore = (HibernateTestStore) store;
+		final HbDataStore dataStore = testStore.getEmfDataStore();
+		final long currentPruneTime = dataStore.getAuditProcessHandler().getPruneTime();
+		assertTrue(currentPruneTime == (24 * 1000 * 3600));
+		dataStore.getAuditProcessHandler().setPruneTime(500);
+		Object id = null;
+		{
+			store.beginTransaction();
+			final Library library = LibraryFactory.eINSTANCE.createLibrary();
+			library.setName("abc");
+			store.store(library);
+			store.commitTransaction();
+			id = IdentifierCacheHandler.getInstance().getID(library);
+		}
+		{
+			for (int i = 0; i < 8; i++) {
+				store.beginTransaction();
+				final Library library = store.getObject(Library.class);
+				library.setName("def" + i + System.currentTimeMillis());
+				store.store(library);
+				store.commitTransaction();
+			}
+		}
+
+		int size1 = 0;
+		{
+			store.beginTransaction();
+			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
+			final List<TeneoAuditEntry> entries = vp.getAllAuditEntries(
+					LibraryPackage.eINSTANCE.getLibrary(), id);
+			size1 = entries.size();
+			store.commitTransaction();
+		}
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		{
+			for (int i = 0; i < 5; i++) {
+				store.beginTransaction();
+				final Library library = store.getObject(Library.class);
+				library.setName("def" + i + System.currentTimeMillis());
+				store.store(library);
+				store.commitTransaction();
+			}
+		}
+		{
+			store.beginTransaction();
+			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
+			final List<TeneoAuditEntry> entries = vp.getAllAuditEntries(
+					LibraryPackage.eINSTANCE.getLibrary(), id);
+			assertTrue(size1 > entries.size());
+			store.commitTransaction();
 		}
 	}
 }

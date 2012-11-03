@@ -78,7 +78,11 @@ public class StoreUtil {
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 
 	public static boolean isAuditEntryEClass(EClass eClass) {
-		return null != eClass.getEAnnotation(Constants.ANNOTATION_AUDITING_MODELELEMENT);
+		final EAnnotation eAnnotation = eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING);
+		if (eAnnotation == null) {
+			return false;
+		}
+		return eAnnotation.getDetails().containsKey(Constants.ANNOTATION_AUDITING_MODELELEMENT);
 	}
 
 	public static void resetSyntheticListInfo(EStructuralFeature eFeature, Object target) {

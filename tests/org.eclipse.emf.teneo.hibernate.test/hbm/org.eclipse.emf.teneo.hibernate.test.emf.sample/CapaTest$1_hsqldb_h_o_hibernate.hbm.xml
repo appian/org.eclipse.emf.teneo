@@ -352,7 +352,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
-		<list name="machines" table="`MACHINELISTAUDITING_MACHINES`" lazy="true" cascade="all">
+		<list name="machines" table="`MACHINELISTAUDITING_MACHINESAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`MACHINELISTAUDITING_MACHINES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
@@ -576,7 +576,7 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
-		<list name="days" table="`WORKWEEKAUDITING_DAYS`" lazy="true" cascade="all">
+		<list name="days" table="`WORKWEEKAUDITING_DAYSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`WORKWEEKAUDITING_DAYS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

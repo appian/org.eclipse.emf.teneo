@@ -354,7 +354,7 @@
 		<property name="cost" lazy="false" insert="true" update="true" not-null="false" unique="false" type="float">
 			<column not-null="false" unique="false" name="`COST`"/>
 		</property>
-		<list name="rentalUnits" table="`RENTALCONTRACTAUDITING_RENTALUNITS`" lazy="true" cascade="all">
+		<list name="rentalUnits" table="`RENTALCONTRACTAUDITING_RENTALUNITSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`RENTALCONTRACTAUDITING_RENTALUNITS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>

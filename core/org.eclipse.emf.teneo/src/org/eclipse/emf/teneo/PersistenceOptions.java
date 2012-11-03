@@ -64,6 +64,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String AUDITING_PRUNE_OLD_ENTRIES_DAYS = MAPPING_PREFIX
 			+ "auditing.prune.days";
+	public static final String AUDITING_PRUNE_COMMIT_INTERVAL = MAPPING_PREFIX
+			+ "auditing.prune.commit.interval";
 	public static final String AUDITING_DB_SCHEMA = MAPPING_PREFIX + "auditing.database.schema";
 	public static final String AUDITING_ENTITY_PREFIX = NAMING_PREFIX + "auditing.entity.prefix";
 	public static final String AUDITING_ENTITY_POSTFIX = NAMING_PREFIX + "auditing.entity.postfix";
@@ -471,6 +473,8 @@ public class PersistenceOptions implements ExtensionPoint {
 
 		props.setProperty(ENABLE_AUDITING, "false");
 		props.setProperty(AUDITING_PRUNE_OLD_ENTRIES_DAYS, "0");
+		props.setProperty(AUDITING_PRUNE_COMMIT_INTERVAL, "1000");
+
 		props.setProperty(AUDITING_DB_SCHEMA, "");
 		props.setProperty(AUDITING_ENTITY_PREFIX, "");
 		props.setProperty(AUDITING_ENTITY_POSTFIX, "Auditing");
@@ -586,6 +590,18 @@ public class PersistenceOptions implements ExtensionPoint {
 			return Long.parseLong(value);
 		} catch (NumberFormatException e) {
 			return 0;
+		}
+	}
+
+	/**
+	 * @return value of {@link #AUDITING_PRUNE_COMMIT_INTERVAL}
+	 */
+	public long getAuditingPruneCommitInterval() {
+		final String value = properties.getProperty(AUDITING_PRUNE_COMMIT_INTERVAL);
+		try {
+			return Long.parseLong(value);
+		} catch (NumberFormatException e) {
+			return 1000;
 		}
 	}
 

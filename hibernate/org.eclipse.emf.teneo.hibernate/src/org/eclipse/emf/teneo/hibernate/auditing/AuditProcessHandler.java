@@ -39,6 +39,8 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.Teneoauditin
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.FlushMode;
 import org.hibernate.Query;
+import org.hibernate.ScrollMode;
+import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.action.spi.AfterTransactionCompletionProcess;
@@ -65,6 +67,12 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	public static final long DEFAULT_END_TIMESTAMP = -1;
 
+	private static ThreadLocal<String> currentUserName = new ThreadLocal<String>();
+
+	public static void setCurrentUserName(String user) {
+		currentUserName.set(user);
+	}
+
 	private static final long serialVersionUID = 1L;
 	private HbDataStore dataStore;
 
@@ -72,7 +80,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	private int pruneCounter = 0;
 	private long pruneTime = 0;
-	private List<EClass> auditEClasses = null;
+	private long pruneInterval = 1000;
+	private List<String> auditEntityNames = null;
 
 	private boolean isAudited(Object entity) {
 		if (!(entity instanceof EObject)) {
@@ -157,7 +166,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		if (!FlushMode.isManualFlushMode(session.getFlushMode())) {
 			session.flush();
 			final List<AuditWork> auditWorks = getRemoveQueue((Session) session, false);
-			if (auditWorks == null) {
+			if (auditWorks == null || auditWorks.isEmpty()) {
 				return;
 			}
 			doAuditWorkInSession((Session) session, auditWorks);
@@ -170,7 +179,9 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			return;
 		}
 		final List<AuditWork> auditWorks = getRemoveQueue((Session) session, true);
-		if (auditWorks == null) {
+		if (auditWorks == null || auditWorks.isEmpty()) {
+			// remove any old entries
+			pruneEntries((SessionImplementor) session);
 			return;
 		}
 		// see: http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4178431
@@ -193,6 +204,9 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				}
 			}
 		}
+
+		// remove any old entries
+		pruneEntries((SessionImplementor) session);
 	}
 
 	private void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
@@ -202,6 +216,9 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
 				.createTeneoAuditCommitInfo();
+		if (currentUserName.get() != null) {
+			commitInfo.setUser(currentUserName.get());
+		}
 		session.save(commitInfo);
 		evictObjects.add(commitInfo);
 
@@ -288,8 +305,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		// clear the work queue
 		getRemoveQueue(session, false);
 
-		// remove any old entries
-		pruneEntries((SessionImplementor) session);
+		pruneCounter++;
 	}
 
 	// is called/used in case of emap entries which are themselves
@@ -343,23 +359,25 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	public void setDataStore(HbDataStore dataStore) {
 		this.dataStore = dataStore;
 		pruneTime = 1000 * 3600 * 24 * dataStore.getPersistenceOptions().getAuditingPruneDays();
+		pruneInterval = dataStore.getPersistenceOptions().getAuditingPruneCommitInterval();
 	}
 
 	private synchronized void pruneEntries(SessionImplementor session) {
 		if (pruneTime == 0) {
 			return;
 		}
-		pruneCounter++;
-		if ((pruneCounter % 100) != 0) {
+		if (pruneCounter > pruneInterval) {
 			return;
 		}
+		pruneCounter = 0;
 
-		if (auditEClasses == null) {
-			auditEClasses = new ArrayList<EClass>();
+		if (auditEntityNames == null) {
+			auditEntityNames = new ArrayList<String>();
 			for (EPackage ePackage : dataStore.getEPackages()) {
 				for (EClassifier eClassifier : ePackage.getEClassifiers()) {
 					if (eClassifier instanceof EClass && StoreUtil.isAuditEntryEClass((EClass) eClassifier)) {
-						auditEClasses.add((EClass) eClassifier);
+						auditEntityNames.add(dataStore.getEntityNameStrategy().toEntityName(
+								(EClass) eClassifier));
 					}
 				}
 			}
@@ -371,14 +389,15 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			tmpSession = session.getFactory().openSession();
 			tmpSession.beginTransaction();
 			final long currentPruneTime = System.currentTimeMillis() - pruneTime;
-			for (EClass auditEClass : auditEClasses) {
-				final Query qry = tmpSession.createQuery("select e from "
-						+ dataStore.getEntityNameStrategy().toEntityName(auditEClass)
+			for (String auditEntityName : auditEntityNames) {
+				final Query qry = tmpSession.createQuery("select e from " + auditEntityName
 						+ " e where e.teneo_start < :pruneTime");
 				qry.setParameter("pruneTime", currentPruneTime);
-				for (Object o : qry.list()) {
-					tmpSession.delete(o);
+				ScrollableResults results = qry.scroll(ScrollMode.FORWARD_ONLY);
+				while (results.next()) {
+					tmpSession.delete(results.get()[0]);
 				}
+				results.close();
 			}
 			tmpSession.getTransaction().commit();
 			err = false;
@@ -401,6 +420,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	 */
 	public void setPruneTime(long thePruneTime) {
 		pruneTime = thePruneTime;
+	}
+
+	public long getPruneTime() {
+		return pruneTime;
 	}
 
 	private class AuditWork {
