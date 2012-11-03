@@ -22,9 +22,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
@@ -33,6 +36,7 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEn
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingFactory;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -65,6 +69,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	private HbDataStore dataStore;
 
 	private Map<Transaction, List<AuditWork>> workQueue = new ConcurrentHashMap<Transaction, List<AuditWork>>();
+
+	private int pruneCounter = 0;
+	private long pruneTime = 0;
+	private List<EClass> auditEClasses = null;
 
 	private boolean isAudited(Object entity) {
 		if (!(entity instanceof EObject)) {
@@ -199,6 +207,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		EClass lastEClass = null;
 		EClass auditEntryEClass = null;
+		final List<TeneoAuditEntry> toSaveEntries = new ArrayList<TeneoAuditEntry>();
 		for (AuditWork auditWork : auditWorks) {
 			final EObject eObject = (EObject) auditWork.getEntity();
 			if (lastEClass != eObject.eClass()) {
@@ -228,38 +237,47 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			dataStore.getAuditHandler().copyContentToAuditEntry(session, (EObject) auditWork.getEntity(),
 					auditEntry, auditWork.getAuditKind() != TeneoAuditKind.DELETE);
 
-			if (auditWork.getAuditKind() != TeneoAuditKind.ADD) {
-				// get info from the previous entry
-				// Note: apparently hibernate has a query plan cache, so
-				// it does not give a performance benefit to use a namedquery
-				// at least not that much..
-				// http://stackoverflow.com/questions/3578711/jpa-caching-queries
-				final Query infoQuery = session.createQuery("select e from " + auditEntryEntityName
-						+ " e where teneo_object_id=:objectId and teneo_end="
-						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
-				infoQuery.setMaxResults(1);
-				infoQuery.setString("objectId", auditEntry.getTeneo_object_id());
+			// note also do a query in case of ADD as an object can
+			// be removed and then re-added, restore its link
+			// to the history then
+			// get info from the previous entry
+			// Note: apparently hibernate has a query plan cache, so
+			// it does not give a performance benefit to use a namedquery
+			// at least not that much..
+			// http://stackoverflow.com/questions/3578711/jpa-caching-queries
+			final Query infoQuery = session.createQuery("select e from " + auditEntryEntityName
+					+ " e where teneo_object_id=:objectId and teneo_end="
+					+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
+			infoQuery.setMaxResults(1);
+			infoQuery.setString("objectId", auditEntry.getTeneo_object_id());
 
-				@SuppressWarnings("unchecked")
-				final List<Object> list = infoQuery.list();
-				if (!list.isEmpty()) {
-					// list can be empty this happens if the item has an id set, then hibernate fires
-					// an update event and not an add event
-					final TeneoAuditEntry previousEntry = (TeneoAuditEntry) list.get(0);
-					previousEntry.setTeneo_end(commitTime - 1);
-					setCommitInfoInReferencedObjects(previousEntry, evictObjects);
-					evictObjects.add(previousEntry);
+			@SuppressWarnings("unchecked")
+			final List<Object> list = infoQuery.list();
+			if (!list.isEmpty()) {
+				// list can be empty this happens if the item has an id set, then hibernate fires
+				// an update event and not an add event
+				final TeneoAuditEntry previousEntry = (TeneoAuditEntry) list.get(0);
+				previousEntry.setTeneo_end(commitTime - 1);
+				setCommitInfoInReferencedObjects(previousEntry, evictObjects);
+				evictObjects.add(previousEntry);
 
-					auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
+				auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
 
-					session.update(auditEntryEntityName, previousEntry);
-				}
+				session.update(auditEntryEntityName, previousEntry);
 			}
+			// save later to not flush in the loop
+			toSaveEntries.add(auditEntry);
+		}
+		// do flush here to ensure that the update is done before
+		// the save, this to prevent unique constraint failures
+		session.flush();
+
+		for (TeneoAuditEntry auditEntry : toSaveEntries) {
 			setCommitInfoInReferencedObjects(auditEntry, evictObjects);
-			session.save(auditEntryEntityName, auditEntry);
+			session.save(HbUtil.getEntityName(auditEntry.eClass()), auditEntry);
 			evictObjects.add(auditEntry);
 		}
-
+		// and flush the saved stuff
 		session.flush();
 
 		// clear the cache from these audit objects
@@ -269,6 +287,9 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		// clear the work queue
 		getRemoveQueue(session, false);
+
+		// remove any old entries
+		pruneEntries((SessionImplementor) session);
 	}
 
 	// is called/used in case of emap entries which are themselves
@@ -321,6 +342,65 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	public void setDataStore(HbDataStore dataStore) {
 		this.dataStore = dataStore;
+		pruneTime = 1000 * 3600 * 24 * dataStore.getPersistenceOptions().getAuditingPruneDays();
+	}
+
+	private synchronized void pruneEntries(SessionImplementor session) {
+		if (pruneTime == 0) {
+			return;
+		}
+		pruneCounter++;
+		if ((pruneCounter % 100) != 0) {
+			return;
+		}
+
+		if (auditEClasses == null) {
+			auditEClasses = new ArrayList<EClass>();
+			for (EPackage ePackage : dataStore.getEPackages()) {
+				for (EClassifier eClassifier : ePackage.getEClassifiers()) {
+					if (eClassifier instanceof EClass && StoreUtil.isAuditEntryEClass((EClass) eClassifier)) {
+						auditEClasses.add((EClass) eClassifier);
+					}
+				}
+			}
+		}
+
+		Session tmpSession = null;
+		boolean err = true;
+		try {
+			tmpSession = session.getFactory().openSession();
+			tmpSession.beginTransaction();
+			final long currentPruneTime = System.currentTimeMillis() - pruneTime;
+			for (EClass auditEClass : auditEClasses) {
+				final Query qry = tmpSession.createQuery("select e from "
+						+ dataStore.getEntityNameStrategy().toEntityName(auditEClass)
+						+ " e where e.teneo_start < :pruneTime");
+				qry.setParameter("pruneTime", currentPruneTime);
+				for (Object o : qry.list()) {
+					tmpSession.delete(o);
+				}
+			}
+			tmpSession.getTransaction().commit();
+			err = false;
+		} finally {
+			try {
+				if (tmpSession != null && err) {
+					tmpSession.getTransaction().rollback();
+				}
+			} finally {
+				if (tmpSession != null) {
+					tmpSession.close();
+				}
+			}
+		}
+	}
+
+	/**
+	 * Used for testing, for setting the prune limit use the
+	 * {@link PersistenceOptions#AUDITING_PRUNE_OLD_ENTRIES_DAYS} option.
+	 */
+	public void setPruneTime(long thePruneTime) {
+		pruneTime = thePruneTime;
 	}
 
 	private class AuditWork {

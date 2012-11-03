@@ -50,4 +50,9 @@ public class EAVMappingAllAction extends EAVMappingAction {
 
 	}
 
+	@Override
+	public boolean supportAuditing() {
+		return false;
+	}
+
 }

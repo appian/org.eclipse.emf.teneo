@@ -86,6 +86,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 
 	private Field queryParametersField;
 
+	private AuditProcessHandler auditProcessHandler;
+
 	/** Initializes this Data Store */
 	@Override
 	public void initialize() {
@@ -160,7 +162,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		eventListenerRegistry.appendListeners(EventType.INIT_COLLECTION, eventListener);
 
 		if (isAuditing()) {
-			final AuditProcessHandler auditProcessHandler = getExtensionManager().getExtension(
+			auditProcessHandler = getExtensionManager().getExtension(
 					AuditProcessHandler.class);
 			auditProcessHandler.setDataStore(this);
 			eventListenerRegistry.appendListeners(EventType.POST_DELETE, auditProcessHandler);
@@ -168,6 +170,15 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			eventListenerRegistry.appendListeners(EventType.POST_UPDATE, auditProcessHandler);
 		}
 
+	}
+
+	/**
+	 * Note the audit process handler is set in the {@link #setEventListeners()} method.
+	 * 
+	 * To override the auditprocess handler use Teneo's extension mechanism.
+	 */
+	public AuditProcessHandler getAuditProcessHandler() {
+		return auditProcessHandler;
 	}
 
 	/** Sets the interceptor */

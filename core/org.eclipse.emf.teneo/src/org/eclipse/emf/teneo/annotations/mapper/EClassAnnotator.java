@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
@@ -115,6 +116,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		// prevent eav mapping for audit entry classes
 		if (StoreUtil.isAuditEntryEClass(eclass)) {
 			aClass.setNoEAVMapping(PannotationFactory.eINSTANCE.createNoEAVMapping());
+			aClass.setEavMapping(null);
 		}
 
 		if (log.isDebugEnabled()) {
@@ -206,10 +208,21 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 				&& ((isInheritanceRoot && inheritanceType.equals(InheritanceType.SINGLE_TABLE))
 						|| inheritanceType.equals(InheritanceType.JOINED) || inheritanceType
 							.equals(InheritanceType.TABLE_PER_CLASS))) {
-			final Table table = getFactory().createTable();
+
+			// check if there is a table annotation on a higher level
+			Table table = getTableFromMappedSuperClass(aClass);
+			if (table == null) {
+				table = getFactory().createTable();				
+			}
 			table.setEModelElement(eclass);
 			// name is set in next step
 			aClass.setTable(table);
+
+			if (StoreUtil.isAuditEntryEClass(eclass)
+					&& getPersistenceOptions().getAuditingDBSchema() != null
+					&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
+				table.setSchema(getPersistenceOptions().getAuditingDBSchema());
+			}
 		}
 		if (aClass.getTable() != null && aClass.getTable().getName() == null) {
 			aClass.getTable().setName(getSqlNameStrategy().getTableName(aClass));
@@ -289,6 +302,31 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			eFeatureAnnotator.annotate(aStructuralFeature);
 		}
 		return true;
+	}
+
+	protected Table getTableFromMappedSuperClass(PAnnotatedEClass aClass) {
+		if (aClass == null) {
+			return null;
+		}
+
+		PAnnotatedEClass paSuperClass = aClass.getPaSuperEntity();
+		if (paSuperClass == null && aClass.getModelEClass().getESuperTypes().size() > 0) {
+			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(
+					aClass.getModelEClass().getESuperTypes().get(0));
+			if (superAClass.getMappedSuperclass() != null) {
+				paSuperClass = superAClass;
+			}
+		}
+
+		if (aClass.getMappedSuperclass() == null) {
+			return getTableFromMappedSuperClass(paSuperClass);
+		}
+		if (aClass.getTable() != null) {
+			final Table table = EcoreUtil.copy(aClass.getTable());
+			table.setName(null);
+			return table;
+		}
+		return getTableFromMappedSuperClass(paSuperClass);
 	}
 
 	protected boolean addDiscriminator(PAnnotatedEClass aClass) {

@@ -362,17 +362,25 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 		if (uniqueConstraints == null) {
 			return null;
 		}
+		
+		// lower case them
+		final String checkColName = colName.toLowerCase();
 
 		// NOTE: Hibernate does not support one column being part of multiple
 		// unique constraints.
+		final StringBuilder sb = new StringBuilder();
 		for (int i = 0, n = uniqueConstraints.size(); i < n; i++) {
 			UniqueConstraint uniqueConstraint = uniqueConstraints.get(i);
-			if (uniqueConstraint.getColumnNames().contains(colName)) {
-				return "c" + i;
+			for (String uColName : uniqueConstraint.getColumnNames()) {
+				if (uColName.toLowerCase().equals(checkColName)) {
+					if (sb.length() > 0) {
+						sb.append(",");
+					}
+					sb.append("c" + i);
+				}
 			}
-
 		}
-		return null;
+		return sb.length() == 0 ? null : sb.toString();
 	}
 
 	/**

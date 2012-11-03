@@ -58,6 +58,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	// ++++++++++++++++++++++++++++++++++++
 
 	public static final String ENABLE_AUDITING = MAPPING_PREFIX + "auditing.enable";
+	/**
+	 * Automatically prune/delete entries older than this many days, default is zero, disabling the
+	 * pruning process.
+	 */
+	public static final String AUDITING_PRUNE_OLD_ENTRIES_DAYS = MAPPING_PREFIX
+			+ "auditing.prune.days";
+	public static final String AUDITING_DB_SCHEMA = MAPPING_PREFIX + "auditing.database.schema";
 	public static final String AUDITING_ENTITY_PREFIX = NAMING_PREFIX + "auditing.entity.prefix";
 	public static final String AUDITING_ENTITY_POSTFIX = NAMING_PREFIX + "auditing.entity.postfix";
 	public static final String AUDITING_JOINTABLE_POSTFIX = NAMING_PREFIX
@@ -463,6 +470,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		final Properties props = new Properties();
 
 		props.setProperty(ENABLE_AUDITING, "false");
+		props.setProperty(AUDITING_PRUNE_OLD_ENTRIES_DAYS, "0");
+		props.setProperty(AUDITING_DB_SCHEMA, "");
 		props.setProperty(AUDITING_ENTITY_PREFIX, "");
 		props.setProperty(AUDITING_ENTITY_POSTFIX, "Auditing");
 		props.setProperty(AUDITING_JOINTABLE_POSTFIX, "Auditing");
@@ -555,6 +564,29 @@ public class PersistenceOptions implements ExtensionPoint {
 			return "";
 		}
 		return value;
+	}
+
+	/**
+	 * @return value of {@link #AUDITING_DB_SCHEMA}
+	 */
+	public String getAuditingDBSchema() {
+		final String value = properties.getProperty(AUDITING_DB_SCHEMA);
+		if (value == null) {
+			return "";
+		}
+		return value;
+	}
+
+	/**
+	 * @return value of {@link #AUDITING_PRUNE_OLD_ENTRIES_DAYS}
+	 */
+	public long getAuditingPruneDays() {
+		final String value = properties.getProperty(AUDITING_PRUNE_OLD_ENTRIES_DAYS);
+		try {
+			return Long.parseLong(value);
+		} catch (NumberFormatException e) {
+			return 0;
+		}
 	}
 
 	/**

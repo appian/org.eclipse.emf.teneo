@@ -456,13 +456,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VEHICLEAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -482,7 +482,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="brand" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`BRAND`"/>
@@ -543,13 +543,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="PERSONAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -569,7 +569,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -628,13 +628,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ADDRESSAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -654,7 +654,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -699,13 +699,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VEHICLEINFOAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -725,7 +725,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="acquisitionDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`ACQUISITIONDATE`"/>
@@ -748,13 +748,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="MANUFACTURINGPLANTAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -774,7 +774,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ID`"/>
@@ -803,13 +803,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="FLEETAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -829,7 +829,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -882,13 +882,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="GARAGEAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -908,7 +908,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -964,13 +964,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TIREAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -990,7 +990,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="radius" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`RADIUS`"/>
@@ -1022,13 +1022,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HYBRIDAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1048,7 +1048,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
@@ -1147,13 +1147,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CARAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1173,7 +1173,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
@@ -1266,13 +1266,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="PASSENGERVEHICLEAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1292,7 +1292,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
@@ -1312,13 +1312,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ENGINEFACTORYAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1338,7 +1338,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ID`"/>
@@ -1377,13 +1377,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="USADDRESSAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1403,7 +1403,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -1454,13 +1454,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VINAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1480,7 +1480,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ID`"/>
@@ -1506,13 +1506,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TRANSPORTATIONDEVICEAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1532,7 +1532,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="manufacturedBy" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`MANUFACTUREDBY`"/>
@@ -1555,13 +1555,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TEMPORALAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1581,7 +1581,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -1614,13 +1614,13 @@
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
 		</version>
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`"/>
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
 		</property>
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`"/>
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
 		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VERSIONHOLDERAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
@@ -1640,7 +1640,7 @@
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
 		<list name="versions" table="`VERSIONHOLDERAUDITING_VERSIONS`" lazy="true" cascade="all">
 			<key update="true">

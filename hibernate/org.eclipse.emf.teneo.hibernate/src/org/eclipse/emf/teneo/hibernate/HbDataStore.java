@@ -59,6 +59,7 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditHandler;
+import org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
@@ -196,6 +197,8 @@ public abstract class HbDataStore implements DataStore {
 	private List<EPackage> auditingEPackages = new ArrayList<EPackage>();
 
 	private AuditHandler auditHandler = null;
+
+	public abstract AuditProcessHandler getAuditProcessHandler();
 
 	public EPackage.Registry getPackageRegistry() {
 		if (packageRegistry == null) {

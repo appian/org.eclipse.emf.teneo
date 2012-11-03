@@ -65,6 +65,8 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	/** The used Hibernate configuration */
 	private Configuration hbConfiguration;
 
+	private AuditProcessHandler auditProcessHandler;
+
 	@Override
 	public void close() {
 		super.close();
@@ -139,13 +141,21 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 				initializeCollectionEventListener);
 
 		if (isAuditing()) {
-			final AuditProcessHandler auditProcessHandler = getExtensionManager().getExtension(
-					AuditProcessHandler.class);
+			auditProcessHandler = getExtensionManager().getExtension(AuditProcessHandler.class);
 			auditProcessHandler.setDataStore(this);
 			eventListenerRegistry.appendListeners(EventType.POST_DELETE, auditProcessHandler);
 			eventListenerRegistry.appendListeners(EventType.POST_INSERT, auditProcessHandler);
 			eventListenerRegistry.appendListeners(EventType.POST_UPDATE, auditProcessHandler);
 		}
+	}
+
+	/**
+	 * Note the audit process handler is set in the {@link #setEventListeners()} method.
+	 * 
+	 * To override the auditprocess handler use Teneo's extension mechanism.
+	 */
+	public AuditProcessHandler getAuditProcessHandler() {
+		return auditProcessHandler;
 	}
 
 	/*
@@ -253,6 +263,10 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	/** Build the session factory */
 	@SuppressWarnings("deprecation")
 	protected void buildSessionFactory() {
+
+		// SchemaExport export = new SchemaExport(getConfiguration());
+		// export.create(true, true);
+
 		setSessionFactory(getConfiguration().buildSessionFactory());
 	}
 
