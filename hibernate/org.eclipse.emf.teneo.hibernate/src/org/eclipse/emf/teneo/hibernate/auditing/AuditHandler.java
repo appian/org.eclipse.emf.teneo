@@ -40,7 +40,6 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
@@ -61,7 +60,7 @@ public class AuditHandler implements ExtensionPoint {
 	/** Constructor by id */
 	private final ConcurrentHashMap<String, Constructor<?>> constructors = new ConcurrentHashMap<String, Constructor<?>>();
 
-	private HbDataStore dataStore;
+	private AuditDataStore dataStore;
 
 	/**
 	 * Copy the content from the source to the target, the copy action will translate all
@@ -433,7 +432,7 @@ public class AuditHandler implements ExtensionPoint {
 	/**
 	 * Entry point for creating all auditing types needed to audit the sourceEPackage.
 	 */
-	public EPackage createAuditingEPackage(HbDataStore dataStore, EPackage sourceEPackage,
+	public EPackage createAuditingEPackage(AuditDataStore dataStore, EPackage sourceEPackage,
 			EPackage.Registry registry, PersistenceOptions po) {
 		final EPackage eAuditingPackage = EcoreFactory.eINSTANCE.createEPackage();
 		eAuditingPackage.setName(sourceEPackage.getName() + "Auditing");
@@ -504,7 +503,7 @@ public class AuditHandler implements ExtensionPoint {
 
 						// and use it
 						auditingEFeature.setEType(auditingEMapEClass);
-					} else if (eFeature instanceof EReference && dataStore.isEmbedded((EReference) eFeature)) {
+					} else if (eFeature instanceof EReference && isEmbedded((EReference) eFeature)) {
 						auditingEFeature = EcoreUtil.copy(eFeature);
 					} else if (eFeature instanceof EReference) {
 						auditingEFeature = EcoreFactory.eINSTANCE.createEAttribute();
@@ -560,11 +559,39 @@ public class AuditHandler implements ExtensionPoint {
 		return eAuditingPackage;
 	}
 
-	public HbDataStore getDataStore() {
+	public boolean isEmbedded(EModelElement modelElement) {
+		if (modelElement.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) != null) {
+			final EAnnotation eAnnotation = modelElement
+					.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+			for (String value : eAnnotation.getDetails().values()) {
+				if (value.contains("@External")) {
+					return true;
+				}
+				if (value.contains("@Embeddable")) {
+					return true;
+				}
+				if (value.contains("@Embedded")) {
+					return true;
+				}
+				if (value.contains("@Type")) {
+					return true;
+				}
+				if (value.contains("@TypeDef")) {
+					return true;
+				}
+			}
+		}
+		if (modelElement instanceof EReference) {
+			return isEmbedded(((EReference) modelElement).getEReferenceType());
+		}
+		return false;
+	}
+
+	public AuditDataStore getDataStore() {
 		return dataStore;
 	}
 
-	public void setDataStore(HbDataStore dataStore) {
+	public void setDataStore(AuditDataStore dataStore) {
 		this.dataStore = dataStore;
 	}
 }

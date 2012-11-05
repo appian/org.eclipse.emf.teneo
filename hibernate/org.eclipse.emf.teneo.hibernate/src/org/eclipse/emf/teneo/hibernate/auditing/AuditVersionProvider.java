@@ -39,7 +39,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
@@ -62,7 +61,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 	private Session session;
 	private AuditResource auditResource;
 	private ResourceSet resourceSet;
-	private HbDataStore dataStore;
+	private AuditDataStore dataStore;
 
 	public AuditVersionProvider() {
 		auditResource = new AuditResource(URI.createURI(URI_STR));
@@ -396,7 +395,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 			return eObject;
 		}
 		final AuditReference reference = dataStore.getAuditHandler().fromString(idStr);
-		final EClass refEClass = dataStore.getEntityNameStrategy().toEClass(reference.getEntityName());
+		final EClass refEClass = dataStore.toEClass(reference.getEntityName());
 		eObject = refEClass.getEPackage().getEFactoryInstance().create(refEClass);
 		((InternalEObject) eObject).eSetProxyURI(URI.createURI(URI_STR + "#" + idStr));
 		((InternalEObject) eObject).eSetResource(auditResource, null);
@@ -410,11 +409,11 @@ public class AuditVersionProvider implements ExtensionPoint {
 		return session;
 	}
 
-	public HbDataStore getDataStore() {
+	public AuditDataStore getDataStore() {
 		return dataStore;
 	}
 
-	public void setDataStore(HbDataStore dataStore) {
+	public void setDataStore(AuditDataStore dataStore) {
 		this.dataStore = dataStore;
 	}
 
@@ -453,7 +452,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 
 			// read the auditEntry from the session
 			final AuditReference reference = dataStore.getAuditHandler().fromString(uriFragment);
-			final EClass eClass = dataStore.getEntityNameStrategy().toEClass(reference.getEntityName());
+			final EClass eClass = dataStore.toEClass(reference.getEntityName());
 			EObject version = AuditVersionProvider.this.getRevision(eClass, reference.getId(),
 					reference.getTimeStamp());
 			if (version == null) {

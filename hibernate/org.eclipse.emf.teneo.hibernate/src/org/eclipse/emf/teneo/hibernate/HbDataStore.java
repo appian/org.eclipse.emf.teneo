@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -58,6 +57,7 @@ import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
+import org.eclipse.emf.teneo.hibernate.auditing.AuditDataStore;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditHandler;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditProcessHandler;
 import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
@@ -111,7 +111,7 @@ import org.hibernate.mapping.Value;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.75 $
  */
-public abstract class HbDataStore implements DataStore {
+public abstract class HbDataStore implements DataStore, AuditDataStore {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbDataStore.class);
@@ -216,6 +216,14 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public String getName() {
 		return name;
+	}
+
+	public String toEntityName(EClass eClass) {
+		return getEntityNameStrategy().toEntityName(eClass);
+	}
+
+	public EClass toEClass(String entityName) {
+		return getEntityNameStrategy().toEClass(entityName);
 	}
 
 	/**
@@ -1105,34 +1113,6 @@ public abstract class HbDataStore implements DataStore {
 				}
 			}
 		}
-	}
-
-	public boolean isEmbedded(EModelElement modelElement) {
-		if (modelElement.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) != null) {
-			final EAnnotation eAnnotation = modelElement
-					.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
-			for (String value : eAnnotation.getDetails().values()) {
-				if (value.contains("@External")) {
-					return true;
-				}
-				if (value.contains("@Embeddable")) {
-					return true;
-				}
-				if (value.contains("@Embedded")) {
-					return true;
-				}
-				if (value.contains("@Type")) {
-					return true;
-				}
-				if (value.contains("@TypeDef")) {
-					return true;
-				}
-			}
-		}
-		if (modelElement instanceof EReference) {
-			return isEmbedded(((EReference) modelElement).getEReferenceType());
-		}
-		return false;
 	}
 
 	/** Recursively check the container prop in the super hierarchy */

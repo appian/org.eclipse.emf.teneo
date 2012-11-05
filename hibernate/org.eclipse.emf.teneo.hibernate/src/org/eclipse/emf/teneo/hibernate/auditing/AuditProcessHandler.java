@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
@@ -74,7 +73,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	}
 
 	private static final long serialVersionUID = 1L;
-	private HbDataStore dataStore;
+	private AuditDataStore dataStore;
 
 	private Map<Transaction, List<AuditWork>> workQueue = new ConcurrentHashMap<Transaction, List<AuditWork>>();
 
@@ -355,11 +354,11 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		return auditWorks;
 	}
 
-	public HbDataStore getDataStore() {
+	public AuditDataStore getDataStore() {
 		return dataStore;
 	}
 
-	public void setDataStore(HbDataStore dataStore) {
+	public void setDataStore(AuditDataStore dataStore) {
 		this.dataStore = dataStore;
 		pruneTime = 1000 * 3600 * 24 * dataStore.getPersistenceOptions().getAuditingPruneDays();
 		pruneInterval = dataStore.getPersistenceOptions().getAuditingPruneCommitInterval();
@@ -379,7 +378,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			for (EPackage ePackage : dataStore.getEPackages()) {
 				for (EClassifier eClassifier : ePackage.getEClassifiers()) {
 					if (eClassifier instanceof EClass && StoreUtil.isAuditEntryEClass((EClass) eClassifier)) {
-						auditEntityNames.add(dataStore.getEntityNameStrategy().toEntityName(
+						auditEntityNames.add(dataStore.toEntityName(
 								(EClass) eClassifier));
 					}
 				}
