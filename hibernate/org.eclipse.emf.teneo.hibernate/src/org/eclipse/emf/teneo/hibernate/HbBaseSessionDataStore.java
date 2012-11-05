@@ -80,10 +80,10 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	protected void closeSessionFactory() {
 		if (sessionFactory != null && !sessionFactory.isClosed()) {
 			sessionFactory.close();
-			sessionFactory = null;
-			// do set initialized false after closing it
-			setInitialized(false);
 		}
+		sessionFactory = null;
+		// do set initialized false after closing it
+		setInitialized(false);
 	}
 
 	/**
