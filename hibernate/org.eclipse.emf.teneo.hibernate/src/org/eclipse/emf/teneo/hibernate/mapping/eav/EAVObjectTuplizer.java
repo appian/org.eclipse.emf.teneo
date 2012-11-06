@@ -164,7 +164,7 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 			return null;
 		}
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
+		final EClass eclass = ds.toEClass(persistentClass.getEntityName());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: "
 					+ persistentClass.getEntityName());

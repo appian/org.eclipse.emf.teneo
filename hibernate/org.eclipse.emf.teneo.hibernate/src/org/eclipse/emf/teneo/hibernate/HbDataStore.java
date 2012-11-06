@@ -168,9 +168,6 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	/** The properties used to create the hibernate configuration object */
 	private PersistenceOptions persistenceOptions;
 
-	/** The properties */
-	private Properties properties = new Properties();
-
 	/** The interceptor */
 	private Interceptor interceptor;
 
@@ -184,6 +181,10 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 
 	/** the entitynamestrategy is read from the extensionManager */
 	private EntityNameStrategy entityNameStrategy;
+
+	private Map<String, EClass> entityNameToEClass;
+
+	private Map<EClass, String> eClassToEntityName;
 
 	private EMFEntityNameResolver entityNameResolver;
 
@@ -219,11 +220,11 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	}
 
 	public String toEntityName(EClass eClass) {
-		return getEntityNameStrategy().toEntityName(eClass);
+		return eClassToEntityName.get(eClass);
 	}
 
 	public EClass toEClass(String entityName) {
-		return getEntityNameStrategy().toEClass(entityName);
+		return entityNameToEClass.get(entityName);
 	}
 
 	/**
@@ -354,6 +355,8 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 		// is set in the List properties.
 		buildMappings();
 
+		computeEntityToEClass();
+
 		entityNameStrategy = null;
 		// create a new one
 		getEntityNameStrategy();
@@ -390,6 +393,30 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 		HbHelper.INSTANCE.registerDataStoreByPC(this);
 
 		EModelResolver.instance().registerOwnerShip(this, getEPackages());
+	}
+
+	protected void computeEntityToEClass() {
+		entityNameToEClass = new HashMap<String, EClass>();
+		eClassToEntityName = new HashMap<EClass, String>();
+
+		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
+			final PersistentClass pc = (PersistentClass) pcs.next();
+			if (pc.getEntityName() != null) {
+				EClass eClass = HbUtil.getEClassFromMeta(getPackageRegistry(), pc);
+				if (eClass == null) {
+					eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+				}
+				if (eClass != null && !eClassToEntityName.containsKey(eClass)) {
+					entityNameToEClass.put(pc.getEntityName(), eClass);
+					eClassToEntityName.put(eClass, pc.getEntityName());
+				}
+			}
+		}
+	}
+
+	public void addEntityNameEClassMapping(String entityName, EClass eClass) {
+		entityNameToEClass.put(entityName, eClass);
+		eClassToEntityName.put(eClass, entityName);
 	}
 
 	/** Build the mappings in the configuration */
@@ -458,7 +485,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	 */
 	@Deprecated
 	public Properties getHibernateProperties() {
-		return properties;
+		return getPersistenceOptions().getProperties();
 	}
 
 	/**
@@ -474,7 +501,9 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	 */
 	@Deprecated
 	public void setHibernateProperties(Properties hibernateProperties) {
-		this.properties = hibernateProperties;
+		final Properties props = getPersistenceOptions().getProperties();
+		props.putAll(hibernateProperties);
+		this.setDataStoreProperties(props);
 	}
 
 	/**
@@ -489,7 +518,6 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	public void setDataStoreProperties(Properties props) {
 		this.persistenceOptions = getExtensionManager().getExtension(PersistenceOptions.class,
 				new Object[] { props });
-		this.properties = props;
 	}
 
 	protected void setDefaultProperties(Properties properties) {
@@ -511,10 +539,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	 * properties
 	 */
 	public Properties getDataStoreProperties() {
-		final Properties props = new Properties();
-		props.putAll(properties);
-		props.putAll(getPersistenceOptions().getProperties());
-		return props;
+		return getPersistenceOptions().getProperties();
 	}
 
 	/** Get the session factory */
@@ -583,7 +608,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 		String targetEntityName = null;
 		if (referedTo instanceof EObject) {
 			final EObject eReferedTo = (EObject) referedTo;
-			targetEntityName = getEntityNameStrategy().toEntityName(eReferedTo.eClass());
+			targetEntityName = toEntityName(eReferedTo.eClass());
 		} else if (referedTo instanceof HibernateFeatureMapEntry) {
 			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
 			targetEntityName = fme.getEntityName(getEntityNameStrategy());
@@ -656,7 +681,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 
 			final EClass eclass;
 			if (pc.getEntityName() != null) {
-				eclass = getEntityNameStrategy().toEClass(pc.getEntityName());
+				eclass = toEClass(pc.getEntityName());
 			} else {
 				eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
 			}
@@ -735,7 +760,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 				EClass eClass = null;
 				if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) == null) {
 					if (pc.getEntityName() != null) {
-						eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+						eClass = toEClass(pc.getEntityName());
 					} else {
 						eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
 					}
@@ -911,13 +936,16 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	protected void setTuplizer() {
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
+			if (pc.getTuplizerMap() != null) {
+				continue;
+			}
+
 			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
 				// entry
 				pc.addTuplizer(EntityMode.MAP,
 						getHbContext().getFeatureMapEntryTuplizer(getHibernateConfiguration()).getName());
 			} else if (pc.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META) != null) {
 				// only the pc's with this meta should get a tuplizer
-
 				pc.addTuplizer(EntityMode.MAP,
 						getHbContext().getEMFTuplizerClass(getHibernateConfiguration()).getName());
 				pc.addTuplizer(EntityMode.POJO,
@@ -970,7 +998,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 		// todo: change recognizing a component to using metadata!
 		EClass eClass = ERuntime.INSTANCE.getEClass(component.getComponentClass());
 		if (eClass == null) {
-			eClass = getEntityNameStrategy().toEClass(component.getComponentClassName());
+			eClass = toEClass(component.getComponentClassName());
 		}
 		if (eClass != null) {
 			if (log.isDebugEnabled()) {
@@ -995,7 +1023,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	private boolean isContained(PersistentClass pc) {
 		final EClass eclass;
 		if (pc.getEntityName() != null) {
-			eclass = getEntityNameStrategy().toEClass(pc.getEntityName());
+			eclass = toEClass(pc.getEntityName());
 		} else {
 			eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
 		}
@@ -1045,6 +1073,8 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 				HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);
 		final String hbm = hmg.generateToString(getPaModel());
+
+		// System.err.println(hbm);
 
 		if (log.isDebugEnabled()) {
 			log.debug("Computing id types of mapped EClasses");
@@ -1177,7 +1207,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 
 		final EClass eclass;
 		if (pc.getEntityName() != null) {
-			eclass = getEntityNameStrategy().toEClass(pc.getEntityName());
+			eclass = toEClass(pc.getEntityName());
 		} else {
 			eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
 		}
@@ -1375,7 +1405,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 			final PersistentClass pc = (PersistentClass) it.next();
 			EClass eClass;
 			if (pc.getEntityName() != null) {
-				eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+				eClass = toEClass(pc.getEntityName());
 				if (eClass != null) {
 					EAnnotation eAnnotation = eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 					if (eAnnotation == null) {
@@ -1433,7 +1463,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 				EClass eClass = null;
 				if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) == null) {
 					if (pc.getEntityName() != null) {
-						eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+						eClass = toEClass(pc.getEntityName());
 					} else {
 						eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
 					}
@@ -1510,8 +1540,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 								// prop.getCascadeStyle()
 								// ==
 								// CascadeStyle.ALL;
-								toEntity = getEntityNameStrategy().toEntityName(
-										((EReference) ef).getEReferenceType());
+								toEntity = toEntityName(((EReference) ef).getEReferenceType());
 							} else if (ef instanceof EAttribute && ef.getEType() instanceof EClass) { // TODO
 								// can
 								// this
@@ -1520,7 +1549,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 								isContainer = true; // prop.getCascadeStyle().hasOrphanDelete()
 								// || prop.getCascadeStyle()
 								// == CascadeStyle.ALL;
-								toEntity = getEntityNameStrategy().toEntityName((EClass) ef.getEType());
+								toEntity = toEntityName((EClass) ef.getEType());
 							}
 							// filter out non eobjects
 							else {
@@ -1531,6 +1560,9 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 						continue;
 					}
 
+					if (toEntity == null) {
+						continue;
+					}
 					java.util.List<ReferenceTo> list = result.get(toEntity);
 					if (list == null) {
 						list = new ArrayList<ReferenceTo>();
@@ -1571,11 +1603,10 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	 */
 	private java.util.List<ReferenceTo> setRefersToOfSupers(String eClassUri,
 			HashMap<String, java.util.List<ReferenceTo>> refersTo, ArrayList<EClass> classDone) {
-		final EntityNameStrategy ens = getEntityNameStrategy();
 		EClass eclass;
 		// eclass = null when the refered to eclass is not mapped
 		// because it is is embeddable
-		eclass = ens.toEClass(eClassUri);
+		eclass = toEClass(eClassUri);
 		if (eclass == null) {
 			return new ArrayList<ReferenceTo>();
 		}
@@ -1584,12 +1615,12 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 			return refersTo.get(eClassUri);
 		}
 
-		final java.util.List<ReferenceTo> thisList = refersTo.get(ens.toEntityName(eclass));
+		final java.util.List<ReferenceTo> thisList = refersTo.get(toEntityName(eclass));
 		if (thisList == null) {
 			return new ArrayList<ReferenceTo>();
 		}
 		for (EClass class1 : eclass.getESuperTypes()) {
-			String eclassUri = ens.toEntityName(class1);
+			String eclassUri = toEntityName(class1);
 			addUnique(thisList, setRefersToOfSupers(eclassUri, refersTo, classDone));
 		}
 		classDone.add(eclass);
@@ -1711,7 +1742,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	public EntityNameResolver getEntityNameResolver() {
 		if (entityNameResolver == null) {
 			entityNameResolver = getExtensionManager().getExtension(EMFEntityNameResolver.class);
-			entityNameResolver.setQualifyStrategy(getEntityNameStrategy());
+			entityNameResolver.setDataStore(this);
 		}
 		return entityNameResolver;
 	}

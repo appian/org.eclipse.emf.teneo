@@ -360,8 +360,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	public void setDataStore(AuditDataStore dataStore) {
 		this.dataStore = dataStore;
-		pruneTime = 1000 * 3600 * 24 * dataStore.getPersistenceOptions().getAuditingPruneDays();
-		pruneInterval = dataStore.getPersistenceOptions().getAuditingPruneCommitInterval();
+		pruneTime = 1000 * 3600 * 24 * Long.parseLong(dataStore.getDataStoreProperties().getProperty(
+				PersistenceOptions.AUDITING_PRUNE_OLD_ENTRIES_DAYS));
+		pruneInterval = Long.parseLong(dataStore.getDataStoreProperties().getProperty(
+				PersistenceOptions.AUDITING_PRUNE_COMMIT_INTERVAL));
 	}
 
 	private synchronized void pruneEntries(SessionImplementor session) {

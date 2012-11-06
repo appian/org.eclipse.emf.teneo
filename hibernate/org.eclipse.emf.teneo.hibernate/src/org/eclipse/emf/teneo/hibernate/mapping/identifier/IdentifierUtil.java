@@ -125,7 +125,7 @@ public class IdentifierUtil {
 
 	/** Returns the id of the passed object */
 	public static Serializable getID(EObject eobj, HbDataStore hd, SessionImplementor session) {
-		final String entityName = hd.getEntityNameStrategy().toEntityName(eobj.eClass());
+		final String entityName = hd.toEntityName(eobj.eClass());
 		final EntityPersister entityPersister = ((SessionFactoryImpl) hd.getSessionFactory())
 				.getEntityPersister(entityName);
 		return entityPersister.getIdentifier(eobj, session);

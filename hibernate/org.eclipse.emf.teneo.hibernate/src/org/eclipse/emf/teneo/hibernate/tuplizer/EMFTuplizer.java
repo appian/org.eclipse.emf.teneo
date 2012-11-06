@@ -119,7 +119,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		if (entityInstance instanceof EObject) {
 			EObject instance = (EObject) entityInstance;
 			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-			return ds.getEntityNameStrategy().toEntityName(instance.eClass());
+			return ds.toEntityName(instance.eClass());
 		}
 
 		final Class<?> concreteEntityClass = entityInstance.getClass();
@@ -175,7 +175,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 			return new EAVInstantiator();
 		}
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
+		final EClass eclass = ds.toEClass(persistentClass.getEntityName());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: "
 					+ persistentClass.getEntityName());
@@ -240,7 +240,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		}
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
+		final EClass eclass = ds.toEClass(persistentClass.getEntityName());
 		if (eclass == null
 				&& !persistentClass.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			throw new HbMapperException("No eclass found for entityname: "

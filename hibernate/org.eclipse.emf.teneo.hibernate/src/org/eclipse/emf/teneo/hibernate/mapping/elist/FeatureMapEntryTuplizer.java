@@ -103,7 +103,7 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 		}
 
 		final String eclassUri = HbUtil.getEClassNameFromFeatureMapMeta(pc);
-		final EClass eClass = hds.getEntityNameStrategy().toEClass(eclassUri);
+		final EClass eClass = hds.toEClass(eclassUri);
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass,
 				mappedProperty.getName());
 

@@ -101,6 +101,25 @@ public class HbUtil {
 		return (EClass) epackage.getEClassifier(eClassMetaAttribute.getValue());
 	}
 
+	public static EClass getEClassFromMeta(EPackage.Registry registry, PersistentClass persistentClass) {
+		final MetaAttribute ePackageMetaAttribute = persistentClass
+				.getMetaAttribute(HbMapperConstants.EPACKAGE_PARAM);
+		if (ePackageMetaAttribute == null) {
+			return null;
+		}
+		final EPackage epackage = registry.getEPackage(ePackageMetaAttribute.getValue());
+		if (epackage == null) {
+			throw new IllegalArgumentException("Could not find ePackage using nsuri "
+					+ ePackageMetaAttribute.getValue());
+		}
+		final MetaAttribute eClassMetaAttribute = persistentClass
+				.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META);
+		if (eClassMetaAttribute == null) {
+			return null;
+		}
+		return (EClass) epackage.getEClassifier(eClassMetaAttribute.getValue());
+	}
+
 	/**
 	 * A merge method which does not use Session.merge but uses the EMF api to travers object
 	 * references and execute merge through the object tree. The merge will traverse all EReferences.
@@ -171,7 +190,7 @@ public class HbUtil {
 	/** Encode the id of an eobject */
 	@SuppressWarnings("unchecked")
 	public static String idToString(EObject eobj, HbDataStore hd, Session session) {
-		final PersistentClass pc = hd.getPersistentClass(hd.getEntityNameStrategy().toEntityName(
+		final PersistentClass pc = hd.getPersistentClass(hd.toEntityName(
 				eobj.eClass()));
 		if (pc == null) { // can happen with map entries
 			return null;
@@ -201,7 +220,7 @@ public class HbUtil {
 	@SuppressWarnings("unchecked")
 	public static Object stringToId(EClass eclass, HbDataStore hd, String id) {
 		try {
-			final PersistentClass pc = hd.getPersistentClass(hd.getEntityNameStrategy().toEntityName(
+			final PersistentClass pc = hd.getPersistentClass(hd.toEntityName(
 					eclass));
 			final Type t = pc.getIdentifierProperty().getType();
 			if (t instanceof IdentifierType) {
@@ -247,7 +266,7 @@ public class HbUtil {
 		if (mappedEClass != null) {
 			eClass = mappedEClass;
 		} else {
-			eClass = ds.getEntityNameStrategy().toEClass(entityName);
+			eClass = ds.toEClass(entityName);
 			if (eClass == null) {
 				// for components this is the case
 				eClass = ERuntime.INSTANCE.getEClass(entityName);

@@ -18,7 +18,7 @@ package org.eclipse.emf.teneo.hibernate.tuplizer;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.hibernate.EntityNameResolver;
 
 /**
@@ -30,16 +30,7 @@ import org.hibernate.EntityNameResolver;
 
 public class EMFEntityNameResolver implements ExtensionPoint, EntityNameResolver {
 
-	/** The qualify property used to compute the eclassname */
-	private EntityNameStrategy qualifyStrategy;
-
-	public EntityNameStrategy getQualifyStrategy() {
-		return qualifyStrategy;
-	}
-
-	public void setQualifyStrategy(EntityNameStrategy qualifyStrategy) {
-		this.qualifyStrategy = qualifyStrategy;
-	}
+	private HbDataStore dataStore;
 
 	/*
 	 * @see org.hibernate.EntityNameResolver#resolveEntityName(java.lang.Object)
@@ -48,8 +39,23 @@ public class EMFEntityNameResolver implements ExtensionPoint, EntityNameResolver
 		if (entity instanceof EObject) {
 			// TODO handle featuremap
 			EObject eobj = (EObject) entity;
-			return qualifyStrategy.toEntityName(eobj.eClass());
+			return dataStore.toEntityName(eobj.eClass());
 		}
 		return null;
+	}
+
+	/**
+	 * @return the dataStore
+	 */
+	public HbDataStore getDataStore() {
+		return dataStore;
+	}
+
+	/**
+	 * @param dataStore
+	 *          the dataStore to set
+	 */
+	public void setDataStore(HbDataStore dataStore) {
+		this.dataStore = dataStore;
 	}
 }

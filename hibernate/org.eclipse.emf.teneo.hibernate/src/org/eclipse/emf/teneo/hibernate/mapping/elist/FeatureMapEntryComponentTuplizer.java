@@ -89,7 +89,7 @@ public class FeatureMapEntryComponentTuplizer extends AbstractComponentTuplizer 
 
 		final MetaAttribute ma = component.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
 		final String eclassUri = ma.getValue();
-		final EClass eClass = hds.getEntityNameStrategy().toEClass(eclassUri);
+		final EClass eClass = hds.toEClass(eclassUri);
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass,
 				mappedProperty.getName());
 

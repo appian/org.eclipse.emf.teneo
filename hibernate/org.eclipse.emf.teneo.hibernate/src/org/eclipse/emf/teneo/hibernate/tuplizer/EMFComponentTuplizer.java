@@ -58,7 +58,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	private EClass getEClass(Component component) {
 		if (eClass == null) {
 			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
-			eClass = ds.getEntityNameStrategy().toEClass(component.getComponentClassName());
+			eClass = ds.toEClass(component.getComponentClassName());
 			if (eClass == null) {
 				eClass = ERuntime.INSTANCE.getEClass(component.getComponentClass());
 			}

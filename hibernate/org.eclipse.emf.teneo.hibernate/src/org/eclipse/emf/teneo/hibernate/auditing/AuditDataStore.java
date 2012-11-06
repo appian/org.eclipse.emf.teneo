@@ -15,9 +15,11 @@
  */
 package org.eclipse.emf.teneo.hibernate.auditing;
 
+import java.util.Properties;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.HbContext;
 import org.hibernate.SessionFactory;
 
 /**
@@ -26,6 +28,7 @@ import org.hibernate.SessionFactory;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
 public interface AuditDataStore {
+	public HbContext getHbContext();
 
 	public AuditHandler getAuditHandler();
 
@@ -37,7 +40,7 @@ public interface AuditDataStore {
 
 	public EPackage.Registry getPackageRegistry();
 
-	public PersistenceOptions getPersistenceOptions();
+	public Properties getDataStoreProperties();
 
 	public boolean isAuditing();
 

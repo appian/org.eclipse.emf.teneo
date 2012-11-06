@@ -80,9 +80,9 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		if (sessionFactory != null && !sessionFactory.isClosed()) {
 			sessionFactory.close();
 			sessionFactory = null;
-			// do set initialized false after closing it
-			setInitialized(false);
 		}
+		// do set initialized false after closing it
+		setInitialized(false);
 	}
 
 	/**

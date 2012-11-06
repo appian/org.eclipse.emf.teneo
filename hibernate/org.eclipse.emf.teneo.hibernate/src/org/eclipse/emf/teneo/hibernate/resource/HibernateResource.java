@@ -229,7 +229,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 		}
 
 		// build a query
-		final EClass eclass = emfDataStore.getEntityNameStrategy().toEClass(parts[0]);
+		final EClass eclass = emfDataStore.toEClass(parts[0]);
 		final int splitIndex = parts[1].indexOf("=");
 		if (splitIndex == -1) {
 			if (log.isDebugEnabled()) {
@@ -301,7 +301,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 			return super.getURIFragment(object);
 		}
 		final StringBuffer idStr = new StringBuffer();
-		idStr.append(emfDataStore.getEntityNameStrategy().toEntityName(object.eClass()));
+		idStr.append(emfDataStore.toEntityName(object.eClass()));
 		idStr.append(SEPARATOR);
 		idStr.append("id=" + theId);
 		return idStr.toString();
