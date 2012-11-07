@@ -23,24 +23,19 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.ParamDef;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterDefImpl#getName <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterDefImpl#getDefaultCondition <em>
- * Default Condition</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterDefImpl#getParameters <em>
- * Parameters</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterDefImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterDefImpl#getDefaultCondition <em>Default Condition</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterDefImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -48,9 +43,9 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -60,7 +55,6 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 	/**
 	 * The default value of the '{@link #getDefaultCondition() <em>Default Condition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getDefaultCondition()
 	 * @generated
 	 * @ordered
@@ -70,7 +64,6 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 	/**
 	 * The cached value of the '{@link #getDefaultCondition() <em>Default Condition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getDefaultCondition()
 	 * @generated
 	 * @ordered
@@ -89,7 +82,6 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FilterDefImpl() {
@@ -98,7 +90,6 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,7 +99,6 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -117,20 +107,17 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER_DEF__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER_DEF__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getDefaultCondition() {
@@ -139,120 +126,109 @@ public class FilterDefImpl extends HbAnnotationImpl implements FilterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDefaultCondition(String newDefaultCondition) {
 		String oldDefaultCondition = defaultCondition;
 		defaultCondition = newDefaultCondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION, oldDefaultCondition, defaultCondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION, oldDefaultCondition, defaultCondition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<ParamDef> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList<ParamDef>(ParamDef.class, this,
-					HbannotationPackage.FILTER_DEF__PARAMETERS);
+			parameters = new EObjectResolvingEList<ParamDef>(ParamDef.class, this, HbannotationPackage.FILTER_DEF__PARAMETERS);
 		}
 		return parameters;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER_DEF__NAME:
-			return getName();
-		case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
-			return getDefaultCondition();
-		case HbannotationPackage.FILTER_DEF__PARAMETERS:
-			return getParameters();
+			case HbannotationPackage.FILTER_DEF__NAME:
+				return getName();
+			case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
+				return getDefaultCondition();
+			case HbannotationPackage.FILTER_DEF__PARAMETERS:
+				return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER_DEF__NAME:
-			setName((String) newValue);
-			return;
-		case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
-			setDefaultCondition((String) newValue);
-			return;
-		case HbannotationPackage.FILTER_DEF__PARAMETERS:
-			getParameters().clear();
-			getParameters().addAll((Collection<? extends ParamDef>) newValue);
-			return;
+			case HbannotationPackage.FILTER_DEF__NAME:
+				setName((String)newValue);
+				return;
+			case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
+				setDefaultCondition((String)newValue);
+				return;
+			case HbannotationPackage.FILTER_DEF__PARAMETERS:
+				getParameters().clear();
+				getParameters().addAll((Collection<? extends ParamDef>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER_DEF__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
-			setDefaultCondition(DEFAULT_CONDITION_EDEFAULT);
-			return;
-		case HbannotationPackage.FILTER_DEF__PARAMETERS:
-			getParameters().clear();
-			return;
+			case HbannotationPackage.FILTER_DEF__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
+				setDefaultCondition(DEFAULT_CONDITION_EDEFAULT);
+				return;
+			case HbannotationPackage.FILTER_DEF__PARAMETERS:
+				getParameters().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER_DEF__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
-			return DEFAULT_CONDITION_EDEFAULT == null ? defaultCondition != null
-					: !DEFAULT_CONDITION_EDEFAULT.equals(defaultCondition);
-		case HbannotationPackage.FILTER_DEF__PARAMETERS:
-			return parameters != null && !parameters.isEmpty();
+			case HbannotationPackage.FILTER_DEF__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case HbannotationPackage.FILTER_DEF__DEFAULT_CONDITION:
+				return DEFAULT_CONDITION_EDEFAULT == null ? defaultCondition != null : !DEFAULT_CONDITION_EDEFAULT.equals(defaultCondition);
+			case HbannotationPackage.FILTER_DEF__PARAMETERS:
+				return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

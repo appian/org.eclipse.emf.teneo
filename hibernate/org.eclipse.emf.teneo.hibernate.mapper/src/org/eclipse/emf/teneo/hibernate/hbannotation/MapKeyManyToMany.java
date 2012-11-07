@@ -12,19 +12,15 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Map Key Many To Many</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getJoinColumns <em>Join
- * Columns</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getTargetEntity <em>Target
- * Entity</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getJoinColumns <em>Join Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getTargetEntity <em>Target Entity</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getMapKeyManyToMany()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EReference'"
  * @generated
@@ -48,13 +44,13 @@ public interface MapKeyManyToMany extends HbAnnotation {
 	EList<JoinColumn> getJoinColumns();
 
 	/**
-	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Entity</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Target Entity</em>' attribute.
 	 * @see #setTargetEntity(String)
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getMapKeyManyToMany_TargetEntity()
@@ -64,12 +60,9 @@ public interface MapKeyManyToMany extends HbAnnotation {
 	String getTargetEntity();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getTargetEntity
-	 * <em>Target Entity</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Target Entity</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getTargetEntity <em>Target Entity</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Entity</em>' attribute.
 	 * @see #getTargetEntity()
 	 * @generated
 	 */

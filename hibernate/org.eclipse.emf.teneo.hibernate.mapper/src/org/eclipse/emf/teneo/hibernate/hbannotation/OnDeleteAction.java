@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum OnDeleteAction implements Enumerator {
 	/**
-	 * The '<em><b>NO ACTION</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>NO ACTION</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #NO_ACTION_VALUE
 	 * @generated
 	 * @ordered
@@ -32,8 +32,8 @@ public enum OnDeleteAction implements Enumerator {
 	NO_ACTION(0, "NO_ACTION", "NO_ACTION"),
 
 	/**
-	 * The '<em><b>CASCADE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>CASCADE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #CASCADE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,13 +41,13 @@ public enum OnDeleteAction implements Enumerator {
 	CASCADE(1, "CASCADE", "CASCADE");
 
 	/**
-	 * The '<em><b>NO ACTION</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>NO ACTION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NO ACTION</b></em>' literal object isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #NO_ACTION
 	 * @model
 	 * @generated
@@ -56,13 +56,13 @@ public enum OnDeleteAction implements Enumerator {
 	public static final int NO_ACTION_VALUE = 0;
 
 	/**
-	 * The '<em><b>CASCADE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>CASCADE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>CASCADE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #CASCADE
 	 * @model
 	 * @generated
@@ -71,12 +71,15 @@ public enum OnDeleteAction implements Enumerator {
 	public static final int CASCADE_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>On Delete Action</b></em>' enumerators. <!-- begin-user-doc -->
+	 * An array of all the '<em><b>On Delete Action</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final OnDeleteAction[] VALUES_ARRAY = new OnDeleteAction[] { NO_ACTION, CASCADE, };
+	private static final OnDeleteAction[] VALUES_ARRAY = new OnDeleteAction[] {
+			NO_ACTION,
+			CASCADE,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>On Delete Action</b></em>' enumerators. <!--
@@ -84,8 +87,7 @@ public enum OnDeleteAction implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<OnDeleteAction> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<OnDeleteAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>On Delete Action</b></em>' literal with the specified literal value. <!--
@@ -127,38 +129,33 @@ public enum OnDeleteAction implements Enumerator {
 	 */
 	public static OnDeleteAction get(int value) {
 		switch (value) {
-		case NO_ACTION_VALUE:
-			return NO_ACTION;
-		case CASCADE_VALUE:
-			return CASCADE;
+			case NO_ACTION_VALUE: return NO_ACTION;
+			case CASCADE_VALUE: return CASCADE;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private OnDeleteAction(int value, String name, String literal) {
@@ -169,29 +166,26 @@ public enum OnDeleteAction implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

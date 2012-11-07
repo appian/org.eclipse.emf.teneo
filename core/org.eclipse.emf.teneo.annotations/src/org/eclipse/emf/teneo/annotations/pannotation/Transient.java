@@ -9,8 +9,8 @@ package org.eclipse.emf.teneo.annotations.pannotation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Transient</b></em>'. <!--
  * end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTransient()
  * @model annotation="teneo/internal/Target 0='EModelElement'"
  * @generated

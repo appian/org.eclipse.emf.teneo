@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
  * <em><b>Force Discriminator</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ForceDiscriminatorImpl extends HbAnnotationImpl implements ForceDiscriminator {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ForceDiscriminatorImpl() {
@@ -30,7 +29,6 @@ public class ForceDiscriminatorImpl extends HbAnnotationImpl implements ForceDis
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

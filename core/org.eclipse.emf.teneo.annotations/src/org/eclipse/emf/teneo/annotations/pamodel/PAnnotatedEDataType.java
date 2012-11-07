@@ -19,62 +19,53 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>PAnnotated EData Type</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getModelEDataType <em>
- * Model EData Type</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getBasic <em>Basic</em>}
- * </li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getEnumerated <em>
- * Enumerated</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getGeneratedValue <em>
- * Generated Value</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getLob <em>Lob</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getTemporal <em>Temporal
- * </em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getVersion <em>Version
- * </em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage <em>Pa
- * EPackage</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getColumn <em>Column
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getModelEDataType <em>Model EData Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getBasic <em>Basic</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getEnumerated <em>Enumerated</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getGeneratedValue <em>Generated Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getLob <em>Lob</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getTemporal <em>Temporal</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage <em>Pa EPackage</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType()
- * @model annotation=
- *        "http://www.eclipse.org/emf/2002/Ecore constraints='NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper'"
  * @generated
  */
 public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	/**
-	 * Returns the value of the '<em><b>Annotated EData Type</b></em>' reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Model EData Type</b></em>' reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Annotated EData Type</em>' reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Annotated EData Type</em>' reference.
-	 * @see #setModelEDataType(EDataType)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_AnnotatedEDataType()
-	 * @model required="true" annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @return the value of the '<em>Model EData Type</em>' reference.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_ModelEDataType()
+	 * @model required="true" transient="true" changeable="false" volatile="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EDataType getModelEDataType();
 
 	/**
-	 * Returns the value of the '<em><b>Basic</b></em>' containment reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Basic</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Basic</em>' containment reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Basic</em>' containment reference.
 	 * @see #setBasic(Basic)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_Basic()
@@ -84,12 +75,9 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Basic getBasic();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getBasic <em>Basic</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Basic</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getBasic <em>Basic</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Basic</em>' containment reference.
 	 * @see #getBasic()
 	 * @generated
 	 */
@@ -113,12 +101,9 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Enumerated getEnumerated();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getEnumerated
-	 * <em>Enumerated</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Enumerated</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getEnumerated <em>Enumerated</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enumerated</em>' containment reference.
 	 * @see #getEnumerated()
 	 * @generated
 	 */
@@ -142,25 +127,22 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	GeneratedValue getGeneratedValue();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getGeneratedValue
-	 * <em>Generated Value</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Generated Value</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getGeneratedValue <em>Generated Value</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generated Value</em>' containment reference.
 	 * @see #getGeneratedValue()
 	 * @generated
 	 */
 	void setGeneratedValue(GeneratedValue value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' containment reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Id</em>' containment reference isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Id</em>' containment reference.
 	 * @see #setId(Id)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_Id()
@@ -170,25 +152,22 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Id getId();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getId <em>Id</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Id</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getId <em>Id</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' containment reference.
 	 * @see #getId()
 	 * @generated
 	 */
 	void setId(Id value);
 
 	/**
-	 * Returns the value of the '<em><b>Lob</b></em>' containment reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Lob</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Lob</em>' containment reference isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Lob</em>' containment reference.
 	 * @see #setLob(Lob)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_Lob()
@@ -198,26 +177,23 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Lob getLob();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getLob <em>Lob</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Lob</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getLob <em>Lob</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lob</em>' containment reference.
 	 * @see #getLob()
 	 * @generated
 	 */
 	void setLob(Lob value);
 
 	/**
-	 * Returns the value of the '<em><b>Temporal</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Temporal</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Temporal</em>' containment reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Temporal</em>' containment reference.
 	 * @see #setTemporal(Temporal)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_Temporal()
@@ -227,26 +203,23 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Temporal getTemporal();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getTemporal
-	 * <em>Temporal</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Temporal</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getTemporal <em>Temporal</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Temporal</em>' containment reference.
 	 * @see #getTemporal()
 	 * @generated
 	 */
 	void setTemporal(Temporal value);
 
 	/**
-	 * Returns the value of the '<em><b>Version</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Version</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Version</em>' containment reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Version</em>' containment reference.
 	 * @see #setVersion(Version)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_Version()
@@ -256,28 +229,23 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Version getVersion();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getVersion
-	 * <em>Version</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Version</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getVersion <em>Version</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Version</em>' containment reference.
 	 * @see #getVersion()
 	 * @generated
 	 */
 	void setVersion(Version value);
 
 	/**
-	 * Returns the value of the '<em><b>Pa EPackage</b></em>' container reference. It is bidirectional
-	 * and its opposite is '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEDataTypes
-	 * <em>Pa EData Types</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Pa EPackage</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEDataTypes <em>Pa EData Types</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pa EPackage</em>' container reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Pa EPackage</em>' container reference.
 	 * @see #setPaEPackage(PAnnotatedEPackage)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_PaEPackage()
@@ -289,26 +257,23 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	PAnnotatedEPackage getPaEPackage();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage
-	 * <em>Pa EPackage</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Pa EPackage</em>' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage <em>Pa EPackage</em>}' container reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pa EPackage</em>' container reference.
 	 * @see #getPaEPackage()
 	 * @generated
 	 */
 	void setPaEPackage(PAnnotatedEPackage value);
 
 	/**
-	 * Returns the value of the '<em><b>Column</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Column</em>' containment reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Column</em>' containment reference.
 	 * @see #setColumn(Column)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_Column()
@@ -318,12 +283,9 @@ public interface PAnnotatedEDataType extends PAnnotatedEModelElement {
 	Column getColumn();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getColumn <em>Column</em>}
-	 * ' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Column</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getColumn <em>Column</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Column</em>' containment reference.
 	 * @see #getColumn()
 	 * @generated
 	 */

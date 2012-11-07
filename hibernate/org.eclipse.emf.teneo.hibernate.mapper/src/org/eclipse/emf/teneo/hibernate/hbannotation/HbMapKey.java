@@ -12,16 +12,16 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Hb Map Key</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey#getColumns <em>Columns</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getHbMapKey()
- * @model annotation= "http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
+ * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface HbMapKey extends HbAnnotation {

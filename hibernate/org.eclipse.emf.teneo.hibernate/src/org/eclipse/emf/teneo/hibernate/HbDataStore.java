@@ -1068,7 +1068,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 		final PersistenceOptions po = getPersistenceOptions();
 
 		setPaModel(getExtensionManager().getExtension(PersistenceMappingBuilder.class).buildMapping(
-				getEPackages(), po, getExtensionManager()));
+				Arrays.asList(getEPackages()), po, getExtensionManager(), getPackageRegistry()));
 		final HibernateMappingGenerator hmg = getExtensionManager().getExtension(
 				HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);

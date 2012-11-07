@@ -18,19 +18,17 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.NaturalIdImpl#isMutable <em>Mutable
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.NaturalIdImpl#isMutable <em>Mutable</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 	/**
-	 * The default value of the '{@link #isMutable() <em>Mutable</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #isMutable() <em>Mutable</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #isMutable()
 	 * @generated
 	 * @ordered
@@ -38,9 +36,9 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 	protected static final boolean MUTABLE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMutable() <em>Mutable</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #isMutable() <em>Mutable</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #isMutable()
 	 * @generated
 	 * @ordered
@@ -49,7 +47,6 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected NaturalIdImpl() {
@@ -58,7 +55,6 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,7 +64,6 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isMutable() {
@@ -77,84 +72,76 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMutable(boolean newMutable) {
 		boolean oldMutable = mutable;
 		mutable = newMutable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbannotationPackage.NATURAL_ID__MUTABLE, oldMutable, mutable));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.NATURAL_ID__MUTABLE, oldMutable, mutable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbannotationPackage.NATURAL_ID__MUTABLE:
-			return isMutable();
+			case HbannotationPackage.NATURAL_ID__MUTABLE:
+				return isMutable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbannotationPackage.NATURAL_ID__MUTABLE:
-			setMutable((Boolean) newValue);
-			return;
+			case HbannotationPackage.NATURAL_ID__MUTABLE:
+				setMutable((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.NATURAL_ID__MUTABLE:
-			setMutable(MUTABLE_EDEFAULT);
-			return;
+			case HbannotationPackage.NATURAL_ID__MUTABLE:
+				setMutable(MUTABLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.NATURAL_ID__MUTABLE:
-			return mutable != MUTABLE_EDEFAULT;
+			case HbannotationPackage.NATURAL_ID__MUTABLE:
+				return mutable != MUTABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mutable: ");

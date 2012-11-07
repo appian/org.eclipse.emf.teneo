@@ -16,40 +16,32 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Hb Annotated EAttribute</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getHbType <em>Hb Type</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getGenerated <em>Generated
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId <em>Natural Id
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAny <em>Any</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAnyMetaDef <em>Any Meta
- * Def</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getHbType <em>Hb Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getGenerated <em>Generated</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId <em>Natural Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAny <em>Any</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAnyMetaDef <em>Any Meta Def</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute()
  * @model
  * @generated
  */
 public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotatedETypeElement {
 	/**
-	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Hb Type</em>' containment reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Hb Type</em>' containment reference.
 	 * @see #setHbType(Type)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute_HbType()
@@ -59,26 +51,23 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	Type getHbType();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getHbType
-	 * <em>Hb Type</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Hb Type</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getHbType <em>Hb Type</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb Type</em>' containment reference.
 	 * @see #getHbType()
 	 * @generated
 	 */
 	void setHbType(Type value);
 
 	/**
-	 * Returns the value of the '<em><b>Generated</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Generated</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Generated</em>' containment reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Generated</em>' containment reference.
 	 * @see #setGenerated(Generated)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute_Generated()
@@ -88,12 +77,9 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	Generated getGenerated();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getGenerated
-	 * <em>Generated</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Generated</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getGenerated <em>Generated</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generated</em>' containment reference.
 	 * @see #getGenerated()
 	 * @generated
 	 */
@@ -117,25 +103,22 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	NaturalId getNaturalId();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId
-	 * <em>Natural Id</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Natural Id</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId <em>Natural Id</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Natural Id</em>' containment reference.
 	 * @see #getNaturalId()
 	 * @generated
 	 */
 	void setNaturalId(NaturalId value);
 
 	/**
-	 * Returns the value of the '<em><b>Any</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Any</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Any</em>' reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Any</em>' reference.
 	 * @see #setAny(Any)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute_Any()
@@ -145,25 +128,22 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	Any getAny();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAny <em>Any</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Any</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAny <em>Any</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Any</em>' reference.
 	 * @see #getAny()
 	 * @generated
 	 */
 	void setAny(Any value);
 
 	/**
-	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Any Meta Def</em>' reference isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Any Meta Def</em>' reference.
 	 * @see #setAnyMetaDef(AnyMetaDef)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute_AnyMetaDef()
@@ -173,12 +153,9 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	AnyMetaDef getAnyMetaDef();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAnyMetaDef
-	 * <em>Any Meta Def</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Any Meta Def</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAnyMetaDef <em>Any Meta Def</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Any Meta Def</em>' reference.
 	 * @see #getAnyMetaDef()
 	 * @generated
 	 */

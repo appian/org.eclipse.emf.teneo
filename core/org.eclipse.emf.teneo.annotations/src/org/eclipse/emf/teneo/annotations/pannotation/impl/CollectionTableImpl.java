@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class CollectionTableImpl extends JoinTableImpl implements CollectionTable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CollectionTableImpl() {
@@ -30,7 +29,6 @@ public class CollectionTableImpl extends JoinTableImpl implements CollectionTabl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

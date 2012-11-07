@@ -9,38 +9,32 @@ package org.eclipse.emf.teneo.annotations.pannotation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Sequence Generator</b></em>
  * '. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getName <em>Name</em>}
- * </li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSequenceName <em>
- * Sequence Name</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue <em>
- * Initial Value</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize <em>
- * Allocation Size</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog <em>Catalog
- * </em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema <em>Schema
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue <em>Initial Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize <em>Allocation Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog <em>Catalog</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema <em>Schema</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator()
  * @model annotation="teneo/internal/Target 0='EClass' 1='EStructuralFeature' 2='EPackage'"
  * @generated
  */
 public interface SequenceGenerator extends PAnnotation {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_Name()
@@ -50,26 +44,23 @@ public interface SequenceGenerator extends PAnnotation {
 	String getName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getName <em>Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute. The default value is
-	 * <code>"1"</code>. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Initial Value</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Initial Value</em>' attribute.
 	 * @see #isSetInitialValue()
 	 * @see #unsetInitialValue()
@@ -81,12 +72,9 @@ public interface SequenceGenerator extends PAnnotation {
 	int getInitialValue();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue
-	 * <em>Initial Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Initial Value</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue <em>Initial Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Initial Value</em>' attribute.
 	 * @see #isSetInitialValue()
 	 * @see #unsetInitialValue()
 	 * @see #getInitialValue()
@@ -95,10 +83,8 @@ public interface SequenceGenerator extends PAnnotation {
 	void setInitialValue(int value);
 
 	/**
-	 * Unsets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue
-	 * <em>Initial Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue <em>Initial Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSetInitialValue()
 	 * @see #getInitialValue()
 	 * @see #setInitialValue(int)
@@ -107,10 +93,8 @@ public interface SequenceGenerator extends PAnnotation {
 	void unsetInitialValue();
 
 	/**
-	 * Returns whether the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue
-	 * <em>Initial Value</em>}' attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue <em>Initial Value</em>}' attribute is set.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Initial Value</em>' attribute is set.
 	 * @see #unsetInitialValue()
 	 * @see #getInitialValue()
@@ -120,13 +104,13 @@ public interface SequenceGenerator extends PAnnotation {
 	boolean isSetInitialValue();
 
 	/**
-	 * Returns the value of the '<em><b>Sequence Name</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Sequence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sequence Name</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Sequence Name</em>' attribute.
 	 * @see #setSequenceName(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_SequenceName()
@@ -136,26 +120,23 @@ public interface SequenceGenerator extends PAnnotation {
 	String getSequenceName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSequenceName
-	 * <em>Sequence Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Sequence Name</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSequenceName <em>Sequence Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sequence Name</em>' attribute.
 	 * @see #getSequenceName()
 	 * @generated
 	 */
 	void setSequenceName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Allocation Size</b></em>' attribute. The default value is
-	 * <code>"50"</code>. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Allocation Size</b></em>' attribute.
+	 * The default value is <code>"50"</code>.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocation Size</em>' attribute isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Allocation Size</em>' attribute.
 	 * @see #isSetAllocationSize()
 	 * @see #unsetAllocationSize()
@@ -167,12 +148,9 @@ public interface SequenceGenerator extends PAnnotation {
 	int getAllocationSize();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize
-	 * <em>Allocation Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Allocation Size</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize <em>Allocation Size</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Allocation Size</em>' attribute.
 	 * @see #isSetAllocationSize()
 	 * @see #unsetAllocationSize()
 	 * @see #getAllocationSize()
@@ -181,10 +159,8 @@ public interface SequenceGenerator extends PAnnotation {
 	void setAllocationSize(int value);
 
 	/**
-	 * Unsets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize
-	 * <em>Allocation Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize <em>Allocation Size</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSetAllocationSize()
 	 * @see #getAllocationSize()
 	 * @see #setAllocationSize(int)
@@ -193,10 +169,8 @@ public interface SequenceGenerator extends PAnnotation {
 	void unsetAllocationSize();
 
 	/**
-	 * Returns whether the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize
-	 * <em>Allocation Size</em>}' attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize <em>Allocation Size</em>}' attribute is set.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Allocation Size</em>' attribute is set.
 	 * @see #unsetAllocationSize()
 	 * @see #getAllocationSize()
@@ -206,13 +180,13 @@ public interface SequenceGenerator extends PAnnotation {
 	boolean isSetAllocationSize();
 
 	/**
-	 * Returns the value of the '<em><b>Catalog</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Catalog</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Catalog</em>' attribute isn't clear, there really should be more of
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Catalog</em>' attribute.
 	 * @see #setCatalog(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_Catalog()
@@ -222,25 +196,22 @@ public interface SequenceGenerator extends PAnnotation {
 	String getCatalog();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog
-	 * <em>Catalog</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Catalog</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog <em>Catalog</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Catalog</em>' attribute.
 	 * @see #getCatalog()
 	 * @generated
 	 */
 	void setCatalog(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Schema</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Schema</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Schema</em>' attribute.
 	 * @see #setSchema(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_Schema()
@@ -250,12 +221,9 @@ public interface SequenceGenerator extends PAnnotation {
 	String getSchema();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema
-	 * <em>Schema</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Schema</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema <em>Schema</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Schema</em>' attribute.
 	 * @see #getSchema()
 	 * @generated
 	 */

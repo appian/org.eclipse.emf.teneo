@@ -33,70 +33,48 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EClass</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEPackage <em>Pa
- * EPackage</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getModelEClass <em>Model
- * EClass</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEStructuralFeatures
- * <em>Pa EStructural Features</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAttributeOverrides <em>
- * Attribute Overrides</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorColumn <em>
- * Discriminator Column</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorValue <em>
- * Discriminator Value</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEmbeddable <em>
- * Embeddable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getMappedSuperclass <em>
- * Mapped Superclass</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntity <em>Entity</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getIdClass <em>Id Class
- * </em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getInheritance <em>
- * Inheritance</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns
- * <em>Primary Key Join Columns</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSecondaryTables <em>
- * Secondary Tables</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTable <em>Table</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTableGenerator <em>Table
- * Generator</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides
- * <em>Association Overrides</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping <em>Eav
- * Mapping</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping <em>No EAV
- * Mapping</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerators <em>
- * Sequence Generators</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal <em>External
- * </em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable <em>Cacheable
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEPackage <em>Pa EPackage</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getModelEClass <em>Model EClass</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEStructuralFeatures <em>Pa EStructural Features</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAttributeOverrides <em>Attribute Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorColumn <em>Discriminator Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorValue <em>Discriminator Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEmbeddable <em>Embeddable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getMappedSuperclass <em>Mapped Superclass</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntity <em>Entity</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getIdClass <em>Id Class</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getInheritance <em>Inheritance</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSecondaryTables <em>Secondary Tables</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTable <em>Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTableGenerator <em>Table Generator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides <em>Association Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping <em>Eav Mapping</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping <em>No EAV Mapping</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerators <em>Sequence Generators</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal <em>External</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable <em>Cacheable</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass()
- * @model annotation=
- *        "http://www.eclipse.org/emf/2002/Ecore constraints='SameEFeatures EPackageCommutes ProperPrimaryKey EntityOrEmbeddableOrMappedSuper\tOverriddenAreDefined ProperInheritance ProperDiscriminator SingleTableForSingleStrategy ProperPKJoin'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='SameEFeatures EPackageCommutes ProperPrimaryKey EntityOrEmbeddableOrMappedSuper\tOverriddenAreDefined ProperInheritance ProperDiscriminator SingleTableForSingleStrategy ProperPKJoin'"
  * @generated
  */
 public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	/**
-	 * Returns the value of the '<em><b>Pa EPackage</b></em>' container reference. It is bidirectional
-	 * and its opposite is '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses
-	 * <em>Pa EClasses</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Pa EPackage</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses <em>Pa EClasses</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pa EPackage</em>' container reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Pa EPackage</em>' container reference.
 	 * @see #setPaEPackage(PAnnotatedEPackage)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEPackage()
@@ -108,25 +86,22 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	PAnnotatedEPackage getPaEPackage();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEPackage
-	 * <em>Pa EPackage</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Pa EPackage</em>' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEPackage <em>Pa EPackage</em>}' container reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pa EPackage</em>' container reference.
 	 * @see #getPaEPackage()
 	 * @generated
 	 */
 	void setPaEPackage(PAnnotatedEPackage value);
 
 	/**
-	 * Returns the value of the '<em><b>Model EClass</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Model EClass</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Model EClass</em>' reference isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Model EClass</em>' reference.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_ModelEClass()
 	 * @model transient="true" changeable="false" volatile="true"
@@ -137,17 +112,14 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 
 	/**
 	 * Returns the value of the '<em><b>Pa EStructural Features</b></em>' containment reference list.
-	 * The list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature}. It is
-	 * bidirectional and its opposite is '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass
-	 * <em>Pa EClass</em>}'. <!-- begin-user-doc -->
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass <em>Pa EClass</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pa EStructural Features</em>' containment reference list isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Pa EStructural Features</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEStructuralFeatures()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass
@@ -158,20 +130,19 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	EList<PAnnotatedEStructuralFeature> getPaEStructuralFeatures();
 
 	/**
-	 * Returns the value of the '<em><b>Attribute Overrides</b></em>' containment reference list. The
-	 * list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Attribute Overrides</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Attribute Overrides</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Attribute Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AttributeOverrides()
-	 * @model containment="true" annotation=
-	 *        "elver.jpa annotationName='AttributeOverrides' annotationClass='javax.persistence.AttributeOverrides'"
+	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='AttributeOverrides' annotationClass='javax.persistence.AttributeOverrides'"
 	 * @generated
 	 */
 	EList<AttributeOverride> getAttributeOverrides();
@@ -194,13 +165,10 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	DiscriminatorColumn getDiscriminatorColumn();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorColumn
-	 * <em>Discriminator Column</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorColumn <em>Discriminator Column</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Discriminator Column</em>' containment reference.
+	 * @param value the new value of the '<em>Discriminator Column</em>' containment reference.
 	 * @see #getDiscriminatorColumn()
 	 * @generated
 	 */
@@ -254,12 +222,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	Embeddable getEmbeddable();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEmbeddable
-	 * <em>Embeddable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Embeddable</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEmbeddable <em>Embeddable</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Embeddable</em>' containment reference.
 	 * @see #getEmbeddable()
 	 * @generated
 	 */
@@ -296,14 +261,14 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	void setMappedSuperclass(MappedSuperclass value);
 
 	/**
-	 * Returns the value of the '<em><b>Entity</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Entity</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Entity</em>' containment reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Entity</em>' containment reference.
 	 * @see #setEntity(Entity)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_Entity()
@@ -313,26 +278,23 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	Entity getEntity();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntity <em>Entity</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Entity</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntity <em>Entity</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Entity</em>' containment reference.
 	 * @see #getEntity()
 	 * @generated
 	 */
 	void setEntity(Entity value);
 
 	/**
-	 * Returns the value of the '<em><b>Id Class</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Id Class</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Id Class</em>' containment reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Id Class</em>' containment reference.
 	 * @see #setIdClass(IdClass)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_IdClass()
@@ -342,12 +304,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	IdClass getIdClass();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getIdClass <em>Id Class</em>}
-	 * ' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Id Class</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getIdClass <em>Id Class</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id Class</em>' containment reference.
 	 * @see #getIdClass()
 	 * @generated
 	 */
@@ -371,12 +330,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	Inheritance getInheritance();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getInheritance
-	 * <em>Inheritance</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Inheritance</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getInheritance <em>Inheritance</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inheritance</em>' containment reference.
 	 * @see #getInheritance()
 	 * @generated
 	 */
@@ -400,31 +356,30 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns();
 
 	/**
-	 * Returns the value of the '<em><b>Secondary Tables</b></em>' containment reference list. The
-	 * list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable}.
+	 * Returns the value of the '<em><b>Secondary Tables</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Secondary Tables</em>' containment reference list isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Secondary Tables</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_SecondaryTables()
-	 * @model containment="true" annotation=
-	 *        "elver.jpa annotationName='SecondaryTables' annotationClass='javax.persistence.SecondaryTables'"
+	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='SecondaryTables' annotationClass='javax.persistence.SecondaryTables'"
 	 * @generated
 	 */
 	EList<SecondaryTable> getSecondaryTables();
 
 	/**
-	 * Returns the value of the '<em><b>Table</b></em>' containment reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Table</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Table</em>' containment reference isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Table</em>' containment reference.
 	 * @see #setTable(Table)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_Table()
@@ -434,12 +389,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	Table getTable();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTable <em>Table</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Table</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTable <em>Table</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Table</em>' containment reference.
 	 * @see #getTable()
 	 * @generated
 	 */
@@ -463,12 +415,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	TableGenerator getTableGenerator();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTableGenerator
-	 * <em>Table Generator</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Table Generator</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTableGenerator <em>Table Generator</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Table Generator</em>' containment reference.
 	 * @see #getTableGenerator()
 	 * @generated
 	 */
@@ -476,19 +425,18 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 
 	/**
 	 * Returns the value of the '<em><b>Association Overrides</b></em>' containment reference list.
-	 * The list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride}. <!-- begin-user-doc
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Association Overrides</em>' containment reference isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Association Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AssociationOverrides()
-	 * @model containment="true" annotation=
-	 *        "elver.jpa annotationName='AssociationOverrides' annotationClass='javax.persistence.AssociationOverrides'"
+	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='AssociationOverrides' annotationClass='javax.persistence.AssociationOverrides'"
 	 * @generated
 	 */
 	EList<AssociationOverride> getAssociationOverrides();
@@ -511,12 +459,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	EAVMapping getEavMapping();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping
-	 * <em>Eav Mapping</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Eav Mapping</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping <em>Eav Mapping</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Eav Mapping</em>' containment reference.
 	 * @see #getEavMapping()
 	 * @generated
 	 */
@@ -540,28 +485,24 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	NoEAVMapping getNoEAVMapping();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping
-	 * <em>No EAV Mapping</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>No EAV Mapping</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping <em>No EAV Mapping</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>No EAV Mapping</em>' containment reference.
 	 * @see #getNoEAVMapping()
 	 * @generated
 	 */
 	void setNoEAVMapping(NoEAVMapping value);
 
 	/**
-	 * Returns the value of the '<em><b>Sequence Generators</b></em>' containment reference list. The
-	 * list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Sequence Generators</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Sequence Generators</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Sequence Generators</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_SequenceGenerators()
 	 * @model containment="true"
@@ -570,13 +511,13 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	EList<SequenceGenerator> getSequenceGenerators();
 
 	/**
-	 * Returns the value of the '<em><b>External</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>External</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>External</em>' reference isn't clear, there really should be more of
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>External</em>' reference.
 	 * @see #setExternal(External)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_External()
@@ -586,26 +527,23 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	External getExternal();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal
-	 * <em>External</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>External</em>' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal <em>External</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External</em>' reference.
 	 * @see #getExternal()
 	 * @generated
 	 */
 	void setExternal(External value);
 
 	/**
-	 * Returns the value of the '<em><b>Cacheable</b></em>' containment reference. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Cacheable</b></em>' containment reference.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Cacheable</em>' containment reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Cacheable</em>' containment reference.
 	 * @see #setCacheable(Cacheable)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_Cacheable()
@@ -615,12 +553,9 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	Cacheable getCacheable();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable
-	 * <em>Cacheable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Cacheable</em>' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable <em>Cacheable</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cacheable</em>' containment reference.
 	 * @see #getCacheable()
 	 * @generated
 	 */

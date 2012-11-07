@@ -18,21 +18,18 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterImpl#getName <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterImpl#getCondition <em>Condition
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.FilterImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FilterImpl extends HbAnnotationImpl implements Filter {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -40,9 +37,9 @@ public class FilterImpl extends HbAnnotationImpl implements Filter {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -71,7 +68,6 @@ public class FilterImpl extends HbAnnotationImpl implements Filter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FilterImpl() {
@@ -80,7 +76,6 @@ public class FilterImpl extends HbAnnotationImpl implements Filter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -90,7 +85,6 @@ public class FilterImpl extends HbAnnotationImpl implements Filter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -99,20 +93,17 @@ public class FilterImpl extends HbAnnotationImpl implements Filter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getCondition() {
@@ -121,94 +112,86 @@ public class FilterImpl extends HbAnnotationImpl implements Filter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setCondition(String newCondition) {
 		String oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER__CONDITION,
-					oldCondition, condition));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FILTER__CONDITION, oldCondition, condition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER__NAME:
-			return getName();
-		case HbannotationPackage.FILTER__CONDITION:
-			return getCondition();
+			case HbannotationPackage.FILTER__NAME:
+				return getName();
+			case HbannotationPackage.FILTER__CONDITION:
+				return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER__NAME:
-			setName((String) newValue);
-			return;
-		case HbannotationPackage.FILTER__CONDITION:
-			setCondition((String) newValue);
-			return;
+			case HbannotationPackage.FILTER__NAME:
+				setName((String)newValue);
+				return;
+			case HbannotationPackage.FILTER__CONDITION:
+				setCondition((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case HbannotationPackage.FILTER__CONDITION:
-			setCondition(CONDITION_EDEFAULT);
-			return;
+			case HbannotationPackage.FILTER__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case HbannotationPackage.FILTER__CONDITION:
+				setCondition(CONDITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.FILTER__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case HbannotationPackage.FILTER__CONDITION:
-			return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
+			case HbannotationPackage.FILTER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case HbannotationPackage.FILTER__CONDITION:
+				return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

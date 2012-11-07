@@ -16,15 +16,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Optimistic Lock Type</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getOptimisticLockType()
  * @model
  * @generated
  */
 public enum OptimisticLockType implements Enumerator {
 	/**
-	 * The '<em><b>ALL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>ALL</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #ALL_VALUE
 	 * @generated
 	 * @ordered
@@ -32,8 +31,8 @@ public enum OptimisticLockType implements Enumerator {
 	ALL(0, "ALL", "ALL"),
 
 	/**
-	 * The '<em><b>DIRTY</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>DIRTY</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #DIRTY_VALUE
 	 * @generated
 	 * @ordered
@@ -41,8 +40,8 @@ public enum OptimisticLockType implements Enumerator {
 	DIRTY(1, "DIRTY", "DIRTY"),
 
 	/**
-	 * The '<em><b>NONE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -50,8 +49,8 @@ public enum OptimisticLockType implements Enumerator {
 	NONE(2, "NONE", "NONE"),
 
 	/**
-	 * The '<em><b>VERSION</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>VERSION</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #VERSION_VALUE
 	 * @generated
 	 * @ordered
@@ -59,13 +58,13 @@ public enum OptimisticLockType implements Enumerator {
 	VERSION(3, "VERSION", "VERSION");
 
 	/**
-	 * The '<em><b>ALL</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>ALL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ALL</b></em>' literal object isn't clear, there really should be more
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #ALL
 	 * @model
 	 * @generated
@@ -74,13 +73,13 @@ public enum OptimisticLockType implements Enumerator {
 	public static final int ALL_VALUE = 0;
 
 	/**
-	 * The '<em><b>DIRTY</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>DIRTY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>DIRTY</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #DIRTY
 	 * @model
 	 * @generated
@@ -89,13 +88,13 @@ public enum OptimisticLockType implements Enumerator {
 	public static final int DIRTY_VALUE = 1;
 
 	/**
-	 * The '<em><b>NONE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #NONE
 	 * @model
 	 * @generated
@@ -104,13 +103,13 @@ public enum OptimisticLockType implements Enumerator {
 	public static final int NONE_VALUE = 2;
 
 	/**
-	 * The '<em><b>VERSION</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>VERSION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>VERSION</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #VERSION
 	 * @model
 	 * @generated
@@ -119,13 +118,17 @@ public enum OptimisticLockType implements Enumerator {
 	public static final int VERSION_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Optimistic Lock Type</b></em>' enumerators. <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Optimistic Lock Type</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final OptimisticLockType[] VALUES_ARRAY = new OptimisticLockType[] { ALL, DIRTY,
-			NONE, VERSION, };
+	private static final OptimisticLockType[] VALUES_ARRAY = new OptimisticLockType[] {
+			ALL,
+			DIRTY,
+			NONE,
+			VERSION,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Optimistic Lock Type</b></em>' enumerators. <!--
@@ -133,13 +136,11 @@ public enum OptimisticLockType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<OptimisticLockType> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<OptimisticLockType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Optimistic Lock Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static OptimisticLockType get(String literal) {
@@ -171,47 +172,39 @@ public enum OptimisticLockType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Optimistic Lock Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static OptimisticLockType get(int value) {
 		switch (value) {
-		case ALL_VALUE:
-			return ALL;
-		case DIRTY_VALUE:
-			return DIRTY;
-		case NONE_VALUE:
-			return NONE;
-		case VERSION_VALUE:
-			return VERSION;
+			case ALL_VALUE: return ALL;
+			case DIRTY_VALUE: return DIRTY;
+			case NONE_VALUE: return NONE;
+			case VERSION_VALUE: return VERSION;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private OptimisticLockType(int value, String name, String literal) {
@@ -222,29 +215,26 @@ public enum OptimisticLockType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

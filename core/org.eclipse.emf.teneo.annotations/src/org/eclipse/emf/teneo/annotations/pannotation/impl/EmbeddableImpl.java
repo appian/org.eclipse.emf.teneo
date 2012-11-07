@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class EmbeddableImpl extends PAnnotationImpl implements Embeddable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected EmbeddableImpl() {
@@ -30,7 +29,6 @@ public class EmbeddableImpl extends PAnnotationImpl implements Embeddable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

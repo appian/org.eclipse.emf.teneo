@@ -562,9 +562,6 @@
 		<property name="shor" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.Short">
 			<column not-null="false" unique="false" name="`SHOR`"/>
 		</property>
-		<property name="enu" lazy="false" insert="true" update="true" not-null="false" unique="false" type="simpletypes.SimpleEnumObject">
-			<column not-null="false" unique="false" name="`ENU`"/>
-		</property>
 		<property name="dat" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DAT`"/>
 		</property>

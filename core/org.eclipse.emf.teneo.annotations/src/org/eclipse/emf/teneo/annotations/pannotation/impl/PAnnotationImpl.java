@@ -34,13 +34,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#getEModelElement
- * <em>EModel Element</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#isGenerated <em>
- * Generated</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#getEModelElement <em>EModel Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#isGenerated <em>Generated</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation {
@@ -89,7 +87,6 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PAnnotationImpl() {
@@ -98,7 +95,6 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,17 +104,15 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject) eModelElement;
-			eModelElement = (EModelElement) eResolveProxy(oldEModelElement);
+			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
+			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -126,7 +120,6 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EModelElement basicGetEModelElement() {
@@ -135,20 +128,17 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setEModelElement(EModelElement newEModelElement) {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isGenerated() {
@@ -157,96 +147,87 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setGenerated(boolean newGenerated) {
 		boolean oldGenerated = generated;
 		generated = newGenerated;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.PANNOTATION__GENERATED, oldGenerated, generated));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PANNOTATION__GENERATED, oldGenerated, generated));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-			if (resolve)
-				return getEModelElement();
-			return basicGetEModelElement();
-		case PannotationPackage.PANNOTATION__GENERATED:
-			return isGenerated();
+			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
+				if (resolve) return getEModelElement();
+				return basicGetEModelElement();
+			case PannotationPackage.PANNOTATION__GENERATED:
+				return isGenerated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-			setEModelElement((EModelElement) newValue);
-			return;
-		case PannotationPackage.PANNOTATION__GENERATED:
-			setGenerated((Boolean) newValue);
-			return;
+			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
+				setEModelElement((EModelElement)newValue);
+				return;
+			case PannotationPackage.PANNOTATION__GENERATED:
+				setGenerated((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-			setEModelElement((EModelElement) null);
-			return;
-		case PannotationPackage.PANNOTATION__GENERATED:
-			setGenerated(GENERATED_EDEFAULT);
-			return;
+			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
+				setEModelElement((EModelElement)null);
+				return;
+			case PannotationPackage.PANNOTATION__GENERATED:
+				setGenerated(GENERATED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-			return eModelElement != null;
-		case PannotationPackage.PANNOTATION__GENERATED:
-			return generated != GENERATED_EDEFAULT;
+			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
+				return eModelElement != null;
+			case PannotationPackage.PANNOTATION__GENERATED:
+				return generated != GENERATED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (generated: ");

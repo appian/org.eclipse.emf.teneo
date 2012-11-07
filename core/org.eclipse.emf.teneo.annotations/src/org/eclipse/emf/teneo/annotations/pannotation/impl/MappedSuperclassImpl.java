@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * '. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class MappedSuperclassImpl extends PAnnotationImpl implements MappedSuperclass {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected MappedSuperclassImpl() {
@@ -30,7 +29,6 @@ public class MappedSuperclassImpl extends PAnnotationImpl implements MappedSuper
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

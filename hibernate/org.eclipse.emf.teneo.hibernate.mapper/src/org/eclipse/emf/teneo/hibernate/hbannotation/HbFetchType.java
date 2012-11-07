@@ -15,23 +15,22 @@ import org.eclipse.emf.common.util.Enumerator;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Hb Fetch Type</b></em>', and utility methods for working with them. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getHbFetchType()
  * @model
  * @generated
  */
 public enum HbFetchType implements Enumerator {
 	/**
-	 * The '<em><b>JOIN</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>JOIN</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #JOIN_VALUE
 	 * @generated
 	 * @ordered
 	 */
 	JOIN(0, "JOIN", "JOIN"), /**
-	 * The '<em><b>SELECT</b></em>' literal object. <!-- begin-user-doc -->
+	 * The '<em><b>SELECT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SELECT_VALUE
 	 * @generated
 	 * @ordered
@@ -47,13 +46,13 @@ public enum HbFetchType implements Enumerator {
 	SUBSELECT(2, "SUBSELECT", "SUBSELECT");
 
 	/**
-	 * The '<em><b>JOIN</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>JOIN</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>JOIN</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #JOIN
 	 * @model
 	 * @generated
@@ -61,13 +60,13 @@ public enum HbFetchType implements Enumerator {
 	 */
 	public static final int JOIN_VALUE = 0;
 	/**
-	 * The '<em><b>SELECT</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>SELECT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SELECT</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SELECT
 	 * @model
 	 * @generated
@@ -75,13 +74,13 @@ public enum HbFetchType implements Enumerator {
 	 */
 	public static final int SELECT_VALUE = 1;
 	/**
-	 * The '<em><b>SUBSELECT</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>SUBSELECT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SUBSELECT</b></em>' literal object isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SUBSELECT
 	 * @model
 	 * @generated
@@ -89,20 +88,23 @@ public enum HbFetchType implements Enumerator {
 	 */
 	public static final int SUBSELECT_VALUE = 2;
 	/**
-	 * An array of all the '<em><b>Hb Fetch Type</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * An array of all the '<em><b>Hb Fetch Type</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final HbFetchType[] VALUES_ARRAY = new HbFetchType[] { JOIN, SELECT, SUBSELECT, };
+	private static final HbFetchType[] VALUES_ARRAY = new HbFetchType[] {
+			JOIN,
+			SELECT,
+			SUBSELECT,
+		};
 	/**
 	 * A public read-only list of all the '<em><b>Hb Fetch Type</b></em>' enumerators. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final List<HbFetchType> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<HbFetchType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Hb Fetch Type</b></em>' literal with the specified literal value. <!--
@@ -144,38 +146,32 @@ public enum HbFetchType implements Enumerator {
 	 */
 	public static HbFetchType get(int value) {
 		switch (value) {
-		case JOIN_VALUE:
-			return JOIN;
-		case SELECT_VALUE:
-			return SELECT;
-		case SUBSELECT_VALUE:
-			return SUBSELECT;
+			case JOIN_VALUE: return JOIN;
+			case SELECT_VALUE: return SELECT;
+			case SUBSELECT_VALUE: return SUBSELECT;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private HbFetchType(int value, String name, String literal) {
@@ -186,29 +182,26 @@ public enum HbFetchType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

@@ -11,8 +11,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Hb Annotated EModel Element</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEModelElement()
  * @model interface="true" abstract="true"
  * @generated

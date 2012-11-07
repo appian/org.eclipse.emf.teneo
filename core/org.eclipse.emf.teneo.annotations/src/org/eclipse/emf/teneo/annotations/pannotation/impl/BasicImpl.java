@@ -19,19 +19,18 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#getFetch <em>Fetch</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#isOptional <em>Optional
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#getFetch <em>Fetch</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#isOptional <em>Optional</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BasicImpl extends PAnnotationImpl implements Basic {
 	/**
-	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -39,9 +38,9 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 	protected static final FetchType FETCH_EDEFAULT = FetchType.EAGER;
 
 	/**
-	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -70,7 +69,6 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected BasicImpl() {
@@ -79,7 +77,6 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,7 +86,6 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -98,20 +94,17 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
 		FetchType oldFetch = fetch;
 		fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.BASIC__FETCH,
-					oldFetch, fetch));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.BASIC__FETCH, oldFetch, fetch));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isOptional() {
@@ -120,94 +113,86 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setOptional(boolean newOptional) {
 		boolean oldOptional = optional;
 		optional = newOptional;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.BASIC__OPTIONAL,
-					oldOptional, optional));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.BASIC__OPTIONAL, oldOptional, optional));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PannotationPackage.BASIC__FETCH:
-			return getFetch();
-		case PannotationPackage.BASIC__OPTIONAL:
-			return isOptional();
+			case PannotationPackage.BASIC__FETCH:
+				return getFetch();
+			case PannotationPackage.BASIC__OPTIONAL:
+				return isOptional();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PannotationPackage.BASIC__FETCH:
-			setFetch((FetchType) newValue);
-			return;
-		case PannotationPackage.BASIC__OPTIONAL:
-			setOptional((Boolean) newValue);
-			return;
+			case PannotationPackage.BASIC__FETCH:
+				setFetch((FetchType)newValue);
+				return;
+			case PannotationPackage.BASIC__OPTIONAL:
+				setOptional((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.BASIC__FETCH:
-			setFetch(FETCH_EDEFAULT);
-			return;
-		case PannotationPackage.BASIC__OPTIONAL:
-			setOptional(OPTIONAL_EDEFAULT);
-			return;
+			case PannotationPackage.BASIC__FETCH:
+				setFetch(FETCH_EDEFAULT);
+				return;
+			case PannotationPackage.BASIC__OPTIONAL:
+				setOptional(OPTIONAL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.BASIC__FETCH:
-			return fetch != FETCH_EDEFAULT;
-		case PannotationPackage.BASIC__OPTIONAL:
-			return optional != OPTIONAL_EDEFAULT;
+			case PannotationPackage.BASIC__FETCH:
+				return fetch != FETCH_EDEFAULT;
+			case PannotationPackage.BASIC__OPTIONAL:
+				return optional != OPTIONAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fetch: ");

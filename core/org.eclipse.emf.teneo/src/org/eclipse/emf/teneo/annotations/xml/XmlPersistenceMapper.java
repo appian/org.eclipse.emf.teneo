@@ -25,6 +25,8 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
@@ -44,6 +46,8 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 	protected static final Log log = LogFactory.getLog(XmlPersistenceMapper.class);
 
 	private ExtensionManager extensionManager;
+
+	private PersistenceOptions persistenceOptions;
 
 	/**
 	 * Sets the InputStream containing the XML mapping.
@@ -67,7 +71,8 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 	 * @throws RuntimeException
 	 *           If there was an error reading or parsing the XML file.
 	 */
-	public void applyPersistenceMapping(PAnnotatedModel pAnnotatedModel) {
+	public void applyPersistenceMapping(PAnnotatedModel pAnnotatedModel,
+			EPackage.Registry ePackageRegistry) {
 		if (xmlMapping == null) {
 			throw new IllegalStateException("XML mapping not configured.");
 		}
@@ -103,8 +108,10 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 
 			final XmlPersistenceContentHandler xmlContentHandler = extensionManager
 					.getExtension(XmlPersistenceContentHandler.class);
+			xmlContentHandler.setEPackageRegistry(ePackageRegistry);
 			xmlContentHandler.setPAnnotatedModel(pAnnotatedModel);
 			xmlContentHandler.setPrefix(getPrefix());
+			xmlContentHandler.setLenient(persistenceOptions.getPersistenceXmlParseLenient());
 			xmlContentHandler.setSchema(this.getClass().getResourceAsStream("persistence-mapping.xsd"));
 			saxParser.parse(xmlMapping, xmlContentHandler);
 		} catch (SAXException e) {
@@ -140,5 +147,20 @@ public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAwa
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the persistenceOptions
+	 */
+	public PersistenceOptions getPersistenceOptions() {
+		return persistenceOptions;
+	}
+
+	/**
+	 * @param persistenceOptions
+	 *          the persistenceOptions to set
+	 */
+	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
+		this.persistenceOptions = persistenceOptions;
 	}
 }

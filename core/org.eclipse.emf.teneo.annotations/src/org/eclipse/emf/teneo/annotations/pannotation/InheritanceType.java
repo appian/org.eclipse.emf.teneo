@@ -43,8 +43,8 @@ public enum InheritanceType implements Enumerator {
 	TABLE_PER_CLASS(1, "TABLE_PER_CLASS", "TABLE_PER_CLASS"),
 
 	/**
-	 * The '<em><b>JOINED</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>JOINED</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #JOINED_VALUE
 	 * @generated
 	 * @ordered
@@ -52,13 +52,13 @@ public enum InheritanceType implements Enumerator {
 	JOINED(2, "JOINED", "JOINED");
 
 	/**
-	 * The '<em><b>SINGLE TABLE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>SINGLE TABLE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SINGLE TABLE</b></em>' literal object isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SINGLE_TABLE
 	 * @model
 	 * @generated
@@ -67,13 +67,13 @@ public enum InheritanceType implements Enumerator {
 	public static final int SINGLE_TABLE_VALUE = 0;
 
 	/**
-	 * The '<em><b>TABLE PER CLASS</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>TABLE PER CLASS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>TABLE PER CLASS</b></em>' literal object isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #TABLE_PER_CLASS
 	 * @model
 	 * @generated
@@ -82,13 +82,13 @@ public enum InheritanceType implements Enumerator {
 	public static final int TABLE_PER_CLASS_VALUE = 1;
 
 	/**
-	 * The '<em><b>JOINED</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>JOINED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>JOINED</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #JOINED
 	 * @model
 	 * @generated
@@ -97,13 +97,16 @@ public enum InheritanceType implements Enumerator {
 	public static final int JOINED_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Inheritance Type</b></em>' enumerators. <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Inheritance Type</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final InheritanceType[] VALUES_ARRAY = new InheritanceType[] { SINGLE_TABLE,
-			TABLE_PER_CLASS, JOINED, };
+	private static final InheritanceType[] VALUES_ARRAY = new InheritanceType[] {
+			SINGLE_TABLE,
+			TABLE_PER_CLASS,
+			JOINED,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Inheritance Type</b></em>' enumerators. <!--
@@ -111,8 +114,7 @@ public enum InheritanceType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<InheritanceType> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<InheritanceType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified literal value. <!--
@@ -154,40 +156,34 @@ public enum InheritanceType implements Enumerator {
 	 */
 	public static InheritanceType get(int value) {
 		switch (value) {
-		case SINGLE_TABLE_VALUE:
-			return SINGLE_TABLE;
-		case TABLE_PER_CLASS_VALUE:
-			return TABLE_PER_CLASS;
-		case JOINED_VALUE:
-			return JOINED;
+			case SINGLE_TABLE_VALUE: return SINGLE_TABLE;
+			case TABLE_PER_CLASS_VALUE: return TABLE_PER_CLASS;
+			case JOINED_VALUE: return JOINED;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private InheritanceType(int value, String name, String literal) {
@@ -198,29 +194,26 @@ public enum InheritanceType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

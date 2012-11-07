@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class IdImpl extends PAnnotationImpl implements Id {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IdImpl() {
@@ -30,7 +29,6 @@ public class IdImpl extends PAnnotationImpl implements Id {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

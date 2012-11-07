@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class VersionImpl extends PAnnotationImpl implements Version {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected VersionImpl() {
@@ -30,7 +29,6 @@ public class VersionImpl extends PAnnotationImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

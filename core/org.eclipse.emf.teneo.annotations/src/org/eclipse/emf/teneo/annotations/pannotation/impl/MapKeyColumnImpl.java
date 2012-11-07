@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class MapKeyColumnImpl extends ColumnImpl implements MapKeyColumn {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected MapKeyColumnImpl() {
@@ -30,7 +29,6 @@ public class MapKeyColumnImpl extends ColumnImpl implements MapKeyColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

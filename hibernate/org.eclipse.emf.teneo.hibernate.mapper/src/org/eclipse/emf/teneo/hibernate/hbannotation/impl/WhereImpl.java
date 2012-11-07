@@ -18,18 +18,17 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.WhereImpl#getClause <em>Clause</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.WhereImpl#getClause <em>Clause</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class WhereImpl extends HbAnnotationImpl implements Where {
 	/**
-	 * The default value of the '{@link #getClause() <em>Clause</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #getClause() <em>Clause</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getClause()
 	 * @generated
 	 * @ordered
@@ -37,9 +36,9 @@ public class WhereImpl extends HbAnnotationImpl implements Where {
 	protected static final String CLAUSE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getClause() <em>Clause</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getClause() <em>Clause</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getClause()
 	 * @generated
 	 * @ordered
@@ -48,7 +47,6 @@ public class WhereImpl extends HbAnnotationImpl implements Where {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected WhereImpl() {
@@ -57,7 +55,6 @@ public class WhereImpl extends HbAnnotationImpl implements Where {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,7 +64,6 @@ public class WhereImpl extends HbAnnotationImpl implements Where {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getClause() {
@@ -76,84 +72,76 @@ public class WhereImpl extends HbAnnotationImpl implements Where {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClause(String newClause) {
 		String oldClause = clause;
 		clause = newClause;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.WHERE__CLAUSE,
-					oldClause, clause));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.WHERE__CLAUSE, oldClause, clause));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbannotationPackage.WHERE__CLAUSE:
-			return getClause();
+			case HbannotationPackage.WHERE__CLAUSE:
+				return getClause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbannotationPackage.WHERE__CLAUSE:
-			setClause((String) newValue);
-			return;
+			case HbannotationPackage.WHERE__CLAUSE:
+				setClause((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.WHERE__CLAUSE:
-			setClause(CLAUSE_EDEFAULT);
-			return;
+			case HbannotationPackage.WHERE__CLAUSE:
+				setClause(CLAUSE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.WHERE__CLAUSE:
-			return CLAUSE_EDEFAULT == null ? clause != null : !CLAUSE_EDEFAULT.equals(clause);
+			case HbannotationPackage.WHERE__CLAUSE:
+				return CLAUSE_EDEFAULT == null ? clause != null : !CLAUSE_EDEFAULT.equals(clause);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (clause: ");

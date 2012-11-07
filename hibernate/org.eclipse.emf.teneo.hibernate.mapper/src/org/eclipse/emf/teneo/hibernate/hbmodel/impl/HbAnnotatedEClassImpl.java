@@ -38,48 +38,22 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbCache <em>Hb Cache
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbOnDelete <em>Hb On
- * Delete</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbWhere <em>Hb Where
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbProxy <em>Hb Proxy
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbNamedQuery <em>Hb
- * Named Query</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilterDef <em>Filter
- * Def</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilter <em>Filter
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getDiscriminatorFormula
- * <em>Discriminator Formula</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getForceDiscriminator
- * <em>Force Discriminator</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getImmutable <em>
- * Immutable</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbEntity <em>Hb
- * Entity</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getBatchSize <em>Batch
- * Size</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbType <em>Hb Type
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbCache <em>Hb Cache</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbWhere <em>Hb Where</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbProxy <em>Hb Proxy</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbNamedQuery <em>Hb Named Query</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilterDef <em>Filter Def</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getDiscriminatorFormula <em>Discriminator Formula</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getForceDiscriminator <em>Force Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getImmutable <em>Immutable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbEntity <em>Hb Entity</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getBatchSize <em>Batch Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbType <em>Hb Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnnotatedEClass {
@@ -124,9 +98,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	protected Proxy hbProxy;
 
 	/**
-	 * The cached value of the '{@link #getHbNamedQuery() <em>Hb Named Query</em>} ' reference list.
+	 * The cached value of the '{@link #getHbNamedQuery() <em>Hb Named Query</em>}' reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getHbNamedQuery()
 	 * @generated
 	 * @ordered
@@ -154,9 +127,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	protected EList<Filter> filter;
 
 	/**
-	 * The cached value of the '{@link #getDiscriminatorFormula() <em>Discriminator Formula</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getDiscriminatorFormula() <em>Discriminator Formula</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDiscriminatorFormula()
 	 * @generated
 	 * @ordered
@@ -164,9 +136,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	protected DiscriminatorFormula discriminatorFormula;
 
 	/**
-	 * The cached value of the '{@link #getForceDiscriminator() <em>Force Discriminator</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getForceDiscriminator() <em>Force Discriminator</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getForceDiscriminator()
 	 * @generated
 	 * @ordered
@@ -176,7 +147,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	/**
 	 * The cached value of the '{@link #getImmutable() <em>Immutable</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getImmutable()
 	 * @generated
 	 * @ordered
@@ -215,7 +185,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected HbAnnotatedEClassImpl() {
@@ -224,7 +193,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -234,7 +202,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Cache getHbCache() {
@@ -243,58 +210,47 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbCache(Cache newHbCache, NotificationChain msgs) {
 		Cache oldHbCache = hbCache;
 		hbCache = newHbCache;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, oldHbCache, newHbCache);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, oldHbCache, newHbCache);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbCache(Cache newHbCache) {
 		if (newHbCache != hbCache) {
 			NotificationChain msgs = null;
 			if (hbCache != null)
-				msgs = ((InternalEObject) hbCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
+				msgs = ((InternalEObject)hbCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
 			if (newHbCache != null)
-				msgs = ((InternalEObject) newHbCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
+				msgs = ((InternalEObject)newHbCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
 			msgs = basicSetHbCache(newHbCache, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, newHbCache, newHbCache));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, newHbCache, newHbCache));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public OnDelete getHbOnDelete() {
 		if (hbOnDelete != null && hbOnDelete.eIsProxy()) {
-			InternalEObject oldHbOnDelete = (InternalEObject) hbOnDelete;
-			hbOnDelete = (OnDelete) eResolveProxy(oldHbOnDelete);
+			InternalEObject oldHbOnDelete = (InternalEObject)hbOnDelete;
+			hbOnDelete = (OnDelete)eResolveProxy(oldHbOnDelete);
 			if (hbOnDelete != oldHbOnDelete) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
 			}
 		}
 		return hbOnDelete;
@@ -302,7 +258,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public OnDelete basicGetHbOnDelete() {
@@ -311,20 +266,17 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbOnDelete(OnDelete newHbOnDelete) {
 		OnDelete oldHbOnDelete = hbOnDelete;
 		hbOnDelete = newHbOnDelete;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Where getHbWhere() {
@@ -333,58 +285,47 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbWhere(Where newHbWhere, NotificationChain msgs) {
 		Where oldHbWhere = hbWhere;
 		hbWhere = newHbWhere;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, oldHbWhere, newHbWhere);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, oldHbWhere, newHbWhere);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbWhere(Where newHbWhere) {
 		if (newHbWhere != hbWhere) {
 			NotificationChain msgs = null;
 			if (hbWhere != null)
-				msgs = ((InternalEObject) hbWhere).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
+				msgs = ((InternalEObject)hbWhere).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
 			if (newHbWhere != null)
-				msgs = ((InternalEObject) newHbWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
+				msgs = ((InternalEObject)newHbWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
 			msgs = basicSetHbWhere(newHbWhere, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, newHbWhere, newHbWhere));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, newHbWhere, newHbWhere));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Proxy getHbProxy() {
 		if (hbProxy != null && hbProxy.eIsProxy()) {
-			InternalEObject oldHbProxy = (InternalEObject) hbProxy;
-			hbProxy = (Proxy) eResolveProxy(oldHbProxy);
+			InternalEObject oldHbProxy = (InternalEObject)hbProxy;
+			hbProxy = (Proxy)eResolveProxy(oldHbProxy);
 			if (hbProxy != oldHbProxy) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
 			}
 		}
 		return hbProxy;
@@ -392,7 +333,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Proxy basicGetHbProxy() {
@@ -401,59 +341,50 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbProxy(Proxy newHbProxy) {
 		Proxy oldHbProxy = hbProxy;
 		hbProxy = newHbProxy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<NamedQuery> getHbNamedQuery() {
 		if (hbNamedQuery == null) {
-			hbNamedQuery = new EObjectResolvingEList<NamedQuery>(NamedQuery.class, this,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY);
+			hbNamedQuery = new EObjectResolvingEList<NamedQuery>(NamedQuery.class, this, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY);
 		}
 		return hbNamedQuery;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<FilterDef> getFilterDef() {
 		if (filterDef == null) {
-			filterDef = new EObjectResolvingEList<FilterDef>(FilterDef.class, this,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF);
+			filterDef = new EObjectResolvingEList<FilterDef>(FilterDef.class, this, HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF);
 		}
 		return filterDef;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Filter> getFilter() {
 		if (filter == null) {
-			filter = new EObjectResolvingEList<Filter>(Filter.class, this,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER);
+			filter = new EObjectResolvingEList<Filter>(Filter.class, this, HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER);
 		}
 		return filter;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DiscriminatorFormula getDiscriminatorFormula() {
@@ -462,7 +393,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetDiscriminatorFormula(
@@ -470,43 +400,32 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		DiscriminatorFormula oldDiscriminatorFormula = discriminatorFormula;
 		discriminatorFormula = newDiscriminatorFormula;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, oldDiscriminatorFormula,
-					newDiscriminatorFormula);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, oldDiscriminatorFormula, newDiscriminatorFormula);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDiscriminatorFormula(DiscriminatorFormula newDiscriminatorFormula) {
 		if (newDiscriminatorFormula != discriminatorFormula) {
 			NotificationChain msgs = null;
 			if (discriminatorFormula != null)
-				msgs = ((InternalEObject) discriminatorFormula).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, null, msgs);
+				msgs = ((InternalEObject)discriminatorFormula).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, null, msgs);
 			if (newDiscriminatorFormula != null)
-				msgs = ((InternalEObject) newDiscriminatorFormula).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, null, msgs);
+				msgs = ((InternalEObject)newDiscriminatorFormula).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, null, msgs);
 			msgs = basicSetDiscriminatorFormula(newDiscriminatorFormula, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, newDiscriminatorFormula,
-					newDiscriminatorFormula));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, newDiscriminatorFormula, newDiscriminatorFormula));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ForceDiscriminator getForceDiscriminator() {
@@ -515,7 +434,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetForceDiscriminator(ForceDiscriminator newForceDiscriminator,
@@ -523,43 +441,32 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		ForceDiscriminator oldForceDiscriminator = forceDiscriminator;
 		forceDiscriminator = newForceDiscriminator;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, oldForceDiscriminator,
-					newForceDiscriminator);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, oldForceDiscriminator, newForceDiscriminator);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setForceDiscriminator(ForceDiscriminator newForceDiscriminator) {
 		if (newForceDiscriminator != forceDiscriminator) {
 			NotificationChain msgs = null;
 			if (forceDiscriminator != null)
-				msgs = ((InternalEObject) forceDiscriminator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, null, msgs);
+				msgs = ((InternalEObject)forceDiscriminator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, null, msgs);
 			if (newForceDiscriminator != null)
-				msgs = ((InternalEObject) newForceDiscriminator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, null, msgs);
+				msgs = ((InternalEObject)newForceDiscriminator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, null, msgs);
 			msgs = basicSetForceDiscriminator(newForceDiscriminator, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, newForceDiscriminator,
-					newForceDiscriminator));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, newForceDiscriminator, newForceDiscriminator));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Immutable getImmutable() {
@@ -568,58 +475,47 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetImmutable(Immutable newImmutable, NotificationChain msgs) {
 		Immutable oldImmutable = immutable;
 		immutable = newImmutable;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, oldImmutable, newImmutable);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, oldImmutable, newImmutable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setImmutable(Immutable newImmutable) {
 		if (newImmutable != immutable) {
 			NotificationChain msgs = null;
 			if (immutable != null)
-				msgs = ((InternalEObject) immutable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, null, msgs);
+				msgs = ((InternalEObject)immutable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, null, msgs);
 			if (newImmutable != null)
-				msgs = ((InternalEObject) newImmutable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, null, msgs);
+				msgs = ((InternalEObject)newImmutable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, null, msgs);
 			msgs = basicSetImmutable(newImmutable, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, newImmutable, newImmutable));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, newImmutable, newImmutable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public HbEntity getHbEntity() {
 		if (hbEntity != null && hbEntity.eIsProxy()) {
-			InternalEObject oldHbEntity = (InternalEObject) hbEntity;
-			hbEntity = (HbEntity) eResolveProxy(oldHbEntity);
+			InternalEObject oldHbEntity = (InternalEObject)hbEntity;
+			hbEntity = (HbEntity)eResolveProxy(oldHbEntity);
 			if (hbEntity != oldHbEntity) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY, oldHbEntity, hbEntity));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY, oldHbEntity, hbEntity));
 			}
 		}
 		return hbEntity;
@@ -627,7 +523,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public HbEntity basicGetHbEntity() {
@@ -636,30 +531,26 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbEntity(HbEntity newHbEntity) {
 		HbEntity oldHbEntity = hbEntity;
 		hbEntity = newHbEntity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY, oldHbEntity, hbEntity));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY, oldHbEntity, hbEntity));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public BatchSize getBatchSize() {
 		if (batchSize != null && batchSize.eIsProxy()) {
-			InternalEObject oldBatchSize = (InternalEObject) batchSize;
-			batchSize = (BatchSize) eResolveProxy(oldBatchSize);
+			InternalEObject oldBatchSize = (InternalEObject)batchSize;
+			batchSize = (BatchSize)eResolveProxy(oldBatchSize);
 			if (batchSize != oldBatchSize) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE, oldBatchSize, batchSize));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE, oldBatchSize, batchSize));
 			}
 		}
 		return batchSize;
@@ -667,7 +558,6 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public BatchSize basicGetBatchSize() {
@@ -676,20 +566,17 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setBatchSize(BatchSize newBatchSize) {
 		BatchSize oldBatchSize = batchSize;
 		batchSize = newBatchSize;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE, oldBatchSize, batchSize));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE, oldBatchSize, batchSize));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Type getHbType() {
@@ -698,256 +585,238 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbType(Type newHbType, NotificationChain msgs) {
 		Type oldHbType = hbType;
 		hbType = newHbType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, oldHbType, newHbType);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, oldHbType, newHbType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbType(Type newHbType) {
 		if (newHbType != hbType) {
 			NotificationChain msgs = null;
 			if (hbType != null)
-				msgs = ((InternalEObject) hbType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, null, msgs);
+				msgs = ((InternalEObject)hbType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, null, msgs);
 			if (newHbType != null)
-				msgs = ((InternalEObject) newHbType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, null, msgs);
+				msgs = ((InternalEObject)newHbType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, null, msgs);
 			msgs = basicSetHbType(newHbType, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, newHbType, newHbType));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, newHbType, newHbType));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
 			NotificationChain msgs) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
-			return basicSetHbCache(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
-			return basicSetHbWhere(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
-			return basicSetDiscriminatorFormula(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
-			return basicSetForceDiscriminator(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
-			return basicSetImmutable(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
-			return basicSetHbType(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+				return basicSetHbCache(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+				return basicSetHbWhere(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				return basicSetDiscriminatorFormula(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				return basicSetForceDiscriminator(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				return basicSetImmutable(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				return basicSetHbType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
-			return getHbCache();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
-			if (resolve)
-				return getHbOnDelete();
-			return basicGetHbOnDelete();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
-			return getHbWhere();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
-			if (resolve)
-				return getHbProxy();
-			return basicGetHbProxy();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
-			return getHbNamedQuery();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
-			return getFilterDef();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
-			return getFilter();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
-			return getDiscriminatorFormula();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
-			return getForceDiscriminator();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
-			return getImmutable();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
-			if (resolve)
-				return getHbEntity();
-			return basicGetHbEntity();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
-			if (resolve)
-				return getBatchSize();
-			return basicGetBatchSize();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
-			return getHbType();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+				return getHbCache();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				if (resolve) return getHbOnDelete();
+				return basicGetHbOnDelete();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+				return getHbWhere();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+				if (resolve) return getHbProxy();
+				return basicGetHbProxy();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				return getHbNamedQuery();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
+				return getFilterDef();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
+				return getFilter();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				return getDiscriminatorFormula();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				return getForceDiscriminator();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				return getImmutable();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				if (resolve) return getHbEntity();
+				return basicGetHbEntity();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
+				if (resolve) return getBatchSize();
+				return basicGetBatchSize();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				return getHbType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
-			setHbCache((Cache) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
-			setHbOnDelete((OnDelete) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
-			setHbWhere((Where) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
-			setHbProxy((Proxy) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
-			getHbNamedQuery().clear();
-			getHbNamedQuery().addAll((Collection<? extends NamedQuery>) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
-			getFilterDef().clear();
-			getFilterDef().addAll((Collection<? extends FilterDef>) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
-			getFilter().clear();
-			getFilter().addAll((Collection<? extends Filter>) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
-			setDiscriminatorFormula((DiscriminatorFormula) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
-			setForceDiscriminator((ForceDiscriminator) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
-			setImmutable((Immutable) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
-			setHbEntity((HbEntity) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
-			setBatchSize((BatchSize) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
-			setHbType((Type) newValue);
-			return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+				setHbCache((Cache)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				setHbOnDelete((OnDelete)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+				setHbWhere((Where)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+				setHbProxy((Proxy)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				getHbNamedQuery().clear();
+				getHbNamedQuery().addAll((Collection<? extends NamedQuery>)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
+				getFilterDef().clear();
+				getFilterDef().addAll((Collection<? extends FilterDef>)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
+				getFilter().clear();
+				getFilter().addAll((Collection<? extends Filter>)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				setDiscriminatorFormula((DiscriminatorFormula)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				setForceDiscriminator((ForceDiscriminator)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				setImmutable((Immutable)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				setHbEntity((HbEntity)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
+				setBatchSize((BatchSize)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				setHbType((Type)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
-			setHbCache((Cache) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
-			setHbOnDelete((OnDelete) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
-			setHbWhere((Where) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
-			setHbProxy((Proxy) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
-			getHbNamedQuery().clear();
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
-			getFilterDef().clear();
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
-			getFilter().clear();
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
-			setDiscriminatorFormula((DiscriminatorFormula) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
-			setForceDiscriminator((ForceDiscriminator) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
-			setImmutable((Immutable) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
-			setHbEntity((HbEntity) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
-			setBatchSize((BatchSize) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
-			setHbType((Type) null);
-			return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+				setHbCache((Cache)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				setHbOnDelete((OnDelete)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+				setHbWhere((Where)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+				setHbProxy((Proxy)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				getHbNamedQuery().clear();
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
+				getFilterDef().clear();
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
+				getFilter().clear();
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				setDiscriminatorFormula((DiscriminatorFormula)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				setForceDiscriminator((ForceDiscriminator)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				setImmutable((Immutable)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				setHbEntity((HbEntity)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
+				setBatchSize((BatchSize)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				setHbType((Type)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
-			return hbCache != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
-			return hbOnDelete != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
-			return hbWhere != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
-			return hbProxy != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
-			return hbNamedQuery != null && !hbNamedQuery.isEmpty();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
-			return filterDef != null && !filterDef.isEmpty();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
-			return filter != null && !filter.isEmpty();
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
-			return discriminatorFormula != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
-			return forceDiscriminator != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
-			return immutable != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
-			return hbEntity != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
-			return batchSize != null;
-		case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
-			return hbType != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+				return hbCache != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				return hbOnDelete != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+				return hbWhere != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+				return hbProxy != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				return hbNamedQuery != null && !hbNamedQuery.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER_DEF:
+				return filterDef != null && !filterDef.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
+				return filter != null && !filter.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				return discriminatorFormula != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				return forceDiscriminator != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				return immutable != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				return hbEntity != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
+				return batchSize != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				return hbType != null;
 		}
 		return super.eIsSet(featureID);
 	}

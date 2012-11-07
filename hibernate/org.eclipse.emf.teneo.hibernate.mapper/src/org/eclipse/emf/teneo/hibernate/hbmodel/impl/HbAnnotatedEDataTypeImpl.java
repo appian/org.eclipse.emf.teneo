@@ -34,27 +34,15 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbTypeDef <em>Hb
- * Type Def</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbWhere <em>Hb
- * Where</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbColumns <em>Hb
- * Columns</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbIdBag <em>Hb Id
- * Bag</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbIndex <em>Hb
- * Index</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbType <em>Hb
- * Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbTypeDef <em>Hb Type Def</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbWhere <em>Hb Where</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbColumns <em>Hb Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbIndex <em>Hb Index</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbType <em>Hb Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
@@ -65,7 +53,6 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	/**
 	 * The cached value of the '{@link #getHbTypeDef() <em>Hb Type Def</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getHbTypeDef()
 	 * @generated
 	 * @ordered
@@ -83,9 +70,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	protected Where hbWhere;
 
 	/**
-	 * The cached value of the '{@link #getHbColumns() <em>Hb Columns</em>}' containment reference
-	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getHbColumns() <em>Hb Columns</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getHbColumns()
 	 * @generated
 	 * @ordered
@@ -124,7 +110,6 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected HbAnnotatedEDataTypeImpl() {
@@ -133,7 +118,6 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -169,7 +153,6 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public TypeDef getHbTypeDef() {
@@ -178,48 +161,38 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbTypeDef(TypeDef newHbTypeDef, NotificationChain msgs) {
 		TypeDef oldHbTypeDef = hbTypeDef;
 		hbTypeDef = newHbTypeDef;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, oldHbTypeDef, newHbTypeDef);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, oldHbTypeDef, newHbTypeDef);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbTypeDef(TypeDef newHbTypeDef) {
 		if (newHbTypeDef != hbTypeDef) {
 			NotificationChain msgs = null;
 			if (hbTypeDef != null)
-				msgs = ((InternalEObject) hbTypeDef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, null, msgs);
+				msgs = ((InternalEObject)hbTypeDef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, null, msgs);
 			if (newHbTypeDef != null)
-				msgs = ((InternalEObject) newHbTypeDef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, null, msgs);
+				msgs = ((InternalEObject)newHbTypeDef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, null, msgs);
 			msgs = basicSetHbTypeDef(newHbTypeDef, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, newHbTypeDef, newHbTypeDef));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF, newHbTypeDef, newHbTypeDef));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Where getHbWhere() {
@@ -228,61 +201,49 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbWhere(Where newHbWhere, NotificationChain msgs) {
 		Where oldHbWhere = hbWhere;
 		hbWhere = newHbWhere;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, oldHbWhere, newHbWhere);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, oldHbWhere, newHbWhere);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbWhere(Where newHbWhere) {
 		if (newHbWhere != hbWhere) {
 			NotificationChain msgs = null;
 			if (hbWhere != null)
-				msgs = ((InternalEObject) hbWhere).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, null, msgs);
+				msgs = ((InternalEObject)hbWhere).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, null, msgs);
 			if (newHbWhere != null)
-				msgs = ((InternalEObject) newHbWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, null, msgs);
+				msgs = ((InternalEObject)newHbWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, null, msgs);
 			msgs = basicSetHbWhere(newHbWhere, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, newHbWhere, newHbWhere));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE, newHbWhere, newHbWhere));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Column> getHbColumns() {
 		if (hbColumns == null) {
-			hbColumns = new EObjectContainmentEList<Column>(Column.class, this,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS);
+			hbColumns = new EObjectContainmentEList<Column>(Column.class, this, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS);
 		}
 		return hbColumns;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IdBag getHbIdBag() {
@@ -291,58 +252,47 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbIdBag(IdBag newHbIdBag, NotificationChain msgs) {
 		IdBag oldHbIdBag = hbIdBag;
 		hbIdBag = newHbIdBag;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, oldHbIdBag, newHbIdBag);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, oldHbIdBag, newHbIdBag);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbIdBag(IdBag newHbIdBag) {
 		if (newHbIdBag != hbIdBag) {
 			NotificationChain msgs = null;
 			if (hbIdBag != null)
-				msgs = ((InternalEObject) hbIdBag).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, null, msgs);
+				msgs = ((InternalEObject)hbIdBag).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, null, msgs);
 			if (newHbIdBag != null)
-				msgs = ((InternalEObject) newHbIdBag).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, null, msgs);
+				msgs = ((InternalEObject)newHbIdBag).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, null, msgs);
 			msgs = basicSetHbIdBag(newHbIdBag, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, newHbIdBag, newHbIdBag));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG, newHbIdBag, newHbIdBag));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Index getHbIndex() {
 		if (hbIndex != null && hbIndex.eIsProxy()) {
-			InternalEObject oldHbIndex = (InternalEObject) hbIndex;
-			hbIndex = (Index) eResolveProxy(oldHbIndex);
+			InternalEObject oldHbIndex = (InternalEObject)hbIndex;
+			hbIndex = (Index)eResolveProxy(oldHbIndex);
 			if (hbIndex != oldHbIndex) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX, oldHbIndex, hbIndex));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX, oldHbIndex, hbIndex));
 			}
 		}
 		return hbIndex;
@@ -350,7 +300,6 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Index basicGetHbIndex() {
@@ -359,20 +308,17 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbIndex(Index newHbIndex) {
 		Index oldHbIndex = hbIndex;
 		hbIndex = newHbIndex;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX, oldHbIndex, hbIndex));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX, oldHbIndex, hbIndex));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Type getHbType() {
@@ -381,176 +327,161 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHbType(Type newHbType, NotificationChain msgs) {
 		Type oldHbType = hbType;
 		hbType = newHbType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, oldHbType, newHbType);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, oldHbType, newHbType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHbType(Type newHbType) {
 		if (newHbType != hbType) {
 			NotificationChain msgs = null;
 			if (hbType != null)
-				msgs = ((InternalEObject) hbType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, null, msgs);
+				msgs = ((InternalEObject)hbType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, null, msgs);
 			if (newHbType != null)
-				msgs = ((InternalEObject) newHbType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, null, msgs);
+				msgs = ((InternalEObject)newHbType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, null, msgs);
 			msgs = basicSetHbType(newHbType, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, newHbType, newHbType));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, newHbType, newHbType));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
 			NotificationChain msgs) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
-			return basicSetHbTypeDef(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
-			return basicSetHbWhere(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
-			return ((InternalEList<?>) getHbColumns()).basicRemove(otherEnd, msgs);
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
-			return basicSetHbIdBag(null, msgs);
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
-			return basicSetHbType(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
+				return basicSetHbTypeDef(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
+				return basicSetHbWhere(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
+				return ((InternalEList<?>)getHbColumns()).basicRemove(otherEnd, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
+				return basicSetHbIdBag(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				return basicSetHbType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
-			return getHbTypeDef();
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
-			return getHbWhere();
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
-			return getHbColumns();
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
-			return getHbIdBag();
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
-			if (resolve)
-				return getHbIndex();
-			return basicGetHbIndex();
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
-			return getHbType();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
+				return getHbTypeDef();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
+				return getHbWhere();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
+				return getHbColumns();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
+				return getHbIdBag();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
+				if (resolve) return getHbIndex();
+				return basicGetHbIndex();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				return getHbType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
-			setHbTypeDef((TypeDef) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
-			setHbWhere((Where) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
-			getHbColumns().clear();
-			getHbColumns().addAll((Collection<? extends Column>) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
-			setHbIdBag((IdBag) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
-			setHbIndex((Index) newValue);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
-			setHbType((Type) newValue);
-			return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
+				setHbTypeDef((TypeDef)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
+				setHbWhere((Where)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
+				getHbColumns().clear();
+				getHbColumns().addAll((Collection<? extends Column>)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
+				setHbIdBag((IdBag)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
+				setHbIndex((Index)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				setHbType((Type)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
-			setHbTypeDef((TypeDef) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
-			setHbWhere((Where) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
-			getHbColumns().clear();
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
-			setHbIdBag((IdBag) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
-			setHbIndex((Index) null);
-			return;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
-			setHbType((Type) null);
-			return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
+				setHbTypeDef((TypeDef)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
+				setHbWhere((Where)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
+				getHbColumns().clear();
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
+				setHbIdBag((IdBag)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
+				setHbIndex((Index)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				setHbType((Type)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
-			return hbTypeDef != null;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
-			return hbWhere != null;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
-			return hbColumns != null && !hbColumns.isEmpty();
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
-			return hbIdBag != null;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
-			return hbIndex != null;
-		case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
-			return hbType != null;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF:
+				return hbTypeDef != null;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_WHERE:
+				return hbWhere != null;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
+				return hbColumns != null && !hbColumns.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
+				return hbIdBag != null;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
+				return hbIndex != null;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				return hbType != null;
 		}
 		return super.eIsSet(featureID);
 	}

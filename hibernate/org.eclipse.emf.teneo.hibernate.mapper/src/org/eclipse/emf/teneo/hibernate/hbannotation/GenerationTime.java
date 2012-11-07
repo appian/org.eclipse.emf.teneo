@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum GenerationTime implements Enumerator {
 	/**
-	 * The '<em><b>NEVER</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>NEVER</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #NEVER_VALUE
 	 * @generated
 	 * @ordered
@@ -32,8 +32,8 @@ public enum GenerationTime implements Enumerator {
 	NEVER(0, "NEVER", "NEVER"),
 
 	/**
-	 * The '<em><b>INSERT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>INSERT</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #INSERT_VALUE
 	 * @generated
 	 * @ordered
@@ -41,8 +41,8 @@ public enum GenerationTime implements Enumerator {
 	INSERT(1, "INSERT", "INSERT"),
 
 	/**
-	 * The '<em><b>ALWAYS</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>ALWAYS</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #ALWAYS_VALUE
 	 * @generated
 	 * @ordered
@@ -50,13 +50,13 @@ public enum GenerationTime implements Enumerator {
 	ALWAYS(2, "ALWAYS", "ALWAYS");
 
 	/**
-	 * The '<em><b>NEVER</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>NEVER</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NEVER</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #NEVER
 	 * @model
 	 * @generated
@@ -65,13 +65,13 @@ public enum GenerationTime implements Enumerator {
 	public static final int NEVER_VALUE = 0;
 
 	/**
-	 * The '<em><b>INSERT</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>INSERT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>INSERT</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #INSERT
 	 * @model
 	 * @generated
@@ -80,13 +80,13 @@ public enum GenerationTime implements Enumerator {
 	public static final int INSERT_VALUE = 1;
 
 	/**
-	 * The '<em><b>ALWAYS</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>ALWAYS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ALWAYS</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #ALWAYS
 	 * @model
 	 * @generated
@@ -95,13 +95,16 @@ public enum GenerationTime implements Enumerator {
 	public static final int ALWAYS_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Generation Time</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * An array of all the '<em><b>Generation Time</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final GenerationTime[] VALUES_ARRAY = new GenerationTime[] { NEVER, INSERT,
-			ALWAYS, };
+	private static final GenerationTime[] VALUES_ARRAY = new GenerationTime[] {
+			NEVER,
+			INSERT,
+			ALWAYS,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Generation Time</b></em>' enumerators. <!--
@@ -109,8 +112,7 @@ public enum GenerationTime implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<GenerationTime> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<GenerationTime> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Generation Time</b></em>' literal with the specified literal value. <!--
@@ -152,40 +154,34 @@ public enum GenerationTime implements Enumerator {
 	 */
 	public static GenerationTime get(int value) {
 		switch (value) {
-		case NEVER_VALUE:
-			return NEVER;
-		case INSERT_VALUE:
-			return INSERT;
-		case ALWAYS_VALUE:
-			return ALWAYS;
+			case NEVER_VALUE: return NEVER;
+			case INSERT_VALUE: return INSERT;
+			case ALWAYS_VALUE: return ALWAYS;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private GenerationTime(int value, String name, String literal) {
@@ -196,29 +192,26 @@ public enum GenerationTime implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

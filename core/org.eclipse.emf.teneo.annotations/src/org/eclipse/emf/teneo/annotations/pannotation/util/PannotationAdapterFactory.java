@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -66,21 +67,20 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter
  * <code>createXXX</code> method for each class of the model. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage
  * @generated
  */
 public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached model package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static PannotationPackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates an instance of the adapter factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public PannotationAdapterFactory() {
@@ -90,10 +90,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc -->
+	 * Returns whether this factory is applicable for the type of the object.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns <code>true</code> if the object is either the model's package or is
 	 * an instance object of the model. <!-- end-user-doc -->
-	 * 
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -103,290 +103,242 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
 
 	/**
-	 * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!--
+	 * The switch that delegates to the <code>createXXX</code> methods.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PannotationSwitch<Adapter> modelSwitch = new PannotationSwitch<Adapter>() {
-		@Override
-		public Adapter casePAnnotation(PAnnotation object) {
-			return createPAnnotationAdapter();
-		}
-
-		@Override
-		public Adapter caseAttributeOverride(AttributeOverride object) {
-			return createAttributeOverrideAdapter();
-		}
-
-		@Override
-		public Adapter caseAssociationOverride(AssociationOverride object) {
-			return createAssociationOverrideAdapter();
-		}
-
-		@Override
-		public Adapter caseBasic(Basic object) {
-			return createBasicAdapter();
-		}
-
-		@Override
-		public Adapter caseCacheable(Cacheable object) {
-			return createCacheableAdapter();
-		}
-
-		@Override
-		public Adapter caseCollectionTable(CollectionTable object) {
-			return createCollectionTableAdapter();
-		}
-
-		@Override
-		public Adapter caseColumn(Column object) {
-			return createColumnAdapter();
-		}
-
-		@Override
-		public Adapter caseDiscriminatorColumn(DiscriminatorColumn object) {
-			return createDiscriminatorColumnAdapter();
-		}
-
-		@Override
-		public Adapter caseDiscriminatorValue(DiscriminatorValue object) {
-			return createDiscriminatorValueAdapter();
-		}
-
-		@Override
-		public Adapter caseElementCollection(ElementCollection object) {
-			return createElementCollectionAdapter();
-		}
-
-		@Override
-		public Adapter caseEmbeddable(Embeddable object) {
-			return createEmbeddableAdapter();
-		}
-
-		@Override
-		public Adapter caseEmbedded(Embedded object) {
-			return createEmbeddedAdapter();
-		}
-
-		@Override
-		public Adapter caseEmbeddedId(EmbeddedId object) {
-			return createEmbeddedIdAdapter();
-		}
-
-		@Override
-		public Adapter caseEntity(Entity object) {
-			return createEntityAdapter();
-		}
-
-		@Override
-		public Adapter caseEnumerated(Enumerated object) {
-			return createEnumeratedAdapter();
-		}
-
-		@Override
-		public Adapter caseGeneratedValue(GeneratedValue object) {
-			return createGeneratedValueAdapter();
-		}
-
-		@Override
-		public Adapter caseId(Id object) {
-			return createIdAdapter();
-		}
-
-		@Override
-		public Adapter caseIdClass(IdClass object) {
-			return createIdClassAdapter();
-		}
-
-		@Override
-		public Adapter caseInheritance(Inheritance object) {
-			return createInheritanceAdapter();
-		}
-
-		@Override
-		public Adapter caseJoinColumn(JoinColumn object) {
-			return createJoinColumnAdapter();
-		}
-
-		@Override
-		public Adapter caseJoinTable(JoinTable object) {
-			return createJoinTableAdapter();
-		}
-
-		@Override
-		public Adapter caseLob(Lob object) {
-			return createLobAdapter();
-		}
-
-		@Override
-		public Adapter caseManyToMany(ManyToMany object) {
-			return createManyToManyAdapter();
-		}
-
-		@Override
-		public Adapter caseManyToOne(ManyToOne object) {
-			return createManyToOneAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKey(MapKey object) {
-			return createMapKeyAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKeyClass(MapKeyClass object) {
-			return createMapKeyClassAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKeyColumn(MapKeyColumn object) {
-			return createMapKeyColumnAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKeyEnumerated(MapKeyEnumerated object) {
-			return createMapKeyEnumeratedAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKeyJoinColumn(MapKeyJoinColumn object) {
-			return createMapKeyJoinColumnAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKeyTemporal(MapKeyTemporal object) {
-			return createMapKeyTemporalAdapter();
-		}
-
-		@Override
-		public Adapter caseMappedSuperclass(MappedSuperclass object) {
-			return createMappedSuperclassAdapter();
-		}
-
-		@Override
-		public Adapter caseMapsId(MapsId object) {
-			return createMapsIdAdapter();
-		}
-
-		@Override
-		public Adapter caseOneToMany(OneToMany object) {
-			return createOneToManyAdapter();
-		}
-
-		@Override
-		public Adapter caseOneToOne(OneToOne object) {
-			return createOneToOneAdapter();
-		}
-
-		@Override
-		public Adapter caseOrderBy(OrderBy object) {
-			return createOrderByAdapter();
-		}
-
-		@Override
-		public Adapter caseOrderColumn(OrderColumn object) {
-			return createOrderColumnAdapter();
-		}
-
-		@Override
-		public Adapter casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
-			return createPrimaryKeyJoinColumnAdapter();
-		}
-
-		@Override
-		public Adapter caseSecondaryTable(SecondaryTable object) {
-			return createSecondaryTableAdapter();
-		}
-
-		@Override
-		public Adapter caseSequenceGenerator(SequenceGenerator object) {
-			return createSequenceGeneratorAdapter();
-		}
-
-		@Override
-		public Adapter caseTable(Table object) {
-			return createTableAdapter();
-		}
-
-		@Override
-		public Adapter caseTableGenerator(TableGenerator object) {
-			return createTableGeneratorAdapter();
-		}
-
-		@Override
-		public Adapter caseTemporal(Temporal object) {
-			return createTemporalAdapter();
-		}
-
-		@Override
-		public Adapter caseTransient(Transient object) {
-			return createTransientAdapter();
-		}
-
-		@Override
-		public Adapter caseUniqueConstraint(UniqueConstraint object) {
-			return createUniqueConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseVersion(Version object) {
-			return createVersionAdapter();
-		}
-
-		@Override
-		public Adapter caseForeignKey(ForeignKey object) {
-			return createForeignKeyAdapter();
-		}
-
-		@Override
-		public Adapter caseSequenceStyleGenerator(SequenceStyleGenerator object) {
-			return createSequenceStyleGeneratorAdapter();
-		}
-
-		@Override
-		public Adapter caseExternal(External object) {
-			return createExternalAdapter();
-		}
-
-		@Override
-		public Adapter caseEAVMapping(EAVMapping object) {
-			return createEAVMappingAdapter();
-		}
-
-		@Override
-		public Adapter caseNoEAVMapping(NoEAVMapping object) {
-			return createNoEAVMappingAdapter();
-		}
-
-		@Override
-		public Adapter caseListIndexColumn(ListIndexColumn object) {
-			return createListIndexColumnAdapter();
-		}
-
-		@Override
-		public Adapter defaultCase(EObject object) {
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter casePAnnotation(PAnnotation object) {
+				return createPAnnotationAdapter();
+			}
+			@Override
+			public Adapter caseAttributeOverride(AttributeOverride object) {
+				return createAttributeOverrideAdapter();
+			}
+			@Override
+			public Adapter caseAssociationOverride(AssociationOverride object) {
+				return createAssociationOverrideAdapter();
+			}
+			@Override
+			public Adapter caseBasic(Basic object) {
+				return createBasicAdapter();
+			}
+			@Override
+			public Adapter caseCacheable(Cacheable object) {
+				return createCacheableAdapter();
+			}
+			@Override
+			public Adapter caseCollectionTable(CollectionTable object) {
+				return createCollectionTableAdapter();
+			}
+			@Override
+			public Adapter caseColumn(Column object) {
+				return createColumnAdapter();
+			}
+			@Override
+			public Adapter caseDiscriminatorColumn(DiscriminatorColumn object) {
+				return createDiscriminatorColumnAdapter();
+			}
+			@Override
+			public Adapter caseDiscriminatorValue(DiscriminatorValue object) {
+				return createDiscriminatorValueAdapter();
+			}
+			@Override
+			public Adapter caseElementCollection(ElementCollection object) {
+				return createElementCollectionAdapter();
+			}
+			@Override
+			public Adapter caseEmbeddable(Embeddable object) {
+				return createEmbeddableAdapter();
+			}
+			@Override
+			public Adapter caseEmbedded(Embedded object) {
+				return createEmbeddedAdapter();
+			}
+			@Override
+			public Adapter caseEmbeddedId(EmbeddedId object) {
+				return createEmbeddedIdAdapter();
+			}
+			@Override
+			public Adapter caseEntity(Entity object) {
+				return createEntityAdapter();
+			}
+			@Override
+			public Adapter caseEnumerated(Enumerated object) {
+				return createEnumeratedAdapter();
+			}
+			@Override
+			public Adapter caseGeneratedValue(GeneratedValue object) {
+				return createGeneratedValueAdapter();
+			}
+			@Override
+			public Adapter caseId(Id object) {
+				return createIdAdapter();
+			}
+			@Override
+			public Adapter caseIdClass(IdClass object) {
+				return createIdClassAdapter();
+			}
+			@Override
+			public Adapter caseInheritance(Inheritance object) {
+				return createInheritanceAdapter();
+			}
+			@Override
+			public Adapter caseJoinColumn(JoinColumn object) {
+				return createJoinColumnAdapter();
+			}
+			@Override
+			public Adapter caseJoinTable(JoinTable object) {
+				return createJoinTableAdapter();
+			}
+			@Override
+			public Adapter caseLob(Lob object) {
+				return createLobAdapter();
+			}
+			@Override
+			public Adapter caseManyToMany(ManyToMany object) {
+				return createManyToManyAdapter();
+			}
+			@Override
+			public Adapter caseManyToOne(ManyToOne object) {
+				return createManyToOneAdapter();
+			}
+			@Override
+			public Adapter caseMapKey(MapKey object) {
+				return createMapKeyAdapter();
+			}
+			@Override
+			public Adapter caseMapKeyClass(MapKeyClass object) {
+				return createMapKeyClassAdapter();
+			}
+			@Override
+			public Adapter caseMapKeyColumn(MapKeyColumn object) {
+				return createMapKeyColumnAdapter();
+			}
+			@Override
+			public Adapter caseMapKeyEnumerated(MapKeyEnumerated object) {
+				return createMapKeyEnumeratedAdapter();
+			}
+			@Override
+			public Adapter caseMapKeyJoinColumn(MapKeyJoinColumn object) {
+				return createMapKeyJoinColumnAdapter();
+			}
+			@Override
+			public Adapter caseMapKeyTemporal(MapKeyTemporal object) {
+				return createMapKeyTemporalAdapter();
+			}
+			@Override
+			public Adapter caseMappedSuperclass(MappedSuperclass object) {
+				return createMappedSuperclassAdapter();
+			}
+			@Override
+			public Adapter caseMapsId(MapsId object) {
+				return createMapsIdAdapter();
+			}
+			@Override
+			public Adapter caseOneToMany(OneToMany object) {
+				return createOneToManyAdapter();
+			}
+			@Override
+			public Adapter caseOneToOne(OneToOne object) {
+				return createOneToOneAdapter();
+			}
+			@Override
+			public Adapter caseOrderBy(OrderBy object) {
+				return createOrderByAdapter();
+			}
+			@Override
+			public Adapter caseOrderColumn(OrderColumn object) {
+				return createOrderColumnAdapter();
+			}
+			@Override
+			public Adapter casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
+				return createPrimaryKeyJoinColumnAdapter();
+			}
+			@Override
+			public Adapter caseSecondaryTable(SecondaryTable object) {
+				return createSecondaryTableAdapter();
+			}
+			@Override
+			public Adapter caseSequenceGenerator(SequenceGenerator object) {
+				return createSequenceGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseTable(Table object) {
+				return createTableAdapter();
+			}
+			@Override
+			public Adapter caseTableGenerator(TableGenerator object) {
+				return createTableGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseTemporal(Temporal object) {
+				return createTemporalAdapter();
+			}
+			@Override
+			public Adapter caseTransient(Transient object) {
+				return createTransientAdapter();
+			}
+			@Override
+			public Adapter caseUniqueConstraint(UniqueConstraint object) {
+				return createUniqueConstraintAdapter();
+			}
+			@Override
+			public Adapter caseVersion(Version object) {
+				return createVersionAdapter();
+			}
+			@Override
+			public Adapter caseForeignKey(ForeignKey object) {
+				return createForeignKeyAdapter();
+			}
+			@Override
+			public Adapter caseSequenceStyleGenerator(SequenceStyleGenerator object) {
+				return createSequenceStyleGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseExternal(External object) {
+				return createExternalAdapter();
+			}
+			@Override
+			public Adapter caseEAVMapping(EAVMapping object) {
+				return createEAVMappingAdapter();
+			}
+			@Override
+			public Adapter caseNoEAVMapping(NoEAVMapping object) {
+				return createNoEAVMappingAdapter();
+			}
+			@Override
+			public Adapter caseListIndexColumn(ListIndexColumn object) {
+				return createListIndexColumnAdapter();
+			}
+			@Override
+			public Adapter caseNoAuditing(NoAuditing object) {
+				return createNoAuditingAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
-	 * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param target
-	 *          the object to adapt.
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**
@@ -405,12 +357,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride
-	 * <em>Attribute Override</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride <em>Attribute Override</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride
 	 * @generated
@@ -450,12 +400,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable <em>Collection Table</em>}
-	 * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable <em>Collection Table</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily
 	 * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable
 	 * @generated
@@ -480,12 +428,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn
-	 * <em>Discriminator Column</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn <em>Discriminator Column</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn
 	 * @generated
@@ -495,12 +441,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue
-	 * <em>Discriminator Value</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue <em>Discriminator Value</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue
 	 * @generated
@@ -510,12 +454,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.ElementCollection
-	 * <em>Element Collection</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ElementCollection <em>Element Collection</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.ElementCollection
 	 * @generated
@@ -540,12 +482,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass
-	 * <em>Mapped Superclass</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass <em>Mapped Superclass</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass
 	 * @generated
@@ -630,12 +570,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue <em>Generated Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue <em>Generated Value</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue
 	 * @generated
@@ -645,11 +583,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.Id <em>Id</em>}'. <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.Id <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.Id
 	 * @generated
@@ -719,11 +656,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.Lob <em>Lob</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.Lob <em>Lob</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.Lob
 	 * @generated
@@ -793,12 +729,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn <em>Map Key Column</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn <em>Map Key Column</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn
 	 * @generated
@@ -808,12 +742,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated
-	 * <em>Map Key Enumerated</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated <em>Map Key Enumerated</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated
 	 * @generated
@@ -823,12 +755,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn
-	 * <em>Map Key Join Column</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn <em>Map Key Join Column</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn
 	 * @generated
@@ -838,12 +768,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal <em>Map Key Temporal</em>}
-	 * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal <em>Map Key Temporal</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily
 	 * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal
 	 * @generated
@@ -913,12 +841,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn
-	 * <em>Primary Key Join Column</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn <em>Primary Key Join Column</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn
 	 * @generated
@@ -928,12 +854,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable <em>Secondary Table</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable <em>Secondary Table</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable
 	 * @generated
@@ -943,12 +867,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator
-	 * <em>Sequence Generator</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator <em>Sequence Generator</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator
 	 * @generated
@@ -973,12 +895,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.TableGenerator <em>Table Generator</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.TableGenerator <em>Table Generator</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.TableGenerator
 	 * @generated
@@ -1018,12 +938,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint
-	 * <em>Unique Constraint</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint <em>Unique Constraint</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint
 	 * @generated
@@ -1063,12 +981,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator
-	 * <em>Sequence Style Generator</em>}'. <!-- begin-user-doc --> This default implementation
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator <em>Sequence Style Generator</em>}'.
+	 * <!-- begin-user-doc --> This default implementation
 	 * returns null so that we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator
 	 * @generated
@@ -1108,12 +1024,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping <em>No EAV Mapping</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping <em>No EAV Mapping</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping
 	 * @generated
@@ -1123,12 +1037,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn
-	 * <em>List Index Column</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn <em>List Index Column</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn
 	 * @generated
@@ -1138,12 +1050,24 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride
-	 * <em>Association Override</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NoAuditing <em>No Auditing</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.NoAuditing
+	 * @generated
+	 */
+	public Adapter createNoAuditingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride
 	 * @generated
@@ -1153,9 +1077,9 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation
+	 * Creates a new adapter for the default case.
+	 * <!-- begin-user-doc --> This default implementation
 	 * returns null. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @generated
 	 */

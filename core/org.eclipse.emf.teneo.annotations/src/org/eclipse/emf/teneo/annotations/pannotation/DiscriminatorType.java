@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum DiscriminatorType implements Enumerator {
 	/**
-	 * The '<em><b>STRING</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>STRING</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #STRING_VALUE
 	 * @generated
 	 * @ordered
@@ -32,8 +32,8 @@ public enum DiscriminatorType implements Enumerator {
 	STRING(0, "STRING", "STRING"),
 
 	/**
-	 * The '<em><b>CHAR</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>CHAR</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #CHAR_VALUE
 	 * @generated
 	 * @ordered
@@ -41,8 +41,8 @@ public enum DiscriminatorType implements Enumerator {
 	CHAR(1, "CHAR", "CHAR"),
 
 	/**
-	 * The '<em><b>INTEGER</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>INTEGER</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #INTEGER_VALUE
 	 * @generated
 	 * @ordered
@@ -50,13 +50,13 @@ public enum DiscriminatorType implements Enumerator {
 	INTEGER(2, "INTEGER", "INTEGER");
 
 	/**
-	 * The '<em><b>STRING</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>STRING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #STRING
 	 * @model
 	 * @generated
@@ -65,13 +65,13 @@ public enum DiscriminatorType implements Enumerator {
 	public static final int STRING_VALUE = 0;
 
 	/**
-	 * The '<em><b>CHAR</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>CHAR</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>CHAR</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #CHAR
 	 * @model
 	 * @generated
@@ -80,13 +80,13 @@ public enum DiscriminatorType implements Enumerator {
 	public static final int CHAR_VALUE = 1;
 
 	/**
-	 * The '<em><b>INTEGER</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>INTEGER</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>INTEGER</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #INTEGER
 	 * @model
 	 * @generated
@@ -95,13 +95,16 @@ public enum DiscriminatorType implements Enumerator {
 	public static final int INTEGER_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Discriminator Type</b></em>' enumerators. <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Discriminator Type</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final DiscriminatorType[] VALUES_ARRAY = new DiscriminatorType[] { STRING, CHAR,
-			INTEGER, };
+	private static final DiscriminatorType[] VALUES_ARRAY = new DiscriminatorType[] {
+			STRING,
+			CHAR,
+			INTEGER,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Discriminator Type</b></em>' enumerators. <!--
@@ -109,8 +112,7 @@ public enum DiscriminatorType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<DiscriminatorType> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<DiscriminatorType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified literal value. <!--
@@ -152,40 +154,34 @@ public enum DiscriminatorType implements Enumerator {
 	 */
 	public static DiscriminatorType get(int value) {
 		switch (value) {
-		case STRING_VALUE:
-			return STRING;
-		case CHAR_VALUE:
-			return CHAR;
-		case INTEGER_VALUE:
-			return INTEGER;
+			case STRING_VALUE: return STRING;
+			case CHAR_VALUE: return CHAR;
+			case INTEGER_VALUE: return INTEGER;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private DiscriminatorType(int value, String name, String literal) {
@@ -196,29 +192,26 @@ public enum DiscriminatorType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

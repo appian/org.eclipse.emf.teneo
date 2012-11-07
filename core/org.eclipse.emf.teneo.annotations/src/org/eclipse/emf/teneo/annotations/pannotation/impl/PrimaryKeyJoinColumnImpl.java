@@ -18,24 +18,19 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl#getReferencedColumnName
- * <em>Referenced Column Name</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl#getColumnDefinition
- * <em>Column Definition</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl#getReferencedColumnName <em>Referenced Column Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl#getColumnDefinition <em>Column Definition</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements PrimaryKeyJoinColumn {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -43,9 +38,9 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,9 +48,8 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReferencedColumnName()
 	 * @generated
 	 * @ordered
@@ -63,9 +57,8 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 	protected static final String REFERENCED_COLUMN_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReferencedColumnName()
 	 * @generated
 	 * @ordered
@@ -75,7 +68,6 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 	/**
 	 * The default value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -85,7 +77,6 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 	/**
 	 * The cached value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -94,7 +85,6 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PrimaryKeyJoinColumnImpl() {
@@ -103,7 +93,6 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +102,6 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -122,20 +110,17 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getColumnDefinition() {
@@ -144,101 +129,91 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setColumnDefinition(String newColumnDefinition) {
 		String oldColumnDefinition = columnDefinition;
 		columnDefinition = newColumnDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION, oldColumnDefinition,
-					columnDefinition));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION, oldColumnDefinition, columnDefinition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
-			return getName();
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			return getReferencedColumnName();
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
-			return getColumnDefinition();
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
+				return getName();
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				return getReferencedColumnName();
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
+				return getColumnDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
-			setName((String) newValue);
-			return;
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			setReferencedColumnName((String) newValue);
-			return;
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
-			setColumnDefinition((String) newValue);
-			return;
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
+				setName((String)newValue);
+				return;
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				setReferencedColumnName((String)newValue);
+				return;
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
+				setColumnDefinition((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			setReferencedColumnName(REFERENCED_COLUMN_NAME_EDEFAULT);
-			return;
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
-			setColumnDefinition(COLUMN_DEFINITION_EDEFAULT);
-			return;
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				setReferencedColumnName(REFERENCED_COLUMN_NAME_EDEFAULT);
+				return;
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
+				setColumnDefinition(COLUMN_DEFINITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			return REFERENCED_COLUMN_NAME_EDEFAULT == null ? referencedColumnName != null
-					: !REFERENCED_COLUMN_NAME_EDEFAULT.equals(referencedColumnName);
-		case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
-			return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null
-					: !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				return REFERENCED_COLUMN_NAME_EDEFAULT == null ? referencedColumnName != null : !REFERENCED_COLUMN_NAME_EDEFAULT.equals(referencedColumnName);
+			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION:
+				return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null : !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getReferencedColumnName() {
@@ -247,27 +222,22 @@ public class PrimaryKeyJoinColumnImpl extends PAnnotationImpl implements Primary
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setReferencedColumnName(String newReferencedColumnName) {
 		String oldReferencedColumnName = referencedColumnName;
 		referencedColumnName = newReferencedColumnName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME,
-					oldReferencedColumnName, referencedColumnName));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME, oldReferencedColumnName, referencedColumnName));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

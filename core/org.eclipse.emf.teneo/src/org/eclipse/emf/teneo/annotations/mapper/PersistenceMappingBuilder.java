@@ -8,8 +8,13 @@
 
 package org.eclipse.emf.teneo.annotations.mapper;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -80,6 +85,15 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	 */
 	public PAnnotatedModel buildMapping(List<EPackage> epacks, PersistenceOptions po,
 			ExtensionManager extensionManager) {
+		return buildMapping(epacks, po, extensionManager, PackageRegistryProvider.getInstance()
+				.getPackageRegistry());
+	}
+
+	/**
+	 * Builds a persistence mapping for one or more epackages
+	 */
+	public PAnnotatedModel buildMapping(List<EPackage> epacks, PersistenceOptions po,
+			ExtensionManager extensionManager, EPackage.Registry ePackageRegistry) {
 		// read the subepackages
 		List<EPackage> epackages = new ArrayList<EPackage>();
 		for (EPackage epack : epacks) {
@@ -166,15 +180,19 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 					throw new RuntimeException("Could not find persistence XML resource in classpath: \""
 							+ po.getPersistenceXmlPath() + "\".");
 				}
+
+				// System.err.println(convertStreamToString(in));
+
 				final XmlPersistenceMapper xmlPersistenceMapper = extensionManager
 						.getExtension(XmlPersistenceMapper.class);
 				xmlPersistenceMapper.setXmlMapping(in);
-				xmlPersistenceMapper.applyPersistenceMapping(pam);
+				xmlPersistenceMapper.setPersistenceOptions(po);
+				xmlPersistenceMapper.applyPersistenceMapping(pam, ePackageRegistry);
 				in.close();
 				final InputStream[] iss = getAdditionalXMLMappings();
 				for (InputStream element : iss) {
 					xmlPersistenceMapper.setXmlMapping(element);
-					xmlPersistenceMapper.applyPersistenceMapping(pam);
+					xmlPersistenceMapper.applyPersistenceMapping(pam, ePackageRegistry);
 					element.close();
 				}
 			} catch (IOException e) {
@@ -200,6 +218,32 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 			log.debug("Returning created pamodel");
 		}
 		return pam;
+	}
+
+	public String convertStreamToString(InputStream is) throws IOException {
+		//
+		// To convert the InputStream to String we use the
+		// Reader.read(char[] buffer) method. We iterate until the
+		// Reader return -1 which means there's no more data to
+		// read. We use the StringWriter class to produce the string.
+		//
+		if (is != null) {
+			Writer writer = new StringWriter();
+
+			char[] buffer = new char[1024];
+			try {
+				Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+				int n;
+				while ((n = reader.read(buffer)) != -1) {
+					writer.write(buffer, 0, n);
+				}
+			} finally {
+				is.close();
+			}
+			return writer.toString();
+		} else {
+			return "";
+		}
 	}
 
 	private void resolveSubPackages(EPackage epack, List<EPackage> epacks) {

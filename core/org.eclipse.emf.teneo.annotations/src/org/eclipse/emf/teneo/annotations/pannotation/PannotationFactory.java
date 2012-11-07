@@ -11,31 +11,29 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each
  * non-abstract class of the model. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage
  * @generated
  */
 public interface PannotationFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	PannotationFactory eINSTANCE = org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationFactoryImpl
-			.init();
+	PannotationFactory eINSTANCE = org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Attribute Override</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Attribute Override</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Attribute Override</em>'.
 	 * @generated
 	 */
 	AttributeOverride createAttributeOverride();
 
 	/**
-	 * Returns a new object of class '<em>Basic</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Basic</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Basic</em>'.
 	 * @generated
 	 */
@@ -51,44 +49,44 @@ public interface PannotationFactory extends EFactory {
 	Cacheable createCacheable();
 
 	/**
-	 * Returns a new object of class '<em>Collection Table</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Collection Table</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Collection Table</em>'.
 	 * @generated
 	 */
 	CollectionTable createCollectionTable();
 
 	/**
-	 * Returns a new object of class '<em>Column</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Column</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Column</em>'.
 	 * @generated
 	 */
 	Column createColumn();
 
 	/**
-	 * Returns a new object of class '<em>Discriminator Column</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Discriminator Column</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Discriminator Column</em>'.
 	 * @generated
 	 */
 	DiscriminatorColumn createDiscriminatorColumn();
 
 	/**
-	 * Returns a new object of class '<em>Discriminator Value</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Discriminator Value</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Discriminator Value</em>'.
 	 * @generated
 	 */
 	DiscriminatorValue createDiscriminatorValue();
 
 	/**
-	 * Returns a new object of class '<em>Element Collection</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Element Collection</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Element Collection</em>'.
 	 * @generated
 	 */
@@ -104,17 +102,17 @@ public interface PannotationFactory extends EFactory {
 	Embeddable createEmbeddable();
 
 	/**
-	 * Returns a new object of class '<em>Mapped Superclass</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Mapped Superclass</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Mapped Superclass</em>'.
 	 * @generated
 	 */
 	MappedSuperclass createMappedSuperclass();
 
 	/**
-	 * Returns a new object of class '<em>Maps Id</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Maps Id</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Maps Id</em>'.
 	 * @generated
 	 */
@@ -148,25 +146,25 @@ public interface PannotationFactory extends EFactory {
 	Enumerated createEnumerated();
 
 	/**
-	 * Returns a new object of class '<em>Entity</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Entity</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Entity</em>'.
 	 * @generated
 	 */
 	Entity createEntity();
 
 	/**
-	 * Returns a new object of class '<em>Generated Value</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Generated Value</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Generated Value</em>'.
 	 * @generated
 	 */
 	GeneratedValue createGeneratedValue();
 
 	/**
-	 * Returns a new object of class '<em>Id</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Id</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Id</em>'.
 	 * @generated
 	 */
@@ -209,17 +207,17 @@ public interface PannotationFactory extends EFactory {
 	JoinTable createJoinTable();
 
 	/**
-	 * Returns a new object of class '<em>Lob</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Lob</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Lob</em>'.
 	 * @generated
 	 */
 	Lob createLob();
 
 	/**
-	 * Returns a new object of class '<em>Many To Many</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Many To Many</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Many To Many</em>'.
 	 * @generated
 	 */
@@ -235,53 +233,53 @@ public interface PannotationFactory extends EFactory {
 	ManyToOne createManyToOne();
 
 	/**
-	 * Returns a new object of class '<em>Map Key</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Map Key</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Map Key</em>'.
 	 * @generated
 	 */
 	MapKey createMapKey();
 
 	/**
-	 * Returns a new object of class '<em>Map Key Class</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Map Key Class</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Map Key Class</em>'.
 	 * @generated
 	 */
 	MapKeyClass createMapKeyClass();
 
 	/**
-	 * Returns a new object of class '<em>Map Key Column</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Map Key Column</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Map Key Column</em>'.
 	 * @generated
 	 */
 	MapKeyColumn createMapKeyColumn();
 
 	/**
-	 * Returns a new object of class '<em>Map Key Enumerated</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Map Key Enumerated</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Map Key Enumerated</em>'.
 	 * @generated
 	 */
 	MapKeyEnumerated createMapKeyEnumerated();
 
 	/**
-	 * Returns a new object of class '<em>Map Key Join Column</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Map Key Join Column</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Map Key Join Column</em>'.
 	 * @generated
 	 */
 	MapKeyJoinColumn createMapKeyJoinColumn();
 
 	/**
-	 * Returns a new object of class '<em>Map Key Temporal</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Map Key Temporal</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Map Key Temporal</em>'.
 	 * @generated
 	 */
@@ -315,53 +313,53 @@ public interface PannotationFactory extends EFactory {
 	OrderBy createOrderBy();
 
 	/**
-	 * Returns a new object of class '<em>Order Column</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Order Column</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Order Column</em>'.
 	 * @generated
 	 */
 	OrderColumn createOrderColumn();
 
 	/**
-	 * Returns a new object of class '<em>Primary Key Join Column</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Primary Key Join Column</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Primary Key Join Column</em>'.
 	 * @generated
 	 */
 	PrimaryKeyJoinColumn createPrimaryKeyJoinColumn();
 
 	/**
-	 * Returns a new object of class '<em>Secondary Table</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Secondary Table</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Secondary Table</em>'.
 	 * @generated
 	 */
 	SecondaryTable createSecondaryTable();
 
 	/**
-	 * Returns a new object of class '<em>Sequence Generator</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Sequence Generator</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Sequence Generator</em>'.
 	 * @generated
 	 */
 	SequenceGenerator createSequenceGenerator();
 
 	/**
-	 * Returns a new object of class '<em>Table</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Table</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Table</em>'.
 	 * @generated
 	 */
 	Table createTable();
 
 	/**
-	 * Returns a new object of class '<em>Table Generator</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Table Generator</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Table Generator</em>'.
 	 * @generated
 	 */
@@ -386,17 +384,17 @@ public interface PannotationFactory extends EFactory {
 	Transient createTransient();
 
 	/**
-	 * Returns a new object of class '<em>Unique Constraint</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Unique Constraint</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Unique Constraint</em>'.
 	 * @generated
 	 */
 	UniqueConstraint createUniqueConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Version</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Version</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Version</em>'.
 	 * @generated
 	 */
@@ -412,9 +410,9 @@ public interface PannotationFactory extends EFactory {
 	ForeignKey createForeignKey();
 
 	/**
-	 * Returns a new object of class '<em>Sequence Style Generator</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Sequence Style Generator</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Sequence Style Generator</em>'.
 	 * @generated
 	 */
@@ -439,35 +437,44 @@ public interface PannotationFactory extends EFactory {
 	EAVMapping createEAVMapping();
 
 	/**
-	 * Returns a new object of class '<em>No EAV Mapping</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>No EAV Mapping</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>No EAV Mapping</em>'.
 	 * @generated
 	 */
 	NoEAVMapping createNoEAVMapping();
 
 	/**
-	 * Returns a new object of class '<em>List Index Column</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>List Index Column</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>List Index Column</em>'.
 	 * @generated
 	 */
 	ListIndexColumn createListIndexColumn();
 
 	/**
-	 * Returns a new object of class '<em>Association Override</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>No Auditing</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>No Auditing</em>'.
+	 * @generated
+	 */
+	NoAuditing createNoAuditing();
+
+	/**
+	 * Returns a new object of class '<em>Association Override</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Association Override</em>'.
 	 * @generated
 	 */
 	AssociationOverride createAssociationOverride();
 
 	/**
-	 * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

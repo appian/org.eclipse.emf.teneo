@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
 import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.BatchSize;
@@ -48,21 +49,20 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter
  * <code>createXXX</code> method for each class of the model. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage
  * @generated
  */
 public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached model package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static HbannotationPackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates an instance of the adapter factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HbannotationAdapterFactory() {
@@ -72,10 +72,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc -->
+	 * Returns whether this factory is applicable for the type of the object.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns <code>true</code> if the object is either the model's package or is
 	 * an instance object of the model. <!-- end-user-doc -->
-	 * 
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -85,200 +85,166 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
 
 	/**
-	 * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!--
+	 * The switch that delegates to the <code>createXXX</code> methods.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected HbannotationSwitch<Adapter> modelSwitch = new HbannotationSwitch<Adapter>() {
-		@Override
-		public Adapter caseHbAnnotation(HbAnnotation object) {
-			return createHbAnnotationAdapter();
-		}
-
-		@Override
-		public Adapter caseCascade(Cascade object) {
-			return createCascadeAdapter();
-		}
-
-		@Override
-		public Adapter caseCollectionOfElements(CollectionOfElements object) {
-			return createCollectionOfElementsAdapter();
-		}
-
-		@Override
-		public Adapter caseHbMapKey(HbMapKey object) {
-			return createHbMapKeyAdapter();
-		}
-
-		@Override
-		public Adapter caseParameter(Parameter object) {
-			return createParameterAdapter();
-		}
-
-		@Override
-		public Adapter caseType(Type object) {
-			return createTypeAdapter();
-		}
-
-		@Override
-		public Adapter caseWhere(Where object) {
-			return createWhereAdapter();
-		}
-
-		@Override
-		public Adapter caseIdBag(IdBag object) {
-			return createIdBagAdapter();
-		}
-
-		@Override
-		public Adapter caseGenericGenerator(GenericGenerator object) {
-			return createGenericGeneratorAdapter();
-		}
-
-		@Override
-		public Adapter caseCache(Cache object) {
-			return createCacheAdapter();
-		}
-
-		@Override
-		public Adapter caseTypeDef(TypeDef object) {
-			return createTypeDefAdapter();
-		}
-
-		@Override
-		public Adapter caseFetch(Fetch object) {
-			return createFetchAdapter();
-		}
-
-		@Override
-		public Adapter caseOnDelete(OnDelete object) {
-			return createOnDeleteAdapter();
-		}
-
-		@Override
-		public Adapter caseProxy(Proxy object) {
-			return createProxyAdapter();
-		}
-
-		@Override
-		public Adapter caseIndex(Index object) {
-			return createIndexAdapter();
-		}
-
-		@Override
-		public Adapter caseGenerated(Generated object) {
-			return createGeneratedAdapter();
-		}
-
-		@Override
-		public Adapter caseNamedQuery(NamedQuery object) {
-			return createNamedQueryAdapter();
-		}
-
-		@Override
-		public Adapter caseFilter(Filter object) {
-			return createFilterAdapter();
-		}
-
-		@Override
-		public Adapter caseParamDef(ParamDef object) {
-			return createParamDefAdapter();
-		}
-
-		@Override
-		public Adapter caseFilterDef(FilterDef object) {
-			return createFilterDefAdapter();
-		}
-
-		@Override
-		public Adapter caseDiscriminatorFormula(DiscriminatorFormula object) {
-			return createDiscriminatorFormulaAdapter();
-		}
-
-		@Override
-		public Adapter caseNaturalId(NaturalId object) {
-			return createNaturalIdAdapter();
-		}
-
-		@Override
-		public Adapter caseMapKeyManyToMany(MapKeyManyToMany object) {
-			return createMapKeyManyToManyAdapter();
-		}
-
-		@Override
-		public Adapter caseForceDiscriminator(ForceDiscriminator object) {
-			return createForceDiscriminatorAdapter();
-		}
-
-		@Override
-		public Adapter caseImmutable(Immutable object) {
-			return createImmutableAdapter();
-		}
-
-		@Override
-		public Adapter caseFormula(Formula object) {
-			return createFormulaAdapter();
-		}
-
-		@Override
-		public Adapter caseNotFound(NotFound object) {
-			return createNotFoundAdapter();
-		}
-
-		@Override
-		public Adapter caseHbEntity(HbEntity object) {
-			return createHbEntityAdapter();
-		}
-
-		@Override
-		public Adapter caseBatchSize(BatchSize object) {
-			return createBatchSizeAdapter();
-		}
-
-		@Override
-		public Adapter caseAny(Any object) {
-			return createAnyAdapter();
-		}
-
-		@Override
-		public Adapter caseMetaValue(MetaValue object) {
-			return createMetaValueAdapter();
-		}
-
-		@Override
-		public Adapter caseAnyMetaDef(AnyMetaDef object) {
-			return createAnyMetaDefAdapter();
-		}
-
-		@Override
-		public Adapter casePAnnotation(PAnnotation object) {
-			return createPAnnotationAdapter();
-		}
-
-		@Override
-		public Adapter defaultCase(EObject object) {
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseHbAnnotation(HbAnnotation object) {
+				return createHbAnnotationAdapter();
+			}
+			@Override
+			public Adapter caseCascade(Cascade object) {
+				return createCascadeAdapter();
+			}
+			@Override
+			public Adapter caseCollectionOfElements(CollectionOfElements object) {
+				return createCollectionOfElementsAdapter();
+			}
+			@Override
+			public Adapter caseHbMapKey(HbMapKey object) {
+				return createHbMapKeyAdapter();
+			}
+			@Override
+			public Adapter caseParameter(Parameter object) {
+				return createParameterAdapter();
+			}
+			@Override
+			public Adapter caseType(Type object) {
+				return createTypeAdapter();
+			}
+			@Override
+			public Adapter caseWhere(Where object) {
+				return createWhereAdapter();
+			}
+			@Override
+			public Adapter caseIdBag(IdBag object) {
+				return createIdBagAdapter();
+			}
+			@Override
+			public Adapter caseGenericGenerator(GenericGenerator object) {
+				return createGenericGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseCache(Cache object) {
+				return createCacheAdapter();
+			}
+			@Override
+			public Adapter caseTypeDef(TypeDef object) {
+				return createTypeDefAdapter();
+			}
+			@Override
+			public Adapter caseFetch(Fetch object) {
+				return createFetchAdapter();
+			}
+			@Override
+			public Adapter caseOnDelete(OnDelete object) {
+				return createOnDeleteAdapter();
+			}
+			@Override
+			public Adapter caseProxy(Proxy object) {
+				return createProxyAdapter();
+			}
+			@Override
+			public Adapter caseIndex(Index object) {
+				return createIndexAdapter();
+			}
+			@Override
+			public Adapter caseGenerated(Generated object) {
+				return createGeneratedAdapter();
+			}
+			@Override
+			public Adapter caseNamedQuery(NamedQuery object) {
+				return createNamedQueryAdapter();
+			}
+			@Override
+			public Adapter caseFilter(Filter object) {
+				return createFilterAdapter();
+			}
+			@Override
+			public Adapter caseParamDef(ParamDef object) {
+				return createParamDefAdapter();
+			}
+			@Override
+			public Adapter caseFilterDef(FilterDef object) {
+				return createFilterDefAdapter();
+			}
+			@Override
+			public Adapter caseDiscriminatorFormula(DiscriminatorFormula object) {
+				return createDiscriminatorFormulaAdapter();
+			}
+			@Override
+			public Adapter caseNaturalId(NaturalId object) {
+				return createNaturalIdAdapter();
+			}
+			@Override
+			public Adapter caseMapKeyManyToMany(MapKeyManyToMany object) {
+				return createMapKeyManyToManyAdapter();
+			}
+			@Override
+			public Adapter caseForceDiscriminator(ForceDiscriminator object) {
+				return createForceDiscriminatorAdapter();
+			}
+			@Override
+			public Adapter caseImmutable(Immutable object) {
+				return createImmutableAdapter();
+			}
+			@Override
+			public Adapter caseFormula(Formula object) {
+				return createFormulaAdapter();
+			}
+			@Override
+			public Adapter caseNotFound(NotFound object) {
+				return createNotFoundAdapter();
+			}
+			@Override
+			public Adapter caseHbEntity(HbEntity object) {
+				return createHbEntityAdapter();
+			}
+			@Override
+			public Adapter caseBatchSize(BatchSize object) {
+				return createBatchSizeAdapter();
+			}
+			@Override
+			public Adapter caseAny(Any object) {
+				return createAnyAdapter();
+			}
+			@Override
+			public Adapter caseMetaValue(MetaValue object) {
+				return createMetaValueAdapter();
+			}
+			@Override
+			public Adapter caseAnyMetaDef(AnyMetaDef object) {
+				return createAnyMetaDefAdapter();
+			}
+			@Override
+			public Adapter casePAnnotation(PAnnotation object) {
+				return createPAnnotationAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
-	 * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param target
-	 *          the object to adapt.
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**
@@ -312,12 +278,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements
-	 * <em>Collection Of Elements</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements <em>Collection Of Elements</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements
 	 * @generated
@@ -357,11 +321,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Type <em>Type</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Type <em>Type</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Type
 	 * @generated
@@ -371,11 +334,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Where <em>Where</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Where <em>Where</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Where
 	 * @generated
@@ -400,12 +362,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator
-	 * <em>Generic Generator</em>}'. <!-- begin-user-doc --> This default implementation returns null
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator <em>Generic Generator</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null
 	 * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch
 	 * all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator
 	 * @generated
@@ -415,11 +375,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Cache <em>Cache</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cache <em>Cache</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Cache
 	 * @generated
@@ -444,11 +403,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch <em>Fetch</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch <em>Fetch</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Fetch
 	 * @generated
@@ -473,11 +431,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy <em>Proxy</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy <em>Proxy</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Proxy
 	 * @generated
@@ -487,11 +444,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Index <em>Index</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Index <em>Index</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Index
 	 * @generated
@@ -576,12 +532,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula
-	 * <em>Discriminator Formula</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula <em>Discriminator Formula</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula
 	 * @generated
@@ -606,12 +560,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany
-	 * <em>Map Key Many To Many</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany <em>Map Key Many To Many</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany
 	 * @generated
@@ -621,12 +573,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator
-	 * <em>Force Discriminator</em>}'. <!-- begin-user-doc --> This default implementation returns
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator <em>Force Discriminator</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns
 	 * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
 	 * catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator
 	 * @generated
@@ -711,11 +661,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.teneo.hibernate.hbannotation.Any <em>Any</em>}'. <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any
 	 * @generated
@@ -770,9 +719,9 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation
+	 * Creates a new adapter for the default case.
+	 * <!-- begin-user-doc --> This default implementation
 	 * returns null. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @generated
 	 */

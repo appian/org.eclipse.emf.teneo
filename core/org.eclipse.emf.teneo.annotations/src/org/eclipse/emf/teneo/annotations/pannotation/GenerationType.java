@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum GenerationType implements Enumerator {
 	/**
-	 * The '<em><b>TABLE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>TABLE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #TABLE_VALUE
 	 * @generated
 	 * @ordered
@@ -32,8 +32,8 @@ public enum GenerationType implements Enumerator {
 	TABLE(0, "TABLE", "TABLE"),
 
 	/**
-	 * The '<em><b>SEQUENCE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>SEQUENCE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #SEQUENCE_VALUE
 	 * @generated
 	 * @ordered
@@ -41,8 +41,8 @@ public enum GenerationType implements Enumerator {
 	SEQUENCE(1, "SEQUENCE", "SEQUENCE"),
 
 	/**
-	 * The '<em><b>IDENTITY</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>IDENTITY</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #IDENTITY_VALUE
 	 * @generated
 	 * @ordered
@@ -50,8 +50,8 @@ public enum GenerationType implements Enumerator {
 	IDENTITY(2, "IDENTITY", "IDENTITY"),
 
 	/**
-	 * The '<em><b>AUTO</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>AUTO</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #AUTO_VALUE
 	 * @generated
 	 * @ordered
@@ -65,9 +65,8 @@ public enum GenerationType implements Enumerator {
 	 * @ordered
 	 */
 	SEQUENCESTYLE(4, "SEQUENCESTYLE", "SEQUENCESTYLE"), /**
-	 * The '<em><b>ASSIGNED</b></em>' literal
-	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>ASSIGNED</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #ASSIGNED_VALUE
 	 * @generated
 	 * @ordered
@@ -75,13 +74,13 @@ public enum GenerationType implements Enumerator {
 	ASSIGNED(5, "ASSIGNED", "ASSIGNED");
 
 	/**
-	 * The '<em><b>TABLE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>TABLE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>TABLE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #TABLE
 	 * @model
 	 * @generated
@@ -90,13 +89,13 @@ public enum GenerationType implements Enumerator {
 	public static final int TABLE_VALUE = 0;
 
 	/**
-	 * The '<em><b>SEQUENCE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>SEQUENCE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SEQUENCE</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SEQUENCE
 	 * @model
 	 * @generated
@@ -105,13 +104,13 @@ public enum GenerationType implements Enumerator {
 	public static final int SEQUENCE_VALUE = 1;
 
 	/**
-	 * The '<em><b>IDENTITY</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>IDENTITY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>IDENTITY</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #IDENTITY
 	 * @model
 	 * @generated
@@ -120,13 +119,13 @@ public enum GenerationType implements Enumerator {
 	public static final int IDENTITY_VALUE = 2;
 
 	/**
-	 * The '<em><b>AUTO</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>AUTO</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>AUTO</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #AUTO
 	 * @model
 	 * @generated
@@ -135,13 +134,13 @@ public enum GenerationType implements Enumerator {
 	public static final int AUTO_VALUE = 3;
 
 	/**
-	 * The '<em><b>SEQUENCESTYLE</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>SEQUENCESTYLE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SEQUENCESTYLE</b></em>' literal object isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SEQUENCESTYLE
 	 * @model
 	 * @generated
@@ -150,13 +149,13 @@ public enum GenerationType implements Enumerator {
 	public static final int SEQUENCESTYLE_VALUE = 4;
 
 	/**
-	 * The '<em><b>ASSIGNED</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>ASSIGNED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ASSIGNED</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #ASSIGNED
 	 * @model
 	 * @generated
@@ -165,13 +164,19 @@ public enum GenerationType implements Enumerator {
 	public static final int ASSIGNED_VALUE = 5;
 
 	/**
-	 * An array of all the '<em><b>Generation Type</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * An array of all the '<em><b>Generation Type</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final GenerationType[] VALUES_ARRAY = new GenerationType[] { TABLE, SEQUENCE,
-			IDENTITY, AUTO, SEQUENCESTYLE, ASSIGNED, };
+	private static final GenerationType[] VALUES_ARRAY = new GenerationType[] {
+			TABLE,
+			SEQUENCE,
+			IDENTITY,
+			AUTO,
+			SEQUENCESTYLE,
+			ASSIGNED,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Generation Type</b></em>' enumerators. <!--
@@ -179,8 +184,7 @@ public enum GenerationType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<GenerationType> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<GenerationType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Generation Type</b></em>' literal with the specified literal value. <!--
@@ -222,46 +226,37 @@ public enum GenerationType implements Enumerator {
 	 */
 	public static GenerationType get(int value) {
 		switch (value) {
-		case TABLE_VALUE:
-			return TABLE;
-		case SEQUENCE_VALUE:
-			return SEQUENCE;
-		case IDENTITY_VALUE:
-			return IDENTITY;
-		case AUTO_VALUE:
-			return AUTO;
-		case SEQUENCESTYLE_VALUE:
-			return SEQUENCESTYLE;
-		case ASSIGNED_VALUE:
-			return ASSIGNED;
+			case TABLE_VALUE: return TABLE;
+			case SEQUENCE_VALUE: return SEQUENCE;
+			case IDENTITY_VALUE: return IDENTITY;
+			case AUTO_VALUE: return AUTO;
+			case SEQUENCESTYLE_VALUE: return SEQUENCESTYLE;
+			case ASSIGNED_VALUE: return ASSIGNED;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private GenerationType(int value, String name, String literal) {
@@ -272,29 +267,26 @@ public enum GenerationType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

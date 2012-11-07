@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ImmutableImpl extends HbAnnotationImpl implements Immutable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ImmutableImpl() {
@@ -30,7 +29,6 @@ public class ImmutableImpl extends HbAnnotationImpl implements Immutable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

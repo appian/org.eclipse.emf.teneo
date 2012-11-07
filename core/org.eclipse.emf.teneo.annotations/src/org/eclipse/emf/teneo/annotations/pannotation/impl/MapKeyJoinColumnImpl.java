@@ -15,13 +15,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <em><b>Map Key Join Column</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class MapKeyJoinColumnImpl extends JoinColumnImpl implements MapKeyJoinColumn {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected MapKeyJoinColumnImpl() {
@@ -30,7 +29,6 @@ public class MapKeyJoinColumnImpl extends JoinColumnImpl implements MapKeyJoinCo
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

@@ -34,9 +34,9 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.auditing", HibernateTestbed.instance()
 						.getConfigurations());
+		suite.addTestSuite(EMapAuditingTrueEMapAction.class);
 		suite.addTestSuite(SimpleArrayAuditingAction.class);
 		suite.addTestSuite(SimpleTypeAuditingAction.class);
-		suite.addTestSuite(EMapAuditingTrueEMapAction.class);
 		suite.addTestSuite(EMapAuditingNoTrueEMapAction.class);
 		suite.addTestSuite(SimpleLibraryAuditingAction.class);
 		return suite;

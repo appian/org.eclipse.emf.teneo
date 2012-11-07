@@ -11,11 +11,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Hb Annotation</b></em>'.
  * <!-- end-user-doc -->
- * 
- * 
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getHbAnnotation()
- * @model interface="true" abstract="true" annotation="http://www.eclipse.org/emf/2002/Ecore
- *        constraints='CompatibleEModelElementType AnnotationIsSupported'"
+ *
+ *
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getHbAnnotation()
+ * @model abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='CompatibleEModelElementType AnnotationIsSupported'"
  * @generated
  */
 public interface HbAnnotation extends PAnnotation {

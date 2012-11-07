@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
@@ -141,6 +140,11 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 	/** The xml element to structural feature mapper */
 	private XmlElementToEStructuralFeatureMapper xmlElementToEStructuralFeatureMapper;
 
+	private EPackage.Registry ePackageRegistry = null;
+
+	private boolean lenient = false;
+	private String invalidElement = null;
+
 	public XmlPersistenceContentHandler() {
 		parseStates.push(ROOT);
 	}
@@ -241,6 +245,12 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes)
 			throws SAXException {
+
+		if (invalidElement != null) {
+			// ignore
+			return;
+		}
+
 		// Change parse state.
 		int newParseState;
 		switch (getParseState()) {
@@ -296,13 +306,16 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 		switch (getParseState()) {
 		case EPACKAGE: {
 			final String namespaceUri = attributes.getValue("namespace-uri");
-			final EPackage ePackage = PackageRegistryProvider.getInstance().getPackageRegistry()
-					.getEPackage(namespaceUri);
+			final EPackage ePackage = ePackageRegistry.getEPackage(namespaceUri);
 			if (ePackage == null) {
 				throw new SAXException("Could not find EPackage \"" + namespaceUri + "\".");
 			}
 			pAnnotatedEPackage = pAnnotatedModel.getPAnnotated(ePackage);
 			if (pAnnotatedEPackage == null) {
+				if (lenient) {
+					invalidElement = qName;
+					return;
+				}
 				throw new SAXException("Could not find PAnnotatedEPackage \"" + namespaceUri + "\".");
 			}
 			break;
@@ -312,6 +325,10 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			final EClassifier eClassifier = pAnnotatedEPackage.getModelEPackage().getEClassifier(
 					eClassName);
 			if (eClassifier == null) {
+				if (lenient) {
+					invalidElement = qName;
+					return;
+				}
 				throw new SAXException("Could not find EClass \"" + eClassName + "\"");
 			}
 			if (!(eClassifier instanceof EClass)) {
@@ -325,7 +342,11 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			final EDataType et = (EDataType) pAnnotatedEPackage.getModelEPackage().getEClassifier(
 					eDataTypeName);
 			if (et == null) {
-				throw new SAXException("Could not find EClass \"" + eDataTypeName + "\"");
+				if (lenient) {
+					invalidElement = qName;
+					return;
+				}
+				throw new SAXException("Could not find EDataType \"" + eDataTypeName + "\"");
 			}
 			pAnnotatedEDataType = pAnnotatedModel.getPAnnotated(et);
 			break;
@@ -336,12 +357,24 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			final EStructuralFeature eStructuralFeature = eClass
 					.getEStructuralFeature(eStructuralFeatureName);
 			if (eStructuralFeature == null) {
+				if (lenient) {
+					invalidElement = qName;
+					return;
+				}
 				throw new SAXException("Could not find EStructuralFeature \"" + eStructuralFeatureName
 						+ "\" in EClass \"" + eClass.getName() + "\".");
 			} else if (localName.equals("eattribute") && !(eStructuralFeature instanceof EAttribute)) {
+				if (lenient) {
+					invalidElement = qName;
+					return;
+				}
 				throw new SAXException("EStructuralFeature \"" + eStructuralFeatureName + "\" in EClass \""
 						+ eClass.getName() + "\" is not an EAttribute.");
 			} else if (localName.equals("ereference") && !(eStructuralFeature instanceof EReference)) {
+				if (lenient) {
+					invalidElement = qName;
+					return;
+				}
 				throw new SAXException("EStructuralFeature \"" + eStructuralFeatureName + "\" in EClass \""
 						+ eClass.getName() + "\" is not an EReference.");
 			}
@@ -381,6 +414,10 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 	@Override
 	@SuppressWarnings("unchecked")
 	public void characters(char[] ch, int start, int length) throws SAXException {
+		if (invalidElement != null) {
+			return;
+		}
+
 		final String value = new String(ch, start, length).trim();
 		if (value.length() == 0) {
 			return;
@@ -430,6 +467,12 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
+		if (invalidElement != null) {
+			if (invalidElement.equals(qName)) {
+				invalidElement = null;
+			}
+			return;
+		}
 		switch (getParseState()) {
 		case EPACKAGE_ANNOTATION:
 		case ECLASS_ANNOTATION:
@@ -501,5 +544,35 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 	 */
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
+	}
+
+	/**
+	 * @return the ePackageRegistry
+	 */
+	public EPackage.Registry getEPackageRegistry() {
+		return ePackageRegistry;
+	}
+
+	/**
+	 * @param ePackageRegistry
+	 *          the ePackageRegistry to set
+	 */
+	public void setEPackageRegistry(EPackage.Registry ePackageRegistry) {
+		this.ePackageRegistry = ePackageRegistry;
+	}
+
+	/**
+	 * @return the lenient
+	 */
+	public boolean isLenient() {
+		return lenient;
+	}
+
+	/**
+	 * @param lenient
+	 *          the lenient to set
+	 */
+	public void setLenient(boolean lenient) {
+		this.lenient = lenient;
 	}
 }

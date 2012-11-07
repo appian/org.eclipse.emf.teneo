@@ -9,16 +9,16 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Fetch</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch#getValue <em> Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getFetch()
- * @model annotation= "http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
+ * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface Fetch extends HbAnnotation {
@@ -42,11 +42,9 @@ public interface Fetch extends HbAnnotation {
 	HbFetchType getValue();
 
 	/**
-	 * Sets the value of the ' {@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch#getValue
-	 * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Value</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType
 	 * @see #getValue()
 	 * @generated

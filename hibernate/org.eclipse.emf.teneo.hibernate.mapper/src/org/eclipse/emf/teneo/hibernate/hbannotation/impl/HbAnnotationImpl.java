@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class HbAnnotationImpl extends PAnnotationImpl implements HbAnnotation {
@@ -40,7 +40,6 @@ public abstract class HbAnnotationImpl extends PAnnotationImpl implements HbAnno
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected HbAnnotationImpl() {
@@ -49,7 +48,6 @@ public abstract class HbAnnotationImpl extends PAnnotationImpl implements HbAnno
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

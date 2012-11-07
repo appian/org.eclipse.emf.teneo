@@ -18,33 +18,24 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getName <em>Name
- * </em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getReferencedColumnName
- * <em>Referenced Column Name</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isUnique <em>Unique
- * </em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isNullable <em>
- * Nullable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isInsertable <em>
- * Insertable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isUpdatable <em>
- * Updatable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getColumnDefinition
- * <em>Column Definition</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getTable <em>Table
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getReferencedColumnName <em>Referenced Column Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isUnique <em>Unique</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isNullable <em>Nullable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isInsertable <em>Insertable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#isUpdatable <em>Updatable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getColumnDefinition <em>Column Definition</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -52,9 +43,9 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,9 +53,8 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReferencedColumnName()
 	 * @generated
 	 * @ordered
@@ -72,9 +62,8 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected static final String REFERENCED_COLUMN_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getReferencedColumnName() <em>Referenced Column Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReferencedColumnName()
 	 * @generated
 	 * @ordered
@@ -82,9 +71,9 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected String referencedColumnName = REFERENCED_COLUMN_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
@@ -92,9 +81,9 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected static final boolean UNIQUE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
@@ -173,7 +162,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	/**
 	 * The default value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -183,7 +171,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	/**
 	 * The cached value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -191,9 +178,9 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected String columnDefinition = COLUMN_DEFINITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getTable()
 	 * @generated
 	 * @ordered
@@ -201,9 +188,9 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 	protected static final String TABLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getTable()
 	 * @generated
 	 * @ordered
@@ -212,7 +199,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected JoinColumnImpl() {
@@ -221,7 +207,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -231,7 +216,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -240,20 +224,17 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -262,20 +243,17 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUnique(boolean newUnique) {
 		boolean oldUnique = unique;
 		unique = newUnique;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__UNIQUE,
-					oldUnique, unique));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__UNIQUE, oldUnique, unique));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isNullable() {
@@ -284,7 +262,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setNullable(boolean newNullable) {
@@ -293,13 +270,11 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 		boolean oldNullableESet = nullableESet;
 		nullableESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.JOIN_COLUMN__NULLABLE, oldNullable, nullable, !oldNullableESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__NULLABLE, oldNullable, nullable, !oldNullableESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void unsetNullable() {
@@ -308,13 +283,11 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 		nullable = NULLABLE_EDEFAULT;
 		nullableESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-					PannotationPackage.JOIN_COLUMN__NULLABLE, oldNullable, NULLABLE_EDEFAULT, oldNullableESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.JOIN_COLUMN__NULLABLE, oldNullable, NULLABLE_EDEFAULT, oldNullableESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isSetNullable() {
@@ -323,7 +296,6 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isInsertable() {
@@ -332,20 +304,17 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setInsertable(boolean newInsertable) {
 		boolean oldInsertable = insertable;
 		insertable = newInsertable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.JOIN_COLUMN__INSERTABLE, oldInsertable, insertable));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__INSERTABLE, oldInsertable, insertable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isUpdatable() {
@@ -354,20 +323,17 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUpdatable(boolean newUpdatable) {
 		boolean oldUpdatable = updatable;
 		updatable = newUpdatable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.JOIN_COLUMN__UPDATABLE, oldUpdatable, updatable));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__UPDATABLE, oldUpdatable, updatable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getColumnDefinition() {
@@ -376,20 +342,17 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setColumnDefinition(String newColumnDefinition) {
 		String oldColumnDefinition = columnDefinition;
 		columnDefinition = newColumnDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION, oldColumnDefinition, columnDefinition));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION, oldColumnDefinition, columnDefinition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getTable() {
@@ -398,150 +361,141 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTable(String newTable) {
 		String oldTable = table;
 		table = newTable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__TABLE,
-					oldTable, table));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__TABLE, oldTable, table));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PannotationPackage.JOIN_COLUMN__NAME:
-			return getName();
-		case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			return getReferencedColumnName();
-		case PannotationPackage.JOIN_COLUMN__UNIQUE:
-			return isUnique();
-		case PannotationPackage.JOIN_COLUMN__NULLABLE:
-			return isNullable();
-		case PannotationPackage.JOIN_COLUMN__INSERTABLE:
-			return isInsertable();
-		case PannotationPackage.JOIN_COLUMN__UPDATABLE:
-			return isUpdatable();
-		case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
-			return getColumnDefinition();
-		case PannotationPackage.JOIN_COLUMN__TABLE:
-			return getTable();
+			case PannotationPackage.JOIN_COLUMN__NAME:
+				return getName();
+			case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				return getReferencedColumnName();
+			case PannotationPackage.JOIN_COLUMN__UNIQUE:
+				return isUnique();
+			case PannotationPackage.JOIN_COLUMN__NULLABLE:
+				return isNullable();
+			case PannotationPackage.JOIN_COLUMN__INSERTABLE:
+				return isInsertable();
+			case PannotationPackage.JOIN_COLUMN__UPDATABLE:
+				return isUpdatable();
+			case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
+				return getColumnDefinition();
+			case PannotationPackage.JOIN_COLUMN__TABLE:
+				return getTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PannotationPackage.JOIN_COLUMN__NAME:
-			setName((String) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			setReferencedColumnName((String) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__UNIQUE:
-			setUnique((Boolean) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__NULLABLE:
-			setNullable((Boolean) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__INSERTABLE:
-			setInsertable((Boolean) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__UPDATABLE:
-			setUpdatable((Boolean) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
-			setColumnDefinition((String) newValue);
-			return;
-		case PannotationPackage.JOIN_COLUMN__TABLE:
-			setTable((String) newValue);
-			return;
+			case PannotationPackage.JOIN_COLUMN__NAME:
+				setName((String)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				setReferencedColumnName((String)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__UNIQUE:
+				setUnique((Boolean)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__NULLABLE:
+				setNullable((Boolean)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__INSERTABLE:
+				setInsertable((Boolean)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__UPDATABLE:
+				setUpdatable((Boolean)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
+				setColumnDefinition((String)newValue);
+				return;
+			case PannotationPackage.JOIN_COLUMN__TABLE:
+				setTable((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.JOIN_COLUMN__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			setReferencedColumnName(REFERENCED_COLUMN_NAME_EDEFAULT);
-			return;
-		case PannotationPackage.JOIN_COLUMN__UNIQUE:
-			setUnique(UNIQUE_EDEFAULT);
-			return;
-		case PannotationPackage.JOIN_COLUMN__NULLABLE:
-			unsetNullable();
-			return;
-		case PannotationPackage.JOIN_COLUMN__INSERTABLE:
-			setInsertable(INSERTABLE_EDEFAULT);
-			return;
-		case PannotationPackage.JOIN_COLUMN__UPDATABLE:
-			setUpdatable(UPDATABLE_EDEFAULT);
-			return;
-		case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
-			setColumnDefinition(COLUMN_DEFINITION_EDEFAULT);
-			return;
-		case PannotationPackage.JOIN_COLUMN__TABLE:
-			setTable(TABLE_EDEFAULT);
-			return;
+			case PannotationPackage.JOIN_COLUMN__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				setReferencedColumnName(REFERENCED_COLUMN_NAME_EDEFAULT);
+				return;
+			case PannotationPackage.JOIN_COLUMN__UNIQUE:
+				setUnique(UNIQUE_EDEFAULT);
+				return;
+			case PannotationPackage.JOIN_COLUMN__NULLABLE:
+				unsetNullable();
+				return;
+			case PannotationPackage.JOIN_COLUMN__INSERTABLE:
+				setInsertable(INSERTABLE_EDEFAULT);
+				return;
+			case PannotationPackage.JOIN_COLUMN__UPDATABLE:
+				setUpdatable(UPDATABLE_EDEFAULT);
+				return;
+			case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
+				setColumnDefinition(COLUMN_DEFINITION_EDEFAULT);
+				return;
+			case PannotationPackage.JOIN_COLUMN__TABLE:
+				setTable(TABLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PannotationPackage.JOIN_COLUMN__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
-			return REFERENCED_COLUMN_NAME_EDEFAULT == null ? referencedColumnName != null
-					: !REFERENCED_COLUMN_NAME_EDEFAULT.equals(referencedColumnName);
-		case PannotationPackage.JOIN_COLUMN__UNIQUE:
-			return unique != UNIQUE_EDEFAULT;
-		case PannotationPackage.JOIN_COLUMN__NULLABLE:
-			return isSetNullable();
-		case PannotationPackage.JOIN_COLUMN__INSERTABLE:
-			return insertable != INSERTABLE_EDEFAULT;
-		case PannotationPackage.JOIN_COLUMN__UPDATABLE:
-			return updatable != UPDATABLE_EDEFAULT;
-		case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
-			return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null
-					: !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
-		case PannotationPackage.JOIN_COLUMN__TABLE:
-			return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
+			case PannotationPackage.JOIN_COLUMN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
+				return REFERENCED_COLUMN_NAME_EDEFAULT == null ? referencedColumnName != null : !REFERENCED_COLUMN_NAME_EDEFAULT.equals(referencedColumnName);
+			case PannotationPackage.JOIN_COLUMN__UNIQUE:
+				return unique != UNIQUE_EDEFAULT;
+			case PannotationPackage.JOIN_COLUMN__NULLABLE:
+				return isSetNullable();
+			case PannotationPackage.JOIN_COLUMN__INSERTABLE:
+				return insertable != INSERTABLE_EDEFAULT;
+			case PannotationPackage.JOIN_COLUMN__UPDATABLE:
+				return updatable != UPDATABLE_EDEFAULT;
+			case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
+				return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null : !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
+			case PannotationPackage.JOIN_COLUMN__TABLE:
+				return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getReferencedColumnName() {
@@ -550,27 +504,22 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setReferencedColumnName(String newReferencedColumnName) {
 		String oldReferencedColumnName = referencedColumnName;
 		referencedColumnName = newReferencedColumnName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME, oldReferencedColumnName,
-					referencedColumnName));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME, oldReferencedColumnName, referencedColumnName));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -580,10 +529,7 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 		result.append(", unique: ");
 		result.append(unique);
 		result.append(", nullable: ");
-		if (nullableESet)
-			result.append(nullable);
-		else
-			result.append("<unset>");
+		if (nullableESet) result.append(nullable); else result.append("<unset>");
 		result.append(", insertable: ");
 		result.append(insertable);
 		result.append(", updatable: ");

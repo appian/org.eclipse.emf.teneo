@@ -71,6 +71,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String AUDITING_ENTITY_POSTFIX = NAMING_PREFIX + "auditing.entity.postfix";
 	public static final String AUDITING_JOINTABLE_POSTFIX = NAMING_PREFIX
 			+ "auditing.jointable.postfix";
+	public static final String AUDITING_PERSISTENCE_XML = MAPPING_PREFIX + "auditing.persistence_xml";
 
 	// START: ++++++++++++++++++++++ SQL Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
@@ -354,6 +355,12 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String PERSISTENCE_XML = MAPPING_PREFIX + "persistence_xml";
 
 	/**
+	 * Lenient parsing of persistence xml, ignore missing epackages/efeatures and such
+	 */
+	public static final String PERSISTENCE_XML_PARSE_LENIENT = MAPPING_PREFIX
+			+ "persistence_xml.parse.lenient";
+
+	/**
 	 * Ignore mapping EAnnotations. Primarily meant for test cases that use Persistence XML mapping,
 	 * so that they can reuse the same sample models.
 	 */
@@ -507,6 +514,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(JOIN_COLUMN_NAMING_STRATEGY, "unique");
 		props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
 		props.setProperty(DEFAULT_ID_FEATURE_NAME, "e_id");
+		props.setProperty(PERSISTENCE_XML_PARSE_LENIENT, "false");
 		props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
 		props.setProperty(SET_GENERATED_VALUE_ON_ID_FEATURE, "true");
 		props.setProperty(EMAP_AS_TRUE_MAP, "true");
@@ -1131,6 +1139,21 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public String getPersistenceXmlPath() {
 		return properties.getProperty(PERSISTENCE_XML);
+	}
+
+	/**
+	 * Returns the path of the auditing XML persistence mapping file or null if the property has not
+	 * been defined. Can be used to influence the auditing persistence.
+	 */
+	public String getAuditingPersistenceXmlPath() {
+		return properties.getProperty(AUDITING_PERSISTENCE_XML);
+	}
+
+	/**
+	 * returns the value of the {@link #PERSISTENCE_XML_PARSE_LENIENT}
+	 */
+	public Boolean getPersistenceXmlParseLenient() {
+		return Boolean.valueOf(properties.getProperty(PERSISTENCE_XML_PARSE_LENIENT));
 	}
 
 	/**

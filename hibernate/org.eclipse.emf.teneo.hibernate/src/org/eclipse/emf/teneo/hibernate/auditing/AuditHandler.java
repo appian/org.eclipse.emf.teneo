@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -345,8 +347,42 @@ public class AuditHandler implements ExtensionPoint {
 			return true;
 		}
 
+		// eenums are auditable
+		if (modelElement instanceof EEnum) {
+			return false;
+		}
+
+		if (modelElement instanceof EDataType) {
+			final EDataType eDataType = (EDataType) modelElement;
+			if (eDataType.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
+				return false;
+			}
+
+			final boolean isJavaType = isJavaType(eDataType.getInstanceClass());
+			final boolean xmlOrJavaOrEcoreType = isJavaType
+					|| ((EDataType) modelElement).getEPackage().getNsURI().equals(XMLTypePackage.eNS_URI)
+					|| ((EDataType) modelElement).getEPackage().getNsURI().equals(EcorePackage.eNS_URI);
+			if (!xmlOrJavaOrEcoreType) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		if (modelElement instanceof EStructuralFeature) {
 			final EStructuralFeature eStructuralFeature = (EStructuralFeature) modelElement;
+
+			if (modelElement instanceof EAttribute) {
+				final EAttribute eAttribute = (EAttribute) modelElement;
+				// eattribute without annotation and with a noauditing type
+				if (eAttribute.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) == null
+						&& isNoAuditing(po, eAttribute.getEType())) {
+					return true;
+				}
+			} else if (isNoAuditing(po, eStructuralFeature.getEType())) {
+				// eclasses
+				return true;
+			}
 
 			// part of a featuremap, still incorporate in auditing
 			if (ExtendedMetaData.INSTANCE.getGroup(eStructuralFeature) != null) {
@@ -380,6 +416,16 @@ public class AuditHandler implements ExtensionPoint {
 							.getEOpposite().isTransient());
 		}
 		return false;
+	}
+
+	private boolean isJavaType(Class<?> clz) {
+		if (clz == null) {
+			return false;
+		}
+		if (clz.isArray()) {
+			return isJavaType(clz.getComponentType());
+		}
+		return clz.isPrimitive() || clz.getName().startsWith("java.");
 	}
 
 	/**
@@ -537,8 +583,13 @@ public class AuditHandler implements ExtensionPoint {
 								.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING));
 						teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 						auditingEFeature.getEAnnotations().add(teneoAnnotation);
+					} else if (eFeature.getEType().getEAnnotation(
+							Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
+						final EAnnotation teneoAnnotation = EcoreUtil.copy(eFeature.getEType().getEAnnotation(
+								Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING));
+						teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+						auditingEFeature.getEAnnotations().add(teneoAnnotation);
 					}
-
 					// never be an id
 					if (auditingEFeature instanceof EAttribute) {
 						((EAttribute) auditingEFeature).setID(false);

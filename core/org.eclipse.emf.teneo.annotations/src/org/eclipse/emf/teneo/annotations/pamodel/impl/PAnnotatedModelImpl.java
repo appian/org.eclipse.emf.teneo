@@ -57,11 +57,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl#getPaEPackages <em>
- * Pa EPackages</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl#getPaEPackages <em>Pa EPackages</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel {
@@ -122,9 +121,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	final MapTrackingAdapter itsMapTrackingAdapter;
 
 	/**
-	 * The cached value of the '{@link #getPaEPackages() <em>Pa EPackages</em>}' containment reference
-	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getPaEPackages() <em>Pa EPackages</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPaEPackages()
 	 * @generated
 	 * @ordered
@@ -353,7 +351,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -363,21 +360,17 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<PAnnotatedEPackage> getPaEPackages() {
 		if (paEPackages == null) {
-			paEPackages = new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(
-					PAnnotatedEPackage.class, this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES,
-					PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
+			paEPackages = new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(PAnnotatedEPackage.class, this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
 		}
 		return paEPackages;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -385,84 +378,78 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
 			NotificationChain msgs) {
 		switch (featureID) {
-		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEPackages()).basicAdd(
-					otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEPackages()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
 			NotificationChain msgs) {
 		switch (featureID) {
-		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-			return ((InternalEList<?>) getPaEPackages()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+				return ((InternalEList<?>)getPaEPackages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-			return getPaEPackages();
+			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+				return getPaEPackages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-			getPaEPackages().clear();
-			getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>) newValue);
-			return;
+			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+				getPaEPackages().clear();
+				getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-			getPaEPackages().clear();
-			return;
+			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+				getPaEPackages().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-			return paEPackages != null && !paEPackages.isEmpty();
+			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
+				return paEPackages != null && !paEPackages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -19,22 +19,19 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl#getUsage <em>Usage</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl#getRegion <em>Region</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl#getInclude <em>Include</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl#getUsage <em>Usage</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl#getRegion <em>Region</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl#getInclude <em>Include</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CacheImpl extends HbAnnotationImpl implements Cache {
 	/**
-	 * The default value of the '{@link #getUsage() <em>Usage</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #getUsage() <em>Usage</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getUsage()
 	 * @generated
 	 * @ordered
@@ -42,9 +39,9 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 	protected static final CacheConcurrencyStrategy USAGE_EDEFAULT = CacheConcurrencyStrategy.NONE;
 
 	/**
-	 * The cached value of the '{@link #getUsage() <em>Usage</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getUsage() <em>Usage</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getUsage()
 	 * @generated
 	 * @ordered
@@ -52,9 +49,9 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 	protected CacheConcurrencyStrategy usage = USAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRegion() <em>Region</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #getRegion() <em>Region</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getRegion()
 	 * @generated
 	 * @ordered
@@ -62,9 +59,9 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 	protected static final String REGION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRegion() <em>Region</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getRegion() <em>Region</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getRegion()
 	 * @generated
 	 * @ordered
@@ -82,9 +79,9 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 	protected static final String INCLUDE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getInclude() <em>Include</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getInclude() <em>Include</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getInclude()
 	 * @generated
 	 * @ordered
@@ -93,7 +90,6 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CacheImpl() {
@@ -102,7 +98,6 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,7 +107,6 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CacheConcurrencyStrategy getUsage() {
@@ -121,20 +115,17 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUsage(CacheConcurrencyStrategy newUsage) {
 		CacheConcurrencyStrategy oldUsage = usage;
 		usage = newUsage == null ? USAGE_EDEFAULT : newUsage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__USAGE,
-					oldUsage, usage));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__USAGE, oldUsage, usage));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getRegion() {
@@ -143,20 +134,17 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setRegion(String newRegion) {
 		String oldRegion = region;
 		region = newRegion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__REGION,
-					oldRegion, region));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__REGION, oldRegion, region));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getInclude() {
@@ -165,104 +153,96 @@ public class CacheImpl extends HbAnnotationImpl implements Cache {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setInclude(String newInclude) {
 		String oldInclude = include;
 		include = newInclude;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__INCLUDE,
-					oldInclude, include));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__INCLUDE, oldInclude, include));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case HbannotationPackage.CACHE__USAGE:
-			return getUsage();
-		case HbannotationPackage.CACHE__REGION:
-			return getRegion();
-		case HbannotationPackage.CACHE__INCLUDE:
-			return getInclude();
+			case HbannotationPackage.CACHE__USAGE:
+				return getUsage();
+			case HbannotationPackage.CACHE__REGION:
+				return getRegion();
+			case HbannotationPackage.CACHE__INCLUDE:
+				return getInclude();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case HbannotationPackage.CACHE__USAGE:
-			setUsage((CacheConcurrencyStrategy) newValue);
-			return;
-		case HbannotationPackage.CACHE__REGION:
-			setRegion((String) newValue);
-			return;
-		case HbannotationPackage.CACHE__INCLUDE:
-			setInclude((String) newValue);
-			return;
+			case HbannotationPackage.CACHE__USAGE:
+				setUsage((CacheConcurrencyStrategy)newValue);
+				return;
+			case HbannotationPackage.CACHE__REGION:
+				setRegion((String)newValue);
+				return;
+			case HbannotationPackage.CACHE__INCLUDE:
+				setInclude((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.CACHE__USAGE:
-			setUsage(USAGE_EDEFAULT);
-			return;
-		case HbannotationPackage.CACHE__REGION:
-			setRegion(REGION_EDEFAULT);
-			return;
-		case HbannotationPackage.CACHE__INCLUDE:
-			setInclude(INCLUDE_EDEFAULT);
-			return;
+			case HbannotationPackage.CACHE__USAGE:
+				setUsage(USAGE_EDEFAULT);
+				return;
+			case HbannotationPackage.CACHE__REGION:
+				setRegion(REGION_EDEFAULT);
+				return;
+			case HbannotationPackage.CACHE__INCLUDE:
+				setInclude(INCLUDE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case HbannotationPackage.CACHE__USAGE:
-			return usage != USAGE_EDEFAULT;
-		case HbannotationPackage.CACHE__REGION:
-			return REGION_EDEFAULT == null ? region != null : !REGION_EDEFAULT.equals(region);
-		case HbannotationPackage.CACHE__INCLUDE:
-			return INCLUDE_EDEFAULT == null ? include != null : !INCLUDE_EDEFAULT.equals(include);
+			case HbannotationPackage.CACHE__USAGE:
+				return usage != USAGE_EDEFAULT;
+			case HbannotationPackage.CACHE__REGION:
+				return REGION_EDEFAULT == null ? region != null : !REGION_EDEFAULT.equals(region);
+			case HbannotationPackage.CACHE__INCLUDE:
+				return INCLUDE_EDEFAULT == null ? include != null : !INCLUDE_EDEFAULT.equals(include);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (usage: ");

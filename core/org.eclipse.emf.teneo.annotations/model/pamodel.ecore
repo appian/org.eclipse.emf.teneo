@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pamodel"
-    nsURI="http://www.eclipse.org/emf/teneo/elver/2005/pamodel" nsPrefix="org.elver.pamodel">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pamodel" nsURI="http://www.eclipse.org/emf/teneo/elver/2005/pamodel"
+    nsPrefix="org.elver.pamodel">
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEModelElement" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="PAnnotationElementCommutes"/>
@@ -14,6 +13,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transient" eType="ecore:EClass pannotation.ecore#//Transient"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="noAuditing" eType="ecore:EClass pannotation.ecore#//NoAuditing"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedModel">
