@@ -55,6 +55,9 @@
 		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`TN_BJCT_ID`"/>
 		</property>
+		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TN_WN_BJ_D`" index="teneo_derived_object"/>
+		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENE_START`"/>
 		</property>

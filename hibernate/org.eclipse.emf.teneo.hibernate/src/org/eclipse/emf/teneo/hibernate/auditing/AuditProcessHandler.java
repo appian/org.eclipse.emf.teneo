@@ -214,19 +214,17 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	private void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
 		final long commitTime = System.currentTimeMillis();
 
-		final List<Object> evictObjects = new ArrayList<Object>();
+		final List<EObject> toSaveEntries = new ArrayList<EObject>();
 
 		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
 				.createTeneoAuditCommitInfo();
 		if (currentUserName.get() != null) {
 			commitInfo.setUser(currentUserName.get());
 		}
-		session.save(commitInfo);
-		evictObjects.add(commitInfo);
+		toSaveEntries.add(commitInfo);
 
 		EClass lastEClass = null;
 		EClass auditEntryEClass = null;
-		final List<TeneoAuditEntry> toSaveEntries = new ArrayList<TeneoAuditEntry>();
 		for (AuditWork auditWork : auditWorks) {
 			final EObject eObject = (EObject) auditWork.getEntity();
 			if (lastEClass != eObject.eClass()) {
@@ -264,7 +262,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			// it does not give a performance benefit to use a namedquery
 			// at least not that much..
 			// http://stackoverflow.com/questions/3578711/jpa-caching-queries
-			final Query infoQuery = session.createQuery("select e from " + auditEntryEntityName
+			final Query infoQuery = session.createQuery("select teneo_start from " + auditEntryEntityName
 					+ " e where teneo_object_id=:objectId and teneo_end="
 					+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
 			infoQuery.setMaxResults(1);
@@ -273,34 +271,31 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			@SuppressWarnings("unchecked")
 			final List<Object> list = infoQuery.list();
 			if (!list.isEmpty()) {
-				// list can be empty this happens if the item has an id set, then hibernate fires
-				// an update event and not an add event
-				final TeneoAuditEntry previousEntry = (TeneoAuditEntry) list.get(0);
-				previousEntry.setTeneo_end(commitTime - 1);
-				setCommitInfoInReferencedObjects(previousEntry, evictObjects);
-				evictObjects.add(previousEntry);
+				final Long startTime = (Long) list.get(0);
 
-				auditEntry.setTeneo_previous_start(previousEntry.getTeneo_start());
+				auditEntry.setTeneo_previous_start(startTime);
 
-				session.update(auditEntryEntityName, previousEntry);
+				updateEndTime(session, auditEntryEntityName, auditEntry.getTeneo_object_id(),
+						commitTime - 1, false);
+				updateEndTimeDerivedObjects(session, auditEntryEClass, auditEntry.getTeneo_object_id(),
+						commitTime - 1);
 			}
 			// save later to not flush in the loop
 			toSaveEntries.add(auditEntry);
+			setCommitInfoInReferencedObjects(auditEntry, toSaveEntries);
 		}
 		// do flush here to ensure that the update is done before
 		// the save, this to prevent unique constraint failures
 		session.flush();
 
-		for (TeneoAuditEntry auditEntry : toSaveEntries) {
-			setCommitInfoInReferencedObjects(auditEntry, evictObjects);
-			session.save(HbUtil.getEntityName(auditEntry.eClass()), auditEntry);
-			evictObjects.add(auditEntry);
+		for (EObject o : toSaveEntries) {
+			session.save(HbUtil.getEntityName(o.eClass()), o);
 		}
 		// and flush the saved stuff
 		session.flush();
 
 		// clear the cache from these audit objects
-		for (Object object : evictObjects) {
+		for (Object object : toSaveEntries) {
 			session.evict(object);
 		}
 
@@ -312,7 +307,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	// is called/used in case of emap entries which are themselves
 	// audit objects
-	private void setCommitInfoInReferencedObjects(TeneoAuditEntry source, List<Object> evictObjects) {
+	private void setCommitInfoInReferencedObjects(TeneoAuditEntry source, List<EObject> toSaveObjects) {
 		for (EReference eReference : source.eClass().getEAllReferences()) {
 			if (TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry().isSuperTypeOf(
 					eReference.getEReferenceType())) {
@@ -320,24 +315,46 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 					int i = 0;
 					for (Object value : (Collection<?>) source.eGet(eReference)) {
 						final TeneoAuditEntry target = (TeneoAuditEntry) value;
-						evictObjects.add(target);
+						toSaveObjects.add(target);
 						setAuditEntryValues(eReference.getName() + "_" + i++, source, target);
 					}
 				} else if (source.eIsSet(eReference) && null != source.eGet(eReference)) {
 					setAuditEntryValues(eReference.getName() + "_", source,
 							(TeneoAuditEntry) source.eGet(eReference));
-					evictObjects.add((TeneoAuditEntry) source.eGet(eReference));
+					toSaveObjects.add((TeneoAuditEntry) source.eGet(eReference));
 				}
 			}
 		}
+	}
+
+	private void updateEndTimeDerivedObjects(Session session, EClass sourceEClass, String objectId,
+			long newEnd) {
+		for (EReference eReference : sourceEClass.getEAllReferences()) {
+			final EClass targetEClass = eReference.getEReferenceType();
+			if (TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry().isSuperTypeOf(targetEClass)) {
+				updateEndTime(session, dataStore.toEntityName(targetEClass), objectId, newEnd, true);
+			}
+		}
+	}
+
+	private void updateEndTime(Session session, String entityName, String objectId, long newEnd,
+			boolean useOwner) {
+		final String qryStr = "update " + entityName + " e set e.teneo_end = :newEnd " + "where e."
+				+ (useOwner ? "teneo_owner_object_id" : "teneo_object_id")
+				+ " = :objectId and e.teneo_end = :oldEnd";
+		final Query qry = session.createQuery(qryStr);
+		qry.setParameter("newEnd", newEnd);
+		qry.setParameter("objectId", objectId);
+		qry.setParameter("oldEnd", AuditProcessHandler.DEFAULT_END_TIMESTAMP);
+		qry.executeUpdate();
 	}
 
 	private void setAuditEntryValues(String prefix, TeneoAuditEntry source, TeneoAuditEntry target) {
 		target.setTeneo_commit_info(source.getTeneo_commit_info());
 		target.setTeneo_audit_kind(source.getTeneo_audit_kind());
 		target.setTeneo_start(source.getTeneo_start());
-		target.setTeneo_end(source.getTeneo_end());
 		target.setTeneo_object_id(prefix + "_" + source.getTeneo_object_id());
+		target.setTeneo_owner_object_id(source.getTeneo_object_id());
 		target.setTeneo_previous_start(source.getTeneo_previous_start());
 	}
 
@@ -380,8 +397,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			for (EPackage ePackage : dataStore.getEPackages()) {
 				for (EClassifier eClassifier : ePackage.getEClassifiers()) {
 					if (eClassifier instanceof EClass && StoreUtil.isAuditEntryEClass((EClass) eClassifier)) {
-						auditEntityNames.add(dataStore.toEntityName(
-								(EClass) eClassifier));
+						auditEntityNames.add(dataStore.toEntityName((EClass) eClassifier));
 					}
 				}
 			}

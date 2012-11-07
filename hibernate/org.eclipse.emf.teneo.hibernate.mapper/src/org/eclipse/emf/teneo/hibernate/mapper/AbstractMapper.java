@@ -882,6 +882,8 @@ public abstract class AbstractMapper {
 					&& ((HbAnnotatedETypeElement) pef).getHbIndex() != null) {
 				final Index index = ((HbAnnotatedETypeElement) pef).getHbIndex();
 				columnElement.addAttribute("index", index.getName());
+			} else if (column.getIndex() != null) {
+				columnElement.addAttribute("index", column.getIndex());
 			}
 
 			// --- JJH, adapted by MT
