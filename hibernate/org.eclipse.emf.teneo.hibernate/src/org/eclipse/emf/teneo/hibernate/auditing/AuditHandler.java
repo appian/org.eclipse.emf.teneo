@@ -21,6 +21,7 @@ import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -64,13 +66,43 @@ public class AuditHandler implements ExtensionPoint {
 
 	private AuditDataStore dataStore;
 
+	public void setContainerInfo(Session session, TeneoAuditEntry teneoAuditEntry, Object object) {
+		final EObject eObject = (EObject) object;
+		if (null != eObject.eContainer()) {
+			teneoAuditEntry.setTeneo_container_id(entityToIdString(session, eObject.eContainer()));
+			teneoAuditEntry.setTeneo_container_feature_id(((InternalEObject) eObject)
+					.eContainerFeatureID());
+		}
+	}
+
+	/**
+	 * Is the entity audited, should audit entries be created for it.
+	 */
+	public boolean isAudited(Object entity) {
+		if (!(entity instanceof EObject)) {
+			// TODO: support featuremap entries
+			return false;
+		}
+		if (!dataStore.isAuditing()) {
+			return false;
+		}
+		final EObject eObject = (EObject) entity;
+		final EClass auditEClass = getAuditingModelElement(eObject.eClass());
+		return auditEClass != null;
+	}
+
+	public EClass getEClass(Object o) {
+		return ((EObject) o).eClass();
+	}
+
 	/**
 	 * Copy the content from the source to the target, the copy action will translate all
 	 * {@link EReference} values to a String containing the id.
 	 */
 	@SuppressWarnings("unchecked")
-	public void copyContentToAuditEntry(Session session, EObject source, TeneoAuditEntry auditEntry,
+	public void copyContentToAuditEntry(Session session, Object object, TeneoAuditEntry auditEntry,
 			boolean copyCollections) {
+		final EObject source = (EObject) object;
 		final EClass sourceEClass = source.eClass();
 		final EClass targetEClass = auditEntry.eClass();
 		for (EStructuralFeature targetEFeature : targetEClass.getEAllStructuralFeatures()) {
@@ -177,6 +209,24 @@ public class AuditHandler implements ExtensionPoint {
 			return value;
 		}
 
+		if (eFeature.getEType() instanceof EEnum && value instanceof Integer) {
+			final int ordinal = (Integer) value;
+			final EEnum eeNum = (EEnum)eFeature.getEType();
+			if (eeNum.getInstanceClass() != null && eeNum.getInstanceClass().isEnum()) {
+				final Object[] constants = eeNum.getInstanceClass().getEnumConstants();
+				for (Object constant : constants) {
+					if (constant instanceof Enumerator) {
+						final Enumerator enumerator = (Enumerator) constant;
+						if (enumerator.getValue() == ordinal) {
+							return enumerator;
+						}
+					}
+				}
+				return constants[ordinal];
+			}
+			return eeNum.getEEnumLiteral((Integer)value);
+		}
+		
 		if (eFeature instanceof EReference && ((EReference) eFeature).isContainment()) {
 			return EcoreUtil.copy((EObject) value);
 		}
@@ -480,7 +530,19 @@ public class AuditHandler implements ExtensionPoint {
 	 */
 	public EPackage createAuditingEPackage(AuditDataStore dataStore, EPackage sourceEPackage,
 			EPackage.Registry registry, PersistenceOptions po) {
-		final EPackage eAuditingPackage = EcoreFactory.eINSTANCE.createEPackage();
+		final EPackage eAuditingPackage;
+		if (registry.containsKey(sourceEPackage.getNsURI() + "Auditing")) {
+			eAuditingPackage = registry.getEPackage(sourceEPackage.getNsURI() + "Auditing");
+		} else {
+			eAuditingPackage = EcoreFactory.eINSTANCE.createEPackage();
+		}
+
+		if (eAuditingPackage.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING) == null) {
+			final EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+			eAnnotation.setSource(Constants.ANNOTATION_SOURCE_AUDITING);
+			eAuditingPackage.getEAnnotations().add(eAnnotation);
+		}
+
 		eAuditingPackage.setName(sourceEPackage.getName() + "Auditing");
 		eAuditingPackage.setNsPrefix(sourceEPackage.getNsPrefix() + "Auditing");
 		eAuditingPackage.setNsURI(sourceEPackage.getNsURI() + "Auditing");
@@ -498,6 +560,8 @@ public class AuditHandler implements ExtensionPoint {
 				final EClass auditingEClass;
 				if (eAuditingPackage.getEClassifier(auditEClassName) != null) {
 					auditingEClass = (EClass) eAuditingPackage.getEClassifier(auditEClassName);
+					// already done, regenerate it
+					auditingEClass.getEStructuralFeatures().clear();
 				} else {
 					auditingEClass = EcoreFactory.eINSTANCE.createEClass();
 					auditingEClass.setName(auditEClassName);

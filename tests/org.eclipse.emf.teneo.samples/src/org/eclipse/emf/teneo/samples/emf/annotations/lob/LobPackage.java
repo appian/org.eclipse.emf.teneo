@@ -105,13 +105,22 @@ public interface LobPackage extends EPackage {
 	int PERSON__PHOTO = 3;
 
 	/**
+	 * The feature id for the '<em><b>Texts</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__TEXTS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 4;
+	int PERSON_FEATURE_COUNT = 5;
 
 
 	/**
@@ -167,6 +176,17 @@ public interface LobPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPerson_Photo();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.Person#getTexts <em>Texts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Texts</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.Person#getTexts()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_Texts();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -231,6 +251,14 @@ public interface LobPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PERSON__PHOTO = eINSTANCE.getPerson_Photo();
+
+		/**
+		 * The meta object literal for the '<em><b>Texts</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__TEXTS = eINSTANCE.getPerson_Texts();
 
 	}
 

@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
@@ -82,22 +81,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	private long pruneInterval = 1000;
 	private List<String> auditEntityNames = null;
 
-	private boolean isAudited(Object entity) {
-		if (!(entity instanceof EObject)) {
-			// TODO: support featuremap entries
-			return false;
-		}
-		if (!dataStore.isAuditing()) {
-			return false;
-		}
-		final EObject eObject = (EObject) entity;
-		final EClass auditEClass = dataStore.getAuditHandler()
-				.getAuditingModelElement(eObject.eClass());
-		return auditEClass != null;
-	}
+	private AuditHandler auditHandler = null;
 
 	private void addToAuditWorkQueue(EventSource session, TeneoAuditKind auditKind, Object entity) {
-		if (!isAudited(entity)) {
+		if (!auditHandler.isAudited(entity)) {
 			return;
 		}
 
@@ -211,10 +198,14 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		pruneEntries((SessionImplementor) session);
 	}
 
-	private void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
-		final long commitTime = System.currentTimeMillis();
+	protected long getCommitTime() {
+		return System.currentTimeMillis();
+	}
 
-		final List<EObject> toSaveEntries = new ArrayList<EObject>();
+	protected void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
+		final long commitTime = getCommitTime();
+
+		final List<Object> toSaveEntries = new ArrayList<Object>();
 
 		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
 				.createTeneoAuditCommitInfo();
@@ -226,10 +217,11 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		EClass lastEClass = null;
 		EClass auditEntryEClass = null;
 		for (AuditWork auditWork : auditWorks) {
-			final EObject eObject = (EObject) auditWork.getEntity();
-			if (lastEClass != eObject.eClass()) {
-				auditEntryEClass = dataStore.getAuditHandler().getAuditingModelElement(eObject.eClass());
-				lastEClass = eObject.eClass();
+			final Object object = auditWork.getEntity();
+			final EClass eClass = auditHandler.getEClass(object);
+			if (lastEClass != eClass) {
+				auditEntryEClass = auditHandler.getAuditingModelElement(eClass);
+				lastEClass = eClass;
 			}
 			final String auditEntryEntityName = HbUtil.getEntityName(auditEntryEClass);
 
@@ -240,19 +232,14 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			auditEntry.setTeneo_commit_info(commitInfo);
 			auditEntry.setTeneo_end(DEFAULT_END_TIMESTAMP);
 			auditEntry.setTeneo_start(commitTime);
-			auditEntry.setTeneo_object_id(dataStore.getAuditHandler().entityToIdString(session,
-					auditWork.getEntity()));
+			auditEntry.setTeneo_object_id(auditHandler.entityToIdString(session, auditWork.getEntity()));
 
-			if (auditWork.getEntity() instanceof EObject
-					&& null != ((EObject) auditWork.getEntity()).eContainer()) {
-				auditEntry.setTeneo_container_id(dataStore.getAuditHandler().entityToIdString(session,
-						((EObject) auditWork.getEntity()).eContainer()));
-				auditEntry.setTeneo_container_feature_id(((InternalEObject) auditWork.getEntity())
-						.eContainerFeatureID());
+			if (auditWork.getEntity() instanceof EObject) {
+				auditHandler.setContainerInfo(session, auditEntry, auditWork.getEntity());
 			}
 
-			dataStore.getAuditHandler().copyContentToAuditEntry(session, (EObject) auditWork.getEntity(),
-					auditEntry, auditWork.getAuditKind() != TeneoAuditKind.DELETE);
+			auditHandler.copyContentToAuditEntry(session, auditWork.getEntity(), auditEntry,
+					auditWork.getAuditKind() != TeneoAuditKind.DELETE);
 
 			// note also do a query in case of ADD as an object can
 			// be removed and then re-added, restore its link
@@ -288,8 +275,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		// the save, this to prevent unique constraint failures
 		session.flush();
 
-		for (EObject o : toSaveEntries) {
-			session.save(HbUtil.getEntityName(o.eClass()), o);
+		for (Object o : toSaveEntries) {
+			session.save(HbUtil.getEntityName(auditHandler.getEClass(o)), o);
 		}
 		// and flush the saved stuff
 		session.flush();
@@ -307,7 +294,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	// is called/used in case of emap entries which are themselves
 	// audit objects
-	private void setCommitInfoInReferencedObjects(TeneoAuditEntry source, List<EObject> toSaveObjects) {
+	private void setCommitInfoInReferencedObjects(TeneoAuditEntry source, List<Object> toSaveObjects) {
 		for (EReference eReference : source.eClass().getEAllReferences()) {
 			if (TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry().isSuperTypeOf(
 					eReference.getEReferenceType())) {
@@ -381,6 +368,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				PersistenceOptions.AUDITING_PRUNE_OLD_ENTRIES_DAYS));
 		pruneInterval = Long.parseLong(dataStore.getDataStoreProperties().getProperty(
 				PersistenceOptions.AUDITING_PRUNE_COMMIT_INTERVAL));
+
+		this.auditHandler = dataStore.getAuditHandler();
 	}
 
 	private synchronized void pruneEntries(SessionImplementor session) {
@@ -446,7 +435,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		return pruneTime;
 	}
 
-	private class AuditWork {
+	protected class AuditWork {
 		private Object entity;
 		private TeneoAuditKind auditKind;
 

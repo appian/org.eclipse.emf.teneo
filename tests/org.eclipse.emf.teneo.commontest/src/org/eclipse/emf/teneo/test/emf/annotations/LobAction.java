@@ -35,6 +35,8 @@ public class LobAction extends AbstractTestAction {
 	private static final String NAME = "Jan Janssen";
 
 	private static final byte[] PHOTO = new byte[64 * 1024];
+	
+	private static final byte[] bytes = new byte[10000];
 
 	static {
 		// Populate PHOTO with random bytes.
@@ -44,9 +46,14 @@ public class LobAction extends AbstractTestAction {
 	public LobAction() {
 		super(LobPackage.eINSTANCE);
 	}
-
+	
 	@Override
 	public void doAction(TestStore store) {
+		
+		for (int i = 0; i < 10000; i++) {
+			bytes[i] = (byte)(i % 100);
+		}
+
 		storePerson(store);
 		testPerson(store);
 	}
@@ -59,6 +66,10 @@ public class LobAction extends AbstractTestAction {
 		person.setName(NAME);
 		person.setAddress(ADDRESS);
 		person.setPhoto(PHOTO);
+		
+		for (int i = 0; i < 10; i++) {
+			person.getTexts().add(new String(bytes));
+		}
 		store.store(person);
 		store.commitTransaction();
 	}
@@ -76,6 +87,10 @@ public class LobAction extends AbstractTestAction {
 			assertEquals(PHOTO[i], photo[i]);
 		}
 
+		for (int i = 0; i < 10; i++) {
+			assertEquals(person.getTexts().get(i), new String(bytes));
+		}
+		
 		store.commitTransaction();
 	}
 }

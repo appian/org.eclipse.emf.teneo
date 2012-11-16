@@ -20,6 +20,15 @@
 		<property name="photo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="binary">
 			<column not-null="false" unique="false" name="`PHOTO`" length="1000000"/>
 		</property>
+		<list name="texts" table="`PERSON_TEXTS`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PERSON_TEXTS_ID`" unique="false"/>
+			</key>
+			<list-index column="`PERSON_TEXTS_IDX`"/>
+			<element not-null="false" unique="false" type="text">
+				<column not-null="false" unique="false" name="`TEXTS`" length="1000000"/>
+			</element>
+		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" table="`TENEOAUDITCOMMITINFO`">
 		<meta attribute="eclassName" inherit="false">TeneoAuditCommitInfo</meta>
@@ -89,12 +98,17 @@
 		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ADDRESS`"/>
 		</property>
-		<array name="photo" table="`PERSONAUDITING_PHOTOAUDITING`" cascade="all">
+		<property name="photo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="binary">
+			<column not-null="false" unique="false" name="`PHOTO`" length="1000000"/>
+		</property>
+		<list name="texts" table="`PERSONAUDITING_TEXTSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
-				<column name="`PERSONAUDITING_PHOTO_TENEO_AUDIT_ID`" unique="false"/>
+				<column name="`PERSONAUDITING_TEXTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
-			<list-index column="`PERSONAUDITING_PHOTO_IDX`"/>
-			<element type="byte"/>
-		</array>
+			<list-index column="`PERSONAUDITING_TEXTS_IDX`"/>
+			<element not-null="false" unique="false" type="text">
+				<column not-null="false" unique="false" name="`TEXTS`" length="1000000"/>
+			</element>
+		</list>
 	</class>
 </hibernate-mapping>

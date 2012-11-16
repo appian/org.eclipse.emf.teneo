@@ -145,6 +145,27 @@ public class AuditVersionProvider implements ExtensionPoint {
 	/**
 	 * @see AuditVersionProvider#getAllVersions(EObject)
 	 */
+	public List<TeneoAuditEntry> getAllAuditEntries(EClass eClass, long timeStamp) {
+		checkState();
+
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
+		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+		final Query qry = getSession().createQuery(
+				"select e from " + entityName + " e where teneo_start<=:start and (teneo_end="
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>:end)");
+		qry.setParameter("start", timeStamp);
+		qry.setParameter("end", timeStamp);
+		final List<TeneoAuditEntry> result = new ArrayList<TeneoAuditEntry>();
+		for (Object o : qry.list()) {
+			result.add((TeneoAuditEntry) o);
+		}
+		return result;
+	}
+
+	/**
+	 * @see AuditVersionProvider#getAllVersions(EObject)
+	 */
 	public List<TeneoAuditEntry> getAllAuditEntries(EClass eClass, Object id) {
 		checkState();
 
@@ -248,6 +269,33 @@ public class AuditVersionProvider implements ExtensionPoint {
 	}
 
 	/**
+	 * Returns the {@link TeneoAuditEntry} representing the state at the specified timestamp.
+	 * 
+	 * If there is no revision at that timestamp then null is returned.
+	 * 
+	 * @see AuditVersionProvider#getRevision(TeneoAuditEntry)
+	 */
+	public TeneoAuditEntry getAuditEntry(EClass eClass, Object id, long timeStamp) {
+		checkState();
+
+		final String idAsString = dataStore.getAuditHandler().idToString(eClass, id);
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
+		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+
+		final Query qry = getSession().createQuery(
+				"select e from " + entityName
+						+ " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end="
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>:end)");
+		qry.setParameter("objectId", idAsString);
+		qry.setParameter("start", timeStamp);
+		qry.setParameter("end", timeStamp);
+
+		final TeneoAuditEntry auditEntry = (TeneoAuditEntry) qry.uniqueResult();
+		return auditEntry;
+	}
+
+	/**
 	 * Returns the actual object instance representing the state at the specified timestamp.
 	 * 
 	 * If there is no revision at that timestamp then null is returned.
@@ -264,18 +312,8 @@ public class AuditVersionProvider implements ExtensionPoint {
 			return auditResource.getEObjectFromCache(fullId);
 		}
 		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
-		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
-				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 
-		final Query qry = getSession().createQuery(
-				"select e from " + entityName
-						+ " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end="
-						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>:end)");
-		qry.setParameter("objectId", idAsString);
-		qry.setParameter("start", timeStamp);
-		qry.setParameter("end", timeStamp);
-
-		final TeneoAuditEntry auditEntry = (TeneoAuditEntry) qry.uniqueResult();
+		final TeneoAuditEntry auditEntry = getAuditEntry(eClass, id, timeStamp);
 		if (auditEntry == null) {
 			return null;
 		}

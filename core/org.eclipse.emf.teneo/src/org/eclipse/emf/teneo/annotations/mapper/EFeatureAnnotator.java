@@ -151,18 +151,21 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				final Class<?> instanceClass = eStructuralFeature.getEType().getInstanceClass();
 				boolean isMany = false;
 				// instanceClass will be null for enums
-				// Lob-annotated attributes must not be treated as one-to-many.
 				// eattributes with a hibernate type annotations should not be
 				// treated as a list
-				if (instanceClass != null && aAttribute.getLob() == null) {
-					isMany = eStructuralFeature.isMany() || instanceClass.isArray()
-							|| Collection.class.isAssignableFrom(instanceClass)
-							|| Set.class.isAssignableFrom(instanceClass)
-							|| List.class.isAssignableFrom(instanceClass);
-					// note this causes a featuremap within a featuremap to get
-					// the
-					// basic annotation!
-					isMany = isMany && !StoreUtil.isElementOfAGroup(eStructuralFeature);
+				if (instanceClass != null) {
+					if (aAttribute.getLob() != null && instanceClass.isArray()) {
+						// special case, don't treat as isMany
+						isMany = false;
+					} else {
+						isMany = eStructuralFeature.isMany() || instanceClass.isArray()
+								|| Collection.class.isAssignableFrom(instanceClass)
+								|| Set.class.isAssignableFrom(instanceClass)
+								|| List.class.isAssignableFrom(instanceClass);
+						// note this causes a featuremap within a featuremap to get
+						// the basic annotation!
+						isMany = isMany && !StoreUtil.isElementOfAGroup(eStructuralFeature);
+					}
 				}
 
 				if (isMany) {

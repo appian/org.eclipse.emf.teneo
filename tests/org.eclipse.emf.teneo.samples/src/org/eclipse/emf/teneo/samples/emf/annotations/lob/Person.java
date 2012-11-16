@@ -6,6 +6,7 @@
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.Person#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.Person#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.Person#getPhoto <em>Photo</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.Person#getTexts <em>Texts</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,7 +43,7 @@ public interface Person extends EObject {
 	 * @see #unsetId()
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Id()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
 	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='id'"
 	 * @generated
@@ -94,7 +96,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -121,7 +123,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Address</em>' attribute.
 	 * @see #setAddress(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Address()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        annotation="teneo.jpa appinfo='@Lob'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
@@ -149,8 +151,9 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Photo</em>' attribute.
 	 * @see #setPhoto(byte[])
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Photo()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t'"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa.auditing appinfo='\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='photo'"
 	 * @generated
 	 */
@@ -165,5 +168,24 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setPhoto(byte[] value);
+
+	/**
+	 * Returns the value of the '<em><b>Texts</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Texts</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Texts</em>' attribute list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Texts()
+	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa.auditing appinfo='\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t\t'"
+	 *        extendedMetaData="kind='element' name='texts'"
+	 * @generated
+	 */
+	EList<String> getTexts();
 
 } // Person

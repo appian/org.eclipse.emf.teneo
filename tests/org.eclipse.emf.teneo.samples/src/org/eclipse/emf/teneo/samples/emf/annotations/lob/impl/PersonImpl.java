@@ -6,13 +6,16 @@
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.lob.Person;
 
@@ -27,6 +30,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.lob.Person;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.impl.PersonImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.impl.PersonImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.impl.PersonImpl#getPhoto <em>Photo</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.impl.PersonImpl#getTexts <em>Texts</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,7 +64,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean idESet = false;
+	protected boolean idESet;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -121,6 +125,16 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected byte[] photo = PHOTO_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTexts() <em>Texts</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> texts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -255,17 +269,31 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getTexts() {
+		if (texts == null) {
+			texts = new EDataTypeEList<String>(String.class, this, LobPackage.PERSON__TEXTS);
+		}
+		return texts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LobPackage.PERSON__ID:
-				return new Long(getId());
+				return getId();
 			case LobPackage.PERSON__NAME:
 				return getName();
 			case LobPackage.PERSON__ADDRESS:
 				return getAddress();
 			case LobPackage.PERSON__PHOTO:
 				return getPhoto();
+			case LobPackage.PERSON__TEXTS:
+				return getTexts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -275,11 +303,12 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LobPackage.PERSON__ID:
-				setId(((Long)newValue).longValue());
+				setId((Long)newValue);
 				return;
 			case LobPackage.PERSON__NAME:
 				setName((String)newValue);
@@ -289,6 +318,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return;
 			case LobPackage.PERSON__PHOTO:
 				setPhoto((byte[])newValue);
+				return;
+			case LobPackage.PERSON__TEXTS:
+				getTexts().clear();
+				getTexts().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -314,6 +347,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case LobPackage.PERSON__PHOTO:
 				setPhoto(PHOTO_EDEFAULT);
 				return;
+			case LobPackage.PERSON__TEXTS:
+				getTexts().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -334,6 +370,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
 			case LobPackage.PERSON__PHOTO:
 				return PHOTO_EDEFAULT == null ? photo != null : !PHOTO_EDEFAULT.equals(photo);
+			case LobPackage.PERSON__TEXTS:
+				return texts != null && !texts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -356,6 +394,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 		result.append(address);
 		result.append(", photo: ");
 		result.append(photo);
+		result.append(", texts: ");
+		result.append(texts);
 		result.append(')');
 		return result.toString();
 	}

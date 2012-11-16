@@ -21,7 +21,24 @@
 					<xsd:appinfo source="teneo.jpa">
 						@Lob
 						@Column(length=1000000)
-				</xsd:appinfo>					
+					</xsd:appinfo>					
+					<xsd:appinfo source="teneo.jpa.auditing">
+						@Lob
+						@Column(length=1000000)
+					</xsd:appinfo>					
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="texts" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<!-- Will be mapped to a 'binary' field. -->
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">
+						@Lob
+						@Column(length=1000000)
+					</xsd:appinfo>					
+					<xsd:appinfo source="teneo.jpa.auditing">
+						@Lob
+						@Column(length=1000000)
+					</xsd:appinfo>					
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>

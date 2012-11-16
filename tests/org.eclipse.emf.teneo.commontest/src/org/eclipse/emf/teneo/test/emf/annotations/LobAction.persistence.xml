@@ -12,6 +12,27 @@
 				<lob />
 				<column length="1000000" />
 			</property>
+			<eattribute name="texts">
+				<lob />
+				<column length="10000" />
+			</eattribute>
+		</eclass>
+	</epackage>
+
+	<epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/lobAuditing">
+
+		<eclass name="PersonAuditing">
+			<property name="address">
+				<lob />
+			</property>
+			<property name="photo">
+				<lob />
+				<column length="1000000" />
+			</property>
+			<eattribute name="texts">
+				<lob />
+				<column length="10000" />
+			</eattribute>
 		</eclass>
 	</epackage>
 
