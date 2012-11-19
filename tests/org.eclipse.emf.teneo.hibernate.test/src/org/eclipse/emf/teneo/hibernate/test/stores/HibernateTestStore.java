@@ -205,7 +205,8 @@ public class HibernateTestStore extends AbstractTestStore {
 			props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "true");
 		}
 
-		if (!props.containsKey(Constants.ANNOTATION_AUDITING_NOT)) {
+		if (!props.containsKey(PersistenceOptions.ENABLE_AUDITING)
+				&& !props.containsKey(Constants.ANNOTATION_AUDITING_NOT)) {
 			props.setProperty(PersistenceOptions.ENABLE_AUDITING, "true");
 		}
 
