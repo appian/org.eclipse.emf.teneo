@@ -154,22 +154,6 @@
 			<column not-null="false" unique="false" name="`POSTALCODE`"/>
 		</property>
 	</subclass>
-	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="EmployeeAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="EmployeeAuditing">
-		<meta attribute="eclassName" inherit="false">EmployeeAuditing</meta>
-		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverrideAuditing</meta>
-		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`ID`"/>
-		</property>
-		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`NAME`"/>
-		</property>
-		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ADDRESS`"/>
-		</property>
-		<property name="department" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`DEPARTMENT`"/>
-		</property>
-	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PersonAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="PersonAuditing">
 		<meta attribute="eclassName" inherit="false">PersonAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverrideAuditing</meta>
@@ -183,20 +167,12 @@
 			<column not-null="false" unique="false" name="`ADDRESS`"/>
 		</property>
 	</subclass>
-	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="StudentAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="StudentAuditing">
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="EmployeeAuditing" abstract="false" lazy="false" extends="PersonAuditing" discriminator-value="EmployeeAuditing">
+		<meta attribute="eclassName" inherit="false">EmployeeAuditing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverrideAuditing</meta>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="StudentAuditing" abstract="false" lazy="false" extends="PersonAuditing" discriminator-value="StudentAuditing">
 		<meta attribute="eclassName" inherit="false">StudentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverrideAuditing</meta>
-		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`ID`"/>
-		</property>
-		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`NAME`"/>
-		</property>
-		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ADDRESS`"/>
-		</property>
-		<property name="faculty" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`FACULTY`"/>
-		</property>
 	</subclass>
 </hibernate-mapping>

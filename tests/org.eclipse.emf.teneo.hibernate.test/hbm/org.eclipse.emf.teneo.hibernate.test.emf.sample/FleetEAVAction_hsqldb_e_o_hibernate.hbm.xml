@@ -107,162 +107,79 @@
 			<column not-null="false" unique="false" name="`TIRESPEC`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PersonAuditing" abstract="false" lazy="false" table="`PREFIX_PERSONAUDITING`">
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="TemporalAuditing" abstract="false" lazy="false" table="`PREFIX_TEMPORALAUDITING`">
+		<meta attribute="eclassName" inherit="false">TemporalAuditing</meta>
+		<meta attribute="epackage" inherit="false">http:///temporal.ecoreAuditing</meta>
+		<id name="teneo_audit_id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
+			<generator class="native"/>
+		</id>
+		<version name="teneo_version" type="long">
+			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
+		</version>
+		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
+		</property>
+		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+		</property>
+		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
+		</property>
+		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
+		</property>
+		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TEMPORALAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
+		</many-to-one>
+		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
+				<param name="eclassifier">TeneoAuditKind</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
+			</type>
+		</property>
+		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
+		</property>
+		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
+		</property>
+		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`DATE`"/>
+		</property>
+		<array name="touchedAttributes" table="`PREFIX_TEMPORALAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
+			<key update="true">
+				<column name="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
+		</property>
+		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
+		</property>
+	</class>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PersonAuditing" abstract="false" lazy="false" extends="TemporalAuditing" table="`PREFIX_PERSONAUDITING`">
 		<meta attribute="eclassName" inherit="false">PersonAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="PERSONAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_PERSONAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`PERSONAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`PERSONAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
-		</property>
-		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ID`"/>
-		</property>
-		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`NAME`"/>
-		</property>
-		<property name="employed" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
-			<column not-null="false" unique="false" name="`EMPLOYED`"/>
-		</property>
-		<list name="addresses" table="`PREFIX_PERSONAUDITING_ADDRESSESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`PERSONAUDITING_ADDRESSES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`PERSONAUDITING_ADDRESSES_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<list name="ownedVehicles" table="`PREFIX_PERSONAUDITING_OWNEDVEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`PERSONAUDITING_OWNEDVEHICLES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`PERSONAUDITING_OWNEDVEHICLES_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="birthAddress" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`BIRTHADDRESS`"/>
-		</property>
-	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="AddressAuditing" abstract="false" lazy="false" table="`PREFIX_ADDRESSAUDITING`">
+		<key>
+			<column name="`TEMPORALAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="AddressAuditing" abstract="false" lazy="false" extends="TemporalAuditing" table="`PREFIX_ADDRESSAUDITING`">
 		<meta attribute="eclassName" inherit="false">AddressAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ADDRESSAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_ADDRESSAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`ADDRESSAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`ADDRESSAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
-		</property>
-		<property name="streetName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`STREETNAME`"/>
-		</property>
-		<property name="streetNumber" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`STREETNUMBER`"/>
-		</property>
-		<property name="city" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`CITY`"/>
-		</property>
-		<property name="country" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`COUNTRY`"/>
-		</property>
-	</class>
+		<key>
+			<column name="`TEMPORALAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="VehicleInfoAuditing" abstract="false" lazy="false" table="`PREFIX_VEHICLEINFOAUDITING`">
 		<meta attribute="eclassName" inherit="false">VehicleInfoAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
@@ -367,167 +284,20 @@
 			<column not-null="false" unique="false" name="`TRANSPORTFLEET`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="FleetAuditing" abstract="false" lazy="false" table="`PREFIX_FLEETAUDITING`">
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="FleetAuditing" abstract="false" lazy="false" extends="TemporalAuditing" table="`PREFIX_FLEETAUDITING`">
 		<meta attribute="eclassName" inherit="false">FleetAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="FLEETAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_FLEETAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`FLEETAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`FLEETAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
-		</property>
-		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ID`"/>
-		</property>
-		<list name="vehicles" table="`PREFIX_FLEETAUDITING_VEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`FLEETAUDITING_VEHICLES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`FLEETAUDITING_VEHICLES_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<list name="vehicleInformation" table="`PREFIX_FLEETAUDITING_VEHICLEINFORMATIONAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`FLEETAUDITING_VEHICLEINFORMATION_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`FLEETAUDITING_VEHICLEINFORMATION_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="serviceGarage" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`SERVICEGARAGE`"/>
-		</property>
-	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="GarageAuditing" abstract="false" lazy="false" table="`PREFIX_GARAGEAUDITING`">
+		<key>
+			<column name="`TEMPORALAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="GarageAuditing" abstract="false" lazy="false" extends="TemporalAuditing" table="`PREFIX_GARAGEAUDITING`">
 		<meta attribute="eclassName" inherit="false">GarageAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="GARAGEAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_GARAGEAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`GARAGEAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`GARAGEAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
-		</property>
-		<list name="vehicles" table="`PREFIX_GARAGEAUDITING_VEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`GARAGEAUDITING_VEHICLES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`GARAGEAUDITING_VEHICLES_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="customerShuttles" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`CUSTOMERSHUTTLES`"/>
-		</property>
-		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ADDRESS`"/>
-		</property>
-		<list name="fleetsUsingGarage" table="`PREFIX_GARAGEAUDITING_FLEETSUSINGGARAGEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`GARAGEAUDITING_FLEETSUSINGGARAGE_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`GARAGEAUDITING_FLEETSUSINGGARAGE_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`NAME`"/>
-		</property>
-	</class>
+		<key>
+			<column name="`TEMPORALAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="TireAuditing" abstract="false" lazy="false" table="`PREFIX_TIREAUDITING`">
 		<meta attribute="eclassName" inherit="false">TireAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
@@ -586,250 +356,6 @@
 			<column not-null="false" unique="false" name="`MODEL`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="HybridAuditing" abstract="false" lazy="false" table="`PREFIX_HYBRIDAUDITING`">
-		<meta attribute="eclassName" inherit="false">HybridAuditing</meta>
-		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HYBRIDAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
-		</property>
-		<property name="brand" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`BRAND`"/>
-		</property>
-		<property name="model" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`MODEL`"/>
-		</property>
-		<property name="make" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`MAKE`"/>
-		</property>
-		<property name="color" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`COLOR`"/>
-		</property>
-		<property name="plate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`PLATE`"/>
-		</property>
-		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ID`"/>
-		</property>
-		<property name="year" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`YEAR`"/>
-		</property>
-		<property name="length" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`LENGTH`"/>
-		</property>
-		<list name="availableColors" table="`PREFIX_HYBRIDAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`HYBRIDAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`HYBRIDAUDITING_AVAILABLECOLORS_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="owner" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`OWNER`"/>
-		</property>
-		<list name="manufacturedAt" table="`PREFIX_HYBRIDAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`HYBRIDAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`HYBRIDAUDITING_MANUFACTUREDAT_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="tireSpec" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TIRESPEC`"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_HYBRIDAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`HYBRIDAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`HYBRIDAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
-		</property>
-		<property name="numPassengers" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`NUMPASSENGERS`"/>
-		</property>
-		<property name="numTires" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`NUMTIRES`"/>
-		</property>
-		<list name="tires" table="`PREFIX_HYBRIDAUDITING_TIRESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`HYBRIDAUDITING_TIRES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`HYBRIDAUDITING_TIRES_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="hasRechargePlug" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
-			<column not-null="false" unique="false" name="`HASRECHARGEPLUG`"/>
-		</property>
-		<property name="batteryLife" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`BATTERYLIFE`"/>
-		</property>
-	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CarAuditing" abstract="false" lazy="false" table="`PREFIX_CARAUDITING`">
-		<meta attribute="eclassName" inherit="false">CarAuditing</meta>
-		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CARAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
-		</property>
-		<property name="brand" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`BRAND`"/>
-		</property>
-		<property name="model" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`MODEL`"/>
-		</property>
-		<property name="make" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`MAKE`"/>
-		</property>
-		<property name="color" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`COLOR`"/>
-		</property>
-		<property name="plate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`PLATE`"/>
-		</property>
-		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ID`"/>
-		</property>
-		<property name="year" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`YEAR`"/>
-		</property>
-		<property name="length" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`LENGTH`"/>
-		</property>
-		<list name="availableColors" table="`PREFIX_CARAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`CARAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`CARAUDITING_AVAILABLECOLORS_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="owner" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`OWNER`"/>
-		</property>
-		<list name="manufacturedAt" table="`PREFIX_CARAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`CARAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`CARAUDITING_MANUFACTUREDAT_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-		<property name="tireSpec" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TIRESPEC`"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_CARAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`CARAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`CARAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
-		</property>
-		<property name="numPassengers" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`NUMPASSENGERS`"/>
-		</property>
-		<property name="numTires" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`NUMTIRES`"/>
-		</property>
-		<list name="tires" table="`PREFIX_CARAUDITING_TIRESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
-				<column name="`CARAUDITING_TIRES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`CARAUDITING_TIRES_IDX`"/>
-			<element type="java.lang.String"/>
-		</list>
-	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PassengerVehicleAuditing" abstract="false" lazy="false" table="`PREFIX_PASSENGERVEHICLEAUDITING`">
 		<meta attribute="eclassName" inherit="false">PassengerVehicleAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
@@ -876,121 +402,64 @@
 			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="EngineFactoryAuditing" abstract="false" lazy="false" table="`PREFIX_ENGINEFACTORYAUDITING`">
-		<meta attribute="eclassName" inherit="false">EngineFactoryAuditing</meta>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CarAuditing" abstract="false" lazy="false" extends="PassengerVehicleAuditing" table="`PREFIX_CARAUDITING`">
+		<meta attribute="eclassName" inherit="false">CarAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
+		<key>
+			<column name="`PASSENGERVEHICLEAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+		<property name="brand" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BRAND`"/>
 		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+		<property name="model" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MODEL`"/>
 		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
+		<property name="make" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MAKE`"/>
 		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
+		<property name="color" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COLOR`"/>
 		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ENGINEFACTORYAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		<property name="plate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PLATE`"/>
 		</property>
 		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ID`"/>
 		</property>
-		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`NAME`"/>
+		<property name="year" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`YEAR`"/>
 		</property>
-		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ADDRESS`"/>
+		<property name="length" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`LENGTH`"/>
 		</property>
-		<property name="transportFleet" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TRANSPORTFLEET`"/>
-		</property>
-		<property name="makesDieselEngines" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
-			<column not-null="false" unique="false" name="`MAKESDIESELENGINES`"/>
-		</property>
-		<list name="brands" table="`PREFIX_ENGINEFACTORYAUDITING_BRANDSAUDITING`" lazy="true" cascade="all">
+		<list name="availableColors" table="`PREFIX_VEHICLEAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
-				<column name="`ENGINEFACTORYAUDITING_BRANDS_TENEO_AUDIT_ID`" unique="false"/>
+				<column name="`CARAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
-			<list-index column="`ENGINEFACTORYAUDITING_BRANDS_IDX`"/>
+			<list-index column="`CARAUDITING_AVAILABLECOLORS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
-	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="USAddressAuditing" abstract="false" lazy="false" table="`PREFIX_USADDRESSAUDITING`">
-		<meta attribute="eclassName" inherit="false">USAddressAuditing</meta>
-		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
+		<property name="owner" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="USADDRESSAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		<list name="manufacturedAt" table="`PREFIX_VEHICLEAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CARAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`CARAUDITING_MANUFACTUREDAT_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="tireSpec" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TIRESPEC`"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
-		<array name="touchedAttributes" table="`PREFIX_USADDRESSAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
+		<array name="touchedAttributes" table="`PREFIX_TEMPORALAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
 			<key update="true">
-				<column name="`USADDRESSAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
+				<column name="`CARAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
-			<list-index column="`USADDRESSAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
+			<list-index column="`CARAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -999,25 +468,28 @@
 		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
 		</property>
-		<property name="streetName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`STREETNAME`"/>
-		</property>
-		<property name="streetNumber" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`STREETNUMBER`"/>
-		</property>
-		<property name="city" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`CITY`"/>
-		</property>
-		<property name="country" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`COUNTRY`"/>
-		</property>
-		<property name="zipCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`ZIPCODE`"/>
-		</property>
-		<property name="state" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`STATE`"/>
-		</property>
-	</class>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="HybridAuditing" abstract="false" lazy="false" extends="CarAuditing" table="`PREFIX_HYBRIDAUDITING`">
+		<meta attribute="eclassName" inherit="false">HybridAuditing</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
+		<key>
+			<column name="`CARAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="EngineFactoryAuditing" abstract="false" lazy="false" extends="ManufacturingPlantAuditing" table="`PREFIX_ENGINEFACTORYAUDITING`">
+		<meta attribute="eclassName" inherit="false">EngineFactoryAuditing</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
+		<key>
+			<column name="`MANUFACTURINGPLANTAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="USAddressAuditing" abstract="false" lazy="false" extends="AddressAuditing" table="`PREFIX_USADDRESSAUDITING`">
+		<meta attribute="eclassName" inherit="false">USAddressAuditing</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
+		<key>
+			<column name="`ADDRESSAUDITING_TENEO_AUDIT_ID`"/>
+		</key>
+	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="VinAuditing" abstract="false" lazy="false" table="`PREFIX_VINAUDITING`">
 		<meta attribute="eclassName" inherit="false">VinAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
@@ -1117,65 +589,6 @@
 		</property>
 		<property name="year" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`YEAR`"/>
-		</property>
-	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="TemporalAuditing" abstract="false" lazy="false" table="`PREFIX_TEMPORALAUDITING`">
-		<meta attribute="eclassName" inherit="false">TemporalAuditing</meta>
-		<meta attribute="epackage" inherit="false">http:///temporal.ecoreAuditing</meta>
-		<id name="teneo_audit_id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_ID`"/>
-			<generator class="native"/>
-		</id>
-		<version name="teneo_version" type="long">
-			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
-		</version>
-		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
-		</property>
-		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
-		</property>
-		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
-		</property>
-		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
-		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TEMPORALAUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
-			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
-		</many-to-one>
-		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`TENEO_AUDIT_KIND`"/>
-			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
-				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
-				<param name="eclassifier">TeneoAuditKind</param>
-				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
-			</type>
-		</property>
-		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_ID`"/>
-		</property>
-		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
-		</property>
-		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
-			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
-		</property>
-		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
-			<column not-null="false" unique="false" name="`DATE`"/>
-		</property>
-		<array name="touchedAttributes" table="`PREFIX_TEMPORALAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
-				<column name="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
-			</key>
-			<list-index column="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
-			<element type="byte"/>
-		</array>
-		<property name="versionHolder" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDER`"/>
-		</property>
-		<property name="versionHolderContainment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`VERSIONHOLDERCONTAINMENT`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="VersionHolderAuditing" abstract="false" lazy="false" table="`PREFIX_VERSIONHOLDERAUDITING`">

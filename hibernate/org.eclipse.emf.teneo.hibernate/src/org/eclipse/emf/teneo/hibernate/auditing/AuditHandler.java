@@ -535,6 +535,11 @@ public class AuditHandler implements ExtensionPoint {
 			eAuditingPackage = registry.getEPackage(sourceEPackage.getNsURI() + "Auditing");
 		} else {
 			eAuditingPackage = EcoreFactory.eINSTANCE.createEPackage();
+			eAuditingPackage.setName(sourceEPackage.getName() + "Auditing");
+			eAuditingPackage.setNsPrefix(sourceEPackage.getNsPrefix() + "Auditing");
+			eAuditingPackage.setNsURI(sourceEPackage.getNsURI() + "Auditing");
+
+			registry.put(eAuditingPackage.getNsURI(), eAuditingPackage);
 		}
 
 		if (eAuditingPackage.getEAnnotation(Constants.ANNOTATION_SOURCE_AUDITING) == null) {
@@ -543,9 +548,6 @@ public class AuditHandler implements ExtensionPoint {
 			eAuditingPackage.getEAnnotations().add(eAnnotation);
 		}
 
-		eAuditingPackage.setName(sourceEPackage.getName() + "Auditing");
-		eAuditingPackage.setNsPrefix(sourceEPackage.getNsPrefix() + "Auditing");
-		eAuditingPackage.setNsURI(sourceEPackage.getNsURI() + "Auditing");
 		for (EClassifier eClassifier : sourceEPackage.getEClassifiers()) {
 			if (eClassifier instanceof EClass) {
 
@@ -566,9 +568,17 @@ public class AuditHandler implements ExtensionPoint {
 					auditingEClass = EcoreFactory.eINSTANCE.createEClass();
 					auditingEClass.setName(auditEClassName);
 				}
-				auditingEClass.getESuperTypes().add(TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry());
-
 				eAuditingPackage.getEClassifiers().add(auditingEClass);
+
+				if (eClass.getESuperTypes().isEmpty()) {
+					auditingEClass.getESuperTypes().add(TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry());
+				} else {
+					for (EClass eSuperClass : eClass.getESuperTypes()) {
+						auditingEClass.getESuperTypes().add(
+								getSuperAuditingEClass(dataStore, eSuperClass, registry, po));
+					}
+				}
+
 				setAuditingAssociation(eClass, auditingEClass, null);
 
 				if (null != eClass.getEAnnotation(ExtendedMetaData.ANNOTATION_URI)) {
@@ -593,6 +603,13 @@ public class AuditHandler implements ExtensionPoint {
 					if (isNoAuditing(po, eFeature)) {
 						continue;
 					}
+					// don't consider any features of the first super type as that one maps
+					// its own features
+					if (!eClass.getESuperTypes().isEmpty()
+							&& eClass.getEAllStructuralFeatures().contains(eFeature)) {
+						continue;
+					}
+
 					EStructuralFeature auditingEFeature;
 
 					if (eFeature instanceof EReference && StoreUtil.isMap(eFeature)) {
@@ -669,9 +686,29 @@ public class AuditHandler implements ExtensionPoint {
 			}
 		}
 
-		registry.put(eAuditingPackage.getNsURI(), eAuditingPackage);
-
 		return eAuditingPackage;
+	}
+
+	private EClass getSuperAuditingEClass(AuditDataStore auditDataStore, EClass superEClass,
+			EPackage.Registry registry, PersistenceOptions po) {
+		final EPackage superEPackage = superEClass.getEPackage();
+		if (!registry.containsKey(superEPackage.getNsURI() + "Auditing")) {
+			createAuditingEPackage(auditDataStore, superEPackage, registry, po);
+		}
+		final EPackage eAuditingPackage = registry.getEPackage(superEPackage.getNsURI() + "Auditing");
+		final String auditEClassName = po.getAuditingEntityPrefix() + superEClass.getName()
+				+ po.getAuditingEntityPostfix();
+
+		final EClass auditingEClass;
+		if (eAuditingPackage.getEClassifier(auditEClassName) != null) {
+			auditingEClass = (EClass) eAuditingPackage.getEClassifier(auditEClassName);
+		} else {
+			auditingEClass = EcoreFactory.eINSTANCE.createEClass();
+			auditingEClass.setName(auditEClassName);
+		}
+		eAuditingPackage.getEClassifiers().add(auditingEClass);
+
+		return auditingEClass;
 	}
 
 	public boolean isEmbedded(EModelElement modelElement) {
