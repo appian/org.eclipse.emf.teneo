@@ -149,21 +149,55 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="MAuditing" abstract="false" lazy="false" extends="AbstractSuperAuditing" discriminator-value="MAuditing">
 		<meta attribute="eclassName" inherit="false">MAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclassesAuditing</meta>
+		<list name="p" table="`MAUDITING_PAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`MAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`MAUDITING_P_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="MListAuditing" abstract="false" lazy="false" extends="AbstractSuperAuditing" discriminator-value="MListAuditing">
 		<meta attribute="eclassName" inherit="false">MListAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclassesAuditing</meta>
+		<list name="m" table="`MLISTAUDITING_MAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`MLISTAUDITING_M_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`MLISTAUDITING_M_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PAuditing" abstract="false" lazy="false" extends="AbstractSuperAuditing" discriminator-value="PAuditing">
 		<meta attribute="eclassName" inherit="false">PAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclassesAuditing</meta>
+		<list name="m" table="`PAUDITING_MAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PAUDITING_M_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`PAUDITING_M_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PListAuditing" abstract="false" lazy="false" extends="AbstractSuperAuditing" discriminator-value="PListAuditing">
 		<meta attribute="eclassName" inherit="false">PListAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclassesAuditing</meta>
+		<list name="p" table="`PLISTAUDITING_PAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PLISTAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`PLISTAUDITING_P_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RAuditing" abstract="false" lazy="false" extends="AbstractSuperAuditing" discriminator-value="RAuditing">
 		<meta attribute="eclassName" inherit="false">RAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclassesAuditing</meta>
+		<property name="plist" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PLIST`"/>
+		</property>
+		<property name="mlist" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MLIST`"/>
+		</property>
 	</subclass>
 </hibernate-mapping>

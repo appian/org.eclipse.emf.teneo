@@ -182,5 +182,8 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CatAuditing" abstract="false" lazy="false" extends="AnimalAuditing" discriminator-value="CatAuditing">
 		<meta attribute="eclassName" inherit="false">CatAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz247939Auditing</meta>
+		<property name="owner" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OWNER`"/>
+		</property>
 	</subclass>
 </hibernate-mapping>

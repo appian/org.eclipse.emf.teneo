@@ -327,6 +327,18 @@
 		<key>
 			<column name="`ADDRESSAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="street" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STREET`"/>
+		</property>
+		<property name="city" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CITY`"/>
+		</property>
+		<property name="state" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STATE`"/>
+		</property>
+		<property name="zip" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`ZIP`"/>
+		</property>
 	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PurchaseOrderAuditing" abstract="false" lazy="false" table="`PURCHASEORDERAUDITING`">
 		<meta attribute="eclassName" inherit="false">PurchaseOrderAuditing</meta>
@@ -526,6 +538,13 @@
 		<property name="countryCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`COUNTRYCODE`"/>
 		</property>
+		<list name="location" table="`GLOBALADDRESSAUDITING_LOCATIONAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`GLOBALADDRESSAUDITING_LOCATION_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`GLOBALADDRESSAUDITING_LOCATION_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="GlobalLocationAuditing" abstract="false" lazy="false" table="`GLOBALLOCATIONAUDITING`">
 		<meta attribute="eclassName" inherit="false">GlobalLocationAuditing</meta>

@@ -442,6 +442,17 @@
 		<key>
 			<column name="`RENTALUNITAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalBicycleType</param>
+				<param name="eclassifier">RentalBicycleType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/rental</param>
+			</type>
+		</property>
+		<property name="manufacturer" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MANUFACTURER`"/>
+		</property>
 	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CurrencyAuditing" abstract="false" lazy="false" table="`CURRENCYAUDITING`">
 		<meta attribute="eclassName" inherit="false">CurrencyAuditing</meta>
@@ -495,6 +506,14 @@
 		<key>
 			<column name="`RENTALUNITAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="size" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`SIZE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalCarSize</param>
+				<param name="eclassifier">RentalCarSize</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/rental</param>
+			</type>
+		</property>
 	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RentalContractAuditing" abstract="false" lazy="false" table="`RENTALCONTRACTAUDITING`">
 		<meta attribute="eclassName" inherit="false">RentalContractAuditing</meta>

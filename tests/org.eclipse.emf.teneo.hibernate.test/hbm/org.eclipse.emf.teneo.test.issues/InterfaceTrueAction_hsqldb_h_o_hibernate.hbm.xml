@@ -119,6 +119,9 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="USAddressAuditing" abstract="false" lazy="false" extends="AddressAuditing" discriminator-value="USAddressAuditing">
 		<meta attribute="eclassName" inherit="false">USAddressAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///org/elver/store/test/issues/interfacetrue.ecoreAuditing</meta>
+		<property name="state" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STATE`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="AddressListAuditing" abstract="false" lazy="false" discriminator-value="AddressListAuditing" table="`ADDRESSLISTAUDITING`">
 		<meta attribute="eclassName" inherit="false">AddressListAuditing</meta>

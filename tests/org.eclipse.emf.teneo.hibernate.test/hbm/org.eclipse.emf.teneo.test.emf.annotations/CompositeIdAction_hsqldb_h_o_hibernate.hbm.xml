@@ -111,6 +111,13 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ParentAuditing" abstract="false" lazy="false" extends="PersonAuditing" discriminator-value="ParentAuditing">
 		<meta attribute="eclassName" inherit="false">ParentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///org/elver/samples/emf/annotations/compositeid.ecoreAuditing</meta>
+		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`PARENTAUDITING_CHILDREN_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ChildAuditing" abstract="false" lazy="false" extends="PersonAuditing" discriminator-value="ChildAuditing">
 		<meta attribute="eclassName" inherit="false">ChildAuditing</meta>

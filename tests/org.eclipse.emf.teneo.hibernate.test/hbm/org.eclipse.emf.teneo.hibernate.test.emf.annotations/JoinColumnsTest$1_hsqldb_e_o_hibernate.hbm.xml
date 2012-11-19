@@ -172,6 +172,13 @@
 		<key>
 			<column name="`PERSONAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`PARENTAUDITING_CHILDREN_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ChildAuditing" abstract="false" lazy="false" extends="PersonAuditing" table="`CHILDAUDITING`">
 		<meta attribute="eclassName" inherit="false">ChildAuditing</meta>

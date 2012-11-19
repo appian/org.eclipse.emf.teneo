@@ -3617,22 +3617,127 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.FlowElementAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.FlowElementAuditing">
 		<meta attribute="eclassName" inherit="false">FlowElementAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="auditing" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`AUDITING`"/>
+		</property>
+		<property name="monitoring" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MONITORING`"/>
+		</property>
+		<bag name="categoryValueRef" table="`BPMN2AUDITING_FLOWELEMENTAUDITING_CATEGORYVALUEREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTAUDITING_CATEGORYVALUEREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.FlowNodeAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowElementAuditing" discriminator-value="bpmn2Auditing.FlowNodeAuditing">
 		<meta attribute="eclassName" inherit="false">FlowNodeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="incoming" table="`BPMN2AUDITING_FLOWNODEAUDITING_INCOMINGAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWNODEAUDITING_INCOMING_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<list name="outgoing" table="`BPMN2AUDITING_FLOWNODEAUDITING_OUTGOINGAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWNODEAUDITING_OUTGOING_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`FLOWNODEAUDITING_OUTGOING_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ActivityAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowNodeAuditing" discriminator-value="bpmn2Auditing.ActivityAuditing">
 		<meta attribute="eclassName" inherit="false">ActivityAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="ioSpecification" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IOSPECIFICATION`"/>
+		</property>
+		<bag name="properties" table="`BPMN2AUDITING_ACTIVITYAUDITING_PROPERTIESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`ACTIVITYAUDITING_PROPERTIES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="dataInputAssociations" table="`BPMN2AUDITING_ACTIVITYAUDITING_DATAINPUTASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`ACTIVITYAUDITING_DATAINPUTASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="dataOutputAssociations" table="`BPMN2AUDITING_ACTIVITYAUDITING_DATAOUTPUTASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`ACTIVITYAUDITING_DATAOUTPUTASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="resources" table="`BPMN2AUDITING_ACTIVITYAUDITING_RESOURCESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`ACTIVITYAUDITING_RESOURCES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="loopCharacteristics" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOOPCHARACTERISTICS`"/>
+		</property>
+		<property name="completionQuantity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`COMPLETIONQUANTITY`"/>
+		</property>
+		<property name="default" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEFAULT`"/>
+		</property>
+		<property name="isForCompensation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISFORCOMPENSATION`"/>
+		</property>
+		<property name="startQuantity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`STARTQUANTITY`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SubProcessAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ActivityAuditing" discriminator-value="bpmn2Auditing.SubProcessAuditing">
 		<meta attribute="eclassName" inherit="false">SubProcessAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="laneSets" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_LANESETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_LANESETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="flowElements" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="artifacts" table="`BPMN2AUDITING_SUBPROCESSAUDITING_ARTIFACTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`SUBPROCESSAUDITING_ARTIFACTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="triggeredByEvent" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`TRIGGEREDBYEVENT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.AdHocSubProcessAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.SubProcessAuditing" discriminator-value="bpmn2Auditing.AdHocSubProcessAuditing">
 		<meta attribute="eclassName" inherit="false">AdHocSubProcessAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="completionCondition" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMPLETIONCONDITION`"/>
+		</property>
+		<property name="cancelRemainingInstances" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`CANCELREMAININGINSTANCES`"/>
+		</property>
+		<property name="ordering" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`ORDERING`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.AdHocOrdering</param>
+				<param name="eclassifier">AdHocOrdering</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ArtifactAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ArtifactAuditing">
 		<meta attribute="eclassName" inherit="false">ArtifactAuditing</meta>
@@ -3641,10 +3746,30 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.AssignmentAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.AssignmentAuditing">
 		<meta attribute="eclassName" inherit="false">AssignmentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="from" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FROM`"/>
+		</property>
+		<property name="to" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TO`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.AssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ArtifactAuditing" discriminator-value="bpmn2Auditing.AssociationAuditing">
 		<meta attribute="eclassName" inherit="false">AssociationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="associationDirection" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`ASSOCIATIONDIRECTION`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.AssociationDirection</param>
+				<param name="eclassifier">AssociationDirection</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
+		<property name="sourceRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SOURCEREF`"/>
+		</property>
+		<property name="targetRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.AuditingAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.AuditingAuditing">
 		<meta attribute="eclassName" inherit="false">AuditingAuditing</meta>
@@ -3653,14 +3778,56 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.EventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowNodeAuditing" discriminator-value="bpmn2Auditing.EventAuditing">
 		<meta attribute="eclassName" inherit="false">EventAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="properties" table="`BPMN2AUDITING_EVENTAUDITING_PROPERTIESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`EVENTAUDITING_PROPERTIES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CatchEventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventAuditing" discriminator-value="bpmn2Auditing.CatchEventAuditing">
 		<meta attribute="eclassName" inherit="false">CatchEventAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="dataOutputs" table="`BPMN2AUDITING_CATCHEVENTAUDITING_DATAOUTPUTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CATCHEVENTAUDITING_DATAOUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="dataOutputAssociation" table="`BPMN2AUDITING_CATCHEVENTAUDITING_DATAOUTPUTASSOCIATIONAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CATCHEVENTAUDITING_DATAOUTPUTASSOCIATION_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="outputSet" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTPUTSET`"/>
+		</property>
+		<bag name="eventDefinitions" table="`BPMN2AUDITING_CATCHEVENTAUDITING_EVENTDEFINITIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CATCHEVENTAUDITING_EVENTDEFINITIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="eventDefinitionRefs" table="`BPMN2AUDITING_CATCHEVENTAUDITING_EVENTDEFINITIONREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CATCHEVENTAUDITING_EVENTDEFINITIONREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="parallelMultiple" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`PARALLELMULTIPLE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.BoundaryEventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CatchEventAuditing" discriminator-value="bpmn2Auditing.BoundaryEventAuditing">
 		<meta attribute="eclassName" inherit="false">BoundaryEventAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="attachedToRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ATTACHEDTOREF`"/>
+		</property>
+		<property name="cancelActivity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`CANCELACTIVITY`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.TaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ActivityAuditing" discriminator-value="bpmn2Auditing.TaskAuditing">
 		<meta attribute="eclassName" inherit="false">TaskAuditing</meta>
@@ -3669,26 +3836,94 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.BusinessRuleTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.TaskAuditing" discriminator-value="bpmn2Auditing.BusinessRuleTaskAuditing">
 		<meta attribute="eclassName" inherit="false">BusinessRuleTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CallActivityAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ActivityAuditing" discriminator-value="bpmn2Auditing.CallActivityAuditing">
 		<meta attribute="eclassName" inherit="false">CallActivityAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="calledElementRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CALLEDELEMENTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ChoreographyActivityAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowNodeAuditing" discriminator-value="bpmn2Auditing.ChoreographyActivityAuditing">
 		<meta attribute="eclassName" inherit="false">ChoreographyActivityAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participantRefs" table="`BPMN2AUDITING_CHOREOGRAPHYACTIVITYAUDITING_PARTICIPANTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CHOREOGRAPHYACTIVITYAUDITING_PARTICIPANTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="correlationKeys" table="`BPMN2AUDITING_CHOREOGRAPHYACTIVITYAUDITING_CORRELATIONKEYSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CHOREOGRAPHYACTIVITYAUDITING_CORRELATIONKEYS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="initiatingParticipantRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INITIATINGPARTICIPANTREF`"/>
+		</property>
+		<property name="loopType" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`LOOPTYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.ChoreographyLoopType</param>
+				<param name="eclassifier">ChoreographyLoopType</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CallChoreographyAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ChoreographyActivityAuditing" discriminator-value="bpmn2Auditing.CallChoreographyAuditing">
 		<meta attribute="eclassName" inherit="false">CallChoreographyAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participantAssociations" table="`BPMN2AUDITING_CALLCHOREOGRAPHYAUDITING_PARTICIPANTASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CALLCHOREOGRAPHYAUDITING_PARTICIPANTASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="calledChoreographyRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CALLEDCHOREOGRAPHYREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ConversationNodeAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ConversationNodeAuditing">
 		<meta attribute="eclassName" inherit="false">ConversationNodeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participantRefs" table="`BPMN2AUDITING_CONVERSATIONNODEAUDITING_PARTICIPANTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CONVERSATIONNODEAUDITING_PARTICIPANTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="messageFlowRefs" table="`BPMN2AUDITING_CONVERSATIONNODEAUDITING_MESSAGEFLOWREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CONVERSATIONNODEAUDITING_MESSAGEFLOWREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="correlationKeys" table="`BPMN2AUDITING_CONVERSATIONNODEAUDITING_CORRELATIONKEYSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CONVERSATIONNODEAUDITING_CORRELATIONKEYS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CallConversationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ConversationNodeAuditing" discriminator-value="bpmn2Auditing.CallConversationAuditing">
 		<meta attribute="eclassName" inherit="false">CallConversationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participantAssociations" table="`BPMN2AUDITING_CALLCONVERSATIONAUDITING_PARTICIPANTASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CALLCONVERSATIONAUDITING_PARTICIPANTASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="calledCollaborationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CALLEDCOLLABORATIONREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.RootElementAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.RootElementAuditing">
 		<meta attribute="eclassName" inherit="false">RootElementAuditing</meta>
@@ -3697,6 +3932,24 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CallableElementAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.CallableElementAuditing">
 		<meta attribute="eclassName" inherit="false">CallableElementAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="supportedInterfaceRefs" table="`BPMN2AUDITING_CALLABLEELEMENTAUDITING_SUPPORTEDINTERFACEREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CALLABLEELEMENTAUDITING_SUPPORTEDINTERFACEREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="ioSpecification" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IOSPECIFICATION`"/>
+		</property>
+		<bag name="ioBinding" table="`BPMN2AUDITING_CALLABLEELEMENTAUDITING_IOBINDINGAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CALLABLEELEMENTAUDITING_IOBINDING_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.EventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.EventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">EventDefinitionAuditing</meta>
@@ -3709,46 +3962,183 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CategoryAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.CategoryAuditing">
 		<meta attribute="eclassName" inherit="false">CategoryAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="categoryValue" table="`BPMN2AUDITING_CATEGORYAUDITING_CATEGORYVALUEAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CATEGORYAUDITING_CATEGORYVALUE_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CategoryValueAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.CategoryValueAuditing">
 		<meta attribute="eclassName" inherit="false">CategoryValueAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="value" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`VALUE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CollaborationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.CollaborationAuditing">
 		<meta attribute="eclassName" inherit="false">CollaborationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participants" table="`BPMN2AUDITING_COLLABORATIONAUDITING_PARTICIPANTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_PARTICIPANTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="messageFlows" table="`BPMN2AUDITING_COLLABORATIONAUDITING_MESSAGEFLOWSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_MESSAGEFLOWS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="artifacts" table="`BPMN2AUDITING_COLLABORATIONAUDITING_ARTIFACTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_ARTIFACTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="conversations" table="`BPMN2AUDITING_COLLABORATIONAUDITING_CONVERSATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_CONVERSATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="conversationAssociations" table="`BPMN2AUDITING_COLLABORATIONAUDITING_CONVERSATIONASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_CONVERSATIONASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="participantAssociations" table="`BPMN2AUDITING_COLLABORATIONAUDITING_PARTICIPANTASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_PARTICIPANTASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="messageFlowAssociations" table="`BPMN2AUDITING_COLLABORATIONAUDITING_MESSAGEFLOWASSOCIATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_MESSAGEFLOWASSOCIATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="correlationKeys" table="`BPMN2AUDITING_COLLABORATIONAUDITING_CORRELATIONKEYSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_CORRELATIONKEYS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="choreographyRef" table="`BPMN2AUDITING_COLLABORATIONAUDITING_CHOREOGRAPHYREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_CHOREOGRAPHYREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="conversationLinks" table="`BPMN2AUDITING_COLLABORATIONAUDITING_CONVERSATIONLINKSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`COLLABORATIONAUDITING_CONVERSATIONLINKS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="isClosed" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISCLOSED`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ChoreographyAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CollaborationAuditing" discriminator-value="bpmn2Auditing.ChoreographyAuditing">
 		<meta attribute="eclassName" inherit="false">ChoreographyAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="laneSets" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_LANESETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_LANESETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="flowElements" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.FlowElementsContainerAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.FlowElementsContainerAuditing">
 		<meta attribute="eclassName" inherit="false">FlowElementsContainerAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="laneSets" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_LANESETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_LANESETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="flowElements" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ChoreographyTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ChoreographyActivityAuditing" discriminator-value="bpmn2Auditing.ChoreographyTaskAuditing">
 		<meta attribute="eclassName" inherit="false">ChoreographyTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="messageFlowRef" table="`BPMN2AUDITING_CHOREOGRAPHYTASKAUDITING_MESSAGEFLOWREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CHOREOGRAPHYTASKAUDITING_MESSAGEFLOWREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CompensateEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.CompensateEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">CompensateEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="activityRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ACTIVITYREF`"/>
+		</property>
+		<property name="waitForCompletion" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`WAITFORCOMPLETION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ComplexBehaviorDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ComplexBehaviorDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">ComplexBehaviorDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="condition" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CONDITION`"/>
+		</property>
+		<property name="event" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EVENT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GatewayAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowNodeAuditing" discriminator-value="bpmn2Auditing.GatewayAuditing">
 		<meta attribute="eclassName" inherit="false">GatewayAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="gatewayDirection" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`GATEWAYDIRECTION`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.GatewayDirection</param>
+				<param name="eclassifier">GatewayDirection</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ComplexGatewayAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GatewayAuditing" discriminator-value="bpmn2Auditing.ComplexGatewayAuditing">
 		<meta attribute="eclassName" inherit="false">ComplexGatewayAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="activationCondition" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ACTIVATIONCONDITION`"/>
+		</property>
+		<property name="default" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEFAULT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ConditionalEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.ConditionalEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">ConditionalEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="condition" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CONDITION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ConversationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ConversationNodeAuditing" discriminator-value="bpmn2Auditing.ConversationAuditing">
 		<meta attribute="eclassName" inherit="false">ConversationAuditing</meta>
@@ -3757,10 +4147,25 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ConversationAssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ConversationAssociationAuditing">
 		<meta attribute="eclassName" inherit="false">ConversationAssociationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="innerConversationNodeRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INNERCONVERSATIONNODEREF`"/>
+		</property>
+		<property name="outerConversationNodeRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTERCONVERSATIONNODEREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ConversationLinkAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ConversationLinkAuditing">
 		<meta attribute="eclassName" inherit="false">ConversationLinkAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="sourceRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SOURCEREF`"/>
+		</property>
+		<property name="targetRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETREF`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.InteractionNodeAuditing" abstract="false" lazy="false" discriminator-value="bpmn2Auditing.InteractionNodeAuditing" table="`BPMN2AUDITING_INTERACTIONNODEAUDITING`">
 		<meta attribute="eclassName" inherit="false">InteractionNodeAuditing</meta>
@@ -3811,34 +4216,106 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CorrelationKeyAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.CorrelationKeyAuditing">
 		<meta attribute="eclassName" inherit="false">CorrelationKeyAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="correlationPropertyRef" table="`BPMN2AUDITING_CORRELATIONKEYAUDITING_CORRELATIONPROPERTYREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CORRELATIONKEYAUDITING_CORRELATIONPROPERTYREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CorrelationPropertyAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.CorrelationPropertyAuditing">
 		<meta attribute="eclassName" inherit="false">CorrelationPropertyAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="correlationPropertyRetrievalExpression" table="`BPMN2AUDITING_CORRELATIONPROPERTYAUDITING_CORRELATIONPROPERTYRETRIEVALEXPRESSIONAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CORRELATIONPROPERTYAUDITING_CORRELATIONPROPERTYRETRIEVALEXPRESSION_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="type" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CorrelationPropertyBindingAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.CorrelationPropertyBindingAuditing">
 		<meta attribute="eclassName" inherit="false">CorrelationPropertyBindingAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="dataPath" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATAPATH`"/>
+		</property>
+		<property name="correlationPropertyRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CORRELATIONPROPERTYREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CorrelationPropertyRetrievalExpressionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.CorrelationPropertyRetrievalExpressionAuditing">
 		<meta attribute="eclassName" inherit="false">CorrelationPropertyRetrievalExpressionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="messagePath" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MESSAGEPATH`"/>
+		</property>
+		<property name="messageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MESSAGEREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.CorrelationSubscriptionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.CorrelationSubscriptionAuditing">
 		<meta attribute="eclassName" inherit="false">CorrelationSubscriptionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="correlationPropertyBinding" table="`BPMN2AUDITING_CORRELATIONSUBSCRIPTIONAUDITING_CORRELATIONPROPERTYBINDINGAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`CORRELATIONSUBSCRIPTIONAUDITING_CORRELATIONPROPERTYBINDING_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="correlationKeyRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CORRELATIONKEYREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataAssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.DataAssociationAuditing">
 		<meta attribute="eclassName" inherit="false">DataAssociationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="sourceRef" table="`BPMN2AUDITING_DATAASSOCIATIONAUDITING_SOURCEREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DATAASSOCIATIONAUDITING_SOURCEREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="targetRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETREF`"/>
+		</property>
+		<property name="transformation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TRANSFORMATION`"/>
+		</property>
+		<bag name="assignment" table="`BPMN2AUDITING_DATAASSOCIATIONAUDITING_ASSIGNMENTAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DATAASSOCIATIONAUDITING_ASSIGNMENT_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ItemAwareElementAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ItemAwareElementAuditing">
 		<meta attribute="eclassName" inherit="false">ItemAwareElementAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="dataState" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATASTATE`"/>
+		</property>
+		<property name="itemSubjectRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ITEMSUBJECTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataInputAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ItemAwareElementAuditing" discriminator-value="bpmn2Auditing.DataInputAuditing">
 		<meta attribute="eclassName" inherit="false">DataInputAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="isCollection" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISCOLLECTION`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataInputAssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.DataAssociationAuditing" discriminator-value="bpmn2Auditing.DataInputAssociationAuditing">
 		<meta attribute="eclassName" inherit="false">DataInputAssociationAuditing</meta>
@@ -3847,14 +4324,38 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataObjectAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowElementAuditing" discriminator-value="bpmn2Auditing.DataObjectAuditing">
 		<meta attribute="eclassName" inherit="false">DataObjectAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="dataState" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATASTATE`"/>
+		</property>
+		<property name="itemSubjectRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ITEMSUBJECTREF`"/>
+		</property>
+		<property name="isCollection" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISCOLLECTION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataObjectReferenceAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowElementAuditing" discriminator-value="bpmn2Auditing.DataObjectReferenceAuditing">
 		<meta attribute="eclassName" inherit="false">DataObjectReferenceAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="dataState" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATASTATE`"/>
+		</property>
+		<property name="itemSubjectRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ITEMSUBJECTREF`"/>
+		</property>
+		<property name="dataObjectRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATAOBJECTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataOutputAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ItemAwareElementAuditing" discriminator-value="bpmn2Auditing.DataOutputAuditing">
 		<meta attribute="eclassName" inherit="false">DataOutputAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="isCollection" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISCOLLECTION`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataOutputAssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.DataAssociationAuditing" discriminator-value="bpmn2Auditing.DataOutputAssociationAuditing">
 		<meta attribute="eclassName" inherit="false">DataOutputAssociationAuditing</meta>
@@ -3863,26 +4364,154 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataStateAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.DataStateAuditing">
 		<meta attribute="eclassName" inherit="false">DataStateAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataStoreAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ItemAwareElementAuditing" discriminator-value="bpmn2Auditing.DataStoreAuditing">
 		<meta attribute="eclassName" inherit="false">DataStoreAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="capacity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`CAPACITY`"/>
+		</property>
+		<property name="isUnlimited" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISUNLIMITED`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DataStoreReferenceAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowElementAuditing" discriminator-value="bpmn2Auditing.DataStoreReferenceAuditing">
 		<meta attribute="eclassName" inherit="false">DataStoreReferenceAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="dataState" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATASTATE`"/>
+		</property>
+		<property name="itemSubjectRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ITEMSUBJECTREF`"/>
+		</property>
+		<property name="dataStoreRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DATASTOREREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DefinitionsAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.DefinitionsAuditing">
 		<meta attribute="eclassName" inherit="false">DefinitionsAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="imports" table="`BPMN2AUDITING_DEFINITIONSAUDITING_IMPORTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DEFINITIONSAUDITING_IMPORTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="extensions" table="`BPMN2AUDITING_DEFINITIONSAUDITING_EXTENSIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DEFINITIONSAUDITING_EXTENSIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="rootElements" table="`BPMN2AUDITING_DEFINITIONSAUDITING_ROOTELEMENTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DEFINITIONSAUDITING_ROOTELEMENTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="diagrams" table="`BPMN2AUDITING_DEFINITIONSAUDITING_DIAGRAMSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DEFINITIONSAUDITING_DIAGRAMS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="relationships" table="`BPMN2AUDITING_DEFINITIONSAUDITING_RELATIONSHIPSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`DEFINITIONSAUDITING_RELATIONSHIPS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="exporter" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EXPORTER`"/>
+		</property>
+		<property name="exporterVersion" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EXPORTERVERSION`"/>
+		</property>
+		<property name="expressionLanguage" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EXPRESSIONLANGUAGE`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="targetNamespace" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETNAMESPACE`"/>
+		</property>
+		<property name="typeLanguage" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TYPELANGUAGE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.DocumentationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.DocumentationAuditing">
 		<meta attribute="eclassName" inherit="false">DocumentationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<list name="mixed" table="`BPMN2AUDITING_DOCUMENTATIONAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DOCUMENTATIONAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`DOCUMENTATIONAUDITING_MIXED_IDX`"/>
+			<one-to-many entity-name="bpmn2Auditing.DocumentationAuditing_mixed"/>
+		</list>
+		<property name="text" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TEXT`"/>
+		</property>
+		<property name="textFormat" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TEXTFORMAT`"/>
+		</property>
 	</subclass>
+	<class entity-name="bpmn2Auditing.DocumentationAuditing_mixed" lazy="false" table="`BPMN2AUDITING_DOCUMENTATIONAUDITING_MIXED`">
+		<meta attribute="featureMap" inherit="false">bpmn2Auditing.DocumentationAuditing</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="text" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_TEXT`"/>
+		</property>
+		<property name="textFormat" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_TEXTFORMAT`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ThrowEventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventAuditing" discriminator-value="bpmn2Auditing.ThrowEventAuditing">
 		<meta attribute="eclassName" inherit="false">ThrowEventAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="dataInputs" table="`BPMN2AUDITING_THROWEVENTAUDITING_DATAINPUTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`THROWEVENTAUDITING_DATAINPUTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="dataInputAssociation" table="`BPMN2AUDITING_THROWEVENTAUDITING_DATAINPUTASSOCIATIONAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`THROWEVENTAUDITING_DATAINPUTASSOCIATION_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="inputSet" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INPUTSET`"/>
+		</property>
+		<bag name="eventDefinitions" table="`BPMN2AUDITING_THROWEVENTAUDITING_EVENTDEFINITIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`THROWEVENTAUDITING_EVENTDEFINITIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="eventDefinitionRefs" table="`BPMN2AUDITING_THROWEVENTAUDITING_EVENTDEFINITIONREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`THROWEVENTAUDITING_EVENTDEFINITIONREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.EndEventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ThrowEventAuditing" discriminator-value="bpmn2Auditing.EndEventAuditing">
 		<meta attribute="eclassName" inherit="false">EndEventAuditing</meta>
@@ -3895,26 +4524,64 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ErrorAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.ErrorAuditing">
 		<meta attribute="eclassName" inherit="false">ErrorAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="errorCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ERRORCODE`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="structureRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STRUCTUREREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ErrorEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.ErrorEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">ErrorEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="errorRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ERRORREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.EscalationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.EscalationAuditing">
 		<meta attribute="eclassName" inherit="false">EscalationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="escalationCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ESCALATIONCODE`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="structureRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STRUCTUREREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.EscalationEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.EscalationEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">EscalationEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="escalationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ESCALATIONREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.EventBasedGatewayAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GatewayAuditing" discriminator-value="bpmn2Auditing.EventBasedGatewayAuditing">
 		<meta attribute="eclassName" inherit="false">EventBasedGatewayAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="eventGatewayType" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`EVENTGATEWAYTYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.EventBasedGatewayType</param>
+				<param name="eclassifier">EventBasedGatewayType</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
+		<property name="instantiate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`INSTANTIATE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ExclusiveGatewayAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GatewayAuditing" discriminator-value="bpmn2Auditing.ExclusiveGatewayAuditing">
 		<meta attribute="eclassName" inherit="false">ExclusiveGatewayAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="default" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEFAULT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ExpressionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ExpressionAuditing">
 		<meta attribute="eclassName" inherit="false">ExpressionAuditing</meta>
@@ -4150,18 +4817,68 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.FormalExpressionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ExpressionAuditing" discriminator-value="bpmn2Auditing.FormalExpressionAuditing">
 		<meta attribute="eclassName" inherit="false">FormalExpressionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<list name="mixed" table="`BPMN2AUDITING_FORMALEXPRESSIONAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`FORMALEXPRESSIONAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`FORMALEXPRESSIONAUDITING_MIXED_IDX`"/>
+			<one-to-many entity-name="bpmn2Auditing.FormalExpressionAuditing_mixed"/>
+		</list>
+		<property name="body" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BODY`"/>
+		</property>
+		<property name="evaluatesToTypeRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EVALUATESTOTYPEREF`"/>
+		</property>
+		<property name="language" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LANGUAGE`"/>
+		</property>
 	</subclass>
+	<class entity-name="bpmn2Auditing.FormalExpressionAuditing_mixed" lazy="false" table="`BPMN2AUDITING_FORMALEXPRESSIONAUDITING_MIXED`">
+		<meta attribute="featureMap" inherit="false">bpmn2Auditing.FormalExpressionAuditing</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="body" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_BODY`"/>
+		</property>
+		<property name="evaluatesToTypeRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_EVALUATESTOTYPEREF`"/>
+		</property>
+		<property name="language" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_LANGUAGE`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GlobalTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CallableElementAuditing" discriminator-value="bpmn2Auditing.GlobalTaskAuditing">
 		<meta attribute="eclassName" inherit="false">GlobalTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="resources" table="`BPMN2AUDITING_GLOBALTASKAUDITING_RESOURCESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`GLOBALTASKAUDITING_RESOURCES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GlobalBusinessRuleTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GlobalTaskAuditing" discriminator-value="bpmn2Auditing.GlobalBusinessRuleTaskAuditing">
 		<meta attribute="eclassName" inherit="false">GlobalBusinessRuleTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GlobalChoreographyTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ChoreographyAuditing" discriminator-value="bpmn2Auditing.GlobalChoreographyTaskAuditing">
 		<meta attribute="eclassName" inherit="false">GlobalChoreographyTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="initiatingParticipantRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INITIATINGPARTICIPANTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GlobalConversationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CollaborationAuditing" discriminator-value="bpmn2Auditing.GlobalConversationAuditing">
 		<meta attribute="eclassName" inherit="false">GlobalConversationAuditing</meta>
@@ -4174,18 +4891,51 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GlobalScriptTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GlobalTaskAuditing" discriminator-value="bpmn2Auditing.GlobalScriptTaskAuditing">
 		<meta attribute="eclassName" inherit="false">GlobalScriptTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="script" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SCRIPT`"/>
+		</property>
+		<property name="scriptLanguage" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SCRIPTLANGUAGE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GlobalUserTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GlobalTaskAuditing" discriminator-value="bpmn2Auditing.GlobalUserTaskAuditing">
 		<meta attribute="eclassName" inherit="false">GlobalUserTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="renderings" table="`BPMN2AUDITING_GLOBALUSERTASKAUDITING_RENDERINGSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`GLOBALUSERTASKAUDITING_RENDERINGS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.GroupAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ArtifactAuditing" discriminator-value="bpmn2Auditing.GroupAuditing">
 		<meta attribute="eclassName" inherit="false">GroupAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="categoryValueRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CATEGORYVALUEREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ResourceRoleAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ResourceRoleAuditing">
 		<meta attribute="eclassName" inherit="false">ResourceRoleAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="resourceRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`RESOURCEREF`"/>
+		</property>
+		<bag name="resourceParameterBindings" table="`BPMN2AUDITING_RESOURCEROLEAUDITING_RESOURCEPARAMETERBINDINGSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`RESOURCEROLEAUDITING_RESOURCEPARAMETERBINDINGS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="resourceAssignmentExpression" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`RESOURCEASSIGNMENTEXPRESSION`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.PerformerAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ResourceRoleAuditing" discriminator-value="bpmn2Auditing.PerformerAuditing">
 		<meta attribute="eclassName" inherit="false">PerformerAuditing</meta>
@@ -4257,22 +5007,97 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.InclusiveGatewayAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GatewayAuditing" discriminator-value="bpmn2Auditing.InclusiveGatewayAuditing">
 		<meta attribute="eclassName" inherit="false">InclusiveGatewayAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="default" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEFAULT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.InputOutputBindingAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.InputOutputBindingAuditing">
 		<meta attribute="eclassName" inherit="false">InputOutputBindingAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="inputDataRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INPUTDATAREF`"/>
+		</property>
+		<property name="operationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OPERATIONREF`"/>
+		</property>
+		<property name="outputDataRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTPUTDATAREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.InputOutputSpecificationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.InputOutputSpecificationAuditing">
 		<meta attribute="eclassName" inherit="false">InputOutputSpecificationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="dataInputs" table="`BPMN2AUDITING_INPUTOUTPUTSPECIFICATIONAUDITING_DATAINPUTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTOUTPUTSPECIFICATIONAUDITING_DATAINPUTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="dataOutputs" table="`BPMN2AUDITING_INPUTOUTPUTSPECIFICATIONAUDITING_DATAOUTPUTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTOUTPUTSPECIFICATIONAUDITING_DATAOUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="inputSets" table="`BPMN2AUDITING_INPUTOUTPUTSPECIFICATIONAUDITING_INPUTSETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTOUTPUTSPECIFICATIONAUDITING_INPUTSETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="outputSets" table="`BPMN2AUDITING_INPUTOUTPUTSPECIFICATIONAUDITING_OUTPUTSETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTOUTPUTSPECIFICATIONAUDITING_OUTPUTSETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.InputSetAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.InputSetAuditing">
 		<meta attribute="eclassName" inherit="false">InputSetAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="dataInputRefs" table="`BPMN2AUDITING_INPUTSETAUDITING_DATAINPUTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTSETAUDITING_DATAINPUTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="optionalInputRefs" table="`BPMN2AUDITING_INPUTSETAUDITING_OPTIONALINPUTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTSETAUDITING_OPTIONALINPUTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="whileExecutingInputRefs" table="`BPMN2AUDITING_INPUTSETAUDITING_WHILEEXECUTINGINPUTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTSETAUDITING_WHILEEXECUTINGINPUTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="outputSetRefs" table="`BPMN2AUDITING_INPUTSETAUDITING_OUTPUTSETREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INPUTSETAUDITING_OUTPUTSETREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.InterfaceAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.InterfaceAuditing">
 		<meta attribute="eclassName" inherit="false">InterfaceAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="operations" table="`BPMN2AUDITING_INTERFACEAUDITING_OPERATIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`INTERFACEAUDITING_OPERATIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="implementationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATIONREF`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.IntermediateCatchEventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CatchEventAuditing" discriminator-value="bpmn2Auditing.IntermediateCatchEventAuditing">
 		<meta attribute="eclassName" inherit="false">IntermediateCatchEventAuditing</meta>
@@ -4285,18 +5110,71 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ItemDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.ItemDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">ItemDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="isCollection" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISCOLLECTION`"/>
+		</property>
+		<property name="itemKind" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`ITEMKIND`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.ItemKind</param>
+				<param name="eclassifier">ItemKind</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
+		<property name="structureRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STRUCTUREREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.LaneAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.LaneAuditing">
 		<meta attribute="eclassName" inherit="false">LaneAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="partitionElement" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PARTITIONELEMENT`"/>
+		</property>
+		<bag name="flowNodeRefs" table="`BPMN2AUDITING_LANEAUDITING_FLOWNODEREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`LANEAUDITING_FLOWNODEREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="childLaneSet" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CHILDLANESET`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="partitionElementRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PARTITIONELEMENTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.LaneSetAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.LaneSetAuditing">
 		<meta attribute="eclassName" inherit="false">LaneSetAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="lanes" table="`BPMN2AUDITING_LANESETAUDITING_LANESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`LANESETAUDITING_LANES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.LinkEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.LinkEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">LinkEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="source" table="`BPMN2AUDITING_LINKEVENTDEFINITIONAUDITING_SOURCEAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`LINKEVENTDEFINITIONAUDITING_SOURCE_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="target" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGET`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.LoopCharacteristicsAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.LoopCharacteristicsAuditing">
 		<meta attribute="eclassName" inherit="false">LoopCharacteristicsAuditing</meta>
@@ -4309,18 +5187,48 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.MessageAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.MessageAuditing">
 		<meta attribute="eclassName" inherit="false">MessageAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="itemRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ITEMREF`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.MessageEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.MessageEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">MessageEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="operationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OPERATIONREF`"/>
+		</property>
+		<property name="messageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MESSAGEREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.MessageFlowAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.MessageFlowAuditing">
 		<meta attribute="eclassName" inherit="false">MessageFlowAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="messageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MESSAGEREF`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="sourceRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SOURCEREF`"/>
+		</property>
+		<property name="targetRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.MessageFlowAssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.MessageFlowAssociationAuditing">
 		<meta attribute="eclassName" inherit="false">MessageFlowAssociationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="innerMessageFlowRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INNERMESSAGEFLOWREF`"/>
+		</property>
+		<property name="outerMessageFlowRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTERMESSAGEFLOWREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.MonitoringAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.MonitoringAuditing">
 		<meta attribute="eclassName" inherit="false">MonitoringAuditing</meta>
@@ -4329,14 +5237,100 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.MultiInstanceLoopCharacteristicsAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.LoopCharacteristicsAuditing" discriminator-value="bpmn2Auditing.MultiInstanceLoopCharacteristicsAuditing">
 		<meta attribute="eclassName" inherit="false">MultiInstanceLoopCharacteristicsAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="loopCardinality" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOOPCARDINALITY`"/>
+		</property>
+		<property name="loopDataInputRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOOPDATAINPUTREF`"/>
+		</property>
+		<property name="loopDataOutputRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOOPDATAOUTPUTREF`"/>
+		</property>
+		<property name="inputDataItem" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INPUTDATAITEM`"/>
+		</property>
+		<property name="outputDataItem" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTPUTDATAITEM`"/>
+		</property>
+		<bag name="complexBehaviorDefinition" table="`BPMN2AUDITING_MULTIINSTANCELOOPCHARACTERISTICSAUDITING_COMPLEXBEHAVIORDEFINITIONAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`MULTIINSTANCELOOPCHARACTERISTICSAUDITING_COMPLEXBEHAVIORDEFINITION_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="completionCondition" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMPLETIONCONDITION`"/>
+		</property>
+		<property name="behavior" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`BEHAVIOR`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.MultiInstanceBehavior</param>
+				<param name="eclassifier">MultiInstanceBehavior</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
+		<property name="isSequential" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISSEQUENTIAL`"/>
+		</property>
+		<property name="noneBehaviorEventRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NONEBEHAVIOREVENTREF`"/>
+		</property>
+		<property name="oneBehaviorEventRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ONEBEHAVIOREVENTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.OperationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.OperationAuditing">
 		<meta attribute="eclassName" inherit="false">OperationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="inMessageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INMESSAGEREF`"/>
+		</property>
+		<property name="outMessageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTMESSAGEREF`"/>
+		</property>
+		<bag name="errorRefs" table="`BPMN2AUDITING_OPERATIONAUDITING_ERRORREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`OPERATIONAUDITING_ERRORREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="implementationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATIONREF`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.OutputSetAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.OutputSetAuditing">
 		<meta attribute="eclassName" inherit="false">OutputSetAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="dataOutputRefs" table="`BPMN2AUDITING_OUTPUTSETAUDITING_DATAOUTPUTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`OUTPUTSETAUDITING_DATAOUTPUTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="optionalOutputRefs" table="`BPMN2AUDITING_OUTPUTSETAUDITING_OPTIONALOUTPUTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`OUTPUTSETAUDITING_OPTIONALOUTPUTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="whileExecutingOutputRefs" table="`BPMN2AUDITING_OUTPUTSETAUDITING_WHILEEXECUTINGOUTPUTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`OUTPUTSETAUDITING_WHILEEXECUTINGOUTPUTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="inputSetRefs" table="`BPMN2AUDITING_OUTPUTSETAUDITING_INPUTSETREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`OUTPUTSETAUDITING_INPUTSETREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ParallelGatewayAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.GatewayAuditing" discriminator-value="bpmn2Auditing.ParallelGatewayAuditing">
 		<meta attribute="eclassName" inherit="false">ParallelGatewayAuditing</meta>
@@ -4345,22 +5339,73 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ParticipantAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ParticipantAuditing">
 		<meta attribute="eclassName" inherit="false">ParticipantAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="interfaceRefs" table="`BPMN2AUDITING_PARTICIPANTAUDITING_INTERFACEREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PARTICIPANTAUDITING_INTERFACEREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="endPointRefs" table="`BPMN2AUDITING_PARTICIPANTAUDITING_ENDPOINTREFSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PARTICIPANTAUDITING_ENDPOINTREFS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="participantMultiplicity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PARTICIPANTMULTIPLICITY`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="processRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PROCESSREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ParticipantAssociationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ParticipantAssociationAuditing">
 		<meta attribute="eclassName" inherit="false">ParticipantAssociationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="innerParticipantRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`INNERPARTICIPANTREF`"/>
+		</property>
+		<property name="outerParticipantRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OUTERPARTICIPANTREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ParticipantMultiplicityAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ParticipantMultiplicityAuditing">
 		<meta attribute="eclassName" inherit="false">ParticipantMultiplicityAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="maximum" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`MAXIMUM`"/>
+		</property>
+		<property name="minimum" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`MINIMUM`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.PartnerEntityAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.PartnerEntityAuditing">
 		<meta attribute="eclassName" inherit="false">PartnerEntityAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participantRef" table="`BPMN2AUDITING_PARTNERENTITYAUDITING_PARTICIPANTREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PARTNERENTITYAUDITING_PARTICIPANTREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.PartnerRoleAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.PartnerRoleAuditing">
 		<meta attribute="eclassName" inherit="false">PartnerRoleAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="participantRef" table="`BPMN2AUDITING_PARTNERROLEAUDITING_PARTICIPANTREFAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PARTNERROLEAUDITING_PARTICIPANTREF_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.PotentialOwnerAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.HumanPerformerAuditing" discriminator-value="bpmn2Auditing.PotentialOwnerAuditing">
 		<meta attribute="eclassName" inherit="false">PotentialOwnerAuditing</meta>
@@ -4369,18 +5414,121 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ProcessAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CallableElementAuditing" discriminator-value="bpmn2Auditing.ProcessAuditing">
 		<meta attribute="eclassName" inherit="false">ProcessAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="laneSets" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_LANESETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_LANESETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="flowElements" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="auditing" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`AUDITING`"/>
+		</property>
+		<property name="monitoring" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MONITORING`"/>
+		</property>
+		<bag name="properties" table="`BPMN2AUDITING_PROCESSAUDITING_PROPERTIESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PROCESSAUDITING_PROPERTIES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="artifacts" table="`BPMN2AUDITING_PROCESSAUDITING_ARTIFACTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PROCESSAUDITING_ARTIFACTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="resources" table="`BPMN2AUDITING_PROCESSAUDITING_RESOURCESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PROCESSAUDITING_RESOURCES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="correlationSubscriptions" table="`BPMN2AUDITING_PROCESSAUDITING_CORRELATIONSUBSCRIPTIONSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PROCESSAUDITING_CORRELATIONSUBSCRIPTIONS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="supports" table="`BPMN2AUDITING_PROCESSAUDITING_SUPPORTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PROCESSAUDITING_SUPPORTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="definitionalCollaborationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEFINITIONALCOLLABORATIONREF`"/>
+		</property>
+		<property name="isClosed" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISCLOSED`"/>
+		</property>
+		<property name="isExecutable" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISEXECUTABLE`"/>
+		</property>
+		<property name="processType" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`PROCESSTYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.ProcessType</param>
+				<param name="eclassifier">ProcessType</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.PropertyAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ItemAwareElementAuditing" discriminator-value="bpmn2Auditing.PropertyAuditing">
 		<meta attribute="eclassName" inherit="false">PropertyAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ReceiveTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.TaskAuditing" discriminator-value="bpmn2Auditing.ReceiveTaskAuditing">
 		<meta attribute="eclassName" inherit="false">ReceiveTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
+		<property name="instantiate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`INSTANTIATE`"/>
+		</property>
+		<property name="messageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MESSAGEREF`"/>
+		</property>
+		<property name="operationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OPERATIONREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.RelationshipAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.RelationshipAuditing">
 		<meta attribute="eclassName" inherit="false">RelationshipAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="sources" table="`BPMN2AUDITING_RELATIONSHIPAUDITING_SOURCESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`RELATIONSHIPAUDITING_SOURCES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="targets" table="`BPMN2AUDITING_RELATIONSHIPAUDITING_TARGETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`RELATIONSHIPAUDITING_TARGETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="direction" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`DIRECTION`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.RelationshipDirection</param>
+				<param name="eclassifier">RelationshipDirection</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</param>
+			</type>
+		</property>
+		<property name="type" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.RenderingAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.RenderingAuditing">
 		<meta attribute="eclassName" inherit="false">RenderingAuditing</meta>
@@ -4389,58 +5537,163 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ResourceAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.ResourceAuditing">
 		<meta attribute="eclassName" inherit="false">ResourceAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="resourceParameters" table="`BPMN2AUDITING_RESOURCEAUDITING_RESOURCEPARAMETERSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`RESOURCEAUDITING_RESOURCEPARAMETERS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ResourceAssignmentExpressionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ResourceAssignmentExpressionAuditing">
 		<meta attribute="eclassName" inherit="false">ResourceAssignmentExpressionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="expression" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EXPRESSION`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ResourceParameterAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ResourceParameterAuditing">
 		<meta attribute="eclassName" inherit="false">ResourceParameterAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="isRequired" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISREQUIRED`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="type" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ResourceParameterBindingAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.BaseElementAuditing" discriminator-value="bpmn2Auditing.ResourceParameterBindingAuditing">
 		<meta attribute="eclassName" inherit="false">ResourceParameterBindingAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="expression" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`EXPRESSION`"/>
+		</property>
+		<property name="parameterRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PARAMETERREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ScriptTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.TaskAuditing" discriminator-value="bpmn2Auditing.ScriptTaskAuditing">
 		<meta attribute="eclassName" inherit="false">ScriptTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="script" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SCRIPT`"/>
+		</property>
+		<property name="scriptFormat" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SCRIPTFORMAT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SendTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.TaskAuditing" discriminator-value="bpmn2Auditing.SendTaskAuditing">
 		<meta attribute="eclassName" inherit="false">SendTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
+		<property name="messageRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MESSAGEREF`"/>
+		</property>
+		<property name="operationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OPERATIONREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SequenceFlowAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.FlowElementAuditing" discriminator-value="bpmn2Auditing.SequenceFlowAuditing">
 		<meta attribute="eclassName" inherit="false">SequenceFlowAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="conditionExpression" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CONDITIONEXPRESSION`"/>
+		</property>
+		<property name="isImmediate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISIMMEDIATE`"/>
+		</property>
+		<property name="sourceRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SOURCEREF`"/>
+		</property>
+		<property name="targetRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.ServiceTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.TaskAuditing" discriminator-value="bpmn2Auditing.ServiceTaskAuditing">
 		<meta attribute="eclassName" inherit="false">ServiceTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
+		<property name="operationRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`OPERATIONREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SignalAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.RootElementAuditing" discriminator-value="bpmn2Auditing.SignalAuditing">
 		<meta attribute="eclassName" inherit="false">SignalAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="structureRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STRUCTUREREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SignalEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.SignalEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">SignalEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="signalRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SIGNALREF`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.StandardLoopCharacteristicsAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.LoopCharacteristicsAuditing" discriminator-value="bpmn2Auditing.StandardLoopCharacteristicsAuditing">
 		<meta attribute="eclassName" inherit="false">StandardLoopCharacteristicsAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="loopCondition" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOOPCONDITION`"/>
+		</property>
+		<property name="loopMaximum" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOOPMAXIMUM`"/>
+		</property>
+		<property name="testBefore" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`TESTBEFORE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.StartEventAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.CatchEventAuditing" discriminator-value="bpmn2Auditing.StartEventAuditing">
 		<meta attribute="eclassName" inherit="false">StartEventAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="isInterrupting" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISINTERRUPTING`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SubChoreographyAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ChoreographyActivityAuditing" discriminator-value="bpmn2Auditing.SubChoreographyAuditing">
 		<meta attribute="eclassName" inherit="false">SubChoreographyAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="laneSets" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_LANESETSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_LANESETS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="flowElements" table="`BPMN2AUDITING_FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`FLOWELEMENTSCONTAINERAUDITING_FLOWELEMENTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<bag name="artifacts" table="`BPMN2AUDITING_SUBCHOREOGRAPHYAUDITING_ARTIFACTSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`SUBCHOREOGRAPHYAUDITING_ARTIFACTS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.SubConversationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ConversationNodeAuditing" discriminator-value="bpmn2Auditing.SubConversationAuditing">
 		<meta attribute="eclassName" inherit="false">SubConversationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="conversationNodes" table="`BPMN2AUDITING_SUBCONVERSATIONAUDITING_CONVERSATIONNODESAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`SUBCONVERSATIONAUDITING_CONVERSATIONNODES_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.TerminateEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.TerminateEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">TerminateEventDefinitionAuditing</meta>
@@ -4449,18 +5702,48 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.TextAnnotationAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.ArtifactAuditing" discriminator-value="bpmn2Auditing.TextAnnotationAuditing">
 		<meta attribute="eclassName" inherit="false">TextAnnotationAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="text" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TEXT`"/>
+		</property>
+		<property name="textFormat" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TEXTFORMAT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.TimerEventDefinitionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.EventDefinitionAuditing" discriminator-value="bpmn2Auditing.TimerEventDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">TimerEventDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="timeDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TIMEDATE`"/>
+		</property>
+		<property name="timeDuration" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TIMEDURATION`"/>
+		</property>
+		<property name="timeCycle" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TIMECYCLE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.TransactionAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.SubProcessAuditing" discriminator-value="bpmn2Auditing.TransactionAuditing">
 		<meta attribute="eclassName" inherit="false">TransactionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<property name="protocol" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PROTOCOL`"/>
+		</property>
+		<property name="method" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`METHOD`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmn2Auditing.UserTaskAuditing" abstract="false" lazy="false" extends="bpmn2Auditing.TaskAuditing" discriminator-value="bpmn2Auditing.UserTaskAuditing">
 		<meta attribute="eclassName" inherit="false">UserTaskAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMIAuditing</meta>
+		<bag name="renderings" table="`BPMN2AUDITING_USERTASKAUDITING_RENDERINGSAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`USERTASKAUDITING_RENDERINGS_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
+		<property name="implementation" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`IMPLEMENTATION`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.DocumentRootAuditing" abstract="false" lazy="false" discriminator-value="bpmndiAuditing.DocumentRootAuditing" table="`BPMNDIAUDITING_DOCUMENTROOTAUDITING`">
 		<meta attribute="eclassName" inherit="false">DocumentRootAuditing</meta>
@@ -4607,6 +5890,15 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.BPMNDiagramAuditing" abstract="false" lazy="false" extends="dddiAuditing.DiagramAuditing" discriminator-value="bpmndiAuditing.BPMNDiagramAuditing">
 		<meta attribute="eclassName" inherit="false">BPMNDiagramAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/DI-XMIAuditing</meta>
+		<property name="plane" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PLANE`"/>
+		</property>
+		<bag name="labelStyle" table="`BPMNDIAUDITING_BPMNDIAGRAMAUDITING_LABELSTYLEAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`BPMNDIAGRAMAUDITING_LABELSTYLE_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<element type="java.lang.String"/>
+		</bag>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.DiagramElementAuditing" abstract="false" lazy="false" discriminator-value="dddiAuditing.DiagramElementAuditing" table="`DDDIAUDITING_DIAGRAMELEMENTAUDITING`">
 		<meta attribute="eclassName" inherit="false">DiagramElementAuditing</meta>
@@ -4660,6 +5952,13 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.EdgeAuditing" abstract="false" lazy="false" extends="dddiAuditing.DiagramElementAuditing" discriminator-value="dddiAuditing.EdgeAuditing">
 		<meta attribute="eclassName" inherit="false">EdgeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMIAuditing</meta>
+		<list name="waypoint" table="`DDDIAUDITING_EDGEAUDITING_WAYPOINTAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`EDGEAUDITING_WAYPOINT_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`EDGEAUDITING_WAYPOINT_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.LabeledEdgeAuditing" abstract="false" lazy="false" extends="dddiAuditing.EdgeAuditing" discriminator-value="dddiAuditing.LabeledEdgeAuditing">
 		<meta attribute="eclassName" inherit="false">LabeledEdgeAuditing</meta>
@@ -4668,6 +5967,26 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.BPMNEdgeAuditing" abstract="false" lazy="false" extends="dddiAuditing.LabeledEdgeAuditing" discriminator-value="bpmndiAuditing.BPMNEdgeAuditing">
 		<meta attribute="eclassName" inherit="false">BPMNEdgeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/DI-XMIAuditing</meta>
+		<property name="label" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LABEL`"/>
+		</property>
+		<property name="bpmnElement" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BPMNELEMENT`"/>
+		</property>
+		<property name="messageVisibleKind" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`MESSAGEVISIBLEKIND`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.di.MessageVisibleKind</param>
+				<param name="eclassifier">MessageVisibleKind</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/DI-XMI</param>
+			</type>
+		</property>
+		<property name="sourceElement" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SOURCEELEMENT`"/>
+		</property>
+		<property name="targetElement" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TARGETELEMENT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.NodeAuditing" abstract="false" lazy="false" extends="dddiAuditing.DiagramElementAuditing" discriminator-value="dddiAuditing.NodeAuditing">
 		<meta attribute="eclassName" inherit="false">NodeAuditing</meta>
@@ -4676,10 +5995,16 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.LabelAuditing" abstract="false" lazy="false" extends="dddiAuditing.NodeAuditing" discriminator-value="dddiAuditing.LabelAuditing">
 		<meta attribute="eclassName" inherit="false">LabelAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMIAuditing</meta>
+		<property name="bounds" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BOUNDS`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.BPMNLabelAuditing" abstract="false" lazy="false" extends="dddiAuditing.LabelAuditing" discriminator-value="bpmndiAuditing.BPMNLabelAuditing">
 		<meta attribute="eclassName" inherit="false">BPMNLabelAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/DI-XMIAuditing</meta>
+		<property name="labelStyle" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LABELSTYLE`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.StyleAuditing" abstract="false" lazy="false" discriminator-value="dddiAuditing.StyleAuditing" table="`DDDIAUDITING_STYLEAUDITING`">
 		<meta attribute="eclassName" inherit="false">StyleAuditing</meta>
@@ -4733,18 +6058,34 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.BPMNLabelStyleAuditing" abstract="false" lazy="false" extends="dddiAuditing.StyleAuditing" discriminator-value="bpmndiAuditing.BPMNLabelStyleAuditing">
 		<meta attribute="eclassName" inherit="false">BPMNLabelStyleAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/DI-XMIAuditing</meta>
+		<property name="font" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FONT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.PlaneAuditing" abstract="false" lazy="false" extends="dddiAuditing.NodeAuditing" discriminator-value="dddiAuditing.PlaneAuditing">
 		<meta attribute="eclassName" inherit="false">PlaneAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMIAuditing</meta>
+		<list name="planeElement" table="`DDDIAUDITING_PLANEAUDITING_PLANEELEMENTAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`PLANEAUDITING_PLANEELEMENT_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`PLANEAUDITING_PLANEELEMENT_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.BPMNPlaneAuditing" abstract="false" lazy="false" extends="dddiAuditing.PlaneAuditing" discriminator-value="bpmndiAuditing.BPMNPlaneAuditing">
 		<meta attribute="eclassName" inherit="false">BPMNPlaneAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/DI-XMIAuditing</meta>
+		<property name="bpmnElement" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BPMNELEMENT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.ShapeAuditing" abstract="false" lazy="false" extends="dddiAuditing.NodeAuditing" discriminator-value="dddiAuditing.ShapeAuditing">
 		<meta attribute="eclassName" inherit="false">ShapeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMIAuditing</meta>
+		<property name="bounds" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BOUNDS`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.LabeledShapeAuditing" abstract="false" lazy="false" extends="dddiAuditing.ShapeAuditing" discriminator-value="dddiAuditing.LabeledShapeAuditing">
 		<meta attribute="eclassName" inherit="false">LabeledShapeAuditing</meta>
@@ -4753,6 +6094,35 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bpmndiAuditing.BPMNShapeAuditing" abstract="false" lazy="false" extends="dddiAuditing.LabeledShapeAuditing" discriminator-value="bpmndiAuditing.BPMNShapeAuditing">
 		<meta attribute="eclassName" inherit="false">BPMNShapeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/DI-XMIAuditing</meta>
+		<property name="label" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LABEL`"/>
+		</property>
+		<property name="bpmnElement" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BPMNELEMENT`"/>
+		</property>
+		<property name="choreographyActivityShape" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CHOREOGRAPHYACTIVITYSHAPE`"/>
+		</property>
+		<property name="isExpanded" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISEXPANDED`"/>
+		</property>
+		<property name="isHorizontal" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISHORIZONTAL`"/>
+		</property>
+		<property name="isMarkerVisible" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISMARKERVISIBLE`"/>
+		</property>
+		<property name="isMessageVisible" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`ISMESSAGEVISIBLE`"/>
+		</property>
+		<property name="participantBandKind" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`PARTICIPANTBANDKIND`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.bpmn2.di.ParticipantBandKind</param>
+				<param name="eclassifier">ParticipantBandKind</param>
+				<param name="epackage">http://www.omg.org/spec/BPMN/20100524/DI-XMI</param>
+			</type>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="dddiAuditing.DocumentRootAuditing" abstract="false" lazy="false" discriminator-value="dddiAuditing.DocumentRootAuditing" table="`DDDIAUDITING_DOCUMENTROOTAUDITING`">
 		<meta attribute="eclassName" inherit="false">DocumentRootAuditing</meta>

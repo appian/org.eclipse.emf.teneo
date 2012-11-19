@@ -60,6 +60,7 @@ public class Bz387421Action extends AbstractTestAction {
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
 		props.setProperty(PersistenceOptions.AUTO_ADD_REFERENCED_EPACKAGES, "true");
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "false");
 		return props;
 	}
 

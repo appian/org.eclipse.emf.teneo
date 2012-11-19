@@ -128,6 +128,12 @@
 		<key>
 			<column name="`ADDRESSAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="postcode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`POSTCODE`"/>
+		</property>
+		<property name="exportCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+			<column not-null="false" unique="false" name="`EXPORTCODE`"/>
+		</property>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DistrictUKAddressAuditing" abstract="false" lazy="false" extends="UKAddressAuditing" table="`DISTRICTUKADDRESSAUDITING`">
 		<meta attribute="eclassName" inherit="false">DistrictUKAddressAuditing</meta>
@@ -135,6 +141,9 @@
 		<key>
 			<column name="`UKADDRESSAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="district" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DISTRICT`"/>
+		</property>
 	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="FirstAddressHolderAuditing" abstract="false" lazy="false" table="`FIRSTADDRESSHOLDERAUDITING`">
 		<meta attribute="eclassName" inherit="false">FirstAddressHolderAuditing</meta>
@@ -241,5 +250,16 @@
 		<key>
 			<column name="`ADDRESSAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="state" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`STATE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.USState</param>
+				<param name="eclassifier">USState</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/extension</param>
+			</type>
+		</property>
+		<property name="zip" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+			<column not-null="false" unique="false" name="`ZIP`"/>
+		</property>
 	</joined-subclass>
 </hibernate-mapping>

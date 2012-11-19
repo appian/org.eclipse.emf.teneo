@@ -181,6 +181,9 @@
 		<key>
 			<column name="`PERSONAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="department" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEPARTMENT`"/>
+		</property>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="StudentAuditing" abstract="false" lazy="false" extends="PersonAuditing" table="`STUDENTAUDITING`">
 		<meta attribute="eclassName" inherit="false">StudentAuditing</meta>
@@ -188,5 +191,8 @@
 		<key>
 			<column name="`PERSONAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="faculty" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FACULTY`"/>
+		</property>
 	</joined-subclass>
 </hibernate-mapping>

@@ -420,6 +420,13 @@
 		<key>
 			<column name="`ACCOUNTAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<list name="report" table="`BALANCEACCOUNTAUDITING_REPORTAUDITING`" lazy="true" cascade="all">
+			<key update="true">
+				<column name="`BALANCEACCOUNTAUDITING_REPORT_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`BALANCEACCOUNTAUDITING_REPORT_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
 	</joined-subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="JournalGroupAuditing" abstract="false" lazy="false" table="`JOURNALGROUPAUDITING`">
 		<meta attribute="eclassName" inherit="false">JournalGroupAuditing</meta>

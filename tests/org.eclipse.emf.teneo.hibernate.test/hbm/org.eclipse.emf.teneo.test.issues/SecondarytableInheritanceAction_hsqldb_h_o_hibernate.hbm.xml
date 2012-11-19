@@ -107,5 +107,15 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PersonAuditing" abstract="false" lazy="false" extends="GenericAuditing" discriminator-value="PersonAuditing">
 		<meta attribute="eclassName" inherit="false">PersonAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/secondaryAuditing</meta>
+		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ADDRESS`"/>
+		</property>
+		<array name="photo" table="`PERSONAUDITING_PHOTOAUDITING`" cascade="all">
+			<key update="true">
+				<column name="`PERSONAUDITING_PHOTO_TENEO_AUDIT_ID`" unique="false"/>
+			</key>
+			<list-index column="`PERSONAUDITING_PHOTO_IDX`"/>
+			<element type="byte"/>
+		</array>
 	</subclass>
 </hibernate-mapping>

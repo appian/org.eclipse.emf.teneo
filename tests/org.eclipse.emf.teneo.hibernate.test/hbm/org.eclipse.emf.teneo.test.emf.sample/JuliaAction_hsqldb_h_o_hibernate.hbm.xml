@@ -223,6 +223,15 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="AdultBooksAuditing" abstract="false" lazy="false" extends="BookDefinitionAuditing" discriminator-value="AdultBooksAuditing">
 		<meta attribute="eclassName" inherit="false">AdultBooksAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsdAuditing</meta>
+		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TITLE`"/>
+		</property>
+		<property name="checkedout" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CHECKEDOUT`"/>
+		</property>
+		<property name="userid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`USERID`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ResourceLinkAuditing" abstract="false" lazy="false" discriminator-value="ResourceLinkAuditing" table="`RESOURCELINKAUDITING`">
 		<meta attribute="eclassName" inherit="false">ResourceLinkAuditing</meta>
@@ -276,6 +285,9 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="BookDefinitionResourceLinkAuditing" abstract="false" lazy="false" extends="ResourceLinkAuditing" discriminator-value="BookDefinitionResourceLinkAuditing">
 		<meta attribute="eclassName" inherit="false">BookDefinitionResourceLinkAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsdAuditing</meta>
+		<property name="bookSubject" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BOOKSUBJECT`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="BooksInLibAuditing" abstract="false" lazy="false" discriminator-value="BooksInLibAuditing" table="`BOOKSINLIBAUDITING`">
 		<meta attribute="eclassName" inherit="false">BooksInLibAuditing</meta>
@@ -333,6 +345,18 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ChildrenBooksAuditing" abstract="false" lazy="false" extends="BookDefinitionAuditing" discriminator-value="ChildrenBooksAuditing">
 		<meta attribute="eclassName" inherit="false">ChildrenBooksAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsdAuditing</meta>
+		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TITLE`"/>
+		</property>
+		<property name="cartoon" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CARTOON`"/>
+		</property>
+		<property name="popup" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`POPUP`"/>
+		</property>
+		<property name="publisherDefinitionRef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PUBLISHERDEFINITIONREF`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="testAuditing.DocumentRootAuditing" abstract="false" lazy="false">
 		<meta attribute="eclassName" inherit="false">DocumentRootAuditing</meta>
@@ -500,5 +524,11 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PublisherDefinitionAuditing" abstract="false" lazy="false" extends="BookDefinitionAuditing" discriminator-value="PublisherDefinitionAuditing">
 		<meta attribute="eclassName" inherit="false">PublisherDefinitionAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsdAuditing</meta>
+		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TITLE`"/>
+		</property>
+		<property name="resourceLink" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`RESOURCELINK`"/>
+		</property>
 	</subclass>
 </hibernate-mapping>

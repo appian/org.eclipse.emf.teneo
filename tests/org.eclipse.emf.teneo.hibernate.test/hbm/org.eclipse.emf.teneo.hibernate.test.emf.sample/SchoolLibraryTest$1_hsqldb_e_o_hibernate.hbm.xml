@@ -377,5 +377,8 @@
 		<key>
 			<column name="`LIBRARYAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="location" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`LOCATION`"/>
+		</property>
 	</joined-subclass>
 </hibernate-mapping>

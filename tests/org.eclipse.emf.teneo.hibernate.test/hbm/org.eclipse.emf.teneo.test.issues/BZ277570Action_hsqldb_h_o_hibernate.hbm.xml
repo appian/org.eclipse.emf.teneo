@@ -188,6 +188,9 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="BarAuditing" abstract="false" lazy="false" extends="BazAuditing" discriminator-value="BarAuditing">
 		<meta attribute="eclassName" inherit="false">BarAuditing</meta>
 		<meta attribute="epackage" inherit="false">org.eclipse.emf.teneo.samples.issues.bz277570Auditing</meta>
+		<property name="baz" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BAZ`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="BiffAuditing" abstract="false" lazy="false" extends="BazAuditing" discriminator-value="BiffAuditing">
 		<meta attribute="eclassName" inherit="false">BiffAuditing</meta>

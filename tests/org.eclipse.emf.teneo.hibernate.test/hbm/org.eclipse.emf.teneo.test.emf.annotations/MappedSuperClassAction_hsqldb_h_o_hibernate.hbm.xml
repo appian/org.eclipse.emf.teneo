@@ -148,14 +148,23 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="AddIDDocumentAuditing" abstract="false" lazy="false" extends="DocumentAuditing" discriminator-value="AddIDDocumentAuditing">
 		<meta attribute="eclassName" inherit="false">AddIDDocumentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclassAuditing</meta>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ParentDocumentAuditing" abstract="false" lazy="false" extends="DocumentAuditing" discriminator-value="ParentDocumentAuditing">
 		<meta attribute="eclassName" inherit="false">ParentDocumentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclassAuditing</meta>
+		<property name="myName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MYNAME`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="SpecificDocumentAuditing" abstract="false" lazy="false" extends="ParentDocumentAuditing" discriminator-value="SpecificDocumentAuditing">
 		<meta attribute="eclassName" inherit="false">SpecificDocumentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclassAuditing</meta>
+		<property name="mySpecificInfo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MYSPECIFICINFO`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="TestReferenceAuditing" abstract="false" lazy="false" discriminator-value="TestReferenceAuditing" table="`TESTREFERENCEAUDITING`">
 		<meta attribute="eclassName" inherit="false">TestReferenceAuditing</meta>

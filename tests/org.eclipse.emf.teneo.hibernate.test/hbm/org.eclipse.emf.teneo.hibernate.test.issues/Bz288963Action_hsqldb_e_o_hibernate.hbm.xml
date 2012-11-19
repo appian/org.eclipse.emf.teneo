@@ -302,5 +302,8 @@
 		<key>
 			<column name="`PARAGRAPHAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
+		<property name="indentSpace" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`INDENTSPACE`"/>
+		</property>
 	</joined-subclass>
 </hibernate-mapping>

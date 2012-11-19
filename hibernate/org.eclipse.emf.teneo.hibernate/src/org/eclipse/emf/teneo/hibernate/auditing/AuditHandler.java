@@ -429,6 +429,9 @@ public class AuditHandler implements ExtensionPoint {
 						&& isNoAuditing(po, eAttribute.getEType())) {
 					return true;
 				}
+			} else if (eStructuralFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
+				// an auditing annotation, ment to audit
+				return false;
 			} else if (isNoAuditing(po, eStructuralFeature.getEType())) {
 				// eclasses
 				return true;
@@ -599,14 +602,8 @@ public class AuditHandler implements ExtensionPoint {
 					auditingEClass.getEAnnotations().add(eAnnotation);
 				}
 
-				for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
+				for (EStructuralFeature eFeature : eClass.getEStructuralFeatures()) {
 					if (isNoAuditing(po, eFeature)) {
-						continue;
-					}
-					// don't consider any features of the first super type as that one maps
-					// its own features
-					if (!eClass.getESuperTypes().isEmpty()
-							&& eClass.getEAllStructuralFeatures().contains(eFeature)) {
 						continue;
 					}
 

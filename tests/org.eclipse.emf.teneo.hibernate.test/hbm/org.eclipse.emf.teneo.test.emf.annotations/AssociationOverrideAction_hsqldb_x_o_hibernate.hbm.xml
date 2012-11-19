@@ -170,9 +170,15 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="EmployeeAuditing" abstract="false" lazy="false" extends="PersonAuditing" discriminator-value="EmployeeAuditing">
 		<meta attribute="eclassName" inherit="false">EmployeeAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverrideAuditing</meta>
+		<property name="department" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DEPARTMENT`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="StudentAuditing" abstract="false" lazy="false" extends="PersonAuditing" discriminator-value="StudentAuditing">
 		<meta attribute="eclassName" inherit="false">StudentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverrideAuditing</meta>
+		<property name="faculty" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FACULTY`"/>
+		</property>
 	</subclass>
 </hibernate-mapping>

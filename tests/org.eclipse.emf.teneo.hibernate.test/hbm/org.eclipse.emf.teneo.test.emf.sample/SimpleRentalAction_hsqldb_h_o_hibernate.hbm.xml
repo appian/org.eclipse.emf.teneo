@@ -195,6 +195,17 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RentalBicycleAuditing" abstract="false" lazy="false" extends="RentalUnitAuditing" discriminator-value="RentalBicycleAuditing">
 		<meta attribute="eclassName" inherit="false">RentalBicycleAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/rentalAuditing</meta>
+		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalBicycleType</param>
+				<param name="eclassifier">RentalBicycleType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/rental</param>
+			</type>
+		</property>
+		<property name="manufacturer" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MANUFACTURER`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CurrencyAuditing" abstract="false" lazy="false" discriminator-value="CurrencyAuditing" table="`CURRENCYAUDITING`">
 		<meta attribute="eclassName" inherit="false">CurrencyAuditing</meta>
@@ -248,6 +259,14 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RentalCarAuditing" abstract="false" lazy="false" extends="RentalUnitAuditing" discriminator-value="RentalCarAuditing">
 		<meta attribute="eclassName" inherit="false">RentalCarAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/rentalAuditing</meta>
+		<property name="size" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`SIZE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalCarSize</param>
+				<param name="eclassifier">RentalCarSize</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/rental</param>
+			</type>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RentalContractAuditing" abstract="false" lazy="false" discriminator-value="RentalContractAuditing" table="`RENTALCONTRACTAUDITING`">
 		<meta attribute="eclassName" inherit="false">RentalContractAuditing</meta>

@@ -295,10 +295,16 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="UKAddressAuditing" abstract="false" lazy="false" extends="AddressAuditing" discriminator-value="UKAddressAuditing">
 		<meta attribute="eclassName" inherit="false">UKAddressAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/issues/abstractsuperAuditing</meta>
+		<property name="postcode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`POSTCODE`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DistrictUKAddressAuditing" abstract="false" lazy="false" extends="UKAddressAuditing" discriminator-value="DistrictUKAddressAuditing">
 		<meta attribute="eclassName" inherit="false">DistrictUKAddressAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/issues/abstractsuperAuditing</meta>
+		<property name="district" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DISTRICT`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="PriceAuditing" abstract="false" lazy="false" discriminator-value="PriceAuditing" table="`PRICEAUDITING`">
 		<meta attribute="eclassName" inherit="false">PriceAuditing</meta>
@@ -355,10 +361,24 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="InternationalPriceAuditing" abstract="false" lazy="false" extends="PriceAuditing" discriminator-value="InternationalPriceAuditing">
 		<meta attribute="eclassName" inherit="false">InternationalPriceAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/issues/abstractsuperAuditing</meta>
+		<property name="currency" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CURRENCY`"/>
+		</property>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="USAddressAuditing" abstract="false" lazy="false" extends="AddressAuditing" discriminator-value="USAddressAuditing">
 		<meta attribute="eclassName" inherit="false">USAddressAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/issues/abstractsuperAuditing</meta>
+		<property name="state" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`STATE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.abstractsuper.USState</param>
+				<param name="eclassifier">USState</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/issues/abstractsuper</param>
+			</type>
+		</property>
+		<property name="zip" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+			<column not-null="false" unique="false" name="`ZIP`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CustomerAuditing" abstract="false" lazy="false" discriminator-value="CustomerAuditing" table="`CUSTOMERAUDITING`">
 		<meta attribute="eclassName" inherit="false">CustomerAuditing</meta>
@@ -412,6 +432,9 @@
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="SpecificCustomerAuditing" abstract="false" lazy="false" extends="CustomerAuditing" discriminator-value="SpecificCustomerAuditing">
 		<meta attribute="eclassName" inherit="false">SpecificCustomerAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/issues/abstractsuperAuditing</meta>
+		<property name="specificName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SPECIFICNAME`"/>
+		</property>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="UKAddressListAuditing" abstract="false" lazy="false" discriminator-value="UKAddressListAuditing" table="`UKADDRESSLISTAUDITING`">
 		<meta attribute="eclassName" inherit="false">UKAddressListAuditing</meta>
