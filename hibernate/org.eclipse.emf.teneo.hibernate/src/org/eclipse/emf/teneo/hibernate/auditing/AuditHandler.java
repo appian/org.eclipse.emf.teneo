@@ -135,10 +135,12 @@ public class AuditHandler implements ExtensionPoint {
 				} else {
 					if (sourceEFeature.isMany()) {
 						if (StoreUtil.isMap(sourceEFeature)) {
-							convertEMap(session, source, (EReference) sourceEFeature, auditEntry,
+							convertEMap(session, ((Collection<?>) source.eGet(sourceEFeature)),
+									(EReference) sourceEFeature, auditEntry,
 									(EReference) targetEFeature);
 						} else if (FeatureMapUtil.isFeatureMap(sourceEFeature)) {
-							convertFeatureMap(session, source, sourceEFeature, auditEntry, targetEFeature);
+							convertFeatureMap(session, ((Collection<?>) source.eGet(sourceEFeature)),
+									sourceEFeature, auditEntry, targetEFeature);
 						} else {
 							for (Object value : (Collection<?>) source.eGet(sourceEFeature)) {
 								((Collection<Object>) auditEntry.eGet(targetEFeature)).add(convertValue(
@@ -155,7 +157,7 @@ public class AuditHandler implements ExtensionPoint {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void convertEMap(Session session, EObject source, EReference sourceEReference,
+	protected void convertEMap(Session session, Collection<?> values, EReference sourceEReference,
 			TeneoAuditEntry auditEntry, EReference targetEReference) {
 
 		final EStructuralFeature keySourceEFeature = sourceEReference.getEReferenceType()
@@ -166,7 +168,7 @@ public class AuditHandler implements ExtensionPoint {
 				.getEStructuralFeature("key");
 		final EStructuralFeature valueTargetEFeature = targetEReference.getEReferenceType()
 				.getEStructuralFeature("value");
-		for (Object sourceEntry : ((Collection<?>) source.eGet(sourceEReference))) {
+		for (Object sourceEntry : values) {
 			final EObject sourceMapEntry = (EObject) sourceEntry;
 			final EObject mapEntry = EcoreUtil.create(targetEReference.getEReferenceType());
 			final Object key;
@@ -188,10 +190,10 @@ public class AuditHandler implements ExtensionPoint {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void convertFeatureMap(Session session, EObject source,
+	protected void convertFeatureMap(Session session, Collection<?> values,
 			EStructuralFeature sourceEFeature, TeneoAuditEntry auditEntry,
 			EStructuralFeature targetEFeature) {
-		for (Object value : ((Collection<?>) source.eGet(sourceEFeature))) {
+		for (Object value : values) {
 			final FeatureMap.Entry sourceEntry = (FeatureMap.Entry) value;
 			final EStructuralFeature targetEntryFeature = getAuditingModelElement(
 					sourceEntry.getEStructuralFeature(), auditEntry.eClass().getName());
@@ -318,7 +320,7 @@ public class AuditHandler implements ExtensionPoint {
 		if (auditModelElement instanceof EClass) {
 			return (T) StoreUtil.stringToEClass(dataStore.getPackageRegistry(), id);
 		}
-		return (T) StoreUtil.stringToStructureFeature(id);
+		return (T) StoreUtil.stringToStructureFeature(getDataStore().getPackageRegistry(), id);
 	}
 
 	public EClass getAuditingModelElement(EClass modelElement) {
@@ -368,7 +370,7 @@ public class AuditHandler implements ExtensionPoint {
 		if (modelElement instanceof EClass) {
 			return (T) StoreUtil.stringToEClass(dataStore.getPackageRegistry(), id);
 		}
-		return (T) StoreUtil.stringToStructureFeature(id);
+		return (T) StoreUtil.stringToStructureFeature(getDataStore().getPackageRegistry(), id);
 	}
 
 	/**
@@ -610,7 +612,6 @@ public class AuditHandler implements ExtensionPoint {
 					EStructuralFeature auditingEFeature;
 
 					if (eFeature instanceof EReference && StoreUtil.isMap(eFeature)) {
-						auditingEFeature = EcoreUtil.copy(eFeature);
 
 						// create the audit emap class
 						final EClass eMapEClass = ((EReference) eFeature).getEReferenceType();
@@ -626,26 +627,11 @@ public class AuditHandler implements ExtensionPoint {
 						}
 
 						// and use it
-						auditingEFeature.setEType(auditingEMapEClass);
+						auditingEFeature = createEMapFeature(eFeature, auditingEMapEClass);
 					} else if (eFeature instanceof EReference && isEmbedded((EReference) eFeature)) {
 						auditingEFeature = EcoreUtil.copy(eFeature);
 					} else if (eFeature instanceof EReference) {
-						auditingEFeature = EcoreFactory.eINSTANCE.createEAttribute();
-						auditingEFeature.setEType(XMLTypePackage.eINSTANCE.getString());
-						for (EAnnotation eAnnotation : eFeature.getEAnnotations()) {
-							auditingEFeature.getEAnnotations().add(EcoreUtil.copy(eAnnotation));
-						}
-
-						// copy all values
-						for (EAttribute eSAttribute : EcorePackage.eINSTANCE.getEStructuralFeature()
-								.getEAllAttributes()) {
-							if (eSAttribute.isDerived() || eSAttribute.isVolatile()) {
-								continue;
-							}
-							if (eFeature.eIsSet(eSAttribute)) {
-								auditingEFeature.eSet(eSAttribute, eFeature.eGet(eSAttribute));
-							}
-						}
+						auditingEFeature = createEReferenceAttribute((EReference) eFeature);
 					} else {
 						auditingEFeature = EcoreUtil.copy(eFeature);
 					}
@@ -684,6 +670,33 @@ public class AuditHandler implements ExtensionPoint {
 		}
 
 		return eAuditingPackage;
+	}
+
+	protected EAttribute createEReferenceAttribute(EReference eReference) {
+		final EAttribute auditingEAttribute = EcoreFactory.eINSTANCE.createEAttribute();
+		auditingEAttribute.setEType(EcorePackage.eINSTANCE.getEString());
+		for (EAnnotation eAnnotation : eReference.getEAnnotations()) {
+			auditingEAttribute.getEAnnotations().add(EcoreUtil.copy(eAnnotation));
+		}
+
+		// copy all values
+		for (EAttribute eSAttribute : EcorePackage.eINSTANCE.getEStructuralFeature()
+				.getEAllAttributes()) {
+			if (eSAttribute.isDerived() || eSAttribute.isVolatile()) {
+				continue;
+			}
+			if (eReference.eIsSet(eSAttribute)) {
+				auditingEAttribute.eSet(eSAttribute, eReference.eGet(eSAttribute));
+			}
+		}
+		return auditingEAttribute;
+	}
+
+	protected EStructuralFeature createEMapFeature(EStructuralFeature sourceEFeature,
+			EClass eMapEntryEClass) {
+		final EStructuralFeature auditingEFeature = EcoreUtil.copy(sourceEFeature);
+		auditingEFeature.setEType(eMapEntryEClass);
+		return auditingEFeature;
 	}
 
 	private EClass getSuperAuditingEClass(AuditDataStore auditDataStore, EClass superEClass,

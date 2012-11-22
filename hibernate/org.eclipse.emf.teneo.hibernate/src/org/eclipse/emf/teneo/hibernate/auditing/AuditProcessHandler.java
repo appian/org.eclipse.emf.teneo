@@ -67,6 +67,12 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	private static ThreadLocal<String> currentUserName = new ThreadLocal<String>();
 
+	private static ThreadLocal<String> currentComment = new ThreadLocal<String>();
+
+	public static void setCurrentComment(String user) {
+		currentComment.set(user);
+	}
+
 	public static void setCurrentUserName(String user) {
 		currentUserName.set(user);
 	}
@@ -209,9 +215,21 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
 				.createTeneoAuditCommitInfo();
+
 		if (currentUserName.get() != null) {
 			commitInfo.setUser(currentUserName.get());
 		}
+
+		commitInfo.setCommitTime(commitTime);
+
+		if (currentComment.get() != null) {
+			if (currentComment.get().length() > 2000) {
+				commitInfo.setComment(currentComment.get().substring(0, 2000));
+			} else {
+				commitInfo.setComment(currentComment.get());
+			}
+		}
+
 		toSaveEntries.add(commitInfo);
 
 		EClass lastEClass = null;

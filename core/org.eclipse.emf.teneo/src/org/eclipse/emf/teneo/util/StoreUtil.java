@@ -344,8 +344,15 @@ public class StoreUtil {
 		 */
 	}
 
+	public static EStructuralFeature stringToStructureFeature(
+			String strid) {
+		return stringToStructureFeature(PackageRegistryProvider.getInstance().getPackageRegistry(),
+				strid);
+	}
+
 	/** Translates a string to a structural feature */
-	public static EStructuralFeature stringToStructureFeature(String strid) {
+	public static EStructuralFeature stringToStructureFeature(EPackage.Registry packageRegistry,
+			String strid) {
 		// this method expects a dbid consisting of three parts separated by /
 		int lastIndex = strid.lastIndexOf(PATH_SEPARATOR);
 		int beforeLastIndex = strid.lastIndexOf(PATH_SEPARATOR, lastIndex - 1);
@@ -360,8 +367,7 @@ public class StoreUtil {
 		final String eclassName = strid.substring(beforeLastIndex + 1, lastIndex);
 		final String featureName = strid.substring(lastIndex + 1);
 
-		final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry()
-				.getEPackage(nsuri);
+		final EPackage epack = packageRegistry.getEPackage(nsuri);
 		if (epack == null) {
 			throw new TeneoException("The dbid " + strid + " and nsuri: " + nsuri
 					+ " does not resolve to an epackage");

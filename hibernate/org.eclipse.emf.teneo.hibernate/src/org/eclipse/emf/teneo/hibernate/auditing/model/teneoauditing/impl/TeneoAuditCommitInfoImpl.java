@@ -15,28 +15,21 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.Teneoauditin
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getId
- * <em>Id</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getVersion
- * <em>Version</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getUser
- * <em>User</em>}</li>
- * <li>
- * {@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getComment
- * <em>Comment</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getUser <em>User</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl#getCommitTime <em>Commit Time</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditCommitInfo {
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -44,9 +37,9 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 	protected static final long ID_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -64,9 +57,9 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 	protected static final long VERSION_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getVersion()
 	 * @generated
 	 * @ordered
@@ -74,9 +67,9 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 	protected long version = VERSION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUser() <em>User</em>}' attribute. <!-- begin-user-doc -->
+	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getUser()
 	 * @generated
 	 * @ordered
@@ -84,9 +77,9 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 	protected static final String USER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getUser() <em>User</em>}' attribute. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getUser() <em>User</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getUser()
 	 * @generated
 	 * @ordered
@@ -104,9 +97,9 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 	protected static final String COMMENT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getComment()
 	 * @generated
 	 * @ordered
@@ -114,8 +107,27 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 	protected String comment = COMMENT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getCommitTime() <em>Commit Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommitTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long COMMIT_TIME_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getCommitTime() <em>Commit Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommitTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected long commitTime = COMMIT_TIME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected TeneoAuditCommitInfoImpl() {
@@ -124,7 +136,6 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -134,7 +145,6 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public long getId() {
@@ -143,20 +153,17 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(long newId) {
 		long oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID, oldId, id));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public long getVersion() {
@@ -165,20 +172,17 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setVersion(long newVersion) {
 		long oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION, oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION, oldVersion, version));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getUser() {
@@ -187,20 +191,17 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUser(String newUser) {
 		String oldUser = user;
 		user = newUser;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER, oldUser, user));
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER, oldUser, user));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getComment() {
@@ -209,114 +210,137 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setComment(String newComment) {
 		String oldComment = comment;
 		comment = newComment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT, oldComment, comment));
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT, oldComment, comment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public long getCommitTime() {
+		return commitTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCommitTime(long newCommitTime) {
+		long oldCommitTime = commitTime;
+		commitTime = newCommitTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMIT_TIME, oldCommitTime, commitTime));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
-			return getId();
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
-			return getVersion();
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
-			return getUser();
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
-			return getComment();
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
+				return getId();
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
+				return getVersion();
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
+				return getUser();
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
+				return getComment();
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMIT_TIME:
+				return getCommitTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
-			setId((Long) newValue);
-			return;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
-			setVersion((Long) newValue);
-			return;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
-			setUser((String) newValue);
-			return;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
-			setComment((String) newValue);
-			return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
+				setId((Long)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
+				setVersion((Long)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
+				setUser((String)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
+				setComment((String)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMIT_TIME:
+				setCommitTime((Long)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
-			setId(ID_EDEFAULT);
-			return;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
-			setVersion(VERSION_EDEFAULT);
-			return;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
-			setUser(USER_EDEFAULT);
-			return;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
-			setComment(COMMENT_EDEFAULT);
-			return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
+				setId(ID_EDEFAULT);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
+				setUser(USER_EDEFAULT);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
+				setComment(COMMENT_EDEFAULT);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMIT_TIME:
+				setCommitTime(COMMIT_TIME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
-			return id != ID_EDEFAULT;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
-			return version != VERSION_EDEFAULT;
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
-			return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
-		case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
-			return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__ID:
+				return id != ID_EDEFAULT;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__VERSION:
+				return version != VERSION_EDEFAULT;
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__USER:
+				return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMENT:
+				return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
+			case TeneoauditingPackage.TENEO_AUDIT_COMMIT_INFO__COMMIT_TIME:
+				return commitTime != COMMIT_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
@@ -327,6 +351,8 @@ public class TeneoAuditCommitInfoImpl extends EObjectImpl implements TeneoAuditC
 		result.append(user);
 		result.append(", comment: ");
 		result.append(comment);
+		result.append(", commitTime: ");
+		result.append(commitTime);
 		result.append(')');
 		return result.toString();
 	}
