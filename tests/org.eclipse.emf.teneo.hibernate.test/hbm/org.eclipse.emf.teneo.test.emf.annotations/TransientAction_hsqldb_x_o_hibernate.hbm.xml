@@ -66,6 +66,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" discriminator-value="TeneoAuditCommitInfo" table="`TENEOAUDITCOMMITINFO`">
 		<meta attribute="eclassName" inherit="false">TeneoAuditCommitInfo</meta>
@@ -91,6 +94,9 @@
 		</property>
 		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`COMMENT`"/>
+		</property>
+		<property name="commitTime" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`COMMITTIME`"/>
 		</property>
 	</class>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="BodyAuditing" abstract="false" lazy="false" extends="TeneoAuditEntry" discriminator-value="BodyAuditing">

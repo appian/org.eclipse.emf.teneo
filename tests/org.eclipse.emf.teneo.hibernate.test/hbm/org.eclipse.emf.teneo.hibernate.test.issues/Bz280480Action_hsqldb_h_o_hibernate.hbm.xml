@@ -1112,8 +1112,11 @@
 		<property name="user" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`USER`"/>
 		</property>
-		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
-			<column not-null="false" unique="false" name="`COMMENT`"/>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMMENT`" length="2000"/>
+		</property>
+		<property name="commitTime" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`COMMITTIME`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="CanonicalizationMethodTypeAuditing" abstract="false" lazy="false" discriminator-value="CanonicalizationMethodTypeAuditing" table="`CANONICALIZATIONMETHODTYPEAUDITING`">
@@ -1160,6 +1163,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="mixed" table="`CANONICALIZATIONMETHODTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -1255,6 +1261,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<list name="mixed" table="`DIGESTMETHODTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`DIGESTMETHODTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
@@ -1345,6 +1354,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<many-to-one name="mixed" entity-name="_xmldsigAuditing.DocumentRootAuditing_mixed" cascade="all" not-null="false"/>
 		<property name="canonicalizationMethod" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -1550,6 +1562,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<array name="p" table="`DSAKEYVALUETYPEAUDITING_PAUDITING`" cascade="all">
 			<key update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
@@ -1644,6 +1659,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="mixed" table="`KEYINFOTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -1793,6 +1811,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<list name="mixed" table="`KEYVALUETYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`KEYVALUETYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
@@ -1887,6 +1908,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<list name="reference" table="`MANIFESTTYPEAUDITING_REFERENCEAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`MANIFESTTYPEAUDITING_REFERENCE_TENEO_AUDIT_ID`" unique="false"/>
@@ -1942,6 +1966,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="mixed" table="`OBJECTTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -2061,6 +2088,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<array name="pGPKeyID" table="`PGPDATATYPEAUDITING_PGPKEYIDAUDITING`" cascade="all">
 			<key update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYID_TENEO_AUDIT_ID`" unique="false"/>
@@ -2172,6 +2202,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<property name="transforms" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`TRANSFORMS`"/>
 		</property>
@@ -2240,6 +2273,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<property name="transforms" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`TRANSFORMS`"/>
 		</property>
@@ -2294,6 +2330,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<array name="modulus" table="`RSAKEYVALUETYPEAUDITING_MODULUSAUDITING`" cascade="all">
 			<key update="true">
@@ -2354,6 +2393,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="mixed" table="`SIGNATUREMETHODTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -2452,6 +2494,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<list name="signatureProperty" table="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTYAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY_TENEO_AUDIT_ID`" unique="false"/>
@@ -2507,6 +2552,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="mixed" table="`SIGNATUREPROPERTYTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -2620,6 +2668,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<property name="signedInfo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`SIGNEDINFO`"/>
 		</property>
@@ -2685,6 +2736,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<array name="value" table="`SIGNATUREVALUETYPEAUDITING_VALUEAUDITING`" cascade="all">
 			<key update="true">
 				<column name="`SIGNATUREVALUETYPEAUDITING_VALUE_TENEO_AUDIT_ID`" unique="false"/>
@@ -2740,6 +2794,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<property name="canonicalizationMethod" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`CANONICALIZATIONMETHOD`"/>
@@ -2802,6 +2859,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="group" table="`SPKIDATATYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -2885,6 +2945,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<list name="transform" table="`TRANSFORMSTYPEAUDITING_TRANSFORMAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`TRANSFORMSTYPEAUDITING_TRANSFORM_TENEO_AUDIT_ID`" unique="false"/>
@@ -2937,6 +3000,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="mixed" table="`TRANSFORMTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -3050,6 +3116,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<list name="group" table="`X509DATATYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`X509DATATYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
@@ -3143,6 +3212,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<property name="x509IssuerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`X509ISSUERNAME`"/>

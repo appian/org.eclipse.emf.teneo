@@ -73,10 +73,10 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			final Writer writer = LibraryFactory.eINSTANCE.createWriter();
 			writer.setName("0");
 			final Book bk1 = LibraryFactory.eINSTANCE.createBook();
-			bk1.setTitle("1");
+			bk1.setTitle("1-simple");
 			bk1.setPages(0);
 			final Book bk2 = LibraryFactory.eINSTANCE.createBook();
-			bk2.setTitle("2");
+			bk2.setTitle("2-simple");
 			bk2.setPages(0);
 			writer.getBooks().add(bk1);
 			writer.getBooks().add(bk2);

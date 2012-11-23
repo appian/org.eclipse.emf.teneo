@@ -80,8 +80,11 @@
 		<property name="user" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`USER`"/>
 		</property>
-		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
-			<column not-null="false" unique="false" name="`COMMENT`"/>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMMENT`" length="2000"/>
+		</property>
+		<property name="commitTime" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`COMMITTIME`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="DateToStringMapEntryAuditing" abstract="false" lazy="false" table="`DATETOSTRINGMAPENTRYAUDITING`">
@@ -125,6 +128,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<property name="key" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`KEY`"/>
@@ -174,6 +180,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<property name="key" lazy="false" not-null="false" insert="true" update="true" unique="false">
 			<column not-null="false" unique="false" name="`KEY`"/>
@@ -228,6 +237,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<list name="imageFiles" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="IMAGESAUDITING_IMAGEFILES">
@@ -300,6 +312,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<property name="key" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`KEY`"/>
 		</property>
@@ -349,6 +364,9 @@
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
 		<property name="key" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`KEY`"/>
 		</property>
@@ -397,6 +415,9 @@
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>

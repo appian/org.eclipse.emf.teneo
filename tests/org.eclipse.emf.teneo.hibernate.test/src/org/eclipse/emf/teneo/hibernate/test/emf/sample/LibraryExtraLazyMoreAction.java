@@ -183,13 +183,13 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			w2.setName("w2");
 			final Book bk1 = factory.createBook();
 			bk1.setAuthor(w1);
-			bk1.setTitle("bk1");
+			bk1.setTitle("bk1-2");
 			final Book bk2 = factory.createBook();
 			bk2.setAuthor(w1);
-			bk2.setTitle("bk2");
+			bk2.setTitle("bk2-2");
 			final Book bk3 = factory.createBook();
 			bk3.setAuthor(w1);
-			bk3.setTitle("bk3");
+			bk3.setTitle("bk3-2");
 
 			final Library library = factory.createLibrary();
 			library.setName("l1");
@@ -206,7 +206,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 
 			final Book bk4 = factory.createBook();
 			bk4.setAuthor(w1);
-			bk4.setTitle("bk4");
+			bk4.setTitle("bk4-2");
 			library.getBooks().set(0, bk4);
 			w1.getBooks().remove(bk1);
 			w1.getBooks().remove(bk3);
@@ -218,8 +218,8 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			store.beginTransaction();
 			final Library lib = store.getObject(Library.class);
 			assertEquals(2, lib.getBooks().size());
-			assertEquals("bk4", lib.getBooks().get(0).getTitle());
-			assertEquals("bk2", lib.getBooks().get(1).getTitle());
+			assertEquals("bk4-2", lib.getBooks().get(0).getTitle());
+			assertEquals("bk2-2", lib.getBooks().get(1).getTitle());
 		}
 	}
 

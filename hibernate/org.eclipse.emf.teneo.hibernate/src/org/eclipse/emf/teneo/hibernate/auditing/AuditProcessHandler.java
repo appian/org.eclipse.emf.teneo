@@ -15,6 +15,7 @@
  */
 package org.eclipse.emf.teneo.hibernate.auditing;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -109,6 +110,8 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				// set dummy version, does not happen often
 				auditWork.setVersion(tmpVersion);
 			}
+		} else if (version instanceof Timestamp) {
+			auditWork.setVersion(((Timestamp) version).getTime());
 		} else {
 			auditWork.setVersion(((Number) version).longValue());
 		}
