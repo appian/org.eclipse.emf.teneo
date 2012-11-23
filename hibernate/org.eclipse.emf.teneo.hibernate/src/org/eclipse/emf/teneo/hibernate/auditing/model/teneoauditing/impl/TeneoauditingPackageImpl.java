@@ -381,7 +381,7 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		  (teneoAuditEntryEClass, 
 		   source, 
 		   new String[] {
-			 "value", "@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_object_version\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_start\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})"
+			 "value", "@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_object_version\", \"teneo_audit_kind\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_start\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})"
 		   });		
 		addAnnotation
 		  (getTeneoAuditEntry_Teneo_audit_id(), 

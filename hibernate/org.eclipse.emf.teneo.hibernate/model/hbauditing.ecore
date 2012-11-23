@@ -4,7 +4,7 @@
     nsPrefix="teneoauditing">
   <eClassifiers xsi:type="ecore:EClass" name="TeneoAuditEntry">
     <eAnnotations source="teneo.jpa">
-      <details key="value" value="@MappedSuperclass&#xA;@Table(uniqueConstraints={@UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_object_version&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_start&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_end&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_previous_start&quot;})})"/>
+      <details key="value" value="@MappedSuperclass&#xA;@Table(uniqueConstraints={@UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_object_version&quot;, &quot;teneo_audit_kind&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_start&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_end&quot;}), @UniqueConstraint(columnNames={&quot;teneo_object_id&quot;, &quot;teneo_previous_start&quot;})})"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_audit_id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
       <eAnnotations source="teneo.jpa">
