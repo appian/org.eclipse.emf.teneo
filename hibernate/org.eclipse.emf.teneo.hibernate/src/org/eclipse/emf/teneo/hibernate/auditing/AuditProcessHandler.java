@@ -376,6 +376,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		target.setTeneo_start(source.getTeneo_start());
 		target.setTeneo_object_id(prefix + "_" + source.getTeneo_object_id());
 		target.setTeneo_owner_object_id(source.getTeneo_object_id());
+		target.setTeneo_object_version(source.getTeneo_object_version());
 		target.setTeneo_previous_start(source.getTeneo_previous_start());
 	}
 
