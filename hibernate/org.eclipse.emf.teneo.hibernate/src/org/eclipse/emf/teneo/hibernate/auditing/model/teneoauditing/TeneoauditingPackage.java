@@ -160,13 +160,22 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START = 10;
 
 	/**
+	 * The feature id for the '<em><b>Teneo object version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION = 11;
+
+	/**
 	 * The number of structural features of the '<em>Teneo Audit Entry</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_ENTRY_FEATURE_COUNT = 11;
+	int TENEO_AUDIT_ENTRY_FEATURE_COUNT = 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.
@@ -360,6 +369,17 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditEntry_Teneo_previous_start();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_object_version <em>Teneo object version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Teneo object version</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_object_version()
+	 * @see #getTeneoAuditEntry()
+	 * @generated
+	 */
+	EAttribute getTeneoAuditEntry_Teneo_object_version();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo <em>Teneo Audit Commit Info</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Teneo Audit Commit Info</em>'.
@@ -542,6 +562,14 @@ public interface TeneoauditingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START = eINSTANCE.getTeneoAuditEntry_Teneo_previous_start();
+
+		/**
+		 * The meta object literal for the '<em><b>Teneo object version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION = eINSTANCE.getTeneoAuditEntry_Teneo_object_version();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.

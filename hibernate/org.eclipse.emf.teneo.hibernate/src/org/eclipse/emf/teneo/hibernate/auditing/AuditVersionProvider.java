@@ -152,10 +152,29 @@ public class AuditVersionProvider implements ExtensionPoint {
 		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 		final Query qry = getSession().createQuery(
-				"select e from " + entityName + " e where teneo_start<=:start and (teneo_end="
-						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>:end)");
+				"select e from " + entityName + " e where e.teneo_start<=:start and (e.teneo_end="
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or e.teneo_end>:end)");
 		qry.setParameter("start", timeStamp);
 		qry.setParameter("end", timeStamp);
+		final List<TeneoAuditEntry> result = new ArrayList<TeneoAuditEntry>();
+		for (Object o : qry.list()) {
+			result.add((TeneoAuditEntry) o);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns all revisions with a specific commit time stamp.
+	 */
+	public List<TeneoAuditEntry> getSpecificAuditEntries(EClass eClass, long commitTimeStamp) {
+		checkState();
+
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
+		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+		final Query qry = getSession().createQuery(
+				"select e from " + entityName + " e where e.teneo_start=:start");
+		qry.setParameter("start", commitTimeStamp);
 		final List<TeneoAuditEntry> result = new ArrayList<TeneoAuditEntry>();
 		for (Object o : qry.list()) {
 			result.add((TeneoAuditEntry) o);
@@ -204,6 +223,30 @@ public class AuditVersionProvider implements ExtensionPoint {
 						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
 		final String idAsString = dataStore.getAuditHandler().idToString(eClass, id);
 		qry.setParameter("objectId", idAsString);
+		qry.setMaxResults(1);
+		return (TeneoAuditEntry) qry.uniqueResult();
+	}
+
+	/**
+	 * Return the audit entry ({@link TeneoAuditEntry}) for a certain {@link EClass}, id and version.
+	 * 
+	 * From this latest audit entry you can navigate to the previous audit entry using
+	 * {@link TeneoAuditEntry#getTeneo_previous_entry()}.
+	 * 
+	 * @see #getAllVersions(EObject)
+	 */
+	public TeneoAuditEntry getAuditEntryForVersion(EClass eClass, Object id, long version) {
+		checkState();
+
+		final EClass auditingEClass = dataStore.getAuditHandler().getAuditingModelElement(eClass);
+		final String entityName = auditingEClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
+		final Query qry = getSession().createQuery(
+				"select e from " + entityName
+						+ " e where teneo_object_id=:objectId and teneo_object_version=:version");
+		final String idAsString = dataStore.getAuditHandler().idToString(eClass, id);
+		qry.setParameter("objectId", idAsString);
+		qry.setParameter("version", version);
 		qry.setMaxResults(1);
 		return (TeneoAuditEntry) qry.uniqueResult();
 	}

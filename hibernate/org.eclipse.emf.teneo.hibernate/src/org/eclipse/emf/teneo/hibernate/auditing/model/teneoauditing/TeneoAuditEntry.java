@@ -22,11 +22,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_container_id <em>Teneo container id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_container_feature_id <em>Teneo container feature id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_previous_start <em>Teneo previous start</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_object_version <em>Teneo object version</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditEntry()
- * @model annotation="teneo.jpa value='@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_start\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})'"
+ * @model annotation="teneo.jpa value='@MappedSuperclass\n@Table(uniqueConstraints={@UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_object_version\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_start\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_end\"}), @UniqueConstraint(columnNames={\"teneo_object_id\", \"teneo_previous_start\"})})'"
  * @generated
  */
 public interface TeneoAuditEntry extends EObject {
@@ -314,5 +315,31 @@ public interface TeneoAuditEntry extends EObject {
 	 * @generated
 	 */
 	void setTeneo_previous_start(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Teneo object version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Teneo object version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Teneo object version</em>' attribute.
+	 * @see #setTeneo_object_version(long)
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditEntry_Teneo_object_version()
+	 * @model
+	 * @generated
+	 */
+	long getTeneo_object_version();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_object_version <em>Teneo object version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo object version</em>' attribute.
+	 * @see #getTeneo_object_version()
+	 * @generated
+	 */
+	void setTeneo_object_version(long value);
 
 } // TeneoAuditEntry

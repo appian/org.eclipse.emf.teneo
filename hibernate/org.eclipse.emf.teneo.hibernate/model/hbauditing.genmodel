@@ -23,6 +23,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_feature_id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_previous_start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_object_version"/>
     </genClasses>
     <genClasses ecoreClass="hbauditing.ecore#//TeneoAuditCommitInfo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditCommitInfo/id"/>

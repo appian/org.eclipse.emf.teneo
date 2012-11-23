@@ -98,6 +98,21 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		auditWork.setAuditKind(auditKind);
 		auditWork.setEntity(entity);
 
+		final Object version = session.getEntityPersister(
+				dataStore.toEntityName(auditHandler.getEClass(entity)), entity).getVersion(entity);
+		if (version == null) {
+			if (auditKind == TeneoAuditKind.ADD) {
+				// start from one.
+				auditWork.setVersion(1);
+			} else {
+				final long tmpVersion = System.currentTimeMillis();
+				// set dummy version, does not happen often
+				auditWork.setVersion(tmpVersion);
+			}
+		} else {
+			auditWork.setVersion(((Number) version).longValue());
+		}
+
 		final List<AuditWork> auditWorks;
 		if (workQueue.containsKey(session.getTransaction())) {
 			auditWorks = workQueue.get(session.getTransaction());
@@ -251,6 +266,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			auditEntry.setTeneo_end(DEFAULT_END_TIMESTAMP);
 			auditEntry.setTeneo_start(commitTime);
 			auditEntry.setTeneo_object_id(auditHandler.entityToIdString(session, auditWork.getEntity()));
+			auditEntry.setTeneo_object_version(auditWork.getVersion());
 
 			if (auditWork.getEntity() instanceof EObject) {
 				auditHandler.setContainerInfo(session, auditEntry, auditWork.getEntity());
@@ -456,6 +472,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	protected class AuditWork {
 		private Object entity;
 		private TeneoAuditKind auditKind;
+		private long version;
 
 		public Object getEntity() {
 			return entity;
@@ -471,6 +488,21 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		public void setAuditKind(TeneoAuditKind auditKind) {
 			this.auditKind = auditKind;
+		}
+
+		/**
+		 * @return the version
+		 */
+		public long getVersion() {
+			return version;
+		}
+
+		/**
+		 * @param version
+		 *          the version to set
+		 */
+		public void setVersion(long version) {
+			this.version = version;
 		}
 
 	}

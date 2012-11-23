@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.Teneoauditin
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_container_id <em>Teneo container id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_container_feature_id <em>Teneo container feature id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_previous_start <em>Teneo previous start</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_object_version <em>Teneo object version</em>}</li>
  * </ul>
  * </p>
  *
@@ -231,6 +232,26 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 	 * @ordered
 	 */
 	protected long teneo_previous_start = TENEO_PREVIOUS_START_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTeneo_object_version() <em>Teneo object version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_object_version()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long TENEO_OBJECT_VERSION_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getTeneo_object_version() <em>Teneo object version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_object_version()
+	 * @generated
+	 * @ordered
+	 */
+	protected long teneo_object_version = TENEO_OBJECT_VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -475,6 +496,27 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public long getTeneo_object_version() {
+		return teneo_object_version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTeneo_object_version(long newTeneo_object_version) {
+		long oldTeneo_object_version = teneo_object_version;
+		teneo_object_version = newTeneo_object_version;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION, oldTeneo_object_version, teneo_object_version));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -504,6 +546,8 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 				return getTeneo_container_feature_id();
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				return getTeneo_previous_start();
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION:
+				return getTeneo_object_version();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -547,6 +591,9 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 				return;
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				setTeneo_previous_start((Long)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION:
+				setTeneo_object_version((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -592,6 +639,9 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				setTeneo_previous_start(TENEO_PREVIOUS_START_EDEFAULT);
 				return;
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION:
+				setTeneo_object_version(TENEO_OBJECT_VERSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -625,6 +675,8 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 				return teneo_container_feature_id != TENEO_CONTAINER_FEATURE_ID_EDEFAULT;
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				return teneo_previous_start != TENEO_PREVIOUS_START_EDEFAULT;
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION:
+				return teneo_object_version != TENEO_OBJECT_VERSION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -658,6 +710,8 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 		result.append(teneo_container_feature_id);
 		result.append(", teneo_previous_start: ");
 		result.append(teneo_previous_start);
+		result.append(", teneo_object_version: ");
+		result.append(teneo_object_version);
 		result.append(')');
 		return result.toString();
 	}
