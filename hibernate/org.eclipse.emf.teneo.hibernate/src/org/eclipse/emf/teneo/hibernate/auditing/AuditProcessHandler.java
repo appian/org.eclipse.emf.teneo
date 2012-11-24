@@ -101,19 +101,22 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 		final Object version = session.getEntityPersister(
 				dataStore.toEntityName(auditHandler.getEClass(entity)), entity).getVersion(entity);
-		if (version == null) {
-			if (auditKind == TeneoAuditKind.ADD) {
-				// start from one.
-				auditWork.setVersion(1);
-			} else {
-				final long tmpVersion = System.currentTimeMillis();
-				// set dummy version, does not happen often
-				auditWork.setVersion(tmpVersion);
-			}
+		if (auditKind == TeneoAuditKind.ADD) {
+			// start from one.
+			auditWork.setVersion(1);
+		} else if (version == null) {
+			final long tmpVersion = System.currentTimeMillis();
+			// set dummy version, does not happen often
+			auditWork.setVersion(tmpVersion);
 		} else if (version instanceof Timestamp) {
 			auditWork.setVersion(((Timestamp) version).getTime());
 		} else {
 			auditWork.setVersion(((Number) version).longValue());
+		}
+
+		// increase the version by one for cdo, it can be seen as a state change
+		if (auditKind == TeneoAuditKind.DELETE) {
+			auditWork.setVersion(1 + auditWork.getVersion());
 		}
 
 		final List<AuditWork> auditWorks;
