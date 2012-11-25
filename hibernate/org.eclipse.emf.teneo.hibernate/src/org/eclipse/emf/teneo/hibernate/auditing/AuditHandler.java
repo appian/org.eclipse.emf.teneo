@@ -473,7 +473,7 @@ public class AuditHandler implements ExtensionPoint {
 		return false;
 	}
 
-	private boolean isJavaType(Class<?> clz) {
+	protected boolean isJavaType(Class<?> clz) {
 		if (clz == null) {
 			return false;
 		}
