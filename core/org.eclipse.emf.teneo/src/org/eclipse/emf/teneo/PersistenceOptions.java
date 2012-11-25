@@ -434,6 +434,8 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * When an unset feature is persisted, the database will get a null value, default is false.
+	 * 
+	 * @deprecated note the same as {@link #HANDLE_UNSET_AS_NULL} use that persistence option.
 	 */
 	public static final String CONVERT_UNSET_TO_NULL = RUNTIME_PREFIX + "convert_unset_to_null";
 
