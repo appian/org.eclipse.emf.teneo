@@ -633,7 +633,7 @@ public class AuditHandler implements ExtensionPoint {
 					} else if (eFeature instanceof EReference) {
 						auditingEFeature = createEReferenceAttribute((EReference) eFeature);
 					} else {
-						auditingEFeature = EcoreUtil.copy(eFeature);
+						auditingEFeature = createEAttribute((EAttribute) eFeature);
 					}
 
 					// get rid of all teneo.jpa eannotations
@@ -670,6 +670,10 @@ public class AuditHandler implements ExtensionPoint {
 		}
 
 		return eAuditingPackage;
+	}
+
+	protected EStructuralFeature createEAttribute(EAttribute eAttribute) {
+		return EcoreUtil.copy(eAttribute);
 	}
 
 	protected EAttribute createEReferenceAttribute(EReference eReference) {
