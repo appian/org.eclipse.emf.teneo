@@ -410,12 +410,8 @@ public class AuditHandler implements ExtensionPoint {
 				return false;
 			}
 
-			final boolean isJavaType = isJavaType(eDataType.getInstanceClass());
-			final boolean xmlOrJavaOrEcoreType = isJavaType
-					|| ((EDataType) modelElement).getEPackage().getNsURI().equals(XMLTypePackage.eNS_URI)
-					|| ((EDataType) modelElement).getEPackage().getNsURI().equals(EcorePackage.eNS_URI);
-			if (!xmlOrJavaOrEcoreType) {
-				return true;
+			if (isCustomType((EDataType) modelElement)) {
+				return !supportCustomType();
 			} else {
 				return false;
 			}
@@ -470,6 +466,18 @@ public class AuditHandler implements ExtensionPoint {
 							|| !((EReference) eStructuralFeature).getEOpposite().isContainment() || ((EReference) eStructuralFeature)
 							.getEOpposite().isTransient());
 		}
+		return false;
+	}
+
+	protected boolean isCustomType(EDataType eDataType) {
+		final boolean isJavaType = isJavaType(eDataType.getInstanceClass());
+		final boolean xmlOrJavaOrEcoreType = isJavaType
+				|| eDataType.getEPackage().getNsURI().equals(XMLTypePackage.eNS_URI)
+				|| eDataType.getEPackage().getNsURI().equals(EcorePackage.eNS_URI);
+		return !xmlOrJavaOrEcoreType;
+	}
+
+	protected boolean supportCustomType() {
 		return false;
 	}
 
