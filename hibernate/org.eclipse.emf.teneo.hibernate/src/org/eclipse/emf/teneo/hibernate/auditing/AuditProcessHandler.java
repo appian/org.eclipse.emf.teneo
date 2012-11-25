@@ -274,9 +274,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			auditEntry.setTeneo_object_id(auditHandler.entityToIdString(session, auditWork.getEntity()));
 			auditEntry.setTeneo_object_version(auditWork.getVersion());
 
-			if (auditWork.getEntity() instanceof EObject) {
-				auditHandler.setContainerInfo(session, auditEntry, auditWork.getEntity());
-			}
+			setContainerInfo(session, auditEntry, auditWork.getEntity());
 
 			auditHandler.copyContentToAuditEntry(session, auditWork.getEntity(), auditEntry,
 					auditWork.getAuditKind() != TeneoAuditKind.DELETE);
@@ -330,6 +328,12 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		getRemoveQueue(session, false);
 
 		pruneCounter++;
+	}
+
+	protected void setContainerInfo(Session session, TeneoAuditEntry auditEntry, Object entity) {
+		if (entity instanceof EObject) {
+			auditHandler.setContainerInfo(session, auditEntry, entity);
+		}
 	}
 
 	// is called/used in case of emap entries which are themselves
@@ -512,5 +516,12 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			this.version = version;
 		}
 
+	}
+
+	/**
+	 * @return the auditHandler
+	 */
+	public AuditHandler getAuditHandler() {
+		return auditHandler;
 	}
 }

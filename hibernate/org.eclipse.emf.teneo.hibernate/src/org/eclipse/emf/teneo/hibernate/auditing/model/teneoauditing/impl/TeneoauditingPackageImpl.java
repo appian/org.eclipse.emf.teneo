@@ -201,6 +201,15 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTeneoAuditEntry_Teneo_resourceid() {
+		return (EAttribute)teneoAuditEntryEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -295,6 +304,7 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID);
 		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START);
 		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION);
+		createEAttribute(teneoAuditEntryEClass, TENEO_AUDIT_ENTRY__TENEO_RESOURCEID);
 
 		teneoAuditCommitInfoEClass = createEClass(TENEO_AUDIT_COMMIT_INFO);
 		createEAttribute(teneoAuditCommitInfoEClass, TENEO_AUDIT_COMMIT_INFO__ID);
@@ -348,6 +358,7 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 		initEAttribute(getTeneoAuditEntry_Teneo_container_feature_id(), ecorePackage.getEInt(), "teneo_container_feature_id", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTeneoAuditEntry_Teneo_previous_start(), ecorePackage.getELong(), "teneo_previous_start", "-1", 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTeneoAuditEntry_Teneo_object_version(), ecorePackage.getELong(), "teneo_object_version", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTeneoAuditEntry_Teneo_resourceid(), ecorePackage.getEString(), "teneo_resourceid", null, 0, 1, TeneoAuditEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(teneoAuditCommitInfoEClass, TeneoAuditCommitInfo.class, "TeneoAuditCommitInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTeneoAuditCommitInfo_Id(), ecorePackage.getELong(), "id", null, 0, 1, TeneoAuditCommitInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

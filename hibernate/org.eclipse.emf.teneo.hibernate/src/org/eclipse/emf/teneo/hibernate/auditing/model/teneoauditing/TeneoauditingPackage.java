@@ -169,13 +169,22 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION = 11;
 
 	/**
+	 * The feature id for the '<em><b>Teneo resourceid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TENEO_AUDIT_ENTRY__TENEO_RESOURCEID = 12;
+
+	/**
 	 * The number of structural features of the '<em>Teneo Audit Entry</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_ENTRY_FEATURE_COUNT = 12;
+	int TENEO_AUDIT_ENTRY_FEATURE_COUNT = 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.
@@ -380,6 +389,17 @@ public interface TeneoauditingPackage extends EPackage {
 	EAttribute getTeneoAuditEntry_Teneo_object_version();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_resourceid <em>Teneo resourceid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Teneo resourceid</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_resourceid()
+	 * @see #getTeneoAuditEntry()
+	 * @generated
+	 */
+	EAttribute getTeneoAuditEntry_Teneo_resourceid();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo <em>Teneo Audit Commit Info</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Teneo Audit Commit Info</em>'.
@@ -570,6 +590,14 @@ public interface TeneoauditingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION = eINSTANCE.getTeneoAuditEntry_Teneo_object_version();
+
+		/**
+		 * The meta object literal for the '<em><b>Teneo resourceid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TENEO_AUDIT_ENTRY__TENEO_RESOURCEID = eINSTANCE.getTeneoAuditEntry_Teneo_resourceid();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.

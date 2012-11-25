@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_container_feature_id <em>Teneo container feature id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_previous_start <em>Teneo previous start</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_object_version <em>Teneo object version</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_resourceid <em>Teneo resourceid</em>}</li>
  * </ul>
  * </p>
  *
@@ -341,5 +342,31 @@ public interface TeneoAuditEntry extends EObject {
 	 * @generated
 	 */
 	void setTeneo_object_version(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Teneo resourceid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Teneo resourceid</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Teneo resourceid</em>' attribute.
+	 * @see #setTeneo_resourceid(String)
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditEntry_Teneo_resourceid()
+	 * @model
+	 * @generated
+	 */
+	String getTeneo_resourceid();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_resourceid <em>Teneo resourceid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teneo resourceid</em>' attribute.
+	 * @see #getTeneo_resourceid()
+	 * @generated
+	 */
+	void setTeneo_resourceid(String value);
 
 } // TeneoAuditEntry

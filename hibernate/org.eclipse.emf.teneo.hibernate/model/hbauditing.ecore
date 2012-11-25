@@ -36,6 +36,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_previous_start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_object_version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teneo_resourceid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TeneoAuditCommitInfo">
     <eAnnotations source="teneo.jpa">
