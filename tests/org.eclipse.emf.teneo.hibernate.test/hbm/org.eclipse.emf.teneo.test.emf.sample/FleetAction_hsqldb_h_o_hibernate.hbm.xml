@@ -493,6 +493,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="brand" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`BRAND`"/>
 		</property>
@@ -585,6 +588,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`DATE`"/>
@@ -697,6 +703,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="acquisitionDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
 			<column not-null="false" unique="false" name="`ACQUISITIONDATE`"/>
 		</property>
@@ -751,6 +760,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ID`"/>
@@ -864,6 +876,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="radius" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`RADIUS`"/>
 		</property>
@@ -927,6 +942,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
@@ -1091,6 +1109,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ID`"/>
 		</property>
@@ -1149,6 +1170,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="manufacturedBy" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`MANUFACTUREDBY`"/>
 		</property>
@@ -1203,6 +1227,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="versions" table="`VERSIONHOLDERAUDITING_VERSIONSAUDITING`" lazy="true" cascade="all">
 			<key update="true">

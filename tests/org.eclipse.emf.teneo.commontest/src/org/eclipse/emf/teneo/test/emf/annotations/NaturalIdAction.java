@@ -34,6 +34,11 @@ public class NaturalIdAction extends AbstractTestAction {
 	}
 
 	@Override
+	public boolean supportAuditing() {
+		return false;
+	}
+
+	@Override
 	public void doAction(TestStore store) {
 		final NaturalIdFactory factory = NaturalIdFactory.eINSTANCE;
 		{

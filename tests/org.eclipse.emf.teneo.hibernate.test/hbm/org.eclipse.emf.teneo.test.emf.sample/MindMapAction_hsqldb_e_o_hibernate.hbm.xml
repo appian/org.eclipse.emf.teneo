@@ -275,6 +275,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<many-to-one name="mixed" entity-name="mindmapAuditing.DocumentRootAuditing_mixed" cascade="all" not-null="false"/>
 		<property name="map" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`MAP`"/>
@@ -340,6 +343,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="rootTopics" table="`MAPAUDITING_ROOTTOPICSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
@@ -411,6 +417,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="label" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`LABEL`"/>
 		</property>
@@ -473,6 +482,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="comments" table="`RESOURCEAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
@@ -540,6 +552,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<list name="items" table="`THREADAUDITING_ITEMSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`THREADAUDITING_ITEMS_TENEO_AUDIT_ID`" unique="false"/>
@@ -602,6 +617,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="author" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`AUTHOR`"/>
 		</property>
@@ -656,6 +674,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="comments" table="`TOPICAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
 			<key update="true">

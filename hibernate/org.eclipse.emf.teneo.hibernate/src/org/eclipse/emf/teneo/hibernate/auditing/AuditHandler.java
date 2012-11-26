@@ -136,8 +136,7 @@ public class AuditHandler implements ExtensionPoint {
 					if (sourceEFeature.isMany()) {
 						if (StoreUtil.isMap(sourceEFeature)) {
 							convertEMap(session, ((Collection<?>) source.eGet(sourceEFeature)),
-									(EReference) sourceEFeature, auditEntry,
-									(EReference) targetEFeature);
+									(EReference) sourceEFeature, auditEntry, (EReference) targetEFeature);
 						} else if (FeatureMapUtil.isFeatureMap(sourceEFeature)) {
 							convertFeatureMap(session, ((Collection<?>) source.eGet(sourceEFeature)),
 									sourceEFeature, auditEntry, targetEFeature);
@@ -213,7 +212,7 @@ public class AuditHandler implements ExtensionPoint {
 
 		if (eFeature.getEType() instanceof EEnum && value instanceof Integer) {
 			final int ordinal = (Integer) value;
-			final EEnum eeNum = (EEnum)eFeature.getEType();
+			final EEnum eeNum = (EEnum) eFeature.getEType();
 			if (eeNum.getInstanceClass() != null && eeNum.getInstanceClass().isEnum()) {
 				final Object[] constants = eeNum.getInstanceClass().getEnumConstants();
 				for (Object constant : constants) {
@@ -226,9 +225,9 @@ public class AuditHandler implements ExtensionPoint {
 				}
 				return constants[ordinal];
 			}
-			return eeNum.getEEnumLiteral((Integer)value);
+			return eeNum.getEEnumLiteral((Integer) value);
 		}
-		
+
 		if (eFeature instanceof EReference && ((EReference) eFeature).isContainment()) {
 			return EcoreUtil.copy((EObject) value);
 		}
@@ -645,8 +644,9 @@ public class AuditHandler implements ExtensionPoint {
 					}
 
 					// get rid of all teneo.jpa eannotations
-					auditingEFeature.getEAnnotations().remove(
-							auditingEFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA));
+					final EAnnotation jpaEAnnotation = auditingEFeature
+							.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+					auditingEFeature.getEAnnotations().remove(jpaEAnnotation);
 					auditingEFeature.getEAnnotations().remove(
 							auditingEFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_HIBERNATE));
 					// re-use the other ones
@@ -661,7 +661,16 @@ public class AuditHandler implements ExtensionPoint {
 								Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING));
 						teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 						auditingEFeature.getEAnnotations().add(teneoAnnotation);
+					} else if (jpaEAnnotation != null && eFeature instanceof EAttribute && !eFeature.isMany()) {
+						// check if the annotation is @Id or @Version, ignore these
+						final String value = jpaEAnnotation.getDetails().get(Constants.ANNOTATION_KEY_VALUE)
+								+ jpaEAnnotation.getDetails().get(Constants.ANNOTATION_KEY_APPINFO);
+						if (!value.contains("@Id") && !value.contains("@Version")) {
+							// reuse the eannotations on eattributes
+							auditingEFeature.getEAnnotations().add(EcoreUtil.copy(jpaEAnnotation));
+						}
 					}
+
 					// never be an id
 					if (auditingEFeature instanceof EAttribute) {
 						((EAttribute) auditingEFeature).setID(false);

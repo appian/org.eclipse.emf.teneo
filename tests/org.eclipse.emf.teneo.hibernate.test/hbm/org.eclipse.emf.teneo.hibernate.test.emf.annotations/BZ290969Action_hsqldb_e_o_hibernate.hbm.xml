@@ -110,6 +110,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<list name="barKeys" table="`BARAUDITING_BARKEYSAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`BARAUDITING_BARKEYS_TENEO_AUDIT_ID`" unique="false"/>
@@ -163,6 +166,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="FooAuditing" abstract="false" lazy="false" table="`FOOAUDITING`">
 		<meta attribute="eclassName" inherit="false">FooAuditing</meta>
@@ -208,6 +214,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="barKey" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`BARKEY`"/>

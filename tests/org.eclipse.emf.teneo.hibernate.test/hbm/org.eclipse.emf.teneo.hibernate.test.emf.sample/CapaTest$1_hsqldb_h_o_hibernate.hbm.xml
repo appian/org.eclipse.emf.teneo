@@ -254,6 +254,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="capacityEntryId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`CAPACITYENTRYID`"/>
 		</property>
@@ -308,6 +311,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="workWeek" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`WORKWEEK`"/>
@@ -373,6 +379,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<list name="machines" table="`MACHINELISTAUDITING_MACHINESAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`MACHINELISTAUDITING_MACHINES_TENEO_AUDIT_ID`" unique="false"/>
@@ -428,6 +437,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="article" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ARTICLE`"/>
@@ -496,6 +508,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="capacityEntry" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`CAPACITYENTRY`"/>
 		</property>
@@ -563,6 +578,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="dayOfWeek" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`DAYOFWEEK`"/>
 		</property>
@@ -620,6 +638,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="days" table="`WORKWEEKAUDITING_DAYSAUDITING`" lazy="true" cascade="all">
 			<key update="true">

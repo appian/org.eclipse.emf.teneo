@@ -206,6 +206,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<list name="authorName" table="`AUTHORSTYPEAUDITING_AUTHORNAMEAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`AUTHORSTYPEAUDITING_AUTHORNAME_TENEO_AUDIT_ID`" unique="false"/>
@@ -262,6 +265,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<list name="book" table="`BOOKSTYPEAUDITING_BOOKAUDITING`" lazy="true" cascade="all">
 			<key update="true">
 				<column name="`BOOKSTYPEAUDITING_BOOK_TENEO_AUDIT_ID`" unique="false"/>
@@ -317,6 +323,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
@@ -399,6 +408,9 @@
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
 		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
+		</property>
 		<property name="books" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`BOOKS`"/>
 		</property>
@@ -447,6 +459,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<many-to-one name="mixed" entity-name="sunBooksAuditing.DocumentRootAuditing_mixed" cascade="all" not-null="false"/>
 		<property name="collection" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -516,6 +531,9 @@
 		</property>
 		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_VERSION`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<property name="discount" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`DISCOUNT`"/>
