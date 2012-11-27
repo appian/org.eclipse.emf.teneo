@@ -604,10 +604,17 @@ public class AuditHandler implements ExtensionPoint {
 					teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 					auditingEClass.getEAnnotations().add(teneoAnnotation);
 				} else {
+					// also take over the mapped super class
+					boolean setMappedSuperclass = hasJPAAnnotation(eClass, "@MappedSuperclass");
+
 					// at least add an entity annotation
 					final EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 					eAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
-					eAnnotation.getDetails().put("value", "@Entity");
+					if (setMappedSuperclass) {
+						eAnnotation.getDetails().put("value", "@MappedSuperclass");
+					} else {
+						eAnnotation.getDetails().put("value", "@Entity");
+					}
 					auditingEClass.getEAnnotations().add(eAnnotation);
 				}
 
@@ -649,19 +656,25 @@ public class AuditHandler implements ExtensionPoint {
 					auditingEFeature.getEAnnotations().remove(jpaEAnnotation);
 					auditingEFeature.getEAnnotations().remove(
 							auditingEFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_HIBERNATE));
+
 					// re-use the other ones
 					if (eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
+
 						final EAnnotation teneoAnnotation = EcoreUtil.copy(eFeature
 								.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING));
 						teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 						auditingEFeature.getEAnnotations().add(teneoAnnotation);
+
 					} else if (eFeature.getEType().getEAnnotation(
 							Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING) != null) {
+
 						final EAnnotation teneoAnnotation = EcoreUtil.copy(eFeature.getEType().getEAnnotation(
 								Constants.ANNOTATION_SOURCE_TENEO_JPA_AUDITING));
 						teneoAnnotation.setSource(Constants.ANNOTATION_SOURCE_TENEO_JPA);
 						auditingEFeature.getEAnnotations().add(teneoAnnotation);
+
 					} else if (jpaEAnnotation != null && eFeature instanceof EAttribute && !eFeature.isMany()) {
+
 						// check if the annotation is @Id or @Version, ignore these
 						final String value = jpaEAnnotation.getDetails().get(Constants.ANNOTATION_KEY_VALUE)
 								+ jpaEAnnotation.getDetails().get(Constants.ANNOTATION_KEY_APPINFO);
@@ -687,6 +700,20 @@ public class AuditHandler implements ExtensionPoint {
 		}
 
 		return eAuditingPackage;
+	}
+
+	private boolean hasJPAAnnotation(EModelElement eModelElement, String jpaAnnotation) {
+		final StringBuffer value = new StringBuffer();
+		EAnnotation eAnnotation;
+		if ((eAnnotation = eModelElement.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA)) != null) {
+			value.append(eAnnotation.getDetails().get(Constants.ANNOTATION_KEY_VALUE));
+			value.append(eAnnotation.getDetails().get(Constants.ANNOTATION_KEY_APPINFO));
+		}
+		if ((eAnnotation = eModelElement.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_HIBERNATE)) != null) {
+			value.append(eAnnotation.getDetails().get(Constants.ANNOTATION_KEY_VALUE));
+			value.append(eAnnotation.getDetails().get(Constants.ANNOTATION_KEY_APPINFO));
+		}
+		return value.toString().contains(jpaAnnotation);
 	}
 
 	protected EStructuralFeature createEAttribute(EAttribute eAttribute) {
