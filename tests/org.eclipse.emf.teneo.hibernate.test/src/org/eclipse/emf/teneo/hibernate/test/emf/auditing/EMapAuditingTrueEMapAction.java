@@ -120,9 +120,9 @@ public class EMapAuditingTrueEMapAction extends AbstractTestAction {
 			for (Book bk : store.getObjects(Book.class)) {
 				id = IdentifierCacheHandler.getInstance().getID(bk);
 				final List<TeneoAuditEntry> auditEntries = auditVersionProvider.getAllAuditEntries(bk);
-				assertTrue(auditEntries.size() == 2);
-				assertTrue(auditEntries.get(0).getTeneo_audit_kind() == TeneoAuditKind.ADD);
-				assertTrue(auditEntries.get(1).getTeneo_audit_kind() == TeneoAuditKind.UPDATE);
+				assertEquals(2, auditEntries.size());
+				assertEquals(TeneoAuditKind.ADD, auditEntries.get(0).getTeneo_audit_kind());
+				assertEquals(TeneoAuditKind.UPDATE, auditEntries.get(1).getTeneo_audit_kind());
 				final Book bkAdd = (Book) auditVersionProvider.getRevision(auditEntries.get(0));
 				final Book bkUpdate = (Book) auditVersionProvider.getRevision(auditEntries.get(1));
 				assertTrue(bkAdd != bkUpdate);

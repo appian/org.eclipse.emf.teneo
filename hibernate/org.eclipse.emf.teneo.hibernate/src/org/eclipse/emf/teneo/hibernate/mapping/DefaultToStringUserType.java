@@ -16,6 +16,7 @@
 package org.eclipse.emf.teneo.hibernate.mapping;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -102,11 +103,36 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * @return a standard equals test between the objects.
 	 */
 	public boolean equals(Object x, Object y) {
-		if (x == y)
+		if (x == y) {
 			return true;
-		if (x == null || y == null)
+		}
+
+		if (x == null || y == null) {
 			return false;
+		}
+
+		if (x.getClass().isArray() && y.getClass().isArray()) {
+			return equalArrays(x, y);
+		}
+
 		return x.equals(y);
+	}
+
+	private boolean equalArrays(Object os1, Object os2) {
+		final int l1 = Array.getLength(os1);
+		if (l1 != Array.getLength(os2)) {
+			return false;
+		}
+
+		for (int i = 0; i < l1; i++) {
+			Object o1 = Array.get(os1, i);
+			Object o2 = Array.get(os2, i);
+			if (!(o1 == null ? o2 == null : o1.equals(o2))) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/**

@@ -68,10 +68,46 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 	}
 
 	private void testSimpleChange(TestStore store) {
+		int name = 0;
 		{
 			store.beginTransaction();
 			final Writer writer = LibraryFactory.eINSTANCE.createWriter();
-			writer.setName("0");
+			writer.setName(name++ + "");
+			store.store(writer);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Writer writer = store.getObject(Writer.class);
+			writer.setName(name++ + "");
+			store.store(writer);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Writer writer = store.getObject(Writer.class);
+			writer.setName(name++ + "");
+			store.store(writer);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Writer writer = store.getObject(Writer.class);
+			writer.setName(name++ + "");
+			store.store(writer);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Writer writer = store.getObject(Writer.class);
+			writer.setName(name++ + "");
+			store.store(writer);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Writer writer = store.getObject(Writer.class);
+			writer.setName(name++ + "");
 			final Book bk1 = LibraryFactory.eINSTANCE.createBook();
 			bk1.setTitle("1-simple");
 			bk1.setPages(0);
@@ -88,7 +124,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			for (int i = 0; i < 5; i++) {
 				store.beginTransaction();
 				final Writer w = store.getObject(Writer.class);
-				w.setName("" + (i + 1));
+				w.setName("" + name++);
 				w.getBooks().get(0).setPages(i + 1);
 				w.getBooks().get(1).setPages(i + 1);
 				store.commitTransaction();
@@ -97,6 +133,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			// and delete
 			store.beginTransaction();
 			final Writer w = store.getObject(Writer.class);
+			writer.setName(name++ + "");
 			store.deleteObject(w.getBooks().get(1));
 			store.deleteObject(w.getBooks().get(0));
 			store.deleteObject(w);
@@ -108,11 +145,11 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 					.getAuditVersionProvider();
 			final List<TeneoAuditEntry> revisions = auditVersionProvider.getAllAuditEntries(
 					LibraryPackage.eINSTANCE.getWriter(), id);
-			assertTrue(revisions.size() == 7);
-			for (int i = 0; i < 7; i++) {
+			assertTrue(revisions.size() == 12);
+			for (int i = 0; i < 12; i++) {
 				if (i == 0) {
 					assertTrue(revisions.get(i).getTeneo_audit_kind() == TeneoAuditKind.ADD);
-				} else if (i == 6) {
+				} else if (i == 11) {
 					assertTrue(revisions.get(i).getTeneo_audit_kind() == TeneoAuditKind.DELETE);
 				} else {
 					assertTrue(revisions.get(i).getTeneo_audit_kind() == TeneoAuditKind.UPDATE);
@@ -121,17 +158,22 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 
 			// now get the revisions one by one, not the last one
 			final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < 12; i++) {
 				final TeneoAuditEntry audit = revisions.get(i);
 				final Writer testW = (Writer) vp.getRevision(LibraryPackage.eINSTANCE.getWriter(), id,
 						audit.getTeneo_start());
 
-				assertTrue(testW.getName().equals("" + i));
-				// check the books that they are in the correct revision to
-				assertFalse(testW.getBooks().get(0).eIsProxy());
-				assertFalse(testW.getBooks().get(1).eIsProxy());
-				assertTrue(testW.getBooks().get(0).getPages() == i);
-				assertTrue(testW.getBooks().get(1).getPages() == i);
+				System.err.println(testW.getName());
+				if (audit.getTeneo_audit_kind() != TeneoAuditKind.DELETE) {
+					assertEquals("" + i, testW.getName());
+				}
+				if (testW.getBooks().size() > 0) {
+					// check the books that they are in the correct revision to
+					assertFalse(testW.getBooks().get(0).eIsProxy());
+					assertFalse(testW.getBooks().get(1).eIsProxy());
+					assertEquals(i - 5, testW.getBooks().get(0).getPages());
+					assertEquals(i - 5, testW.getBooks().get(1).getPages());
+				}
 			}
 
 			store.commitTransaction();

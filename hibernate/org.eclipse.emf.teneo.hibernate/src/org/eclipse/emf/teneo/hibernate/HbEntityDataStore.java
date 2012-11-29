@@ -168,6 +168,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			eventListenerRegistry.appendListeners(EventType.POST_DELETE, auditProcessHandler);
 			eventListenerRegistry.appendListeners(EventType.POST_INSERT, auditProcessHandler);
 			eventListenerRegistry.appendListeners(EventType.POST_UPDATE, auditProcessHandler);
+			eventListenerRegistry.appendListeners(EventType.FLUSH, auditProcessHandler);
 		}
 
 	}

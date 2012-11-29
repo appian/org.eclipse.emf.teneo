@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +39,7 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.Teneoauditin
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.FlushMode;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
@@ -46,6 +49,8 @@ import org.hibernate.action.spi.AfterTransactionCompletionProcess;
 import org.hibernate.action.spi.BeforeTransactionCompletionProcess;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.event.spi.EventSource;
+import org.hibernate.event.spi.FlushEvent;
+import org.hibernate.event.spi.FlushEventListener;
 import org.hibernate.event.spi.PostDeleteEvent;
 import org.hibernate.event.spi.PostDeleteEventListener;
 import org.hibernate.event.spi.PostInsertEvent;
@@ -61,10 +66,15 @@ import org.hibernate.event.spi.PostUpdateEventListener;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
 public class AuditProcessHandler implements AfterTransactionCompletionProcess,
-		BeforeTransactionCompletionProcess, PostDeleteEventListener, PostInsertEventListener,
-		PostUpdateEventListener, ExtensionPoint {
+		BeforeTransactionCompletionProcess, FlushEventListener, PostDeleteEventListener,
+		PostInsertEventListener, PostUpdateEventListener, ExtensionPoint {
+
+	/** The logger */
+	private static Log log = LogFactory.getLog(AuditProcessHandler.class);
 
 	public static final long DEFAULT_END_TIMESTAMP = -1;
+
+	public static final long HIGH_NUMBER = 1000000;
 
 	private static ThreadLocal<String> currentUserName = new ThreadLocal<String>();
 
@@ -87,7 +97,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	private long pruneTime = 0;
 	private long pruneInterval = 1000;
 	private List<String> auditEntityNames = null;
-
+	private ThreadLocal<Boolean> inAuditWorkInSession = new ThreadLocal<Boolean>();
 	private AuditHandler auditHandler = null;
 
 	private void addToAuditWorkQueue(EventSource session, TeneoAuditKind auditKind, Object entity) {
@@ -126,7 +136,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			auditWorks = new ArrayList<AuditProcessHandler.AuditWork>();
 			workQueue.put(session.getTransaction(), auditWorks);
 
-			// let the handler be called at the end of the transaction
+			// let the handler also be called at the end of the transaction
 			// to do the transaction work
 			session.getActionQueue().registerProcess((AfterTransactionCompletionProcess) this);
 			session.getActionQueue().registerProcess((BeforeTransactionCompletionProcess) this);
@@ -141,6 +151,13 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			}
 		}
 
+		// note that if there is an existing audit work it can mean
+		// that the dirty checking on an entity is broken.
+		// this because the flush in doAuditWorkInSession will cause
+		// again a dirty check/flag
+		// but hibernate is quite lenient with this.
+		// the consequence is holes in the version numbers
+
 		// check if there is already an add
 		if (existingAuditWork != null
 				&& (existingAuditWork.getAuditKind() == TeneoAuditKind.ADD && auditWork.getAuditKind() == TeneoAuditKind.UPDATE)) {
@@ -154,7 +171,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			// happens if the id has been set manually
 			auditWorks.remove(existingAuditWork);
 		} else {
-			auditWorks.remove(existingAuditWork);
+
+			if (existingAuditWork != null) {
+				auditWorks.remove(existingAuditWork);
+			}
 
 			// and add the new one
 			auditWorks.add(auditWork);
@@ -187,6 +207,31 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 			}
 			doAuditWorkInSession((Session) session, auditWorks);
 		}
+	}
+
+	@Override
+	public void onFlush(FlushEvent event) throws HibernateException {
+		if (inAuditWorkInSession.get() != null && inAuditWorkInSession.get()) {
+			// audit work in session does flush
+			if (workQueue.get(event.getSession().getTransaction()) != null
+					&& !workQueue.get(event.getSession().getTransaction()).isEmpty()) {
+				final StringBuilder sb = new StringBuilder();
+				for (AuditWork auditWork : workQueue.get(event.getSession().getTransaction())) {
+					sb.append("\n" + auditWork);
+				}
+				// if this if is true then probably dirty checking is not correctly done
+				log.error("The audit work handling resulted in additional audit entries, "
+						+ "this points to an error in dirty checking of properties (false dirties), audit entries: "
+						+ sb);
+			}
+			return;
+		}
+
+		final List<AuditWork> auditWorks = getRemoveQueue((Session) event.getSession(), false);
+		if (auditWorks == null || auditWorks.isEmpty()) {
+			return;
+		}
+		doAuditWorkInSession((Session) event.getSession(), auditWorks);
 	}
 
 	@Override
@@ -229,105 +274,126 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		return System.currentTimeMillis();
 	}
 
-	protected void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
-		final long commitTime = getCommitTime();
+	protected synchronized void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
+		inAuditWorkInSession.set(true);
+		try {
+			final long commitTime = getCommitTime();
 
-		final List<Object> toSaveEntries = new ArrayList<Object>();
+			final List<Object> toSaveEntries = new ArrayList<Object>();
 
-		final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
-				.createTeneoAuditCommitInfo();
+			final TeneoAuditCommitInfo commitInfo = TeneoauditingFactory.eINSTANCE
+					.createTeneoAuditCommitInfo();
 
-		if (currentUserName.get() != null) {
-			commitInfo.setUser(currentUserName.get());
-		}
-
-		commitInfo.setCommitTime(commitTime);
-
-		if (currentComment.get() != null) {
-			if (currentComment.get().length() > 2000) {
-				commitInfo.setComment(currentComment.get().substring(0, 2000));
-			} else {
-				commitInfo.setComment(currentComment.get());
+			if (currentUserName.get() != null) {
+				commitInfo.setUser(currentUserName.get());
 			}
-		}
 
-		toSaveEntries.add(commitInfo);
+			commitInfo.setCommitTime(commitTime);
 
-		EClass lastEClass = null;
-		EClass auditEntryEClass = null;
-		for (AuditWork auditWork : auditWorks) {
-			final Object object = auditWork.getEntity();
-			final EClass eClass = auditHandler.getEClass(object);
-			if (lastEClass != eClass) {
-				auditEntryEClass = auditHandler.getAuditingModelElement(eClass);
-				lastEClass = eClass;
+			if (currentComment.get() != null) {
+				if (currentComment.get().length() > 2000) {
+					commitInfo.setComment(currentComment.get().substring(0, 2000));
+				} else {
+					commitInfo.setComment(currentComment.get());
+				}
 			}
-			final String auditEntryEntityName = HbUtil.getEntityName(auditEntryEClass);
 
-			// create the auditEntry
-			final TeneoAuditEntry auditEntry = (TeneoAuditEntry) auditEntryEClass.getEPackage()
-					.getEFactoryInstance().create(auditEntryEClass);
-			auditEntry.setTeneo_audit_kind(auditWork.getAuditKind());
-			auditEntry.setTeneo_commit_info(commitInfo);
-			auditEntry.setTeneo_end(DEFAULT_END_TIMESTAMP);
-			auditEntry.setTeneo_start(commitTime);
-			auditEntry.setTeneo_object_id(auditHandler.entityToIdString(session, auditWork.getEntity()));
-			auditEntry.setTeneo_object_version(auditWork.getVersion());
+			toSaveEntries.add(commitInfo);
 
-			setContainerInfo(session, auditEntry, auditWork.getEntity());
+			EClass lastEClass = null;
+			EClass auditEntryEClass = null;
+			for (AuditWork auditWork : auditWorks) {
+				final Object object = auditWork.getEntity();
+				final EClass eClass = auditHandler.getEClass(object);
+				if (lastEClass != eClass) {
+					auditEntryEClass = auditHandler.getAuditingModelElement(eClass);
+					lastEClass = eClass;
+				}
+				final String auditEntryEntityName = HbUtil.getEntityName(auditEntryEClass);
 
-			auditHandler.copyContentToAuditEntry(session, auditWork.getEntity(), auditEntry,
-					auditWork.getAuditKind() != TeneoAuditKind.DELETE);
+				// create the auditEntry
+				final TeneoAuditEntry auditEntry = (TeneoAuditEntry) auditEntryEClass.getEPackage()
+						.getEFactoryInstance().create(auditEntryEClass);
+				auditEntry.setTeneo_audit_kind(auditWork.getAuditKind());
+				auditEntry.setTeneo_commit_info(commitInfo);
+				auditEntry.setTeneo_end(DEFAULT_END_TIMESTAMP);
+				auditEntry.setTeneo_start(commitTime);
+				auditEntry
+						.setTeneo_object_id(auditHandler.entityToIdString(session, auditWork.getEntity()));
+				auditEntry.setTeneo_object_version(auditWork.getVersion());
 
-			// note also do a query in case of ADD as an object can
-			// be removed and then re-added, restore its link
-			// to the history then
-			// get info from the previous entry
-			// Note: apparently hibernate has a query plan cache, so
-			// it does not give a performance benefit to use a namedquery
-			// at least not that much..
-			// http://stackoverflow.com/questions/3578711/jpa-caching-queries
-			final Query infoQuery = session.createQuery("select teneo_start from " + auditEntryEntityName
-					+ " e where teneo_object_id=:objectId and teneo_end="
-					+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
-			infoQuery.setMaxResults(1);
-			infoQuery.setString("objectId", auditEntry.getTeneo_object_id());
+				setContainerInfo(session, auditEntry, auditWork.getEntity());
 
-			@SuppressWarnings("unchecked")
-			final List<Object> list = infoQuery.list();
-			if (!list.isEmpty()) {
-				final Long startTime = (Long) list.get(0);
+				auditHandler.copyContentToAuditEntry(session, auditWork.getEntity(), auditEntry,
+						auditWork.getAuditKind() != TeneoAuditKind.DELETE);
 
-				auditEntry.setTeneo_previous_start(startTime);
+				// note also do a query in case of ADD as an object can
+				// be removed and then re-added, restore its link
+				// to the history then
+				// get info from the previous entry
+				// Note: apparently hibernate has a query plan cache, so
+				// it does not give a performance benefit to use a namedquery
+				// at least not that much..
+				// http://stackoverflow.com/questions/3578711/jpa-caching-queries
+				final Query infoQuery = session
+						.createQuery("select teneo_start, teneo_object_version, teneo_audit_kind from "
+								+ auditEntryEntityName + " e where teneo_object_id=:objectId and teneo_end="
+								+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
+				infoQuery.setMaxResults(1);
+				infoQuery.setString("objectId", auditEntry.getTeneo_object_id());
 
-				updateEndTime(session, auditEntryEntityName, auditEntry.getTeneo_object_id(),
-						commitTime - 1, false);
-				updateEndTimeDerivedObjects(session, auditEntryEClass, auditEntry.getTeneo_object_id(),
-						commitTime - 1);
+				@SuppressWarnings("unchecked")
+				final List<Object> list = infoQuery.list();
+				if (!list.isEmpty()) {
+					final Object[] values = (Object[]) list.get(0);
+					final Long startTime = (Long) values[0];
+					final Long version = (Long) values[1];
+
+					// the HIGH_NUMBER check is a pragmatic way ignore versioning using timestamps
+					if (performVersionCheck() && version > 0 && auditWork.getVersion() > 0
+							&& auditWork.getVersion() < HIGH_NUMBER && auditWork.getVersion() != (version + 1)) {
+						throw new IllegalStateException(
+								"Version numbers should incrsement by 1, previous version: " + version
+										+ " new version " + auditWork.getVersion());
+					}
+
+					auditEntry.setTeneo_previous_start(startTime);
+
+					updateEndTime(session, auditEntryEntityName, auditEntry.getTeneo_object_id(),
+							commitTime - 1, false);
+					updateEndTimeDerivedObjects(session, auditEntryEClass, auditEntry.getTeneo_object_id(),
+							commitTime - 1);
+				}
+				// save later to not flush in the loop
+				toSaveEntries.add(auditEntry);
+				setCommitInfoInReferencedObjects(auditEntry, toSaveEntries);
 			}
-			// save later to not flush in the loop
-			toSaveEntries.add(auditEntry);
-			setCommitInfoInReferencedObjects(auditEntry, toSaveEntries);
+			// do flush here to ensure that the update is done before
+			// the save, this to prevent unique constraint failures
+			session.flush();
+
+			for (Object o : toSaveEntries) {
+				session.save(HbUtil.getEntityName(auditHandler.getEClass(o)), o);
+			}
+			// and flush the saved stuff
+			session.flush();
+
+			// clear the cache from these audit objects
+			for (Object object : toSaveEntries) {
+				session.evict(object);
+			}
+
+			// clear the work queue
+			getRemoveQueue(session, false);
+
+			pruneCounter++;
+		} finally {
+			inAuditWorkInSession.set(null);
 		}
-		// do flush here to ensure that the update is done before
-		// the save, this to prevent unique constraint failures
-		session.flush();
+	}
 
-		for (Object o : toSaveEntries) {
-			session.save(HbUtil.getEntityName(auditHandler.getEClass(o)), o);
-		}
-		// and flush the saved stuff
-		session.flush();
-
-		// clear the cache from these audit objects
-		for (Object object : toSaveEntries) {
-			session.evict(object);
-		}
-
-		// clear the work queue
-		getRemoveQueue(session, false);
-
-		pruneCounter++;
+	protected boolean performVersionCheck() {
+		return false;
 	}
 
 	protected void setContainerInfo(Session session, TeneoAuditEntry auditEntry, Object entity) {
@@ -514,6 +580,12 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		 */
 		public void setVersion(long version) {
 			this.version = version;
+		}
+
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return "Audit kind " + auditKind + " Entity " + entity + " version " + version;
 		}
 
 	}
