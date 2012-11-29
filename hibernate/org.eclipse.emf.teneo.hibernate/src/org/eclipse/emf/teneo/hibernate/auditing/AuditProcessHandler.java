@@ -274,7 +274,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		return System.currentTimeMillis();
 	}
 
-	protected synchronized void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
+	protected void doAuditWorkInSession(Session session, List<AuditWork> auditWorks) {
 		inAuditWorkInSession.set(true);
 		try {
 			final long commitTime = getCommitTime();
