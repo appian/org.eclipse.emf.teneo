@@ -67,7 +67,7 @@ public class QuickStart {
 		// dbName);
 		// props.setProperty(Environment.PASS, "root");
 		// props.setProperty(Environment.DIALECT,
-		// org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		// org.hibernate.dialect.MySQL5InnoDBDialect.class.getName());
 
 		props.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
 		props.setProperty(Environment.USER, "sa");

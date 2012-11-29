@@ -78,7 +78,7 @@ public class Tutorial {
 		// "jdbc:mysql://127.0.0.1:3306/library");
 		// hibernateProperties.setProperty(Environment.PASS, "root");
 		// hibernateProperties.setProperty(Environment.DIALECT,
-		// "org.hibernate.dialect.MySQLInnoDBDialect");
+		// org.hibernate.dialect.MySQL5InnoDBDialect.class.getName());
 
 		hibernateProperties.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
 		hibernateProperties.setProperty(Environment.USER, "sa");
