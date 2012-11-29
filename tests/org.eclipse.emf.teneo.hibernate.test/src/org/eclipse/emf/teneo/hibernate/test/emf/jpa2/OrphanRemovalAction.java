@@ -38,6 +38,12 @@ public class OrphanRemovalAction extends AbstractTestAction {
 	}
 
 	@Override
+	public boolean supportAuditing() {
+		// orphan removal fails because of too early flush
+		return false;
+	}
+
+	@Override
 	public void doAction(TestStore store) {
 		final String name1 = "name1";
 		final String name2 = "name2";

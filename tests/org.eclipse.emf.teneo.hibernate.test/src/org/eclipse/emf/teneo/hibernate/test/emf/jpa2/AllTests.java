@@ -26,11 +26,6 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.jpa2", HibernateTestbed.instance()
 						.getConfigurations());
-		suite.addTestSuite(OrphanRemovalAction.class);
-		if (true) {
-			return suite;
-		}
-
 		suite.addTestSuite(MapKeyColumnAction.class);
 		suite.addTestSuite(MapKeyJoinColumnAction.class);
 		suite.addTestSuite(MapKeyTypesAction.class);
