@@ -153,7 +153,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 				.getDetails().get(Constants.ANNOTATION_KEY_ENTITY_NAME);
 		final Query qry = getSession().createQuery(
 				"select e from " + entityName + " e where e.teneo_start<=:start and (e.teneo_end="
-						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or e.teneo_end>:end)");
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or e.teneo_end>=:end)");
 		qry.setParameter("start", timeStamp);
 		qry.setParameter("end", timeStamp);
 		final List<TeneoAuditEntry> result = new ArrayList<TeneoAuditEntry>();
@@ -329,7 +329,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 		final Query qry = getSession().createQuery(
 				"select e from " + entityName
 						+ " e where teneo_object_id=:objectId and teneo_start<=:start and (teneo_end="
-						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>:end)");
+						+ AuditProcessHandler.DEFAULT_END_TIMESTAMP + " or teneo_end>=:end)");
 		qry.setParameter("objectId", idAsString);
 		qry.setParameter("start", timeStamp);
 		qry.setParameter("end", timeStamp);
