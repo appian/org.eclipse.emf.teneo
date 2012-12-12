@@ -33,6 +33,7 @@ public class PersistUMLAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.ENABLE_AUDITING, "false");
 		props.setProperty(PersistenceOptions.ID_COLUMN_NAME, "uuid");
 		props.setProperty(PersistenceOptions.ALWAYS_VERSION, "false");
 		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_CONTAINMENT, "ALL");
