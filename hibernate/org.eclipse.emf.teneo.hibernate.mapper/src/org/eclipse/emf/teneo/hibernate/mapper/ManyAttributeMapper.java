@@ -69,6 +69,8 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 						.getJoinColumns());
 		final OneToMany otm = paAttribute.getOneToMany();
 
+		addForeignKeyAttribute(keyElement, paAttribute);
+
 		if (jt != null) {
 			addJoinTable(hbAttribute, collElement, keyElement, jt);
 			addKeyColumns(hbAttribute, keyElement, jcs);
