@@ -15,7 +15,7 @@
 			<column not-null="true" unique="false" name="`DATEORTIME`"/>
 		</property>
 		<list name="dateOrTimes" table="`TEST_DATEORTIMES`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TEST_DATEORTIMES_KEY" update="true">
 				<column name="`TEST_DATEORTIMES_NAME`" unique="false"/>
 			</key>
 			<list-index column="`TEST_DATEORTIMES_IDX`"/>
@@ -97,7 +97,7 @@
 			<column not-null="false" unique="false" name="`DATEORTIME`"/>
 		</property>
 		<list name="dateOrTimes" table="`TESTAUDITING_DATEORTIMESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TESTAUDITING_DATEORTIMES_KEY" update="true">
 				<column name="`TESTAUDITING_DATEORTIMES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TESTAUDITING_DATEORTIMES_IDX`"/>

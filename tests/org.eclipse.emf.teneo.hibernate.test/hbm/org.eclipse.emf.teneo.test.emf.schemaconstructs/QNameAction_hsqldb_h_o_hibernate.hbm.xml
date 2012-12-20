@@ -22,7 +22,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="names" table="`MYTEST_NAMES`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MYTEST_NAMES_KEY" update="true">
 				<column name="`MYTEST_NAMES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MYTEST_NAMES_IDX`"/>
@@ -179,7 +179,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="names" table="`MYTESTAUDITING_NAMESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MYTESTAUDITING_NAMES_KEY" update="true">
 				<column name="`MYTESTAUDITING_NAMES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MYTESTAUDITING_NAMES_IDX`"/>

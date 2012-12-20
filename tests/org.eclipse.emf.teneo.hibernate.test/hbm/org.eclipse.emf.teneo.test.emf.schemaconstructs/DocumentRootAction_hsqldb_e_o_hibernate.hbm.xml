@@ -27,7 +27,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`DOCUMENTROOT_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DOCUMENTROOT_DOCUMENTROOT_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
@@ -44,14 +44,14 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DOCUMENTROOT_DOCUMENTROOT_XMLNSPREFIXMAP_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
 			<element type="java.lang.String"/>
 		</map>
 		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DOCUMENTROOT_DOCUMENTROOT_XSISCHEMALOCATION_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
@@ -188,7 +188,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`DOCUMENTROOTAUDITING_DOCUMENTROOTAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DOCUMENTROOTAUDITING_DOCUMENTROOTAUDITING_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOTAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOTAUDITING_MIXED_IDX`"/>

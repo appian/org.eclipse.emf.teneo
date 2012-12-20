@@ -53,14 +53,14 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="writers" fetch="subselect" inverse="true" lazy="extra" cascade="all,delete-orphan">
-			<key update="true" foreign-key="schrijvers">
+			<key foreign-key="SCHRIJVERS_KEY" update="true">
 				<column name="`LIBRARY_WRITERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEST_INDEX`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="books" inverse="true" lazy="extra" cascade="all,delete-orphan">
-			<key update="true" foreign-key="LIBRARY_BOOKS">
+			<key foreign-key="LIBRARY_BOOKS_KEY" update="true">
 				<column name="`LIBRARY_BOOKS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_BOOKS_IDX`"/>
@@ -241,14 +241,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="writers" table="`LIBRARYAUDITING_WRITERSAUDITING`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_WRITERS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_WRITERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_WRITERS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="books" table="`LIBRARYAUDITING_BOOKSAUDITING`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_BOOKS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_BOOKS_IDX`"/>
@@ -310,7 +310,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="books" table="`WRITERAUDITING_BOOKSAUDITING`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="WRITERAUDITING_BOOKS_KEY" update="true">
 				<column name="`WRITERAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WRITERAUDITING_BOOKS_IDX`"/>

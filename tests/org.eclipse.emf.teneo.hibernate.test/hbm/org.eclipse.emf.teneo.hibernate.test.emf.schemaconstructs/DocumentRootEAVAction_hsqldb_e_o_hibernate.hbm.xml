@@ -106,7 +106,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`DOCUMENTROOTAUDITING_DOCUMENTROOTAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DOCUMENTROOTAUDITING_DOCUMENTROOTAUDITING_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOTAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOTAUDITING_MIXED_IDX`"/>

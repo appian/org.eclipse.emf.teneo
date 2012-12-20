@@ -175,7 +175,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="ownedCats" table="`OWNERAUDITING_OWNEDCATSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="OWNERAUDITING_OWNEDCATS_KEY" update="true">
 				<column name="`OWNERAUDITING_OWNEDCATS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`OWNERAUDITING_OWNEDCATS_IDX`"/>

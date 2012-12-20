@@ -299,7 +299,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 */
 	protected void addForeignKeyAttribute(Element manyElement, PAnnotatedEStructuralFeature aFeature) {
 		if (aFeature.getForeignKey() != null) {
-			manyElement.addAttribute("foreign-key", aFeature.getForeignKey().getName());
+			if (manyElement.getName().equals("key")) {
+				manyElement.addAttribute("foreign-key", getHbmContext().getSqlNameStrategy()
+						.adaptForeignKeyNameForKey(aFeature, aFeature.getForeignKey().getName()));
+			} else {
+				manyElement.addAttribute("foreign-key", aFeature.getForeignKey().getName());
+			}
 		}
 	}
 

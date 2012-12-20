@@ -39,13 +39,13 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="USER_ROLES_KEY" update="true">
 				<column name="`USER_ROLES_E_ID`" unique="false"/>
 			</key>
 			<element type="java.lang.String"/>
 		</idbag>
 		<list name="addresses" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="USER_ADDRESSES">
+			<key foreign-key="USER_ADDRESSES_KEY" update="true">
 				<column name="`USER_ADDRESSES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`USER_ADDRESSES_IDX`"/>
@@ -153,14 +153,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="roles" table="`USERAUDITING_ROLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="USERAUDITING_ROLES_KEY" update="true">
 				<column name="`USERAUDITING_ROLES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`USERAUDITING_ROLES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="addresses" table="`USERAUDITING_ADDRESSESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="USERAUDITING_ADDRESSES_KEY" update="true">
 				<column name="`USERAUDITING_ADDRESSES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`USERAUDITING_ADDRESSES_IDX`"/>

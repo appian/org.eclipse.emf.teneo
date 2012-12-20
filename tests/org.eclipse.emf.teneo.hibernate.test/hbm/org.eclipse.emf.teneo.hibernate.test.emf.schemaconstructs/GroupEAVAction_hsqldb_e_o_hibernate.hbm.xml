@@ -57,7 +57,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="group" table="`ADDRESSAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ADDRESSAUDITING_GROUP_KEY" update="true">
 				<column name="`ADDRESSAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSAUDITING_GROUP_IDX`"/>
@@ -193,7 +193,7 @@
 			<column not-null="false" unique="false" name="`GROUPNAME`"/>
 		</property>
 		<list name="addrs" table="`ADDRESSLISTAUDITING_ADDRSAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ADDRESSLISTAUDITING_ADDRS_KEY" update="true">
 				<column name="`ADDRESSLISTAUDITING_ADDRS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSLISTAUDITING_ADDRS_IDX`"/>
@@ -340,7 +340,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="allMap" table="`SIMPLEALLMAPTYPEAUDITING_ALLMAPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIMPLEALLMAPTYPEAUDITING_ALLMAP_KEY" update="true">
 				<column name="`SIMPLEALLMAPTYPEAUDITING_ALLMAP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLEALLMAPTYPEAUDITING_ALLMAP_IDX`"/>

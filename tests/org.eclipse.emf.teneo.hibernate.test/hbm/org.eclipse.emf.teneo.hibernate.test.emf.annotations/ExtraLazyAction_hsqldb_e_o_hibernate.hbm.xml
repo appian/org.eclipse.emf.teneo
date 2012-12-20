@@ -16,14 +16,14 @@
 			<column not-null="true" unique="false" name="`TITLE`"/>
 		</property>
 		<list name="authors" inverse="true" lazy="extra" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BOOK_AUTHORS">
+			<key foreign-key="BOOK_AUTHORS_KEY" update="true">
 				<column name="`BOOK_AUTHORS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOK_AUTHORS_IDX`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="subTitles" table="`BOOK_SUBTITLES`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="BOOK_SUBTITLES_KEY" update="true">
 				<column name="`BOOK_SUBTITLES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOK_SUBTITLES_IDX`"/>

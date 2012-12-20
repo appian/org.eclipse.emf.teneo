@@ -15,7 +15,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="things" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="THING_THINGS">
+			<key foreign-key="THING_THINGS_KEY" update="true">
 				<column name="`THING_THINGS_NAME`" unique="false"/>
 			</key>
 			<list-index column="`THING_THINGS_IDX`"/>
@@ -129,7 +129,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="things" table="`THINGAUDITING_THINGSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="THINGAUDITING_THINGS_KEY" update="true">
 				<column name="`THINGAUDITING_THINGS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`THINGAUDITING_THINGS_IDX`"/>

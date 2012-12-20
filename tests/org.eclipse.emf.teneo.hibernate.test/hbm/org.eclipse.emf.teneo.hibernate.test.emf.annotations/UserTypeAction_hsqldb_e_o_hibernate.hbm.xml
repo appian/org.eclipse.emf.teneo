@@ -26,7 +26,7 @@
 			<column not-null="true" unique="false" name="`NUMBERS`"/>
 		</property>
 		<list name="phoneNumbers" table="`PERSON_PHONENUMBERS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSON_PHONENUMBERS_KEY" update="true">
 				<column name="`PERSON_PHONENUMBERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_PHONENUMBERS_IDX`"/>
@@ -57,7 +57,7 @@
 			<type name="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CertificateType"/>
 		</property>
 		<list name="certificates" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="PERSON_CERTIFICATES_KEY" update="true">
 				<column name="`PERSON_CERTIFICATES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_CERTIFICATES_IDX`"/>
@@ -176,7 +176,7 @@
 			<column not-null="false" unique="false" name="`NUMBERS`"/>
 		</property>
 		<list name="addresses" table="`PERSONAUDITING_ADDRESSESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_ADDRESSES_KEY" update="true">
 				<column name="`PERSONAUDITING_ADDRESSES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_ADDRESSES_IDX`"/>
@@ -198,7 +198,7 @@
 			<type name="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CertificateType"/>
 		</property>
 		<list name="certificates" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_CERTIFICATES_KEY" update="true">
 				<column name="`PERSONAUDITING_CERTIFICATES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_CERTIFICATES_IDX`"/>

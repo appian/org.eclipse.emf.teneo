@@ -36,7 +36,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="account" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="ACCOUNTGROUP_ACCOUNT">
+			<key foreign-key="ACCOUNTGROUP_ACCOUNT_KEY" update="true">
 				<column name="`ACCOUNTGROUP_ACCOUNT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTGROUP_ACCOUNT_IDX`"/>
@@ -60,14 +60,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="accountGroup" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="ACCOUNTING_ACCOUNTGROUP">
+			<key foreign-key="ACCOUNTING_ACCOUNTGROUP_KEY" update="true">
 				<column name="`ACCOUNTING_ACCOUNTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTING_ACCOUNTGROUP_IDX`"/>
 			<one-to-many entity-name="AccountGroup"/>
 		</list>
 		<list name="vat" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="ACCOUNTING_VAT">
+			<key foreign-key="ACCOUNTING_VAT_KEY" update="true">
 				<column name="`ACCOUNTING_VAT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTING_VAT_IDX`"/>
@@ -80,7 +80,7 @@
 			<column not-null="false" unique="false" name="`REPORT_REPORT_E_ID`"/>
 		</many-to-one>
 		<list name="journalGroup" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="ACCOUNTING_JOURNALGROUP">
+			<key foreign-key="ACCOUNTING_JOURNALGROUP_KEY" update="true">
 				<column name="`ACCOUNTING_JOURNALGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTING_JOURNALGROUP_IDX`"/>
@@ -117,14 +117,14 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="journalGroups" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="JOURNALGROUP_JOURNALGROUPS">
+			<key foreign-key="JOURNALGROUP_JOURNALGROUPS_KEY" update="true">
 				<column name="`JOURNALGROUP_JOURNALGROUPS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`JOURNALGROUP_JOURNALGROUPS_IDX`"/>
 			<one-to-many entity-name="JournalGroup"/>
 		</list>
 		<list name="journalStatements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="JOURNALGROUP_JOURNALSTATEMENTS">
+			<key foreign-key="JOURNALGROUP_JOURNALSTATEMENTS_KEY" update="true">
 				<column name="`JOURNALGROUP_JOURNALSTATEMENTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`JOURNALGROUP_JOURNALSTATEMENTS_IDX`"/>
@@ -207,7 +207,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="reportGroup" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="REPORTGROUP_REPORTGROUP">
+			<key foreign-key="REPORTGROUP_REPORTGROUP_KEY" update="true">
 				<column name="`REPORTGROUP_REPORTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`REPORTGROUP_REPORTGROUP_IDX`"/>
@@ -376,7 +376,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="account" table="`ACCOUNTGROUPAUDITING_ACCOUNTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ACCOUNTGROUPAUDITING_ACCOUNT_KEY" update="true">
 				<column name="`ACCOUNTGROUPAUDITING_ACCOUNT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTGROUPAUDITING_ACCOUNT_IDX`"/>
@@ -438,14 +438,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="accountGroup" table="`ACCOUNTINGAUDITING_ACCOUNTGROUPAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ACCOUNTINGAUDITING_ACCOUNTGROUP_KEY" update="true">
 				<column name="`ACCOUNTINGAUDITING_ACCOUNTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTINGAUDITING_ACCOUNTGROUP_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="vat" table="`ACCOUNTINGAUDITING_VATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ACCOUNTINGAUDITING_VAT_KEY" update="true">
 				<column name="`ACCOUNTINGAUDITING_VAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTINGAUDITING_VAT_IDX`"/>
@@ -458,7 +458,7 @@
 			<column not-null="false" unique="false" name="`REPORT`"/>
 		</property>
 		<list name="journalGroup" table="`ACCOUNTINGAUDITING_JOURNALGROUPAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ACCOUNTINGAUDITING_JOURNALGROUP_KEY" update="true">
 				<column name="`ACCOUNTINGAUDITING_JOURNALGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACCOUNTINGAUDITING_JOURNALGROUP_IDX`"/>
@@ -469,7 +469,7 @@
 		<meta attribute="eclassName" inherit="false">BalanceAccountAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/accountingAuditing</meta>
 		<list name="report" table="`BALANCEACCOUNTAUDITING_REPORTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="BALANCEACCOUNTAUDITING_REPORT_KEY" update="true">
 				<column name="`BALANCEACCOUNTAUDITING_REPORT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BALANCEACCOUNTAUDITING_REPORT_IDX`"/>
@@ -531,14 +531,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="journalGroups" table="`JOURNALGROUPAUDITING_JOURNALGROUPSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="JOURNALGROUPAUDITING_JOURNALGROUPS_KEY" update="true">
 				<column name="`JOURNALGROUPAUDITING_JOURNALGROUPS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`JOURNALGROUPAUDITING_JOURNALGROUPS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="journalStatements" table="`JOURNALGROUPAUDITING_JOURNALSTATEMENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="JOURNALGROUPAUDITING_JOURNALSTATEMENTS_KEY" update="true">
 				<column name="`JOURNALGROUPAUDITING_JOURNALSTATEMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`JOURNALGROUPAUDITING_JOURNALSTATEMENTS_IDX`"/>
@@ -735,14 +735,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="reportGroup" table="`REPORTGROUPAUDITING_REPORTGROUPAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="REPORTGROUPAUDITING_REPORTGROUP_KEY" update="true">
 				<column name="`REPORTGROUPAUDITING_REPORTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`REPORTGROUPAUDITING_REPORTGROUP_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="account" table="`REPORTGROUPAUDITING_ACCOUNTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="REPORTGROUPAUDITING_ACCOUNT_KEY" update="true">
 				<column name="`REPORTGROUPAUDITING_ACCOUNT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`REPORTGROUPAUDITING_ACCOUNT_IDX`"/>

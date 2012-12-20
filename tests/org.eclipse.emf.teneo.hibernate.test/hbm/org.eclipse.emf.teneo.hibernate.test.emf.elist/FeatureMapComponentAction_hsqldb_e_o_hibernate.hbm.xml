@@ -33,7 +33,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`PRODUCTTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPE_GROUP_KEY" update="true">
 				<column name="`PRODUCTTYPE_GROUP_NAME`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPE_GROUP_IDX`"/>
@@ -59,7 +59,7 @@
 			</type>
 		</property>
 		<list name="group1" table="`PRODUCTTYPE_GROUP1`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPE_GROUP1_KEY" update="true">
 				<column name="`PRODUCTTYPE_GROUP1_NAME`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPE_GROUP1_IDX`"/>
@@ -241,7 +241,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="group" table="`PRODUCTTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_GROUP_IDX`"/>
@@ -267,7 +267,7 @@
 			</type>
 		</property>
 		<list name="group1" table="`PRODUCTTYPEAUDITING_GROUP1AUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_GROUP1_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_GROUP1_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_GROUP1_IDX`"/>

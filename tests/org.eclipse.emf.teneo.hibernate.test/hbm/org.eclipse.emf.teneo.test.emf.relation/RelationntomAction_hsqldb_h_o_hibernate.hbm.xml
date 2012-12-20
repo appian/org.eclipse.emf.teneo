@@ -202,21 +202,21 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="multinr" table="`MAINAUDITING_MULTINRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_MULTINR_KEY" update="true">
 				<column name="`MAINAUDITING_MULTINR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_MULTINR_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="multirn" table="`MAINAUDITING_MULTIRNAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_MULTIRN_KEY" update="true">
 				<column name="`MAINAUDITING_MULTIRN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_MULTIRN_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="multinn" table="`MAINAUDITING_MULTINNAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_MULTINN_KEY" update="true">
 				<column name="`MAINAUDITING_MULTINN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_MULTINN_IDX`"/>
@@ -278,7 +278,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="main" table="`MULTINNAUDITING_MAINAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MULTINNAUDITING_MAIN_KEY" update="true">
 				<column name="`MULTINNAUDITING_MAIN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTINNAUDITING_MAIN_IDX`"/>
@@ -340,7 +340,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="main" table="`MULTINRAUDITING_MAINAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MULTINRAUDITING_MAIN_KEY" update="true">
 				<column name="`MULTINRAUDITING_MAIN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTINRAUDITING_MAIN_IDX`"/>
@@ -402,7 +402,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="main" table="`MULTIRNAUDITING_MAINAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MULTIRNAUDITING_MAIN_KEY" update="true">
 				<column name="`MULTIRNAUDITING_MAIN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTIRNAUDITING_MAIN_IDX`"/>

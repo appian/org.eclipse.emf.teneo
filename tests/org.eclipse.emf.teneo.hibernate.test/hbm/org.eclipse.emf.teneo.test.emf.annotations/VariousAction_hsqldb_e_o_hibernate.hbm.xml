@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="children" batch-size="11" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="PARENT_CHILDREN">
+			<key foreign-key="PARENT_CHILDREN_KEY" update="true">
 				<column name="`PARENT_CHILDREN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENT_CHILDREN_IDX`"/>
@@ -41,7 +41,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="parents" mutable="false" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="IMMUTABLECITY_PARENTS">
+			<key foreign-key="IMMUTABLECITY_PARENTS_KEY" update="true">
 				<column name="`IMMUTABLECITY_PARENTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`IMMUTABLECITY_PARENTS_IDX`"/>
@@ -117,7 +117,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PARENTAUDITING_CHILDREN_KEY" update="true">
 				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_CHILDREN_IDX`"/>
@@ -186,7 +186,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="parents" table="`IMMUTABLECITYAUDITING_PARENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="IMMUTABLECITYAUDITING_PARENTS_KEY" update="true">
 				<column name="`IMMUTABLECITYAUDITING_PARENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`IMMUTABLECITYAUDITING_PARENTS_IDX`"/>

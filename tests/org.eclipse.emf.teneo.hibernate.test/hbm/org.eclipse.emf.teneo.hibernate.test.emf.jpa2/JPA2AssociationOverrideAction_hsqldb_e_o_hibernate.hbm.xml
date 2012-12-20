@@ -32,7 +32,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`ABC`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="EMPLOYEE_ADDRESS_KEY" update="true">
 				<column name="`EMPLOYEE_ADDR_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_ADDRESS_IDX`"/>
@@ -55,7 +55,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="STUDENT_ADDRESS">
+			<key foreign-key="STUDENT_ADDRESS_KEY" update="true">
 				<column name="`STUDENT_ADDRESS_ID`" unique="false"/>
 			</key>
 			<list-index column="`STUDENT_ADDRESS_IDX`"/>
@@ -195,7 +195,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`EMPLOYEEAUDITING_ADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="EMPLOYEEAUDITING_ADDRESS_KEY" update="true">
 				<column name="`EMPLOYEEAUDITING_ADDRESS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`EMPLOYEEAUDITING_ADDRESS_IDX`"/>
@@ -260,7 +260,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`STUDENTAUDITING_ADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="STUDENTAUDITING_ADDRESS_KEY" update="true">
 				<column name="`STUDENTAUDITING_ADDRESS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`STUDENTAUDITING_ADDRESS_IDX`"/>

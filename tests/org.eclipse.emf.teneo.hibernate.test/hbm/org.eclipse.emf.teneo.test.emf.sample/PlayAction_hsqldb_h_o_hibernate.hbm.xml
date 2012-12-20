@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="scene" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="ACTTYPE_SCENE">
+			<key foreign-key="ACTTYPE_SCENE_KEY" update="true">
 				<column name="`ACTTYPE_SCENE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACTTYPE_SCENE_IDX`"/>
@@ -43,7 +43,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="p" table="`FMTYPE_P`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FMTYPE_P_KEY" update="true">
 				<column name="`FMTYPE_P_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FMTYPE_P_IDX`"/>
@@ -64,7 +64,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`PERSONAETYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PERSONAETYPE_GROUP_KEY" update="true">
 				<column name="`PERSONAETYPE_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAETYPE_GROUP_IDX`"/>
@@ -104,7 +104,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="persona" table="`PERSONAGROUPTYPE_PERSONA`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAGROUPTYPE_PERSONA_KEY" update="true">
 				<column name="`PERSONAGROUPTYPE_PERSONA_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAGROUPTYPE_PERSONA_IDX`"/>
@@ -143,7 +143,7 @@
 			<column not-null="true" unique="false" name="`PLAYSUBTITLE`"/>
 		</property>
 		<list name="act" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PLAYTYPE_ACT">
+			<key foreign-key="PLAYTYPE_ACT_KEY" update="true">
 				<column name="`PLAYTYPE_ACT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PLAYTYPE_ACT_IDX`"/>
@@ -164,7 +164,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`SCENETYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SCENETYPE_GROUP_KEY" update="true">
 				<column name="`SCENETYPE_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SCENETYPE_GROUP_IDX`"/>
@@ -207,7 +207,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`SPEECHTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SPEECHTYPE_GROUP_KEY" update="true">
 				<column name="`SPEECHTYPE_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SPEECHTYPE_GROUP_IDX`"/>
@@ -308,7 +308,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="scene" table="`ACTTYPEAUDITING_SCENEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ACTTYPEAUDITING_SCENE_KEY" update="true">
 				<column name="`ACTTYPEAUDITING_SCENE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ACTTYPEAUDITING_SCENE_IDX`"/>
@@ -532,7 +532,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="p" table="`FMTYPEAUDITING_PAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FMTYPEAUDITING_P_KEY" update="true">
 				<column name="`FMTYPEAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FMTYPEAUDITING_P_IDX`"/>
@@ -591,7 +591,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="group" table="`PERSONAETYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PERSONAETYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`PERSONAETYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAETYPEAUDITING_GROUP_IDX`"/>
@@ -669,7 +669,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="persona" table="`PERSONAGROUPTYPEAUDITING_PERSONAAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAGROUPTYPEAUDITING_PERSONA_KEY" update="true">
 				<column name="`PERSONAGROUPTYPEAUDITING_PERSONA_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAGROUPTYPEAUDITING_PERSONA_IDX`"/>
@@ -746,7 +746,7 @@
 			<column not-null="false" unique="false" name="`PLAYSUBTITLE`"/>
 		</property>
 		<list name="act" table="`PLAYTYPEAUDITING_ACTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PLAYTYPEAUDITING_ACT_KEY" update="true">
 				<column name="`PLAYTYPEAUDITING_ACT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PLAYTYPEAUDITING_ACT_IDX`"/>
@@ -805,7 +805,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="group" table="`SCENETYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SCENETYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`SCENETYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SCENETYPEAUDITING_GROUP_IDX`"/>
@@ -886,7 +886,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="group" table="`SPEECHTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SPEECHTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`SPEECHTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SPEECHTYPEAUDITING_GROUP_IDX`"/>

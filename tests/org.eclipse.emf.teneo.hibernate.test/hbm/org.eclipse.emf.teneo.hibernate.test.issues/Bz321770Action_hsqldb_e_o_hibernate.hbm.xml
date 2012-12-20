@@ -27,7 +27,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="child" order-by="`ID` asc" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PARENT_CHILD">
+			<key foreign-key="PARENT_CHILD_KEY" update="true">
 				<column name="`PARENT_CHILD_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Child"/>
@@ -157,7 +157,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="child" table="`PARENTAUDITING_CHILDAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PARENTAUDITING_CHILD_KEY" update="true">
 				<column name="`PARENTAUDITING_CHILD_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_CHILD_IDX`"/>

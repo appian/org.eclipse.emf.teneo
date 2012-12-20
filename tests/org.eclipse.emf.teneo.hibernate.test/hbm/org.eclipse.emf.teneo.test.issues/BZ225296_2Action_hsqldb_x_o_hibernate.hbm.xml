@@ -576,7 +576,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="instance" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="DWHCLUSTER_INSTANCE">
+			<key foreign-key="DWHCLUSTER_INSTANCE_KEY" update="true">
 				<column name="`DWHCLUSTER_INSTANCE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DWHCLUSTER_INSTANCE_IDX`"/>
@@ -615,7 +615,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="etl" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="DWHINSTANCE_ETL">
+			<key foreign-key="DWHINSTANCE_ETL_KEY" update="true">
 				<column name="`DWHINSTANCE_ETL_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DWHINSTANCE_ETL_IDX`"/>

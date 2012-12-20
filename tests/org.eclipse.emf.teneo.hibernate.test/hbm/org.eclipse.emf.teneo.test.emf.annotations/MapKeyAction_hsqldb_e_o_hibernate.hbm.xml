@@ -16,7 +16,7 @@
 			<column not-null="true" unique="false" name="`TITLE`"/>
 		</property>
 		<map name="writers" where="name='martin'" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOK_WRITERS">
+			<key foreign-key="BOOK_WRITERS_KEY" update="true">
 				<column name="`BOOK_WRITERS_E_ID`" unique="false"/>
 			</key>
 			<map-key column="`NAME`" type="java.lang.String"/>
@@ -109,7 +109,7 @@
 			<column not-null="false" unique="false" name="`TITLE`"/>
 		</property>
 		<list name="writers" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_WRITERS">
+			<key foreign-key="BOOKAUDITING_WRITERS_KEY" update="true">
 				<column name="`BOOKAUDITING_WRITERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_WRITERS_IDX`"/>

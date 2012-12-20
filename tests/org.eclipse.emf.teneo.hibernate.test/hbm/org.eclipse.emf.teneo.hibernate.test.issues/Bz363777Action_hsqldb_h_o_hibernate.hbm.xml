@@ -50,7 +50,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<map name="mapChannels" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="NE_MAPCHANNELS">
+			<key foreign-key="NE_MAPCHANNELS_KEY" update="true">
 				<column name="`NE_MAPCHANNELS_E_ID`" unique="false"/>
 			</key>
 			<map-key-many-to-many entity-name="ChannelMap"/>
@@ -300,7 +300,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<bag name="mapChannels" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="NEAUDITING_MAPCHANNELS">
+			<key foreign-key="NEAUDITING_MAPCHANNELS_KEY" update="true">
 				<column name="`NEAUDITING_MAPCHANNELS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="ChanelMapToChanelMapServiceAuditing"/>

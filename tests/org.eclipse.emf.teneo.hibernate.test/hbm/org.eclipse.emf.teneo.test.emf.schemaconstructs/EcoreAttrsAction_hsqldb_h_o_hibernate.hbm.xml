@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="nameMap" table="`ELEMENT_NAMEMAP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ELEMENT_NAMEMAP_KEY" update="true">
 				<column name="`ELEMENT_NAMEMAP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ELEMENT_NAMEMAP_IDX`"/>
@@ -50,7 +50,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="aMap" table="`FEATURE_AMAP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="FEATURE_AMAP_KEY" update="true">
 				<column name="`FEATURE_AMAP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FEATURE_AMAP_IDX`"/>
@@ -87,7 +87,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`MIXED_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="MIXED_MIXED_KEY" update="true">
 				<column name="`MIXED_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_MIXED_IDX`"/>
@@ -211,7 +211,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="nameMap" table="`ELEMENTAUDITING_NAMEMAPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ELEMENTAUDITING_NAMEMAP_KEY" update="true">
 				<column name="`ELEMENTAUDITING_NAMEMAP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ELEMENTAUDITING_NAMEMAP_IDX`"/>
@@ -283,7 +283,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="aMap" table="`FEATUREAUDITING_AMAPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="FEATUREAUDITING_AMAP_KEY" update="true">
 				<column name="`FEATUREAUDITING_AMAP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FEATUREAUDITING_AMAP_IDX`"/>
@@ -358,7 +358,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`MIXEDAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="MIXEDAUDITING_MIXED_KEY" update="true">
 				<column name="`MIXEDAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXEDAUDITING_MIXED_IDX`"/>

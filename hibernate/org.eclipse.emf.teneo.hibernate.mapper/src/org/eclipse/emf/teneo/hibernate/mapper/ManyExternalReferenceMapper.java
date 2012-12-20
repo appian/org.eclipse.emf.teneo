@@ -45,6 +45,8 @@ public class ManyExternalReferenceMapper extends AbstractAssociationMapper imple
 		final Element collElement = addCollectionElement(paReference);
 		final Element keyElement = collElement.addElement("key");
 
+		addForeignKeyAttribute(keyElement, paReference);
+
 		final JoinTable jt = getJoinTable(paReference);
 		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>()
 				: paReference.getJoinColumns();

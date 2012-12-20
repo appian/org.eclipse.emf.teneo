@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="carWheel" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CARFRAME_CARWHEEL">
+			<key foreign-key="CARFRAME_CARWHEEL_KEY" update="true">
 				<column name="`CARFRAME_CARWHEEL_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARFRAME_CARWHEEL_IDX`"/>
@@ -59,14 +59,14 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="carType" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CARSLIST_CARTYPE">
+			<key foreign-key="CARSLIST_CARTYPE_KEY" update="true">
 				<column name="`CARSLIST_CARTYPE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARSLIST_CARTYPE_IDX`"/>
 			<one-to-many entity-name="CarType"/>
 		</list>
 		<list name="carLink" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CARSLIST_CARLINK">
+			<key foreign-key="CARSLIST_CARLINK_KEY" update="true">
 				<column name="`CARSLIST_CARLINK_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARSLIST_CARLINK_IDX`"/>
@@ -99,7 +99,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="carFrame" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CARTYPE_CARFRAME">
+			<key foreign-key="CARTYPE_CARFRAME_KEY" update="true">
 				<column name="`CARTYPE_CARFRAME_CARID`" unique="false"/>
 			</key>
 			<list-index column="`CARTYPE_CARFRAME_IDX`"/>
@@ -120,7 +120,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="carTire" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CARWHEEL_CARTIRE">
+			<key foreign-key="CARWHEEL_CARTIRE_KEY" update="true">
 				<column name="`CARWHEEL_CARTIRE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARWHEEL_CARTIRE_IDX`"/>
@@ -205,7 +205,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="carWheel" table="`CARFRAMEAUDITING_CARWHEELAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARFRAMEAUDITING_CARWHEEL_KEY" update="true">
 				<column name="`CARFRAMEAUDITING_CARWHEEL_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARFRAMEAUDITING_CARWHEEL_IDX`"/>
@@ -328,14 +328,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="carType" table="`CARSLISTAUDITING_CARTYPEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARSLISTAUDITING_CARTYPE_KEY" update="true">
 				<column name="`CARSLISTAUDITING_CARTYPE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARSLISTAUDITING_CARTYPE_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="carLink" table="`CARSLISTAUDITING_CARLINKAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARSLISTAUDITING_CARLINK_KEY" update="true">
 				<column name="`CARSLISTAUDITING_CARLINK_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARSLISTAUDITING_CARLINK_IDX`"/>
@@ -449,7 +449,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="carFrame" table="`CARTYPEAUDITING_CARFRAMEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARTYPEAUDITING_CARFRAME_KEY" update="true">
 				<column name="`CARTYPEAUDITING_CARFRAME_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARTYPEAUDITING_CARFRAME_IDX`"/>
@@ -511,7 +511,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="carTire" table="`CARWHEELAUDITING_CARTIREAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARWHEELAUDITING_CARTIRE_KEY" update="true">
 				<column name="`CARWHEELAUDITING_CARTIRE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARWHEELAUDITING_CARTIRE_IDX`"/>

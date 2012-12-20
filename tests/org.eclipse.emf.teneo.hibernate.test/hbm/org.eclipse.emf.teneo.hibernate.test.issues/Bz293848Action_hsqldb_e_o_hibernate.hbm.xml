@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="employees" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="COMTYPE_EMPLOYEES">
+			<key foreign-key="COMTYPE_EMPLOYEES_KEY" update="true">
 				<column name="`COMTYPE_EMPLOYEES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`COMTYPE_EMPLOYEES_IDX`"/>
@@ -149,7 +149,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="employees" table="`COMTYPEAUDITING_EMPLOYEESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="COMTYPEAUDITING_EMPLOYEES_KEY" update="true">
 				<column name="`COMTYPEAUDITING_EMPLOYEES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`COMTYPEAUDITING_EMPLOYEES_IDX`"/>

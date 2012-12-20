@@ -153,14 +153,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="rght" table="`CNTRAUDITING_RGHTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CNTRAUDITING_RGHT_KEY" update="true">
 				<column name="`CNTRAUDITING_RGHT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CNTRAUDITING_RGHT_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="lft" table="`CNTRAUDITING_LFTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CNTRAUDITING_LFT_KEY" update="true">
 				<column name="`CNTRAUDITING_LFT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CNTRAUDITING_LFT_IDX`"/>
@@ -219,7 +219,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="cntr" table="`LFTAUDITING_CNTRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LFTAUDITING_CNTR_KEY" update="true">
 				<column name="`LFTAUDITING_CNTR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LFTAUDITING_CNTR_IDX`"/>
@@ -278,7 +278,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="cntr" table="`RGHTAUDITING_CNTRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="RGHTAUDITING_CNTR_KEY" update="true">
 				<column name="`RGHTAUDITING_CNTR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RGHTAUDITING_CNTR_IDX`"/>

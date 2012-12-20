@@ -36,7 +36,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="books" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="LIBRARY_BOOKS">
+			<key foreign-key="LIBRARY_BOOKS_KEY" update="true">
 				<column name="`LIBRARY_BOOKS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_BOOKS_IDX`"/>
@@ -176,7 +176,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="books" table="`LIBRARYAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_BOOKS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_BOOKS_IDX`"/>

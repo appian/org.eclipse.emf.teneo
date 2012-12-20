@@ -16,7 +16,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="country" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="ADDRESS_COUNTRY">
+			<key foreign-key="ADDRESS_COUNTRY_KEY" update="true">
 				<column name="`ADDRESS_COUNTRY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESS_COUNTRY_IDX`"/>
@@ -37,7 +37,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="CITY_ADDRESS">
+			<key foreign-key="CITY_ADDRESS_KEY" update="true">
 				<column name="`CITY_ADDRESS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CITY_ADDRESS_IDX`"/>
@@ -58,7 +58,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PERSON_ADDRESS">
+			<key foreign-key="PERSON_ADDRESS_KEY" update="true">
 				<column name="`PERSON_ADDRESS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_ADDRESS_IDX`"/>
@@ -167,7 +167,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="country" table="`ADDRESSAUDITING_COUNTRYAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ADDRESSAUDITING_COUNTRY_KEY" update="true">
 				<column name="`ADDRESSAUDITING_COUNTRY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSAUDITING_COUNTRY_IDX`"/>
@@ -226,7 +226,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`CITYAUDITING_ADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CITYAUDITING_ADDRESS_KEY" update="true">
 				<column name="`CITYAUDITING_ADDRESS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CITYAUDITING_ADDRESS_IDX`"/>
@@ -285,7 +285,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`PERSONAUDITING_ADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_ADDRESS_KEY" update="true">
 				<column name="`PERSONAUDITING_ADDRESS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_ADDRESS_IDX`"/>

@@ -20,14 +20,14 @@
 			<column not-null="true" unique="false" name="`TITLE`"/>
 		</property>
 		<list name="members" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="FORUM_MEMBERS">
+			<key foreign-key="FORUM_MEMBERS_KEY" update="true">
 				<column name="`FORUM_MEMBERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FORUM_MEMBERS_IDX`"/>
 			<one-to-many entity-name="Member"/>
 		</list>
 		<list name="topics" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="FORUM_TOPICS">
+			<key foreign-key="FORUM_TOPICS_KEY" update="true">
 				<column name="`FORUM_TOPICS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FORUM_TOPICS_IDX`"/>
@@ -186,14 +186,14 @@
 			<column not-null="false" unique="false" name="`TITLE`"/>
 		</property>
 		<list name="members" table="`FORUMAUDITING_MEMBERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FORUMAUDITING_MEMBERS_KEY" update="true">
 				<column name="`FORUMAUDITING_MEMBERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FORUMAUDITING_MEMBERS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="topics" table="`FORUMAUDITING_TOPICSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FORUMAUDITING_TOPICS_KEY" update="true">
 				<column name="`FORUMAUDITING_TOPICS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FORUMAUDITING_TOPICS_IDX`"/>
@@ -252,14 +252,14 @@
 			<column not-null="false" unique="false" name="`NICKNAME`"/>
 		</property>
 		<list name="posts" table="`MEMBERAUDITING_POSTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MEMBERAUDITING_POSTS_KEY" update="true">
 				<column name="`MEMBERAUDITING_POSTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MEMBERAUDITING_POSTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="created" table="`MEMBERAUDITING_CREATEDAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MEMBERAUDITING_CREATED_KEY" update="true">
 				<column name="`MEMBERAUDITING_CREATED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MEMBERAUDITING_CREATED_IDX`"/>
@@ -387,7 +387,7 @@
 			<column not-null="false" unique="false" name="`CREATOR`"/>
 		</property>
 		<list name="posts" table="`TOPICAUDITING_POSTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TOPICAUDITING_POSTS_KEY" update="true">
 				<column name="`TOPICAUDITING_POSTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TOPICAUDITING_POSTS_IDX`"/>

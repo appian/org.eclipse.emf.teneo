@@ -187,7 +187,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="contacts" table="`ADDRESSAUDITING_CONTACTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ADDRESSAUDITING_CONTACTS_KEY" update="true">
 				<column name="`ADDRESSAUDITING_CONTACTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSAUDITING_CONTACTS_IDX`"/>

@@ -134,7 +134,7 @@
 			<column not-null="false" unique="false" name="`ADDRESS`"/>
 		</property>
 		<array name="photo" table="`PERSONAUDITING_PHOTOAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_PHOTO_KEY" update="true">
 				<column name="`PERSONAUDITING_PHOTO_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_PHOTO_IDX`"/>

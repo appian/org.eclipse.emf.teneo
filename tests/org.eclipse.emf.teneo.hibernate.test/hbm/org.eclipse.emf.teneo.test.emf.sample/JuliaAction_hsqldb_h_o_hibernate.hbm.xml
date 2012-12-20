@@ -72,7 +72,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="library" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKSINLIB_LIBRARY">
+			<key foreign-key="BOOKSINLIB_LIBRARY_KEY" update="true">
 				<column name="`BOOKSINLIB_LIBRARY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKSINLIB_LIBRARY_IDX`"/>
@@ -108,14 +108,14 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="library" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="LIBRARY_LIBRARY">
+			<key foreign-key="LIBRARY_LIBRARY_KEY" update="true">
 				<column name="`LIBRARY_LIBRARY_UNIQUENAME`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_LIBRARY_IDX`"/>
 			<one-to-many entity-name="Library"/>
 		</list>
 		<list name="abstractBookDefinitionGroup" table="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="LIBRARY_ABSTRACTBOOKDEFINITIONGROUP_KEY" update="true">
 				<column name="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP_UNIQUENAME`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP_IDX`"/>
@@ -356,7 +356,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="library" table="`BOOKSINLIBAUDITING_LIBRARYAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="BOOKSINLIBAUDITING_LIBRARY_KEY" update="true">
 				<column name="`BOOKSINLIBAUDITING_LIBRARY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKSINLIBAUDITING_LIBRARY_IDX`"/>
@@ -524,14 +524,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="library" table="`LIBRARYAUDITING_LIBRARYAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_LIBRARY_KEY" update="true">
 				<column name="`LIBRARYAUDITING_LIBRARY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_LIBRARY_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="abstractBookDefinitionGroup" table="`LIBRARYAUDITING_ABSTRACTBOOKDEFINITIONGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_ABSTRACTBOOKDEFINITIONGROUP_KEY" update="true">
 				<column name="`LIBRARYAUDITING_ABSTRACTBOOKDEFINITIONGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_ABSTRACTBOOKDEFINITIONGROUP_IDX`"/>

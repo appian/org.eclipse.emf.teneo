@@ -19,42 +19,42 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="onecr" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAIN_ONECR">
+			<key foreign-key="MAIN_ONECR_KEY" update="true">
 				<column name="`MAIN_ONECR_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_ONECR_IDX`"/>
 			<one-to-many entity-name="OneCR"/>
 		</list>
 		<list name="onecn" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAIN_ONECN">
+			<key foreign-key="MAIN_ONECN_KEY" update="true">
 				<column name="`MAIN_ONECN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_ONECN_IDX`"/>
 			<one-to-many entity-name="OneCN"/>
 		</list>
 		<list name="onenr" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="MAIN_ONENR">
+			<key foreign-key="MAIN_ONENR_KEY" update="true">
 				<column name="`MAIN_ONENR_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_ONENR_IDX`"/>
 			<one-to-many entity-name="OneNR"/>
 		</list>
 		<list name="onenn" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="MAIN_ONENN">
+			<key foreign-key="MAIN_ONENN_KEY" update="true">
 				<column name="`MAIN_ONENN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_ONENN_IDX`"/>
 			<one-to-many entity-name="OneNN"/>
 		</list>
 		<list name="twocr" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAIN_TWOCR">
+			<key foreign-key="MAIN_TWOCR_KEY" update="true">
 				<column name="`TWOCR_MAIN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_TWOCR_IDX`"/>
 			<one-to-many entity-name="TwoCR"/>
 		</list>
 		<list name="twocn" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAIN_TWOCN">
+			<key foreign-key="MAIN_TWOCN_KEY" update="true">
 				<column name="`TWOCN_MAIN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_TWOCN_IDX`"/>
@@ -301,56 +301,56 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="onecr" table="`MAINAUDITING_ONECRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_ONECR_KEY" update="true">
 				<column name="`MAINAUDITING_ONECR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_ONECR_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="onecn" table="`MAINAUDITING_ONECNAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_ONECN_KEY" update="true">
 				<column name="`MAINAUDITING_ONECN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_ONECN_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="onenr" table="`MAINAUDITING_ONENRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_ONENR_KEY" update="true">
 				<column name="`MAINAUDITING_ONENR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_ONENR_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="onenn" table="`MAINAUDITING_ONENNAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_ONENN_KEY" update="true">
 				<column name="`MAINAUDITING_ONENN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_ONENN_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="twocr" table="`MAINAUDITING_TWOCRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_TWOCR_KEY" update="true">
 				<column name="`MAINAUDITING_TWOCR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_TWOCR_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="twocn" table="`MAINAUDITING_TWOCNAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_TWOCN_KEY" update="true">
 				<column name="`MAINAUDITING_TWOCN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_TWOCN_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="twonr" table="`MAINAUDITING_TWONRAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_TWONR_KEY" update="true">
 				<column name="`MAINAUDITING_TWONR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_TWONR_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="twonn" table="`MAINAUDITING_TWONNAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAINAUDITING_TWONN_KEY" update="true">
 				<column name="`MAINAUDITING_TWONN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAINAUDITING_TWONN_IDX`"/>

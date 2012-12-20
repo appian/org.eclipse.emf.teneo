@@ -530,7 +530,7 @@
 			<column not-null="false" unique="true" name="`NAME`"/>
 		</property>
 		<bag name="instance" fetch="subselect" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="DWHCLUSTER_INSTANCE">
+			<key foreign-key="DWHCLUSTER_INSTANCE_KEY" update="true">
 				<column name="`DWHCLUSTER_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="DWHInstance"/>
@@ -556,7 +556,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="etl" fetch="subselect" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="DWHINSTANCE_ETL">
+			<key foreign-key="DWHINSTANCE_ETL_KEY" update="true">
 				<column name="`DWHINSTANCE_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="VServer"/>

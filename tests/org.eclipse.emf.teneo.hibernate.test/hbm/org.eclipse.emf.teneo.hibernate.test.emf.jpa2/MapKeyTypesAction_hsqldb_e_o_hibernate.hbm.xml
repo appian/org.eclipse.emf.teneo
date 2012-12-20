@@ -17,7 +17,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<map name="imageFiles" table="`IMAGE_MAPPING`" lazy="false" cascade="all,delete-orphan">
-			<key/>
+			<key foreign-key="IMAGES_IMAGEFILES_KEY"/>
 			<map-key type="java.lang.String">
 				<column not-null="false" unique="false" name="`IMAGE_NAME`"/>
 			</map-key>
@@ -26,7 +26,7 @@
 			</element>
 		</map>
 		<map name="imageTypeNames" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="IMAGES_IMAGETYPENAMES_KEY" update="true">
 				<column name="`IMAGES_IMAGETYPENAMES_E_ID`" unique="false"/>
 			</key>
 			<map-key>
@@ -39,14 +39,14 @@
 			<element type="java.lang.String"/>
 		</map>
 		<map name="imageDateDescriptions" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="IMAGES_IMAGEDATEDESCRIPTIONS_KEY" update="true">
 				<column name="`IMAGES_IMAGEDATEDESCRIPTIONS_E_ID`" unique="false"/>
 			</key>
 			<map-key type="timestamp"/>
 			<element type="java.lang.String"/>
 		</map>
 		<map name="photoParts" table="`PHOTOPARTS_MAP`" lazy="true" cascade="all,delete-orphan">
-			<key/>
+			<key foreign-key="IMAGES_PHOTOPARTS_KEY"/>
 			<map-key-many-to-many entity-name="PhotoPart">
 				<column not-null="true" unique="false" name="`PARTS_NAME`"/>
 			</map-key-many-to-many>
@@ -251,28 +251,28 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="imageFiles" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="IMAGESAUDITING_IMAGEFILES">
+			<key foreign-key="IMAGESAUDITING_IMAGEFILES_KEY" update="true">
 				<column name="`IMAGESAUDITING_IMAGEFILES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`IMAGESAUDITING_IMAGEFILES_IDX`"/>
 			<one-to-many entity-name="StringToStringMapEntryAuditing"/>
 		</list>
 		<list name="imageTypeNames" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="IMAGESAUDITING_IMAGETYPENAMES">
+			<key foreign-key="IMAGESAUDITING_IMAGETYPENAMES_KEY" update="true">
 				<column name="`IMAGESAUDITING_IMAGETYPENAMES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`IMAGESAUDITING_IMAGETYPENAMES_IDX`"/>
 			<one-to-many entity-name="EnumToStringMapEntryAuditing"/>
 		</list>
 		<list name="imageDateDescriptions" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="IMAGESAUDITING_IMAGEDATEDESCRIPTIONS">
+			<key foreign-key="IMAGESAUDITING_IMAGEDATEDESCRIPTIONS_KEY" update="true">
 				<column name="`IMAGESAUDITING_IMAGEDATEDESCRIPTIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`IMAGESAUDITING_IMAGEDATEDESCRIPTIONS_IDX`"/>
 			<one-to-many entity-name="DateToStringMapEntryAuditing"/>
 		</list>
 		<list name="photoParts" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="IMAGESAUDITING_PHOTOPARTS">
+			<key foreign-key="IMAGESAUDITING_PHOTOPARTS_KEY" update="true">
 				<column name="`IMAGESAUDITING_PHOTOPARTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`IMAGESAUDITING_PHOTOPARTS_IDX`"/>

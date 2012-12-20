@@ -16,7 +16,7 @@
 		</version>
 		<one-to-one name="employeeInfo" entity-name="EmployeeInfo" cascade="persist,save-update,lock,delete,delete-orphan" lazy="false" property-ref="employee"/>
 		<list name="addresses" lazy="true" cascade="persist,merge,refresh,save-update,lock,delete-orphan">
-			<key update="true" foreign-key="EMPLOYEE_ADDRESSES">
+			<key foreign-key="EMPLOYEE_ADDRESSES_KEY" update="true">
 				<column name="`EMPLOYEE_ADDRESSES_ID`" unique="false"/>
 			</key>
 			<list-index column="`EMPLOYEE_ADDRESSES_IDX`"/>

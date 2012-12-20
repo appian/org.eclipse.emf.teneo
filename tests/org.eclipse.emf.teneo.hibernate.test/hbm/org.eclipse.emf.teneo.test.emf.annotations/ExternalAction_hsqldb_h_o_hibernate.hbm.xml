@@ -26,7 +26,7 @@
 			</type>
 		</property>
 		<list name="eObjects" table="`EXTERNALTEST_EOBJECTS`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="EXTERNALTEST_EOBJECTS_KEY" update="true">
 				<column name="`EXTERNALTEST_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`EXTERNALTEST_EOBJECTS_IDX`"/>
@@ -52,7 +52,7 @@
 			</type>
 		</property>
 		<list name="externalObjects" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="EXTERNALTEST_EXTERNALOBJECTS_KEY" update="true">
 				<column name="`EXTERNALTEST_EXTERNALOBJECTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`EXTERNALTEST_EXTERNALOBJECTS_IDX`"/>
@@ -149,7 +149,7 @@
 			</type>
 		</property>
 		<list name="eObjects" table="`EXTERNALTESTAUDITING_EOBJECTS`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="EXTERNALTESTAUDITING_EOBJECTS_KEY" update="true">
 				<column name="`EXTERNALTESTAUDITING_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`EXTERNALTESTAUDITING_EOBJECTS_IDX`"/>
@@ -175,7 +175,7 @@
 			</type>
 		</property>
 		<list name="externalObjects" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="EXTERNALTESTAUDITING_EXTERNALOBJECTS_KEY" update="true">
 				<column name="`EXTERNALTESTAUDITING_EXTERNALOBJECTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`EXTERNALTESTAUDITING_EXTERNALOBJECTS_IDX`"/>

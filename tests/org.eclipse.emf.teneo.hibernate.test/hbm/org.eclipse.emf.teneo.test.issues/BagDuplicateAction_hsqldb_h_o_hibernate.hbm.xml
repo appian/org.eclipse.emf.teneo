@@ -21,7 +21,7 @@
 			<column not-null="false" unique="false" name="`PERSON_MOTHER_NAME`"/>
 		</many-to-one>
 		<bag name="children" table="`PERSON_PERSON`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="PERSON_CHILDREN_KEY" update="true">
 				<column name="`PERSON_CHILDREN_NAME`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Person" unique="false" foreign-key="PERSON_CHILDREN">
@@ -113,7 +113,7 @@
 			<column not-null="false" unique="false" name="`MOTHER`"/>
 		</property>
 		<list name="children" table="`PERSONAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_CHILDREN_KEY" update="true">
 				<column name="`PERSONAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_CHILDREN_IDX`"/>

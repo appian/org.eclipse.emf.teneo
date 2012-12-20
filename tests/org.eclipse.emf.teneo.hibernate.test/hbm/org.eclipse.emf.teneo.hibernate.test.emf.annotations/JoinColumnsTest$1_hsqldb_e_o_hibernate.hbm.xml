@@ -45,7 +45,7 @@
 			<column name="`PERSON_LASTNAME`"/>
 		</key>
 		<list name="children" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PARENT_CHILDREN">
+			<key foreign-key="PARENT_CHILDREN_KEY" update="true">
 				<column name="`MYPARENTFIRSTNAME`" unique="false"/>
 				<column name="`MYPARENTLASTNAME`" unique="false"/>
 			</key>
@@ -76,7 +76,7 @@
 			<column not-null="false" unique="false" name="`PARENT_OWNER_LASTNAME`"/>
 		</many-to-one>
 		<list name="visitors" table="`HOUSE_PERSON`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="HOUSE_VISITORS_KEY" update="true">
 				<column name="`RIGHTCOLUMN`" unique="false"/>
 			</key>
 			<list-index column="`HOUSE_VISITORS_IDX`"/>
@@ -161,14 +161,14 @@
 			<column not-null="false" unique="false" name="`LASTNAME`"/>
 		</property>
 		<list name="friends" table="`PERSONAUDITING_FRIENDSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_FRIENDS_KEY" update="true">
 				<column name="`PERSONAUDITING_FRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_FRIENDS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="oppositeFriends" table="`PERSONAUDITING_OPPOSITEFRIENDSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_OPPOSITEFRIENDS_KEY" update="true">
 				<column name="`PERSONAUDITING_OPPOSITEFRIENDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_OPPOSITEFRIENDS_IDX`"/>
@@ -182,7 +182,7 @@
 			<column name="`PERSONAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
 		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PARENTAUDITING_CHILDREN_KEY" update="true">
 				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_CHILDREN_IDX`"/>
@@ -248,7 +248,7 @@
 			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
 		<list name="visitors" table="`HOUSEAUDITING_VISITORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="HOUSEAUDITING_VISITORS_KEY" update="true">
 				<column name="`HOUSEAUDITING_VISITORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`HOUSEAUDITING_VISITORS_IDX`"/>

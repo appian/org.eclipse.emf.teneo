@@ -16,7 +16,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="group" table="`A_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="A_GROUP_KEY" update="true">
 				<column name="`A_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`A_GROUP_IDX`"/>
@@ -67,7 +67,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`ELEMENT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ELEMENT_MIXED_KEY" update="true">
 				<column name="`ELEMENT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ELEMENT_MIXED_IDX`"/>
@@ -87,7 +87,7 @@
 			<column not-null="false" unique="false" name="`MIXED_NAME`"/>
 		</property>
 		<list name="true" table="`MIXED_ELEMENT_TRUE`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ELEMENT_TRUE_KEY" update="true">
 				<column name="`MIXED_ELEMENT_TRUE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_ELEMENT_TRUE_IDX`"/>
@@ -188,7 +188,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="group" table="`AAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="AAUDITING_GROUP_KEY" update="true">
 				<column name="`AAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`AAUDITING_GROUP_IDX`"/>
@@ -315,7 +315,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`ELEMENTAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ELEMENTAUDITING_MIXED_KEY" update="true">
 				<column name="`ELEMENTAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ELEMENTAUDITING_MIXED_IDX`"/>
@@ -335,7 +335,7 @@
 			<column not-null="false" unique="false" name="`MIXED_NAME`"/>
 		</property>
 		<list name="true" table="`MIXED_ELEMENTAUDITING_TRUEAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ELEMENTAUDITING_TRUE_KEY" update="true">
 				<column name="`MIXED_ELEMENTAUDITING_TRUE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_ELEMENTAUDITING_TRUE_IDX`"/>

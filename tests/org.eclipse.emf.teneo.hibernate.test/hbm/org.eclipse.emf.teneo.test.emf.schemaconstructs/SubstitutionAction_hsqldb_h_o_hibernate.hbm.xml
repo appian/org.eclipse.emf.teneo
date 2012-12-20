@@ -43,7 +43,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="myComplexAbstractGroup" table="`MULTINUMBERTYPE_MYCOMPLEXABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="MULTINUMBERTYPE_MYCOMPLEXABSTRACTGROUP_KEY" update="true">
 				<column name="`MULTINUMBERTYPE_MYCOMPLEXABSTRACTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTINUMBERTYPE_MYCOMPLEXABSTRACTGROUP_IDX`"/>
@@ -80,14 +80,14 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="mySimpleAbstractGroup" table="`NUMBERTYPE_MYSIMPLEABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="NUMBERTYPE_MYSIMPLEABSTRACTGROUP_KEY" update="true">
 				<column name="`NUMBERTYPE_MYSIMPLEABSTRACTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`NUMBERTYPE_MYSIMPLEABSTRACTGROUP_IDX`"/>
 			<one-to-many entity-name="NumberType_mySimpleAbstractGroup"/>
 		</list>
 		<list name="myComplexAbstractGroup" table="`NUMBERTYPE_MYCOMPLEXABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="NUMBERTYPE_MYCOMPLEXABSTRACTGROUP_KEY" update="true">
 				<column name="`NUMBERTYPE_MYCOMPLEXABSTRACTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`NUMBERTYPE_MYCOMPLEXABSTRACTGROUP_IDX`"/>
@@ -375,7 +375,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="myComplexAbstractGroup" table="`MULTINUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="MULTINUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_KEY" update="true">
 				<column name="`MULTINUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTINUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_IDX`"/>
@@ -450,14 +450,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="mySimpleAbstractGroup" table="`NUMBERTYPEAUDITING_MYSIMPLEABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="NUMBERTYPEAUDITING_MYSIMPLEABSTRACTGROUP_KEY" update="true">
 				<column name="`NUMBERTYPEAUDITING_MYSIMPLEABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`NUMBERTYPEAUDITING_MYSIMPLEABSTRACTGROUP_IDX`"/>
 			<one-to-many entity-name="NumberTypeAuditing_mySimpleAbstractGroup"/>
 		</list>
 		<list name="myComplexAbstractGroup" table="`NUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="NUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_KEY" update="true">
 				<column name="`NUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`NUMBERTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_IDX`"/>

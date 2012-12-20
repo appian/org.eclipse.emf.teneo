@@ -131,14 +131,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="writers" table="`LIBRARYAUDITING_WRITERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_WRITERS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_WRITERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_WRITERS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="books" table="`LIBRARYAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_BOOKS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_BOOKS_IDX`"/>
@@ -197,7 +197,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="books" table="`WRITERAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WRITERAUDITING_BOOKS_KEY" update="true">
 				<column name="`WRITERAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WRITERAUDITING_BOOKS_IDX`"/>

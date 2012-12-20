@@ -30,7 +30,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="childItem" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="ITEM_CHILDITEM">
+			<key foreign-key="ITEM_CHILDITEM_KEY" update="true">
 				<column name="`ITEM_CHILDITEM_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEM_CHILDITEM_IDX`"/>
@@ -161,7 +161,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="childItem" table="`ITEMAUDITING_CHILDITEMAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEMAUDITING_CHILDITEM_KEY" update="true">
 				<column name="`ITEMAUDITING_CHILDITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMAUDITING_CHILDITEM_IDX`"/>

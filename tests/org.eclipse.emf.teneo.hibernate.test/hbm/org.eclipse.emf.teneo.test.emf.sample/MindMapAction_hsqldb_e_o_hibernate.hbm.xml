@@ -21,21 +21,21 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="rootTopics" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAP_ROOTTOPICS">
+			<key foreign-key="MAP_ROOTTOPICS_KEY" update="true">
 				<column name="`MAP_ROOTTOPICS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAP_ROOTTOPICS_IDX`"/>
 			<one-to-many entity-name="Topic"/>
 		</list>
 		<list name="relations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAP_RELATIONS">
+			<key foreign-key="MAP_RELATIONS_KEY" update="true">
 				<column name="`MAP_RELATIONS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAP_RELATIONS_IDX`"/>
 			<one-to-many entity-name="Relationship"/>
 		</list>
 		<list name="resources" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MAP_RESOURCES">
+			<key foreign-key="MAP_RESOURCES_KEY" update="true">
 				<column name="`MAP_RESOURCES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAP_RESOURCES_IDX`"/>
@@ -117,7 +117,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="items" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="THREAD_ITEMS">
+			<key foreign-key="THREAD_ITEMS_KEY" update="true">
 				<column name="`THREAD_ITEMS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`THREAD_ITEMS_IDX`"/>
@@ -164,7 +164,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="comments" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="TOPIC_COMMENTS">
+			<key foreign-key="TOPIC_COMMENTS_KEY" update="true">
 				<column name="`TOPIC_COMMENTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TOPIC_COMMENTS_IDX`"/>
@@ -203,7 +203,7 @@
 			<column not-null="false" unique="false" name="`STARTDATE`"/>
 		</property>
 		<list name="subtopics" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="TOPIC_SUBTOPICS">
+			<key foreign-key="TOPIC_SUBTOPICS_KEY" update="true">
 				<column name="`TOPIC_SUBTOPICS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TOPIC_SUBTOPICS_IDX`"/>
@@ -348,21 +348,21 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="rootTopics" table="`MAPAUDITING_ROOTTOPICSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAPAUDITING_ROOTTOPICS_KEY" update="true">
 				<column name="`MAPAUDITING_ROOTTOPICS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAPAUDITING_ROOTTOPICS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="relations" table="`MAPAUDITING_RELATIONSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAPAUDITING_RELATIONS_KEY" update="true">
 				<column name="`MAPAUDITING_RELATIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAPAUDITING_RELATIONS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="resources" table="`MAPAUDITING_RESOURCESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAPAUDITING_RESOURCES_KEY" update="true">
 				<column name="`MAPAUDITING_RESOURCES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAPAUDITING_RESOURCES_IDX`"/>
@@ -487,7 +487,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="comments" table="`RESOURCEAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="RESOURCEAUDITING_COMMENTS_KEY" update="true">
 				<column name="`RESOURCEAUDITING_COMMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RESOURCEAUDITING_COMMENTS_IDX`"/>
@@ -500,7 +500,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="topics" table="`RESOURCEAUDITING_TOPICSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="RESOURCEAUDITING_TOPICS_KEY" update="true">
 				<column name="`RESOURCEAUDITING_TOPICS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RESOURCEAUDITING_TOPICS_IDX`"/>
@@ -556,7 +556,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="items" table="`THREADAUDITING_ITEMSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="THREADAUDITING_ITEMS_KEY" update="true">
 				<column name="`THREADAUDITING_ITEMS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`THREADAUDITING_ITEMS_IDX`"/>
@@ -679,7 +679,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="comments" table="`TOPICAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TOPICAUDITING_COMMENTS_KEY" update="true">
 				<column name="`TOPICAUDITING_COMMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TOPICAUDITING_COMMENTS_IDX`"/>
@@ -706,7 +706,7 @@
 			</type>
 		</property>
 		<list name="resources" table="`TOPICAUDITING_RESOURCESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TOPICAUDITING_RESOURCES_KEY" update="true">
 				<column name="`TOPICAUDITING_RESOURCES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TOPICAUDITING_RESOURCES_IDX`"/>
@@ -716,7 +716,7 @@
 			<column not-null="false" unique="false" name="`STARTDATE`"/>
 		</property>
 		<list name="subtopics" table="`TOPICAUDITING_SUBTOPICSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TOPICAUDITING_SUBTOPICS_KEY" update="true">
 				<column name="`TOPICAUDITING_SUBTOPICS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TOPICAUDITING_SUBTOPICS_IDX`"/>

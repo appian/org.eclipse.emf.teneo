@@ -69,56 +69,56 @@
 			<column not-null="false" unique="false" name="`CODE`"/>
 		</property>
 		<list name="boo" table="`SIMPLELISTAUDITING_BOOAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_BOO_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_BOO_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_BOO_IDX`"/>
 			<element type="boolean"/>
 		</list>
 		<list name="byt" table="`SIMPLELISTAUDITING_BYTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_BYT_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_BYT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_BYT_IDX`"/>
 			<element type="java.lang.Byte"/>
 		</list>
 		<list name="doubl" table="`SIMPLELISTAUDITING_DOUBLAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_DOUBL_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_DOUBL_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_DOUBL_IDX`"/>
 			<element type="java.lang.Double"/>
 		</list>
 		<list name="floa" table="`SIMPLELISTAUDITING_FLOAAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_FLOA_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_FLOA_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_FLOA_IDX`"/>
 			<element type="java.lang.Float"/>
 		</list>
 		<list name="inte" table="`SIMPLELISTAUDITING_INTEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_INTE_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_INTE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_INTE_IDX`"/>
 			<element type="java.lang.Integer"/>
 		</list>
 		<list name="long" table="`SIMPLELISTAUDITING_LONGAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_LONG_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_LONG_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_LONG_IDX`"/>
 			<element type="java.lang.Long"/>
 		</list>
 		<list name="shor" table="`SIMPLELISTAUDITING_SHORAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_SHOR_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_SHOR_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_SHOR_IDX`"/>
 			<element type="short"/>
 		</list>
 		<list name="enu" table="`SIMPLELISTAUDITING_ENUAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_ENU_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_ENU_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_ENU_IDX`"/>
@@ -131,35 +131,35 @@
 			</element>
 		</list>
 		<list name="dat" table="`SIMPLELISTAUDITING_DATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_DAT_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_DAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_DAT_IDX`"/>
 			<element type="timestamp"/>
 		</list>
 		<list name="limitedstring" table="`SIMPLELISTAUDITING_LIMITEDSTRINGAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_LIMITEDSTRING_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_LIMITEDSTRING_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_LIMITEDSTRING_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="stri" table="`SIMPLELISTAUDITING_STRIAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_STRI_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_STRI_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_STRI_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<array name="intArray" table="`SIMPLELISTAUDITING_INTARRAYAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_INTARRAY_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_INTARRAY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_INTARRAY_IDX`"/>
 			<element type="int"/>
 		</array>
 		<array name="doubleArray" table="`SIMPLELISTAUDITING_DOUBLEARRAYAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_DOUBLEARRAY_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_DOUBLEARRAY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_DOUBLEARRAY_IDX`"/>
@@ -169,7 +169,7 @@
 			<column not-null="false" unique="false" name="`STRINGARRAY`"/>
 		</property>
 		<array name="byteArray" table="`SIMPLELISTAUDITING_BYTEARRAYAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_BYTEARRAY_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_BYTEARRAY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_BYTEARRAY_IDX`"/>

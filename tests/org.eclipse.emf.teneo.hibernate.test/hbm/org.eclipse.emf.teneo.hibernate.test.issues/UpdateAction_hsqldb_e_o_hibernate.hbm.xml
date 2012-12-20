@@ -22,7 +22,7 @@
 			<column not-null="true" unique="false" name="`DESCRIPTION`"/>
 		</property>
 		<list name="children" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PARENT_CHILDREN">
+			<key foreign-key="PARENT_CHILDREN_KEY" update="true">
 				<column name="`PARENT_CHILDREN_NAME`" unique="false"/>
 			</key>
 			<list-index column="`PARENT_CHILDREN_IDX`"/>
@@ -159,7 +159,7 @@
 			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
 		</property>
 		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PARENTAUDITING_CHILDREN_KEY" update="true">
 				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_CHILDREN_IDX`"/>

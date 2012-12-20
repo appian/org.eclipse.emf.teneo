@@ -73,7 +73,7 @@
 			<column not-null="false" unique="false" name="`ANYONE`"/>
 		</property>
 		<list name="AnyList" table="`PRODUCTTYPEAUDITING_ANYLISTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_ANYLIST_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_ANYLIST_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_ANYLIST_IDX`"/>

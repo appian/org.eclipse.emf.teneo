@@ -65,28 +65,28 @@
 			<column not-null="false" unique="false" name="`TITLE`"/>
 		</property>
 		<list name="writers" inverse="true" lazy="extra" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_WRITERS">
+			<key foreign-key="BOOKAUDITING_WRITERS_KEY" update="true">
 				<column name="`BOOKAUDITING_WRITERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_WRITERS_IDX`"/>
 			<one-to-many entity-name="StringToWriterMapEntryAuditing"/>
 		</list>
 		<list name="keyWords" inverse="true" lazy="extra" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_KEYWORDS">
+			<key foreign-key="BOOKAUDITING_KEYWORDS_KEY" update="true">
 				<column name="`BOOKAUDITING_KEYWORDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_KEYWORDS_IDX`"/>
 			<one-to-many entity-name="StringToStringMapEntryAuditing"/>
 		</list>
 		<list name="cityByWriter" inverse="true" lazy="extra" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_CITYBYWRITER">
+			<key foreign-key="BOOKAUDITING_CITYBYWRITER_KEY" update="true">
 				<column name="`BOOKAUDITING_CITYBYWRITER_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_CITYBYWRITER_IDX`"/>
 			<one-to-many entity-name="WriterToStringMapEntryAuditing"/>
 		</list>
 		<list name="categoryByDate" inverse="true" lazy="extra" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_CATEGORYBYDATE">
+			<key foreign-key="BOOKAUDITING_CATEGORYBYDATE_KEY" update="true">
 				<column name="`BOOKAUDITING_CATEGORYBYDATE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_CATEGORYBYDATE_IDX`"/>

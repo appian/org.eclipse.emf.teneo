@@ -50,7 +50,7 @@
 			<column not-null="true" unique="false" name="`MYDATE`"/>
 		</property>
 		<list name="testB" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="TESTC_TESTB">
+			<key foreign-key="TESTC_TESTB_KEY" update="true">
 				<column name="`TESTC_TESTB_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TESTC_TESTB_IDX`"/>
@@ -239,7 +239,7 @@
 			<column not-null="false" unique="false" name="`MYDATE`"/>
 		</property>
 		<list name="testB" table="`TESTCAUDITING_TESTBAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TESTCAUDITING_TESTB_KEY" update="true">
 				<column name="`TESTCAUDITING_TESTB_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TESTCAUDITING_TESTB_IDX`"/>

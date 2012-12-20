@@ -39,7 +39,7 @@
 			<column name="`ABSTRACTSUPER_E_ID`"/>
 		</key>
 		<list name="m" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MLIST_M">
+			<key foreign-key="MLIST_M_KEY" update="true">
 				<column name="`MLIST_M_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MLIST_M_IDX`"/>
@@ -69,7 +69,7 @@
 			<column name="`ABSTRACTSUPER_E_ID`"/>
 		</key>
 		<list name="p" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PLIST_P">
+			<key foreign-key="PLIST_P_KEY" update="true">
 				<column name="`PLIST_P_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PLIST_P_IDX`"/>
@@ -168,7 +168,7 @@
 			<column name="`ABSTRACTSUPERAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
 		<list name="p" table="`MAUDITING_PAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MAUDITING_P_KEY" update="true">
 				<column name="`MAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAUDITING_P_IDX`"/>
@@ -182,7 +182,7 @@
 			<column name="`ABSTRACTSUPERAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
 		<list name="m" table="`MLISTAUDITING_MAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MLISTAUDITING_M_KEY" update="true">
 				<column name="`MLISTAUDITING_M_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MLISTAUDITING_M_IDX`"/>
@@ -196,7 +196,7 @@
 			<column name="`ABSTRACTSUPERAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
 		<list name="m" table="`PAUDITING_MAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PAUDITING_M_KEY" update="true">
 				<column name="`PAUDITING_M_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PAUDITING_M_IDX`"/>
@@ -210,7 +210,7 @@
 			<column name="`ABSTRACTSUPERAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
 		<list name="p" table="`PLISTAUDITING_PAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PLISTAUDITING_P_KEY" update="true">
 				<column name="`PLISTAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PLISTAUDITING_P_IDX`"/>

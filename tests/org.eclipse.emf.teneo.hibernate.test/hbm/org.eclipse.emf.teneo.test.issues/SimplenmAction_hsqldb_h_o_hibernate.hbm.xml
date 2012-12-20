@@ -132,7 +132,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="you" table="`MEAUDITING_YOUAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MEAUDITING_YOU_KEY" update="true">
 				<column name="`MEAUDITING_YOU_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MEAUDITING_YOU_IDX`"/>
@@ -194,7 +194,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="me" table="`YOUAUDITING_MEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="YOUAUDITING_ME_KEY" update="true">
 				<column name="`YOUAUDITING_ME_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`YOUAUDITING_ME_IDX`"/>

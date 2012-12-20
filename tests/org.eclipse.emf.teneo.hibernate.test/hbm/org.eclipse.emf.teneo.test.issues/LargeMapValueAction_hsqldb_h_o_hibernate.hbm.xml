@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<map name="testMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="TESTELEMENT_TESTMAP_KEY" update="true">
 				<column name="`TESTELEMENT_TESTMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
@@ -103,7 +103,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="testMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="TESTELEMENTAUDITING_TESTMAP">
+			<key foreign-key="TESTELEMENTAUDITING_TESTMAP_KEY" update="true">
 				<column name="`TESTELEMENTAUDITING_TESTMAP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TESTELEMENTAUDITING_TESTMAP_IDX`"/>

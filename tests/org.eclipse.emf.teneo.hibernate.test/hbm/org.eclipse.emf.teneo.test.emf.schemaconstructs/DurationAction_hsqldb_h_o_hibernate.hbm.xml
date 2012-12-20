@@ -18,7 +18,7 @@
 			<column not-null="false" unique="false" name="`DURATION`"/>
 		</property>
 		<list name="durations" table="`DURATIONTEST_DURATIONS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="DURATIONTEST_DURATIONS_KEY" update="true">
 				<column name="`DURATIONTEST_DURATIONS_NAME`" unique="false"/>
 			</key>
 			<list-index column="`DURATIONTEST_DURATIONS_IDX`"/>
@@ -106,7 +106,7 @@
 			<column not-null="false" unique="false" name="`DURATION`"/>
 		</property>
 		<list name="durations" table="`DURATIONTESTAUDITING_DURATIONSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="DURATIONTESTAUDITING_DURATIONS_KEY" update="true">
 				<column name="`DURATIONTESTAUDITING_DURATIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DURATIONTESTAUDITING_DURATIONS_IDX`"/>

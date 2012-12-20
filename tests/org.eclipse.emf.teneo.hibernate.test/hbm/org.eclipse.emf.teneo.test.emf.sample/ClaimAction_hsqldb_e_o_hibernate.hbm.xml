@@ -28,7 +28,7 @@
 			<column not-null="false" unique="false" name="`CLM_STATUS`" length="2"/>
 		</property>
 		<bag name="claimLine" inverse="true" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CLAIM_CLAIMLINE">
+			<key foreign-key="CLAIM_CLAIMLINE_KEY" update="true">
 				<column name="`CLM_NBR`" unique="false"/>
 				<column name="`CLM_EXT_NBR`" unique="false"/>
 			</key>

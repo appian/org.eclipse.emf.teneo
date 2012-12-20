@@ -56,7 +56,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="group" table="`PERSONAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_GROUP_KEY" update="true">
 				<column name="`PERSONAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_GROUP_IDX`"/>

@@ -24,7 +24,7 @@
 		<meta attribute="eclassName" inherit="false">Parent</meta>
 		<meta attribute="epackage" inherit="false">http:///org/elver/samples/emf/annotations/compositeid.ecore</meta>
 		<list name="children" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="PARENT_CHILDREN">
+			<key foreign-key="PARENT_CHILDREN_KEY" update="true">
 				<column name="`MYPARENTFIRSTNAME`" unique="false"/>
 				<column name="`MYPARENTLASTNAME`" unique="false"/>
 			</key>
@@ -121,7 +121,7 @@
 		<meta attribute="eclassName" inherit="false">ParentAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///org/elver/samples/emf/annotations/compositeid.ecoreAuditing</meta>
 		<list name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PARENTAUDITING_CHILDREN_KEY" update="true">
 				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PARENTAUDITING_CHILDREN_IDX`"/>

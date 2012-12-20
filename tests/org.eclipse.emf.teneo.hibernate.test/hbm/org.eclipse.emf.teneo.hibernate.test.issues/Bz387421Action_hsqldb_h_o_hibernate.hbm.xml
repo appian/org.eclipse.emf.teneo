@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`BPMN2_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_DOCUMENTROOT_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
@@ -33,14 +33,14 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_DOCUMENTROOT_XMLNSPREFIXMAP_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
 			<element type="java.lang.String"/>
 		</map>
 		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_DOCUMENTROOT_XSISCHEMALOCATION_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
@@ -470,13 +470,13 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="extensionValues" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_BASEELEMENT_EXTENSIONVALUES">
+			<key foreign-key="BPMN2_BASEELEMENT_EXTENSIONVALUES_KEY" update="true">
 				<column name="`BASEELEMENT_EXTENSIONVALUES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ExtensionAttributeValue"/>
 		</bag>
 		<bag name="documentation" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_BASEELEMENT_DOCUMENTATION">
+			<key foreign-key="BPMN2_BASEELEMENT_DOCUMENTATION_KEY" update="true">
 				<column name="`BASEELEMENT_DOCUMENTATION_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Documentation"/>
@@ -485,7 +485,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_BASEELEMENT_EXTENSIONDEFINITIONS_KEY" update="true">
 				<column name="`BASEELEMENT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.ExtensionDefinition" unique="false" foreign-key="BPMN2_BASEELEMENT_EXTENSIONDEFINITIONS">
@@ -493,7 +493,7 @@
 			</many-to-many>
 		</idbag>
 		<list name="anyAttribute" table="`BPMN2_BASEELEMENT_ANYATTRIBUTE`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_BASEELEMENT_ANYATTRIBUTE_KEY" update="true">
 				<column name="`BASEELEMENT_ANYATTRIBUTE_ID`" unique="false"/>
 			</key>
 			<list-index column="`BASEELEMENT_ANYATTRIBUTE_IDX`"/>
@@ -523,7 +523,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_FLOWELEMENT_CATEGORYVALUEREF_KEY" update="true">
 				<column name="`FLOWELEMENT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.CategoryValue" unique="false" foreign-key="BPMN2_FLOWELEMENT_CATEGORYVALUEREF">
@@ -563,25 +563,25 @@
 			<column not-null="false" unique="false" name="`INPUTOUTPUTSPECIFICATION_IOSPECIFICATION_ID`"/>
 		</many-to-one>
 		<bag name="properties" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_ACTIVITY_PROPERTIES">
+			<key foreign-key="BPMN2_ACTIVITY_PROPERTIES_KEY" update="true">
 				<column name="`ACTIVITY_PROPERTIES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Property"/>
 		</bag>
 		<bag name="dataInputAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_ACTIVITY_DATAINPUTASSOCIATIONS">
+			<key foreign-key="BPMN2_ACTIVITY_DATAINPUTASSOCIATIONS_KEY" update="true">
 				<column name="`ACTIVITY_DATAINPUTASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataInputAssociation"/>
 		</bag>
 		<bag name="dataOutputAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_ACTIVITY_DATAOUTPUTASSOCIATIONS">
+			<key foreign-key="BPMN2_ACTIVITY_DATAOUTPUTASSOCIATIONS_KEY" update="true">
 				<column name="`ACTIVITY_DATAOUTPUTASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataOutputAssociation"/>
 		</bag>
 		<bag name="resources" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_ACTIVITY_RESOURCES">
+			<key foreign-key="BPMN2_ACTIVITY_RESOURCES_KEY" update="true">
 				<column name="`ACTIVITY_RESOURCES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ResourceRole"/>
@@ -606,19 +606,19 @@
 		<meta attribute="eclassName" inherit="false">SubProcess</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="laneSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBPROCESS_LANESETS">
+			<key foreign-key="BPMN2_SUBPROCESS_LANESETS_KEY" update="true">
 				<column name="`FLOWELEMENTSCONTAINER_LANESETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
 		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBPROCESS_FLOWELEMENTS">
+			<key foreign-key="BPMN2_SUBPROCESS_FLOWELEMENTS_KEY" update="true">
 				<column name="`FLOWELEMENT_SP_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.FlowElement"/>
 		</bag>
 		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBPROCESS_ARTIFACTS">
+			<key foreign-key="BPMN2_SUBPROCESS_ARTIFACTS_KEY" update="true">
 				<column name="`SUBPROCESS_ARTIFACTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Artifact"/>
@@ -685,7 +685,7 @@
 		<meta attribute="eclassName" inherit="false">Event</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="properties" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_EVENT_PROPERTIES">
+			<key foreign-key="BPMN2_EVENT_PROPERTIES_KEY" update="true">
 				<column name="`EVENT_PROPERTIES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Property"/>
@@ -695,13 +695,13 @@
 		<meta attribute="eclassName" inherit="false">CatchEvent</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="dataOutputs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CATCHEVENT_DATAOUTPUTS">
+			<key foreign-key="BPMN2_CATCHEVENT_DATAOUTPUTS_KEY" update="true">
 				<column name="`CATCHEVENT_DATAOUTPUTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataOutput"/>
 		</bag>
 		<bag name="dataOutputAssociation" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CATCHEVENT_DATAOUTPUTASSOCIATION">
+			<key foreign-key="BPMN2_CATCHEVENT_DATAOUTPUTASSOCIATION_KEY" update="true">
 				<column name="`CATCHEVENT_DATAOUTPUTASSOCIATION_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataOutputAssociation"/>
@@ -710,7 +710,7 @@
 			<column not-null="false" unique="false" name="`OUTPUTSET_OUTPUTSET_ID`"/>
 		</many-to-one>
 		<bag name="eventDefinitions" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONS">
+			<key foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONS_KEY" update="true">
 				<column name="`CATCHEVENT_EVENTDEFINITIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.EventDefinition"/>
@@ -719,7 +719,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONREFS_KEY" update="true">
 				<column name="`CATCHEVENT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.EventDefinition" unique="false" foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONREFS">
@@ -765,7 +765,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_PARTICIPANTREFS_KEY" update="true">
 				<column name="`CHOREOGRAPHYACTIVITY_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_PARTICIPANTREFS">
@@ -773,7 +773,7 @@
 			</many-to-many>
 		</idbag>
 		<bag name="correlationKeys" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_CORRELATIONKEYS">
+			<key foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_CORRELATIONKEYS_KEY" update="true">
 				<column name="`CHOREOGRAPHYACTIVITY_CORRELATIONKEYS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationKey"/>
@@ -794,7 +794,7 @@
 		<meta attribute="eclassName" inherit="false">CallChoreography</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="participantAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CALLCHOREOGRAPHY_PARTICIPANTASSOCIATIONS">
+			<key foreign-key="BPMN2_CALLCHOREOGRAPHY_PARTICIPANTASSOCIATIONS_KEY" update="true">
 				<column name="`CALLCHOREOGRAPHY_PARTICIPANTASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ParticipantAssociation"/>
@@ -810,7 +810,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CONVERSATIONNODE_PARTICIPANTREFS_KEY" update="true">
 				<column name="`CONVERSATIONNODE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_CONVERSATIONNODE_PARTICIPANTREFS">
@@ -821,7 +821,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CONVERSATIONNODE_MESSAGEFLOWREFS_KEY" update="true">
 				<column name="`CONVERSATIONNODE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.MessageFlow" unique="false" foreign-key="BPMN2_CONVERSATIONNODE_MESSAGEFLOWREFS">
@@ -829,7 +829,7 @@
 			</many-to-many>
 		</idbag>
 		<bag name="correlationKeys" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CONVERSATIONNODE_CORRELATIONKEYS">
+			<key foreign-key="BPMN2_CONVERSATIONNODE_CORRELATIONKEYS_KEY" update="true">
 				<column name="`CONVERSATIONNODE_CORRELATIONKEYS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationKey"/>
@@ -842,7 +842,7 @@
 		<meta attribute="eclassName" inherit="false">CallConversation</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="participantAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CALLCONVERSATION_PARTICIPANTASSOCIATIONS">
+			<key foreign-key="BPMN2_CALLCONVERSATION_PARTICIPANTASSOCIATIONS_KEY" update="true">
 				<column name="`CALLCONVERSATION_PARTICIPANTASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ParticipantAssociation"/>
@@ -862,7 +862,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CALLABLEELEMENT_SUPPORTEDINTERFACEREFS_KEY" update="true">
 				<column name="`CALLABLEELEMENT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Interface" unique="false" foreign-key="BPMN2_CALLABLEELEMENT_SUPPORTEDINTERFACEREFS">
@@ -873,7 +873,7 @@
 			<column not-null="false" unique="false" name="`INPUTOUTPUTSPECIFICATION_IOSPECIFICATION_ID`"/>
 		</many-to-one>
 		<bag name="ioBinding" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CALLABLEELEMENT_IOBINDING">
+			<key foreign-key="BPMN2_CALLABLEELEMENT_IOBINDING_KEY" update="true">
 				<column name="`CALLABLEELEMENT_IOBINDING_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.InputOutputBinding"/>
@@ -894,7 +894,7 @@
 		<meta attribute="eclassName" inherit="false">Category</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="categoryValue" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CATEGORY_CATEGORYVALUE">
+			<key foreign-key="BPMN2_CATEGORY_CATEGORYVALUE_KEY" update="true">
 				<column name="`CATEGORY_CATEGORYVALUE_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CategoryValue"/>
@@ -914,49 +914,49 @@
 		<meta attribute="eclassName" inherit="false">Collaboration</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="participants" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_PARTICIPANTS">
+			<key foreign-key="BPMN2_COLLABORATION_PARTICIPANTS_KEY" update="true">
 				<column name="`COLLABORATION_PARTICIPANTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Participant"/>
 		</bag>
 		<bag name="messageFlows" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_MESSAGEFLOWS">
+			<key foreign-key="BPMN2_COLLABORATION_MESSAGEFLOWS_KEY" update="true">
 				<column name="`COLLABORATION_MESSAGEFLOWS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.MessageFlow"/>
 		</bag>
 		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_ARTIFACTS">
+			<key foreign-key="BPMN2_COLLABORATION_ARTIFACTS_KEY" update="true">
 				<column name="`COLLABORATION_ARTIFACTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Artifact"/>
 		</bag>
 		<bag name="conversations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_CONVERSATIONS">
+			<key foreign-key="BPMN2_COLLABORATION_CONVERSATIONS_KEY" update="true">
 				<column name="`COLLABORATION_CONVERSATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ConversationNode"/>
 		</bag>
 		<bag name="conversationAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_CONVERSATIONASSOCIATIONS">
+			<key foreign-key="BPMN2_COLLABORATION_CONVERSATIONASSOCIATIONS_KEY" update="true">
 				<column name="`COLLABORATION_CONVERSATIONASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ConversationAssociation"/>
 		</bag>
 		<bag name="participantAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_PARTICIPANTASSOCIATIONS">
+			<key foreign-key="BPMN2_COLLABORATION_PARTICIPANTASSOCIATIONS_KEY" update="true">
 				<column name="`COLLABORATION_PARTICIPANTASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ParticipantAssociation"/>
 		</bag>
 		<bag name="messageFlowAssociations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_MESSAGEFLOWASSOCIATIONS">
+			<key foreign-key="BPMN2_COLLABORATION_MESSAGEFLOWASSOCIATIONS_KEY" update="true">
 				<column name="`COLLABORATION_MESSAGEFLOWASSOCIATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.MessageFlowAssociation"/>
 		</bag>
 		<bag name="correlationKeys" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_CORRELATIONKEYS">
+			<key foreign-key="BPMN2_COLLABORATION_CORRELATIONKEYS_KEY" update="true">
 				<column name="`COLLABORATION_CORRELATIONKEYS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationKey"/>
@@ -965,7 +965,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_COLLABORATION_CHOREOGRAPHYREF_KEY" update="true">
 				<column name="`COLLABORATION_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Choreography" unique="false" foreign-key="BPMN2_COLLABORATION_CHOREOGRAPHYREF">
@@ -973,7 +973,7 @@
 			</many-to-many>
 		</idbag>
 		<bag name="conversationLinks" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_CONVERSATIONLINKS">
+			<key foreign-key="BPMN2_COLLABORATION_CONVERSATIONLINKS_KEY" update="true">
 				<column name="`COLLABORATION_CONVERSATIONLINKS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ConversationLink"/>
@@ -989,13 +989,13 @@
 		<meta attribute="eclassName" inherit="false">Choreography</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="laneSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHY_LANESETS">
+			<key foreign-key="BPMN2_CHOREOGRAPHY_LANESETS_KEY" update="true">
 				<column name="`FLOWELEMENTSCONTAINER_LANESETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
 		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS">
+			<key foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS_KEY" update="true">
 				<column name="`FLOWELEMENT_C_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.FlowElement"/>
@@ -1008,7 +1008,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CHOREOGRAPHYTASK_MESSAGEFLOWREF_KEY" update="true">
 				<column name="`CHOREOGRAPHYTASK_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.MessageFlow" unique="false" foreign-key="BPMN2_CHOREOGRAPHYTASK_MESSAGEFLOWREF">
@@ -1099,7 +1099,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_CORRELATIONKEY_CORRELATIONPROPERTYREF_KEY" update="true">
 				<column name="`CORRELATIONKEY_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.CorrelationProperty" unique="false" foreign-key="BPMN2_CORRELATIONKEY_CORRELATIONPROPERTYREF">
@@ -1114,7 +1114,7 @@
 		<meta attribute="eclassName" inherit="false">CorrelationProperty</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="correlationPropertyRetrievalExpression" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CORRELATIONPROPERTY_CORRELATIONPROPERTYRETRIEVALEXPRESSION">
+			<key foreign-key="BPMN2_CORRELATIONPROPERTY_CORRELATIONPROPERTYRETRIEVALEXPRESSION_KEY" update="true">
 				<column name="`CORRELATIONPROPERTY_CORRELATIONPROPERTYRETRIEVALEXPRESSION_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationPropertyRetrievalExpression"/>
@@ -1150,7 +1150,7 @@
 		<meta attribute="eclassName" inherit="false">CorrelationSubscription</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="correlationPropertyBinding" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CORRELATIONSUBSCRIPTION_CORRELATIONPROPERTYBINDING">
+			<key foreign-key="BPMN2_CORRELATIONSUBSCRIPTION_CORRELATIONPROPERTYBINDING_KEY" update="true">
 				<column name="`CORRELATIONSUBSCRIPTION_CORRELATIONPROPERTYBINDING_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationPropertyBinding"/>
@@ -1166,7 +1166,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_DATAASSOCIATION_SOURCEREF_KEY" update="true">
 				<column name="`DATAASSOCIATION_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.ItemAwareElement" unique="false" foreign-key="BPMN2_DATAASSOCIATION_SOURCEREF">
@@ -1180,7 +1180,7 @@
 			<column not-null="false" unique="false" name="`FORMALEXPRESSION_TRANSFORMATION_ID`"/>
 		</many-to-one>
 		<bag name="assignment" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_DATAASSOCIATION_ASSIGNMENT">
+			<key foreign-key="BPMN2_DATAASSOCIATION_ASSIGNMENT_KEY" update="true">
 				<column name="`DATAASSOCIATION_ASSIGNMENT_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Assignment"/>
@@ -1287,31 +1287,31 @@
 		<meta attribute="eclassName" inherit="false">Definitions</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="imports" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_DEFINITIONS_IMPORTS">
+			<key foreign-key="BPMN2_DEFINITIONS_IMPORTS_KEY" update="true">
 				<column name="`DEFINITIONS_IMPORTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Import"/>
 		</bag>
 		<bag name="extensions" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_DEFINITIONS_EXTENSIONS">
+			<key foreign-key="BPMN2_DEFINITIONS_EXTENSIONS_KEY" update="true">
 				<column name="`DEFINITIONS_EXTENSIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Extension"/>
 		</bag>
 		<bag name="rootElements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_DEFINITIONS_ROOTELEMENTS">
+			<key foreign-key="BPMN2_DEFINITIONS_ROOTELEMENTS_KEY" update="true">
 				<column name="`DEFINITIONS_ROOTELEMENTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.RootElement"/>
 		</bag>
 		<bag name="diagrams" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_DEFINITIONS_DIAGRAMS">
+			<key foreign-key="BPMN2_DEFINITIONS_DIAGRAMS_KEY" update="true">
 				<column name="`DEFINITIONS_DIAGRAMS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmndi.BPMNDiagram"/>
 		</bag>
 		<bag name="relationships" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_DEFINITIONS_RELATIONSHIPS">
+			<key foreign-key="BPMN2_DEFINITIONS_RELATIONSHIPS_KEY" update="true">
 				<column name="`DEFINITIONS_RELATIONSHIPS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Relationship"/>
@@ -1339,7 +1339,7 @@
 		<meta attribute="eclassName" inherit="false">Documentation</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<list name="mixed" table="`BPMN2_DOCUMENTATION_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_DOCUMENTATION_MIXED_KEY" update="true">
 				<column name="`DOCUMENTATION_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTATION_MIXED_IDX`"/>
@@ -1375,13 +1375,13 @@
 		<meta attribute="eclassName" inherit="false">ThrowEvent</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="dataInputs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_THROWEVENT_DATAINPUTS">
+			<key foreign-key="BPMN2_THROWEVENT_DATAINPUTS_KEY" update="true">
 				<column name="`THROWEVENT_DATAINPUTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataInput"/>
 		</bag>
 		<bag name="dataInputAssociation" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_THROWEVENT_DATAINPUTASSOCIATION">
+			<key foreign-key="BPMN2_THROWEVENT_DATAINPUTASSOCIATION_KEY" update="true">
 				<column name="`THROWEVENT_DATAINPUTASSOCIATION_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataInputAssociation"/>
@@ -1390,7 +1390,7 @@
 			<column not-null="false" unique="false" name="`INPUTSET_INPUTSET_ID`"/>
 		</many-to-one>
 		<bag name="eventDefinitions" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONS">
+			<key foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONS_KEY" update="true">
 				<column name="`THROWEVENT_EVENTDEFINITIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.EventDefinition"/>
@@ -1399,7 +1399,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONREFS_KEY" update="true">
 				<column name="`THROWEVENT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.EventDefinition" unique="false" foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONREFS">
@@ -1541,7 +1541,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="value" table="`BPMN2_EXTENSIONATTRIBUTEVALUE_VALUE`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_EXTENSIONATTRIBUTEVALUE_VALUE_KEY" update="true">
 				<column name="`EXTENSIONATTRIBUTEVALUE_VALUE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`EXTENSIONATTRIBUTEVALUE_VALUE_IDX`"/>
@@ -1584,13 +1584,13 @@
 		<meta attribute="eclassName" inherit="false">FlowElementsContainer</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="laneSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHY_LANESETS">
+			<key foreign-key="BPMN2_CHOREOGRAPHY_LANESETS_KEY" update="true">
 				<column name="`FLOWELEMENTSCONTAINER_LANESETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
 		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS">
+			<key foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS_KEY" update="true">
 				<column name="`FLOWELEMENT_FEC_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.FlowElement"/>
@@ -1600,7 +1600,7 @@
 		<meta attribute="eclassName" inherit="false">FormalExpression</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<list name="mixed" table="`BPMN2_FORMALEXPRESSION_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMN2_FORMALEXPRESSION_MIXED_KEY" update="true">
 				<column name="`FORMALEXPRESSION_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`FORMALEXPRESSION_MIXED_IDX`"/>
@@ -1642,7 +1642,7 @@
 		<meta attribute="eclassName" inherit="false">GlobalTask</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="resources" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_GLOBALTASK_RESOURCES">
+			<key foreign-key="BPMN2_GLOBALTASK_RESOURCES_KEY" update="true">
 				<column name="`GLOBALTASK_RESOURCES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ResourceRole"/>
@@ -1684,7 +1684,7 @@
 		<meta attribute="eclassName" inherit="false">GlobalUserTask</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="renderings" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_GLOBALUSERTASK_RENDERINGS">
+			<key foreign-key="BPMN2_GLOBALUSERTASK_RENDERINGS_KEY" update="true">
 				<column name="`GLOBALUSERTASK_RENDERINGS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Rendering"/>
@@ -1707,7 +1707,7 @@
 			<column not-null="false" unique="false" name="`RESOURCE_RESOURCEREF_ID`"/>
 		</many-to-one>
 		<bag name="resourceParameterBindings" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_RESOURCEROLE_RESOURCEPARAMETERBINDINGS">
+			<key foreign-key="BPMN2_RESOURCEROLE_RESOURCEPARAMETERBINDINGS_KEY" update="true">
 				<column name="`RESOURCEROLE_RESOURCEPARAMETERBINDINGS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ResourceParameterBinding"/>
@@ -1778,25 +1778,25 @@
 		<meta attribute="eclassName" inherit="false">InputOutputSpecification</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="dataInputs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_DATAINPUTS">
+			<key foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_DATAINPUTS_KEY" update="true">
 				<column name="`INPUTOUTPUTSPECIFICATION_DATAINPUTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataInput"/>
 		</bag>
 		<bag name="dataOutputs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_DATAOUTPUTS">
+			<key foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_DATAOUTPUTS_KEY" update="true">
 				<column name="`INPUTOUTPUTSPECIFICATION_DATAOUTPUTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.DataOutput"/>
 		</bag>
 		<bag name="inputSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_INPUTSETS">
+			<key foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_INPUTSETS_KEY" update="true">
 				<column name="`INPUTOUTPUTSPECIFICATION_INPUTSETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.InputSet"/>
 		</bag>
 		<bag name="outputSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_OUTPUTSETS">
+			<key foreign-key="BPMN2_INPUTOUTPUTSPECIFICATION_OUTPUTSETS_KEY" update="true">
 				<column name="`INPUTOUTPUTSPECIFICATION_OUTPUTSETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.OutputSet"/>
@@ -1859,7 +1859,7 @@
 		<meta attribute="eclassName" inherit="false">Interface</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="operations" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_INTERFACE_OPERATIONS">
+			<key foreign-key="BPMN2_INTERFACE_OPERATIONS_KEY" update="true">
 				<column name="`INTERFACE_OPERATIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Operation"/>
@@ -1927,7 +1927,7 @@
 		<meta attribute="eclassName" inherit="false">LaneSet</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="lanes" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_LANESET_LANES">
+			<key foreign-key="BPMN2_LANESET_LANES_KEY" update="true">
 				<column name="`LANESET_LANES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Lane"/>
@@ -2032,7 +2032,7 @@
 			<column not-null="false" unique="false" name="`DATAOUTPUT_OUTPUTDATAITEM_ID`"/>
 		</many-to-one>
 		<bag name="complexBehaviorDefinition" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_MULTIINSTANCELOOPCHARACTERISTICS_COMPLEXBEHAVIORDEFINITION">
+			<key foreign-key="BPMN2_MULTIINSTANCELOOPCHARACTERISTICS_COMPLEXBEHAVIORDEFINITION_KEY" update="true">
 				<column name="`MULTIINSTANCELOOPCHARACTERISTICS_COMPLEXBEHAVIORDEFINITION_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ComplexBehaviorDefinition"/>
@@ -2071,7 +2071,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_OPERATION_ERRORREFS_KEY" update="true">
 				<column name="`OPERATION_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Error" unique="false" foreign-key="BPMN2_OPERATION_ERRORREFS">
@@ -2136,7 +2136,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_PARTICIPANT_INTERFACEREFS_KEY" update="true">
 				<column name="`PARTICIPANT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Interface" unique="false" foreign-key="BPMN2_PARTICIPANT_INTERFACEREFS">
@@ -2147,7 +2147,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_PARTICIPANT_ENDPOINTREFS_KEY" update="true">
 				<column name="`PARTICIPANT_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.EndPoint" unique="false" foreign-key="BPMN2_PARTICIPANT_ENDPOINTREFS">
@@ -2191,7 +2191,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_PARTNERENTITY_PARTICIPANTREF_KEY" update="true">
 				<column name="`PARTNERENTITY_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_PARTNERENTITY_PARTICIPANTREF">
@@ -2209,7 +2209,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_PARTNERROLE_PARTICIPANTREF_KEY" update="true">
 				<column name="`PARTNERROLE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_PARTNERROLE_PARTICIPANTREF">
@@ -2228,13 +2228,13 @@
 		<meta attribute="eclassName" inherit="false">Process</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="laneSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_PROCESS_LANESETS">
+			<key foreign-key="BPMN2_PROCESS_LANESETS_KEY" update="true">
 				<column name="`FLOWELEMENTSCONTAINER_LANESETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
 		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_PROCESS_FLOWELEMENTS">
+			<key foreign-key="BPMN2_PROCESS_FLOWELEMENTS_KEY" update="true">
 				<column name="`FLOWELEMENT_P_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.FlowElement"/>
@@ -2246,25 +2246,25 @@
 			<column not-null="false" unique="false" name="`MONITORING_MONITORING_ID`"/>
 		</many-to-one>
 		<bag name="properties" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_PROCESS_PROPERTIES">
+			<key foreign-key="BPMN2_PROCESS_PROPERTIES_KEY" update="true">
 				<column name="`PROCESS_PROPERTIES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Property"/>
 		</bag>
 		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_PROCESS_ARTIFACTS">
+			<key foreign-key="BPMN2_PROCESS_ARTIFACTS_KEY" update="true">
 				<column name="`PROCESS_ARTIFACTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Artifact"/>
 		</bag>
 		<bag name="resources" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_PROCESS_RESOURCES">
+			<key foreign-key="BPMN2_PROCESS_RESOURCES_KEY" update="true">
 				<column name="`PROCESS_RESOURCES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ResourceRole"/>
 		</bag>
 		<bag name="correlationSubscriptions" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_PROCESS_CORRELATIONSUBSCRIPTIONS">
+			<key foreign-key="BPMN2_PROCESS_CORRELATIONSUBSCRIPTIONS_KEY" update="true">
 				<column name="`PROCESS_CORRELATIONSUBSCRIPTIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationSubscription"/>
@@ -2273,7 +2273,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="BPMN2_PROCESS_SUPPORTS_KEY" update="true">
 				<column name="`PROCESS_SUPPORTS_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.Process" unique="false" foreign-key="BPMN2_PROCESS_SUPPORTS">
@@ -2328,7 +2328,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true" foreign-key="BPMN2_RELATIONSHIP_SOURCES">
+			<key foreign-key="BPMN2_RELATIONSHIP_SOURCES_KEY" update="true">
 				<column name="`RELATIONSHIP_ID`" unique="false"/>
 			</key>
 			<many-to-any id-type="long" meta-type="string">
@@ -2340,7 +2340,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true" foreign-key="BPMN2_RELATIONSHIP_TARGETS">
+			<key foreign-key="BPMN2_RELATIONSHIP_TARGETS_KEY" update="true">
 				<column name="`RELATIONSHIP_ID`" unique="false"/>
 			</key>
 			<many-to-any id-type="long" meta-type="string">
@@ -2368,7 +2368,7 @@
 		<meta attribute="eclassName" inherit="false">Resource</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="resourceParameters" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_RESOURCE_RESOURCEPARAMETERS">
+			<key foreign-key="BPMN2_RESOURCE_RESOURCEPARAMETERS_KEY" update="true">
 				<column name="`RESOURCE_RESOURCEPARAMETERS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ResourceParameter"/>
@@ -2497,19 +2497,19 @@
 		<meta attribute="eclassName" inherit="false">SubChoreography</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="laneSets" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBCHOREOGRAPHY_LANESETS">
+			<key foreign-key="BPMN2_SUBCHOREOGRAPHY_LANESETS_KEY" update="true">
 				<column name="`FLOWELEMENTSCONTAINER_LANESETS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
 		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBCHOREOGRAPHY_FLOWELEMENTS">
+			<key foreign-key="BPMN2_SUBCHOREOGRAPHY_FLOWELEMENTS_KEY" update="true">
 				<column name="`FLOWELEMENT_SC_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.FlowElement"/>
 		</bag>
 		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBCHOREOGRAPHY_ARTIFACTS">
+			<key foreign-key="BPMN2_SUBCHOREOGRAPHY_ARTIFACTS_KEY" update="true">
 				<column name="`SUBCHOREOGRAPHY_ARTIFACTS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Artifact"/>
@@ -2519,7 +2519,7 @@
 		<meta attribute="eclassName" inherit="false">SubConversation</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="conversationNodes" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_SUBCONVERSATION_CONVERSATIONNODES">
+			<key foreign-key="BPMN2_SUBCONVERSATION_CONVERSATIONNODES_KEY" update="true">
 				<column name="`SUBCONVERSATION_CONVERSATIONNODES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.ConversationNode"/>
@@ -2566,7 +2566,7 @@
 		<meta attribute="eclassName" inherit="false">UserTask</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="renderings" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMN2_USERTASK_RENDERINGS">
+			<key foreign-key="BPMN2_USERTASK_RENDERINGS_KEY" update="true">
 				<column name="`USERTASK_RENDERINGS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.Rendering"/>
@@ -2589,7 +2589,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`BPMNDI_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMNDI_DOCUMENTROOT_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
@@ -2606,14 +2606,14 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMNDI_DOCUMENTROOT_XMLNSPREFIXMAP_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
 			<element type="java.lang.String"/>
 		</map>
 		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="BPMNDI_DOCUMENTROOT_XSISCHEMALOCATION_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
@@ -2670,7 +2670,7 @@
 			<column not-null="false" unique="false" name="`BPMNPLANE_PLANE_ID`"/>
 		</many-to-one>
 		<bag name="labelStyle" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BPMNDI_BPMNDIAGRAM_LABELSTYLE">
+			<key foreign-key="BPMNDI_BPMNDIAGRAM_LABELSTYLE_KEY" update="true">
 				<column name="`BPMNDIAGRAM_LABELSTYLE_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmndi.BPMNLabelStyle"/>
@@ -2693,7 +2693,7 @@
 		<meta attribute="eclassName" inherit="false">Edge</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMI</meta>
 		<bag name="waypoint" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="DD_DI_EDGE_WAYPOINT">
+			<key foreign-key="DD_DI_EDGE_WAYPOINT_KEY" update="true">
 				<column name="`EDGE_WAYPOINT_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="dc.Point"/>
@@ -2769,7 +2769,7 @@
 		<meta attribute="eclassName" inherit="false">Plane</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMI</meta>
 		<bag name="planeElement" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="DD_DI_PLANE_PLANEELEMENT">
+			<key foreign-key="DD_DI_PLANE_PLANEELEMENT_KEY" update="true">
 				<column name="`PLANE_PLANEELEMENT_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="dd_di.DiagramElement"/>
@@ -2840,7 +2840,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`DD_DI_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DD_DI_DOCUMENTROOT_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
@@ -2857,14 +2857,14 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DD_DI_DOCUMENTROOT_XMLNSPREFIXMAP_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
 			<element type="java.lang.String"/>
 		</map>
 		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DD_DI_DOCUMENTROOT_XSISCHEMALOCATION_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
@@ -2918,7 +2918,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`DC_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DC_DOCUMENTROOT_MIXED_KEY" update="true">
 				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
@@ -2935,14 +2935,14 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DC_DOCUMENTROOT_XMLNSPREFIXMAP_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
 			<element type="java.lang.String"/>
 		</map>
 		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DC_DOCUMENTROOT_XSISCHEMALOCATION_KEY" update="true">
 				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>

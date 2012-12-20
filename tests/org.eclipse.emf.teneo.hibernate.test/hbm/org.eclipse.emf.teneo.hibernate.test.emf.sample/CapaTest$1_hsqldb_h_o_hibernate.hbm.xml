@@ -65,7 +65,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="machines" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MACHINELIST_MACHINES">
+			<key foreign-key="MACHINELIST_MACHINES_KEY" update="true">
 				<column name="`MACHINELIST_MACHINES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MACHINELIST_MACHINES_IDX`"/>
@@ -173,7 +173,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="days" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="WORKWEEK_DAYS">
+			<key foreign-key="WORKWEEK_DAYS_KEY" update="true">
 				<column name="`WORKWEEK_DAYS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKWEEK_DAYS_IDX`"/>
@@ -383,7 +383,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="machines" table="`MACHINELISTAUDITING_MACHINESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MACHINELISTAUDITING_MACHINES_KEY" update="true">
 				<column name="`MACHINELISTAUDITING_MACHINES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MACHINELISTAUDITING_MACHINES_IDX`"/>
@@ -643,7 +643,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="days" table="`WORKWEEKAUDITING_DAYSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WORKWEEKAUDITING_DAYS_KEY" update="true">
 				<column name="`WORKWEEKAUDITING_DAYS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKWEEKAUDITING_DAYS_IDX`"/>

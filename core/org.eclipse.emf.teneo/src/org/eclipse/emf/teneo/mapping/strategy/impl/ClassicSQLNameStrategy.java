@@ -85,6 +85,10 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 								+ "_" + idFeature, true);
 	}
 
+	public String adaptForeignKeyNameForKey(PAnnotatedEStructuralFeature aFeature, String keyName) {
+		return convert(keyName + "_key");
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

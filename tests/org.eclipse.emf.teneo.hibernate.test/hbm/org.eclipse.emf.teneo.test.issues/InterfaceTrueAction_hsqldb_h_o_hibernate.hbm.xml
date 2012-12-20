@@ -40,7 +40,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="addresses" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="ADDRESSLIST_ADDRESSES">
+			<key foreign-key="ADDRESSLIST_ADDRESSES_KEY" update="true">
 				<column name="`ADDRESSLIST_ADDRESSES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSLIST_ADDRESSES_IDX`"/>
@@ -184,7 +184,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="addresses" table="`ADDRESSLISTAUDITING_ADDRESSESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ADDRESSLISTAUDITING_ADDRESSES_KEY" update="true">
 				<column name="`ADDRESSLISTAUDITING_ADDRESSES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSLISTAUDITING_ADDRESSES_IDX`"/>

@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<array name="intArray" table="`SIMPLELIST_INTARRAY`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELIST_INTARRAY_KEY" update="true">
 				<column name="`SIMPLELIST_INTARRAY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELIST_INTARRAY_IDX`"/>
@@ -101,7 +101,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<array name="intArray" table="`SIMPLELISTAUDITING_INTARRAYAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIMPLELISTAUDITING_INTARRAY_KEY" update="true">
 				<column name="`SIMPLELISTAUDITING_INTARRAY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIMPLELISTAUDITING_INTARRAY_IDX`"/>

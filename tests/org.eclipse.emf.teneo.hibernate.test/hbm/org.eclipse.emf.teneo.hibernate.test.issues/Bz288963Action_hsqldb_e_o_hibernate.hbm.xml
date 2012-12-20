@@ -20,7 +20,7 @@
 			<column not-null="false" unique="false" name="`BOOK_CITATION_E_ID`"/>
 		</many-to-one>
 		<list name="paralist" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOK_PARALIST">
+			<key foreign-key="BOOK_PARALIST_KEY" update="true">
 				<column name="`BOOK_PARALIST_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOK_PARALIST_IDX`"/>
@@ -147,7 +147,7 @@
 			<column not-null="false" unique="false" name="`CITATION`"/>
 		</property>
 		<list name="paralist" table="`BOOKAUDITING_PARALISTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="BOOKAUDITING_PARALIST_KEY" update="true">
 				<column name="`BOOKAUDITING_PARALIST_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_PARALIST_IDX`"/>

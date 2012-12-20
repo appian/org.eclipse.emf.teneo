@@ -51,14 +51,14 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="writers" fetch="subselect" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="schrijvers">
+			<key foreign-key="SCHRI" update="true">
 				<column name="`LI_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEST_`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="books" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="LIBRARY_BOOKS">
+			<key foreign-key="LIBRA" update="true">
 				<column name="`LI_ID`" unique="false"/>
 			</key>
 			<list-index column="`L_IDX`"/>

@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`CANONICALIZATIONMETHODTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="CANONICALIZATIONMETHODTYPE_MIXED_KEY" update="true">
 				<column name="`CANONICALIZATIONMETHODTYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CANONICALIZATIONMETHODTYPE_MIXED_IDX`"/>
@@ -36,7 +36,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="any" table="`MIXED_CANONICALIZATIONMETHODTYPE_ANY`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="CANONICALIZATIONMETHODTYPE_ANY_KEY" update="true">
 				<column name="`MIXED_CANONICALIZATIONMETHODTYPE_ANY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_CANONICALIZATIONMETHODTYPE_ANY_IDX`"/>
@@ -78,7 +78,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`DIGESTMETHODTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DIGESTMETHODTYPE_MIXED_KEY" update="true">
 				<column name="`DIGESTMETHODTYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DIGESTMETHODTYPE_MIXED_IDX`"/>
@@ -98,7 +98,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="any" table="`MIXED_DIGESTMETHODTYPE_ANY`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DIGESTMETHODTYPE_ANY_KEY" update="true">
 				<column name="`MIXED_DIGESTMETHODTYPE_ANY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_DIGESTMETHODTYPE_ANY_IDX`"/>
@@ -140,49 +140,49 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<array name="p" table="`DSAKEYVALUETYPE_P`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_P_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_P_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_P_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="q" table="`DSAKEYVALUETYPE_Q`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_Q_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_Q_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_Q_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="g" table="`DSAKEYVALUETYPE_G`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_G_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_G_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_G_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="y" table="`DSAKEYVALUETYPE_Y`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_Y_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_Y_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_Y_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="j" table="`DSAKEYVALUETYPE_J`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_J_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_J_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_J_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="seed" table="`DSAKEYVALUETYPE_SEED`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_SEED_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_SEED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_SEED_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="pgenCounter" table="`DSAKEYVALUETYPE_PGENCOUNTER`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPE_PGENCOUNTER_KEY" update="true">
 				<column name="`DSAKEYVALUETYPE_PGENCOUNTER_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPE_PGENCOUNTER_IDX`"/>
@@ -202,7 +202,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`KEYINFOTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYINFOTYPE_MIXED_KEY" update="true">
 				<column name="`KEYINFOTYPE_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`KEYINFOTYPE_MIXED_IDX`"/>
@@ -219,7 +219,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_KEYINFOTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYINFOTYPE_GROUP_KEY" update="true">
 				<column name="`MIXED_KEYINFOTYPE_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_KEYINFOTYPE_GROUP_IDX`"/>
@@ -315,7 +315,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`KEYVALUETYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYVALUETYPE_MIXED_KEY" update="true">
 				<column name="`KEYVALUETYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`KEYVALUETYPE_MIXED_IDX`"/>
@@ -338,7 +338,7 @@
 			<column not-null="false" unique="false" name="`MIXED_RSAKEYVALUETYPE_RSAKEYVALUE_E_ID`"/>
 		</many-to-one>
 		<list name="any" table="`MIXED_KEYVALUETYPE_ANY`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYVALUETYPE_ANY_KEY" update="true">
 				<column name="`MIXED_KEYVALUETYPE_ANY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_KEYVALUETYPE_ANY_IDX`"/>
@@ -376,7 +376,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="reference" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="MANIFESTTYPE_REFERENCE">
+			<key foreign-key="MANIFESTTYPE_REFERENCE_KEY" update="true">
 				<column name="`MANIFESTTYPE_REFERENCE_ID`" unique="false"/>
 			</key>
 			<list-index column="`MANIFESTTYPE_REFERENCE_IDX`"/>
@@ -396,7 +396,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`OBJECTTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="OBJECTTYPE_MIXED_KEY" update="true">
 				<column name="`OBJECTTYPE_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`OBJECTTYPE_MIXED_IDX`"/>
@@ -419,7 +419,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_OBJECTTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="OBJECTTYPE_GROUP_KEY" update="true">
 				<column name="`MIXED_OBJECTTYPE_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_OBJECTTYPE_GROUP_IDX`"/>
@@ -479,35 +479,35 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<array name="pGPKeyID" table="`PGPDATATYPE_PGPKEYID`" cascade="all">
-			<key update="true">
+			<key foreign-key="PGPDATATYPE_PGPKEYID_KEY" update="true">
 				<column name="`PGPDATATYPE_PGPKEYID_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPE_PGPKEYID_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="pGPKeyPacket" table="`PGPDATATYPE_PGPKEYPACKET`" cascade="all">
-			<key update="true">
+			<key foreign-key="PGPDATATYPE_PGPKEYPACKET_KEY" update="true">
 				<column name="`PGPDATATYPE_PGPKEYPACKET_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPE_PGPKEYPACKET_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<list name="any" table="`PGPDATATYPE_ANY`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PGPDATATYPE_ANY_KEY" update="true">
 				<column name="`PGPDATATYPE_ANY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPE_ANY_IDX`"/>
 			<one-to-many entity-name="PGPDataType_any"/>
 		</list>
 		<array name="pGPKeyPacket1" table="`PGPDATATYPE_PGPKEYPACKET1`" cascade="all">
-			<key update="true">
+			<key foreign-key="PGPDATATYPE_PGPKEYPACKET1_KEY" update="true">
 				<column name="`PGPDATATYPE_PGPKEYPACKET1_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPE_PGPKEYPACKET1_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<list name="any1" table="`PGPDATATYPE_ANY1`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PGPDATATYPE_ANY1_KEY" update="true">
 				<column name="`PGPDATATYPE_ANY1_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPE_ANY1_IDX`"/>
@@ -563,7 +563,7 @@
 			<column not-null="true" unique="false" name="`DIGESTMETHODTYPE_DIGESTMETHOD_E_ID`"/>
 		</many-to-one>
 		<array name="digestValue" table="`REFERENCETYPE_DIGESTVALUE`" cascade="all">
-			<key update="true">
+			<key foreign-key="REFERENCETYPE_DIGESTVALUE_KEY" update="true">
 				<column name="`REFERENCETYPE_DIGESTVALUE_ID`" unique="false"/>
 			</key>
 			<list-index column="`REFERENCETYPE_DIGESTVALUE_IDX`"/>
@@ -613,14 +613,14 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<array name="modulus" table="`RSAKEYVALUETYPE_MODULUS`" cascade="all">
-			<key update="true">
+			<key foreign-key="RSAKEYVALUETYPE_MODULUS_KEY" update="true">
 				<column name="`RSAKEYVALUETYPE_MODULUS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`RSAKEYVALUETYPE_MODULUS_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="exponent" table="`RSAKEYVALUETYPE_EXPONENT`" cascade="all">
-			<key update="true">
+			<key foreign-key="RSAKEYVALUETYPE_EXPONENT_KEY" update="true">
 				<column name="`RSAKEYVALUETYPE_EXPONENT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`RSAKEYVALUETYPE_EXPONENT_IDX`"/>
@@ -641,7 +641,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`SIGNATUREMETHODTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREMETHODTYPE_MIXED_KEY" update="true">
 				<column name="`SIGNATUREMETHODTYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREMETHODTYPE_MIXED_IDX`"/>
@@ -664,7 +664,7 @@
 			<column not-null="false" unique="false" name="`MIXED_HMACOUTPUTLENGTH`"/>
 		</property>
 		<list name="any" table="`MIXED_SIGNATUREMETHODTYPE_ANY`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREMETHODTYPE_ANY_KEY" update="true">
 				<column name="`MIXED_SIGNATUREMETHODTYPE_ANY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_SIGNATUREMETHODTYPE_ANY_IDX`"/>
@@ -705,7 +705,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="signatureProperty" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY">
+			<key foreign-key="SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_KEY" update="true">
 				<column name="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_IDX`"/>
@@ -725,7 +725,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`SIGNATUREPROPERTYTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREPROPERTYTYPE_MIXED_KEY" update="true">
 				<column name="`SIGNATUREPROPERTYTYPE_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREPROPERTYTYPE_MIXED_IDX`"/>
@@ -745,7 +745,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_SIGNATUREPROPERTYTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREPROPERTYTYPE_GROUP_KEY" update="true">
 				<column name="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_IDX`"/>
@@ -810,7 +810,7 @@
 			<column not-null="false" unique="false" name="`KEYINFOTYPE_KEYINFO_ID`"/>
 		</many-to-one>
 		<list name="object" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="SIGNATURETYPE_OBJECT">
+			<key foreign-key="SIGNATURETYPE_OBJECT_KEY" update="true">
 				<column name="`SIGNATURETYPE_OBJECT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATURETYPE_OBJECT_IDX`"/>
@@ -830,7 +830,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<array name="value" table="`SIGNATUREVALUETYPE_VALUE`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIGNATUREVALUETYPE_VALUE_KEY" update="true">
 				<column name="`SIGNATUREVALUETYPE_VALUE_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREVALUETYPE_VALUE_IDX`"/>
@@ -856,7 +856,7 @@
 			<column not-null="true" unique="false" name="`SIGNATUREMETHODTYPE_SIGNATUREMETHOD_E_ID`"/>
 		</many-to-one>
 		<list name="reference" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="SIGNEDINFOTYPE_REFERENCE">
+			<key foreign-key="SIGNEDINFOTYPE_REFERENCE_KEY" update="true">
 				<column name="`SIGNEDINFOTYPE_REFERENCE_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNEDINFOTYPE_REFERENCE_IDX`"/>
@@ -877,7 +877,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`SPKIDATATYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SPKIDATATYPE_GROUP_KEY" update="true">
 				<column name="`SPKIDATATYPE_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SPKIDATATYPE_GROUP_IDX`"/>
@@ -927,7 +927,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="transform" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="TRANSFORMSTYPE_TRANSFORM">
+			<key foreign-key="TRANSFORMSTYPE_TRANSFORM_KEY" update="true">
 				<column name="`TRANSFORMSTYPE_TRANSFORM_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TRANSFORMSTYPE_TRANSFORM_IDX`"/>
@@ -948,7 +948,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`TRANSFORMTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="TRANSFORMTYPE_MIXED_KEY" update="true">
 				<column name="`TRANSFORMTYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TRANSFORMTYPE_MIXED_IDX`"/>
@@ -968,7 +968,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_TRANSFORMTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="TRANSFORMTYPE_GROUP_KEY" update="true">
 				<column name="`MIXED_TRANSFORMTYPE_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_TRANSFORMTYPE_GROUP_IDX`"/>
@@ -1028,7 +1028,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`X509DATATYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="X509DATATYPE_GROUP_KEY" update="true">
 				<column name="`X509DATATYPE_GROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`X509DATATYPE_GROUP_IDX`"/>
@@ -1171,7 +1171,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`CANONICALIZATIONMETHODTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="CANONICALIZATIONMETHODTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`CANONICALIZATIONMETHODTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CANONICALIZATIONMETHODTYPEAUDITING_MIXED_IDX`"/>
@@ -1191,7 +1191,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="any" table="`MIXED_CANONICALIZATIONMETHODTYPEAUDITING_ANYAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="CANONICALIZATIONMETHODTYPEAUDITING_ANY_KEY" update="true">
 				<column name="`MIXED_CANONICALIZATIONMETHODTYPEAUDITING_ANY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_CANONICALIZATIONMETHODTYPEAUDITING_ANY_IDX`"/>
@@ -1271,7 +1271,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`DIGESTMETHODTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DIGESTMETHODTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`DIGESTMETHODTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DIGESTMETHODTYPEAUDITING_MIXED_IDX`"/>
@@ -1291,7 +1291,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="any" table="`MIXED_DIGESTMETHODTYPEAUDITING_ANYAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="DIGESTMETHODTYPEAUDITING_ANY_KEY" update="true">
 				<column name="`MIXED_DIGESTMETHODTYPEAUDITING_ANY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_DIGESTMETHODTYPEAUDITING_ANY_IDX`"/>
@@ -1578,49 +1578,49 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<array name="p" table="`DSAKEYVALUETYPEAUDITING_PAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_P_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_P_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_P_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="q" table="`DSAKEYVALUETYPEAUDITING_QAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_Q_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_Q_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_Q_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="g" table="`DSAKEYVALUETYPEAUDITING_GAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_G_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_G_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_G_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="y" table="`DSAKEYVALUETYPEAUDITING_YAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_Y_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_Y_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_Y_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="j" table="`DSAKEYVALUETYPEAUDITING_JAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_J_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_J_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_J_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="seed" table="`DSAKEYVALUETYPEAUDITING_SEEDAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_SEED_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_SEED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_SEED_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="pgenCounter" table="`DSAKEYVALUETYPEAUDITING_PGENCOUNTERAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="DSAKEYVALUETYPEAUDITING_PGENCOUNTER_KEY" update="true">
 				<column name="`DSAKEYVALUETYPEAUDITING_PGENCOUNTER_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DSAKEYVALUETYPEAUDITING_PGENCOUNTER_IDX`"/>
@@ -1679,7 +1679,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`KEYINFOTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYINFOTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`KEYINFOTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`KEYINFOTYPEAUDITING_MIXED_IDX`"/>
@@ -1699,7 +1699,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_KEYINFOTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYINFOTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`MIXED_KEYINFOTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_KEYINFOTYPEAUDITING_GROUP_IDX`"/>
@@ -1833,7 +1833,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`KEYVALUETYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYVALUETYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`KEYVALUETYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`KEYVALUETYPEAUDITING_MIXED_IDX`"/>
@@ -1856,7 +1856,7 @@
 			<column not-null="false" unique="false" name="`MIXED_RSAKEYVALUE`"/>
 		</property>
 		<list name="any" table="`MIXED_KEYVALUETYPEAUDITING_ANYAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="KEYVALUETYPEAUDITING_ANY_KEY" update="true">
 				<column name="`MIXED_KEYVALUETYPEAUDITING_ANY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_KEYVALUETYPEAUDITING_ANY_IDX`"/>
@@ -1933,7 +1933,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="reference" table="`MANIFESTTYPEAUDITING_REFERENCEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MANIFESTTYPEAUDITING_REFERENCE_KEY" update="true">
 				<column name="`MANIFESTTYPEAUDITING_REFERENCE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MANIFESTTYPEAUDITING_REFERENCE_IDX`"/>
@@ -1995,7 +1995,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`OBJECTTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="OBJECTTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`OBJECTTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`OBJECTTYPEAUDITING_MIXED_IDX`"/>
@@ -2021,7 +2021,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_OBJECTTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="OBJECTTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`MIXED_OBJECTTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_OBJECTTYPEAUDITING_GROUP_IDX`"/>
@@ -2119,35 +2119,35 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<array name="pGPKeyID" table="`PGPDATATYPEAUDITING_PGPKEYIDAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="PGPDATATYPEAUDITING_PGPKEYID_KEY" update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYID_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPEAUDITING_PGPKEYID_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="pGPKeyPacket" table="`PGPDATATYPEAUDITING_PGPKEYPACKETAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="PGPDATATYPEAUDITING_PGPKEYPACKET_KEY" update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYPACKET_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPEAUDITING_PGPKEYPACKET_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<list name="any" table="`PGPDATATYPEAUDITING_ANYAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PGPDATATYPEAUDITING_ANY_KEY" update="true">
 				<column name="`PGPDATATYPEAUDITING_ANY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPEAUDITING_ANY_IDX`"/>
 			<one-to-many entity-name="PGPDataTypeAuditing_any"/>
 		</list>
 		<array name="pGPKeyPacket1" table="`PGPDATATYPEAUDITING_PGPKEYPACKET1AUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="PGPDATATYPEAUDITING_PGPKEYPACKET1_KEY" update="true">
 				<column name="`PGPDATATYPEAUDITING_PGPKEYPACKET1_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPEAUDITING_PGPKEYPACKET1_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<list name="any1" table="`PGPDATATYPEAUDITING_ANY1AUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PGPDATATYPEAUDITING_ANY1_KEY" update="true">
 				<column name="`PGPDATATYPEAUDITING_ANY1_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PGPDATATYPEAUDITING_ANY1_IDX`"/>
@@ -2242,7 +2242,7 @@
 			<column not-null="false" unique="false" name="`DIGESTMETHOD`"/>
 		</property>
 		<array name="digestValue" table="`REFERENCETYPEAUDITING_DIGESTVALUEAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="REFERENCETYPEAUDITING_DIGESTVALUE_KEY" update="true">
 				<column name="`REFERENCETYPEAUDITING_DIGESTVALUE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`REFERENCETYPEAUDITING_DIGESTVALUE_IDX`"/>
@@ -2371,14 +2371,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<array name="modulus" table="`RSAKEYVALUETYPEAUDITING_MODULUSAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="RSAKEYVALUETYPEAUDITING_MODULUS_KEY" update="true">
 				<column name="`RSAKEYVALUETYPEAUDITING_MODULUS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RSAKEYVALUETYPEAUDITING_MODULUS_IDX`"/>
 			<element type="byte"/>
 		</array>
 		<array name="exponent" table="`RSAKEYVALUETYPEAUDITING_EXPONENTAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="RSAKEYVALUETYPEAUDITING_EXPONENT_KEY" update="true">
 				<column name="`RSAKEYVALUETYPEAUDITING_EXPONENT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RSAKEYVALUETYPEAUDITING_EXPONENT_IDX`"/>
@@ -2437,7 +2437,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`SIGNATUREMETHODTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREMETHODTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`SIGNATUREMETHODTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREMETHODTYPEAUDITING_MIXED_IDX`"/>
@@ -2460,7 +2460,7 @@
 			<column not-null="false" unique="false" name="`MIXED_HMACOUTPUTLENGTH`"/>
 		</property>
 		<list name="any" table="`MIXED_SIGNATUREMETHODTYPEAUDITING_ANYAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREMETHODTYPEAUDITING_ANY_KEY" update="true">
 				<column name="`MIXED_SIGNATUREMETHODTYPEAUDITING_ANY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_SIGNATUREMETHODTYPEAUDITING_ANY_IDX`"/>
@@ -2540,7 +2540,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="signatureProperty" table="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTYAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY_KEY" update="true">
 				<column name="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREPROPERTIESTYPEAUDITING_SIGNATUREPROPERTY_IDX`"/>
@@ -2602,7 +2602,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`SIGNATUREPROPERTYTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREPROPERTYTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`SIGNATUREPROPERTYTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREPROPERTYTYPEAUDITING_MIXED_IDX`"/>
@@ -2625,7 +2625,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_SIGNATUREPROPERTYTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SIGNATUREPROPERTYTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`MIXED_SIGNATUREPROPERTYTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_SIGNATUREPROPERTYTYPEAUDITING_GROUP_IDX`"/>
@@ -2729,7 +2729,7 @@
 			<column not-null="false" unique="false" name="`KEYINFO`"/>
 		</property>
 		<list name="object" table="`SIGNATURETYPEAUDITING_OBJECTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIGNATURETYPEAUDITING_OBJECT_KEY" update="true">
 				<column name="`SIGNATURETYPEAUDITING_OBJECT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATURETYPEAUDITING_OBJECT_IDX`"/>
@@ -2791,7 +2791,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<array name="value" table="`SIGNATUREVALUETYPEAUDITING_VALUEAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="SIGNATUREVALUETYPEAUDITING_VALUE_KEY" update="true">
 				<column name="`SIGNATUREVALUETYPEAUDITING_VALUE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREVALUETYPEAUDITING_VALUE_IDX`"/>
@@ -2859,7 +2859,7 @@
 			<column not-null="false" unique="false" name="`SIGNATUREMETHOD`"/>
 		</property>
 		<list name="reference" table="`SIGNEDINFOTYPEAUDITING_REFERENCEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SIGNEDINFOTYPEAUDITING_REFERENCE_KEY" update="true">
 				<column name="`SIGNEDINFOTYPEAUDITING_REFERENCE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNEDINFOTYPEAUDITING_REFERENCE_IDX`"/>
@@ -2921,7 +2921,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="group" table="`SPKIDATATYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SPKIDATATYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`SPKIDATATYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SPKIDATATYPEAUDITING_GROUP_IDX`"/>
@@ -3009,7 +3009,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="transform" table="`TRANSFORMSTYPEAUDITING_TRANSFORMAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="TRANSFORMSTYPEAUDITING_TRANSFORM_KEY" update="true">
 				<column name="`TRANSFORMSTYPEAUDITING_TRANSFORM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TRANSFORMSTYPEAUDITING_TRANSFORM_IDX`"/>
@@ -3068,7 +3068,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`TRANSFORMTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="TRANSFORMTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`TRANSFORMTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TRANSFORMTYPEAUDITING_MIXED_IDX`"/>
@@ -3088,7 +3088,7 @@
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_TRANSFORMTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="TRANSFORMTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`MIXED_TRANSFORMTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_TRANSFORMTYPEAUDITING_GROUP_IDX`"/>
@@ -3186,7 +3186,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="group" table="`X509DATATYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="X509DATATYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`X509DATATYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`X509DATATYPEAUDITING_GROUP_IDX`"/>

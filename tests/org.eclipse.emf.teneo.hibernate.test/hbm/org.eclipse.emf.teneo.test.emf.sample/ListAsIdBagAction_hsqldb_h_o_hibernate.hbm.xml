@@ -19,7 +19,7 @@
 			<collection-id column="ID" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="ONE_MANIES_KEY" update="true">
 				<column name="`ONE_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Many" unique="false" foreign-key="ONE_MANIES">
@@ -119,7 +119,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="manies" table="`ONEAUDITING_MANIESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ONEAUDITING_MANIES_KEY" update="true">
 				<column name="`ONEAUDITING_MANIES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ONEAUDITING_MANIES_IDX`"/>

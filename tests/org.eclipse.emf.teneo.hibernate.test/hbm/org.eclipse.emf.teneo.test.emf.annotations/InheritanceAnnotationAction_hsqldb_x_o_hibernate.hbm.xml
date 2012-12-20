@@ -35,14 +35,14 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="address" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="CONTENTLIST_ADDRESS">
+			<key foreign-key="CONTENTLIST_ADDRESS_KEY" update="true">
 				<column name="`CONTENTLIST_ADDRESS_NAME`" unique="false"/>
 			</key>
 			<list-index column="`CONTENTLIST_ADDRESS_IDX`"/>
 			<one-to-many entity-name="Address"/>
 		</list>
 		<list name="price" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="CONTENTLIST_PRICE">
+			<key foreign-key="CONTENTLIST_PRICE_KEY" update="true">
 				<column name="`CONTENTLIST_PRICE_NAME`" unique="false"/>
 			</key>
 			<list-index column="`CONTENTLIST_PRICE_IDX`"/>
@@ -155,7 +155,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="UKADDRESSLIST_ADDRESS">
+			<key foreign-key="UKADDRESSLIST_ADDRESS_KEY" update="true">
 				<column name="`UKADDRESSLIST_ADDRESS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`UKADDRESSLIST_ADDRESS_IDX`"/>
@@ -301,14 +301,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`CONTENTLISTAUDITING_ADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CONTENTLISTAUDITING_ADDRESS_KEY" update="true">
 				<column name="`CONTENTLISTAUDITING_ADDRESS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CONTENTLISTAUDITING_ADDRESS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="price" table="`CONTENTLISTAUDITING_PRICEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CONTENTLISTAUDITING_PRICE_KEY" update="true">
 				<column name="`CONTENTLISTAUDITING_PRICE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CONTENTLISTAUDITING_PRICE_IDX`"/>
@@ -382,7 +382,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="address" table="`UKADDRESSLISTAUDITING_ADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="UKADDRESSLISTAUDITING_ADDRESS_KEY" update="true">
 				<column name="`UKADDRESSLISTAUDITING_ADDRESS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`UKADDRESSLISTAUDITING_ADDRESS_IDX`"/>

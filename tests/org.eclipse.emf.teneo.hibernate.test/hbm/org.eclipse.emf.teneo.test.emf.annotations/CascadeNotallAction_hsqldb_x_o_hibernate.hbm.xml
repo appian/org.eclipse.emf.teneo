@@ -54,14 +54,14 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="writers" lazy="true" cascade="merge,persist,save-update,lock,refresh,delete">
-			<key update="true" foreign-key="LIBRARY_WRITERS">
+			<key foreign-key="LIBRARY_WRITERS_KEY" update="true">
 				<column name="`LIBRARY_WRITERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_WRITERS_IDX`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="books" lazy="true" cascade="merge,persist,save-update,lock,refresh,delete">
-			<key update="true" foreign-key="LIBRARY_BOOKS">
+			<key foreign-key="LIBRARY_BOOKS_KEY" update="true">
 				<column name="`LIBRARY_BOOKS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_BOOKS_IDX`"/>
@@ -207,14 +207,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="writers" table="`LIBRARYAUDITING_WRITERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_WRITERS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_WRITERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_WRITERS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="books" table="`LIBRARYAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="LIBRARYAUDITING_BOOKS_KEY" update="true">
 				<column name="`LIBRARYAUDITING_BOOKS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARYAUDITING_BOOKS_IDX`"/>
@@ -228,7 +228,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="books" table="`WRITERAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WRITERAUDITING_BOOKS_KEY" update="true">
 				<column name="`WRITERAUDITING_BOOKS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`WRITERAUDITING_BOOKS_IDX`"/>

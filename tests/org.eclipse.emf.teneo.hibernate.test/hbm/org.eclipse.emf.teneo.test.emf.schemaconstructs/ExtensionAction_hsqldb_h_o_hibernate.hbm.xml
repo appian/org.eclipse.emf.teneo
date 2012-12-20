@@ -49,7 +49,7 @@
 			<column not-null="true" unique="false" name="`FIRSTADDRESSHOLDER_FIRSTADDRESS_E_ID`"/>
 		</many-to-one>
 		<list name="secondAddress" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="ADDRESSLIST_SECONDADDRESS">
+			<key foreign-key="ADDRESSLIST_SECONDADDRESS_KEY" update="true">
 				<column name="`ADDRESSLIST_SECONDADDRESS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSLIST_SECONDADDRESS_IDX`"/>
@@ -87,7 +87,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="value" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="FIRSTADDRESSHOLDER_VALUE">
+			<key foreign-key="FIRSTADDRESSHOLDER_VALUE_KEY" update="true">
 				<column name="`FIRSTADDRESSHOLDER_VALUE_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FIRSTADDRESSHOLDER_VALUE_IDX`"/>
@@ -271,7 +271,7 @@
 			<column not-null="false" unique="false" name="`FIRSTADDRESS`"/>
 		</property>
 		<list name="secondAddress" table="`ADDRESSLISTAUDITING_SECONDADDRESSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ADDRESSLISTAUDITING_SECONDADDRESS_KEY" update="true">
 				<column name="`ADDRESSLISTAUDITING_SECONDADDRESS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ADDRESSLISTAUDITING_SECONDADDRESS_IDX`"/>
@@ -347,7 +347,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="value" table="`FIRSTADDRESSHOLDERAUDITING_VALUEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FIRSTADDRESSHOLDERAUDITING_VALUE_KEY" update="true">
 				<column name="`FIRSTADDRESSHOLDERAUDITING_VALUE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FIRSTADDRESSHOLDERAUDITING_VALUE_IDX`"/>

@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="names" table="`ITEM_NAMES`" lazy="false" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEM_NAMES_KEY" update="true">
 				<column name="`ITEM_NAMES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEM_NAMES_IDX`"/>
@@ -89,7 +89,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="names" table="`ITEMAUDITING_NAMESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEMAUDITING_NAMES_KEY" update="true">
 				<column name="`ITEMAUDITING_NAMES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMAUDITING_NAMES_IDX`"/>

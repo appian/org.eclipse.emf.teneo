@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="barKeys" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BARENTITY_BARKEYS">
+			<key foreign-key="BARENTITY_BARKEYS_KEY" update="true">
 				<column name="`BARENTITY_BARKEYS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BARENTITY_BARKEYS_IDX`"/>
@@ -114,7 +114,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="barKeys" table="`BARAUDITING_BARKEYSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="BARAUDITING_BARKEYS_KEY" update="true">
 				<column name="`BARAUDITING_BARKEYS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BARAUDITING_BARKEYS_IDX`"/>

@@ -43,7 +43,7 @@
 			</property>
 		</component>
 		<list name="fourthEmbedded" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="EMBEDDER_FOURTHEMBEDDED_KEY" update="true">
 				<column name="`EMBEDDER_FOURTHEMBEDDED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`EMBEDDER_FOURTHEMBEDDED_IDX`"/>
@@ -80,7 +80,7 @@
 				<column not-null="true" unique="false" name="`ANOTHEREMBEDDED_ANOTHERNAME`"/>
 			</property>
 			<list name="aOneToMany" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-				<key update="true">
+				<key foreign-key="ANOTHEREMBEDDABLE_AONETOMANY_KEY" update="true">
 					<column name="`ANOTHEREMBEDDABLE_AONETOMANY_E_ID`" unique="false"/>
 				</key>
 				<list-index column="`ANOTHEREMBEDDABLE_AONETOMANY_IDX`"/>
@@ -184,7 +184,7 @@
 			<column not-null="false" unique="false" name="`ANOTHERNAME`"/>
 		</property>
 		<list name="aOneToMany" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="ANOTHEREMBEDDABLEAUDITING_AONETOMANY_KEY" update="true">
 				<column name="`ANOTHEREMBEDDABLEAUDITING_AONETOMANY_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ANOTHEREMBEDDABLEAUDITING_AONETOMANY_IDX`"/>
@@ -388,7 +388,7 @@
 			</property>
 		</component>
 		<list name="fourthEmbedded" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="EMBEDDERAUDITING_FOURTHEMBEDDED_KEY" update="true">
 				<column name="`EMBEDDERAUDITING_FOURTHEMBEDDED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`EMBEDDERAUDITING_FOURTHEMBEDDED_IDX`"/>
@@ -425,7 +425,7 @@
 				<column not-null="true" unique="false" name="`ANOTHEREMBEDDED_ANOTHERNAME`"/>
 			</property>
 			<list name="aOneToMany" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-				<key update="true">
+				<key foreign-key="ANOTHEREMBEDDABLE_AONETOMANY_KEY" update="true">
 					<column name="`ANOTHEREMBEDDABLE_AONETOMANY_E_ID`" unique="false"/>
 				</key>
 				<list-index column="`ANOTHEREMBEDDABLE_AONETOMANY_IDX`"/>

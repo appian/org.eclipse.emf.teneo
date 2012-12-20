@@ -104,14 +104,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="mySide" table="`ITEMAUDITING_MYSIDEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEMAUDITING_MYSIDE_KEY" update="true">
 				<column name="`ITEMAUDITING_MYSIDE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMAUDITING_MYSIDE_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="yourSide" table="`ITEMAUDITING_YOURSIDEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEMAUDITING_YOURSIDE_KEY" update="true">
 				<column name="`ITEMAUDITING_YOURSIDE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMAUDITING_YOURSIDE_IDX`"/>

@@ -16,7 +16,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="employees" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="DEPARTMENT_EMPLOYEES">
+			<key foreign-key="DEPARTMENT_EMPLOYEES_KEY" update="true">
 				<column name="`DEPARTMENT_EMPLOYEES_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Employee"/>
@@ -122,7 +122,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="employees" table="`DEPARTMENTAUDITING_EMPLOYEESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="DEPARTMENTAUDITING_EMPLOYEES_KEY" update="true">
 				<column name="`DEPARTMENTAUDITING_EMPLOYEES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`DEPARTMENTAUDITING_EMPLOYEES_IDX`"/>

@@ -19,14 +19,14 @@
 			<column not-null="true" unique="false" name="`ID`"/>
 		</id>
 		<list name="bars" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="FOO_BARS">
+			<key foreign-key="FOO_BARS_KEY" update="true">
 				<column name="`FOO_BARS_ID`" unique="false"/>
 			</key>
 			<list-index column="`FOO_BARS_IDX`"/>
 			<one-to-many entity-name="Bar"/>
 		</list>
 		<list name="biffs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="FOO_BIFFS">
+			<key foreign-key="FOO_BIFFS_KEY" update="true">
 				<column name="`FOO_BIFFS_ID`" unique="false"/>
 			</key>
 			<list-index column="`FOO_BIFFS_IDX`"/>
@@ -174,14 +174,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="bars" table="`FOOAUDITING_BARSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FOOAUDITING_BARS_KEY" update="true">
 				<column name="`FOOAUDITING_BARS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FOOAUDITING_BARS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="biffs" table="`FOOAUDITING_BIFFSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FOOAUDITING_BIFFS_KEY" update="true">
 				<column name="`FOOAUDITING_BIFFS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FOOAUDITING_BIFFS_IDX`"/>

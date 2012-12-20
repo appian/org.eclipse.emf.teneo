@@ -15,14 +15,14 @@
 			<column not-null="true" unique="false" name="`DESCRIPTION`"/>
 		</property>
 		<list name="subCatalog" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="CATALOGTYPE_SUBCATALOG">
+			<key foreign-key="CATALOGTYPE_SUBCATALOG_KEY" update="true">
 				<column name="`CATALOGTYPE_SUBCATALOG_NAME`" unique="false"/>
 			</key>
 			<list-index column="`CATALOGTYPE_SUBCATALOG_IDX`"/>
 			<one-to-many entity-name="CatalogType"/>
 		</list>
 		<list name="product" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="CATALOGTYPE_PRODUCT">
+			<key foreign-key="CATALOGTYPE_PRODUCT_KEY" update="true">
 				<column name="`CATALOGTYPE_PRODUCT_NAME`" unique="false">
 					<comment>My product</comment>
 				</column>
@@ -67,7 +67,7 @@
 			</column>
 		</property>
 		<list name="remark" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PRODUCTTYPE_REMARK">
+			<key foreign-key="PRODUCTTYPE_REMARK_KEY" update="true">
 				<column name="`PRODUCTTYPE_REMARK_CODE`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPE_REMARK_IDX`"/>
@@ -183,14 +183,14 @@
 			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
 		</property>
 		<list name="subCatalog" table="`CATALOGTYPEAUDITING_SUBCATALOGAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CATALOGTYPEAUDITING_SUBCATALOG_KEY" update="true">
 				<column name="`CATALOGTYPEAUDITING_SUBCATALOG_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CATALOGTYPEAUDITING_SUBCATALOG_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="product" table="`CATALOGTYPEAUDITING_PRODUCTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CATALOGTYPEAUDITING_PRODUCT_KEY" update="true">
 				<column name="`CATALOGTYPEAUDITING_PRODUCT_TENEO_AUDIT_ID`" unique="false">
 					<comment>My product</comment>
 				</column>
@@ -314,7 +314,7 @@
 			</column>
 		</property>
 		<list name="remark" table="`PRODUCTTYPEAUDITING_REMARKAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_REMARK_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_REMARK_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_REMARK_IDX`"/>

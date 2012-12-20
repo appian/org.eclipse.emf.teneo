@@ -124,7 +124,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="users" table="`ROLEAUDITING_USERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ROLEAUDITING_USERS_KEY" update="true">
 				<column name="`ROLEAUDITING_USERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ROLEAUDITING_USERS_IDX`"/>
@@ -183,7 +183,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="roles" table="`USERAUDITING_ROLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="USERAUDITING_ROLES_KEY" update="true">
 				<column name="`USERAUDITING_ROLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`USERAUDITING_ROLES_IDX`"/>

@@ -118,7 +118,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="group" table="`PRODUCTTYPEAUDITING_GROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_GROUP_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_GROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_GROUP_IDX`"/>
@@ -133,7 +133,7 @@
 			</type>
 		</property>
 		<list name="group1" table="`PRODUCTTYPEAUDITING_GROUP1AUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_GROUP1_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_GROUP1_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_GROUP1_IDX`"/>

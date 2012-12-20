@@ -31,7 +31,7 @@
 			<column not-null="false" unique="false" name="`ANYONE_ID`"/>
 		</any>
 		<list name="AnyList" table="`PRODUCTTYPE_ANYLIST`" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PRODUCTTYPE_ANYLIST">
+			<key foreign-key="PRODUCTTYPE_ANYLIST_KEY" update="true">
 				<column name="`PRODUCTTYPE_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPE_ANYLIST_IDX`"/>
@@ -171,7 +171,7 @@
 			<column not-null="false" unique="false" name="`ANYONE`"/>
 		</property>
 		<list name="AnyList" table="`PRODUCTTYPEAUDITING_ANYLISTAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRODUCTTYPEAUDITING_ANYLIST_KEY" update="true">
 				<column name="`PRODUCTTYPEAUDITING_ANYLIST_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTTYPEAUDITING_ANYLIST_IDX`"/>

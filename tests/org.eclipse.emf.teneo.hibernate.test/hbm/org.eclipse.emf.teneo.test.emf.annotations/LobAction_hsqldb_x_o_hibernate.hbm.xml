@@ -28,7 +28,7 @@
 			<column not-null="false" unique="false" name="`PHOTO`" length="1000000"/>
 		</property>
 		<list name="texts" table="`PERSON_TEXTS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSON_TEXTS_KEY" update="true">
 				<column name="`PERSON_TEXTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_TEXTS_IDX`"/>
@@ -140,7 +140,7 @@
 			<column not-null="false" unique="false" name="`PHOTO`" length="1000000"/>
 		</property>
 		<list name="texts" table="`PERSONAUDITING_TEXTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_TEXTS_KEY" update="true">
 				<column name="`PERSONAUDITING_TEXTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_TEXTS_IDX`"/>

@@ -19,7 +19,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="orders" table="`ORDERLIST_ORDERS`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ORDERLIST_ORDERS_KEY" update="true">
 				<column name="`ORDERLIST_ORDERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ORDERLIST_ORDERS_IDX`"/>
@@ -143,7 +143,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="orders" table="`ORDERLISTAUDITING_ORDERSAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ORDERLISTAUDITING_ORDERS_KEY" update="true">
 				<column name="`ORDERLISTAUDITING_ORDERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ORDERLISTAUDITING_ORDERS_IDX`"/>

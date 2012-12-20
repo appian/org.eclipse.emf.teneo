@@ -93,7 +93,7 @@
 			<column not-null="false" unique="false" name="`LENGTH`"/>
 		</property>
 		<list name="availableColors" table="`PREFIX_VEHICLEAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VEHICLEAUDITING_AVAILABLECOLORS_KEY" update="true">
 				<column name="`VEHICLEAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`VEHICLEAUDITING_AVAILABLECOLORS_IDX`"/>
@@ -103,7 +103,7 @@
 			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
 		<list name="manufacturedAt" table="`PREFIX_VEHICLEAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VEHICLEAUDITING_MANUFACTUREDAT_KEY" update="true">
 				<column name="`VEHICLEAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`VEHICLEAUDITING_MANUFACTUREDAT_IDX`"/>
@@ -165,7 +165,7 @@
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
 		<array name="touchedAttributes" table="`PREFIX_TEMPORALAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="TEMPORALAUDITING_TOUCHEDATTRIBUTES_KEY" update="true">
 				<column name="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
@@ -194,14 +194,14 @@
 			<column not-null="false" unique="false" name="`EMPLOYED`"/>
 		</property>
 		<list name="addresses" table="`PREFIX_PERSONAUDITING_ADDRESSESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_ADDRESSES_KEY" update="true">
 				<column name="`PERSONAUDITING_ADDRESSES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_ADDRESSES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="ownedVehicles" table="`PREFIX_PERSONAUDITING_OWNEDVEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_OWNEDVEHICLES_KEY" update="true">
 				<column name="`PERSONAUDITING_OWNEDVEHICLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_OWNEDVEHICLES_IDX`"/>
@@ -356,14 +356,14 @@
 			<column not-null="false" unique="false" name="`ID`"/>
 		</property>
 		<list name="vehicles" table="`PREFIX_FLEETAUDITING_VEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FLEETAUDITING_VEHICLES_KEY" update="true">
 				<column name="`FLEETAUDITING_VEHICLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FLEETAUDITING_VEHICLES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="vehicleInformation" table="`PREFIX_FLEETAUDITING_VEHICLEINFORMATIONAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FLEETAUDITING_VEHICLEINFORMATION_KEY" update="true">
 				<column name="`FLEETAUDITING_VEHICLEINFORMATION_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FLEETAUDITING_VEHICLEINFORMATION_IDX`"/>
@@ -380,7 +380,7 @@
 			<column name="`TEMPORALAUDITING_TENEO_AUDIT_ID`"/>
 		</key>
 		<list name="vehicles" table="`PREFIX_GARAGEAUDITING_VEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="GARAGEAUDITING_VEHICLES_KEY" update="true">
 				<column name="`GARAGEAUDITING_VEHICLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`GARAGEAUDITING_VEHICLES_IDX`"/>
@@ -393,7 +393,7 @@
 			<column not-null="false" unique="false" name="`ADDRESS`"/>
 		</property>
 		<list name="fleetsUsingGarage" table="`PREFIX_GARAGEAUDITING_FLEETSUSINGGARAGEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="GARAGEAUDITING_FLEETSUSINGGARAGE_KEY" update="true">
 				<column name="`GARAGEAUDITING_FLEETSUSINGGARAGE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`GARAGEAUDITING_FLEETSUSINGGARAGE_IDX`"/>
@@ -550,7 +550,7 @@
 			<column not-null="false" unique="false" name="`LENGTH`"/>
 		</property>
 		<list name="availableColors" table="`PREFIX_VEHICLEAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_AVAILABLECOLORS_KEY" update="true">
 				<column name="`CARAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_AVAILABLECOLORS_IDX`"/>
@@ -560,7 +560,7 @@
 			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
 		<list name="manufacturedAt" table="`PREFIX_VEHICLEAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_MANUFACTUREDAT_KEY" update="true">
 				<column name="`CARAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_MANUFACTUREDAT_IDX`"/>
@@ -573,7 +573,7 @@
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
 		<array name="touchedAttributes" table="`PREFIX_TEMPORALAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_TOUCHEDATTRIBUTES_KEY" update="true">
 				<column name="`CARAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
@@ -592,7 +592,7 @@
 			<column not-null="false" unique="false" name="`NUMTIRES`"/>
 		</property>
 		<list name="tires" table="`PREFIX_CARAUDITING_TIRESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_TIRES_KEY" update="true">
 				<column name="`CARAUDITING_TIRES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_TIRES_IDX`"/>
@@ -622,7 +622,7 @@
 			<column not-null="false" unique="false" name="`MAKESDIESELENGINES`"/>
 		</property>
 		<list name="brands" table="`PREFIX_ENGINEFACTORYAUDITING_BRANDSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ENGINEFACTORYAUDITING_BRANDS_KEY" update="true">
 				<column name="`ENGINEFACTORYAUDITING_BRANDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ENGINEFACTORYAUDITING_BRANDS_IDX`"/>
@@ -804,7 +804,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="versions" table="`PREFIX_VERSIONHOLDERAUDITING_VERSIONSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VERSIONHOLDERAUDITING_VERSIONS_KEY" update="true">
 				<column name="`VERSIONHOLDERAUDITING_VERSIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`VERSIONHOLDERAUDITING_VERSIONS_IDX`"/>

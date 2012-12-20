@@ -60,7 +60,7 @@
 			<column not-null="false" unique="false" name="`HOTEL`"/>
 		</property>
 		<list name="comments" table="`CUSTOMER_COMMENTS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CUSTOMER_COMMENTS_KEY" update="true">
 				<column name="`CUSTOMER_COMMENTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CUSTOMER_COMMENTS_IDX`"/>
@@ -114,7 +114,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="prices" table="`PRICECATEGORY_PRICES`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRICECATEGORY_PRICES_KEY" update="true">
 				<column name="`PRICECATEGORY_PRICES_NAME`" unique="false"/>
 			</key>
 			<list-index column="`PRICECATEGORY_PRICES_IDX`"/>
@@ -148,7 +148,7 @@
 			<column not-null="false" unique="false" name="`CUSTOMER_CUSTOMER_E_ID`"/>
 		</many-to-one>
 		<list name="comments" table="`ORDER_COMMENTS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ORDER_COMMENTS_KEY" update="true">
 				<column name="`ORDER_COMMENTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ORDER_COMMENTS_IDX`"/>
@@ -347,7 +347,7 @@
 			<column not-null="false" unique="false" name="`HOTEL`"/>
 		</property>
 		<list name="comments" table="`CUSTOMERAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CUSTOMERAUDITING_COMMENTS_KEY" update="true">
 				<column name="`CUSTOMERAUDITING_COMMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CUSTOMERAUDITING_COMMENTS_IDX`"/>
@@ -409,14 +409,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="products" table="`PRODUCTCATEGORYAUDITING_PRODUCTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRODUCTCATEGORYAUDITING_PRODUCTS_KEY" update="true">
 				<column name="`PRODUCTCATEGORYAUDITING_PRODUCTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTCATEGORYAUDITING_PRODUCTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="subCategorys" table="`PRODUCTCATEGORYAUDITING_SUBCATEGORYSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRODUCTCATEGORYAUDITING_SUBCATEGORYS_KEY" update="true">
 				<column name="`PRODUCTCATEGORYAUDITING_SUBCATEGORYS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRODUCTCATEGORYAUDITING_SUBCATEGORYS_IDX`"/>
@@ -481,7 +481,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="prices" table="`PRICECATEGORYAUDITING_PRICESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PRICECATEGORYAUDITING_PRICES_KEY" update="true">
 				<column name="`PRICECATEGORYAUDITING_PRICES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PRICECATEGORYAUDITING_PRICES_IDX`"/>
@@ -543,7 +543,7 @@
 			<column not-null="false" unique="false" name="`NUMBER`"/>
 		</property>
 		<list name="transactions" table="`ORDERAUDITING_TRANSACTIONSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ORDERAUDITING_TRANSACTIONS_KEY" update="true">
 				<column name="`ORDERAUDITING_TRANSACTIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ORDERAUDITING_TRANSACTIONS_IDX`"/>
@@ -553,7 +553,7 @@
 			<column not-null="false" unique="false" name="`CUSTOMER`"/>
 		</property>
 		<list name="comments" table="`ORDERAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ORDERAUDITING_COMMENTS_KEY" update="true">
 				<column name="`ORDERAUDITING_COMMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ORDERAUDITING_COMMENTS_IDX`"/>

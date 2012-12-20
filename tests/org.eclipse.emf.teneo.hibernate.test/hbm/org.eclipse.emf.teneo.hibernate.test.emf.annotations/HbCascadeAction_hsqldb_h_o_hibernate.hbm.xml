@@ -19,7 +19,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="children" lazy="true" cascade="persist,merge,refresh,delete,save-update,delete-orphan,lock">
-			<key update="true" foreign-key="PARENT_CHILDREN">
+			<key foreign-key="PARENT_CHILDREN_KEY" update="true">
 				<column name="`PARENT_CHILDREN_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Child"/>
@@ -120,7 +120,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="children" table="`PARENTAUDITING_CHILDRENAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PARENTAUDITING_CHILDREN_KEY" update="true">
 				<column name="`PARENTAUDITING_CHILDREN_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<element type="java.lang.String"/>

@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="names" table="`NAMESTABLE`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEM_NAMES_KEY" update="true">
 				<column name="`JOINCOLUMN1`" unique="false"/>
 				<column name="`JOINCOLUMN1`" unique="false"/>
 			</key>
@@ -21,7 +21,7 @@
 			<element type="java.lang.String"/>
 		</list>
 		<list name="items" table="`EMBEDDEDITEMSTABLE`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="ITEM_ITEMS_KEY" update="true">
 				<column name="`MYJC`" unique="false"/>
 			</key>
 			<list-index column="`ITEM_ITEMS_IDX`"/>
@@ -115,7 +115,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="names" table="`AUDITNAMESTABLE`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEMAUDITING_NAMES_KEY" update="true">
 				<column name="`JOINCOLUMN1`" unique="false"/>
 				<column name="`JOINCOLUMN1`" unique="false"/>
 			</key>
@@ -123,7 +123,7 @@
 			<element type="java.lang.String"/>
 		</list>
 		<list name="items" table="`EMBITEMSAUDITTABLE`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="ITEMAUDITING_ITEMS_KEY" update="true">
 				<column name="`MYJC`" unique="false"/>
 			</key>
 			<list-index column="`ITEMAUDITING_ITEMS_IDX`"/>

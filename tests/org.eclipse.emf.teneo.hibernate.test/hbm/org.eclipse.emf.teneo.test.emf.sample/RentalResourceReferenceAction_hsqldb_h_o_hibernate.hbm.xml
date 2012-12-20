@@ -93,7 +93,7 @@
 			<column not-null="false" unique="false" name="`COST`"/>
 		</property>
 		<list name="rentalUnits" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="RENTALCONTRACT_RENTALUNITS">
+			<key foreign-key="RENTALCONTRACT_RENTALUNITS_KEY" update="true">
 				<column name="`RENTALCONTRACT_RENTALUNITS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`RENTALCONTRACT_RENTALUNITS_IDX`"/>
@@ -347,7 +347,7 @@
 			<column not-null="false" unique="false" name="`COST`"/>
 		</property>
 		<list name="rentalUnits" table="`RENTALCONTRACTAUDITING_RENTALUNITSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="RENTALCONTRACTAUDITING_RENTALUNITS_KEY" update="true">
 				<column name="`RENTALCONTRACTAUDITING_RENTALUNITS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`RENTALCONTRACTAUDITING_RENTALUNITS_IDX`"/>

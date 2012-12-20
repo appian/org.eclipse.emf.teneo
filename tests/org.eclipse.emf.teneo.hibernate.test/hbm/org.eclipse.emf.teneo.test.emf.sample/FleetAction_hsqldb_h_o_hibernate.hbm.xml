@@ -40,7 +40,7 @@
 			<column not-null="false" unique="false" name="`LENGTH`"/>
 		</property>
 		<list name="availableColors" table="`VEHICLE_AVAILABLECOLORS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VEHICLE_AVAILABLECOLORS_KEY" update="true">
 				<column name="`VEHICLE_AVAILABLECOLORS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`VEHICLE_AVAILABLECOLORS_IDX`"/>
@@ -50,7 +50,7 @@
 			<column not-null="false" unique="false" name="`PERSON_OWNER_E_ID`"/>
 		</many-to-one>
 		<list name="manufacturedAt" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="VEHICLE_MANUFACTUREDAT">
+			<key foreign-key="VEHICLE_MANUFACTUREDAT_KEY" update="true">
 				<column name="`VEHICLE_MANUFACTUREDAT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`VEHICLE_MANUFACTUREDAT_IDX`"/>
@@ -77,7 +77,7 @@
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
 		<array name="touchedAttributes" table="`TEMPORAL_TOUCHEDATTRIBUTES`" cascade="all">
-			<key update="true">
+			<key foreign-key="TEMPORAL_TOUCHEDATTRIBUTES_KEY" update="true">
 				<column name="`TEMPORAL_TOUCHEDATTRIBUTES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEMPORAL_TOUCHEDATTRIBUTES_IDX`"/>
@@ -106,14 +106,14 @@
 			<column not-null="false" unique="false" name="`EMPLOYED`"/>
 		</property>
 		<list name="addresses" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PERSON_ADDRESSES">
+			<key foreign-key="PERSON_ADDRESSES_KEY" update="true">
 				<column name="`PERSON_ADDRESSES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_ADDRESSES_IDX`"/>
 			<one-to-many entity-name="Address"/>
 		</list>
 		<list name="ownedVehicles" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="PERSON_OWNEDVEHICLES">
+			<key foreign-key="PERSON_OWNEDVEHICLES_KEY" update="true">
 				<column name="`PERSON_OWNEDVEHICLES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_OWNEDVEHICLES_IDX`"/>
@@ -192,14 +192,14 @@
 			<column not-null="false" unique="false" name="`ID`"/>
 		</property>
 		<list name="vehicles" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="FLEET_VEHICLES">
+			<key foreign-key="FLEET_VEHICLES_KEY" update="true">
 				<column name="`FLEET_VEHICLES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FLEET_VEHICLES_IDX`"/>
 			<one-to-many entity-name="Vehicle"/>
 		</list>
 		<list name="vehicleInformation" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="FLEET_VEHICLEINFORMATION">
+			<key foreign-key="FLEET_VEHICLEINFORMATION_KEY" update="true">
 				<column name="`FLEET_VEHICLEINFORMATION_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FLEET_VEHICLEINFORMATION_IDX`"/>
@@ -213,7 +213,7 @@
 		<meta attribute="eclassName" inherit="false">Garage</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
 		<list name="vehicles" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="GARAGE_VEHICLES">
+			<key foreign-key="GARAGE_VEHICLES_KEY" update="true">
 				<column name="`GARAGE_VEHICLES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`GARAGE_VEHICLES_IDX`"/>
@@ -275,7 +275,7 @@
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
 		<array name="touchedAttributes" table="`CAR_TOUCHEDATTRIBUTES`" cascade="all">
-			<key update="true">
+			<key foreign-key="CAR_TOUCHEDATTRIBUTES_KEY" update="true">
 				<column name="`CAR_TOUCHEDATTRIBUTES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CAR_TOUCHEDATTRIBUTES_IDX`"/>
@@ -297,7 +297,7 @@
 			<column not-null="false" unique="false" name="`NUMTIRES`"/>
 		</property>
 		<list name="tires" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="CAR_TIRES">
+			<key foreign-key="CAR_TIRES_KEY" update="true">
 				<column name="`CAR_TIRES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CAR_TIRES_IDX`"/>
@@ -338,7 +338,7 @@
 			<column not-null="false" unique="false" name="`MAKESDIESELENGINES`"/>
 		</property>
 		<list name="brands" table="`ENGINEFACTORY_BRANDS`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ENGINEFACTORY_BRANDS_KEY" update="true">
 				<column name="`ENGINEFACTORY_BRANDS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ENGINEFACTORY_BRANDS_IDX`"/>
@@ -521,7 +521,7 @@
 			<column not-null="false" unique="false" name="`LENGTH`"/>
 		</property>
 		<list name="availableColors" table="`VEHICLEAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VEHICLEAUDITING_AVAILABLECOLORS_KEY" update="true">
 				<column name="`VEHICLEAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`VEHICLEAUDITING_AVAILABLECOLORS_IDX`"/>
@@ -531,7 +531,7 @@
 			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
 		<list name="manufacturedAt" table="`VEHICLEAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VEHICLEAUDITING_MANUFACTUREDAT_KEY" update="true">
 				<column name="`VEHICLEAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`VEHICLEAUDITING_MANUFACTUREDAT_IDX`"/>
@@ -596,7 +596,7 @@
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
 		<array name="touchedAttributes" table="`TEMPORALAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="TEMPORALAUDITING_TOUCHEDATTRIBUTES_KEY" update="true">
 				<column name="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEMPORALAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
@@ -622,14 +622,14 @@
 			<column not-null="false" unique="false" name="`EMPLOYED`"/>
 		</property>
 		<list name="addresses" table="`PERSONAUDITING_ADDRESSESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_ADDRESSES_KEY" update="true">
 				<column name="`PERSONAUDITING_ADDRESSES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_ADDRESSES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="ownedVehicles" table="`PERSONAUDITING_OWNEDVEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_OWNEDVEHICLES_KEY" update="true">
 				<column name="`PERSONAUDITING_OWNEDVEHICLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_OWNEDVEHICLES_IDX`"/>
@@ -784,14 +784,14 @@
 			<column not-null="false" unique="false" name="`ID`"/>
 		</property>
 		<list name="vehicles" table="`FLEETAUDITING_VEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FLEETAUDITING_VEHICLES_KEY" update="true">
 				<column name="`FLEETAUDITING_VEHICLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FLEETAUDITING_VEHICLES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="vehicleInformation" table="`FLEETAUDITING_VEHICLEINFORMATIONAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FLEETAUDITING_VEHICLEINFORMATION_KEY" update="true">
 				<column name="`FLEETAUDITING_VEHICLEINFORMATION_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FLEETAUDITING_VEHICLEINFORMATION_IDX`"/>
@@ -805,7 +805,7 @@
 		<meta attribute="eclassName" inherit="false">GarageAuditing</meta>
 		<meta attribute="epackage" inherit="false">http:///fleet.ecoreAuditing</meta>
 		<list name="vehicles" table="`GARAGEAUDITING_VEHICLESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="GARAGEAUDITING_VEHICLES_KEY" update="true">
 				<column name="`GARAGEAUDITING_VEHICLES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`GARAGEAUDITING_VEHICLES_IDX`"/>
@@ -818,7 +818,7 @@
 			<column not-null="false" unique="false" name="`ADDRESS`"/>
 		</property>
 		<list name="fleetsUsingGarage" table="`GARAGEAUDITING_FLEETSUSINGGARAGEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="GARAGEAUDITING_FLEETSUSINGGARAGE_KEY" update="true">
 				<column name="`GARAGEAUDITING_FLEETSUSINGGARAGE_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`GARAGEAUDITING_FLEETSUSINGGARAGE_IDX`"/>
@@ -978,7 +978,7 @@
 			<column not-null="false" unique="false" name="`LENGTH`"/>
 		</property>
 		<list name="availableColors" table="`CARAUDITING_AVAILABLECOLORSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_AVAILABLECOLORS_KEY" update="true">
 				<column name="`CARAUDITING_AVAILABLECOLORS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_AVAILABLECOLORS_IDX`"/>
@@ -988,7 +988,7 @@
 			<column not-null="false" unique="false" name="`OWNER`"/>
 		</property>
 		<list name="manufacturedAt" table="`CARAUDITING_MANUFACTUREDATAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_MANUFACTUREDAT_KEY" update="true">
 				<column name="`CARAUDITING_MANUFACTUREDAT_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_MANUFACTUREDAT_IDX`"/>
@@ -1001,7 +1001,7 @@
 			<column not-null="false" unique="false" name="`DATE`"/>
 		</property>
 		<array name="touchedAttributes" table="`CARAUDITING_TOUCHEDATTRIBUTESAUDITING`" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_TOUCHEDATTRIBUTES_KEY" update="true">
 				<column name="`CARAUDITING_TOUCHEDATTRIBUTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_TOUCHEDATTRIBUTES_IDX`"/>
@@ -1020,7 +1020,7 @@
 			<column not-null="false" unique="false" name="`NUMTIRES`"/>
 		</property>
 		<list name="tires" table="`CARAUDITING_TIRESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CARAUDITING_TIRES_KEY" update="true">
 				<column name="`CARAUDITING_TIRES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CARAUDITING_TIRES_IDX`"/>
@@ -1044,7 +1044,7 @@
 			<column not-null="false" unique="false" name="`MAKESDIESELENGINES`"/>
 		</property>
 		<list name="brands" table="`ENGINEFACTORYAUDITING_BRANDSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ENGINEFACTORYAUDITING_BRANDS_KEY" update="true">
 				<column name="`ENGINEFACTORYAUDITING_BRANDS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ENGINEFACTORYAUDITING_BRANDS_IDX`"/>
@@ -1232,7 +1232,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="versions" table="`VERSIONHOLDERAUDITING_VERSIONSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="VERSIONHOLDERAUDITING_VERSIONS_KEY" update="true">
 				<column name="`VERSIONHOLDERAUDITING_VERSIONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`VERSIONHOLDERAUDITING_VERSIONS_IDX`"/>

@@ -21,7 +21,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="authorName" table="`AUTHORSTYPE_AUTHORNAME`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="AUTHORSTYPE_AUTHORNAME_KEY" update="true">
 				<column name="`AUTHORSTYPE_AUTHORNAME_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`AUTHORSTYPE_AUTHORNAME_IDX`"/>
@@ -39,7 +39,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="book" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKSTYPE_BOOK">
+			<key foreign-key="BOOKSTYPE_BOOK_KEY" update="true">
 				<column name="`BOOKSTYPE_BOOK_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKSTYPE_BOOK_IDX`"/>
@@ -189,7 +189,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="authorName" table="`AUTHORSTYPEAUDITING_AUTHORNAMEAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="AUTHORSTYPEAUDITING_AUTHORNAME_KEY" update="true">
 				<column name="`AUTHORSTYPEAUDITING_AUTHORNAME_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`AUTHORSTYPEAUDITING_AUTHORNAME_IDX`"/>
@@ -245,7 +245,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="book" table="`BOOKSTYPEAUDITING_BOOKAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="BOOKSTYPEAUDITING_BOOK_KEY" update="true">
 				<column name="`BOOKSTYPEAUDITING_BOOK_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKSTYPEAUDITING_BOOK_IDX`"/>

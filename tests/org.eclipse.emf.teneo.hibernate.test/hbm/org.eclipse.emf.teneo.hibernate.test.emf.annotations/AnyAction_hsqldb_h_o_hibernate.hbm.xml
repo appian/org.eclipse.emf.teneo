@@ -25,14 +25,14 @@
 			<column not-null="false" unique="false" name="`ANYONE_ID`"/>
 		</any>
 		<list name="any" table="`ANYOBJECT_ANY`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ANYOBJECT_ANY_KEY" update="true">
 				<column name="`ANYOBJECT_ANY_ID`" unique="false"/>
 			</key>
 			<list-index column="`ANYOBJECT_ANY_IDX`"/>
 			<one-to-many entity-name="AnyObject_any"/>
 		</list>
 		<list name="group" table="`ANYOBJECT_GROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ANYOBJECT_GROUP_KEY" update="true">
 				<column name="`ANYOBJECT_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`ANYOBJECT_GROUP_IDX`"/>

@@ -107,6 +107,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// paReference.getIndexed().isValue());
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
+		addForeignKeyAttribute(keyElement, paReference);
 
 		// TODO: throw error if both jointable and joincolumns have been set
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
@@ -252,6 +253,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, ((HbAnnotatedEReference) paReference).getHbOnDelete());
+		addForeignKeyAttribute(keyElement, paReference);
 
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		final JoinTable jt = getJoinTable(paReference);

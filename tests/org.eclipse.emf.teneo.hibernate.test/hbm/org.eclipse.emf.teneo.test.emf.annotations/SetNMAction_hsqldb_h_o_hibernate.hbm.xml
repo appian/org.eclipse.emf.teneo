@@ -130,7 +130,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="yourItem" table="`MYITEMAUDITING_YOURITEMAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="MYITEMAUDITING_YOURITEM_KEY" update="true">
 				<column name="`MYITEMAUDITING_YOURITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`MYITEMAUDITING_YOURITEM_IDX`"/>
@@ -192,7 +192,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="myItem" table="`YOURITEMAUDITING_MYITEMAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="YOURITEMAUDITING_MYITEM_KEY" update="true">
 				<column name="`YOURITEMAUDITING_MYITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`YOURITEMAUDITING_MYITEM_IDX`"/>

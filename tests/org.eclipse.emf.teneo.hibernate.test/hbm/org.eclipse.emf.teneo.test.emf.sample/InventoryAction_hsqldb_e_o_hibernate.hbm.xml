@@ -25,13 +25,13 @@
 			<one-to-many entity-name="PType"/>
 		</bag>
 		<bag name="subNOTypes" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="PTYPE_SUBNOTYPES">
+			<key foreign-key="PTYPE_SUBNOTYPES_KEY" update="true">
 				<column name="`PTYPE_SUBNOTYPES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="PType"/>
 		</bag>
 		<bag name="infoReferences" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="PTYPE_INFOREFERENCES">
+			<key foreign-key="PTYPE_INFOREFERENCES_KEY" update="true">
 				<column name="`PTYPE_INFOREFERENCES_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="PDeclaration"/>
@@ -129,19 +129,19 @@
 			<column not-null="false" unique="false" name="`BASE`"/>
 		</property>
 		<bag name="subTypes" table="`PTYPEAUDITING_SUBTYPESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PTYPEAUDITING_SUBTYPES_KEY" update="true">
 				<column name="`PTYPEAUDITING_SUBTYPES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<element type="java.lang.String"/>
 		</bag>
 		<bag name="subNOTypes" table="`PTYPEAUDITING_SUBNOTYPESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PTYPEAUDITING_SUBNOTYPES_KEY" update="true">
 				<column name="`PTYPEAUDITING_SUBNOTYPES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<element type="java.lang.String"/>
 		</bag>
 		<list name="infoReferences" table="`PTYPEAUDITING_INFOREFERENCESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PTYPEAUDITING_INFOREFERENCES_KEY" update="true">
 				<column name="`PTYPEAUDITING_INFOREFERENCES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PTYPEAUDITING_INFOREFERENCES_IDX`"/>

@@ -81,7 +81,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="items" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PURCHASEORDER_ITEMS">
+			<key foreign-key="PURCHASEORDER_ITEMS_KEY" update="true">
 				<column name="`ITEM_ORDER_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PURCHASEORDER_ITEMS_IDX`"/>
@@ -128,14 +128,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="customers" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="SUPPLIER_CUSTOMERS">
+			<key foreign-key="SUPPLIER_CUSTOMERS_KEY" update="true">
 				<column name="`SUPPLIER_CUSTOMERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SUPPLIER_CUSTOMERS_IDX`"/>
 			<one-to-many entity-name="Customer"/>
 		</list>
 		<list name="orders" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="SUPPLIER_ORDERS">
+			<key foreign-key="SUPPLIER_ORDERS_KEY" update="true">
 				<column name="`SUPPLIER_ORDERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SUPPLIER_ORDERS_IDX`"/>
@@ -173,7 +173,7 @@
 			<column not-null="false" unique="false" name="`COUNTRYCODE`"/>
 		</property>
 		<list name="location" table="`GLOBALADDRESS_LOCATION`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="GLOBALADDRESS_LOCATION_KEY" update="true">
 				<column name="`GLOBALADDRESS_LOCATION_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`GLOBALADDRESS_LOCATION_IDX`"/>
@@ -404,7 +404,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="items" table="`PURCHASEORDERAUDITING_ITEMSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PURCHASEORDERAUDITING_ITEMS_KEY" update="true">
 				<column name="`PURCHASEORDERAUDITING_ITEMS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PURCHASEORDERAUDITING_ITEMS_IDX`"/>
@@ -489,14 +489,14 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="customers" table="`SUPPLIERAUDITING_CUSTOMERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SUPPLIERAUDITING_CUSTOMERS_KEY" update="true">
 				<column name="`SUPPLIERAUDITING_CUSTOMERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SUPPLIERAUDITING_CUSTOMERS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="orders" table="`SUPPLIERAUDITING_ORDERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="SUPPLIERAUDITING_ORDERS_KEY" update="true">
 				<column name="`SUPPLIERAUDITING_ORDERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SUPPLIERAUDITING_ORDERS_IDX`"/>
@@ -555,7 +555,7 @@
 			<column not-null="false" unique="false" name="`CUSTOMERID`"/>
 		</property>
 		<list name="orders" table="`CUSTOMERAUDITING_ORDERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="CUSTOMERAUDITING_ORDERS_KEY" update="true">
 				<column name="`CUSTOMERAUDITING_ORDERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CUSTOMERAUDITING_ORDERS_IDX`"/>
@@ -572,7 +572,7 @@
 			<column not-null="false" unique="false" name="`COUNTRYCODE`"/>
 		</property>
 		<list name="location" table="`GLOBALADDRESSAUDITING_LOCATIONAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="GLOBALADDRESSAUDITING_LOCATION_KEY" update="true">
 				<column name="`GLOBALADDRESSAUDITING_LOCATION_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`GLOBALADDRESSAUDITING_LOCATION_IDX`"/>

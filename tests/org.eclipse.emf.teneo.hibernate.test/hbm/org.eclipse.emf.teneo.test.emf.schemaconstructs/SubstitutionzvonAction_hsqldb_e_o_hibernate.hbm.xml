@@ -41,14 +41,14 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="myAbstractGroup" table="`ROOTTYPE_MYABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ROOTTYPE_MYABSTRACTGROUP_KEY" update="true">
 				<column name="`ROOTTYPE_MYABSTRACTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ROOTTYPE_MYABSTRACTGROUP_IDX`"/>
 			<one-to-many entity-name="RootType_myAbstractGroup"/>
 		</list>
 		<list name="myComplexAbstractGroup" table="`ROOTTYPE_MYCOMPLEXABSTRACTGROUP`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ROOTTYPE_MYCOMPLEXABSTRACTGROUP_KEY" update="true">
 				<column name="`ROOTTYPE_MYCOMPLEXABSTRACTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ROOTTYPE_MYCOMPLEXABSTRACTGROUP_IDX`"/>
@@ -321,14 +321,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="myAbstractGroup" table="`ROOTTYPEAUDITING_MYABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ROOTTYPEAUDITING_MYABSTRACTGROUP_KEY" update="true">
 				<column name="`ROOTTYPEAUDITING_MYABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ROOTTYPEAUDITING_MYABSTRACTGROUP_IDX`"/>
 			<one-to-many entity-name="RootTypeAuditing_myAbstractGroup"/>
 		</list>
 		<list name="myComplexAbstractGroup" table="`ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUPAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_KEY" update="true">
 				<column name="`ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ROOTTYPEAUDITING_MYCOMPLEXABSTRACTGROUP_IDX`"/>

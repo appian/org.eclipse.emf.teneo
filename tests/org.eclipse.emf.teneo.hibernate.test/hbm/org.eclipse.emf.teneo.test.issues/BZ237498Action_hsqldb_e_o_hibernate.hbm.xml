@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="manies" order-by="`myname` asc" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="ONE_MANIES">
+			<key foreign-key="ONE_MANIES_KEY" update="true">
 				<column name="`ONE_MANIES_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Many"/>
@@ -102,7 +102,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="manies" table="`ONEAUDITING_MANIESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ONEAUDITING_MANIES_KEY" update="true">
 				<column name="`ONEAUDITING_MANIES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ONEAUDITING_MANIES_IDX`"/>

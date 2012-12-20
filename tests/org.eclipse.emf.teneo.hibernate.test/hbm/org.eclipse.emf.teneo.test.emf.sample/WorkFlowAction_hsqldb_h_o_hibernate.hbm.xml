@@ -274,21 +274,21 @@
 		<meta attribute="eclassName" inherit="false">WorkflowAuditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflowAuditing</meta>
 		<list name="nodes" table="`WORKFLOWAUDITING_NODESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WORKFLOWAUDITING_NODES_KEY" update="true">
 				<column name="`WORKFLOWAUDITING_NODES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWAUDITING_NODES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="edges" table="`WORKFLOWAUDITING_EDGESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WORKFLOWAUDITING_EDGES_KEY" update="true">
 				<column name="`WORKFLOWAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWAUDITING_EDGES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="comments" table="`WORKFLOWAUDITING_COMMENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WORKFLOWAUDITING_COMMENTS_KEY" update="true">
 				<column name="`WORKFLOWAUDITING_COMMENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWAUDITING_COMMENTS_IDX`"/>
@@ -302,14 +302,14 @@
 			<column not-null="false" unique="false" name="`WORKFLOW`"/>
 		</property>
 		<list name="outputs" table="`WORKFLOWNODEAUDITING_OUTPUTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WORKFLOWNODEAUDITING_OUTPUTS_KEY" update="true">
 				<column name="`WORKFLOWNODEAUDITING_OUTPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWNODEAUDITING_OUTPUTS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="inputs" table="`WORKFLOWNODEAUDITING_INPUTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="WORKFLOWNODEAUDITING_INPUTS_KEY" update="true">
 				<column name="`WORKFLOWNODEAUDITING_INPUTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`WORKFLOWNODEAUDITING_INPUTS_IDX`"/>
@@ -346,7 +346,7 @@
 			<column not-null="false" unique="false" name="`NODE`"/>
 		</property>
 		<list name="edges" table="`INPUTPORTAUDITING_EDGESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="INPUTPORTAUDITING_EDGES_KEY" update="true">
 				<column name="`INPUTPORTAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`INPUTPORTAUDITING_EDGES_IDX`"/>
@@ -360,7 +360,7 @@
 			<column not-null="false" unique="false" name="`NODE`"/>
 		</property>
 		<list name="edges" table="`OUTPUTPORTAUDITING_EDGESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="OUTPUTPORTAUDITING_EDGES_KEY" update="true">
 				<column name="`OUTPUTPORTAUDITING_EDGES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`OUTPUTPORTAUDITING_EDGES_IDX`"/>

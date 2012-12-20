@@ -13,7 +13,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="foo" table="`BAR_FOO`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true">
+			<key foreign-key="BAR_FOO_KEY" update="true">
 				<column name="`BAR_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BAR_FOO_IDX`"/>
@@ -105,7 +105,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="foo" table="`BARAUDITING_FOOAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="BARAUDITING_FOO_KEY" update="true">
 				<column name="`BARAUDITING_FOO_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BARAUDITING_FOO_IDX`"/>

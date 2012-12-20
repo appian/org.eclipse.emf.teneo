@@ -16,7 +16,7 @@
 			<column not-null="true" unique="false" name="`TITLE`"/>
 		</property>
 		<map name="writersByName" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOK_WRITERSBYNAME">
+			<key foreign-key="BOOK_WRITERSBYNAME_KEY" update="true">
 				<column name="`JOIN_COLUMN_WRITER`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String">
@@ -25,7 +25,7 @@
 			<one-to-many entity-name="Writer"/>
 		</map>
 		<map name="cityByWriter" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOK_CITYBYWRITER">
+			<key foreign-key="BOOK_CITYBYWRITER_KEY" update="true">
 				<column name="`JOIN_COLUMN_CITY`" unique="false"/>
 			</key>
 			<map-key-many-to-many entity-name="Writer">
@@ -137,14 +137,14 @@
 			<column not-null="false" unique="false" name="`TITLE`"/>
 		</property>
 		<list name="writersByName" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_WRITERSBYNAME">
+			<key foreign-key="BOOKAUDITING_WRITERSBYNAME_KEY" update="true">
 				<column name="`BOOKAUDITING_WRITERSBYNAME_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_WRITERSBYNAME_IDX`"/>
 			<one-to-many entity-name="StringToWriterMapEntryAuditing"/>
 		</list>
 		<list name="cityByWriter" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="BOOKAUDITING_CITYBYWRITER">
+			<key foreign-key="BOOKAUDITING_CITYBYWRITER_KEY" update="true">
 				<column name="`BOOKAUDITING_CITYBYWRITER_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`BOOKAUDITING_CITYBYWRITER_IDX`"/>

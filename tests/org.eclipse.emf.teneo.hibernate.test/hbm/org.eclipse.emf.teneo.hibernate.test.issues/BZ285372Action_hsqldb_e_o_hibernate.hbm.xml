@@ -16,7 +16,7 @@
 			<column not-null="false" unique="false" name="`STRING`"/>
 		</property>
 		<list name="persons" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="FAMILY_PERSONS">
+			<key foreign-key="FAMILY_PERSONS_KEY" update="true">
 				<column name="`FAMILY_PERSONS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`FAMILY_PERSONS_IDX`"/>
@@ -34,14 +34,14 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="notes" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="PERSON_NOTES">
+			<key foreign-key="PERSON_NOTES_KEY" update="true">
 				<column name="`PERSON_NOTES_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_NOTES_IDX`"/>
 			<one-to-many entity-name="Note"/>
 		</list>
 		<list name="parents" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="PERSON_PARENTS">
+			<key foreign-key="PERSON_PARENTS_KEY" update="true">
 				<column name="`PERSON_PARENTS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_PARENTS_IDX`"/>
@@ -134,7 +134,7 @@
 			<column not-null="false" unique="false" name="`STRING`"/>
 		</property>
 		<list name="persons" table="`FAMILYAUDITING_PERSONSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FAMILYAUDITING_PERSONS_KEY" update="true">
 				<column name="`FAMILYAUDITING_PERSONS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`FAMILYAUDITING_PERSONS_IDX`"/>
@@ -190,14 +190,14 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="notes" table="`PERSONAUDITING_NOTESAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_NOTES_KEY" update="true">
 				<column name="`PERSONAUDITING_NOTES_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_NOTES_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="parents" table="`PERSONAUDITING_PARENTSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="PERSONAUDITING_PARENTS_KEY" update="true">
 				<column name="`PERSONAUDITING_PARENTS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSONAUDITING_PARENTS_IDX`"/>

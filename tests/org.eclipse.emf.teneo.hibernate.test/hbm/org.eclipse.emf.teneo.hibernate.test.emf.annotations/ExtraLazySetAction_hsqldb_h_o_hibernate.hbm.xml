@@ -59,7 +59,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="containedItem" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="TESTSET_ITEMLIST_CONTAINEDITEM">
+			<key foreign-key="TESTSET_ITEMLIST_CONTAINEDITEM_KEY" update="true">
 				<column name="`ITEMLIST_CONTAINEDITEM_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.ContainedItem"/>
@@ -71,7 +71,7 @@
 			<one-to-many entity-name="testSet.Item"/>
 		</bag>
 		<bag name="joinedItem" order-by="ABS(number)" inverse="true" lazy="extra" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="TESTSET_ITEMLIST_JOINEDITEM">
+			<key foreign-key="TESTSET_ITEMLIST_JOINEDITEM_KEY" update="true">
 				<column name="`ITEMLIST_JOINEDITEM_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.Item"/>
@@ -271,21 +271,21 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="containedItem" table="`TESTSETAUDITING_ITEMLISTAUDITING_CONTAINEDITEMAUDITING`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="TESTSETAUDITING_ITEMLISTAUDITING_CONTAINEDITEM_KEY" update="true">
 				<column name="`ITEMLISTAUDITING_CONTAINEDITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMLISTAUDITING_CONTAINEDITEM_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="item" table="`TESTSETAUDITING_ITEMLISTAUDITING_ITEMAUDITING`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="TESTSETAUDITING_ITEMLISTAUDITING_ITEM_KEY" update="true">
 				<column name="`ITEMLISTAUDITING_ITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMLISTAUDITING_ITEM_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<bag name="joinedItem" table="`TESTSETAUDITING_ITEMLISTAUDITING_JOINEDITEMAUDITING`" lazy="extra" cascade="all">
-			<key update="true">
+			<key foreign-key="TESTSETAUDITING_ITEMLISTAUDITING_JOINEDITEM_KEY" update="true">
 				<column name="`ITEMLISTAUDITING_JOINEDITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<element type="java.lang.String"/>

@@ -34,7 +34,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="bagOfBars" lazy="true" cascade="all,delete-orphan">
-			<key update="true" property-ref="clientId" foreign-key="FOO_BAGOFBARS">
+			<key foreign-key="FOO_BAGOFBARS_KEY" update="true" property-ref="clientId">
 				<column name="`GRP_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Bar"/>

@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`LETTERBODYTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="LETTERBODYTYPE_MIXED_KEY" update="true">
 				<column name="`LETTERBODYTYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LETTERBODYTYPE_MIXED_IDX`"/>
@@ -62,7 +62,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`SALUTATIONTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SALUTATIONTYPE_MIXED_KEY" update="true">
 				<column name="`SALUTATIONTYPE_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`SALUTATIONTYPE_MIXED_IDX`"/>
@@ -229,7 +229,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`LETTERBODYTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="LETTERBODYTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`LETTERBODYTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`LETTERBODYTYPEAUDITING_MIXED_IDX`"/>
@@ -313,7 +313,7 @@
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
 		<list name="mixed" table="`SALUTATIONTYPEAUDITING_MIXEDAUDITING`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
+			<key foreign-key="SALUTATIONTYPEAUDITING_MIXED_KEY" update="true">
 				<column name="`SALUTATIONTYPEAUDITING_MIXED_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SALUTATIONTYPEAUDITING_MIXED_IDX`"/>

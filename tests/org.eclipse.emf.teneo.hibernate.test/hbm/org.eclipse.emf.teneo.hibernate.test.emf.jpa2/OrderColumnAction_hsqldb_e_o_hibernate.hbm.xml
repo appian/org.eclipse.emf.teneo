@@ -36,7 +36,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="item" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="ITEMLIST_ITEM">
+			<key foreign-key="ITEMLIST_ITEM_KEY" update="true">
 				<column name="`ITEMLIST_ITEM_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Item"/>
@@ -172,7 +172,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="item" table="`ITEMLISTAUDITING_ITEMAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="ITEMLISTAUDITING_ITEM_KEY" update="true">
 				<column name="`ITEMLISTAUDITING_ITEM_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`ITEMLISTAUDITING_ITEM_IDX`"/>

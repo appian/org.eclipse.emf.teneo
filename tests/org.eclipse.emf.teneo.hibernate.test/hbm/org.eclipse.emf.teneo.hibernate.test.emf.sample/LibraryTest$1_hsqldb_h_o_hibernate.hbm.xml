@@ -56,7 +56,7 @@
 		</property>
 		<list name="writers" fetch="subselect" lazy="true" cascade="all,delete-orphan">
 			<cache usage="read-write"/>
-			<key update="true" foreign-key="schrijvers">
+			<key foreign-key="SCHRIJVERS_KEY" update="true">
 				<column name="`COL_LIBRARY_WRITERS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEST_INDEX`"/>
@@ -64,7 +64,7 @@
 		</list>
 		<list name="books" lazy="true" cascade="all,delete-orphan">
 			<cache usage="read-write"/>
-			<key update="true" foreign-key="FKPRE_LIBRARY_BOOKS">
+			<key foreign-key="FKPRE_LIBRARY_BOOKS_KEY" update="true">
 				<column name="`COL_LIBRARY_BOOKS_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`COL_LIBRARY_BOOKS_IDX`"/>
@@ -250,14 +250,14 @@
 			<column not-null="false" unique="false" name="`COL_NAME`" length="50"/>
 		</property>
 		<list name="writers" table="`TAB_LIBRARYAUDITING_WRITERSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FKPRE_LIBRARYAUDITING_WRITERS_KEY" update="true">
 				<column name="`COL_LIBRARYAUDITING_WRITERS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`COL_LIBRARYAUDITING_WRITERS_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 		<list name="books" table="`TAB_LIBRARYAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FKPRE_LIBRARYAUDITING_BOOKS_KEY" update="true">
 				<column name="`COL_LIBRARYAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`COL_LIBRARYAUDITING_BOOKS_IDX`"/>
@@ -320,7 +320,7 @@
 			<column not-null="false" unique="false" name="`COL_NAME`" length="50"/>
 		</property>
 		<list name="books" table="`TAB_WRITERAUDITING_BOOKSAUDITING`" lazy="true" cascade="all">
-			<key update="true">
+			<key foreign-key="FKPRE_WRITERAUDITING_BOOKS_KEY" update="true">
 				<column name="`COL_WRITERAUDITING_BOOKS_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`COL_WRITERAUDITING_BOOKS_IDX`"/>
