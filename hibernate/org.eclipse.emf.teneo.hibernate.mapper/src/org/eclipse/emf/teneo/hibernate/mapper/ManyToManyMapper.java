@@ -59,7 +59,8 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
-
+		addForeignKeyAttribute(keyElement, paReference); 
+		
 		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 		if (mtm.isIndexed() && hbReference.getHbIdBag() == null) {
 			// now we check if it is a list or a map
