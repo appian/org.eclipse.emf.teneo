@@ -259,7 +259,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SecondarytablehibernatePackage.PERSON__ID:
-				return new Long(getId());
+				return getId();
 			case SecondarytablehibernatePackage.PERSON__NAME:
 				return getName();
 			case SecondarytablehibernatePackage.PERSON__ADDRESS:
@@ -279,7 +279,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SecondarytablehibernatePackage.PERSON__ID:
-				setId(((Long)newValue).longValue());
+				setId((Long)newValue);
 				return;
 			case SecondarytablehibernatePackage.PERSON__NAME:
 				setName((String)newValue);

@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson()
- * @model annotation="teneo.jpa appinfo='@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"person_address\"),\n\t\t\t\t@SecondaryTable(name=\"person_photo\")})'"
+ * @model annotation="teneo.jpa appinfo='@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"PERSON_ADDRESS\"),\n\t\t\t\t@SecondaryTable(name=\"PERSON_PHOTO\")})'"
  *        extendedMetaData="name='Person' kind='elementOnly'"
  * @generated
  */
@@ -123,7 +123,7 @@ public interface Person extends EObject {
 	 * @see #setAddress(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson_Address()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"person_address\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"PERSON_ADDRESS\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */
@@ -151,7 +151,7 @@ public interface Person extends EObject {
 	 * @see #setPhoto(byte[])
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson_Photo()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
-	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"person_photo\" length=\"1000000\")'"
+	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"PERSON_PHOTO\" length=\"1000000\")'"
 	 *        extendedMetaData="kind='element' name='photo'"
 	 * @generated
 	 */

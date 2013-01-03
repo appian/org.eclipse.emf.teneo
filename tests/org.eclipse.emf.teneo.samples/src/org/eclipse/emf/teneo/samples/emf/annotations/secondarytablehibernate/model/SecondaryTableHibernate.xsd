@@ -5,8 +5,8 @@
 		<xsd:annotation>
 			<!-- Declare two secondary tables. -->
 			<xsd:appinfo source="teneo.jpa">@SecondaryTables({
-				@SecondaryTable(name="person_address"),
-				@SecondaryTable(name="person_photo")})</xsd:appinfo>
+				@SecondaryTable(name="PERSON_ADDRESS"),
+				@SecondaryTable(name="PERSON_PHOTO")})</xsd:appinfo>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element name="id" type="xsd:long">
@@ -18,7 +18,7 @@
 			<xsd:element name="address" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.jpa">@Lob
-					@Column(table="person_address" nullable=false)
+					@Column(table="PERSON_ADDRESS" nullable=false)
 					@Basic(optional=false)
 					</xsd:appinfo>
 				</xsd:annotation>
@@ -26,7 +26,7 @@
 			<xsd:element name="photo" type="xsd:base64Binary" minOccurs="0">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.jpa">@Lob
-					@Column(table="person_photo" length="1000000")</xsd:appinfo>
+					@Column(table="PERSON_PHOTO" length="1000000")</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>

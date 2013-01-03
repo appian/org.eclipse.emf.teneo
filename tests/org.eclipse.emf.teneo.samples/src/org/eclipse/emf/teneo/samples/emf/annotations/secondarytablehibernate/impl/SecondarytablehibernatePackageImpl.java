@@ -59,20 +59,10 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SecondarytablehibernatePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -84,7 +74,7 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		if (isInited) return (SecondarytablehibernatePackage)EPackage.Registry.INSTANCE.getEPackage(SecondarytablehibernatePackage.eNS_URI);
 
 		// Obtain or create and register package
-		SecondarytablehibernatePackageImpl theSecondarytablehibernatePackage = (SecondarytablehibernatePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SecondarytablehibernatePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SecondarytablehibernatePackageImpl());
+		SecondarytablehibernatePackageImpl theSecondarytablehibernatePackage = (SecondarytablehibernatePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SecondarytablehibernatePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SecondarytablehibernatePackageImpl());
 
 		isInited = true;
 
@@ -100,6 +90,9 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		// Mark meta-data to indicate it can't be changed
 		theSecondarytablehibernatePackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SecondarytablehibernatePackage.eNS_URI, theSecondarytablehibernatePackage);
 		return theSecondarytablehibernatePackage;
 	}
 
@@ -244,7 +237,7 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"person_address\"),\n\t\t\t\t@SecondaryTable(name=\"person_photo\")})"
+			 "appinfo", "@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"PERSON_ADDRESS\"),\n\t\t\t\t@SecondaryTable(name=\"PERSON_PHOTO\")})"
 		   });			
 		addAnnotation
 		  (getPerson_Id(), 
@@ -256,13 +249,13 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		  (getPerson_Address(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"person_address\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t"
+			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"PERSON_ADDRESS\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t"
 		   });			
 		addAnnotation
 		  (getPerson_Photo(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"person_photo\" length=\"1000000\")"
+			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"PERSON_PHOTO\" length=\"1000000\")"
 		   });	
 	}
 
