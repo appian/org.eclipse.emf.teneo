@@ -44,7 +44,7 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 
 	private static final byte[] PHOTO = new byte[64 * 1024];
 
-	private static final String VERIFICATION_QUERY = "SELECT * FROM PERSON as A INNER JOIN PERSON_ADDRESS as B ON A.ID = B.ID "
+	private static final String VERIFICATION_QUERY = "SELECT * FROM PERSON as A INNER JOIN \"person_address\" as B ON A.ID = B.ID "
 			+ "INNER JOIN PERSON_PHOTO as C ON A.ID = C.ID";
 
 	public SecondarytableHibernateAction() {
@@ -67,6 +67,8 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
+		props.setProperty(PersistenceOptions.AUTO_ADAPT_MANUAL_SET_SQL_NAMES, "false");
+		
 		return props;
 	}
 

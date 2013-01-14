@@ -237,7 +237,7 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"PERSON_ADDRESS\"),\n\t\t\t\t@SecondaryTable(name=\"PERSON_PHOTO\")})"
+			 "appinfo", "@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"person_address\"),\n\t\t\t\t@SecondaryTable(name=\"PERSON_PHOTO\")})"
 		   });			
 		addAnnotation
 		  (getPerson_Id(), 
@@ -249,7 +249,7 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		  (getPerson_Address(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"PERSON_ADDRESS\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t"
+			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"person_address\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t"
 		   });			
 		addAnnotation
 		  (getPerson_Photo(), 

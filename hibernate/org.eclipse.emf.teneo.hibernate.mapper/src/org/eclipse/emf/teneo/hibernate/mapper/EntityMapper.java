@@ -615,7 +615,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			// -join
 			final Element joinElement = getHbmContext().getCurrent().addElement("join");
 			joinElement.addAttribute("table",
-					getHbmContext().trunc(null, secondaryTable.getName().toUpperCase(), false));
+					getHbmContext().trunc(secondaryTable, (secondaryTable.isGenerated() ? secondaryTable.getName().toUpperCase() : secondaryTable.getName()), false));
 			log.debug("Mapping features to secondary table \"" + secondaryTable.getName() + "\"");
 			if (secondaryTable.getCatalog() != null) {
 				joinElement.addAttribute("catalog", secondaryTable.getCatalog());

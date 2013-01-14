@@ -5,7 +5,7 @@
 		<xsd:annotation>
 			<!-- Declare two secondary tables. -->
 			<xsd:appinfo source="teneo.jpa">@SecondaryTables({
-				@SecondaryTable(name="PERSON_ADDRESS"),
+				@SecondaryTable(name="person_address"),
 				@SecondaryTable(name="PERSON_PHOTO")})</xsd:appinfo>
 		</xsd:annotation>
 		<xsd:sequence>
@@ -18,7 +18,7 @@
 			<xsd:element name="address" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.jpa">@Lob
-					@Column(table="PERSON_ADDRESS" nullable=false)
+					@Column(table="person_address" nullable=false)
 					@Basic(optional=false)
 					</xsd:appinfo>
 				</xsd:annotation>

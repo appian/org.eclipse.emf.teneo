@@ -4,7 +4,7 @@
     nsPrefix="secondarytablehibernate">
   <eClassifiers xsi:type="ecore:EClass" name="Person">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="@SecondaryTables({&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;PERSON_ADDRESS&quot;),&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;PERSON_PHOTO&quot;)})"/>
+      <details key="appinfo" value="@SecondaryTables({&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;person_address&quot;),&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;PERSON_PHOTO&quot;)})"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Person"/>
@@ -28,7 +28,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;PERSON_ADDRESS&quot; nullable=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Basic(optional=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+        <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;person_address&quot; nullable=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Basic(optional=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
