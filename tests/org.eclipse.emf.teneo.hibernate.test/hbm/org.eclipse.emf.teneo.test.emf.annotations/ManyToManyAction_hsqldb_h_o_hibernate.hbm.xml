@@ -16,7 +16,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="rght" lazy="false" cascade="merge,persist,save-update,lock" table="`RIGHTCENTER`">
-			<key update="true">
+			<key foreign-key="CNTR_RGHT_KEY" update="true">
 				<column name="`CNTR_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Rght" unique="false" foreign-key="CNTR_RGHT">
@@ -24,7 +24,7 @@
 			</many-to-many>
 		</bag>
 		<list name="lft" lazy="false" cascade="merge,persist,save-update,lock" table="`CNTR_LFT`">
-			<key update="true">
+			<key foreign-key="CNTR_LFT_KEY" update="true">
 				<column name="`CNTR_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`CNTR_LFT_IDX`"/>
@@ -47,7 +47,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="cntr" lazy="true" cascade="merge,persist,save-update,lock" table="`LFT_CNTR`">
-			<key update="true">
+			<key foreign-key="LFT_CNTR_KEY" update="true">
 				<column name="`LFT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LFT_CNTR_IDX`"/>
@@ -70,7 +70,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="cntr" lazy="true" cascade="merge,persist,save-update,lock" inverse="true" table="`RIGHTCENTER`">
-			<key update="true">
+			<key foreign-key="RGHT_CNTR_KEY" update="true">
 				<column name="`RGHT_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Cntr" unique="false" foreign-key="RGHT_CNTR">

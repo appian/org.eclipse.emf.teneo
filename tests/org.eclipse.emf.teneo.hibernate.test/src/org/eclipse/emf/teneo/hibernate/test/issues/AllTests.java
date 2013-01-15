@@ -54,7 +54,6 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
-
 		// suite.addTestSuite(PersistUMLAction.class);
 		suite.addTestSuite(Bz387421Action.class);
 		suite.addTestSuite(NonMandatoryJoinColumnAction.class);
@@ -125,6 +124,7 @@ public class AllTests {
 		suite.addTestSuite(BZ237994Action.class);
 		suite.addTestSuite(BZ237790Action.class);
 		suite.addTestSuite(BZ237498Action.class);
+		suite.addTestSuite(Bz398161Action.class);
 
 		// disabled some more tests as the build server seems to fail after so
 		// many tests

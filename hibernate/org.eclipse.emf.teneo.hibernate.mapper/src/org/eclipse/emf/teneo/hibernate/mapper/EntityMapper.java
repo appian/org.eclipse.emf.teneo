@@ -665,8 +665,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			final Element columnElement = jcElement.addElement("column");
 
 			if (pkJC.getColumnDefinition() != null) {
-				log.error("Unsupported column definition in primary key join column " + pkJC);
-				throw new MappingException("Unsupported column definition in primary key join column", pkJC);
+				columnElement.addAttribute("sql-type", pkJC.getColumnDefinition());
 			}
 
 			if (pkJC.getName() != null) {

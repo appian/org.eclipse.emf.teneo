@@ -20,7 +20,7 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="friends" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`PERSON_PERSON`">
-			<key update="true">
+			<key foreign-key="PERSON_FRIENDS_KEY" update="true">
 				<column name="`PERSON_FRIENDS_FIRSTNAME`" unique="false"/>
 				<column name="`PERSON_FRIENDS_LASTNAME`" unique="false"/>
 			</key>
@@ -30,7 +30,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="oppositeFriends" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`PERSON_PERSON`">
-			<key update="true">
+			<key foreign-key="PERSON_OPPOSITEFRIENDS_KEY" update="true">
 				<column name="`PERSON_OPPOSITEFRIENDS_FIRSTNAME`" unique="false"/>
 				<column name="`PERSON_OPPOSITEFRIENDS_LASTNAME`" unique="false"/>
 			</key>

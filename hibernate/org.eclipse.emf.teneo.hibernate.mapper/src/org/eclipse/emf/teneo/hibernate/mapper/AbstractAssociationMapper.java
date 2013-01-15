@@ -271,6 +271,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				}
 			}
 
+			if (joinColumn.getColumnDefinition() != null) {
+				columnElement.addAttribute("sql-type", joinColumn.getColumnDefinition());
+			}
+
 		}
 		// ugly but effective
 		if (associationElement.getName().compareTo("map-key-many-to-many") != 0
@@ -279,6 +283,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			associationElement.addAttribute("insert", Boolean.toString(insertable));
 			associationElement.addAttribute("update", Boolean.toString(updatable));
 		}
+
 	}
 
 	/**

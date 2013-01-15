@@ -16,7 +16,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="yourItem" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`MYITEM_YOURITEM`">
-			<key update="true">
+			<key foreign-key="MYITEM_YOURITEM_KEY" update="true">
 				<column name="`MYITEM_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="YourItem" unique="false" foreign-key="MYITEM_YOURITEM">
@@ -38,7 +38,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="myItem" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MYITEM_YOURITEM`">
-			<key update="true">
+			<key foreign-key="YOURITEM_MYITEM_KEY" update="true">
 				<column name="`YOURITEM_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="MyItem" unique="false" foreign-key="YOURITEM_MYITEM">

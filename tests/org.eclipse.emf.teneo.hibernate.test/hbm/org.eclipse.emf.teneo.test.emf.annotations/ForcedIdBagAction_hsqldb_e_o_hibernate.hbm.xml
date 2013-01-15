@@ -19,7 +19,7 @@
 			<collection-id column="idbag_id" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="ROLE_USERS_KEY" update="true">
 				<column name="`ROLE_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="User" unique="false" foreign-key="ROLE_USERS">
@@ -44,7 +44,7 @@
 			<collection-id column="idbag_id" type="long">
 				<generator class="increment"/>
 			</collection-id>
-			<key update="true">
+			<key foreign-key="USER_ROLES_KEY" update="true">
 				<column name="`USER_E_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Role" unique="false" foreign-key="USER_ROLES">
