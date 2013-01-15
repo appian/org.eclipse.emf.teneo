@@ -119,7 +119,7 @@ public interface TeneoAuditEntry extends EObject {
 	 * @return the value of the '<em>Teneo owner object id</em>' attribute.
 	 * @see #setTeneo_owner_object_id(String)
 	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoauditingPackage#getTeneoAuditEntry_Teneo_owner_object_id()
-	 * @model annotation="teneo.jpa value='@Column(index=\"teneo_derived_object\")'"
+	 * @model
 	 * @generated
 	 */
 	String getTeneo_owner_object_id();

@@ -407,12 +407,6 @@ public class TeneoauditingPackageImpl extends EPackageImpl implements Teneoaudit
 			 "value", "@Version"
 		   });		
 		addAnnotation
-		  (getTeneoAuditEntry_Teneo_owner_object_id(), 
-		   source, 
-		   new String[] {
-			 "value", "@Column(index=\"teneo_derived_object\")"
-		   });		
-		addAnnotation
 		  (teneoAuditCommitInfoEClass, 
 		   source, 
 		   new String[] {
