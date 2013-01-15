@@ -61,6 +61,8 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		System.err.println(store.getMappingXML());
+
 		testSimpleChange(store);
 		testContainer(store);
 		testQuery(store);
@@ -266,7 +268,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 				store.beginTransaction();
 				final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
 				final Query qry = testStore.getSession().createQuery(
-						"select e from BookAuditing e where author=:author");
+						"select e from " + getAuditEntityName("Book") + " e where author=:author");
 				final String idString = vp.getIdString(w);
 				qry.setParameter("author", idString);
 				final List<?> list = qry.list();
@@ -281,7 +283,7 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 				store.beginTransaction();
 				final AuditVersionProvider vp = testStore.getEmfDataStore().getAuditVersionProvider();
 				final Query qry = testStore.getSession().createQuery(
-						"select e from BookAuditing e where pages=1 and author=:author");
+						"select e from " + getAuditEntityName("Book") + " e where pages=1 and author=:author");
 				qry.setParameter("author", vp.getIdString(w));
 				final List<?> list = qry.list();
 				assertTrue(list.size() == 1);
@@ -355,5 +357,9 @@ public class SimpleLibraryAuditingAction extends AbstractTestAction {
 			assertTrue(size1 > entries.size());
 			store.commitTransaction();
 		}
+	}
+
+	protected String getAuditEntityName(String eClassName) {
+		return eClassName + "Auditing";
 	}
 }
