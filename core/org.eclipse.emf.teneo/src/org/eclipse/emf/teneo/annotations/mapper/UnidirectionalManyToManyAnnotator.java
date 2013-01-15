@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Annotates a many-to-many which is handled from one side.
@@ -74,6 +75,11 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator imp
 		if (joinTable == null) {
 			joinTable = getFactory().createJoinTable();
 			aReference.setJoinTable(joinTable);
+			if (StoreUtil.isAuditEntryEClass(aReference.getModelEReference().getEContainingClass())
+					&& getPersistenceOptions().getAuditingDBSchema() != null
+					&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
+				joinTable.setSchema(getPersistenceOptions().getAuditingDBSchema());
+			}
 		}
 		joinTable.setEModelElement(eReference);
 

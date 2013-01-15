@@ -199,6 +199,11 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			if (joinTable == null) {
 				joinTable = getFactory().createJoinTable();
 				aReference.setJoinTable(joinTable);
+				if (StoreUtil.isAuditEntryEClass(aReference.getModelEReference().getEContainingClass())
+						&& getPersistenceOptions().getAuditingDBSchema() != null
+						&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
+					joinTable.setSchema(getPersistenceOptions().getAuditingDBSchema());
+				}
 			}
 			joinTable.setEModelElement(eReference);
 

@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Annotates a one-to-many attribute (an eattribute with ismany=true), an example is a list of
@@ -109,6 +110,12 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 			final JoinTable jt = getFactory().createJoinTable();
 			jt.setName(getSqlNameStrategy().getJoinTableName(aAttribute));
 			aAttribute.setJoinTable(jt);
+			if (StoreUtil.isAuditEntryEClass(aAttribute.getModelEAttribute().getEContainingClass())
+					&& getPersistenceOptions().getAuditingDBSchema() != null
+					&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
+				jt.setSchema(getPersistenceOptions().getAuditingDBSchema());
+			}
+
 		}
 
 		if (aAttribute.getJoinColumns().size() == 0) {
