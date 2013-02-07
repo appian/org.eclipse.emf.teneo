@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src" modelPluginID="org.eclipse.emf.teneo.samples"
+    modelName="Bz400088" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false">
+  <foreignModel>bz400088.ecore</foreignModel>
+  <genPackages prefix="Bz400088" basePackage="org.eclipse.emf.teneo.samples.issues"
+      disposableProviderFactory="true" ecorePackage="bz400088.ecore#/">
+    <genClasses ecoreClass="bz400088.ecore#//Case1">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bz400088.ecore#//Case1/case2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz400088.ecore#//Case1/bdsId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz400088.ecore#//Case1/bdsVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="bz400088.ecore#//Case2">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bz400088.ecore#//Case2/case1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz400088.ecore#//Case2/bdsId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz400088.ecore#//Case2/bdsVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="bz400088.ecore#//Ref400088">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bz400088.ecore#//Ref400088/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="bz400088.ecore#//RefOther400088">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference bz400088.ecore#//RefOther400088/refOther"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

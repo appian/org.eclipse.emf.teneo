@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bz400088" nsURI="http://www.eclipse.org/emf/teneo/samples/issues/bz400088"
+    nsPrefix="bz400088">
+  <eClassifiers xsi:type="ecore:EClass" name="Case1">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Case1"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Table(name=&quot;ROBTEST_CASE1&quot;) @Entity(name=&quot;com.example.robtest.Case1&quot;) @DiscriminatorValue(&quot;com.example.robtest.Case1&quot;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="case2" upperBound="-1"
+        eType="#//Case2" eOpposite="#//Case2/case1">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="case2"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@JoinTable(name=&quot;ROBTEST_CASE1_CASE2&quot;) @Column(name=&quot;CASE2&quot;) @ForeignKey(name=&quot;CASE1_CASE2&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bdsId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id @Column(name=&quot;BDS_ID&quot;, nullable=&quot;false&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bdsVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Column(name=&quot;BDS_VERSION&quot;) @Version"/>
+      </eAnnotations>
+      <eAnnotations source="bds">
+        <details key="isVersion" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Case2">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Case2"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Table(name=&quot;ROBTEST_CASE2&quot;) @Entity(name=&quot;com.example.robtest.Case2&quot;) @DiscriminatorValue(&quot;com.example.robtest.Case2&quot;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="case1" eType="#//Case1"
+        eOpposite="#//Case1/case2">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="case1"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Column(name=&quot;CASE&quot;) @ForeignKey(name=&quot;CASE2_CASE1&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bdsId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id @Column(name=&quot;BDS_ID&quot;, nullable=&quot;false&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bdsVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Column(name=&quot;BDS_VERSION&quot;) @Version"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ref400088">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Entity(name=&quot;org.eclipse.emf.teneo.samples.issues.bz4000888.Ref400088&quot;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" upperBound="-1" eType="#//RefOther400088"
+        unsettable="true" containment="true" resolveProxies="false" eOpposite="#//RefOther400088/refOther"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefOther400088">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Entity(name=&quot;org.eclipse.emf.teneo.samples.issues.bz4000888.RefOther400088&quot;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refOther" eType="#//Ref400088"
+        eOpposite="#//Ref400088/ref"/>
+  </eClassifiers>
+</ecore:EPackage>
