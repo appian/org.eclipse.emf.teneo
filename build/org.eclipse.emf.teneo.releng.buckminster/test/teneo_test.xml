@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 
+<!--
 Copyright (c) 2010 Cloudsmith Inc, Martin Taal (Doorn, The Netherlands) and others.
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		toolsPath: path containing buckminster
 		buildSitePath: the path to which the p2 site should be copied
 		buildZipsPath: the path to the directory with zip files
-		
+
 		buckminster.output.root
 		buckminster.temp.root
 	-->
@@ -38,14 +38,14 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<mkdir dir="${targetPlatformPath}" />
 		<mkdir dir="${workspacePath}" />
-		
+
 		<echo message="Setting jre to ${env.JAVA_HOME}"/>
 		<buckminster command="installJRE" workspace="${workspacePath}">
 		    <cmdargs>
 		       <arg value="--location" />
 		       <arg value="${env.JAVA_HOME}" />
 		    </cmdargs>
-		</buckminster> 
+		</buckminster>
 
 		<echo message="Using workspace ${workspacePath}" />
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
@@ -67,11 +67,11 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<buckminster command="build" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="--thorough" />
-			</cmdargs>		
+			</cmdargs>
 		</buckminster>
 
 		<echo message="Running tests Hibernate" />
-		<buckminster command="emma" workspace="${workspacePath}">
+		<buckminster command="junit" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="-l" />
 				<arg value="org.eclipse.emf.teneo.hibernate.test/AllTests.launch" />
@@ -81,8 +81,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${testResultsPath}/output/stdout.txt" />
 				<arg value="--stderr" />
 				<arg value="${testResultsPath}/output/stderr.txt" />
-				<arg value="--xml" />
-				<arg value="${testResultsPath}/output/hibernate-coverageReport.xml" />
 				<arg value="--flatXML"/>
 			</cmdargs>
 		</buckminster>

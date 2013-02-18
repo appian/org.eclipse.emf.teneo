@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 
+<!--
 Copyright (c) 2010 Cloudsmith Inc, Martin Taal (Doorn, The Netherlands) and others.
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
@@ -93,14 +93,14 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
-		
+
 		<echo message="Testing" />
 		<ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" />
 
 		<computeVersionQualifier directory="${rootPath}/output/org.eclipse.emf.teneo_${teneo.version}-osgi.bundle/jar" pattern="org.eclipse.emf.teneo*.jar"/>
-		
+
 		<echo message="Creating maven jars with versionQualifier ${versionQualifier}" />
-		
+
 		<property name="mavenVersion" value="${teneo.version}-${versionQualifier}" />
 		<property name="teneoVersion" value="${teneo.version}.${versionQualifier}" />
 
@@ -119,7 +119,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${promoteUpdateSite}"/>
 		<mkdir dir="${promoteUpdateSite}/plugins"/>
 		<mkdir dir="${promoteUpdateSite}/features"/>
-		
+
 		<copy todir="${promoteUpdateSite}">
 			<fileset dir="${buildSitePath}">
 				<include name="**/*" />
@@ -129,7 +129,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<mkdir dir="${promoteDropsLocation}"/>
 		<mkdir dir="${promoteDropsLocation}/${teneo.version}"/>
-		<mkdir dir="${promoteDropsLocation}/${teneo.version}/${build.type}${buildTimestamp}"/>		
+		<mkdir dir="${promoteDropsLocation}/${teneo.version}/${build.type}${buildTimestamp}"/>
 		<copy todir="${promoteDropsLocation}/${teneo.version}/${build.type}${buildTimestamp}">
 			<fileset dir="${buildZipsPath}">
 				<include name="*.zip" />
@@ -181,7 +181,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
 
 		<echo message="Using eclipse download: ${eclipse.download}"/>
-		
+
 	</target>
 
 	<target name="get.director" unless="director.exists">
@@ -222,8 +222,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="org.eclipse.buckminster.pde.headless.feature.feature.group" />
 				<arg value="-i" />
 				<arg value="org.eclipse.buckminster.git.headless.feature.feature.group" />
-				<arg value="-i" />
-				<arg value="org.eclipse.buckminster.emma.headless.feature.feature.group" />
 			</args>
 		</eclipse.launch>
 	</target>
