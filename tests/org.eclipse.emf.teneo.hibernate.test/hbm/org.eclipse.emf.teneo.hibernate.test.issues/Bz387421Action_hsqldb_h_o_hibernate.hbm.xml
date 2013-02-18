@@ -1806,7 +1806,7 @@
 		<meta attribute="eclassName" inherit="false">InputSet</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="dataInputRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`BPMN2_DATAINPUT_BPMN2_INPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_INPUTSET_DATAINPUTREFS_KEY" update="true">
 				<column name="`INPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.DataInput" unique="false" foreign-key="BPMN2_INPUTSET_DATAINPUTREFS">
@@ -1814,7 +1814,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="optionalInputRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`BPMN2_DATAINPUT_BPMN2_INPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_INPUTSET_OPTIONALINPUTREFS_KEY" update="true">
 				<column name="`INPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.DataInput" unique="false" foreign-key="BPMN2_INPUTSET_OPTIONALINPUTREFS">
@@ -1822,7 +1822,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="whileExecutingInputRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`BPMN2_DATAINPUT_BPMN2_INPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_INPUTSET_WHILEEXECUTINGINPUTREFS_KEY" update="true">
 				<column name="`INPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.DataInput" unique="false" foreign-key="BPMN2_INPUTSET_WHILEEXECUTINGINPUTREFS">
@@ -1830,7 +1830,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="outputSetRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`BPMN2_INPUTSET_BPMN2_OUTPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_INPUTSET_OUTPUTSETREFS_KEY" update="true">
 				<column name="`INPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.OutputSet" unique="false" foreign-key="BPMN2_INPUTSET_OUTPUTSETREFS">
@@ -1906,7 +1906,7 @@
 			<column not-null="false" unique="false" name="`BASEELEMENT_PARTITIONELEMENT_ID`"/>
 		</many-to-one>
 		<bag name="flowNodeRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`BPMN2_FLOWNODE_BPMN2_LANE`">
-			<key update="true">
+			<key foreign-key="BPMN2_LANE_FLOWNODEREFS_KEY" update="true">
 				<column name="`LANE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.FlowNode" unique="false" foreign-key="BPMN2_LANE_FLOWNODEREFS">
@@ -2090,7 +2090,7 @@
 		<meta attribute="eclassName" inherit="false">OutputSet</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/BPMN/20100524/MODEL-XMI</meta>
 		<bag name="dataOutputRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`BPMN2_DATAOUTPUT_BPMN2_OUTPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_OUTPUTSET_DATAOUTPUTREFS_KEY" update="true">
 				<column name="`OUTPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.DataOutput" unique="false" foreign-key="BPMN2_OUTPUTSET_DATAOUTPUTREFS">
@@ -2098,7 +2098,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="optionalOutputRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`BPMN2_DATAOUTPUT_BPMN2_OUTPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_OUTPUTSET_OPTIONALOUTPUTREFS_KEY" update="true">
 				<column name="`OUTPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.DataOutput" unique="false" foreign-key="BPMN2_OUTPUTSET_OPTIONALOUTPUTREFS">
@@ -2106,7 +2106,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="whileExecutingOutputRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`BPMN2_DATAOUTPUT_BPMN2_OUTPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_OUTPUTSET_WHILEEXECUTINGOUTPUTREFS_KEY" update="true">
 				<column name="`OUTPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.DataOutput" unique="false" foreign-key="BPMN2_OUTPUTSET_WHILEEXECUTINGOUTPUTREFS">
@@ -2114,7 +2114,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="inputSetRefs" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`BPMN2_INPUTSET_BPMN2_OUTPUTSET`">
-			<key update="true">
+			<key foreign-key="BPMN2_OUTPUTSET_INPUTSETREFS_KEY" update="true">
 				<column name="`OUTPUTSET_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="bpmn2.InputSet" unique="false" foreign-key="BPMN2_OUTPUTSET_INPUTSETREFS">

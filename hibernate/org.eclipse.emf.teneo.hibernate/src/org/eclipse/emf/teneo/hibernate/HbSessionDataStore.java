@@ -188,6 +188,9 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 		}
 		final Interceptor interceptor = getHbContext().createInterceptor(getHibernateConfiguration(),
 				getEntityNameStrategy());
+		if (interceptor instanceof EMFInterceptor) {
+			((EMFInterceptor) interceptor).setDataStore(this);
+		}
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}

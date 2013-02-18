@@ -74,7 +74,13 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 		}
 
 		if (mtm.getTargetEntity() == null) {
-			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			if (aReference.getAReferenceType() != null
+					&& aReference.getAReferenceType().getEntity() != null
+					&& aReference.getAReferenceType().getEntity().getName() != null) {
+				mtm.setTargetEntity(aReference.getAReferenceType().getEntity().getName());
+			} else {
+				mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			}
 		}
 
 		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
@@ -104,7 +110,7 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 			joinTable = getFactory().createJoinTable();
 			aReference.setJoinTable(joinTable);
 			if (StoreUtil
-					.isAuditEntryEClass(aReference.getModelEReference().getEContainingClass()) 
+.isAuditEntryEClass(aReference.getModelEReference().getEContainingClass())
 							&& getPersistenceOptions().getAuditingDBSchema() != null
 							&& getPersistenceOptions().getAuditingDBSchema().length() > 0) {
 				joinTable.setSchema(getPersistenceOptions().getAuditingDBSchema());

@@ -77,7 +77,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="systems" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`DOMAIN_SYSTEM`">
-			<key update="true">
+			<key foreign-key="DOMAIN_SYSTEMS_KEY" update="true">
 				<column name="`DOMAIN_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="DomainSystem" unique="false" foreign-key="DOMAIN_SYSTEMS">
@@ -108,7 +108,7 @@
 			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
 		</property>
 		<bag name="domains" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`DOMAIN_SYSTEM`">
-			<key update="true">
+			<key foreign-key="DOMAINSYSTEM_DOMAINS_KEY" update="true">
 				<column name="`SYSTEM_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Domain" unique="false" foreign-key="DOMAINSYSTEM_DOMAINS">
@@ -116,7 +116,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="opsSystem" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_DOMAINSYSTEM_OPSSYSTEM`">
-			<key update="true">
+			<key foreign-key="DOMAINSYSTEM_OPSSYSTEM_KEY" update="true">
 				<column name="`DOMAINSYSTEM_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="OpsSystem" unique="false" foreign-key="DOMAINSYSTEM_OPSSYSTEM">
@@ -255,7 +255,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="role" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_ROLE_INTERFACE`">
-			<key update="true">
+			<key foreign-key="INTERFACE_ROLE_KEY" update="true">
 				<column name="`INTERFACE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Role" unique="false" foreign-key="INTERFACE_ROLE">
@@ -318,7 +318,7 @@
 			<column not-null="false" unique="false" name="`SHARED`"/>
 		</property>
 		<bag name="ipName" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_IP_IPNAME`">
-			<key update="true">
+			<key foreign-key="IP_IPNAME_KEY" update="true">
 				<column name="`IP_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="IPName" unique="false" foreign-key="IP_IPNAME">
@@ -326,7 +326,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="vserver" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_VSERVER_IP`">
-			<key update="true">
+			<key foreign-key="IP_VSERVER_KEY" update="true">
 				<column name="`IP_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="VServer" unique="false" foreign-key="IP_VSERVER">
@@ -389,7 +389,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="ip" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_IP_IPNAME`">
-			<key update="true">
+			<key foreign-key="IPNAME_IP_KEY" update="true">
 				<column name="`IPNAME_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="IP" unique="false" foreign-key="IPNAME_IP">
@@ -437,7 +437,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<bag name="interface" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_ROLE_INTERFACE`">
-			<key update="true">
+			<key foreign-key="ROLE_INTERFACE_KEY" update="true">
 				<column name="`ROLE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Interface" unique="false" foreign-key="ROLE_INTERFACE">
@@ -451,7 +451,7 @@
 			<one-to-many entity-name="VServer"/>
 		</bag>
 		<bag name="requiredInterface" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_ROLE_REQUREDINTERFACE`">
-			<key update="true">
+			<key foreign-key="ROLE_REQUIREDINTERFACE_KEY" update="true">
 				<column name="`ROLE_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="Interface" unique="false" foreign-key="ROLE_REQUIREDINTERFACE"/>
@@ -489,7 +489,7 @@
 			<one-to-many entity-name="VServer"/>
 		</bag>
 		<bag name="servingVserver" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_VSERVER_OPSSYSTEM`">
-			<key update="true">
+			<key foreign-key="OPSSYSTEM_SERVINGVSERVER_KEY" update="true">
 				<column name="`OPSSYSTEM_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="VServer" unique="false" foreign-key="OPSSYSTEM_SERVINGVSERVER">
@@ -497,7 +497,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="domainSystem" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_DOMAINSYSTEM_OPSSYSTEM`">
-			<key update="true">
+			<key foreign-key="OPSSYSTEM_DOMAINSYSTEM_KEY" update="true">
 				<column name="`OPSSYSTEM_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="DomainSystem" unique="false" foreign-key="OPSSYSTEM_DOMAINSYSTEM">
@@ -534,7 +534,7 @@
 			<column not-null="false" unique="false" name="`OWN_OPSSYSTEM_ID`"/>
 		</many-to-one>
 		<bag name="servedSystem" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_VSERVER_OPSSYSTEM`">
-			<key update="true">
+			<key foreign-key="VSERVER_SERVEDSYSTEM_KEY" update="true">
 				<column name="`VSERVER_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="OpsSystem" unique="false" foreign-key="VSERVER_SERVEDSYSTEM">
@@ -542,7 +542,7 @@
 			</many-to-many>
 		</bag>
 		<bag name="ip" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_VSERVER_IP`">
-			<key update="true">
+			<key foreign-key="VSERVER_IP_KEY" update="true">
 				<column name="`VSERVER_ID`" unique="false"/>
 			</key>
 			<many-to-many entity-name="IP" unique="false" foreign-key="VSERVER_IP">

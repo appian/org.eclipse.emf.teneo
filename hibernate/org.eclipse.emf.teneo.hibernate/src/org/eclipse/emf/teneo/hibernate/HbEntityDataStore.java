@@ -190,6 +190,9 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		}
 		final Interceptor interceptor = getHbContext().createInterceptor(getHibernateConfiguration(),
 				getEntityNameStrategy());
+		if (interceptor instanceof EMFInterceptor) {
+			((EMFInterceptor) interceptor).setDataStore(this);
+		}
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}

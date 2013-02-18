@@ -1726,6 +1726,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 	 */
 	public void setMappingXML(String mappingXML) {
 		this.mappingXML = mappingXML;
+		System.err.println(mappingXML);
 	}
 
 	/**

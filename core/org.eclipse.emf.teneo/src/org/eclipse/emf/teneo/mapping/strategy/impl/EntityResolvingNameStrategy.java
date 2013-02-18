@@ -32,8 +32,8 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * This implementation will first use the name of the entity annotation and then the EClass name. For the DocumentRoot
- * the EClass name is always prefixed with the EPackage namespace.
+ * This implementation will first use the name of the entity annotation and then the EClass name.
+ * For the DocumentRoot the EClass name is always prefixed with the EPackage namespace.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.12 $

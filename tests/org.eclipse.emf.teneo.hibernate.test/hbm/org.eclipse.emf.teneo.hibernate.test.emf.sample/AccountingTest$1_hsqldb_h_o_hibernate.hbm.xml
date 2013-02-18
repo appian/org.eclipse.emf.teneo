@@ -91,7 +91,7 @@
 		<meta attribute="eclassName" inherit="false">BalanceAccount</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/accounting</meta>
 		<list name="report" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`BALANCEACCOUNT_REPORTGROUP`">
-			<key update="true">
+			<key foreign-key="BALANCEACCOUNT_REPORT_KEY" update="true">
 				<column name="`BALANCEACCOUNT_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BALANCEACCOUNT_REPORT_IDX`"/>
@@ -214,7 +214,7 @@
 			<one-to-many entity-name="ReportGroup"/>
 		</list>
 		<list name="account" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`REPORTGROUP_BALANCEACCOUNT`">
-			<key update="true">
+			<key foreign-key="REPORTGROUP_ACCOUNT_KEY" update="true">
 				<column name="`REPORTGROUP_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`REPORTGROUP_ACCOUNT_IDX`"/>
@@ -283,7 +283,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -338,7 +338,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -400,7 +400,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -493,7 +493,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -562,7 +562,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -636,7 +636,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -697,7 +697,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -766,7 +766,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>

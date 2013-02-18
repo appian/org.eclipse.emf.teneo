@@ -24,6 +24,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.extension.ExtensionInitializable;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
@@ -104,6 +105,8 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint,
 
 	private ExtensionManager extensionManager;
 
+	private HbDataStore dataStore;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -130,9 +133,19 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint,
 	 */
 	@Override
 	public String getEntityName(Object object) {
+
 		if (object instanceof EObject) {
 			// TODO handle featuremap
 			EObject eobj = (EObject) object;
+			if (dataStore != null) {
+				try {
+					final PAnnotatedEClass paClass = dataStore.getPaModel().getPAnnotated(eobj.eClass());
+					if (paClass.getEntity() != null && paClass.getEntity().getName() != null) {
+						return paClass.getEntity().getName();
+					}
+				} catch (IllegalArgumentException ignore) {
+				}
+			}
 			return qualifyStrategy.toEntityName(eobj.eClass());
 		}
 
@@ -186,6 +199,14 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint,
 			}
 		}
 		super.afterTransactionCompletion(tx);
+	}
+
+	public HbDataStore getDataStore() {
+		return dataStore;
+	}
+
+	public void setDataStore(HbDataStore dataStore) {
+		this.dataStore = dataStore;
 	}
 
 	/**

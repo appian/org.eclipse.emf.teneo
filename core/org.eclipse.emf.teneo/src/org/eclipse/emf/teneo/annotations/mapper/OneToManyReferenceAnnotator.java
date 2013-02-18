@@ -155,7 +155,16 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 		// this should
 		// be added here
 		if (otm.getTargetEntity() == null) {
-			otm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			final boolean isMap = getPersistenceOptions().isMapEMapAsTrueMap()
+					&& StoreUtil.isMapEntry(aReference.getEReferenceType());
+
+			if (!isMap && aReference.getAReferenceType() != null
+					&& aReference.getAReferenceType().getEntity() != null
+					&& aReference.getAReferenceType().getEntity().getName() != null) {
+				otm.setTargetEntity(aReference.getAReferenceType().getEntity().getName());
+			} else {
+				otm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			}
 		}
 
 		// set unique and indexed

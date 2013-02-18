@@ -38,7 +38,7 @@
 		</version>
 		<many-to-one name="case1" entity-name="com.example.robtest.Case1" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CASE2_CASE1" insert="true" update="true" not-null="false"/>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.issues.bz400088.impl.Ref400088Impl" entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.Ref400088" abstract="false" lazy="false" discriminator-value="org.eclipse.emf.teneo.samples.issues.bz4000888.Ref400088" table="`ORG_ECLIPSE_EMF_TENEO_SAMPLES_ISSUES_BZ4000888_REF400088`">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz400088.impl.Ref400088Impl" entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.Ref400088" abstract="false" lazy="false" discriminator-value="bz400088.Ref400088" table="`BZ400088_REF400088`">
 		<meta attribute="eclassName" inherit="false">Ref400088</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz400088</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
@@ -46,7 +46,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="ORG_ECLIPSE_EMF_TENEO_SAMPLES_ISSUES_BZ4000888_REF400088DTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="BZ400088_REF400088DTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
@@ -59,7 +59,7 @@
 			<one-to-many entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.RefOther400088"/>
 		</list>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.issues.bz400088.impl.RefOther400088Impl" entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.RefOther400088" abstract="false" lazy="false" discriminator-value="org.eclipse.emf.teneo.samples.issues.bz4000888.RefOther400088" table="`ORG_ECLIPSE_EMF_TENEO_SAMPLES_ISSUES_BZ4000888_REFOTHER400088`">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz400088.impl.RefOther400088Impl" entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.RefOther400088" abstract="false" lazy="false" discriminator-value="bz400088.RefOther400088" table="`BZ400088_REFOTHER400088`">
 		<meta attribute="eclassName" inherit="false">RefOther400088</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz400088</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
@@ -67,16 +67,16 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="ORG_ECLIPSE_EMF_TENEO_SAMPLES_ISSUES_BZ4000888_REFOTHER400088DTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="BZ400088_REFOTHER400088DTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<many-to-one name="refOther" entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.Ref400088" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ORG_ECLIPSE_EMF_TENEO_SAMPLES_ISSUES_BZ4000888_REFOTHER400088_REFOTHER" insert="false" update="false" not-null="false">
+		<many-to-one name="refOther" entity-name="org.eclipse.emf.teneo.samples.issues.bz4000888.Ref400088" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BZ400088_REFOTHER400088_REFOTHER" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`REFOTHER400088_REFOTHER_E_ID`"/>
 		</many-to-one>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" discriminator-value="TeneoAuditCommitInfo" table="`TENEOAUDITCOMMITINFO`">
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="teneoauditing.TeneoAuditCommitInfo" abstract="false" lazy="false" discriminator-value="teneoauditing.TeneoAuditCommitInfo" table="`TENEOAUDITING_TENEOAUDITCOMMITINFO`">
 		<meta attribute="eclassName" inherit="false">TeneoAuditCommitInfo</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/hibernate/auditing</meta>
 		<id name="id" type="long" unsaved-value="0">
@@ -84,7 +84,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="TENEOAUDITCOMMITINFODTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="TENEOAUDITING_TENEOAUDITCOMMITINFODTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="version" type="long">
 			<column not-null="true" unique="false" name="`VERSION`"/>
@@ -99,7 +99,7 @@
 			<column not-null="false" unique="false" name="`COMMITTIME`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="Case1Auditing" abstract="false" lazy="false" discriminator-value="Case1Auditing" table="`CASE1AUDITING`">
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bz400088Auditing.Case1Auditing" abstract="false" lazy="false" discriminator-value="bz400088Auditing.Case1Auditing" table="`BZ400088AUDITING_CASE1AUDITING`">
 		<meta attribute="eclassName" inherit="false">Case1Auditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz400088Auditing</meta>
 		<id name="teneo_audit_id" type="long" unsaved-value="0">
@@ -107,7 +107,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="CASE1AUDITINGDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="BZ400088AUDITING_CASE1AUDITINGDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="teneo_version" type="long">
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
@@ -124,7 +124,7 @@
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CASE1AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+		<many-to-one name="teneo_commit_info" entity-name="teneoauditing.TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BZ400088AUDITING_CASE1AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
 		</many-to-one>
 		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
@@ -150,8 +150,8 @@
 		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
-		<list name="case2" table="`CASE1AUDITING_CASE2AUDITING`" lazy="true" cascade="all">
-			<key foreign-key="CASE1AUDITING_CASE2_KEY" update="true">
+		<list name="case2" table="`BZ400088AUDITING_CASE1AUDITING_CASE2AUDITING`" lazy="true" cascade="all">
+			<key foreign-key="BZ400088AUDITING_CASE1AUDITING_CASE2_KEY" update="true">
 				<column name="`CASE1AUDITING_CASE2_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`CASE1AUDITING_CASE2_IDX`"/>
@@ -164,7 +164,7 @@
 			<column not-null="false" unique="false" name="`BDSVERSION`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="Case2Auditing" abstract="false" lazy="false" discriminator-value="Case2Auditing" table="`CASE2AUDITING`">
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bz400088Auditing.Case2Auditing" abstract="false" lazy="false" discriminator-value="bz400088Auditing.Case2Auditing" table="`BZ400088AUDITING_CASE2AUDITING`">
 		<meta attribute="eclassName" inherit="false">Case2Auditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz400088Auditing</meta>
 		<id name="teneo_audit_id" type="long" unsaved-value="0">
@@ -172,7 +172,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="CASE2AUDITINGDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="BZ400088AUDITING_CASE2AUDITINGDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="teneo_version" type="long">
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
@@ -189,7 +189,7 @@
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CASE2AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+		<many-to-one name="teneo_commit_info" entity-name="teneoauditing.TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BZ400088AUDITING_CASE2AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
 		</many-to-one>
 		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
@@ -225,7 +225,7 @@
 			<column not-null="false" unique="false" name="`BDSVERSION`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="Ref400088Auditing" abstract="false" lazy="false" discriminator-value="Ref400088Auditing" table="`REF400088AUDITING`">
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bz400088Auditing.Ref400088Auditing" abstract="false" lazy="false" discriminator-value="bz400088Auditing.Ref400088Auditing" table="`BZ400088AUDITING_REF400088AUDITING`">
 		<meta attribute="eclassName" inherit="false">Ref400088Auditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz400088Auditing</meta>
 		<id name="teneo_audit_id" type="long" unsaved-value="0">
@@ -233,7 +233,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="REF400088AUDITINGDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="BZ400088AUDITING_REF400088AUDITINGDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="teneo_version" type="long">
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
@@ -250,7 +250,7 @@
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="REF400088AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+		<many-to-one name="teneo_commit_info" entity-name="teneoauditing.TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BZ400088AUDITING_REF400088AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
 		</many-to-one>
 		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
@@ -276,15 +276,15 @@
 		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`TENEO_RESOURCEID`"/>
 		</property>
-		<list name="ref" table="`REF400088AUDITING_REFAUDITING`" lazy="true" cascade="all">
-			<key foreign-key="REF400088AUDITING_REF_KEY" update="true">
+		<list name="ref" table="`BZ400088AUDITING_REF400088AUDITING_REFAUDITING`" lazy="true" cascade="all">
+			<key foreign-key="BZ400088AUDITING_REF400088AUDITING_REF_KEY" update="true">
 				<column name="`REF400088AUDITING_REF_TENEO_AUDIT_ID`" unique="false"/>
 			</key>
 			<list-index column="`REF400088AUDITING_REF_IDX`"/>
 			<element type="java.lang.String"/>
 		</list>
 	</class>
-	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RefOther400088Auditing" abstract="false" lazy="false" discriminator-value="RefOther400088Auditing" table="`REFOTHER400088AUDITING`">
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="bz400088Auditing.RefOther400088Auditing" abstract="false" lazy="false" discriminator-value="bz400088Auditing.RefOther400088Auditing" table="`BZ400088AUDITING_REFOTHER400088AUDITING`">
 		<meta attribute="eclassName" inherit="false">RefOther400088Auditing</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz400088Auditing</meta>
 		<id name="teneo_audit_id" type="long" unsaved-value="0">
@@ -292,7 +292,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DTYPE`" index="REFOTHER400088AUDITINGDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="BZ400088AUDITING_REFOTHER400088AUDITINGDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="teneo_version" type="long">
 			<column not-null="true" unique="false" name="`TENEO_VERSION`"/>
@@ -309,7 +309,7 @@
 		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_END`" unique-key="c1"/>
 		</property>
-		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="REFOTHER400088AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
+		<many-to-one name="teneo_commit_info" entity-name="teneoauditing.TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BZ400088AUDITING_REFOTHER400088AUDITING_TENEO_COMMIT_INFO" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`TENEOAUDITCOMMITINFO_TENEO_COMMIT_INFO_ID`"/>
 		</many-to-one>
 		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">

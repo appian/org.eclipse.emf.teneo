@@ -125,7 +125,13 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 		// this should
 		// be added here
 		if (oto.getTargetEntity() == null) {
-			oto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			if (aReference.getAReferenceType() != null
+					&& aReference.getAReferenceType().getEntity() != null
+					&& aReference.getAReferenceType().getEntity().getName() != null) {
+				oto.setTargetEntity(aReference.getAReferenceType().getEntity().getName());
+			} else {
+				oto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			}
 		}
 	}
 }

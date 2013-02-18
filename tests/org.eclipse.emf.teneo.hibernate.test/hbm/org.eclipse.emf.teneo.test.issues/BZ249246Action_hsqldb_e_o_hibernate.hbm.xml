@@ -60,7 +60,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>

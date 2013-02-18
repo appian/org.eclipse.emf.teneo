@@ -110,18 +110,21 @@ public class HibernateTestbed extends Testbed {
 			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			testCase.setExtensions(extensionManager);
 
-			TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()),
-					testCase.getEPackages(), null, getActiveConfiguration(),
-					testCase.getExtraConfigurationProperties(), extensionManager);
+			TestStore store = null;
 
 			// setup store
 			try {
+				store = storeFactory.get(getDbName(testCase, getActiveConfiguration()),
+						testCase.getEPackages(), null, getActiveConfiguration(),
+						testCase.getExtraConfigurationProperties(), extensionManager);
+
 				store.setUp();
 
 				writeMappingToFile(store.getMappingXML(), testCase, extensionManager);
 			} catch (Throwable t) {
-
-				writeMappingToFile(store.getMappingXML(), testCase, extensionManager);
+				if (store != null) {
+					writeMappingToFile(store.getMappingXML(), testCase, extensionManager);
+				}
 				throw new IllegalStateException(t);
 			}
 

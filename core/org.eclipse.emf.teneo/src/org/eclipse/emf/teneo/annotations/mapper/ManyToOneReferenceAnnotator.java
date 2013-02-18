@@ -88,7 +88,13 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 		// this should
 		// be added here
 		if (mto.getTargetEntity() == null) {
-			mto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			if (aReference.getAReferenceType() != null
+					&& aReference.getAReferenceType().getEntity() != null
+					&& aReference.getAReferenceType().getEntity().getName() != null) {
+				mto.setTargetEntity(aReference.getAReferenceType().getEntity().getName());
+			} else {
+				mto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			}
 		}
 
 		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {

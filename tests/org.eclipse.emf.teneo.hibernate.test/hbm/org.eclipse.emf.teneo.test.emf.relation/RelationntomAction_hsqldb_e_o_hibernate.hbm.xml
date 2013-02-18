@@ -16,7 +16,7 @@
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
 		<list name="multinr" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MAIN_MULTINR`">
-			<key update="true">
+			<key foreign-key="MAIN_MULTINR_KEY" update="true">
 				<column name="`MAIN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_MULTINR_IDX`"/>
@@ -25,7 +25,7 @@
 			</many-to-many>
 		</list>
 		<list name="multirn" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MAIN_MULTIRN`">
-			<key update="true">
+			<key foreign-key="MAIN_MULTIRN_KEY" update="true">
 				<column name="`MAIN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_MULTIRN_IDX`"/>
@@ -34,7 +34,7 @@
 			</many-to-many>
 		</list>
 		<list name="multinn" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MAIN_MULTINN`">
-			<key update="true">
+			<key foreign-key="MAIN_MULTINN_KEY" update="true">
 				<column name="`MAIN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MAIN_MULTINN_IDX`"/>
@@ -57,7 +57,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="main" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MULTINN_MAIN`">
-			<key update="true">
+			<key foreign-key="MULTINN_MAIN_KEY" update="true">
 				<column name="`MULTINN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTINN_MAIN_IDX`"/>
@@ -80,7 +80,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="main" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MULTINR_MAIN`">
-			<key update="true">
+			<key foreign-key="MULTINR_MAIN_KEY" update="true">
 				<column name="`MULTINR_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTINR_MAIN_IDX`"/>
@@ -103,7 +103,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="main" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`MULTIRN_MAIN`">
-			<key update="true">
+			<key foreign-key="MULTIRN_MAIN_KEY" update="true">
 				<column name="`MULTIRN_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`MULTIRN_MAIN_IDX`"/>
@@ -146,7 +146,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -219,7 +219,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -278,7 +278,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -337,7 +337,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>

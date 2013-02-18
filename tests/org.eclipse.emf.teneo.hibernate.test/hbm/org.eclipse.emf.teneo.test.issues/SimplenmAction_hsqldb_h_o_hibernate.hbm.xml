@@ -19,7 +19,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="you" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`ME_YOU`">
-			<key update="true">
+			<key foreign-key="ME_YOU_KEY" update="true">
 				<column name="`ME_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`ME_YOU_IDX`"/>
@@ -45,7 +45,7 @@
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
 		<list name="me" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`YOU_ME`">
-			<key update="true">
+			<key foreign-key="YOU_ME_KEY" update="true">
 				<column name="`YOU_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`YOU_ME_IDX`"/>
@@ -94,7 +94,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>
@@ -156,7 +156,7 @@
 			<column not-null="false" unique="false" name="`TENEO_OBJECT_ID`" unique-key="c0,c1,c2"/>
 		</property>
 		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`" index="teneo_derived_object"/>
+			<column not-null="false" unique="false" name="`TENEO_OWNER_OBJECT_ID`"/>
 		</property>
 		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_START`" unique-key="c0"/>

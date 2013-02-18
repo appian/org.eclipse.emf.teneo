@@ -67,7 +67,13 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator imp
 		}
 
 		if (mtm.getTargetEntity() == null) {
-			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			if (aReference.getAReferenceType() != null
+					&& aReference.getAReferenceType().getEntity() != null
+					&& aReference.getAReferenceType().getEntity().getName() != null) {
+				mtm.setTargetEntity(aReference.getAReferenceType().getEntity().getName());
+			} else {
+				mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+			}
 		}
 
 		// with a unidirectional mtm the join is always placed here
