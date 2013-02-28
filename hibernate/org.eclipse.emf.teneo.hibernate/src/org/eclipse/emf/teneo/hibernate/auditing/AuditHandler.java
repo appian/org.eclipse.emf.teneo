@@ -586,6 +586,9 @@ public class AuditHandler implements ExtensionPoint {
 					auditingEClass.getESuperTypes().add(TeneoauditingPackage.eINSTANCE.getTeneoAuditEntry());
 				} else {
 					for (EClass eSuperClass : eClass.getESuperTypes()) {
+						if (isNoAuditing(po, eSuperClass)) {
+							continue;
+						}
 						auditingEClass.getESuperTypes().add(
 								getSuperAuditingEClass(dataStore, eSuperClass, registry, po));
 					}
