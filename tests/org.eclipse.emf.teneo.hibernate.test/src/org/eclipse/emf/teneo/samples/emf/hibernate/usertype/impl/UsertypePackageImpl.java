@@ -506,7 +506,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		  (getPerson_Addresses(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)"
+			 "appinfo", "@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(mappedBy=\"person\", indexed=false, unique=true)"
 		   });			
 		addAnnotation
 		  (getPerson_Certificate(), 

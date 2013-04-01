@@ -42,7 +42,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="addresses" upperBound="-1"
         eType="#//Address" eOpposite="#//Address/person">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OnDelete(action=OnDeleteAction.CASCADE)&#xA;@OneToMany(indexed=false, unique=true)"/>
+        <details key="appinfo" value="@OnDelete(action=OnDeleteAction.CASCADE)&#xA;@OneToMany(mappedBy=&quot;person&quot;, indexed=false, unique=true)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="birthPlace" lowerBound="1"

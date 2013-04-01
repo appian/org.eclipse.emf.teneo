@@ -99,7 +99,8 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		if (joinTable != null) {
 			final Element keyElement = currentElement.addElement("key");
-			
+			handleOndelete(keyElement, hbReference.getHbOnDelete());
+
 			addKeyColumns((HbAnnotatedETypeElement) paReference, keyElement,
 					joinTable.getInverseJoinColumns());
 		}

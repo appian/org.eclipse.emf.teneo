@@ -42,6 +42,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
@@ -894,15 +895,13 @@ public abstract class AbstractMapper {
 
 	/** Add the ondelete mapping to the key */
 	protected void handleOndelete(Element keyElement, OnDelete onDelete) {
-		// if (true || onDelete == null) {
-		// return;
-		// }
-		//
-		// if (onDelete.getAction().equals(OnDeleteAction.CASCADE)) {
-		// keyElement.addAttribute("on-delete", "cascade");
-		// } else {
-		// keyElement.addAttribute("on-delete", "noaction");
-		// }
+		if (onDelete == null) {
+			return;
+		}
+
+		if (onDelete.getAction().equals(OnDeleteAction.CASCADE)) {
+			keyElement.addAttribute("on-delete", "cascade");
+		}
 	}
 
 	/** Returns true if the target is the general EObject type */

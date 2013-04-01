@@ -61,6 +61,7 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 
 		final Element collElement = addCollectionElement(paAttribute);
 		final Element keyElement = collElement.addElement("key");
+		handleOndelete(keyElement, hbAttribute.getHbOnDelete());
 
 		final JoinTable jt = paAttribute.getCollectionTable() != null ? paAttribute
 				.getCollectionTable() : paAttribute.getJoinTable();

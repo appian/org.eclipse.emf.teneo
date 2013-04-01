@@ -26,7 +26,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found</em>}</li>
@@ -66,31 +65,6 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	 * @generated
 	 */
 	void setHbCache(Cache value);
-
-	/**
-	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Hb On Delete</em>' reference isn't clear, there really should be
-	 * more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Hb On Delete</em>' reference.
-	 * @see #setHbOnDelete(OnDelete)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbOnDelete()
-	 * @model
-	 * @generated
-	 */
-	OnDelete getHbOnDelete();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb On Delete</em>' reference.
-	 * @see #getHbOnDelete()
-	 * @generated
-	 */
-	void setHbOnDelete(OnDelete value);
 
 	/**
 	 * Returns the value of the '<em><b>Natural Id</b></em>' containment reference. <!--

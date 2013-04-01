@@ -19,6 +19,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
@@ -40,6 +41,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFormula <em>Formula</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getBatchSize <em>Batch Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbOnDelete <em>Hb On Delete</em>}</li>
  * </ul>
  * </p>
  *
@@ -342,5 +344,31 @@ public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature,
 	 * @generated
 	 */
 	void setBatchSize(BatchSize value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb On Delete</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb On Delete</em>' reference.
+	 * @see #setHbOnDelete(OnDelete)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedETypeElement_HbOnDelete()
+	 * @model
+	 * @generated
+	 */
+	OnDelete getHbOnDelete();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbOnDelete <em>Hb On Delete</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb On Delete</em>' reference.
+	 * @see #getHbOnDelete()
+	 * @generated
+	 */
+	void setHbOnDelete(OnDelete value);
 
 } // HbAnnotatedETypeElement

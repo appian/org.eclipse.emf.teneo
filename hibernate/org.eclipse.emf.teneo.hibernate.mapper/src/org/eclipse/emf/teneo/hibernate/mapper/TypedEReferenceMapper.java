@@ -51,6 +51,7 @@ public class TypedEReferenceMapper extends AbstractAssociationMapper implements 
 		final Element collElement = addCollectionElement(paEFeature);
 		final Element keyElement = collElement.addElement("key");
 		addForeignKeyAttribute(keyElement, paEFeature);
+		handleOndelete(keyElement, hbReference.getHbOnDelete());
 
 		final JoinTable jt = paEFeature.getJoinTable();
 		final List<JoinColumn> jcs = paEFeature.getJoinColumns() == null ? new ArrayList<JoinColumn>()
