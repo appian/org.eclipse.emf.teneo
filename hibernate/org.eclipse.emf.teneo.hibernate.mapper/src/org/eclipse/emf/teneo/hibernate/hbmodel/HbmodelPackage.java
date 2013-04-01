@@ -334,13 +334,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Batch Size</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__BATCH_SIZE = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the ' <em>Hb Annotated EType Element</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
@@ -685,13 +694,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__HB_FETCH = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Batch Size</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__BATCH_SIZE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
+
+	/**
 	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' containment reference.
@@ -700,7 +718,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -709,7 +727,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
+	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' reference.
@@ -718,7 +736,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 14;
+	int HB_ANNOTATED_EATTRIBUTE__ANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Any Meta Def</b></em>' reference.
@@ -727,7 +745,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 15;
+	int HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class. <!--
@@ -736,7 +754,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 16;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 17;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -1707,13 +1725,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Batch Size</b></em>' reference.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__BATCH_SIZE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+
+	/**
 	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
@@ -1722,7 +1749,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -1731,7 +1758,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 13;
+	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Immutable</b></em>' containment reference.
@@ -1740,7 +1767,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__IMMUTABLE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 14;
+	int HB_ANNOTATED_EREFERENCE__IMMUTABLE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Not Found</b></em>' containment reference.
@@ -1749,7 +1776,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__NOT_FOUND = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 15;
+	int HB_ANNOTATED_EREFERENCE__NOT_FOUND = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
@@ -1758,16 +1785,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_TYPE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 16;
-
-	/**
-	 * The feature id for the '<em><b>Batch Size</b></em>' reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EREFERENCE__BATCH_SIZE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 17;
+	int HB_ANNOTATED_EREFERENCE__HB_TYPE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' reference.
@@ -2106,6 +2124,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedETypeElement_HbFetch();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getBatchSize <em>Batch Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Batch Size</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getBatchSize()
+	 * @see #getHbAnnotatedETypeElement()
+	 * @generated
+	 */
+	EReference getHbAnnotatedETypeElement_BatchSize();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute <em>Hb Annotated EAttribute</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hb Annotated EAttribute</em>'.
@@ -2441,16 +2470,6 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEReference_HbType();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize <em>Batch Size</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Batch Size</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize()
-	 * @see #getHbAnnotatedEReference()
-	 * @generated
-	 */
-	EReference getHbAnnotatedEReference_BatchSize();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Any</em>'.
@@ -2649,6 +2668,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH = eINSTANCE.getHbAnnotatedETypeElement_HbFetch();
+
+		/**
+		 * The meta object literal for the '<em><b>Batch Size</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ETYPE_ELEMENT__BATCH_SIZE = eINSTANCE.getHbAnnotatedETypeElement_BatchSize();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
@@ -2913,14 +2940,6 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__HB_TYPE = eINSTANCE.getHbAnnotatedEReference_HbType();
-
-		/**
-		 * The meta object literal for the '<em><b>Batch Size</b></em>' reference feature. <!--
-		 * begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EReference HB_ANNOTATED_EREFERENCE__BATCH_SIZE = eINSTANCE.getHbAnnotatedEReference_BatchSize();
 
 		/**
 		 * The meta object literal for the '<em><b>Any</b></em>' reference feature.

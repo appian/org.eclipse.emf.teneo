@@ -60,13 +60,13 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFormula <em>Formula</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getBatchSize <em>Batch Size</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNaturalId <em>Natural Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getImmutable <em>Immutable</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNotFound <em>Not Found</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbType <em>Hb Type</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getBatchSize <em>Batch Size</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getAny <em>Any</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getAnyMetaDef <em>Any Meta Def</em>}</li>
  * </ul>
@@ -183,6 +183,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	protected Fetch hbFetch;
 
 	/**
+	 * The cached value of the '{@link #getBatchSize() <em>Batch Size</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getBatchSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected BatchSize batchSize;
+
+	/**
 	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -239,16 +249,6 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected Type hbType;
-
-	/**
-	 * The cached value of the '{@link #getBatchSize() <em>Batch Size</em>}' reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getBatchSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected BatchSize batchSize;
 
 	/**
 	 * The cached value of the '{@link #getAny() <em>Any</em>}' reference.
@@ -1064,6 +1064,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				if (resolve) return getHbFetch();
 				return basicGetHbFetch();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
+				if (resolve) return getBatchSize();
+				return basicGetBatchSize();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return getHbCache();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
@@ -1077,9 +1080,6 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return getNotFound();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_TYPE:
 				return getHbType();
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
-				if (resolve) return getBatchSize();
-				return basicGetBatchSize();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__ANY:
 				if (resolve) return getAny();
 				return basicGetAny();
@@ -1133,6 +1133,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				setHbFetch((Fetch)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
+				setBatchSize((BatchSize)newValue);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)newValue);
 				return;
@@ -1150,9 +1153,6 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_TYPE:
 				setHbType((Type)newValue);
-				return;
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
-				setBatchSize((BatchSize)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__ANY:
 				setAny((Any)newValue);
@@ -1204,6 +1204,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				setHbFetch((Fetch)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
+				setBatchSize((BatchSize)null);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)null);
 				return;
@@ -1221,9 +1224,6 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_TYPE:
 				setHbType((Type)null);
-				return;
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
-				setBatchSize((BatchSize)null);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__ANY:
 				setAny((Any)null);
@@ -1264,6 +1264,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return formula != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				return hbFetch != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
+				return batchSize != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return hbCache != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
@@ -1276,8 +1278,6 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return notFound != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_TYPE:
 				return hbType != null;
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE:
-				return batchSize != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__ANY:
 				return any != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__ANY_META_DEF:
@@ -1310,6 +1310,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH;
+				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__BATCH_SIZE;
 				default: return -1;
 			}
 		}
@@ -1340,6 +1341,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__BATCH_SIZE: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__BATCH_SIZE;
 				default: return -1;
 			}
 		}

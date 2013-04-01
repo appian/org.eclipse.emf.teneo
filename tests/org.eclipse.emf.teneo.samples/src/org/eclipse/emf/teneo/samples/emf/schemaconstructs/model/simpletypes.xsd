@@ -47,7 +47,7 @@
 			<element maxOccurs="unbounded" name="floa" type="this:Float"/>
 			<element maxOccurs="unbounded" name="inte" type="this:Int">
 			 	<annotation>
-					<appinfo source="teneo.jpa">@Fetch(value=FetchMode.SUBSELECT)</appinfo>
+					<appinfo source="teneo.jpa">@Fetch(value=FetchMode.SUBSELECT) @BatchSize(size=10)</appinfo>
 			    </annotation>
 			</element>
 			<element maxOccurs="unbounded" name="long" type="this:Long">

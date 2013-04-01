@@ -177,7 +177,7 @@ public interface SimpleList extends EObject {
 	 * @return the value of the '<em>Inte</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_Inte()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Int" required="true"
-	 *        annotation="teneo.jpa appinfo='@Fetch(value=FetchMode.SUBSELECT)'"
+	 *        annotation="teneo.jpa appinfo='@Fetch(value=FetchMode.SUBSELECT) @BatchSize(size=10)'"
 	 *        extendedMetaData="kind='element' name='inte'"
 	 * @generated
 	 */

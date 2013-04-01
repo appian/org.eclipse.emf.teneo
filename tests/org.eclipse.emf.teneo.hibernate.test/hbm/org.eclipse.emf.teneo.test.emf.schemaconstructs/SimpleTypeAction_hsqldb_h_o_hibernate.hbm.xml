@@ -54,7 +54,7 @@
 			<list-index column="`SIMPLELIST_FLOA_IDX`"/>
 			<element type="java.lang.Float"/>
 		</list>
-		<list name="inte" fetch="subselect" table="`SIMPLELIST_INTE`" lazy="true" cascade="all">
+		<list name="inte" fetch="subselect" batch-size="10" table="`SIMPLELIST_INTE`" lazy="true" cascade="all">
 			<key foreign-key="SIMPLELIST_INTE_KEY" update="true">
 				<column name="`SIMPLELIST_INTE_E_ID`" unique="false"/>
 			</key>

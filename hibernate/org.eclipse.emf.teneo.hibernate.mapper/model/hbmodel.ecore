@@ -32,6 +32,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="formula" eType="ecore:EClass hbannotation.ecore#//Formula"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbFetch" eType="ecore:EClass hbannotation.ecore#//Fetch"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="batchSize" eType="ecore:EClass hbannotation.ecore#//BatchSize"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEAttribute" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEAttribute #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
@@ -93,7 +94,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="batchSize" eType="ecore:EClass hbannotation.ecore#//BatchSize"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="any" eType="ecore:EClass hbannotation.ecore#//Any"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="anyMetaDef" eType="ecore:EClass hbannotation.ecore#//AnyMetaDef"/>
   </eClassifiers>

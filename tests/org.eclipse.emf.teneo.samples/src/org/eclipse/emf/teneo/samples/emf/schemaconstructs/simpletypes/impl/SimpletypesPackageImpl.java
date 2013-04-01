@@ -1384,7 +1384,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		  (getSimpleList_Inte(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Fetch(value=FetchMode.SUBSELECT)"
+			 "appinfo", "@Fetch(value=FetchMode.SUBSELECT) @BatchSize(size=10)"
 		   });			
 		addAnnotation
 		  (getSimpleList_Long(), 

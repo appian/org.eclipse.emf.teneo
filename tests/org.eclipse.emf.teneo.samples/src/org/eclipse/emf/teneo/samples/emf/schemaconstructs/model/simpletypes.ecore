@@ -129,7 +129,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inte" unique="false" lowerBound="1"
         upperBound="-1" eType="#//Int">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@Fetch(value=FetchMode.SUBSELECT)"/>
+        <details key="appinfo" value="@Fetch(value=FetchMode.SUBSELECT) @BatchSize(size=10)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
