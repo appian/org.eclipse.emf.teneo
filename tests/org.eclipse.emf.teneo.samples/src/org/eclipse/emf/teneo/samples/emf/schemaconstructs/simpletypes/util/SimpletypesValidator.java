@@ -12,6 +12,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
@@ -139,7 +140,7 @@ public class SimpletypesValidator extends EObjectValidator {
 				return validateSimpleEnumObject((SimpleEnum)value, diagnostics, context);
 			case SimpletypesPackage.STRING_ARRAY:
 				return validateStringArray((String[])value, diagnostics, context);
-			default: 
+			default:
 				return true;
 		}
 	}
@@ -251,9 +252,9 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateExtraLimitedString_MaxLength(String extraLimitedString, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		int length = extraLimitedString.length();  
+		int length = extraLimitedString.length();
 		boolean result = length <= 5;
-		if (!result && diagnostics != null) 
+		if (!result && diagnostics != null)
 			reportMaxLengthViolation(SimpletypesPackage.Literals.EXTRA_LIMITED_STRING, extraLimitedString, length, 5, diagnostics, context);
 		return result;
 	}
@@ -304,9 +305,9 @@ public class SimpletypesValidator extends EObjectValidator {
 	 */
 	public boolean validateLimitedDecimal_TotalDigits(BigDecimal limitedDecimal, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = limitedDecimal.unscaledValue().abs().toString().length() <= 4;
-		if (!result && diagnostics != null) 
+		if (!result && diagnostics != null)
 			reportTotalDigitsViolation(SimpletypesPackage.Literals.LIMITED_DECIMAL, limitedDecimal, 4, diagnostics, context);
-		return result; 
+		return result;
 	}
 
 	/**
@@ -317,9 +318,9 @@ public class SimpletypesValidator extends EObjectValidator {
 	 */
 	public boolean validateLimitedDecimal_FractionDigits(BigDecimal limitedDecimal, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = limitedDecimal.scale() <= 1;
-		if (!result && diagnostics != null) 
+		if (!result && diagnostics != null)
 			reportFractionDigitsViolation(SimpletypesPackage.Literals.LIMITED_DECIMAL, limitedDecimal, 1, diagnostics, context);
-		return result; 
+		return result;
 	}
 
 	/**
@@ -340,9 +341,9 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLimitedString_MinLength(String limitedString, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		int length = limitedString.length();  
+		int length = limitedString.length();
 		boolean result = length >= 10;
-		if (!result && diagnostics != null) 
+		if (!result && diagnostics != null)
 			reportMinLengthViolation(SimpletypesPackage.Literals.LIMITED_STRING, limitedString, length, 10, diagnostics, context);
 		return result;
 	}
@@ -354,9 +355,9 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLimitedString_MaxLength(String limitedString, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		int length = limitedString.length();  
+		int length = limitedString.length();
 		boolean result = length <= 10;
-		if (!result && diagnostics != null) 
+		if (!result && diagnostics != null)
 			reportMaxLengthViolation(SimpletypesPackage.Literals.LIMITED_STRING, limitedString, length, 10, diagnostics, context);
 		return result;
 	}
@@ -386,6 +387,20 @@ public class SimpletypesValidator extends EObjectValidator {
 	 */
 	public boolean validateStringArray(String[] stringArray, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
+	}
+
+	/**
+	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		// TODO
+		// Specialize this to return a resource locator for messages specific to this validator.
+		// Ensure that you remove @generated or mark it @generated NOT
+		return super.getResourceLocator();
 	}
 
 } //SimpletypesValidator

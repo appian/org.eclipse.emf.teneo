@@ -946,19 +946,19 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 			case SimpletypesPackage.SIMPLE_TYPE__CODE:
 				return getCode();
 			case SimpletypesPackage.SIMPLE_TYPE__BOO:
-				return isBoo() ? Boolean.TRUE : Boolean.FALSE;
+				return isBoo();
 			case SimpletypesPackage.SIMPLE_TYPE__BYT:
-				return new Byte(getByt());
+				return getByt();
 			case SimpletypesPackage.SIMPLE_TYPE__DOUBL:
-				return new Double(getDoubl());
+				return getDoubl();
 			case SimpletypesPackage.SIMPLE_TYPE__FLOAT:
-				return new Float(getFloat());
+				return getFloat();
 			case SimpletypesPackage.SIMPLE_TYPE__INTE:
-				return new Integer(getInte());
+				return getInte();
 			case SimpletypesPackage.SIMPLE_TYPE__LON:
-				return new Long(getLon());
+				return getLon();
 			case SimpletypesPackage.SIMPLE_TYPE__SHOR:
-				return new Short(getShor());
+				return getShor();
 			case SimpletypesPackage.SIMPLE_TYPE__ENU:
 				return getEnu();
 			case SimpletypesPackage.SIMPLE_TYPE__DAT:
@@ -985,25 +985,25 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 				setCode((String)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__BOO:
-				setBoo(((Boolean)newValue).booleanValue());
+				setBoo((Boolean)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__BYT:
-				setByt(((Byte)newValue).byteValue());
+				setByt((Byte)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__DOUBL:
-				setDoubl(((Double)newValue).doubleValue());
+				setDoubl((Double)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__FLOAT:
-				setFloat(((Float)newValue).floatValue());
+				setFloat((Float)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__INTE:
-				setInte(((Integer)newValue).intValue());
+				setInte((Integer)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__LON:
-				setLon(((Long)newValue).longValue());
+				setLon((Long)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__SHOR:
-				setShor(((Short)newValue).shortValue());
+				setShor((Short)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_TYPE__ENU:
 				setEnu((SimpleEnum)newValue);

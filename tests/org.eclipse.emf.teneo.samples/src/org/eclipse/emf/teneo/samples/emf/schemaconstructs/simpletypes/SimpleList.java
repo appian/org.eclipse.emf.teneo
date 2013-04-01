@@ -177,6 +177,7 @@ public interface SimpleList extends EObject {
 	 * @return the value of the '<em>Inte</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_Inte()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Int" required="true"
+	 *        annotation="teneo.jpa appinfo='@Fetch(value=FetchMode.SUBSELECT)'"
 	 *        extendedMetaData="kind='element' name='inte'"
 	 * @generated
 	 */
@@ -230,7 +231,7 @@ public interface SimpleList extends EObject {
 	 * @return the value of the '<em>Enu</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_Enu()
-	 * @model default="Enum1" unique="false" required="true"
+	 * @model unique="false" required="true"
 	 *        extendedMetaData="kind='element' name='enu'"
 	 * @generated
 	 */

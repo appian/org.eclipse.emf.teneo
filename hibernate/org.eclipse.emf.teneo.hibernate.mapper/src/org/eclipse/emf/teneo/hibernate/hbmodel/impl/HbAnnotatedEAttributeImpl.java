@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
 import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Formula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
@@ -54,6 +55,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getFormula <em>Formula</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbType <em>Hb Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getNaturalId <em>Natural Id</em>}</li>
@@ -161,6 +163,16 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * @ordered
 	 */
 	protected Formula formula;
+
+	/**
+	 * The cached value of the '{@link #getHbFetch() <em>Hb Fetch</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbFetch()
+	 * @generated
+	 * @ordered
+	 */
+	protected Fetch hbFetch;
 
 	/**
 	 * The cached value of the '{@link #getHbType() <em>Hb Type</em>}' containment reference. <!--
@@ -562,6 +574,44 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Fetch getHbFetch() {
+		if (hbFetch != null && hbFetch.eIsProxy()) {
+			InternalEObject oldHbFetch = (InternalEObject)hbFetch;
+			hbFetch = (Fetch)eResolveProxy(oldHbFetch);
+			if (hbFetch != oldHbFetch) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH, oldHbFetch, hbFetch));
+			}
+		}
+		return hbFetch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Fetch basicGetHbFetch() {
+		return hbFetch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbFetch(Fetch newHbFetch) {
+		Fetch oldHbFetch = hbFetch;
+		hbFetch = newHbFetch;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH, oldHbFetch, hbFetch));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -812,6 +862,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
 				if (resolve) return getFormula();
 				return basicGetFormula();
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH:
+				if (resolve) return getHbFetch();
+				return basicGetHbFetch();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				return getHbType();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__GENERATED:
@@ -867,6 +920,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
 				setFormula((Formula)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH:
+				setHbFetch((Fetch)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				setHbType((Type)newValue);
@@ -924,6 +980,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
 				setFormula((Formula)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH:
+				setHbFetch((Fetch)null);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				setHbType((Type)null);
 				return;
@@ -970,6 +1029,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return mapKeyManyToMany != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
 				return formula != null;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH:
+				return hbFetch != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				return hbType != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__GENERATED:
@@ -1007,6 +1068,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY;
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA;
+				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH;
 				default: return -1;
 			}
 		}
@@ -1036,6 +1098,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_FETCH;
 				default: return -1;
 			}
 		}

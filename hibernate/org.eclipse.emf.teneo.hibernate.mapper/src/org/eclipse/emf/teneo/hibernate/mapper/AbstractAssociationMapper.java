@@ -641,12 +641,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionIdElement.addElement("generator").addAttribute("class", generator);
 		}
 
-		if (hbFeature instanceof HbAnnotatedEReference) {
-			final HbAnnotatedEReference hae = (HbAnnotatedEReference) hbFeature;
-			if (hae.getHbFetch() != null) {
-				collectionElement
-						.addAttribute("fetch", hae.getHbFetch().getValue().getName().toLowerCase());
-			}
+		if (hbFeature.getHbFetch() != null) {
+			collectionElement.addAttribute("fetch", hbFeature.getHbFetch().getValue().getName()
+					.toLowerCase());
 		}
 
 		if (hasOrderBy) {

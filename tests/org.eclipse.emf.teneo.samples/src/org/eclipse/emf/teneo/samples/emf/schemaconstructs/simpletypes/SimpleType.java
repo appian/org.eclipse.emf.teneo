@@ -475,7 +475,6 @@ public interface SimpleType extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Enu</b></em>' attribute.
-	 * The default value is <code>"Enum1"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -489,7 +488,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetEnu()
 	 * @see #setEnu(SimpleEnum)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Enu()
-	 * @model default="Enum1" unsettable="true" required="true"
+	 * @model unsettable="true" required="true"
 	 *        extendedMetaData="kind='element' name='enu'"
 	 * @generated
 	 */

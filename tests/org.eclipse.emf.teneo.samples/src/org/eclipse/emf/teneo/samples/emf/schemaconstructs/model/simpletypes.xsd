@@ -45,7 +45,11 @@
 			<element maxOccurs="unbounded" name="byt" type="this:Byte"/>
 			<element maxOccurs="unbounded" name="doubl" type="this:Double"/>
 			<element maxOccurs="unbounded" name="floa" type="this:Float"/>
-			<element maxOccurs="unbounded" name="inte" type="this:Int"/>
+			<element maxOccurs="unbounded" name="inte" type="this:Int">
+			 	<annotation>
+					<appinfo source="teneo.jpa">@Fetch(value=FetchMode.SUBSELECT)</appinfo>
+			    </annotation>
+			</element>
 			<element maxOccurs="unbounded" name="long" type="this:Long">
 			 	<annotation>
 					<appinfo source="teneo.jpa">@JoinTable(name="longNum")</appinfo>

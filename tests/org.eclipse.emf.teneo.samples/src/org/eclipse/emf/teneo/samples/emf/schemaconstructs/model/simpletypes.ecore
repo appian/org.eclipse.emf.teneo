@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="simpletypes"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="simpletypes" nsURI="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes"
     nsPrefix="simpletypes">
   <eClassifiers xsi:type="ecore:EDataType" name="Bool" instanceClassName="java.lang.Boolean">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -130,6 +128,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inte" unique="false" lowerBound="1"
         upperBound="-1" eType="#//Int">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Fetch(value=FetchMode.SUBSELECT)"/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="inte"/>
@@ -153,7 +154,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enu" unique="false" lowerBound="1"
-        upperBound="-1" eType="#//SimpleEnum" defaultValueLiteral="Enum1">
+        upperBound="-1" eType="#//SimpleEnum">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="enu"/>
@@ -271,7 +272,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enu" lowerBound="1" eType="#//SimpleEnum"
-        defaultValueLiteral="Enum1" unsettable="true">
+        unsettable="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="enu"/>
@@ -367,7 +368,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enu" lowerBound="1" eType="#//SimpleEnumObject"
-        defaultValueLiteral="Enum1" unsettable="true">
+        unsettable="true">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Enumerated(STRING)"/>
       </eAnnotations>

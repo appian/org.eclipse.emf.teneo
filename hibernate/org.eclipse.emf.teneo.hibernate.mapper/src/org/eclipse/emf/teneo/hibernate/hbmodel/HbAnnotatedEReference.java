@@ -26,7 +26,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}</li>
@@ -68,31 +67,6 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	 * @generated
 	 */
 	void setHbCache(Cache value);
-
-	/**
-	 * Returns the value of the '<em><b>Hb Fetch</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Hb Fetch</em>' containment reference isn't clear, there really
-	 * should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Hb Fetch</em>' reference.
-	 * @see #setHbFetch(Fetch)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbFetch()
-	 * @model
-	 * @generated
-	 */
-	Fetch getHbFetch();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb Fetch</em>' reference.
-	 * @see #getHbFetch()
-	 * @generated
-	 */
-	void setHbFetch(Fetch value);
 
 	/**
 	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference.

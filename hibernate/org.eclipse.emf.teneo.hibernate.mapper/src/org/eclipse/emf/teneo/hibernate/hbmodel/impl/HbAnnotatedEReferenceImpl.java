@@ -59,8 +59,8 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFormula <em>Formula</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNaturalId <em>Natural Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getImmutable <em>Immutable</em>}</li>
@@ -173,16 +173,6 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	protected Formula formula;
 
 	/**
-	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getHbCache()
-	 * @generated
-	 * @ordered
-	 */
-	protected Cache hbCache;
-
-	/**
 	 * The cached value of the '{@link #getHbFetch() <em>Hb Fetch</em>}' reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -191,6 +181,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected Fetch hbFetch;
+
+	/**
+	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getHbCache()
+	 * @generated
+	 * @ordered
+	 */
+	protected Cache hbCache;
 
 	/**
 	 * The cached value of the '{@link #getHbOnDelete() <em>Hb On Delete</em>}' reference. <!--
@@ -1061,11 +1061,11 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
 				if (resolve) return getFormula();
 				return basicGetFormula();
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
-				return getHbCache();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				if (resolve) return getHbFetch();
 				return basicGetHbFetch();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				return getHbCache();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				if (resolve) return getHbOnDelete();
 				return basicGetHbOnDelete();
@@ -1130,11 +1130,11 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
 				setFormula((Formula)newValue);
 				return;
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
-				setHbCache((Cache)newValue);
-				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				setHbFetch((Fetch)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				setHbCache((Cache)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				setHbOnDelete((OnDelete)newValue);
@@ -1201,11 +1201,11 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
 				setFormula((Formula)null);
 				return;
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
-				setHbCache((Cache)null);
-				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				setHbFetch((Fetch)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				setHbCache((Cache)null);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				setHbOnDelete((OnDelete)null);
@@ -1262,10 +1262,10 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return mapKeyManyToMany != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
 				return formula != null;
-			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
-				return hbCache != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				return hbFetch != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				return hbCache != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				return hbOnDelete != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
@@ -1309,6 +1309,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA;
+				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH;
 				default: return -1;
 			}
 		}
@@ -1338,6 +1339,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH;
 				default: return -1;
 			}
 		}

@@ -325,13 +325,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__FORMULA = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Hb Fetch</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the ' <em>Hb Annotated EType Element</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
@@ -667,13 +676,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__FORMULA = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Hb Fetch</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__HB_FETCH = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' containment reference.
@@ -682,7 +700,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -691,7 +709,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' reference.
@@ -700,7 +718,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
+	int HB_ANNOTATED_EATTRIBUTE__ANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Any Meta Def</b></em>' reference.
@@ -709,7 +727,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 14;
+	int HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class. <!--
@@ -718,7 +736,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 15;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 16;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -1680,22 +1698,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__FORMULA = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
-
-	/**
 	 * The feature id for the '<em><b>Hb Fetch</b></em>' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
@@ -2077,6 +2095,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedETypeElement_Formula();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbFetch <em>Hb Fetch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Hb Fetch</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbFetch()
+	 * @see #getHbAnnotatedETypeElement()
+	 * @generated
+	 */
+	EReference getHbAnnotatedETypeElement_HbFetch();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute <em>Hb Annotated EAttribute</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hb Annotated EAttribute</em>'.
@@ -2362,16 +2391,6 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEReference_HbCache();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Hb Fetch</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch()
-	 * @see #getHbAnnotatedEReference()
-	 * @generated
-	 */
-	EReference getHbAnnotatedEReference_HbFetch();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Hb On Delete</em>'.
@@ -2624,6 +2643,14 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_ETYPE_ELEMENT__FORMULA = eINSTANCE.getHbAnnotatedETypeElement_Formula();
 
 		/**
+		 * The meta object literal for the '<em><b>Hb Fetch</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ETYPE_ELEMENT__HB_FETCH = eINSTANCE.getHbAnnotatedETypeElement_HbFetch();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl
@@ -2849,14 +2876,6 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__HB_CACHE = eINSTANCE.getHbAnnotatedEReference_HbCache();
-
-		/**
-		 * The meta object literal for the '<em><b>Hb Fetch</b></em>' reference feature. <!--
-		 * begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EReference HB_ANNOTATED_EREFERENCE__HB_FETCH = eINSTANCE.getHbAnnotatedEReference_HbFetch();
 
 		/**
 		 * The meta object literal for the '<em><b>Hb On Delete</b></em>' reference feature. <!--

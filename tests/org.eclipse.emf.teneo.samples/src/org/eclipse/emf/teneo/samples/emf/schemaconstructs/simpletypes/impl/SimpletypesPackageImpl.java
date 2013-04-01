@@ -193,20 +193,10 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SimpletypesPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -218,7 +208,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		if (isInited) return (SimpletypesPackage)EPackage.Registry.INSTANCE.getEPackage(SimpletypesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SimpletypesPackageImpl theSimpletypesPackage = (SimpletypesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SimpletypesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SimpletypesPackageImpl());
+		SimpletypesPackageImpl theSimpletypesPackage = (SimpletypesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SimpletypesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SimpletypesPackageImpl());
 
 		isInited = true;
 
@@ -243,6 +233,9 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		// Mark meta-data to indicate it can't be changed
 		theSimpletypesPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SimpletypesPackage.eNS_URI, theSimpletypesPackage);
 		return theSimpletypesPackage;
 	}
 
@@ -904,7 +897,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleList_Inte(), this.getInt(), "inte", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Long(), this.getLong(), "long", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Shor(), theXMLTypePackage.getShort(), "shor", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleList_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_Enu(), this.getSimpleEnum(), "enu", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Dat(), this.getDate(), "dat", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Stri(), theXMLTypePackage.getString(), "stri", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -922,7 +915,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleType_Inte(), theXMLTypePackage.getInt(), "inte", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_Lon(), theXMLTypePackage.getLong(), "lon", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_Shor(), theXMLTypePackage.getShort(), "shor", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Enu(), this.getSimpleEnum(), "enu", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_Dat(), this.getDate(), "dat", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_LimitedDecimal(), this.getLimitedDecimal(), "limitedDecimal", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -937,7 +930,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleTypeObject_Inte(), theXMLTypePackage.getIntObject(), "inte", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleTypeObject_Lon(), theXMLTypePackage.getLongObject(), "lon", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleTypeObject_Shor(), theXMLTypePackage.getShortObject(), "shor", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Enu(), this.getSimpleEnumObject(), "enu", "Enum1", 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Enu(), this.getSimpleEnumObject(), "enu", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleTypeObject_Dat(), this.getDate(), "dat", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
@@ -1118,7 +1111,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   new String[] {
 			 "kind", "element",
 			 "name", "floa"
-		   });		
+		   });			
 		addAnnotation
 		  (getSimpleList_Inte(), 
 		   source, 
@@ -1386,7 +1379,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";																								
+		String source = "teneo.jpa";																							
+		addAnnotation
+		  (getSimpleList_Inte(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Fetch(value=FetchMode.SUBSELECT)"
+		   });			
 		addAnnotation
 		  (getSimpleList_Long(), 
 		   source, 

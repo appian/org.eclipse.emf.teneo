@@ -280,7 +280,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SimpleEnum ENU_EDEFAULT = (SimpleEnum)SimpletypesFactory.eINSTANCE.createFromString(SimpletypesPackage.eINSTANCE.getSimpleEnumObject(), "Enum1");
+	protected static final SimpleEnum ENU_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getEnu() <em>Enu</em>}' attribute.
