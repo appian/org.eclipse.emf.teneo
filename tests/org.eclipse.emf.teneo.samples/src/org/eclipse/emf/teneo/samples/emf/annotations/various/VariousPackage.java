@@ -88,13 +88,40 @@ public interface VariousPackage extends EPackage {
 	int PARENT__TOTAL_PEOPLE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Name1</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT__NAME1 = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT__NAME2 = 3;
+
+	/**
+	 * The feature id for the '<em><b>Complete Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT__COMPLETE_NAME = 4;
+
+	/**
 	 * The number of structural features of the '<em>Parent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARENT_FEATURE_COUNT = 2;
+	int PARENT_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.impl.ChildImpl <em>Child</em>}' class.
@@ -123,6 +150,33 @@ public interface VariousPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHILD__TOTAL_PEOPLE = PARENT__TOTAL_PEOPLE;
+
+	/**
+	 * The feature id for the '<em><b>Name1</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__NAME1 = PARENT__NAME1;
+
+	/**
+	 * The feature id for the '<em><b>Name2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__NAME2 = PARENT__NAME2;
+
+	/**
+	 * The feature id for the '<em><b>Complete Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__COMPLETE_NAME = PARENT__COMPLETE_NAME;
 
 	/**
 	 * The number of structural features of the '<em>Child</em>' class.
@@ -202,6 +256,39 @@ public interface VariousPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParent_TotalPeople();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName1 <em>Name1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name1</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName1()
+	 * @see #getParent()
+	 * @generated
+	 */
+	EAttribute getParent_Name1();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName2 <em>Name2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name2</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName2()
+	 * @see #getParent()
+	 * @generated
+	 */
+	EAttribute getParent_Name2();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getCompleteName <em>Complete Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Complete Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getCompleteName()
+	 * @see #getParent()
+	 * @generated
+	 */
+	EAttribute getParent_CompleteName();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Child <em>Child</em>}'.
@@ -292,6 +379,30 @@ public interface VariousPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARENT__TOTAL_PEOPLE = eINSTANCE.getParent_TotalPeople();
+
+		/**
+		 * The meta object literal for the '<em><b>Name1</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARENT__NAME1 = eINSTANCE.getParent_Name1();
+
+		/**
+		 * The meta object literal for the '<em><b>Name2</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARENT__NAME2 = eINSTANCE.getParent_Name2();
+
+		/**
+		 * The meta object literal for the '<em><b>Complete Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARENT__COMPLETE_NAME = eINSTANCE.getParent_CompleteName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.impl.ChildImpl <em>Child</em>}' class.

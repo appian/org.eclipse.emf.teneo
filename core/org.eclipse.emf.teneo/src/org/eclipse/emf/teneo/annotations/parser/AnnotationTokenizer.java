@@ -230,7 +230,8 @@ class AnnotationTokenizer {
 					lChar = data[++lCur];
 				} while (lChar == ',' || lChar == '-' || lChar == '.' || lChar == ' ' || lChar == '_'
 						|| lChar == '/' || lChar == '`' || lChar == '@' || lChar == ':' || lChar == '='
-						|| lChar == '(' || lChar == ')' || lChar == '{' || lChar == '}' || lChar == '\''
+						|| lChar == '-' || lChar == '+' || lChar == '(' || lChar == ')' || lChar == '{'
+						|| lChar == '}' || lChar == '\''
 						|| lChar == '#' || lChar == '&' || lChar == '<' || lChar == '>' || lChar == '$'
 						|| lChar == ';' || lChar == '%' || lChar == '*' || lChar == '\''
 						|| ('0' <= lChar && lChar <= '9') || ('a' <= lChar && lChar <= 'z') || lChar == '?'

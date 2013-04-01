@@ -25,6 +25,15 @@
 		<property name="totalPeople" lazy="false" not-null="false" type="int">
 			<formula>(select count(*) from parent)</formula>
 		</property>
+		<property name="name1" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME1`"/>
+		</property>
+		<property name="name2" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME2`"/>
+		</property>
+		<property name="completeName" lazy="false" not-null="false" type="java.lang.String">
+			<formula>(name1 + ' ' + name2)</formula>
+		</property>
 	</class>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.various.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" extends="Parent" discriminator-value="Child">
 		<meta attribute="eclassName" inherit="false">Child</meta>
@@ -131,6 +140,15 @@
 		</list>
 		<property name="totalPeople" lazy="false" not-null="false" type="int">
 			<formula>(select count(*) from parent)</formula>
+		</property>
+		<property name="name1" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME1`"/>
+		</property>
+		<property name="name2" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME2`"/>
+		</property>
+		<property name="completeName" lazy="false" not-null="false" type="java.lang.String">
+			<formula>(name1 + ' ' + name2)</formula>
 		</property>
 	</class>
 	<subclass name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="ChildAuditing" abstract="false" lazy="false" extends="ParentAuditing" discriminator-value="ChildAuditing">

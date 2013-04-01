@@ -82,6 +82,7 @@ public class VariousAction extends AbstractTestAction {
 			assertEquals("test", c.getName());
 			store.store(c);
 			for (Parent p : c.getParents()) {
+				assertEquals("1 2", p.getCompleteName());
 				// 2 parents and 10 children
 				assertEquals(12, p.getTotalPeople());
 			}
@@ -106,6 +107,8 @@ public class VariousAction extends AbstractTestAction {
 	private Parent createParent() {
 		final VariousFactory factory = VariousFactory.eINSTANCE;
 		final Parent p = factory.createParent();
+		p.setName1("1");
+		p.setName2("2");
 		for (int i = 0; i < 5; i++) {
 			final Child c = factory.createChild();
 			p.getChildren().add(c);

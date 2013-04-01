@@ -74,20 +74,10 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link VariousPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -99,7 +89,7 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 		if (isInited) return (VariousPackage)EPackage.Registry.INSTANCE.getEPackage(VariousPackage.eNS_URI);
 
 		// Obtain or create and register package
-		VariousPackageImpl theVariousPackage = (VariousPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof VariousPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new VariousPackageImpl());
+		VariousPackageImpl theVariousPackage = (VariousPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof VariousPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new VariousPackageImpl());
 
 		isInited = true;
 
@@ -112,6 +102,9 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 		// Mark meta-data to indicate it can't be changed
 		theVariousPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(VariousPackage.eNS_URI, theVariousPackage);
 		return theVariousPackage;
 	}
 
@@ -140,6 +133,33 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 	 */
 	public EAttribute getParent_TotalPeople() {
 		return (EAttribute)parentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParent_Name1() {
+		return (EAttribute)parentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParent_Name2() {
+		return (EAttribute)parentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParent_CompleteName() {
+		return (EAttribute)parentEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -209,6 +229,9 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 		parentEClass = createEClass(PARENT);
 		createEReference(parentEClass, PARENT__CHILDREN);
 		createEAttribute(parentEClass, PARENT__TOTAL_PEOPLE);
+		createEAttribute(parentEClass, PARENT__NAME1);
+		createEAttribute(parentEClass, PARENT__NAME2);
+		createEAttribute(parentEClass, PARENT__COMPLETE_NAME);
 
 		childEClass = createEClass(CHILD);
 
@@ -251,6 +274,9 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 		initEClass(parentEClass, Parent.class, "Parent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getParent_Children(), this.getChild(), null, "children", null, 0, -1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParent_TotalPeople(), ecorePackage.getEInt(), "totalPeople", null, 0, 1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParent_Name1(), ecorePackage.getEString(), "name1", null, 0, 1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParent_Name2(), ecorePackage.getEString(), "name2", null, 0, 1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParent_CompleteName(), ecorePackage.getEString(), "completeName", null, 0, 1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(childEClass, Child.class, "Child", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -291,6 +317,12 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 		   source, 
 		   new String[] {
 			 "value", "@Formula(value=\"(select count(*) from parent)\")"
+		   });		
+		addAnnotation
+		  (getParent_CompleteName(), 
+		   source, 
+		   new String[] {
+			 "value", "@Formula(value=\"(name1 + \' \' + name2)\")"
 		   });		
 		addAnnotation
 		  (immutableCityEClass, 

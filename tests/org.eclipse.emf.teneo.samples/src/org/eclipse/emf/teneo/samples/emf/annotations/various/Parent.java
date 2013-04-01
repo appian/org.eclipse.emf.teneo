@@ -20,6 +20,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getChildren <em>Children</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getTotalPeople <em>Total People</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName1 <em>Name1</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName2 <em>Name2</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getCompleteName <em>Complete Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,5 +72,83 @@ public interface Parent extends EObject {
 	 * @generated
 	 */
 	void setTotalPeople(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Name1</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name1</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name1</em>' attribute.
+	 * @see #setName1(String)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.VariousPackage#getParent_Name1()
+	 * @model
+	 * @generated
+	 */
+	String getName1();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName1 <em>Name1</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name1</em>' attribute.
+	 * @see #getName1()
+	 * @generated
+	 */
+	void setName1(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Name2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name2</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name2</em>' attribute.
+	 * @see #setName2(String)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.VariousPackage#getParent_Name2()
+	 * @model
+	 * @generated
+	 */
+	String getName2();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getName2 <em>Name2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name2</em>' attribute.
+	 * @see #getName2()
+	 * @generated
+	 */
+	void setName2(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Complete Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Complete Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Complete Name</em>' attribute.
+	 * @see #setCompleteName(String)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.VariousPackage#getParent_CompleteName()
+	 * @model annotation="teneo.jpa value='@Formula(value=\"(name1 + \' \' + name2)\")'"
+	 * @generated
+	 */
+	String getCompleteName();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.various.Parent#getCompleteName <em>Complete Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Complete Name</em>' attribute.
+	 * @see #getCompleteName()
+	 * @generated
+	 */
+	void setCompleteName(String value);
 
 } // Parent

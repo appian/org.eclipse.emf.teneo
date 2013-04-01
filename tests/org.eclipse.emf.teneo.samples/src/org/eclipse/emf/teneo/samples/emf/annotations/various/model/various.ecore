@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="various"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/various" nsPrefix="various">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="various" nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/various"
+    nsPrefix="various">
   <eClassifiers xsi:type="ecore:EClass" name="Parent">
     <eAnnotations source="teneo.jpa">
       <details key="value" value="@ForceDiscriminator&#xA;@BatchSize(size=9)"/>
@@ -16,6 +15,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalPeople" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eAnnotations source="teneo.jpa">
         <details key="value" value="@Formula(value=&quot;(select count(*) from parent)&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Formula(value=&quot;(name1 + ' ' + name2)&quot;)"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
-    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Various" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src" modelPluginID="org.eclipse.emf.teneo.samples"
+    modelName="Various" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false">
   <foreignModel>various.ecore</foreignModel>
   <genPackages prefix="Various" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
       disposableProviderFactory="true" ecorePackage="various.ecore#/">
     <genClasses ecoreClass="various.ecore#//Parent">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference various.ecore#//Parent/children"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute various.ecore#//Parent/totalPeople"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute various.ecore#//Parent/name1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute various.ecore#//Parent/name2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute various.ecore#//Parent/completeName"/>
     </genClasses>
     <genClasses ecoreClass="various.ecore#//Child"/>
     <genClasses ecoreClass="various.ecore#//ImmutableCity">
