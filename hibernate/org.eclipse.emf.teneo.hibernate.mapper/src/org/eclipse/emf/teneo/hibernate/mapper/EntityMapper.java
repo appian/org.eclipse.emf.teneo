@@ -91,7 +91,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 	/**
 	 * @return Returns a new hibernate element for the given entity.
 	 */
-	private Element createEntity(PAnnotatedEClass entity, InheritanceType inhStrategy,
+	protected Element createEntity(PAnnotatedEClass entity, InheritanceType inhStrategy,
 			PAnnotatedEClass superEntity, DiscriminatorValue dValue, Table table) {
 		// determine what type of hibernate tag should be used
 		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy

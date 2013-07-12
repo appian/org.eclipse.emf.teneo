@@ -23,11 +23,13 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
 import javax.persistence.Cache;
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -36,9 +38,13 @@ import javax.persistence.LockModeType;
 import javax.persistence.Parameter;
 import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
+import javax.persistence.SynchronizationType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.metamodel.Metamodel;
 
 import org.apache.commons.logging.Log;
@@ -472,6 +478,32 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		public boolean isOpen() {
 			return delegate.isOpen();
 		}
+
+		@Override
+		public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
+			delegate.addNamedEntityGraph(arg0, arg1);
+		}
+
+		@Override
+		public void addNamedQuery(String arg0, Query arg1) {
+			delegate.addNamedQuery(arg0, arg1);
+		}
+
+		@Override
+		public EntityManager createEntityManager(SynchronizationType arg0) {
+			return delegate.createEntityManager(arg0);
+		}
+
+		@Override
+		public EntityManager createEntityManager(SynchronizationType arg0,
+				@SuppressWarnings("rawtypes") Map arg1) {
+			return delegate.createEntityManager(arg0, arg1);
+		}
+
+		@Override
+		public <T> T unwrap(Class<T> arg0) {
+			return delegate.unwrap(arg0);
+		}
 	}
 
 	/**
@@ -673,6 +705,62 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		public void setDelegateEntityManager(EntityManager delegateEntityManager) {
 			this.delegateEntityManager = delegateEntityManager;
 		}
+
+		@Override
+		public <T> EntityGraph<T> createEntityGraph(Class<T> arg0) {
+			return delegateEntityManager.createEntityGraph(arg0);
+		}
+
+		@Override
+		public EntityGraph<?> createEntityGraph(String arg0) {
+			return delegateEntityManager.createEntityGraph(arg0);
+		}
+
+		@Override
+		public StoredProcedureQuery createNamedStoredProcedureQuery(String arg0) {
+			return delegateEntityManager.createNamedStoredProcedureQuery(arg0);
+		}
+
+		@Override
+		public Query createQuery(@SuppressWarnings("rawtypes") CriteriaUpdate arg0) {
+			return delegateEntityManager.createQuery(arg0);
+		}
+
+		@Override
+		public Query createQuery(@SuppressWarnings("rawtypes") CriteriaDelete arg0) {
+			return delegateEntityManager.createQuery(arg0);
+		}
+
+		@Override
+		public StoredProcedureQuery createStoredProcedureQuery(String arg0) {
+			return delegateEntityManager.createStoredProcedureQuery(arg0);
+		}
+
+		@Override
+		public StoredProcedureQuery createStoredProcedureQuery(String arg0,
+				@SuppressWarnings("rawtypes") Class... arg1) {
+			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
+		}
+
+		@Override
+		public StoredProcedureQuery createStoredProcedureQuery(String arg0, String... arg1) {
+			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
+		}
+
+		@Override
+		public EntityGraph<?> getEntityGraph(String arg0) {
+			return delegateEntityManager.getEntityGraph(arg0);
+		}
+
+		@Override
+		public <T> List<EntityGraph<? super T>> getEntityGraphs(Class<T> arg0) {
+			return delegateEntityManager.getEntityGraphs(arg0);
+		}
+
+		@Override
+		public boolean isJoinedToTransaction() {
+			return delegateEntityManager.isJoinedToTransaction();
+		}
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -749,6 +837,32 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		public Integer getPosition() {
 			return position;
 		}
+	}
+
+	@Override
+	public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
+		getEntityManagerFactory().addNamedEntityGraph(arg0, arg1);
+	}
+
+	@Override
+	public void addNamedQuery(String arg0, Query arg1) {
+		getEntityManagerFactory().addNamedQuery(arg0, arg1);
+	}
+
+	@Override
+	public EntityManager createEntityManager(SynchronizationType arg0) {
+		return getEntityManagerFactory().createEntityManager(arg0);
+	}
+
+	@Override
+	public EntityManager createEntityManager(SynchronizationType arg0,
+			@SuppressWarnings("rawtypes") Map arg1) {
+		return getEntityManagerFactory().createEntityManager(arg0, arg1);
+	}
+
+	@Override
+	public <T> T unwrap(Class<T> arg0) {
+		return getEntityManagerFactory().unwrap(arg0);
 	}
 
 }
