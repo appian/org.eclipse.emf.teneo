@@ -44,6 +44,7 @@ import org.hibernate.collection.internal.PersistentBag;
 import org.hibernate.collection.internal.PersistentIdentifierBag;
 import org.hibernate.collection.internal.PersistentList;
 import org.hibernate.collection.spi.PersistentCollection;
+import org.hibernate.engine.spi.CollectionEntry;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.loader.CollectionAliases;
 import org.hibernate.persister.collection.CollectionPersister;
@@ -64,6 +65,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	private static final long serialVersionUID = -4553160393592497834L;
 	/** The logger */
 	private static Log log = LogFactory.getLog(HibernatePersistableEList.class);
+
+	private int cachedSize = -1;
+	private boolean efficientSizeOperation = false;
 
 	/** Constructor */
 	public HibernatePersistableEList(InternalEObject owner, EStructuralFeature feature, List<E> list) {
@@ -512,13 +516,42 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 	@Override
 	protected int delegateSize() {
+		if (isEfficientSizeOperation()) {
+			final int computedSize = getSizeNonLoading();
+			if (computedSize > -1) {
+				return computedSize;
+			}
+		}
 		if (delegate instanceof AbstractPersistentCollection && !isInitialized() && !isLoaded()) {
 			return delegate.size();
 		}
 		return delegateList().size();
 	}
 
-	protected final boolean isConnectedToSession() {
+	public int getSizeNonLoading() {
+		if (cachedSize > -1) {
+			return cachedSize;
+		}
+		if (delegate instanceof AbstractPersistentCollection && !isInitialized() && !isLoaded()) {
+			final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) delegate;
+			final SessionImplementor session = persistentCollection.getSession();
+			if (session != null) {
+				CollectionEntry entry = session.getPersistenceContext().getCollectionEntry(
+						persistentCollection);
+				if (entry != null) {
+					CollectionPersister persister = entry.getLoadedPersister();
+					if (persistentCollection.hasQueuedOperations()) {
+						session.flush();
+					}
+					cachedSize = persister.getSize(entry.getLoadedKey(), session);
+					return cachedSize;
+				}
+			}
+		}
+		return -1;
+	}
+
+	protected boolean isConnectedToSession() {
 		if (!(getDelegate() instanceof AbstractPersistentCollection)) {
 			return false;
 		}
@@ -591,6 +624,21 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 			return ((PersistentCollection) delegate).wasInitialized();
 		}
 		return false;
+	}
+
+	/**
+	 * @return the efficientSizeOperation
+	 */
+	public boolean isEfficientSizeOperation() {
+		return efficientSizeOperation;
+	}
+
+	/**
+	 * @param efficientSizeOperation
+	 *          the efficientSizeOperation to set
+	 */
+	public void setEfficientSizeOperation(boolean efficientSizeOperation) {
+		this.efficientSizeOperation = efficientSizeOperation;
 	}
 
 }

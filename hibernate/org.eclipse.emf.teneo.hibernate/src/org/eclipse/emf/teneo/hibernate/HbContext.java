@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.hibernate;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
@@ -164,6 +165,14 @@ public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 		final EListPropertyHandler handler = extensionManager.getExtension(EListPropertyHandler.class);
 		handler.initialize(eFeature, extraLazy, newEMapMapping);
 		return handler;
+	}
+
+	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy,
+			boolean newEMapMapping, PersistenceOptions po) {
+		EListPropertyHandler eListPropertyHandler = (EListPropertyHandler) createEListAccessor(
+				eFeature, extraLazy, newEMapMapping);
+		eListPropertyHandler.setPersistenceOptions(po);
+		return eListPropertyHandler;
 	}
 
 	/*

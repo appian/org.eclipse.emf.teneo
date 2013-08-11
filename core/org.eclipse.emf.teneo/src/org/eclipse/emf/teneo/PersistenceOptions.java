@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005-2013 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -433,6 +433,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String HANDLE_UNSET_AS_NULL = RUNTIME_PREFIX + "handle_unset_as_null";
 
 	/**
+	 * This option controls if the size operation on an EList will load it's content from the
+	 * database. The default is false, to maintain backward compatibility. If true then the size
+	 * operation is done using a separate query.
+	 */
+	public static final String ELIST_EFFICIENT_SIZE_OPERATION = RUNTIME_PREFIX
+			+ "elist_efficient_size_operation";
+
+	/**
 	 * When an unset feature is persisted, the database will get a null value, default is false.
 	 * 
 	 * @deprecated note the same as {@link #HANDLE_UNSET_AS_NULL} use that persistence option.
@@ -522,6 +530,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(EMAP_AS_TRUE_MAP, "true");
 		props.setProperty(ALWAYS_MAP_LIST_AS_BAG, "false");
 		props.setProperty(ALSO_MAP_AS_CLASS, "true");
+		props.setProperty(ELIST_EFFICIENT_SIZE_OPERATION, "false");
 		props.setProperty(SET_PROXY, "false");
 		props.setProperty(FORCE_LAZY, "false");
 		props.setProperty(MAP_ALL_LISTS_AS_IDBAG, "false");
@@ -885,6 +894,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean isAlsoMapAsClass() {
 		return Boolean.valueOf(properties.getProperty(ALSO_MAP_AS_CLASS)).booleanValue();
+	}
+
+	/**
+	 * Returns the value of the ELIST_EFFICIENT_SIZE_OPERATION option, default is false
+	 */
+	public boolean isEListEfficientSizeOperation() {
+		return Boolean.valueOf(properties.getProperty(ELIST_EFFICIENT_SIZE_OPERATION)).booleanValue();
 	}
 
 	/**

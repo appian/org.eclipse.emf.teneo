@@ -368,7 +368,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 			if (sourceEFeature == null) {
 				continue;
 			}
-			if (!auditEntry.eIsSet(sourceEFeature) && !sourceEFeature.isMany()) {
+			if (!sourceEFeature.isMany() && !auditEntry.eIsSet(sourceEFeature)) {
 				continue;
 			}
 
@@ -399,9 +399,12 @@ public class AuditVersionProvider implements ExtensionPoint {
 						((Collection<Object>) target.eGet(targetEFeature)).add(targetEntry);
 					}
 				} else if (targetEFeature.isMany()) {
-					for (Object value : ((Collection<?>) auditEntry.eGet(sourceEFeature))) {
-						((Collection<Object>) target.eGet(targetEFeature)).add(dataStore.getAuditHandler()
-								.convertValue(targetEFeature, value));
+					final Collection<?> collection = ((Collection<?>) auditEntry.eGet(sourceEFeature));
+					if (collection.size() > 0) {
+						for (Object value : collection) {
+							((Collection<Object>) target.eGet(targetEFeature)).add(dataStore.getAuditHandler()
+									.convertValue(targetEFeature, value));
+						}
 					}
 				} else {
 					target.eSet(

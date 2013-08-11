@@ -295,7 +295,7 @@ public class HbUtil {
 			final EReference eref = (EReference) efeature;
 			if (eref.isMany()) {
 				return ds.getHbContext().createEListAccessor(efeature, extraLazy,
-						ds.getPersistenceOptions().isMapEMapAsTrueMap());
+						ds.getPersistenceOptions().isMapEMapAsTrueMap(), ds.getPersistenceOptions());
 			} else {
 				PropertyAccessor erefPropertyHandler = ds.getHbContext().createEReferenceAccessor(eref);
 				if (erefPropertyHandler instanceof EReferencePropertyHandler) {

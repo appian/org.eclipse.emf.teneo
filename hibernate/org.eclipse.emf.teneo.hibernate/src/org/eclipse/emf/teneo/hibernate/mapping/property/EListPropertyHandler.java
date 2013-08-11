@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject.EStore;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
@@ -85,6 +86,8 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 
 	/** The extension manager */
 	private ExtensionManager extensionManager;
+
+	private PersistenceOptions persistenceOptions;
 
 	/** Initialize this instance */
 	public void initialize(EStructuralFeature eFeature, boolean extraLazy, boolean newEMapMapping) {
@@ -458,11 +461,21 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			}
 		}
 		if (extraLazy) {
-			return getExtensionManager().getExtension(HbExtraLazyPersistableEList.class,
-					new Object[] { target, estruct, list });
+			final HbExtraLazyPersistableEList<?> persistableEList = getExtensionManager().getExtension(
+					HbExtraLazyPersistableEList.class, new Object[] { target, estruct, list });
+			if (persistenceOptions != null) {
+				persistableEList.setEfficientSizeOperation(persistenceOptions
+						.isEListEfficientSizeOperation());
+			}
+			return persistableEList;
 		}
-		return getExtensionManager().getExtension(HibernatePersistableEList.class,
-				new Object[] { target, estruct, list });
+		HibernatePersistableEList<?> persistableEList = getExtensionManager().getExtension(
+				HibernatePersistableEList.class, new Object[] { target, estruct, list });
+		if (persistenceOptions != null) {
+			persistableEList
+					.setEfficientSizeOperation(persistenceOptions.isEListEfficientSizeOperation());
+		}
+		return persistableEList;
 	}
 
 	protected List<Object> processList(Object list) {
@@ -482,5 +495,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
+	}
+
+	public void setPersistenceOptions(PersistenceOptions po) {
+		persistenceOptions = po;
 	}
 }
