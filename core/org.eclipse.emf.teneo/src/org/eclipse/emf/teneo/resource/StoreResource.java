@@ -72,6 +72,9 @@ public abstract class StoreResource extends ResourceImpl {
 	public static final String QUERY_PREFIX = "query";
 
 	/** Load strategy */
+	public static final String SKIP_VALIDATION_ON_SAVE = "skipValidationOnSave";
+
+	/** Load strategy */
 	public static final String LOAD_STRATEGY_PARAM = "loadStrategy";
 
 	/** The default strategy */
@@ -413,7 +416,9 @@ public abstract class StoreResource extends ResourceImpl {
 		boolean err = true;
 		try {
 			setAllowNotifications(false);
-			validateContents();
+			if (doValidationOnSave(options)) {
+				validateContents();
+			}
 			saveResource(options);
 			err = false;
 		} catch (Throwable t) {
@@ -433,6 +438,17 @@ public abstract class StoreResource extends ResourceImpl {
 			}
 
 		}
+	}
+
+	protected boolean doValidationOnSave(Map<?, ?> options) {
+		if (options == null || !options.containsKey(SKIP_VALIDATION_ON_SAVE)) {
+			return true;
+		}
+		final String value = (String) options.get(SKIP_VALIDATION_ON_SAVE);
+		if ("true".equals(value.trim().toLowerCase())) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
