@@ -115,6 +115,35 @@ public interface ColumnPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.column.impl.TestSchemaImpl <em>Test Schema</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.impl.TestSchemaImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.impl.ColumnPackageImpl#getTestSchema()
+	 * @generated
+	 */
+	int TEST_SCHEMA = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_SCHEMA__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Test Schema</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_SCHEMA_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.column.Book <em>Book</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +196,27 @@ public interface ColumnPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBook_Author();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.column.TestSchema <em>Test Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Schema</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.TestSchema
+	 * @generated
+	 */
+	EClass getTestSchema();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.column.TestSchema#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.TestSchema#getName()
+	 * @see #getTestSchema()
+	 * @generated
+	 */
+	EAttribute getTestSchema_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -231,6 +281,24 @@ public interface ColumnPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BOOK__AUTHOR = eINSTANCE.getBook_Author();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.column.impl.TestSchemaImpl <em>Test Schema</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.impl.TestSchemaImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.impl.ColumnPackageImpl#getTestSchema()
+		 * @generated
+		 */
+		EClass TEST_SCHEMA = eINSTANCE.getTestSchema();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_SCHEMA__NAME = eINSTANCE.getTestSchema_Name();
 
 	}
 

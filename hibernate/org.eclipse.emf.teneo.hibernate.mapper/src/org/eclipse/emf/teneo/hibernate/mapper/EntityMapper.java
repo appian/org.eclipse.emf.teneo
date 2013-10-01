@@ -240,11 +240,11 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				log.debug("Table " + table.getName());
 			}
 			if (table.getSchema() != null) {
-				target.addAttribute("schema", getHbmContext().trunc(null, table.getSchema(), false));
+				target.addAttribute("schema", getHbmContext().trunc(table, table.getSchema(), false));
 				log.debug("Schema " + table.getSchema());
 			}
 			if (table.getCatalog() != null) {
-				target.addAttribute("catalog", getHbmContext().trunc(null, table.getCatalog(), false));
+				target.addAttribute("catalog", getHbmContext().trunc(table, table.getCatalog(), false));
 				log.debug("Catalog " + table.getCatalog());
 			}
 		}

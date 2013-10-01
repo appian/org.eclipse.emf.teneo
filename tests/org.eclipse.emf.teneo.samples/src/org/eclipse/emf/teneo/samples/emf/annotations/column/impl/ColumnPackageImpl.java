@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.column.TestSchema;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +29,13 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 	 * @generated
 	 */
 	private EClass bookEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testSchemaEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -56,20 +64,10 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link ColumnPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -81,7 +79,7 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		if (isInited) return (ColumnPackage)EPackage.Registry.INSTANCE.getEPackage(ColumnPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ColumnPackageImpl theColumnPackage = (ColumnPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof ColumnPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new ColumnPackageImpl());
+		ColumnPackageImpl theColumnPackage = (ColumnPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ColumnPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ColumnPackageImpl());
 
 		isInited = true;
 
@@ -97,6 +95,9 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		// Mark meta-data to indicate it can't be changed
 		theColumnPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(ColumnPackage.eNS_URI, theColumnPackage);
 		return theColumnPackage;
 	}
 
@@ -150,6 +151,24 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTestSchema() {
+		return testSchemaEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestSchema_Name() {
+		return (EAttribute)testSchemaEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ColumnFactory getColumnFactory() {
 		return (ColumnFactory)getEFactoryInstance();
 	}
@@ -178,6 +197,9 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		createEAttribute(bookEClass, BOOK__PAGES);
 		createEAttribute(bookEClass, BOOK__WEIGHT);
 		createEAttribute(bookEClass, BOOK__AUTHOR);
+
+		testSchemaEClass = createEClass(TEST_SCHEMA);
+		createEAttribute(testSchemaEClass, TEST_SCHEMA__NAME);
 	}
 
 	/**
@@ -214,10 +236,13 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bookEClass, Book.class, "Book", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBook_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBook_Pages(), theXMLTypePackage.getInt(), "pages", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBook_Weight(), theXMLTypePackage.getDecimal(), "weight", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBook_Author(), theXMLTypePackage.getString(), "author", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBook_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBook_Pages(), theXMLTypePackage.getInt(), "pages", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBook_Weight(), theXMLTypePackage.getDecimal(), "weight", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBook_Author(), theXMLTypePackage.getString(), "author", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(testSchemaEClass, TestSchema.class, "TestSchema", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestSchema_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, TestSchema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -260,6 +285,12 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "@Column(name=\"gewicht\" nullable=\"true\" precision=\"5\" scale=\"2\")"
+		   });				
+		addAnnotation
+		  (testSchemaEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Table(name=\"myschematable\", schema=\"TEST\")"
 		   });		
 	}
 
@@ -305,6 +336,20 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "author"
+		   });			
+		addAnnotation
+		  (testSchemaEClass, 
+		   source, 
+		   new String[] {
+			 "name", "TestSchema",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getTestSchema_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
 		   });
 	}
 

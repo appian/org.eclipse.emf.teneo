@@ -35,6 +35,15 @@ public interface ColumnFactory extends EFactory {
 	Book createBook();
 
 	/**
+	 * Returns a new object of class '<em>Test Schema</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test Schema</em>'.
+	 * @generated
+	 */
+	TestSchema createTestSchema();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

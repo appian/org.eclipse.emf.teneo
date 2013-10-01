@@ -79,7 +79,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean pagesESet = false;
+	protected boolean pagesESet;
 
 	/**
 	 * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
@@ -260,7 +260,7 @@ public class BookImpl extends EObjectImpl implements Book {
 			case ColumnPackage.BOOK__TITLE:
 				return getTitle();
 			case ColumnPackage.BOOK__PAGES:
-				return new Integer(getPages());
+				return getPages();
 			case ColumnPackage.BOOK__WEIGHT:
 				return getWeight();
 			case ColumnPackage.BOOK__AUTHOR:
@@ -281,7 +281,7 @@ public class BookImpl extends EObjectImpl implements Book {
 				setTitle((String)newValue);
 				return;
 			case ColumnPackage.BOOK__PAGES:
-				setPages(((Integer)newValue).intValue());
+				setPages((Integer)newValue);
 				return;
 			case ColumnPackage.BOOK__WEIGHT:
 				setWeight((BigDecimal)newValue);

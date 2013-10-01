@@ -26,4 +26,12 @@
       <xsd:element name="author" type="xsd:string"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="TestSchema">
+ 	<xsd:annotation>
+		<xsd:appinfo source="teneo.jpa">@Table(name="myschematable", schema="TEST")</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
  </xsd:schema>

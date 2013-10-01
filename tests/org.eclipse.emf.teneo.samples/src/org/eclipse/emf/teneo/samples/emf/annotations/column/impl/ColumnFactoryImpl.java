@@ -61,6 +61,7 @@ public class ColumnFactoryImpl extends EFactoryImpl implements ColumnFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ColumnPackage.BOOK: return createBook();
+			case ColumnPackage.TEST_SCHEMA: return createTestSchema();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +75,16 @@ public class ColumnFactoryImpl extends EFactoryImpl implements ColumnFactory {
 	public Book createBook() {
 		BookImpl book = new BookImpl();
 		return book;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestSchema createTestSchema() {
+		TestSchemaImpl testSchema = new TestSchemaImpl();
+		return testSchema;
 	}
 
 	/**

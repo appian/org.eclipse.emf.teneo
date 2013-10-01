@@ -42,7 +42,7 @@ public interface Book extends EObject {
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Title()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        annotation="teneo.jpa appinfo='@Column(name=\"titel\" unique=\"true\" length=\"25\")'"
 	 *        extendedMetaData="kind='element' name='title'"
 	 * @generated
@@ -72,7 +72,7 @@ public interface Book extends EObject {
 	 * @see #unsetPages()
 	 * @see #setPages(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Pages()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        annotation="teneo.jpa appinfo='@Column(updatable=\"false\" insertable=\"false\")'"
 	 *        extendedMetaData="kind='element' name='pages'"
 	 * @generated
@@ -125,7 +125,7 @@ public interface Book extends EObject {
 	 * @return the value of the '<em>Weight</em>' attribute.
 	 * @see #setWeight(BigDecimal)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Weight()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Decimal" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Decimal" required="true"
 	 *        annotation="teneo.jpa appinfo='@Column(name=\"gewicht\" nullable=\"true\" precision=\"5\" scale=\"2\")'"
 	 *        extendedMetaData="kind='element' name='weight'"
 	 * @generated
@@ -153,7 +153,7 @@ public interface Book extends EObject {
 	 * @return the value of the '<em>Author</em>' attribute.
 	 * @see #setAuthor(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Author()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='author'"
 	 * @generated
 	 */
