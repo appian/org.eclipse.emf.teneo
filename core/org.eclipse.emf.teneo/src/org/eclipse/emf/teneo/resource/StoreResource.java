@@ -444,6 +444,9 @@ public abstract class StoreResource extends ResourceImpl {
 		if (options == null || !options.containsKey(SKIP_VALIDATION_ON_SAVE)) {
 			return true;
 		}
+		if (options.get(SKIP_VALIDATION_ON_SAVE) instanceof Boolean) {
+			return !((Boolean) options.get(SKIP_VALIDATION_ON_SAVE));
+		}
 		final String value = (String) options.get(SKIP_VALIDATION_ON_SAVE);
 		if ("true".equals(value.trim().toLowerCase())) {
 			return false;
