@@ -93,9 +93,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public void initialize(EStructuralFeature eFeature, boolean extraLazy, boolean newEMapMapping) {
 		this.extraLazy = extraLazy;
 		this.eFeature = eFeature;
-		if (log.isDebugEnabled()) {
-			log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
-		}
 		AssertUtil.assertTrue(
 				"Many must be true but this isn't the case for " + StoreUtil.toString(eFeature),
 				eFeature.isMany());
@@ -176,9 +173,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 					(InternalEObject) owner, eFeature, (List<?>) obj);
 			final EObject eobj = (EObject) owner;
 			if (!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
-				if (log.isDebugEnabled()) {
-					log.debug("Dynamic elist, set using the esettings");
-				}
 				EcoreAccess.setManyEFeatureValue(eFeature, pelist, (BasicEObjectImpl) owner);
 			} else {
 				// TODO: currently it is required to use the field setter
@@ -320,9 +314,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 		}
 
 		if (!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
-			if (log.isDebugEnabled()) {
-				log.debug("Dynamic elist, set using the esettings");
-			}
 			Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature, (BasicEObjectImpl) target);
 
 			if (StoreUtil.isEStoreList(currentValue)) {
@@ -345,10 +336,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 							createPersistableList((InternalEObject) target, eFeature, (List<?>) value),
 							(BasicEObjectImpl) target);
 				}
-			}
-			if (log.isDebugEnabled()) {
-				log.debug("Set value " + value.getClass().getName() + " for target "
-						+ target.getClass().getName() + " field " + getFieldName(target));
 			}
 
 		} else {
@@ -410,10 +397,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 								createPersistableList((InternalEObject) target, eFeature, (List<?>) value));
 					}
 				}
-				if (log.isDebugEnabled()) {
-					log.debug("Set value " + value.getClass().getName() + " for target "
-							+ target.getClass().getName() + " field " + getFieldName(target));
-				}
 			} catch (Exception e) {
 				throw new HbMapperException("The field "
 						+ (javaField != null ? javaField.getName() : getFieldName(target))
@@ -429,9 +412,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	protected EList<?> createPersistableMap(InternalEObject target, EStructuralFeature estruct,
 			Map<?, ?> map) {
 		final EReference eref = (EReference) estruct;
-		if (log.isDebugEnabled()) {
-			log.debug("Detected EMAP for " + estruct.getName());
-		}
 		assert (isAMap);
 		assert (newEMapMapping);
 		return getExtensionManager().getExtension(MapHibernatePersistableEMap.class,
@@ -448,9 +428,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			// and the entry class must have two efeatures with the name key and
 			// value
 			if (StoreUtil.isMap(estruct)) {
-				if (log.isDebugEnabled()) {
-					log.debug("Detected EMAP for " + estruct.getName());
-				}
 				if (extraLazy) {
 					return getExtensionManager().getExtension(HbExtraLazyPersistableEMap.class,
 							new Object[] { target, eref, list });
