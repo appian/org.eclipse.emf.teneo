@@ -931,10 +931,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			return;
 		}
 		if (joinTable.getCatalog() != null) {
-			collElement.addAttribute("catalog", joinTable.getCatalog());
+			collElement.addAttribute("catalog", getHbmContext().trunc(joinTable, joinTable.getCatalog()));
 		}
 		if (joinTable.getSchema() != null) {
-			collElement.addAttribute("schema", joinTable.getSchema());
+			collElement.addAttribute("schema", getHbmContext().trunc(joinTable, joinTable.getSchema()));
 		}
 		if (joinTable.getName() != null) {
 			collElement.addAttribute("table", getHbmContext().trunc(joinTable, joinTable.getName()));
