@@ -106,7 +106,7 @@
 	      		<bc:propertyRef key="thirdPartyPath"/>
       		</uri>
     	</provider>
-		<provider readerType="p2" componentTypes="osgi.bundle" mutable="false" source="false">
+		<provider readerType="p2" componentTypes="eclipse.feature,osgi.bundle" mutable="false" source="false">
 			<uri format="{0}/tools/orbit/downloads/drops/S20130914154012/repository/">
 				<bc:propertyRef key="eclipse.download"/>
       		</uri>
