@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
@@ -68,9 +66,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 * Generated Serial Version ID
 	 */
 	private static final long serialVersionUID = 2255108246093951341L;
-
-	/** The logger */
-	private static Log log = LogFactory.getLog(EListPropertyHandler.class);
 
 	/** The EStructuralFeature of this accessor */
 	protected EStructuralFeature eFeature;
