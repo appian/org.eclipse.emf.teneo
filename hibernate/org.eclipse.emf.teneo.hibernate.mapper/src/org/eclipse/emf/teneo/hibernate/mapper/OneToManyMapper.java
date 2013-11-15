@@ -194,7 +194,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			// To force a jointable on a real otm a jointable annotation should
 			// be specified.
 			final Element mtm = addManyToMany(hbReference, referedToAClass, collElement, targetName,
-					inverseJoinColumns, otm.isUnique());
+					inverseJoinColumns, getUnique(otm.isUnique()));
 			addForeignKeyAttribute(mtm, paReference);
 
 			if (hbReference.getNotFound() != null) {
@@ -302,7 +302,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 					.getInverseJoinColumns() : new ArrayList<JoinColumn>();
 
 			final Element mtm = addManyToMany(hbReference, referedToAClass, collElement, targetName,
-					inverseJoinColumns, otm.isUnique());
+					inverseJoinColumns, getUnique(otm.isUnique()));
 			addForeignKeyAttribute(mtm, paReference);
 			if (hbReference.getNotFound() != null) {
 				mtm.addAttribute("not-found", hbReference.getNotFound().getAction().getName().toLowerCase());
@@ -321,6 +321,15 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference).getFilter());
 	}
 
+	// https://forum.hibernate.org/viewtopic.php?f=1&t=10296
+	protected boolean getUnique(boolean isUnique) {
+		final String hbVersion = getHbmContext().getPersistenceOptions().getHibernateVersion();
+		if (hbVersion == null || !"4.2.7SP1".equals(hbVersion)) {
+			return isUnique;
+		}
+		return false;
+	}
+	
 	/**
 	 * Creates a onetomany element.
 	 * 

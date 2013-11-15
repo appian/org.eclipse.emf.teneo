@@ -145,6 +145,7 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			store.beginTransaction();
 			final Writer w1 = store.getObject(Writer.class);
 			checkIsStillLazy(w1.getBooks());
+			Book b1 = w1.getBooks().get(0);
 			w1.getBooks().clear();
 			store.commitTransaction();
 		}

@@ -43,6 +43,7 @@ public class AllTests {
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
 						.instance().getConfigurations());
 		// if (true) {
+		// suite.addTestSuite(EMapAsListExtraLazyAction.class);
 		// return suite;
 		// }
 

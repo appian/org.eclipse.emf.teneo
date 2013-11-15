@@ -23,4 +23,18 @@
             class="org.eclipse.emf.teneo.samples.emf.schemaconstructs.documentroot.util.DocumentrootResourceFactoryImpl"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated bz398161 -->
+      <package
+            uri="http://www.eclipse.org/emf/teneo/samples/issues/bz398161"
+            class="org.eclipse.emf.teneo.samples.issues.bz398161.Bz398161Package"
+            genModel="src/org/eclipse/emf/teneo/samples/issues/bz398161/model/bz398161.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated bz398161 -->
+      <parser
+            type="bz398161"
+            class="org.eclipse.emf.teneo.samples.issues.bz398161.util.Bz398161ResourceFactoryImpl"/>
+   </extension>
 </plugin>

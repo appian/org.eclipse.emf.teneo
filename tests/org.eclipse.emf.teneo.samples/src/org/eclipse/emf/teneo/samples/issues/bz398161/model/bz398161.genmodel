@@ -9,6 +9,7 @@
     <genClasses ecoreClass="bz398161.ecore#//RefOne">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz398161.ecore#//RefOne/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bz398161.ecore#//RefOne/refTwo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz398161.ecore#//RefOne/stringVal"/>
     </genClasses>
     <genClasses ecoreClass="bz398161.ecore#//RefTwo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz398161.ecore#//RefTwo/number"/>

@@ -22,6 +22,14 @@
 					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="stringVal" nillable="true"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">
+						@Column(name="stringVal",columnDefinition = "CHARACTER(64) NOT NULL")
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 

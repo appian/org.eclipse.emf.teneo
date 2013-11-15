@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getRefTwo <em>Ref Two</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getStringVal <em>String Val</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,5 +132,60 @@ public interface RefOne extends EObject {
 	 * @generated
 	 */
 	boolean isSetRefTwo();
+
+	/**
+	 * Returns the value of the '<em><b>String Val</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>String Val</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>String Val</em>' attribute.
+	 * @see #isSetStringVal()
+	 * @see #unsetStringVal()
+	 * @see #setStringVal(String)
+	 * @see org.eclipse.emf.teneo.samples.issues.bz398161.Bz398161Package#getRefOne_StringVal()
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Column(name=\"stringVal\",columnDefinition = \"CHARACTER(64) NOT NULL\")\n\t\t\t\t\t'"
+	 *        extendedMetaData="kind='element' name='stringVal'"
+	 * @generated
+	 */
+	String getStringVal();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getStringVal <em>String Val</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>String Val</em>' attribute.
+	 * @see #isSetStringVal()
+	 * @see #unsetStringVal()
+	 * @see #getStringVal()
+	 * @generated
+	 */
+	void setStringVal(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getStringVal <em>String Val</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetStringVal()
+	 * @see #getStringVal()
+	 * @see #setStringVal(String)
+	 * @generated
+	 */
+	void unsetStringVal();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getStringVal <em>String Val</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>String Val</em>' attribute is set.
+	 * @see #unsetStringVal()
+	 * @see #getStringVal()
+	 * @see #setStringVal(String)
+	 * @generated
+	 */
+	boolean isSetStringVal();
 
 } // RefOne

@@ -96,7 +96,7 @@
 			<key update="true">
 				<column name="`WRITER_E_ID`" unique="false"/>
 			</key>
-			<many-to-many entity-name="Book" unique="true">
+			<many-to-many entity-name="Book" unique="false">
 				<column name="`BOOK_TITLE`" unique="false"/>
 			</many-to-many>
 		</bag>

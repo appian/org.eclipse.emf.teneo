@@ -84,13 +84,22 @@ public interface Bz398161Package extends EPackage {
 	int REF_ONE__REF_TWO = 1;
 
 	/**
+	 * The feature id for the '<em><b>String Val</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REF_ONE__STRING_VAL = 2;
+
+	/**
 	 * The number of structural features of the '<em>Ref One</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REF_ONE_FEATURE_COUNT = 2;
+	int REF_ONE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.issues.bz398161.impl.RefTwoImpl <em>Ref Two</em>}' class.
@@ -152,6 +161,17 @@ public interface Bz398161Package extends EPackage {
 	 * @generated
 	 */
 	EReference getRefOne_RefTwo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getStringVal <em>String Val</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Val</em>'.
+	 * @see org.eclipse.emf.teneo.samples.issues.bz398161.RefOne#getStringVal()
+	 * @see #getRefOne()
+	 * @generated
+	 */
+	EAttribute getRefOne_StringVal();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.issues.bz398161.RefTwo <em>Ref Two</em>}'.
@@ -221,6 +241,14 @@ public interface Bz398161Package extends EPackage {
 		 * @generated
 		 */
 		EReference REF_ONE__REF_TWO = eINSTANCE.getRefOne_RefTwo();
+
+		/**
+		 * The meta object literal for the '<em><b>String Val</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REF_ONE__STRING_VAL = eINSTANCE.getRefOne_StringVal();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.bz398161.impl.RefTwoImpl <em>Ref Two</em>}' class.

@@ -78,7 +78,7 @@
 				<column name="`RIGHTCOLUMN`" unique="false"/>
 			</key>
 			<list-index column="`HOUSE_VISITORS_IDX`"/>
-			<many-to-many entity-name="Person" unique="true" foreign-key="HOUSE_VISITORS">
+			<many-to-many entity-name="Person" unique="false" foreign-key="HOUSE_VISITORS">
 				<column name="`PERSON_FIRSTNAME`" unique="false"/>
 				<column name="`PERSON_LASTNAME`" unique="false"/>
 			</many-to-many>

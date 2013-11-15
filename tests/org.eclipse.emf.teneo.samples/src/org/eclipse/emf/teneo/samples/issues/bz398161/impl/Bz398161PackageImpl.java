@@ -133,6 +133,15 @@ public class Bz398161PackageImpl extends EPackageImpl implements Bz398161Package
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getRefOne_StringVal() {
+		return (EAttribute)refOneEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRefTwo() {
 		return refTwoEClass;
 	}
@@ -177,6 +186,7 @@ public class Bz398161PackageImpl extends EPackageImpl implements Bz398161Package
 		refOneEClass = createEClass(REF_ONE);
 		createEAttribute(refOneEClass, REF_ONE__ID);
 		createEReference(refOneEClass, REF_ONE__REF_TWO);
+		createEAttribute(refOneEClass, REF_ONE__STRING_VAL);
 
 		refTwoEClass = createEClass(REF_TWO);
 		createEAttribute(refTwoEClass, REF_TWO__NUMBER);
@@ -218,6 +228,7 @@ public class Bz398161PackageImpl extends EPackageImpl implements Bz398161Package
 		initEClass(refOneEClass, RefOne.class, "RefOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRefOne_Id(), theXMLTypePackage.getLong(), "id", null, 1, 1, RefOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRefOne_RefTwo(), this.getRefTwo(), null, "refTwo", null, 1, 1, RefOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRefOne_StringVal(), theXMLTypePackage.getString(), "stringVal", null, 1, 1, RefOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(refTwoEClass, RefTwo.class, "RefTwo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRefTwo_Number(), theXMLTypePackage.getString(), "number", null, 1, 1, RefTwo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -260,6 +271,13 @@ public class Bz398161PackageImpl extends EPackageImpl implements Bz398161Package
 		   new String[] {
 			 "kind", "element",
 			 "name", "refTwo"
+		   });			
+		addAnnotation
+		  (getRefOne_StringVal(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "stringVal"
 		   });		
 		addAnnotation
 		  (refTwoEClass, 
@@ -296,6 +314,12 @@ public class Bz398161PackageImpl extends EPackageImpl implements Bz398161Package
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t\t@JoinColumn(name=\"prodr_num\",columnDefinition = \"CHARACTER(6) NOT NULL\")\n\t\t\t\t\t"
+		   });			
+		addAnnotation
+		  (getRefOne_StringVal(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@Column(name=\"stringVal\",columnDefinition = \"CHARACTER(64) NOT NULL\")\n\t\t\t\t\t"
 		   });				
 		addAnnotation
 		  (getRefTwo_Number(), 

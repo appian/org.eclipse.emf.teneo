@@ -15,6 +15,9 @@
 		<many-to-one name="refTwo" entity-name="RefTwo" lazy="false" cascade="all" foreign-key="REFONE_REFTWO" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`PRODR_NUM`" sql-type="CHARACTER(6) NOT NULL"/>
 		</many-to-one>
+		<property name="stringVal" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STRINGVAL`" sql-type="CHARACTER(64) NOT NULL"/>
+		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz398161.impl.RefTwoImpl" entity-name="RefTwo" abstract="false" lazy="false" table="`REFTWO`">
 		<meta attribute="eclassName" inherit="false">RefTwo</meta>
@@ -99,6 +102,9 @@
 		</property>
 		<property name="refTwo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`REFTWO`"/>
+		</property>
+		<property name="stringVal" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STRINGVAL`" sql-type="CHARACTER(64) NOT NULL"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="RefTwoAuditing" abstract="false" lazy="false" table="`REFTWOAUDITING`">

@@ -40,6 +40,7 @@ public class Bz398161Action extends AbstractTestAction {
 			RefOne refOne = factory.createRefOne();
 			RefTwo refTwo = factory.createRefTwo();
 			refOne.setRefTwo(refTwo);
+			refOne.setStringVal("val");
 			refTwo.setNumber("abc");
 			store.store(refTwo);
 			store.store(refOne);

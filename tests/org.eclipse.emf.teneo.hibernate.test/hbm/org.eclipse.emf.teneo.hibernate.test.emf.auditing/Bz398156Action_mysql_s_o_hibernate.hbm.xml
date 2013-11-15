@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="library.BookCategoryObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
+		<param name="edatatype">BookCategoryObject</param>
+	</typedef>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" table="`book`">
+		<meta attribute="eclassName" inherit="false">Book</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
+		<id name="title" type="java.lang.String">
+			<column not-null="true" unique="false" name="`title`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`pages`"/>
+		</property>
+		<property name="category" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`category`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
+				<param name="eclassifier">BookCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
+			</type>
+		</property>
+		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="book_author" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`book_author_e_id`"/>
+		</many-to-one>
+		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`test`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="false" table="`library`">
+		<meta attribute="eclassName" inherit="false">Library</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<list name="writers" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key foreign-key="schrijvers_key" update="true">
+				<column name="`library_writers_e_id`" unique="false"/>
+			</key>
+			<list-index column="`test_index`"/>
+			<one-to-many entity-name="Writer"/>
+		</list>
+		<list name="books" lazy="true" cascade="all,delete-orphan">
+			<key foreign-key="library_books_key" update="true">
+				<column name="`library_books_e_id`" unique="false"/>
+			</key>
+			<list-index column="`library_books_idx`"/>
+			<one-to-many entity-name="Book"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="false" table="`writer`">
+		<meta attribute="eclassName" inherit="false">Writer</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<list name="books" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`book_author_e_id`" unique="false"/>
+			</key>
+			<list-index column="`writer_books_idx`"/>
+			<one-to-many entity-name="Book"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl" entity-name="TeneoAuditCommitInfo" abstract="false" lazy="false" table="`teneoauditcommitinfo`">
+		<meta attribute="eclassName" inherit="false">TeneoAuditCommitInfo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/hibernate/auditing</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<version name="version" type="long">
+			<column not-null="true" unique="false" name="`version`"/>
+		</version>
+		<property name="user" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`user`"/>
+		</property>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`comment`" length="2000"/>
+		</property>
+		<property name="commitTime" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`committime`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="audit_Book" abstract="false" lazy="false" table="`audit_book`">
+		<meta attribute="eclassName" inherit="false">audit_Book</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/LibraryAuditing</meta>
+		<id name="teneo_audit_id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`teneo_audit_id`"/>
+			<generator class="native"/>
+		</id>
+		<version name="teneo_version" type="long">
+			<column not-null="true" unique="false" name="`teneo_version`"/>
+		</version>
+		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_object_id`" unique-key="c0,c1,c2"/>
+		</property>
+		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_owner_object_id`"/>
+		</property>
+		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_start`" unique-key="c0"/>
+		</property>
+		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_end`" unique-key="c1"/>
+		</property>
+		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="audit_book_teneo_commit_info" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`teneoauditcommitinfo_teneo_commit_info_id`"/>
+		</many-to-one>
+		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`teneo_audit_kind`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
+				<param name="eclassifier">TeneoAuditKind</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
+			</type>
+		</property>
+		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_container_id`"/>
+		</property>
+		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`teneo_container_feature_id`"/>
+		</property>
+		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_previous_start`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_object_version`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_resourceid`"/>
+		</property>
+		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`title`"/>
+		</property>
+		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`pages`"/>
+		</property>
+		<property name="category" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`category`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
+				<param name="eclassifier">BookCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
+			</type>
+		</property>
+		<property name="author" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`author`"/>
+		</property>
+		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`test`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="audit_Library" abstract="false" lazy="false" table="`audit_library`">
+		<meta attribute="eclassName" inherit="false">audit_Library</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/LibraryAuditing</meta>
+		<id name="teneo_audit_id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`teneo_audit_id`"/>
+			<generator class="native"/>
+		</id>
+		<version name="teneo_version" type="long">
+			<column not-null="true" unique="false" name="`teneo_version`"/>
+		</version>
+		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_object_id`" unique-key="c0,c1,c2"/>
+		</property>
+		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_owner_object_id`"/>
+		</property>
+		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_start`" unique-key="c0"/>
+		</property>
+		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_end`" unique-key="c1"/>
+		</property>
+		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="audit_library_teneo_commit_info" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`teneoauditcommitinfo_teneo_commit_info_id`"/>
+		</many-to-one>
+		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`teneo_audit_kind`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
+				<param name="eclassifier">TeneoAuditKind</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
+			</type>
+		</property>
+		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_container_id`"/>
+		</property>
+		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`teneo_container_feature_id`"/>
+		</property>
+		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_previous_start`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_object_version`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_resourceid`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<list name="writers" table="`audit_library_writersauditing`" lazy="true" cascade="all">
+			<key foreign-key="audit_library_writers_key" update="true">
+				<column name="`audit_library_writers_teneo_audit_id`" unique="false"/>
+			</key>
+			<list-index column="`audit_library_writers_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="books" table="`audit_library_booksauditing`" lazy="true" cascade="all">
+			<key foreign-key="audit_library_books_key" update="true">
+				<column name="`audit_library_books_teneo_audit_id`" unique="false"/>
+			</key>
+			<list-index column="`audit_library_books_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl" entity-name="audit_Writer" abstract="false" lazy="false" table="`audit_writer`">
+		<meta attribute="eclassName" inherit="false">audit_Writer</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/LibraryAuditing</meta>
+		<id name="teneo_audit_id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`teneo_audit_id`"/>
+			<generator class="native"/>
+		</id>
+		<version name="teneo_version" type="long">
+			<column not-null="true" unique="false" name="`teneo_version`"/>
+		</version>
+		<property name="teneo_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_object_id`" unique-key="c0,c1,c2"/>
+		</property>
+		<property name="teneo_owner_object_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_owner_object_id`"/>
+		</property>
+		<property name="teneo_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_start`" unique-key="c0"/>
+		</property>
+		<property name="teneo_end" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_end`" unique-key="c1"/>
+		</property>
+		<many-to-one name="teneo_commit_info" entity-name="TeneoAuditCommitInfo" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="audit_writer_teneo_commit_info" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`teneoauditcommitinfo_teneo_commit_info_id`"/>
+		</many-to-one>
+		<property name="teneo_audit_kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`teneo_audit_kind`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind</param>
+				<param name="eclassifier">TeneoAuditKind</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/hibernate/auditing</param>
+			</type>
+		</property>
+		<property name="teneo_container_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_container_id`"/>
+		</property>
+		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`teneo_container_feature_id`"/>
+		</property>
+		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_previous_start`" unique-key="c2"/>
+		</property>
+		<property name="teneo_object_version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`teneo_object_version`"/>
+		</property>
+		<property name="teneo_resourceid" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`teneo_resourceid`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<list name="books" table="`audit_writer_booksauditing`" lazy="true" cascade="all">
+			<key foreign-key="audit_writer_books_key" update="true">
+				<column name="`audit_writer_books_teneo_audit_id`" unique="false"/>
+			</key>
+			<list-index column="`audit_writer_books_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+</hibernate-mapping>

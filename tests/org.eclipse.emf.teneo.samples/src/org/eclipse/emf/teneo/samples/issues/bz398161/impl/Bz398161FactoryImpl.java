@@ -27,7 +27,7 @@ public class Bz398161FactoryImpl extends EFactoryImpl implements Bz398161Factory
 	 */
 	public static Bz398161Factory init() {
 		try {
-			Bz398161Factory theBz398161Factory = (Bz398161Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/issues/bz398161"); 
+			Bz398161Factory theBz398161Factory = (Bz398161Factory)EPackage.Registry.INSTANCE.getEFactory(Bz398161Package.eNS_URI);
 			if (theBz398161Factory != null) {
 				return theBz398161Factory;
 			}

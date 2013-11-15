@@ -24,6 +24,7 @@ import org.eclipse.emf.teneo.samples.issues.bz398161.RefTwo;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz398161.impl.RefOneImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz398161.impl.RefOneImpl#getRefTwo <em>Ref Two</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz398161.impl.RefOneImpl#getStringVal <em>String Val</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,6 +78,35 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 	 * @ordered
 	 */
 	protected boolean refTwoESet;
+
+	/**
+	 * The default value of the '{@link #getStringVal() <em>String Val</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringVal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STRING_VAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStringVal() <em>String Val</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringVal()
+	 * @generated
+	 * @ordered
+	 */
+	protected String stringVal = STRING_VAL_EDEFAULT;
+
+	/**
+	 * This is true if the String Val attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean stringValESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +273,52 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getStringVal() {
+		return stringVal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringVal(String newStringVal) {
+		String oldStringVal = stringVal;
+		stringVal = newStringVal;
+		boolean oldStringValESet = stringValESet;
+		stringValESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Bz398161Package.REF_ONE__STRING_VAL, oldStringVal, stringVal, !oldStringValESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetStringVal() {
+		String oldStringVal = stringVal;
+		boolean oldStringValESet = stringValESet;
+		stringVal = STRING_VAL_EDEFAULT;
+		stringValESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, Bz398161Package.REF_ONE__STRING_VAL, oldStringVal, STRING_VAL_EDEFAULT, oldStringValESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetStringVal() {
+		return stringValESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -264,6 +340,8 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 				return getId();
 			case Bz398161Package.REF_ONE__REF_TWO:
 				return getRefTwo();
+			case Bz398161Package.REF_ONE__STRING_VAL:
+				return getStringVal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -281,6 +359,9 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 				return;
 			case Bz398161Package.REF_ONE__REF_TWO:
 				setRefTwo((RefTwo)newValue);
+				return;
+			case Bz398161Package.REF_ONE__STRING_VAL:
+				setStringVal((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -300,6 +381,9 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 			case Bz398161Package.REF_ONE__REF_TWO:
 				unsetRefTwo();
 				return;
+			case Bz398161Package.REF_ONE__STRING_VAL:
+				unsetStringVal();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -316,6 +400,8 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 				return isSetId();
 			case Bz398161Package.REF_ONE__REF_TWO:
 				return isSetRefTwo();
+			case Bz398161Package.REF_ONE__STRING_VAL:
+				return isSetStringVal();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -332,6 +418,8 @@ public class RefOneImpl extends EObjectImpl implements RefOne {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		if (idESet) result.append(id); else result.append("<unset>");
+		result.append(", stringVal: ");
+		if (stringValESet) result.append(stringVal); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

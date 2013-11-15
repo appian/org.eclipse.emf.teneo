@@ -240,6 +240,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String ADD_INDEX_FOR_FOREIGN_KEY = MAPPING_PREFIX + "add_index_for_fk";
 
+	public static final String HIBERNATE_VERSION = MAPPING_PREFIX + "hibernate.version";
+
 	/**
 	 * Set or not set the cascade attribute on a mto, mtm or otm non-containment relation. The
 	 * backward compatible value is true. The better performing value is false. The default is false.
@@ -576,6 +578,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean isEnableAuditing() {
 		return Boolean.valueOf(properties.getProperty(ENABLE_AUDITING)).booleanValue();
+	}
+
+	/**
+	 * @return value of {@link #HIBERNATE_VERSION}
+	 */
+	public String getHibernateVersion() {
+		return properties.getProperty(HIBERNATE_VERSION);
 	}
 
 	/**

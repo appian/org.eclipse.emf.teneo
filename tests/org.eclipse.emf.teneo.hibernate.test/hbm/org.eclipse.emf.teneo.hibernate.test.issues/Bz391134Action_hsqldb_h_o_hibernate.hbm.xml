@@ -20,7 +20,7 @@
 				<column name="`BAR_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`BAR_FOO_IDX`"/>
-			<many-to-many entity-name="Foo" unique="true" foreign-key="BAR_FOO">
+			<many-to-many entity-name="Foo" unique="false" foreign-key="BAR_FOO">
 				<column name="`FOO_E_ID`" unique="false"/>
 			</many-to-many>
 		</list>
