@@ -19,7 +19,7 @@
 			<key update="true">
 				<column name="`ONE_E_ID`" unique="false"/>
 			</key>
-			<many-to-many entity-name="Many" unique="false">
+			<many-to-many entity-name="Many" unique="true">
 				<column name="`MANY_E_ID`" unique="false"/>
 			</many-to-many>
 		</bag>

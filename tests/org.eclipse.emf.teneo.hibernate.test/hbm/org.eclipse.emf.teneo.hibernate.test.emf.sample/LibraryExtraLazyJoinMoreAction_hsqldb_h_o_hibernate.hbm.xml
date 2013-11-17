@@ -62,7 +62,7 @@
 				<column name="`LIBRARY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`TEST_INDEX`"/>
-			<many-to-many entity-name="Writer" unique="false" foreign-key="schrijvers">
+			<many-to-many entity-name="Writer" unique="true" foreign-key="schrijvers">
 				<column name="`WRITER_E_ID`" unique="false"/>
 			</many-to-many>
 		</list>
@@ -95,7 +95,7 @@
 				<column name="`WRITER_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`WRITER_BOOKS_IDX`"/>
-			<many-to-many entity-name="Book" unique="false">
+			<many-to-many entity-name="Book" unique="true">
 				<column name="`BOOK_TITLE`" unique="false"/>
 			</many-to-many>
 		</list>

@@ -62,6 +62,11 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 						.getConfigurations());
+		// if (true) {
+		// suite.addTestSuite(LibraryExtraLazyMoreAction.class);
+		// return suite;
+		// }
+
 		suite.addTestSuite(EfficientSizeTestAction.class);
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(LibraryEAVAction.class);

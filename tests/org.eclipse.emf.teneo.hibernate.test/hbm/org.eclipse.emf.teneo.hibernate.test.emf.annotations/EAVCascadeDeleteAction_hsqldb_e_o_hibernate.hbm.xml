@@ -65,7 +65,7 @@
 				<column name="`LIBRARY_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_WRITERS_IDX`"/>
-			<many-to-many entity-name="Writer" unique="false" foreign-key="schrijvers">
+			<many-to-many entity-name="Writer" unique="true" foreign-key="schrijvers">
 				<column name="`WRITER_E_ID`" unique="false"/>
 			</many-to-many>
 		</list>

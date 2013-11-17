@@ -107,7 +107,7 @@ public class AbstractActionTest extends AbstractTest {
 			allProperties.setProperty(Constants.ANNOTATION_AUDITING_NOT, "true");
 		}
 
-		allProperties.setProperty(PersistenceOptions.HIBERNATE_VERSION, "4.2.7SP1");
+//		allProperties.setProperty(PersistenceOptions.HIBERNATE_VERSION, "4.2.7SP1");
 		
 		// override some defaults
 		if (allProperties.get(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT) == null) {

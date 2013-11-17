@@ -16,7 +16,7 @@
 				<column name="`CASE1_BDSID`" unique="false"/>
 			</key>
 			<list-index column="`CASE1_CASE2_IDX`"/>
-			<many-to-many entity-name="com.example.robtest.Case2" unique="false" foreign-key="CASE1_CASE2">
+			<many-to-many entity-name="com.example.robtest.Case2" unique="true" foreign-key="CASE1_CASE2">
 				<column name="`CASE2_BDSID`" unique="false"/>
 			</many-to-many>
 		</list>

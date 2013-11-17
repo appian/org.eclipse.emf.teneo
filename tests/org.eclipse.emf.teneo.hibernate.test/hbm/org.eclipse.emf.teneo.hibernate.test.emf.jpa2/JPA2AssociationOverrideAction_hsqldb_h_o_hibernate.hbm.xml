@@ -42,7 +42,7 @@
 				<column name="`EMPLOYEE_ADDR_ID`" unique="false"/>
 			</key>
 			<list-index column="`PERSON_ADDRESS_IDX`"/>
-			<many-to-many entity-name="Address" unique="false" foreign-key="EMPLOYEE_ADDRESS"/>
+			<many-to-many entity-name="Address" unique="true" foreign-key="EMPLOYEE_ADDRESS"/>
 		</list>
 		<property name="department" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`DEPARTMENT`"/>

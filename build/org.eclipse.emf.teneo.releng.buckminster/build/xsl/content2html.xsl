@@ -29,7 +29,7 @@
 					<br />
 					Some EMF Teneo plugins require third party drivers from the
 					following update site:
-					<a href="http://www.elver.org/eclipse/2.1.0/update/">Teneo/Texo dependencies</a>
+					<a href="http://www.elver.org/eclipse/2.0.0/update/">Teneo/Texo dependencies</a>
 					.
 					<br />
 					<br />
