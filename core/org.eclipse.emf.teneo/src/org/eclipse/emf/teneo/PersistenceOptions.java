@@ -482,6 +482,16 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String EXTRA_ANNOTATION_SOURCES = MAPPING_PREFIX + "extra_annotation_sources";
 
+	/**
+	 * If set to true then the extra annotation source will override/replace the default annotation
+	 * sources, so they are used if present, but if the extra annotation is not present on the model
+	 * element then the default annotation is checked.
+	 * 
+	 * Default is false for backward compatibility.
+	 */
+	public static final String EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT = MAPPING_PREFIX
+			+ "use_default_if_no_extra_annotation_sources";
+
 	public final static String ECONTAINER_CLASS_COLUMN = "econtainer_class_column";
 	public final static String ECONTAINER_COLUMN = "e_container_column";
 	public final static String ECONTAINER_FEATURE_NAME_COLUMN = "e_container_feature_name_column";
@@ -563,6 +573,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(ECONTAINER_FEATURE_NAME_COLUMN, Constants.COLUMN_ECONTAINER_FEATURE_NAME);
 		props.setProperty(FEATUREMAP_AS_COMPONENT, "false");
 		props.setProperty(EXTRA_ANNOTATION_SOURCES, "");
+		props.setProperty(EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT, "false");
 		props.setProperty(AUTO_ADAPT_MANUAL_SET_SQL_NAMES, "true");
 
 		return props;
@@ -578,6 +589,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean isEnableAuditing() {
 		return Boolean.valueOf(properties.getProperty(ENABLE_AUDITING)).booleanValue();
+	}
+
+	/**
+	 * @return value of {@link #EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT}
+	 */
+	public boolean isExtraAnnotationsOverridesDefault() {
+		return Boolean.valueOf(properties.getProperty(EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT))
+				.booleanValue();
 	}
 
 	/**

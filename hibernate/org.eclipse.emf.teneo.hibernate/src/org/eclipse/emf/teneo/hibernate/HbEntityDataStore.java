@@ -23,13 +23,11 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
 import javax.persistence.Cache;
-import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -479,9 +477,10 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			return delegate.isOpen();
 		}
 
-		public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
-			delegate.addNamedEntityGraph(arg0, arg1);
-		}
+		// JPA 2.1
+		// public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
+		// delegate.addNamedEntityGraph(arg0, arg1);
+		// }
 
 		public void addNamedQuery(String arg0, Query arg1) {
 			delegate.addNamedQuery(arg0, arg1);
@@ -701,13 +700,14 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			this.delegateEntityManager = delegateEntityManager;
 		}
 
-		public <T> EntityGraph<T> createEntityGraph(Class<T> arg0) {
-			return delegateEntityManager.createEntityGraph(arg0);
-		}
-
-		public EntityGraph<?> createEntityGraph(String arg0) {
-			return delegateEntityManager.createEntityGraph(arg0);
-		}
+		// JPA 2.1
+		// public <T> EntityGraph<T> createEntityGraph(Class<T> arg0) {
+		// return delegateEntityManager.createEntityGraph(arg0);
+		// }
+		//
+		// public EntityGraph<?> createEntityGraph(String arg0) {
+		// return delegateEntityManager.createEntityGraph(arg0);
+		// }
 
 		public StoredProcedureQuery createNamedStoredProcedureQuery(String arg0) {
 			return delegateEntityManager.createNamedStoredProcedureQuery(arg0);
@@ -734,13 +734,14 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
 		}
 
-		public EntityGraph<?> getEntityGraph(String arg0) {
-			return delegateEntityManager.getEntityGraph(arg0);
-		}
-
-		public <T> List<EntityGraph<? super T>> getEntityGraphs(Class<T> arg0) {
-			return delegateEntityManager.getEntityGraphs(arg0);
-		}
+		// JPA 2.1
+		// public EntityGraph<?> getEntityGraph(String arg0) {
+		// return delegateEntityManager.getEntityGraph(arg0);
+		// }
+		//
+		// public <T> List<EntityGraph<? super T>> getEntityGraphs(Class<T> arg0) {
+		// return delegateEntityManager.getEntityGraphs(arg0);
+		// }
 
 		public boolean isJoinedToTransaction() {
 			return delegateEntityManager.isJoinedToTransaction();
@@ -823,13 +824,14 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		}
 	}
 
-	public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
-		getEntityManagerFactory().addNamedEntityGraph(arg0, arg1);
-	}
-
-	public void addNamedQuery(String arg0, Query arg1) {
-		getEntityManagerFactory().addNamedQuery(arg0, arg1);
-	}
+	// JPA 2.1
+	// public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
+	// getEntityManagerFactory().addNamedEntityGraph(arg0, arg1);
+	// }
+	//
+	// public void addNamedQuery(String arg0, Query arg1) {
+	// getEntityManagerFactory().addNamedQuery(arg0, arg1);
+	// }
 
 	public EntityManager createEntityManager(SynchronizationType arg0) {
 		return getEntityManagerFactory().createEntityManager(arg0);

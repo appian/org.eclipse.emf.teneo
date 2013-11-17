@@ -52,6 +52,8 @@ public class ClaimAction extends AbstractTestAction {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.EXTRA_ANNOTATION_SOURCES,
 				"teneo.extra, teneo.extra.test, teneo.extra.test2");
+		props.setProperty(PersistenceOptions.EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT,
+				"true");
 		return props;
 	}
 

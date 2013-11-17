@@ -15,6 +15,8 @@
  */
 package org.eclipse.emf.teneo.hibernate.annotations;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
@@ -30,11 +32,11 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 
 	/** Returns true if the source is a hibernate source or a generic source */
 	@Override
-	protected boolean isValidSource(String source) {
+	protected boolean isValidSource(String source, EList<EAnnotation> eAnnotations) {
 		if (source == null) {
 			return false;
 		}
-		return source.startsWith("teneo.hibernate") || super.isValidSource(source);
+		return source.startsWith("teneo.hibernate") || super.isValidSource(source, eAnnotations);
 	}
 
 	/*

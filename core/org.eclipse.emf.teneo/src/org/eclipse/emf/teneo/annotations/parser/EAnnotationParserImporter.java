@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -57,6 +58,8 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	private static final String JPA_PREFIX = "jpa:";
 
 	private String[] extraAnnotationsSources = new String[] {};
+
+	private PersistenceOptions persistenceOptions = null;
 
 	/** Parse an pamodel */
 	public void process(PAnnotatedModel paModel) {
@@ -165,9 +168,10 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	private ArrayList<NamedParserNode> process(EAnnotation ea, ENamedElement ene) {
 		final ArrayList<NamedParserNode> result = new ArrayList<NamedParserNode>();
 
-		if (!isValidSource(ea.getSource())) {
+		if (!isValidSource(ea.getSource(), ene.getEAnnotations())) {
 			return result;
 		}
+
 
 		log.debug("Processing annotations ");
 		for (Map.Entry<String, String> pAnnotationDetails : ea.getDetails().entrySet()) {
@@ -215,7 +219,7 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	}
 
 	/** Is a valid source */
-	protected boolean isValidSource(String source) {
+	protected boolean isValidSource(String source, EList<EAnnotation> eAnnotations) {
 		if (source == null) {
 			return false;
 		}
@@ -224,6 +228,18 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 			for (String annotationSource : extraAnnotationsSources) {
 				if (source.equals(annotationSource)) {
 					return true;
+				}
+			}
+
+			// check if there is an extra annotation which could have been used
+			// if so then return false, it should already have been caught in the above if
+			if (persistenceOptions != null && persistenceOptions.isExtraAnnotationsOverridesDefault()) {
+				for (EAnnotation eAnnotation : eAnnotations) {
+					for (String annotationSource : extraAnnotationsSources) {
+						if (eAnnotation.getSource().equals(annotationSource)) {
+							return false;
+						}
+					}
 				}
 			}
 		}
@@ -236,12 +252,15 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 				|| source.startsWith(Constants.ANNOTATION_SOURCE_TENEO_MAPPING);
 	}
 
+
+
 	/** Find the efeature */
 	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
 		return ParserUtil.getEStructuralFeature(eClass, name);
 	}
 
 	public void setExtraAnnotationSources(PersistenceOptions po) {
+		persistenceOptions = po;
 		if (po.getExtraAnnotationSources() != null
 				&& po.getExtraAnnotationSources().trim().length() > 0) {
 			extraAnnotationsSources = po.getExtraAnnotationSources().split(",");
