@@ -36,13 +36,9 @@ import javax.persistence.LockModeType;
 import javax.persistence.Parameter;
 import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.Query;
-import javax.persistence.StoredProcedureQuery;
-import javax.persistence.SynchronizationType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.metamodel.Metamodel;
 
 import org.apache.commons.logging.Log;
@@ -482,22 +478,22 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		// delegate.addNamedEntityGraph(arg0, arg1);
 		// }
 
-		public void addNamedQuery(String arg0, Query arg1) {
-			delegate.addNamedQuery(arg0, arg1);
-		}
+		// public void addNamedQuery(String arg0, Query arg1) {
+		// delegate.addNamedQuery(arg0, arg1);
+		// }
+		//
+		// public EntityManager createEntityManager(SynchronizationType arg0) {
+		// return delegate.createEntityManager(arg0);
+		// }
+		//
+		// public EntityManager createEntityManager(SynchronizationType arg0,
+		// @SuppressWarnings("rawtypes") Map arg1) {
+		// return delegate.createEntityManager(arg0, arg1);
+		// }
 
-		public EntityManager createEntityManager(SynchronizationType arg0) {
-			return delegate.createEntityManager(arg0);
-		}
-
-		public EntityManager createEntityManager(SynchronizationType arg0,
-				@SuppressWarnings("rawtypes") Map arg1) {
-			return delegate.createEntityManager(arg0, arg1);
-		}
-
-		public <T> T unwrap(Class<T> arg0) {
-			return delegate.unwrap(arg0);
-		}
+		// public <T> T unwrap(Class<T> arg0) {
+		// return delegate.unwrap(arg0);
+		// }
 	}
 
 	/**
@@ -709,30 +705,30 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		// return delegateEntityManager.createEntityGraph(arg0);
 		// }
 
-		public StoredProcedureQuery createNamedStoredProcedureQuery(String arg0) {
-			return delegateEntityManager.createNamedStoredProcedureQuery(arg0);
-		}
+		// public StoredProcedureQuery createNamedStoredProcedureQuery(String arg0) {
+		// return delegateEntityManager.createNamedStoredProcedureQuery(arg0);
+		// }
+		//
+		// public Query createQuery(@SuppressWarnings("rawtypes") CriteriaUpdate arg0) {
+		// return delegateEntityManager.createQuery(arg0);
+		// }
+		//
+		// public Query createQuery(@SuppressWarnings("rawtypes") CriteriaDelete arg0) {
+		// return delegateEntityManager.createQuery(arg0);
+		// }
+		//
+		// public StoredProcedureQuery createStoredProcedureQuery(String arg0) {
+		// return delegateEntityManager.createStoredProcedureQuery(arg0);
+		// }
 
-		public Query createQuery(@SuppressWarnings("rawtypes") CriteriaUpdate arg0) {
-			return delegateEntityManager.createQuery(arg0);
-		}
-
-		public Query createQuery(@SuppressWarnings("rawtypes") CriteriaDelete arg0) {
-			return delegateEntityManager.createQuery(arg0);
-		}
-
-		public StoredProcedureQuery createStoredProcedureQuery(String arg0) {
-			return delegateEntityManager.createStoredProcedureQuery(arg0);
-		}
-
-		public StoredProcedureQuery createStoredProcedureQuery(String arg0,
-				@SuppressWarnings("rawtypes") Class... arg1) {
-			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
-		}
-
-		public StoredProcedureQuery createStoredProcedureQuery(String arg0, String... arg1) {
-			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
-		}
+		// public StoredProcedureQuery createStoredProcedureQuery(String arg0,
+		// @SuppressWarnings("rawtypes") Class... arg1) {
+		// return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
+		// }
+		//
+		// public StoredProcedureQuery createStoredProcedureQuery(String arg0, String... arg1) {
+		// return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
+		// }
 
 		// JPA 2.1
 		// public EntityGraph<?> getEntityGraph(String arg0) {
@@ -743,9 +739,9 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		// return delegateEntityManager.getEntityGraphs(arg0);
 		// }
 
-		public boolean isJoinedToTransaction() {
-			return delegateEntityManager.isJoinedToTransaction();
-		}
+		// public boolean isJoinedToTransaction() {
+		// return delegateEntityManager.isJoinedToTransaction();
+		// }
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -833,17 +829,17 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	// getEntityManagerFactory().addNamedQuery(arg0, arg1);
 	// }
 
-	public EntityManager createEntityManager(SynchronizationType arg0) {
-		return getEntityManagerFactory().createEntityManager(arg0);
-	}
-
-	public EntityManager createEntityManager(SynchronizationType arg0,
-			@SuppressWarnings("rawtypes") Map arg1) {
-		return getEntityManagerFactory().createEntityManager(arg0, arg1);
-	}
-
-	public <T> T unwrap(Class<T> arg0) {
-		return getEntityManagerFactory().unwrap(arg0);
-	}
+	// public EntityManager createEntityManager(SynchronizationType arg0) {
+	// return getEntityManagerFactory().createEntityManager(arg0);
+	// }
+	//
+	// public EntityManager createEntityManager(SynchronizationType arg0,
+	// @SuppressWarnings("rawtypes") Map arg1) {
+	// return getEntityManagerFactory().createEntityManager(arg0, arg1);
+	// }
+	//
+	// public <T> T unwrap(Class<T> arg0) {
+	// return getEntityManagerFactory().unwrap(arg0);
+	// }
 
 }
