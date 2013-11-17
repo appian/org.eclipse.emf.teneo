@@ -19,21 +19,55 @@ package org.eclipse.emf.teneo.hibernate;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.naming.NamingException;
 import javax.naming.Reference;
 
+import org.hibernate.Cache;
+import org.hibernate.CustomEntityDirtinessStrategy;
 import org.hibernate.HibernateException;
 import org.hibernate.Interceptor;
+import org.hibernate.MappingException;
 import org.hibernate.Session;
+import org.hibernate.SessionBuilder;
 import org.hibernate.SessionFactory;
+import org.hibernate.SessionFactoryObserver;
 import org.hibernate.StatelessSession;
+import org.hibernate.StatelessSessionBuilder;
+import org.hibernate.TypeHelper;
+import org.hibernate.cache.spi.QueryCache;
+import org.hibernate.cache.spi.Region;
+import org.hibernate.cache.spi.UpdateTimestampsCache;
+import org.hibernate.cfg.Settings;
+import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
+import org.hibernate.dialect.Dialect;
+import org.hibernate.dialect.function.SQLFunctionRegistry;
+import org.hibernate.engine.ResultSetMappingDefinition;
+import org.hibernate.engine.jdbc.spi.JdbcServices;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+import org.hibernate.engine.profile.FetchProfile;
+import org.hibernate.engine.query.spi.QueryPlanCache;
 import org.hibernate.engine.spi.FilterDefinition;
+import org.hibernate.engine.spi.NamedQueryDefinition;
+import org.hibernate.engine.spi.NamedSQLQueryDefinition;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.exception.spi.SQLExceptionConverter;
+import org.hibernate.id.IdentifierGenerator;
+import org.hibernate.id.factory.IdentifierGeneratorFactory;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
+import org.hibernate.persister.collection.CollectionPersister;
+import org.hibernate.persister.entity.EntityPersister;
+import org.hibernate.proxy.EntityNotFoundDelegate;
+import org.hibernate.service.jdbc.connections.spi.ConnectionProvider;
+import org.hibernate.service.spi.ServiceRegistryImplementor;
 import org.hibernate.stat.Statistics;
+import org.hibernate.stat.spi.StatisticsImplementor;
+import org.hibernate.type.Type;
+import org.hibernate.type.TypeResolver;
 
 /**
  * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
@@ -41,7 +75,8 @@ import org.hibernate.stat.Statistics;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.11 $
  */
-public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
+public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory,
+		SessionFactoryImplementor {
 
 	private static final long serialVersionUID = 1L;
 
@@ -206,5 +241,195 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 
 	public StatelessSession openStatelessSession(Connection connection) {
 		return getSessionFactory().openStatelessSession(connection);
+	}
+
+	protected SessionFactoryImplementor getSessionFactoryImplementor() {
+		return (SessionFactoryImplementor) getSessionFactory();
+	}
+
+	public void addObserver(SessionFactoryObserver arg0) {
+		getSessionFactoryImplementor().addObserver(arg0);
+	}
+
+	public boolean containsFetchProfileDefinition(String arg0) {
+		return getSessionFactoryImplementor().containsFetchProfileDefinition(arg0);
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Map getAllSecondLevelCacheRegions() {
+		return getSessionFactoryImplementor().getAllSecondLevelCacheRegions();
+	}
+
+	public Cache getCache() {
+		return getSessionFactoryImplementor().getCache();
+	}
+
+	public CollectionPersister getCollectionPersister(String arg0) throws MappingException {
+		return getSessionFactoryImplementor().getCollectionPersister(arg0);
+	}
+
+	public Set<String> getCollectionRolesByEntityParticipant(String arg0) {
+		return getSessionFactoryImplementor().getCollectionRolesByEntityParticipant(arg0);
+	}
+
+	public ConnectionProvider getConnectionProvider() {
+		return getSessionFactoryImplementor().getConnectionProvider();
+	}
+
+	public CurrentTenantIdentifierResolver getCurrentTenantIdentifierResolver() {
+		return getSessionFactoryImplementor().getCurrentTenantIdentifierResolver();
+	}
+
+	public CustomEntityDirtinessStrategy getCustomEntityDirtinessStrategy() {
+		return getSessionFactoryImplementor().getCustomEntityDirtinessStrategy();
+	}
+
+	public Dialect getDialect() {
+		return getSessionFactoryImplementor().getDialect();
+	}
+
+	public EntityNotFoundDelegate getEntityNotFoundDelegate() {
+		return getSessionFactoryImplementor().getEntityNotFoundDelegate();
+	}
+
+	public EntityPersister getEntityPersister(String arg0) throws MappingException {
+		return getSessionFactoryImplementor().getEntityPersister(arg0);
+	}
+
+	public FetchProfile getFetchProfile(String arg0) {
+		return getSessionFactoryImplementor().getFetchProfile(arg0);
+	}
+
+	public IdentifierGenerator getIdentifierGenerator(String arg0) {
+		return getSessionFactoryImplementor().getIdentifierGenerator(arg0);
+	}
+
+	@Deprecated
+	public IdentifierGeneratorFactory getIdentifierGeneratorFactory() {
+		return getSessionFactoryImplementor().getIdentifierGeneratorFactory();
+	}
+
+	public String getIdentifierPropertyName(String arg0) throws MappingException {
+		return getSessionFactoryImplementor().getIdentifierPropertyName(arg0);
+	}
+
+	public Type getIdentifierType(String arg0) throws MappingException {
+		return getSessionFactoryImplementor().getIdentifierType(arg0);
+	}
+
+	public String[] getImplementors(String arg0) throws MappingException {
+		return getSessionFactoryImplementor().getImplementors(arg0);
+	}
+
+	public String getImportedClassName(String arg0) {
+		return getSessionFactoryImplementor().getImportedClassName(arg0);
+	}
+
+	public Interceptor getInterceptor() {
+		return getSessionFactoryImplementor().getInterceptor();
+	}
+
+	public JdbcServices getJdbcServices() {
+		return getSessionFactoryImplementor().getJdbcServices();
+	}
+
+	public NamedQueryDefinition getNamedQuery(String arg0) {
+		return getSessionFactoryImplementor().getNamedQuery(arg0);
+	}
+
+	public NamedSQLQueryDefinition getNamedSQLQuery(String arg0) {
+		return getSessionFactoryImplementor().getNamedSQLQuery(arg0);
+	}
+
+	public Region getNaturalIdCacheRegion(String arg0) {
+		return getSessionFactoryImplementor().getNaturalIdCacheRegion(arg0);
+	}
+
+	public Properties getProperties() {
+		return getSessionFactoryImplementor().getProperties();
+	}
+
+	public QueryCache getQueryCache() {
+		return getSessionFactoryImplementor().getQueryCache();
+	}
+
+	public QueryCache getQueryCache(String arg0) throws HibernateException {
+		return getSessionFactoryImplementor().getQueryCache(arg0);
+	}
+
+	public QueryPlanCache getQueryPlanCache() {
+		return getSessionFactoryImplementor().getQueryPlanCache();
+	}
+
+	public Type getReferencedPropertyType(String arg0, String arg1) throws MappingException {
+		return getSessionFactoryImplementor().getReferencedPropertyType(arg0, arg1);
+	}
+
+	public ResultSetMappingDefinition getResultSetMapping(String arg0) {
+		return getSessionFactoryImplementor().getResultSetMapping(arg0);
+	}
+
+	public String[] getReturnAliases(String arg0) throws HibernateException {
+		return getSessionFactoryImplementor().getReturnAliases(arg0);
+	}
+
+	public Type[] getReturnTypes(String arg0) throws HibernateException {
+		return getSessionFactoryImplementor().getReturnTypes(arg0);
+	}
+
+	public SQLExceptionConverter getSQLExceptionConverter() {
+		return getSessionFactoryImplementor().getSQLExceptionConverter();
+	}
+
+	public SqlExceptionHelper getSQLExceptionHelper() {
+		return getSessionFactoryImplementor().getSQLExceptionHelper();
+	}
+
+	public Region getSecondLevelCacheRegion(String arg0) {
+		return getSessionFactoryImplementor().getSecondLevelCacheRegion(arg0);
+	}
+
+	public ServiceRegistryImplementor getServiceRegistry() {
+		return getSessionFactoryImplementor().getServiceRegistry();
+	}
+
+	public SessionFactoryOptions getSessionFactoryOptions() {
+		return getSessionFactoryImplementor().getSessionFactoryOptions();
+	}
+
+	public Settings getSettings() {
+		return getSessionFactoryImplementor().getSettings();
+	}
+
+	public SQLFunctionRegistry getSqlFunctionRegistry() {
+		return getSessionFactoryImplementor().getSqlFunctionRegistry();
+	}
+
+	public StatisticsImplementor getStatisticsImplementor() {
+		return getSessionFactoryImplementor().getStatisticsImplementor();
+	}
+
+	public TypeHelper getTypeHelper() {
+		return getSessionFactoryImplementor().getTypeHelper();
+	}
+
+	public TypeResolver getTypeResolver() {
+		return getSessionFactoryImplementor().getTypeResolver();
+	}
+
+	public UpdateTimestampsCache getUpdateTimestampsCache() {
+		return getSessionFactoryImplementor().getUpdateTimestampsCache();
+	}
+
+	public Session openTemporarySession() throws HibernateException {
+		return getSessionFactoryImplementor().openTemporarySession();
+	}
+
+	public SessionBuilder withOptions() {
+		return getSessionFactoryImplementor().withOptions();
+	}
+
+	public StatelessSessionBuilder withStatelessOptions() {
+		return getSessionFactoryImplementor().withStatelessOptions();
 	}
 }
