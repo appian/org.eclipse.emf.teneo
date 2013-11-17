@@ -63,6 +63,8 @@ public class AuditVersionProvider implements ExtensionPoint {
 	private ResourceSet resourceSet;
 	private AuditDataStore dataStore;
 
+	private Map<String, EObject> auditEntryCache = new HashMap<String, EObject>();
+
 	public AuditVersionProvider() {
 		auditResource = new AuditResource(URI.createURI(URI_STR));
 
@@ -361,7 +363,12 @@ public class AuditVersionProvider implements ExtensionPoint {
 			return null;
 		}
 
-		final EObject target = eClass.getEPackage().getEFactoryInstance().create(eClass);
+		EObject target = auditEntryCache.get(idAsString + "_" + auditEntry.getTeneo_audit_id());
+		if (target != null) {
+			return target;
+		}
+
+		target = eClass.getEPackage().getEFactoryInstance().create(eClass);
 		for (EStructuralFeature targetEFeature : target.eClass().getEAllStructuralFeatures()) {
 			final EStructuralFeature sourceEFeature = auditingEClass.getEStructuralFeature(targetEFeature
 					.getName());
@@ -426,7 +433,7 @@ public class AuditVersionProvider implements ExtensionPoint {
 			((InternalEObject) target).eSetResource(auditResource, null);
 		}
 		auditResource.putEObjectInCache(fullId, target);
-
+		auditEntryCache.put(idAsString + "_" + auditEntry.getTeneo_audit_id(), target);
 		return target;
 	}
 
