@@ -490,7 +490,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * Default is false for backward compatibility.
 	 */
 	public static final String EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT = MAPPING_PREFIX
-			+ "use_default_if_no_extra_annotation_sources";
+			+ "extra_annotations_overrides_default";
 
 	public final static String ECONTAINER_CLASS_COLUMN = "econtainer_class_column";
 	public final static String ECONTAINER_COLUMN = "e_container_column";
