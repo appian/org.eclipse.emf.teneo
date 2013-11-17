@@ -37,4 +37,18 @@
             type="bz398161"
             class="org.eclipse.emf.teneo.samples.issues.bz398161.util.Bz398161ResourceFactoryImpl"/>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated inheritancemapping -->
+      <package
+            uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping"
+            class="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage"
+            genModel="src/org/eclipse/emf/teneo/samples/emf/annotations/inheritancemapping/model/inheritancemapping.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated inheritancemapping -->
+      <parser
+            type="inheritancemapping"
+            class="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util.InheritancemappingResourceFactoryImpl"/>
+   </extension>
 </plugin>

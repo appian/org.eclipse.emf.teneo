@@ -697,6 +697,9 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			if (!col.isNullable()) {
 				colElement.addAttribute("not-null", "true");
 			}
+			if (col.getColumnDefinition() != null) {
+				colElement.addAttribute("sql-type", col.getColumnDefinition());
+			}
 		} else if (dColumn.getName() != null) {
 			dcElement.addAttribute("column", getHbmContext().trunc(dColumn, dColumn.getName()));
 		}
@@ -711,9 +714,17 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		if (dColumn.getColumnDefinition() != null) {
-			log.error("Unsupported column definition in discriminator column " + dColumn);
-			throw new MappingException("Unsupported column definition in discriminator column", dColumn);
+			String colName = dcElement.getAttributeValue("column");
+			Element colElement = dcElement.element("column");
+			if (colElement == null) {
+				colElement = dcElement.addElement("column");
+				if (colName != null && colElement.getAttributeValue("name") == null) {
+					colElement.addAttribute("name", colName);
+				}
+			}
+			colElement.addAttribute("sql-type", dColumn.getColumnDefinition());
 		}
+
 		return dcElement;
 	}
 

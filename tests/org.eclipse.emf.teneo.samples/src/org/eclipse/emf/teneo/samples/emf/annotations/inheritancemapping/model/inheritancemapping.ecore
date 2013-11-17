@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="inheritancemapping"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="inheritancemapping" nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping"
     nsPrefix="inheritancemapping">
   <eClassifiers xsi:type="ecore:EClass" name="Address" abstract="true">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -99,7 +97,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Price">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Table(name=&quot;myprice&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;@Inheritance(strategy=SINGLE_TABLE)&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorColumn(name=&quot;DISCRIMINATOR&quot;, discriminatorType=STRING, column=@Column(index=&quot;discrIndex,ohterindex&quot;, length=120))&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorValue(&quot;myPrice&quot;)&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="appinfo" value="&#x9;&#x9;&#x9;&#x9;@Table(name=&quot;myprice&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;@Inheritance(strategy=SINGLE_TABLE)&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorColumn(name=&quot;DISCRIMINATOR&quot;, discriminatorType=STRING, columnDefinition=&quot;character varying (100) &quot;, column=@Column(index=&quot;discrIndex,ohterindex&quot;, length=120))&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorValue(&quot;myPrice&quot;)&#xA;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Price"/>

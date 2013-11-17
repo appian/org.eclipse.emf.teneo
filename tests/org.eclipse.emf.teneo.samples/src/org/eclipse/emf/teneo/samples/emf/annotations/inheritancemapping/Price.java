@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getPrice()
- * @model annotation="teneo.jpa appinfo='\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\", discriminatorType=STRING, column=@Column(index=\"discrIndex,ohterindex\", length=120))\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t'"
+ * @model annotation="teneo.jpa appinfo='\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\", discriminatorType=STRING, columnDefinition=\"character varying (100) \", column=@Column(index=\"discrIndex,ohterindex\", length=120))\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t'"
  *        extendedMetaData="name='Price' kind='elementOnly'"
  * @generated
  */

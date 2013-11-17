@@ -711,7 +711,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		  (priceEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\", discriminatorType=STRING, column=@Column(index=\"discrIndex,ohterindex\", length=120))\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
+			 "appinfo", "\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\", discriminatorType=STRING, columnDefinition=\"character varying (100) \", column=@Column(index=\"discrIndex,ohterindex\", length=120))\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
 		   });								
 		addAnnotation
 		  (usAddressEClass, 

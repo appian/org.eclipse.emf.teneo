@@ -39,7 +39,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 */
 	public static InheritancemappingFactory init() {
 		try {
-			InheritancemappingFactory theInheritancemappingFactory = (InheritancemappingFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping"); 
+			InheritancemappingFactory theInheritancemappingFactory = (InheritancemappingFactory)EPackage.Registry.INSTANCE.getEFactory(InheritancemappingPackage.eNS_URI);
 			if (theInheritancemappingFactory != null) {
 				return theInheritancemappingFactory;
 			}

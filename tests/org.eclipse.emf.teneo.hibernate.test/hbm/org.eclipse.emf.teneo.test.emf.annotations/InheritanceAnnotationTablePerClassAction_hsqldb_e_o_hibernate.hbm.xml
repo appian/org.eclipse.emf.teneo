@@ -74,7 +74,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="`DISCRIMINATOR`" index="discrIndex,ohterindex" length="120"/>
+			<column name="`DISCRIMINATOR`" index="discrIndex,ohterindex" length="120" sql-type="character varying (100) "/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
