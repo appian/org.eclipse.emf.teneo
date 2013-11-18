@@ -243,7 +243,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactory().openStatelessSession(connection);
 	}
 
-	protected SessionFactoryImplementor getSessionFactoryImplementor() {
+	public SessionFactoryImplementor getSessionFactoryImplementor() {
 		return (SessionFactoryImplementor) getSessionFactory();
 	}
 
@@ -323,10 +323,6 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 
 	public String getImportedClassName(String arg0) {
 		return getSessionFactoryImplementor().getImportedClassName(arg0);
-	}
-
-	public Interceptor getInterceptor() {
-		return getSessionFactoryImplementor().getInterceptor();
 	}
 
 	public JdbcServices getJdbcServices() {
