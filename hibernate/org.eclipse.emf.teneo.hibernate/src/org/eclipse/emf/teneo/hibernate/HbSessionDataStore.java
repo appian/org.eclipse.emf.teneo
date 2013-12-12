@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.hibernate;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -33,13 +34,15 @@ import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListe
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
 import org.hibernate.Cache;
 import org.hibernate.Interceptor;
-import org.hibernate.SessionBuilder;
 import org.hibernate.StatelessSessionBuilder;
 import org.hibernate.TypeHelper;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.engine.spi.SessionBuilderImplementor;
 import org.hibernate.event.service.spi.EventListenerRegistry;
 import org.hibernate.event.spi.EventType;
 import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.persister.collection.CollectionPersister;
+import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.service.ServiceRegistry;
 
 /**
@@ -318,11 +321,21 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 		return getSessionFactory().getSessionFactoryOptions();
 	}
 
-	public SessionBuilder withOptions() {
-		return getSessionFactory().withOptions();
+	public SessionBuilderImplementor withOptions() {
+		return getSessionFactoryImplementor().withOptions();
 	}
 
 	public StatelessSessionBuilder withStatelessOptions() {
 		return getSessionFactory().withStatelessOptions();
+	}
+
+	@Override
+	public Map<String, CollectionPersister> getCollectionPersisters() {
+		return getSessionFactoryImplementor().getCollectionPersisters();
+	}
+
+	@Override
+	public Map<String, EntityPersister> getEntityPersisters() {
+		return getSessionFactoryImplementor().getEntityPersisters();
 	}
 }
