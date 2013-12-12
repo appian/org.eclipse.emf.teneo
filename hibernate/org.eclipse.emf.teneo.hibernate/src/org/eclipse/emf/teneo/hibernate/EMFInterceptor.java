@@ -175,7 +175,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint,
 
 	@Override
 	public void afterTransactionCompletion(Transaction tx) {
-		if (tx.wasCommitted()) {
+		if (tx == null || tx.wasCommitted()) {
 			if (deletedEObjects.get() != null) {
 				try {
 					for (EObject eObject : deletedEObjects.get()) {
