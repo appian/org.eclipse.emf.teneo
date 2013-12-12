@@ -2,22 +2,22 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.mapper;singleton:=true
-Bundle-Version: 2.0.1.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-Localization: plugin
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
-Export-Package: org.eclipse.emf.teneo.hibernate.annotations;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.cdo;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbannotation;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbannotation.impl;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbannotation.util;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbannotation.validation;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbmodel;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbmodel.impl;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbmodel.util;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.hbmodel.validation;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.mapper;version="2.0.1",
- org.eclipse.emf.teneo.hibernate.mapper.classic;version="2.0.1"
+Export-Package: org.eclipse.emf.teneo.hibernate.annotations;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.cdo;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbannotation;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbannotation.impl;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbannotation.util;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbannotation.validation;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbmodel;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbmodel.impl;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbmodel.util;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.hbmodel.validation;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.mapper;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.mapper.classic;version="2.1.0"
 Require-Bundle: org.eclipse.emf.teneo;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.emf.teneo.annotations;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)"

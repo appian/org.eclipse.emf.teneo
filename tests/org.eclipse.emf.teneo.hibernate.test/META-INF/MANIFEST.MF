@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.test;singleton:=true
-Bundle-Version: 1.1.2.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.teneo.commontest;bundle-version="[2.0.0,3.0.0)",
@@ -16,32 +16,32 @@ Require-Bundle: org.eclipse.emf.teneo.commontest;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.uml2.common;bundle-version="1.7.0",
  org.eclipse.uml2.types;bundle-version="1.0.0",
  org.eclipse.uml2.uml;bundle-version="4.0.1"
-Export-Package: org.eclipse.emf.teneo.hibernate.test;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.emf.annotations;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.emf.detach;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.emf.elist;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.emf.relation;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.emf.sample;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.issues;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.stores;version="2.0.0",
- org.eclipse.emf.teneo.hibernate.test.stores.adapters;version="2.0.0"
+Export-Package: org.eclipse.emf.teneo.hibernate.test;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.emf.annotations;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.emf.detach;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.emf.elist;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.emf.relation;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.emf.sample;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.issues;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.stores;version="2.1.0",
+ org.eclipse.emf.teneo.hibernate.test.stores.adapters;version="2.1.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: com.mysql.jdbc;version="[5.1.0,6.0.0)";resolution:=optional,
  javax.persistence;version="[2.0.0,3.0.0)";resolution:=optional,
  org.apache.commons.logging;version="[1.0.0,2.0.0)";resolution:=optional,
  org.dom4j;version="[1.6.0,2.0.0)";resolution:=optional,
- org.hibernate;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.cache.internal;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.cfg;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.collection.spi;version="[4.0.0,5.0.0)",
- org.hibernate.dialect;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.ejb;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.engine.spi;version="[4.0.0,5.0.0)",
- org.hibernate.exception;version="[4.0.0,5.0.0)",
- org.hibernate.mapping;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.proxy;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.tool.hbm2ddl;version="[4.0.0,5.0.0)",
- org.hibernate.type;version="[4.0.0,5.0.0)";resolution:=optional,
- org.hibernate.usertype;version="[4.0.0,5.0.0)";resolution:=optional,
+ org.hibernate;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.cache.internal;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.cfg;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.collection.spi;version="[4.2.8,5.0.0)",
+ org.hibernate.dialect;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.ejb;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.engine.spi;version="[4.2.8,5.0.0)",
+ org.hibernate.exception;version="[4.2.8,5.0.0)",
+ org.hibernate.mapping;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.proxy;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.tool.hbm2ddl;version="[4.2.8,5.0.0)",
+ org.hibernate.type;version="[4.2.8,5.0.0)";resolution:=optional,
+ org.hibernate.usertype;version="[4.2.8,5.0.0)";resolution:=optional,
  org.slf4j;version="[1.6.0,2.0.0)"

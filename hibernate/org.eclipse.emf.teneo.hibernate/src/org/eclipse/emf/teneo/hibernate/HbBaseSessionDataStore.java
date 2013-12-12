@@ -31,7 +31,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Interceptor;
 import org.hibernate.MappingException;
 import org.hibernate.Session;
-import org.hibernate.SessionBuilder;
 import org.hibernate.SessionFactory;
 import org.hibernate.SessionFactoryObserver;
 import org.hibernate.StatelessSession;
@@ -52,6 +51,7 @@ import org.hibernate.engine.query.spi.QueryPlanCache;
 import org.hibernate.engine.spi.FilterDefinition;
 import org.hibernate.engine.spi.NamedQueryDefinition;
 import org.hibernate.engine.spi.NamedSQLQueryDefinition;
+import org.hibernate.engine.spi.SessionBuilderImplementor;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.exception.spi.SQLExceptionConverter;
 import org.hibernate.id.IdentifierGenerator;
@@ -272,6 +272,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactoryImplementor().getCollectionRolesByEntityParticipant(arg0);
 	}
 
+	@Deprecated
 	public ConnectionProvider getConnectionProvider() {
 		return getSessionFactoryImplementor().getConnectionProvider();
 	}
@@ -421,7 +422,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactoryImplementor().openTemporarySession();
 	}
 
-	public SessionBuilder withOptions() {
+	public SessionBuilderImplementor withOptions() {
 		return getSessionFactoryImplementor().withOptions();
 	}
 
