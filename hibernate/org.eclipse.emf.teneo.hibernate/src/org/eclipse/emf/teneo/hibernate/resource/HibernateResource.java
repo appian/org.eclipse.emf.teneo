@@ -275,7 +275,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				if (err) {
 					getSessionWrapper().rollbackTransaction();
-					getSessionWrapper().close();
+					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=424116
+					// getSessionWrapper().close();
 				} else {
 					getSessionWrapper().commitTransaction();
 				}
@@ -350,7 +351,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				if (err) {
 					mySessionWrapper.rollbackTransaction();
-					mySessionWrapper.close();
+					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=424116
+					// mySessionWrapper.close();
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
@@ -508,7 +510,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				if (err) {
 					mySessionWrapper.rollbackTransaction();
-					mySessionWrapper.close();
+					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=424116
+					// mySessionWrapper.close();
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
@@ -641,7 +644,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				if (err) {
 					mySessionWrapper.rollbackTransaction();
-					mySessionWrapper.close();
+					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=424116
+					// mySessionWrapper.close();
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
@@ -697,7 +701,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				if (err) {
 					mySessionWrapper.rollbackTransaction();
-					mySessionWrapper.close();
+					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=424116
+					// mySessionWrapper.close();
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
