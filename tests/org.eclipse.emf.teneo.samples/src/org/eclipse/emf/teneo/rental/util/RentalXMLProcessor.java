@@ -17,15 +17,15 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 import org.eclipse.emf.teneo.rental.RentalPackage;
 
 /**
- * This class contains helper methods to serialize and deserialize XML documents <!-- begin-user-doc
+ * This class contains helper methods to serialize and deserialize XML documents
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RentalXMLProcessor extends XMLProcessor {
 	/**
-	 * Public constructor to instantiate the helper. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Public constructor to instantiate the helper.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public RentalXMLProcessor() {

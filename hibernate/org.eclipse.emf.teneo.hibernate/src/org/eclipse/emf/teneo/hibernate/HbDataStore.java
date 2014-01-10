@@ -89,7 +89,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.cfg.Mappings;
-import org.hibernate.engine.spi.CascadeStyle;
+import org.hibernate.engine.spi.CascadeStyles;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Column;
 import org.hibernate.mapping.Component;
@@ -101,6 +101,7 @@ import org.hibernate.mapping.OneToMany;
 import org.hibernate.mapping.OneToOne;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
+import org.hibernate.mapping.Selectable;
 import org.hibernate.mapping.SimpleValue;
 import org.hibernate.mapping.Table;
 import org.hibernate.mapping.Value;
@@ -843,10 +844,9 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 
 							final ManyToOne keyValue = new ManyToOne(getMappings(), collectionTable);
 							join.setKey(keyValue);
-							@SuppressWarnings("unchecked")
-							final Iterator<Column> keyColumns = collection.getElement().getColumnIterator();
+							final Iterator<Selectable> keyColumns = collection.getElement().getColumnIterator();
 							while (keyColumns.hasNext()) {
-								keyValue.addColumn(keyColumns.next());
+								keyValue.addColumn((Column) keyColumns.next());
 							}
 							keyValue.setReferencedEntityName(elementPC.getEntityName());
 							keyValue.setTable(collectionTable);
@@ -1498,13 +1498,13 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 							isContainer = ef instanceof EReference && ((EReference) ef).isContainment();
 						} else {
 							isContainer = prop.getCascadeStyle().hasOrphanDelete()
-									|| prop.getCascadeStyle() == CascadeStyle.ALL;
+									|| prop.getCascadeStyle() == CascadeStyles.ALL;
 						}
 					} else if (prop.getValue() instanceof Collection) {
 						isMany = true;
 						if (ef == null) { // TODO can this happen?
 							isContainer = prop.getCascadeStyle().hasOrphanDelete()
-									|| prop.getCascadeStyle() == CascadeStyle.ALL;
+									|| prop.getCascadeStyle() == CascadeStyles.ALL;
 							if (((Collection) prop.getValue()).getElement() instanceof OneToMany) {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((OneToMany) coll.getElement()).getReferencedEntityName();

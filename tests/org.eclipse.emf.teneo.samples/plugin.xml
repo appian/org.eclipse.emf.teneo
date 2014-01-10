@@ -51,4 +51,18 @@
             type="inheritancemapping"
             class="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util.InheritancemappingResourceFactoryImpl"/>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Rental -->
+      <package
+            uri="http://www.eclipse.org/emf/teneo/rental"
+            class="org.eclipse.emf.teneo.rental.RentalPackage"
+            genModel="src/org/eclipse/emf/teneo/rental/model/Rental.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Rental -->
+      <parser
+            type="rental"
+            class="org.eclipse.emf.teneo.rental.util.RentalResourceFactoryImpl"/>
+   </extension>
 </plugin>

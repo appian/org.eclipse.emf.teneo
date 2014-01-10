@@ -19,14 +19,10 @@ package org.eclipse.emf.teneo.hibernate;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
-import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.persistence.Cache;
 import javax.persistence.EntityGraph;
@@ -35,7 +31,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.FlushModeType;
 import javax.persistence.LockModeType;
-import javax.persistence.Parameter;
 import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
@@ -60,17 +55,14 @@ import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.ejb.Ejb3Configuration;
-import org.hibernate.ejb.EntityManagerFactoryImpl;
-import org.hibernate.ejb.QueryImpl;
-import org.hibernate.engine.query.spi.NamedParameterDescriptor;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.event.service.spi.EventListenerRegistry;
 import org.hibernate.event.spi.EventType;
-import org.hibernate.internal.AbstractQueryImpl;
 import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.jpa.boot.internal.SettingsImpl;
+import org.hibernate.jpa.internal.EntityManagerFactoryImpl;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.EntityType;
-import org.hibernate.type.Type;
 
 /**
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
@@ -88,9 +80,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	private EntityManagerFactory entityManagerFactory;
 
 	/** The used Hibernate configuration */
-	private Ejb3Configuration ejb3Configuration;
-
-	private Field queryParametersField;
+	private Configuration ejb3Configuration;
 
 	private AuditProcessHandler auditProcessHandler;
 
@@ -168,8 +158,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		eventListenerRegistry.appendListeners(EventType.INIT_COLLECTION, eventListener);
 
 		if (isAuditing()) {
-			auditProcessHandler = getExtensionManager().getExtension(
-					AuditProcessHandler.class);
+			auditProcessHandler = getExtensionManager().getExtension(AuditProcessHandler.class);
 			auditProcessHandler.setDataStore(this);
 			eventListenerRegistry.appendListeners(EventType.POST_DELETE, auditProcessHandler);
 			eventListenerRegistry.appendListeners(EventType.POST_INSERT, auditProcessHandler);
@@ -204,8 +193,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	}
 
 	/** Returns a new ejb3 configuration object */
-	protected Ejb3Configuration createConfiguration() {
-		return new Ejb3Configuration();
+	protected Configuration createConfiguration() {
+		return new Configuration();
 	}
 
 	/** Sets the properties in the Hibernate Configuration. */
@@ -293,7 +282,11 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 
 	/** Build the session factory */
 	protected EntityManagerFactory buildEntityManagerFactory() {
-		final EntityManagerFactory emf = getConfiguration().buildEntityManagerFactory();
+		final SessionFactoryImpl sfi = (SessionFactoryImpl) getConfiguration().buildSessionFactory();
+
+		final EntityManagerFactory emf = new EntityManagerFactoryImpl("teneo",
+				(SessionFactoryImplementor) sfi, new SettingsImpl(), getConfiguration().getProperties(),
+				getConfiguration());
 		return new WrappedEntityManagerFactory(emf);
 	}
 
@@ -338,14 +331,14 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	/**
 	 * @return the ejbConfiguration
 	 */
-	public Ejb3Configuration getConfiguration() {
+	public Configuration getConfiguration() {
 		if (ejb3Configuration == null) {
 			ejb3Configuration = createConfiguration();
 		}
 		return ejb3Configuration;
 	}
 
-	public void setConfiguration(Ejb3Configuration configuration) {
+	public void setConfiguration(Configuration configuration) {
 		ejb3Configuration = configuration;
 	}
 
@@ -354,7 +347,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	 */
 	@Override
 	public Configuration getHibernateConfiguration() {
-		return getConfiguration().getHibernateConfiguration();
+		return getConfiguration();
 	}
 
 	/** Return the Classmappings as an iterator */
@@ -479,24 +472,28 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			return delegate.isOpen();
 		}
 
-		// JPA 2.1
+		@Override
 		public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
 			delegate.addNamedEntityGraph(arg0, arg1);
 		}
 
+		@Override
 		public void addNamedQuery(String arg0, Query arg1) {
 			delegate.addNamedQuery(arg0, arg1);
 		}
 
+		@Override
 		public EntityManager createEntityManager(SynchronizationType arg0) {
 			return delegate.createEntityManager(arg0);
 		}
 
+		@Override
 		public EntityManager createEntityManager(SynchronizationType arg0,
 				@SuppressWarnings("rawtypes") Map arg1) {
 			return delegate.createEntityManager(arg0, arg1);
 		}
 
+		@Override
 		public <T> T unwrap(Class<T> arg0) {
 			return delegate.unwrap(arg0);
 		}
@@ -532,50 +529,36 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			return delegateEntityManager.contains(arg0);
 		}
 
-		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createNamedQuery(String arg0, Class<T> arg1) {
-			return (TypedQuery<T>) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
-							.createNamedQuery(arg0, arg1));
+			return delegateEntityManager.createNamedQuery(arg0, arg1);
 		}
 
 		public Query createNamedQuery(String arg0) {
-			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNamedQuery(arg0));
+			return delegateEntityManager.createNamedQuery(arg0);
 		}
 
 		public Query createNativeQuery(String arg0, @SuppressWarnings("rawtypes") Class arg1) {
-			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNativeQuery(arg0,
-							arg1));
+			return delegateEntityManager.createNativeQuery(arg0, arg1);
 		}
 
 		public Query createNativeQuery(String arg0, String arg1) {
-			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNativeQuery(arg0,
-							arg1));
+			return delegateEntityManager.createNativeQuery(arg0, arg1);
 		}
 
 		public Query createNativeQuery(String arg0) {
-			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createNativeQuery(arg0));
+			return delegateEntityManager.createNativeQuery(arg0);
 		}
 
-		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createQuery(CriteriaQuery<T> arg0) {
-			return (TypedQuery<T>) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createQuery(arg0));
+			return delegateEntityManager.createQuery(arg0);
 		}
 
-		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createQuery(String arg0, Class<T> arg1) {
-			return (TypedQuery<T>) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createQuery(arg0, arg1));
+			return delegateEntityManager.createQuery(arg0, arg1);
 		}
 
 		public Query createQuery(String arg0) {
-			return (Query) HbEntityDataStore.this
-					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager.createQuery(arg0));
+			return delegateEntityManager.createQuery(arg0);
 		}
 
 		public void detach(Object arg0) {
@@ -702,127 +685,49 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			this.delegateEntityManager = delegateEntityManager;
 		}
 
-		// JPA 2.1
 		public <T> EntityGraph<T> createEntityGraph(Class<T> arg0) {
-		return delegateEntityManager.createEntityGraph(arg0);
+			return delegateEntityManager.createEntityGraph(arg0);
 		}
 
 		public EntityGraph<?> createEntityGraph(String arg0) {
-		return delegateEntityManager.createEntityGraph(arg0);
+			return delegateEntityManager.createEntityGraph(arg0);
 		}
 
 		public StoredProcedureQuery createNamedStoredProcedureQuery(String arg0) {
-		return delegateEntityManager.createNamedStoredProcedureQuery(arg0);
+			return delegateEntityManager.createNamedStoredProcedureQuery(arg0);
 		}
 
 		public Query createQuery(@SuppressWarnings("rawtypes") CriteriaUpdate arg0) {
-		return delegateEntityManager.createQuery(arg0);
+			return delegateEntityManager.createQuery(arg0);
 		}
 
 		public Query createQuery(@SuppressWarnings("rawtypes") CriteriaDelete arg0) {
-		return delegateEntityManager.createQuery(arg0);
+			return delegateEntityManager.createQuery(arg0);
 		}
-		//
+
 		public StoredProcedureQuery createStoredProcedureQuery(String arg0) {
-		return delegateEntityManager.createStoredProcedureQuery(arg0);
+			return delegateEntityManager.createStoredProcedureQuery(arg0);
 		}
 
 		public StoredProcedureQuery createStoredProcedureQuery(String arg0,
-		@SuppressWarnings("rawtypes") Class... arg1) {
-		return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
-		}
-		//
-		public StoredProcedureQuery createStoredProcedureQuery(String arg0, String... arg1) {
-		return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
+				@SuppressWarnings("rawtypes") Class... arg1) {
+			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
 		}
 
-		// JPA 2.1
-		public EntityGraph<?> getEntityGraph(String arg0) {
-		return delegateEntityManager.getEntityGraph(arg0);
+		public StoredProcedureQuery createStoredProcedureQuery(String arg0, String... arg1) {
+			return delegateEntityManager.createStoredProcedureQuery(arg0, arg1);
 		}
-		//
+
+		public EntityGraph<?> getEntityGraph(String arg0) {
+			return delegateEntityManager.getEntityGraph(arg0);
+		}
+
 		public <T> List<EntityGraph<? super T>> getEntityGraphs(Class<T> arg0) {
-		return delegateEntityManager.getEntityGraphs(arg0);
+			return delegateEntityManager.getEntityGraphs(arg0);
 		}
 
 		public boolean isJoinedToTransaction() {
-		return delegateEntityManager.isJoinedToTransaction();
-		}
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected QueryImpl<?> repairParameterJavaType(QueryImpl<?> query) {
-		try {
-			final Set<Parameter<?>> repairedParameters = new HashSet<Parameter<?>>();
-			final Object parametersObject = getQueryParametersField().get(query);
-			final AbstractQueryImpl queryImpl = AbstractQueryImpl.class.cast(query.getHibernateQuery());
-			for (Parameter<?> parameter : (Collection<Parameter>) parametersObject) {
-				if (Map.class == parameter.getParameterType()) {
-					final Type type;
-					if (parameter.getName() != null) {
-						// repair these ones
-						final NamedParameterDescriptor descriptor = queryImpl.getParameterMetadata()
-								.getNamedParameterDescriptor(parameter.getName());
-						type = descriptor.getExpectedType();
-					} else {
-						type = queryImpl.getParameterMetadata().getOrdinalParameterExpectedType(
-								parameter.getPosition());
-					}
-					if (type instanceof EntityType) {
-						final Parameter<?> param = new ParameterImpl(parameter.getName(),
-								parameter.getPosition(), Object.class);
-						repairedParameters.add(param);
-						// final EntityType entityType = (EntityType) type;
-						// final String entityName = entityType
-						// .getAssociatedEntityName();
-						// final EClass eClass = HbEntityDataStore.this
-						// .getEntityNameStrategy().toEClass(entityName);
-
-					} else {
-						repairedParameters.add(parameter);
-					}
-				} else {
-					repairedParameters.add(parameter);
-				}
-			}
-			getQueryParametersField().set(query, repairedParameters);
-			return query;
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
-		}
-	}
-
-	protected Field getQueryParametersField() throws Exception {
-		if (queryParametersField != null) {
-			return queryParametersField;
-		}
-		Field field = QueryImpl.class.getDeclaredField("parameters");
-		field.setAccessible(true);
-		return field;
-	}
-
-	@SuppressWarnings("rawtypes")
-	private static class ParameterImpl implements Parameter {
-		private String name;
-		private Integer position;
-		private Class<?> javaClass;
-
-		ParameterImpl(String name, Integer position, Class<?> clz) {
-			this.name = name;
-			this.position = position;
-			this.javaClass = clz;
-		}
-
-		public Class<?> getParameterType() {
-			return javaClass;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public Integer getPosition() {
-			return position;
+			return delegateEntityManager.isJoinedToTransaction();
 		}
 	}
 

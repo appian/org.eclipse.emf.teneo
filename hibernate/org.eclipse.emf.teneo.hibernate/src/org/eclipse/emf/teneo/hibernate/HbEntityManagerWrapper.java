@@ -182,7 +182,9 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 
 	/** Close the underlying session */
 	public void close() {
-		getEntityManager().close();
+		if (getEntityManager().isOpen()) {
+			getEntityManager().close();
+		}
 	}
 
 	/** Save or update the pass object */

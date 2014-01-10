@@ -23,44 +23,42 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.rental.RentalFactory
  * @model kind="package"
  * @generated
  */
 public interface RentalPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "rental";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.eclipse.org/emf/teneo/rental";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "rental";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	RentalPackage eINSTANCE = org.eclipse.emf.teneo.rental.impl.RentalPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalUnitImpl
-	 * <em>Unit</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalUnitImpl <em>Unit</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalUnitImpl
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalUnit()
 	 * @generated
@@ -68,27 +66,26 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_UNIT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_UNIT__DESCRIPTION = 0;
 
 	/**
-	 * The number of structural features of the '<em>Unit</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Unit</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_UNIT_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl
-	 * <em>Bicycle</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl <em>Bicycle</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBicycle()
 	 * @generated
@@ -96,45 +93,44 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_BICYCLE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_BICYCLE__DESCRIPTION = RENTAL_UNIT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_BICYCLE__TYPE = RENTAL_UNIT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Manufacturer</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Manufacturer</b></em>' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_BICYCLE__MANUFACTURER = RENTAL_UNIT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Bicycle</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Bicycle</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_BICYCLE_FEATURE_COUNT = RENTAL_UNIT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl
-	 * <em>Currency</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl <em>Currency</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.impl.CurrencyImpl
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getCurrency()
 	 * @generated
@@ -142,27 +138,26 @@ public interface RentalPackage extends EPackage {
 	int CURRENCY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int CURRENCY__CODE = 0;
 
 	/**
-	 * The number of structural features of the '<em>Currency</em>' class. <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Currency</em>' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int CURRENCY_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl
-	 * <em>Car</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl <em>Car</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalCarImpl
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalCar()
 	 * @generated
@@ -170,36 +165,35 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_CAR = 2;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CAR__DESCRIPTION = RENTAL_UNIT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Size</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CAR__SIZE = RENTAL_UNIT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Car</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Car</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CAR_FEATURE_COUNT = RENTAL_UNIT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl
-	 * <em>Contract</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl <em>Contract</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalContractImpl
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalContract()
 	 * @generated
@@ -216,63 +210,62 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Start Date</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CONTRACT__START_DATE = 1;
 
 	/**
-	 * The feature id for the '<em><b>End Date</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>End Date</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CONTRACT__END_DATE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Cost</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CONTRACT__COST = 3;
 
 	/**
-	 * The feature id for the '<em><b>Rental Units</b></em>' reference list. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Rental Units</b></em>' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CONTRACT__RENTAL_UNITS = 4;
 
 	/**
-	 * The feature id for the '<em><b>Currency</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Currency</b></em>' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CONTRACT__CURRENCY = 5;
 
 	/**
-	 * The number of structural features of the '<em>Contract</em>' class. <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Contract</em>' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RENTAL_CONTRACT_FEATURE_COUNT = 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.ManufacturerImpl
-	 * <em>Manufacturer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.ManufacturerImpl <em>Manufacturer</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.impl.ManufacturerImpl
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getManufacturer()
 	 * @generated
@@ -280,36 +273,35 @@ public interface RentalPackage extends EPackage {
 	int MANUFACTURER = 5;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MANUFACTURER__CODE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Trusted</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Trusted</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MANUFACTURER__TRUSTED = 1;
 
 	/**
-	 * The number of structural features of the '<em>Manufacturer</em>' class. <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Manufacturer</em>' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int MANUFACTURER_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType
-	 * <em>Bicycle Type</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}' enum.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBicycleType()
 	 * @generated
@@ -317,9 +309,8 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_BICYCLE_TYPE = 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.RentalCarSize
-	 * <em>Car Size</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.RentalCarSize <em>Car Size</em>}' enum.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalCarSize()
 	 * @generated
@@ -337,9 +328,9 @@ public interface RentalPackage extends EPackage {
 	int DATE = 8;
 
 	/**
-	 * The meta object id for the '<em>Bicycle Type Object</em>' data type. <!-- begin-user-doc -->
+	 * The meta object id for the '<em>Bicycle Type Object</em>' data type.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBicycleTypeObject()
 	 * @generated
@@ -347,9 +338,9 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_BICYCLE_TYPE_OBJECT = 9;
 
 	/**
-	 * The meta object id for the '<em>Car Size Object</em>' data type. <!-- begin-user-doc --> <!--
+	 * The meta object id for the '<em>Car Size Object</em>' data type.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalCarSizeObject()
 	 * @generated
@@ -357,9 +348,8 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_CAR_SIZE_OBJECT = 10;
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalBicycle
-	 * <em>Bicycle</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalBicycle <em>Bicycle</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Bicycle</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycle
 	 * @generated
@@ -367,10 +357,9 @@ public interface RentalPackage extends EPackage {
 	EClass getRentalBicycle();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.rental.RentalBicycle#getType <em>Type</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.RentalBicycle#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycle#getType()
 	 * @see #getRentalBicycle()
@@ -391,9 +380,8 @@ public interface RentalPackage extends EPackage {
 	EReference getRentalBicycle_Manufacturer();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.Currency
-	 * <em>Currency</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.Currency <em>Currency</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Currency</em>'.
 	 * @see org.eclipse.emf.teneo.rental.Currency
 	 * @generated
@@ -401,10 +389,9 @@ public interface RentalPackage extends EPackage {
 	EClass getCurrency();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.rental.Currency#getCode <em>Code</em>}'. <!-- begin-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.Currency#getCode <em>Code</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Code</em>'.
 	 * @see org.eclipse.emf.teneo.rental.Currency#getCode()
 	 * @see #getCurrency()
@@ -413,9 +400,8 @@ public interface RentalPackage extends EPackage {
 	EAttribute getCurrency_Code();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalCar <em>Car</em>}
-	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalCar <em>Car</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Car</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalCar
 	 * @generated
@@ -423,10 +409,9 @@ public interface RentalPackage extends EPackage {
 	EClass getRentalCar();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.rental.RentalCar#getSize <em>Size</em>}'. <!-- begin-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.RentalCar#getSize <em>Size</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Size</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalCar#getSize()
 	 * @see #getRentalCar()
@@ -435,9 +420,8 @@ public interface RentalPackage extends EPackage {
 	EAttribute getRentalCar_Size();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalContract
-	 * <em>Contract</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalContract <em>Contract</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Contract</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalContract
 	 * @generated
@@ -445,10 +429,8 @@ public interface RentalPackage extends EPackage {
 	EClass getRentalContract();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.rental.RentalContract#getRentToBusinessPartner
-	 * <em>Rent To Business Partner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.RentalContract#getRentToBusinessPartner <em>Rent To Business Partner</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Rent To Business Partner</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalContract#getRentToBusinessPartner()
 	 * @see #getRentalContract()
@@ -481,10 +463,9 @@ public interface RentalPackage extends EPackage {
 	EAttribute getRentalContract_EndDate();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.rental.RentalContract#getCost <em>Cost</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.RentalContract#getCost <em>Cost</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Cost</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalContract#getCost()
 	 * @see #getRentalContract()
@@ -517,9 +498,8 @@ public interface RentalPackage extends EPackage {
 	EReference getRentalContract_Currency();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalUnit
-	 * <em>Unit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalUnit <em>Unit</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Unit</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalUnit
 	 * @generated
@@ -539,9 +519,8 @@ public interface RentalPackage extends EPackage {
 	EAttribute getRentalUnit_Description();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.Manufacturer
-	 * <em>Manufacturer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.Manufacturer <em>Manufacturer</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Manufacturer</em>'.
 	 * @see org.eclipse.emf.teneo.rental.Manufacturer
 	 * @generated
@@ -549,10 +528,9 @@ public interface RentalPackage extends EPackage {
 	EClass getManufacturer();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.teneo.rental.Manufacturer#getCode <em>Code</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.Manufacturer#getCode <em>Code</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Code</em>'.
 	 * @see org.eclipse.emf.teneo.rental.Manufacturer#getCode()
 	 * @see #getManufacturer()
@@ -573,9 +551,8 @@ public interface RentalPackage extends EPackage {
 	EAttribute getManufacturer_Trusted();
 
 	/**
-	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.rental.RentalBicycleType
-	 * <em>Bicycle Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Bicycle Type</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 	 * @generated
@@ -583,9 +560,8 @@ public interface RentalPackage extends EPackage {
 	EEnum getRentalBicycleType();
 
 	/**
-	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.rental.RentalCarSize
-	 * <em>Car Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.rental.RentalCarSize <em>Car Size</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Car Size</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 	 * @generated
@@ -604,9 +580,8 @@ public interface RentalPackage extends EPackage {
 	EDataType getDate();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.rental.RentalBicycleType
-	 * <em>Bicycle Type Object</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type Object</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Bicycle Type Object</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 	 * @model instanceClass="org.eclipse.emf.teneo.rental.RentalBicycleType"
@@ -616,9 +591,8 @@ public interface RentalPackage extends EPackage {
 	EDataType getRentalBicycleTypeObject();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.rental.RentalCarSize
-	 * <em>Car Size Object</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.rental.RentalCarSize <em>Car Size Object</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Car Size Object</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 	 * @model instanceClass="org.eclipse.emf.teneo.rental.RentalCarSize"
@@ -628,9 +602,9 @@ public interface RentalPackage extends EPackage {
 	EDataType getRentalCarSizeObject();
 
 	/**
-	 * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!--
+	 * Returns the factory that creates the instances of the model.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -645,14 +619,12 @@ public interface RentalPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl
-		 * <em>Bicycle</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl <em>Bicycle</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBicycle()
 		 * @generated
@@ -660,9 +632,9 @@ public interface RentalPackage extends EPackage {
 		EClass RENTAL_BICYCLE = eINSTANCE.getRentalBicycle();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute RENTAL_BICYCLE__TYPE = eINSTANCE.getRentalBicycle_Type();
@@ -676,9 +648,8 @@ public interface RentalPackage extends EPackage {
 		EReference RENTAL_BICYCLE__MANUFACTURER = eINSTANCE.getRentalBicycle_Manufacturer();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl
-		 * <em>Currency</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl <em>Currency</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.impl.CurrencyImpl
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getCurrency()
 		 * @generated
@@ -686,17 +657,16 @@ public interface RentalPackage extends EPackage {
 		EClass CURRENCY = eINSTANCE.getCurrency();
 
 		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute CURRENCY__CODE = eINSTANCE.getCurrency_Code();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl
-		 * <em>Car</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl <em>Car</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalCarImpl
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalCar()
 		 * @generated
@@ -704,17 +674,16 @@ public interface RentalPackage extends EPackage {
 		EClass RENTAL_CAR = eINSTANCE.getRentalCar();
 
 		/**
-		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute RENTAL_CAR__SIZE = eINSTANCE.getRentalCar_Size();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl
-		 * <em>Contract</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl <em>Contract</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalContractImpl
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalContract()
 		 * @generated
@@ -724,11 +693,9 @@ public interface RentalPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Rent To Business Partner</b></em>' attribute feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
-		EAttribute RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER = eINSTANCE
-				.getRentalContract_RentToBusinessPartner();
+		EAttribute RENTAL_CONTRACT__RENT_TO_BUSINESS_PARTNER = eINSTANCE.getRentalContract_RentToBusinessPartner();
 
 		/**
 		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature. <!--
@@ -747,9 +714,9 @@ public interface RentalPackage extends EPackage {
 		EAttribute RENTAL_CONTRACT__END_DATE = eINSTANCE.getRentalContract_EndDate();
 
 		/**
-		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute RENTAL_CONTRACT__COST = eINSTANCE.getRentalContract_Cost();
@@ -771,9 +738,8 @@ public interface RentalPackage extends EPackage {
 		EReference RENTAL_CONTRACT__CURRENCY = eINSTANCE.getRentalContract_Currency();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalUnitImpl
-		 * <em>Unit</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalUnitImpl <em>Unit</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalUnitImpl
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalUnit()
 		 * @generated
@@ -789,9 +755,8 @@ public interface RentalPackage extends EPackage {
 		EAttribute RENTAL_UNIT__DESCRIPTION = eINSTANCE.getRentalUnit_Description();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.ManufacturerImpl
-		 * <em>Manufacturer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.ManufacturerImpl <em>Manufacturer</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.impl.ManufacturerImpl
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getManufacturer()
 		 * @generated
@@ -799,9 +764,9 @@ public interface RentalPackage extends EPackage {
 		EClass MANUFACTURER = eINSTANCE.getManufacturer();
 
 		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute MANUFACTURER__CODE = eINSTANCE.getManufacturer_Code();
@@ -815,9 +780,8 @@ public interface RentalPackage extends EPackage {
 		EAttribute MANUFACTURER__TRUSTED = eINSTANCE.getManufacturer_Trusted();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType
-		 * <em>Bicycle Type</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}' enum.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBicycleType()
 		 * @generated
@@ -825,9 +789,8 @@ public interface RentalPackage extends EPackage {
 		EEnum RENTAL_BICYCLE_TYPE = eINSTANCE.getRentalBicycleType();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.RentalCarSize
-		 * <em>Car Size</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.RentalCarSize <em>Car Size</em>}' enum.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalCarSize()
 		 * @generated
@@ -835,9 +798,9 @@ public interface RentalPackage extends EPackage {
 		EEnum RENTAL_CAR_SIZE = eINSTANCE.getRentalCarSize();
 
 		/**
-		 * The meta object literal for the '<em>Date</em>' data type. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '<em>Date</em>' data type.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @see java.util.Date
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getDate()
 		 * @generated
@@ -845,9 +808,9 @@ public interface RentalPackage extends EPackage {
 		EDataType DATE = eINSTANCE.getDate();
 
 		/**
-		 * The meta object literal for the '<em>Bicycle Type Object</em>' data type. <!-- begin-user-doc
+		 * The meta object literal for the '<em>Bicycle Type Object</em>' data type.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBicycleTypeObject()
 		 * @generated
@@ -855,9 +818,9 @@ public interface RentalPackage extends EPackage {
 		EDataType RENTAL_BICYCLE_TYPE_OBJECT = eINSTANCE.getRentalBicycleTypeObject();
 
 		/**
-		 * The meta object literal for the '<em>Car Size Object</em>' data type. <!-- begin-user-doc -->
+		 * The meta object literal for the '<em>Car Size Object</em>' data type.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalCarSizeObject()
 		 * @generated
