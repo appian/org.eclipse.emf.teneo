@@ -25,6 +25,7 @@ import java.sql.Types;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.dom4j.Node;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +36,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.internal.ForeignKeys;
 import org.hibernate.engine.spi.CascadeStyle;
+import org.hibernate.engine.spi.CascadeStyles;
 import org.hibernate.engine.spi.Mapping;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.engine.spi.SessionImplementor;
@@ -286,7 +288,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType, Assoc
 	}
 
 	public CascadeStyle getCascadeStyle(int i) {
-		return CascadeStyle.NONE;
+		return CascadeStyles.NONE;
 	}
 
 	public FetchMode getFetchMode(int i) {
@@ -445,5 +447,12 @@ public class AnyEObjectType extends AbstractType implements CompositeType, Assoc
 	public Object deepCopy(Object value, SessionFactoryImplementor factory) throws HibernateException {
 		// TODO Auto-generated method stub
 		return value;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters,
+			Set<String> treatAsDeclarations) {
+		return "";
 	}
 }

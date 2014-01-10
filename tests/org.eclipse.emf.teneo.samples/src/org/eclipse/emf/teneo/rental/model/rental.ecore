@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rental"
-    nsURI="http://www.eclipse.org/emf/teneo/rental" nsPrefix="rental">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rental" nsURI="http://www.eclipse.org/emf/teneo/rental" nsPrefix="rental">
   <eClassifiers xsi:type="ecore:EDataType" name="Date" instanceClassName="java.util.Date">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Date"/>
@@ -20,8 +18,7 @@
         <details key="name" value="type"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="manufacturer" lowerBound="1"
-        eType="#//Manufacturer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manufacturer" eType="#//Manufacturer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RentalBicycleType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

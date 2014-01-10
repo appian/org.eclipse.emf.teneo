@@ -15,15 +15,14 @@ import org.eclipse.emf.common.util.Enumerator;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Car Size</b></em>', and utility methods for working with them. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalCarSize()
  * @model extendedMetaData="name='RentalCarSize'"
  * @generated
  */
 public enum RentalCarSize implements Enumerator {
 	/**
-	 * The '<em><b>Small</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>Small</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #SMALL_VALUE
 	 * @generated
 	 * @ordered
@@ -31,8 +30,8 @@ public enum RentalCarSize implements Enumerator {
 	SMALL(0, "Small", "Small"),
 
 	/**
-	 * The '<em><b>Medium</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>Medium</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #MEDIUM_VALUE
 	 * @generated
 	 * @ordered
@@ -40,8 +39,8 @@ public enum RentalCarSize implements Enumerator {
 	MEDIUM(1, "Medium", "Medium"),
 
 	/**
-	 * The '<em><b>Family</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>Family</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #FAMILY_VALUE
 	 * @generated
 	 * @ordered
@@ -49,13 +48,13 @@ public enum RentalCarSize implements Enumerator {
 	FAMILY(2, "Family", "Family");
 
 	/**
-	 * The '<em><b>Small</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Small</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Small</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #SMALL
 	 * @model name="Small"
 	 * @generated
@@ -64,13 +63,13 @@ public enum RentalCarSize implements Enumerator {
 	public static final int SMALL_VALUE = 0;
 
 	/**
-	 * The '<em><b>Medium</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Medium</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Medium</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #MEDIUM
 	 * @model name="Medium"
 	 * @generated
@@ -79,13 +78,13 @@ public enum RentalCarSize implements Enumerator {
 	public static final int MEDIUM_VALUE = 1;
 
 	/**
-	 * The '<em><b>Family</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Family</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Family</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #FAMILY
 	 * @model name="Family"
 	 * @generated
@@ -94,21 +93,24 @@ public enum RentalCarSize implements Enumerator {
 	public static final int FAMILY_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Car Size</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * An array of all the '<em><b>Car Size</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final RentalCarSize[] VALUES_ARRAY = new RentalCarSize[] { SMALL, MEDIUM, FAMILY, };
+	private static final RentalCarSize[] VALUES_ARRAY = new RentalCarSize[] {
+			SMALL,
+			MEDIUM,
+			FAMILY,
+		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Car Size</b></em>' enumerators. <!-- begin-user-doc
+	 * A public read-only list of all the '<em><b>Car Size</b></em>' enumerators.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public static final List<RentalCarSize> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<RentalCarSize> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Car Size</b></em>' literal with the specified literal value. <!--
@@ -127,9 +129,9 @@ public enum RentalCarSize implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Car Size</b></em>' literal with the specified name. <!-- begin-user-doc -->
+	 * Returns the '<em><b>Car Size</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static RentalCarSize getByName(String name) {
@@ -150,40 +152,34 @@ public enum RentalCarSize implements Enumerator {
 	 */
 	public static RentalCarSize get(int value) {
 		switch (value) {
-		case SMALL_VALUE:
-			return SMALL;
-		case MEDIUM_VALUE:
-			return MEDIUM;
-		case FAMILY_VALUE:
-			return FAMILY;
+			case SMALL_VALUE: return SMALL;
+			case MEDIUM_VALUE: return MEDIUM;
+			case FAMILY_VALUE: return FAMILY;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private RentalCarSize(int value, String name, String literal) {
@@ -194,29 +190,26 @@ public enum RentalCarSize implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

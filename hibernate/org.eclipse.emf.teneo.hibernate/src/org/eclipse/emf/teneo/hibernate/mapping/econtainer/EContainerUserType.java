@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.dom4j.Node;
@@ -527,5 +528,11 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 
 	public Object deepCopy(Object value, SessionFactoryImplementor factory) throws HibernateException {
 		return value;
+	}
+
+	@Override
+	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters,
+			Set<String> treatAsDeclarations) {
+		return "";
 	}
 }

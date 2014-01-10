@@ -15,15 +15,14 @@ import org.eclipse.emf.common.util.Enumerator;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Bicycle Type</b></em>', and utility methods for working with them. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalBicycleType()
  * @model extendedMetaData="name='RentalBicycleType'"
  * @generated
  */
 public enum RentalBicycleType implements Enumerator {
 	/**
-	 * The '<em><b>Standard</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The '<em><b>Standard</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #STANDARD_VALUE
 	 * @generated
 	 * @ordered
@@ -41,13 +40,13 @@ public enum RentalBicycleType implements Enumerator {
 	MOUNTAIN_BIKE(1, "MountainBike", "MountainBike");
 
 	/**
-	 * The '<em><b>Standard</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Standard</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Standard</b></em>' literal object isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #STANDARD
 	 * @model name="Standard"
 	 * @generated
@@ -56,13 +55,13 @@ public enum RentalBicycleType implements Enumerator {
 	public static final int STANDARD_VALUE = 0;
 
 	/**
-	 * The '<em><b>Mountain Bike</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Mountain Bike</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Mountain Bike</b></em>' literal object isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #MOUNTAIN_BIKE
 	 * @model name="MountainBike"
 	 * @generated
@@ -71,13 +70,15 @@ public enum RentalBicycleType implements Enumerator {
 	public static final int MOUNTAIN_BIKE_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Bicycle Type</b></em>' enumerators. <!-- begin-user-doc --> <!--
+	 * An array of all the '<em><b>Bicycle Type</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final RentalBicycleType[] VALUES_ARRAY = new RentalBicycleType[] { STANDARD,
-			MOUNTAIN_BIKE, };
+	private static final RentalBicycleType[] VALUES_ARRAY = new RentalBicycleType[] {
+			STANDARD,
+			MOUNTAIN_BIKE,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Bicycle Type</b></em>' enumerators. <!--
@@ -85,8 +86,7 @@ public enum RentalBicycleType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<RentalBicycleType> VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<RentalBicycleType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Bicycle Type</b></em>' literal with the specified literal value. <!--
@@ -105,9 +105,9 @@ public enum RentalBicycleType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Bicycle Type</b></em>' literal with the specified name. <!-- begin-user-doc
+	 * Returns the '<em><b>Bicycle Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static RentalBicycleType getByName(String name) {
@@ -128,38 +128,33 @@ public enum RentalBicycleType implements Enumerator {
 	 */
 	public static RentalBicycleType get(int value) {
 		switch (value) {
-		case STANDARD_VALUE:
-			return STANDARD;
-		case MOUNTAIN_BIKE_VALUE:
-			return MOUNTAIN_BIKE;
+			case STANDARD_VALUE: return STANDARD;
+			case MOUNTAIN_BIKE_VALUE: return MOUNTAIN_BIKE;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private RentalBicycleType(int value, String name, String literal) {
@@ -170,29 +165,26 @@ public enum RentalBicycleType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**

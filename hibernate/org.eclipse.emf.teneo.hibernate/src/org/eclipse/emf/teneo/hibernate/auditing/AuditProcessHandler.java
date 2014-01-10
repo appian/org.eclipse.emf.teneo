@@ -59,6 +59,7 @@ import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
 import org.hibernate.tuple.entity.EntityTuplizer;
+import org.hibernate.persister.entity.EntityPersister;
 
 /**
  * The main auditing logic used at runtime to create and persist auditing entries.
@@ -248,7 +249,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	@Override
 	public void doBeforeTransactionCompletion(SessionImplementor session) {
 		// see: http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4178431
-		if (!FlushMode.isManualFlushMode(session.getFlushMode())) {
+		if (session.getFlushMode() != FlushMode.MANUAL) {
 			session.flush();
 			final List<AuditWork> auditWorks = getRemoveQueue((Session) session, false);
 			if (auditWorks == null || auditWorks.isEmpty()) {
@@ -693,5 +694,10 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	 */
 	public void setCheckInitialAuditEntry(boolean checkInitialAuditEntry) {
 		this.checkInitialAuditEntry = checkInitialAuditEntry;
+	}
+
+	@Override
+	public boolean requiresPostCommitHanding(EntityPersister arg0) {
+		return true;
 	}
 }

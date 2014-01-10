@@ -11,21 +11,20 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each
  * non-abstract class of the model. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.rental.RentalPackage
  * @generated
  */
 public interface RentalFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	RentalFactory eINSTANCE = org.eclipse.emf.teneo.rental.impl.RentalFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Bicycle</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Bicycle</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Bicycle</em>'.
 	 * @generated
 	 */
@@ -41,8 +40,8 @@ public interface RentalFactory extends EFactory {
 	Currency createCurrency();
 
 	/**
-	 * Returns a new object of class '<em>Car</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns a new object of class '<em>Car</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Car</em>'.
 	 * @generated
 	 */
@@ -58,17 +57,17 @@ public interface RentalFactory extends EFactory {
 	RentalContract createRentalContract();
 
 	/**
-	 * Returns a new object of class '<em>Manufacturer</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>Manufacturer</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Manufacturer</em>'.
 	 * @generated
 	 */
 	Manufacturer createManufacturer();
 
 	/**
-	 * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

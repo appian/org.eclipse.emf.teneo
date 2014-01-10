@@ -27,6 +27,7 @@ import javax.naming.Reference;
 
 import org.hibernate.Cache;
 import org.hibernate.CustomEntityDirtinessStrategy;
+import org.hibernate.EntityNameResolver;
 import org.hibernate.HibernateException;
 import org.hibernate.Interceptor;
 import org.hibernate.MappingException;
@@ -44,6 +45,7 @@ import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.SQLFunctionRegistry;
 import org.hibernate.engine.ResultSetMappingDefinition;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.jdbc.spi.JdbcServices;
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.hibernate.engine.profile.FetchProfile;
@@ -56,13 +58,13 @@ import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.exception.spi.SQLExceptionConverter;
 import org.hibernate.id.IdentifierGenerator;
 import org.hibernate.id.factory.IdentifierGeneratorFactory;
+import org.hibernate.internal.NamedQueryRepository;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
 import org.hibernate.persister.collection.CollectionPersister;
 import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.proxy.EntityNotFoundDelegate;
-import org.hibernate.service.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.service.spi.ServiceRegistryImplementor;
 import org.hibernate.stat.Statistics;
 import org.hibernate.stat.spi.StatisticsImplementor;
@@ -428,5 +430,35 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 
 	public StatelessSessionBuilder withStatelessOptions() {
 		return getSessionFactoryImplementor().withStatelessOptions();
+	}
+
+	@Override
+	public Map<String, CollectionPersister> getCollectionPersisters() {
+		return getSessionFactoryImplementor().getCollectionPersisters();
+	}
+
+	@Override
+	public Map<String, EntityPersister> getEntityPersisters() {
+		return getSessionFactoryImplementor().getEntityPersisters();
+	}
+
+	@Override
+	public NamedQueryRepository getNamedQueryRepository() {
+		return getSessionFactoryImplementor().getNamedQueryRepository();
+	}
+
+	@Override
+	public Iterable<EntityNameResolver> iterateEntityNameResolvers() {
+		return getSessionFactoryImplementor().iterateEntityNameResolvers();
+	}
+
+	@Override
+	public void registerNamedQueryDefinition(String arg0, NamedQueryDefinition arg1) {
+		getSessionFactoryImplementor().registerNamedQueryDefinition(arg0, arg1);
+	}
+
+	@Override
+	public void registerNamedSQLQueryDefinition(String arg0, NamedSQLQueryDefinition arg1) {
+		getSessionFactoryImplementor().registerNamedSQLQueryDefinition(arg0, arg1);
 	}
 }
