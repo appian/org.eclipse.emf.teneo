@@ -682,7 +682,7 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	public AuditHandler getAuditHandler() {
 		return auditHandler;
 	}
-
+	
 	/**
 	 * Whether to check and create the initial audit entry if it is not available when the first
 	 * change is done to an entity.
