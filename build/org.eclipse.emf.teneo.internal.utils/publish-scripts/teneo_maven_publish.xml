@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project default="deploy.snapshot" name="Teneo Maven Publish" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<property environment="env" />
+	<property name="version" value="2.0.1"/>
+	<property name="qualifier" value="v201311180843"/>
+	<property name="jarDownloadLocation" location="/home/mtaal/mydownloads/teneomaven" />
+	<property name="jarFileLocation" location="/home/mtaal/mydownloads/teneomaven/maven" />
+
+	<property name="maven-snapshots-repository-id" value="sonatype-nexus-snapshots" />
+	<property name="maven-snapshots-repository-url" value="https://oss.sonatype.org/content/repositories/snapshots/" />
+	<property name="maven-staging-repository-id" value="sonatype-nexus-staging" />
+	<property name="maven-staging-repository-url" value="https://oss.sonatype.org/service/local/staging/deploy/maven2/" />
+
+	<macrodef name="deploy.snapshot">
+		<attribute name="name"/>
+		<sequential>
+			<artifact:mvn>
+				<arg value="org.apache.maven.plugins:maven-deploy-plugin:2.6:deploy-file" />
+				<arg value="-Durl=${maven-snapshots-repository-url}" />
+				<arg value="-DrepositoryId=${maven-snapshots-repository-id}" />
+				<arg value="-DpomFile=${jarFileLocation}/@{name}-${version}-SNAPSHOT.pom" />
+				<arg value="-Dfile=${jarFileLocation}/@{name}-${version}-SNAPSHOT.jar" />
+               		        <arg value="-Pgpg" />
+			</artifact:mvn>
+
+			<artifact:mvn>
+				<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+				<arg value="-Durl=${maven-snapshots-repository-url}" />
+				<arg value="-DrepositoryId=${maven-snapshots-repository-id}" />
+				<arg value="-DpomFile=${jarFileLocation}/@{name}-${version}-SNAPSHOT.pom" />
+				<arg value="-Dfile=${jarFileLocation}/@{name}-${version}-SNAPSHOT-sources.jar" />
+				<arg value="-Dclassifier=sources" />
+               		        <arg value="-Pgpg" />
+			</artifact:mvn>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="deploy.staging">
+		<attribute name="name"/>
+		<sequential>
+		<!-- sign and deploy the main artifact -->
+		<artifact:mvn>
+			<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+			<arg value="-Durl=${maven-staging-repository-url}" />
+			<arg value="-DrepositoryId=${maven-staging-repository-id}" />
+			<arg value="-DpomFile=${jarFileLocation}/@{name}-${version}-${qualifier}.pom" />
+			<arg value="-Dfile=${jarFileLocation}/@{name}-${version}-${qualifier}.jar" />
+                        <arg value="-Pgpg" />
+		</artifact:mvn>
+
+		<!-- sign and deploy the sources artifact -->
+		<artifact:mvn>
+			<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+			<arg value="-Durl=${maven-staging-repository-url}" />
+			<arg value="-DrepositoryId=${maven-staging-repository-id}" />
+			<arg value="-DpomFile=${jarFileLocation}/@{name}-${version}-${qualifier}.pom" />
+			<arg value="-Dfile=${jarFileLocation}/@{name}-${version}-${qualifier}-sources.jar" />
+			<arg value="-Dclassifier=sources" />
+                        <arg value="-Pgpg" />
+		</artifact:mvn>
+
+		<!-- sign and deploy the javadoc artifact -->
+		<artifact:mvn>
+			<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+			<arg value="-Durl=${maven-staging-repository-url}" />
+			<arg value="-DrepositoryId=${maven-staging-repository-id}" />
+			<arg value="-DpomFile=${jarFileLocation}/@{name}-${version}-${qualifier}.pom" />
+			<arg value="-Dfile=${jarFileLocation}/@{name}-${version}-${qualifier}-javadoc.jar" />
+			<arg value="-Dclassifier=javadoc" />
+                        <arg value="-Pgpg" />
+		</artifact:mvn>
+		</sequential>
+	</macrodef>
+
+	<target name="deploy.snapshot" depends="init">
+		<deploy.snapshot name="org.eclipse.emf.teneo"/>		
+		<deploy.snapshot name="org.eclipse.emf.teneo.annotations"/>		
+		<deploy.snapshot name="org.eclipse.emf.teneo.hibernate"/>		
+		<deploy.snapshot name="org.eclipse.emf.teneo.hibernate.mapper"/>		
+	</target>
+
+	<target name="deploy.staging" depends="init">
+		<deploy.staging name="org.eclipse.emf.teneo"/>		
+		<deploy.staging name="org.eclipse.emf.teneo.annotations"/>		
+		<deploy.staging name="org.eclipse.emf.teneo.hibernate"/>		
+		<deploy.staging name="org.eclipse.emf.teneo.hibernate.mapper"/>		
+	</target>
+	
+	<target name="init">
+		<delete dir="${jarDownloadLocation}" quiet="true" />
+		<mkdir dir="${jarDownloadLocation}" />
+		<!--get src="https://hudson.eclipse.org/hudson/job/emf-teneo-nightly/ws/build/result/maven/*zip*/maven.zip" dest="${jarDownloadLocation}/maven.zip" /-->
+		<get src="https://hudson.eclipse.org/hudson/job/emf-teneo-nightly/lastSuccessfulBuild/artifact/build/result/maven/*zip*/maven.zip" dest="${jarDownloadLocation}/maven.zip" />
+		<unzip src="${jarDownloadLocation}/maven.zip" dest="${jarDownloadLocation}"/>
+	</target>
+	
+</project>
+

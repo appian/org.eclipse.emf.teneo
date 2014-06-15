@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project default="deploy.snapshot" name="Teneo Maven Publish" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<property environment="env" />
+	<property name="mainLocation" location="/home/mtaal/mydata/dev/maven/emfmaven" />
+
+	<property name="maven-snapshots-repository-id" value="sonatype-nexus-snapshots" />
+	<property name="maven-snapshots-repository-url" value="https://oss.sonatype.org/content/repositories/snapshots/" />
+	<property name="maven-staging-repository-id" value="sonatype-nexus-staging" />
+	<property name="maven-staging-repository-url" value="https://oss.sonatype.org/service/local/staging/deploy/maven2/" />
+
+	<macrodef name="deploy.snapshot">
+		<attribute name="name"/>
+		<attribute name="jarFileLocation"/>
+		<attribute name="version"/>
+		<sequential>
+			<artifact:mvn>
+				<arg value="org.apache.maven.plugins:maven-deploy-plugin:2.6:deploy-file" />
+				<arg value="-Durl=${maven-snapshots-repository-url}" />
+				<arg value="-DrepositoryId=${maven-snapshots-repository-id}" />
+				<arg value="-DpomFile=@{jarFileLocation}/@{name}-@{version}.pom" />
+				<arg value="-Dfile=@{jarFileLocation}/@{name}-@{version}.jar" />
+                        	<arg value="-e" />
+			</artifact:mvn>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="deploy.staging">
+		<attribute name="name"/>
+		<attribute name="jarFileLocation"/>
+		<attribute name="version"/>
+		<sequential>
+		<!-- sign and deploy the main artifact -->
+		<artifact:mvn>
+			<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+			<arg value="-Durl=${maven-staging-repository-url}" />
+			<arg value="-DrepositoryId=${maven-staging-repository-id}" />
+			<arg value="-DpomFile=@{jarFileLocation}/@{name}-@{version}.pom" />
+			<arg value="-Dfile=@{jarFileLocation}/@{name}-@{version}.jar" />
+                        <arg value="-e" />
+                        <arg value="-Pgpg" />
+		</artifact:mvn>
+
+		<!-- sign and deploy the sources artifact -->
+		<artifact:mvn>
+			<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+			<arg value="-Durl=${maven-staging-repository-url}" />
+			<arg value="-DrepositoryId=${maven-staging-repository-id}" />
+			<arg value="-DpomFile=@{jarFileLocation}/@{name}-@{version}.pom" />
+			<arg value="-Dfile=@{jarFileLocation}/@{name}-@{version}-sources.jar" />
+			<arg value="-Dclassifier=sources" />
+                        <arg value="-Pgpg" />
+		</artifact:mvn>
+
+		<!-- sign and deploy the javadoc artifact -->
+		<artifact:mvn>
+			<arg value="org.apache.maven.plugins:maven-gpg-plugin:1.3:sign-and-deploy-file" />
+			<arg value="-Durl=${maven-staging-repository-url}" />
+			<arg value="-DrepositoryId=${maven-staging-repository-id}" />
+			<arg value="-DpomFile=@{jarFileLocation}/@{name}-@{version}.pom" />
+			<arg value="-Dfile=@{jarFileLocation}/@{name}-@{version}-javadoc.jar" />
+			<arg value="-Dclassifier=javadoc" />
+                        <arg value="-Pgpg" />
+		</artifact:mvn>
+		</sequential>
+	</macrodef>
+
+	<target name="deploy.snapshot">
+		<!--deploy.snapshot name="org.eclipse.emf.ecore" version="2.7.0-v20110605-0747" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore.xmi" version="2.7.0-v20110520-1406" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.common" version="2.7.0-v20110605-0747" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore" version="2.8.0-v20120911-0500" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore.xmi" version="2.8.0-v20120911-0500" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.common" version="2.8.0-v20120911-0500" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore" version="2.9.0-v20130528-0742" jarFileLocation="${mainLocation}/2.9.0"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore.xmi" version="2.9.0-v20130528-0742" jarFileLocation="${mainLocation}/2.9.0"/>
+		<deploy.snapshot name="org.eclipse.emf.common" version="2.9.0-v20130528-0742" jarFileLocation="${mainLocation}/2.9.0"/
+
+		<deploy.snapshot name="org.eclipse.emf.codegen.ecore" version="2.10.0-v20130930-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M2"/>
+		<deploy.snapshot name="org.eclipse.emf.codegen" version="2.9.0-v20130930-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M2"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore" version="2.10.0-v20130911-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M2"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore.xmi" version="2.10.0.v20130911-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M2"/>
+		<deploy.snapshot name="org.eclipse.emf.common" version="2.10.0-v20130911-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M2"/>		
+
+		<deploy.snapshot name="org.eclipse.emf.codegen.ecore" version="2.10.0-v20140127-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M5"/>
+		<deploy.snapshot name="org.eclipse.emf.codegen" version="2.10.0-v20140127-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M5"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore" version="2.10.0-v20140117-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M5"/>		
+		<deploy.snapshot name="org.eclipse.emf.ecore.xmi" version="2.10.0-v20140117-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M5"/>
+		<deploy.snapshot name="org.eclipse.emf.common" version="2.10.0-v20140117-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M5"/>		
+-->		
+
+		<deploy.snapshot name="org.eclipse.emf.codegen.ecore" version="2.10.0-v20140519-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>
+		<deploy.snapshot name="org.eclipse.emf.codegen" version="2.10.0-v20140519-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>
+		<deploy.snapshot name="org.eclipse.emf.common" version="2.10.0-v20140514-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>
+		<deploy.snapshot name="org.eclipse.emf.ecore" version="2.10.0-v20140514-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>
+		<deploy.snapshot name="org.eclipse.emf.ecore.xmi" version="2.10.0-v20140514-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>
+		<deploy.snapshot name="org.eclipse.xsd" version="2.10.0-v20140519-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>
+		<deploy.snapshot name="org.eclipse.emf.mapping.ecore2xml" version="2.8.0-v20140519-SNAPSHOT" jarFileLocation="${mainLocation}/2.10RC1"/>	
+	</target>
+
+	<target name="deploy.staging">
+		<!--deploy.staging name="org.eclipse.emf.ecore" version="2.7.0-v20110605-0747" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.staging name="org.eclipse.emf.ecore.xmi" version="2.7.0-v20110520-1406" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.staging name="org.eclipse.emf.common" version="2.7.0-v20110605-0747" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.staging name="org.eclipse.emf.ecore" version="2.8.0-v20120911-0500" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.staging name="org.eclipse.emf.ecore.xmi" version="2.8.0-v20120911-0500" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.staging name="org.eclipse.emf.common" version="2.8.0-v20120911-0500" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.staging name="org.eclipse.emf.ecore" version="2.9.0-v20130528-0742" jarFileLocation="${mainLocation}/2.9.0"/>	
+		<deploy.staging name="org.eclipse.emf.ecore.xmi" version="2.9.0-v20130528-0742" jarFileLocation="${mainLocation}/2.9.0"/>
+		<deploy.staging name="org.eclipse.emf.common" version="2.9.0-v20130528-0742" jarFileLocation="${mainLocation}/2.9.0"/
+
+		<deploy.staging name="org.eclipse.emf.codegen" version="2.9.0-v20130902-0605" jarFileLocation="${mainLocation}/2.9.1"/>	
+		<deploy.staging name="org.eclipse.emf.codegen.ecore" version="2.9.1-v20130902-0605" jarFileLocation="${mainLocation}/2.9.1"/>	
+		<deploy.staging name="org.eclipse.emf.ecore" version="2.9.1-v20130827-0309" jarFileLocation="${mainLocation}/2.9.1"/>	
+		<deploy.staging name="org.eclipse.emf.ecore.xmi" version="2.9.1-v20130827-0309" jarFileLocation="${mainLocation}/2.9.1"/>
+		<deploy.staging name="org.eclipse.emf.common" version="2.9.1-v20130827-0309" jarFileLocation="${mainLocation}/2.9.1"/>	
+-->	
+
+		<deploy.staging name="org.eclipse.emf.codegen" version="2.9.0-v20140203-1126" jarFileLocation="${mainLocation}/2.9.2"/>	
+		<deploy.staging name="org.eclipse.emf.codegen.ecore" version="2.9.1-v20140203-1126" jarFileLocation="${mainLocation}/2.9.2"/>	
+		<deploy.staging name="org.eclipse.emf.ecore" version="2.9.2-v20131212-0545" jarFileLocation="${mainLocation}/2.9.2"/>	
+		<deploy.staging name="org.eclipse.emf.ecore.xmi" version="2.9.1-v20131212-0545" jarFileLocation="${mainLocation}/2.9.2"/>
+		<deploy.staging name="org.eclipse.emf.common" version="2.9.2-v20131212-0545" jarFileLocation="${mainLocation}/2.9.2"/>	
+	</target>
+	
+	<target name="deploy.snapshot.xsd">
+		<!--deploy.snapshot name="org.eclipse.xsd" version="2.7.0-v20110606-0949" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.snapshot name="org.eclipse.xsd" version="2.8.0-v20120319-0555" jarFileLocation="${mainLocation}/2.8.0"/		
+		<deploy.snapshot name="org.eclipse.xsd" version="2.9.0-v20130610-0406" jarFileLocation="${mainLocation}/2.9.0"/
+		<deploy.snapshot name="org.eclipse.xsd" version="2.10.0-v20130930-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M2"/>-->
+		<deploy.snapshot name="org.eclipse.xsd" version="2.10.0-v20140127-SNAPSHOT" jarFileLocation="${mainLocation}/2.10M5"/>
+	</target>
+	
+	<target name="deploy.staging.xsd">
+		<!--deploy.staging name="org.eclipse.xsd" version="2.7.0-v20110606-0949" jarFileLocation="${mainLocation}/2.7.0"/>		
+		<deploy.staging name="org.eclipse.xsd" version="2.8.0-v20120319-0555" jarFileLocation="${mainLocation}/2.8.0"/>		
+		<deploy.staging name="org.eclipse.xsd" version="2.9.0-v20130610-0406" jarFileLocation="${mainLocation}/2.9.0"/
+		<deploy.staging name="org.eclipse.xsd" version="2.9.1-v20130902-0605" jarFileLocation="${mainLocation}/2.9.1"/>-->
+		<deploy.staging name="org.eclipse.xsd" version="2.9.1-v20140203-1126" jarFileLocation="${mainLocation}/2.9.2"/>
+	</target>
+	
+</project>
+
