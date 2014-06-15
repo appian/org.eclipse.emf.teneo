@@ -9,6 +9,7 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Erdal Karaca - [bug 436367]: check for initial audit entry
  * </copyright>
  *
  * $Id: AnyEObjectType.java,v 1.7 2010/11/12 09:33:33 mtaal Exp $
@@ -57,6 +58,7 @@ import org.hibernate.event.spi.PostInsertEvent;
 import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
+import org.hibernate.tuple.entity.EntityTuplizer;
 
 /**
  * The main auditing logic used at runtime to create and persist auditing entries.
@@ -99,6 +101,12 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	private List<String> auditEntityNames = null;
 	private ThreadLocal<Boolean> inAuditWorkInSession = new ThreadLocal<Boolean>();
 	private AuditHandler auditHandler = null;
+
+	/**
+	 * Flag to check if an initial audit entry exists before creating the first audit entry
+	 * onPostUpdate.
+	 */
+	private boolean checkInitialAuditEntry = false;
 
 	private void addToAuditWorkQueue(EventSource session, TeneoAuditKind auditKind, Object entity) {
 		if (!auditHandler.isAudited(entity)) {
@@ -183,7 +191,48 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 
 	@Override
 	public void onPostUpdate(PostUpdateEvent event) {
+		AuditWork initialRecord = null;
+
+		if (checkInitialAuditEntry) {
+			final Object object = event.getEntity();
+			final EClass eClass = auditHandler.getEClass(object);
+			final EClass auditEntryEClass = auditHandler.getAuditingModelElement(eClass);
+			final String auditEntryEntityName = HbUtil.getEntityName(auditEntryEClass);
+			String objectId = auditHandler.entityToIdString(event.getSession(), event.getEntity());
+
+			final Query infoQuery = event.getSession().createQuery(
+					"select count(teneo_object_id) from " + auditEntryEntityName
+							+ " e where teneo_object_id=:objectId and teneo_end="
+							+ AuditProcessHandler.DEFAULT_END_TIMESTAMP);
+			infoQuery.setMaxResults(1);
+			infoQuery.setString("objectId", objectId);
+
+			Number next = (Number) infoQuery.iterate().next();
+
+			if (next != null && next.intValue() == 0) {
+				EntityTuplizer entityTuplizer = event.getPersister().getEntityTuplizer();
+				Object oldStateObject = entityTuplizer.instantiate();
+				Object[] oldState = event.getOldState();
+				entityTuplizer.setPropertyValues(oldStateObject, oldState);
+				entityTuplizer.setIdentifier(oldStateObject, entityTuplizer.getIdentifier(object));
+
+				// add the initial record (AuditWork) and remember to link to the UPDATE AuditWork
+				{
+					addToAuditWorkQueue(event.getSession(), TeneoAuditKind.ADD, oldStateObject);
+					List<AuditWork> auditWorks = workQueue.get(event.getSession().getTransaction());
+					initialRecord = auditWorks.get(auditWorks.size() - 1);
+				}
+			}
+		}
+
 		addToAuditWorkQueue(event.getSession(), TeneoAuditKind.UPDATE, event.getEntity());
+
+		if (initialRecord != null) {
+			List<AuditWork> auditWorks = workQueue.get(event.getSession().getTransaction());
+			// assume the last AuditWork is the newly added audit entry
+			AuditWork updateRecord = auditWorks.get(auditWorks.size() - 1);
+			updateRecord.setInitialRecord(initialRecord);
+		}
 	}
 
 	@Override
@@ -367,6 +416,23 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				// save later to not flush in the loop
 				toSaveEntries.add(auditEntry);
 				setCommitInfoInReferencedObjects(auditEntry, toSaveEntries);
+
+				// if this audit entry has a derived initial audit record, then we have to adjust its
+				// timestamps to be lower than this commit time stamp
+				if (auditWork.getInitialRecord() != null) {
+					AuditWork initialRecord = auditWork.getInitialRecord();
+
+					// first to be saved entry is the commit info, so skip it by adding +1 to the index
+					int indexOf = auditWorks.indexOf(initialRecord) + 1;
+					TeneoAuditEntry initialAuditEntry = (TeneoAuditEntry) toSaveEntries.get(indexOf);
+
+					// it is sufficient to subtract at least one millisecond difference to the initial audit
+					// entry timestamps
+					long initialRecordTimestamp = auditEntry.getTeneo_start() - 1;
+					initialAuditEntry.setTeneo_start(initialRecordTimestamp);
+					initialAuditEntry.setTeneo_end(initialRecordTimestamp);
+					auditEntry.setTeneo_previous_start(initialRecordTimestamp);
+				}
 			}
 			// do flush here to ensure that the update is done before
 			// the save, this to prevent unique constraint failures
@@ -481,6 +547,11 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 				PersistenceOptions.AUDITING_PRUNE_COMMIT_INTERVAL));
 
 		this.auditHandler = dataStore.getAuditHandler();
+
+		boolean checkInitialAuditEntry = Boolean.parseBoolean(""
+				+ dataStore.getDataStoreProperties().get(
+						PersistenceOptions.AUDITING_CHECK_INITIAL_AUDIT_ENTRY));
+		setCheckInitialAuditEntry(checkInitialAuditEntry);
 	}
 
 	private synchronized void pruneEntries(SessionImplementor session) {
@@ -551,8 +622,22 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		private TeneoAuditKind auditKind;
 		private long version;
 
+		/**
+		 * The initial record is created if in the first onPostUpdate Teneo detects that there is no
+		 * initial audit entry available.
+		 */
+		private AuditWork initialRecord;
+
 		public Object getEntity() {
 			return entity;
+		}
+
+		public void setInitialRecord(AuditWork initialRecord) {
+			this.initialRecord = initialRecord;
+		}
+
+		public AuditWork getInitialRecord() {
+			return initialRecord;
 		}
 
 		public void setEntity(Object entity) {
@@ -595,5 +680,18 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 	 */
 	public AuditHandler getAuditHandler() {
 		return auditHandler;
+	}
+
+	/**
+	 * Whether to check and create the initial audit entry if it is not available when the first
+	 * change is done to an entity.
+	 * 
+	 * @param checkInitialAuditEntry
+	 *          <code>true</code> to check and create the initial audit entry of an object if it does
+	 *          not exist, <code>false</code> else
+	 * @see PersistenceOptions#AUDITING_CHECK_INITIAL_AUDIT_ENTRY
+	 */
+	public void setCheckInitialAuditEntry(boolean checkInitialAuditEntry) {
+		this.checkInitialAuditEntry = checkInitialAuditEntry;
 	}
 }

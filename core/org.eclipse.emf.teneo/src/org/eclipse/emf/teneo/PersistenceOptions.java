@@ -11,6 +11,7 @@
  *   Martin Taal - Initial API and implementation
  *   Jason Henriksen - Mapping File Path
  *   Jason Henriksen - XSDDate and XSDDateTime constants
+ *   Erdal Karaca - [bug 436367]: check for initial audit entry
  * </copyright>
  *
  * $Id: PersistenceOptions.java,v 1.71 2011/10/29 06:12:48 mtaal Exp $
@@ -72,6 +73,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String AUDITING_JOINTABLE_POSTFIX = NAMING_PREFIX
 			+ "auditing.jointable.postfix";
 	public static final String AUDITING_PERSISTENCE_XML = MAPPING_PREFIX + "auditing.persistence_xml";
+
+	/**
+	 * Whether to check and create the initial audit entry if it is not available when the first
+	 * change is done to an entity.
+	 */
+	public static final String AUDITING_CHECK_INITIAL_AUDIT_ENTRY = MAPPING_PREFIX
+			+ "auditing.checkInitialAuditEntry";
 
 	// START: ++++++++++++++++++++++ SQL Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
@@ -575,6 +583,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(EXTRA_ANNOTATION_SOURCES, "");
 		props.setProperty(EXTRA_ANNOTATIONS_OVERRIDES_DEFAULT, "false");
 		props.setProperty(AUTO_ADAPT_MANUAL_SET_SQL_NAMES, "true");
+
+		props.setProperty(AUDITING_CHECK_INITIAL_AUDIT_ENTRY, "false");
 
 		return props;
 	}
