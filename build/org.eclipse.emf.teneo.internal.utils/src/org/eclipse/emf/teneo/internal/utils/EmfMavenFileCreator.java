@@ -45,7 +45,7 @@ public class EmfMavenFileCreator {
 	public static void main(String[] args) throws Exception {
 		final EmfMavenFileCreator creator = new EmfMavenFileCreator();
 		creator.setDirName("2.10RC1");
-		creator.setSnapShot(true);
+		creator.setSnapShot(false);
 		creator.process();
 	}
 
