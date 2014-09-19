@@ -60,6 +60,16 @@
   	</searchPath>
 
   	<searchPath name="target.platform">
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Luna)">
+      		<uri format="{0}/releases/luna">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Luna)">
+      		<uri format="{0}/eclipse/updates/4.4">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
     	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Kepler)">
       		<uri format="{0}/releases/kepler">
 				<bc:propertyRef key="eclipse.download"/>
@@ -116,7 +126,7 @@
       		</uri>
     	</provider>
 		<provider readerType="p2" componentTypes="osgi.bundle" mutable="false" source="false">
-			<uri format="{0}/tools/orbit/downloads/drops/S20130914154012/repository/">
+			<uri format="{0}/tools/orbit/downloads/drops/R20140525021250/repository/">
 				<bc:propertyRef key="eclipse.download"/>
       		</uri>
 		</provider>
