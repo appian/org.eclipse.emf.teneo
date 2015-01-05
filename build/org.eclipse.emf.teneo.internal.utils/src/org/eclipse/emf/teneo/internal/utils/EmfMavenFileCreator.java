@@ -18,7 +18,6 @@
 package org.eclipse.emf.teneo.internal.utils;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -31,20 +30,18 @@ import java.nio.file.Paths;
 
 public class EmfMavenFileCreator {
 	private static final String BASE_DIR = "/home/mtaal/mydata/dev/maven/emfmaven/";
-	private static final String TEMPLATE_DIR = "templates";
 	private static final String PLUGINS_DIR = "eclipse/plugins";
-	private static final String JAVADOC_FILE_PATH = BASE_DIR + TEMPLATE_DIR + File.separator
-			+ "template-javadoc.jar";
-	private static final String POM_FILE_PATH = BASE_DIR + TEMPLATE_DIR + File.separator
-			+ "template.pom";
+	private static final String JAVADOC_TEMPLATE_JAR_FILE = "template-javadoc.jar";
+	private static final String POM_TEMPLATE_FILE = "template.pom";
 
 	private static final String[] plugins = { "org.eclipse.emf.codegen.ecore",
 			"org.eclipse.emf.codegen", "org.eclipse.emf.common", "org.eclipse.emf.ecore",
-			"org.eclipse.emf.ecore.xmi", "org.eclipse.xsd", "org.eclipse.emf.mapping.ecore2xml" };
+			"org.eclipse.emf.ecore.xmi", "org.eclipse.xsd", "org.eclipse.emf.mapping.ecore2xml",
+			"org.eclipse.emf.edit", "org.eclipse.emf.databinding", "org.eclipse.emf.databinding.edit" };
 
 	public static void main(String[] args) throws Exception {
 		final EmfMavenFileCreator creator = new EmfMavenFileCreator();
-		creator.setDirName("2.10RC1");
+		creator.setDirName("2.10.1");
 		creator.setSnapShot(false);
 		creator.process();
 	}
@@ -87,23 +84,35 @@ public class EmfMavenFileCreator {
 						+ "-sources.jar");
 
 				// copy the javadoc template
-				copyFile(JAVADOC_FILE_PATH, outDirPath + plugin + "-" + version + "-javadoc.jar");
+				copyResource(JAVADOC_TEMPLATE_JAR_FILE, outDirPath + plugin + "-" + version
+						+ "-javadoc.jar");
 
 				// copy the pom
-				String pom = new String(Files.readAllBytes(Paths.get(POM_FILE_PATH)));
+				String pom = new String(Files.readAllBytes(Paths.get(this.getClass()
+						.getResource(POM_TEMPLATE_FILE).toURI())));
 				pom = pom.replace("${version}", version);
 				pom = pom.replace("${name}", plugin);
 				pom = pom.replace("${artifactId}", plugin);
 				pom = pom.replace("${groupId}", groupId);
 				Files.write(Paths.get(outDirPath + plugin + "-" + version + ".pom"), pom.getBytes());
 
-				System.err.println("<deploy.snapshot name=\"" + plugin + "\" version=\"" + version
-						+ "\" jarFileLocation=\"${mainLocation}/" + dirName + "\"/>");
+				if (isSnapShot()) {
+					System.err.println("<deploy.snapshot name=\"" + plugin + "\" version=\"" + version
+							+ "\" jarFileLocation=\"${mainLocation}/" + dirName + "\"/>");
+				} else {
+					System.err.println("<deploy.staging name=\"" + plugin + "\" version=\"" + version
+							+ "\" jarFileLocation=\"${mainLocation}/" + dirName + "\"/>");
+				}
 			}
 		}
 	}
 
-	private void copyFile(String sourceFilePath, String destFilePath) throws IOException {
+	private void copyResource(String sourceFilePath, String destFilePath) throws Exception {
+		Files.copy(Paths.get(this.getClass().getResource(sourceFilePath).toURI()),
+				Paths.get(destFilePath));
+	}
+
+	private void copyFile(String sourceFilePath, String destFilePath) throws Exception {
 		Files.copy(Paths.get(sourceFilePath), Paths.get(destFilePath));
 	}
 
@@ -119,10 +128,12 @@ public class EmfMavenFileCreator {
 		version = version.substring(0, version.length() - ".jar".length());
 		// get rid of the 4th dot
 		final int vIndex = version.indexOf("v");
-		version = version.substring(0, vIndex - 1) + "-" + version.substring(vIndex);
 		if (isSnapShot) {
+			version = version.substring(0, vIndex - 1) + "-" + version.substring(vIndex);
 			final int lastDashIndex = version.lastIndexOf("-");
 			version = version.substring(0, lastDashIndex) + "-SNAPSHOT";
+		} else {
+			version = version.substring(0, vIndex - 1);
 		}
 		return version;
 	}
