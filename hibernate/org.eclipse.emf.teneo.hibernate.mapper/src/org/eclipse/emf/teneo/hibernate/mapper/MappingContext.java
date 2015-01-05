@@ -363,6 +363,15 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 			return null;
 		}
 		
+		String tablePrefix = "c";
+		if (getPersistenceOptions().isPrefixUniqueConstraintWithTableName()) {
+			if (currentSecondaryTable != null && currentSecondaryTable.getName() != null) {
+				tablePrefix = currentSecondaryTable.getName().toLowerCase() + "_c_";
+			} else if (currentTable != null && currentTable.getName() != null) {
+				tablePrefix = currentTable.getName().toLowerCase() + "_c_";
+			}
+		}
+		
 		// lower case them
 		final String checkColName = colName.toLowerCase();
 
@@ -376,7 +385,7 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 					if (sb.length() > 0) {
 						sb.append(",");
 					}
-					sb.append("c" + i);
+					sb.append(tablePrefix + i);
 				}
 			}
 		}

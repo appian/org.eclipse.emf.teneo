@@ -8,6 +8,9 @@
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Item;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Project;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsFactory;
@@ -29,6 +32,13 @@ public class UniqueConstraintsAction extends AbstractTestAction {
 		super(UniqueconstraintsPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		Properties props = new Properties();
+		props.put(PersistenceOptions.PREFIX_UNIQUE_CONSTRAINT_WITH_TABLE_NAME, "true");
+		return props;
+	}
+	
 	/** Test */
 	@Override
 	public void doAction(TestStore store) {
@@ -82,4 +92,5 @@ public class UniqueConstraintsAction extends AbstractTestAction {
 
 		store.checkNumber(Item.class, 3);
 	}
+
 }

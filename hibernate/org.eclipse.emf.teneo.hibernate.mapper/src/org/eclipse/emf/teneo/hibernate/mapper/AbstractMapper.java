@@ -861,6 +861,8 @@ public abstract class AbstractMapper {
 			}
 			if (column.getUniqueKey() != null) {
 				columnElement.addAttribute("unique-key", column.getUniqueKey());
+				// from Hibernate 4.3.7 should be set on property
+//				propertyElement.addAttribute("unique-key", column.getUniqueKey());
 			}
 			columnElement.addAttribute("name", getHbmContext().trunc(column, name));
 			if (column.isSetLength()) {

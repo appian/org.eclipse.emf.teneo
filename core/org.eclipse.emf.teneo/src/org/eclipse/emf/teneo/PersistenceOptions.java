@@ -85,6 +85,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	// ++++++++++++++++++++++++++++++++++++
 
 	/**
+	 * Unique Constraint Prefix Naming, default is false (because of backward compatibility), if true
+	 * will prefix the unique constraint name with the table name to make it work correctly if the db
+	 * uses global naming.
+	 */
+	public static final String PREFIX_UNIQUE_CONSTRAINT_WITH_TABLE_NAME = NAMING_PREFIX
+			+ "prefix_unique_constraint_with_table_name";
+
+	/**
 	 * DiscriminatorColumn name, default is DTYPE.
 	 */
 	public static final String DISCRIMINATOR_COLUMN_NAME = NAMING_PREFIX
@@ -585,6 +593,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(AUTO_ADAPT_MANUAL_SET_SQL_NAMES, "true");
 
 		props.setProperty(AUDITING_CHECK_INITIAL_AUDIT_ENTRY, "false");
+		props.setProperty(PREFIX_UNIQUE_CONSTRAINT_WITH_TABLE_NAME, "false");
 
 		return props;
 	}
@@ -593,6 +602,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #PREFIX_UNIQUE_CONSTRAINT_WITH_TABLE_NAME}
+	 */
+	public boolean isPrefixUniqueConstraintWithTableName() {
+		return Boolean.valueOf(properties.getProperty(PREFIX_UNIQUE_CONSTRAINT_WITH_TABLE_NAME))
+				.booleanValue();
+	}
 
 	/**
 	 * @return value of {@link #ENABLE_AUDITING}

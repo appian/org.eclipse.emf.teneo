@@ -432,32 +432,26 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactoryImplementor().withStatelessOptions();
 	}
 
-	@Override
 	public Map<String, CollectionPersister> getCollectionPersisters() {
 		return getSessionFactoryImplementor().getCollectionPersisters();
 	}
 
-	@Override
 	public Map<String, EntityPersister> getEntityPersisters() {
 		return getSessionFactoryImplementor().getEntityPersisters();
 	}
 
-	@Override
 	public NamedQueryRepository getNamedQueryRepository() {
 		return getSessionFactoryImplementor().getNamedQueryRepository();
 	}
 
-	@Override
 	public Iterable<EntityNameResolver> iterateEntityNameResolvers() {
 		return getSessionFactoryImplementor().iterateEntityNameResolvers();
 	}
 
-	@Override
 	public void registerNamedQueryDefinition(String arg0, NamedQueryDefinition arg1) {
 		getSessionFactoryImplementor().registerNamedQueryDefinition(arg0, arg1);
 	}
 
-	@Override
 	public void registerNamedSQLQueryDefinition(String arg0, NamedSQLQueryDefinition arg1) {
 		getSessionFactoryImplementor().registerNamedSQLQueryDefinition(arg0, arg1);
 	}

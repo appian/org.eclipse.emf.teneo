@@ -58,8 +58,8 @@ import org.hibernate.event.spi.PostInsertEvent;
 import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
-import org.hibernate.tuple.entity.EntityTuplizer;
 import org.hibernate.persister.entity.EntityPersister;
+import org.hibernate.tuple.entity.EntityTuplizer;
 
 /**
  * The main auditing logic used at runtime to create and persist auditing entries.
@@ -190,7 +190,6 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		}
 	}
 
-	@Override
 	public void onPostUpdate(PostUpdateEvent event) {
 		AuditWork initialRecord = null;
 
@@ -236,17 +235,14 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		}
 	}
 
-	@Override
 	public void onPostInsert(PostInsertEvent event) {
 		addToAuditWorkQueue(event.getSession(), TeneoAuditKind.ADD, event.getEntity());
 	}
 
-	@Override
 	public void onPostDelete(PostDeleteEvent event) {
 		addToAuditWorkQueue(event.getSession(), TeneoAuditKind.DELETE, event.getEntity());
 	}
 
-	@Override
 	public void doBeforeTransactionCompletion(SessionImplementor session) {
 		// see: http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4178431
 		if (session.getFlushMode() != FlushMode.MANUAL) {
@@ -259,7 +255,6 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		}
 	}
 
-	@Override
 	public void onFlush(FlushEvent event) throws HibernateException {
 		if (inAuditWorkInSession.get() != null && inAuditWorkInSession.get()) {
 			// audit work in session does flush
@@ -284,7 +279,6 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		doAuditWorkInSession((Session) event.getSession(), auditWorks);
 	}
 
-	@Override
 	public void doAfterTransactionCompletion(boolean success, SessionImplementor session) {
 		if (!success) {
 			return;
@@ -696,7 +690,6 @@ public class AuditProcessHandler implements AfterTransactionCompletionProcess,
 		this.checkInitialAuditEntry = checkInitialAuditEntry;
 	}
 
-	@Override
 	public boolean requiresPostCommitHanding(EntityPersister arg0) {
 		return true;
 	}

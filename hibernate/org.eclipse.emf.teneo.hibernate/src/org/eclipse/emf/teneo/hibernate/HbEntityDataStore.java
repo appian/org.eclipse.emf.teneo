@@ -472,28 +472,23 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			return delegate.isOpen();
 		}
 
-		@Override
 		public <T> void addNamedEntityGraph(String arg0, EntityGraph<T> arg1) {
 			delegate.addNamedEntityGraph(arg0, arg1);
 		}
 
-		@Override
 		public void addNamedQuery(String arg0, Query arg1) {
 			delegate.addNamedQuery(arg0, arg1);
 		}
 
-		@Override
 		public EntityManager createEntityManager(SynchronizationType arg0) {
 			return delegate.createEntityManager(arg0);
 		}
 
-		@Override
 		public EntityManager createEntityManager(SynchronizationType arg0,
 				@SuppressWarnings("rawtypes") Map arg1) {
 			return delegate.createEntityManager(arg0, arg1);
 		}
 
-		@Override
 		public <T> T unwrap(Class<T> arg0) {
 			return delegate.unwrap(arg0);
 		}

@@ -530,9 +530,9 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 		return value;
 	}
 
-	@Override
-	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters,
-			Set<String> treatAsDeclarations) {
-		return "";
+	public String getOnCondition(String arg0, SessionFactoryImplementor arg1, Map arg2,
+			Set<String> arg3) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

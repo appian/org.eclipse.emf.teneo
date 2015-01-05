@@ -450,7 +450,6 @@ public class AnyEObjectType extends AbstractType implements CompositeType, Assoc
 	}
 
 	@SuppressWarnings("rawtypes")
-	@Override
 	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters,
 			Set<String> treatAsDeclarations) {
 		return "";
