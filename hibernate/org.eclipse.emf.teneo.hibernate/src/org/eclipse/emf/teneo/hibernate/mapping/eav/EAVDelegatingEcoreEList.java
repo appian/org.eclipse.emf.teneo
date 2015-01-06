@@ -151,7 +151,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implemen
 	@Override
 	protected void delegateAdd(E object) {
 		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner().getElement(object);
-		valueHolder.setListIndex(getHibernatePersistentList().size());
+		// is set by hibernate
+		// valueHolder.setListIndex(getHibernatePersistentList().size());
 		persistentList.add(valueHolder);
 
 		if (isDelegateInitialized()) {
@@ -320,7 +321,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implemen
 	@Override
 	protected E delegateSet(int index, E object) {
 		final EAVValueHolder newValueHolder = (EAVValueHolder) getValueHolderOwner().getElement(object);
-		newValueHolder.setListIndex(index);
+		// is set by hibernate
+		// newValueHolder.setListIndex(index);
 		final EAVValueHolder oldValueHolder = persistentList.set(index, newValueHolder);
 
 		// clear old object

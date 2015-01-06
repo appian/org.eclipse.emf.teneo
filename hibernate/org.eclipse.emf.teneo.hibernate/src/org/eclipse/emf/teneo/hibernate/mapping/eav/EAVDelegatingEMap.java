@@ -401,7 +401,8 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 			} else {
 				final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner().getElement(
 						newEntry(key, value));
-				valueHolder.setListIndex(getPersistentList().size());
+				// will be set by hibernate
+				// valueHolder.setListIndex(getPersistentList().size());
 				getPersistentList().add(valueHolder);
 				return null;
 			}
