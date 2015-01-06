@@ -867,6 +867,7 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 						final Column column = (Column) indexedCollection.getIndex().getColumnIterator().next();
 
 						final Property indexProperty = new Property();
+						indexProperty.setOptional(true);
 						indexProperty.setName(StoreUtil.getExtraLazyInverseIndexPropertyName(ef));
 						final Map<Object, Object> metas = new HashMap<Object, Object>();
 						final MetaAttribute metaAttribute = new MetaAttribute(

@@ -32,7 +32,7 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * The property handler which takes care of setting/getting the
+ * The property handler which takes care of setting/getting property values.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.11 $

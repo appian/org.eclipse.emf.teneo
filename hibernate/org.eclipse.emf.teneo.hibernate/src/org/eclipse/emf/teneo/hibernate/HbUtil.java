@@ -242,17 +242,14 @@ public class HbUtil {
 		if (mappedProperty.getMetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR) != null) { // synthetic
 			return new SyntheticPropertyHandler(mappedProperty.getName());
 		} else if (mappedProperty.getMetaAttribute(HbConstants.SYNTHETIC_INDEX_PROPERTY_INDICATOR) != null) { // synthetic
-			return new SyntheticIndexPropertyHandler(mappedProperty.getName());
+			return new SyntheticIndexPropertyHandler(mappedProperty);
 		} else if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic
 			// ID
 			return new IdentifierPropertyHandler();
 		} else if (mappedProperty.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return ds.getHbContext().createVersionAccessor();
-		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) { // name
-			// is
-			// used
-			// by
-			// hb
+		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) {
+			// name is used by hb
 			return new EmbeddedPropertyAccessor(); // new
 			// DummyPropertyHandler();
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbConstants.PROPERTY_ECONTAINER) == 0) {

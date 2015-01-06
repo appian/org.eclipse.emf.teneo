@@ -16,10 +16,13 @@
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.mapping.Column;
+import org.hibernate.mapping.Property;
 
 /**
  * See {@link SyntheticIndexPropertyHandler}, extends but prevents returning a value in case of
@@ -31,9 +34,25 @@ import org.hibernate.engine.spi.SessionImplementor;
 @SuppressWarnings("serial")
 public class SyntheticIndexPropertyHandler extends SyntheticPropertyHandler {
 
+	private Property property;
+
+	private boolean optional = false;
+
 	/** Constructor */
-	public SyntheticIndexPropertyHandler(String propertyName) {
-		super(propertyName);
+	public SyntheticIndexPropertyHandler(Property property) {
+		super(property.getName());
+		this.property = property;
+
+		@SuppressWarnings("rawtypes")
+		Iterator it = property.getColumnIterator();
+		if (!it.hasNext()) {
+			optional = property.isOptional();
+		}
+
+		while (it.hasNext()) {
+			Column c = (Column) it.next();
+			optional |= c.isNullable();
+		}
 	}
 
 	/*
@@ -45,6 +64,9 @@ public class SyntheticIndexPropertyHandler extends SyntheticPropertyHandler {
 	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2)
 			throws HibernateException {
-		return null;
+		if (optional) {
+			return null;
+		}
+		return super.getForInsert(arg0, arg1, arg2);
 	}
 }
