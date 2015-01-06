@@ -141,6 +141,10 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	public HibernateFeatureMapEntry() {
 	}
 
+	public FeatureMap.Internal getFeatureMap() {
+		return owningMap;
+	}
+
 	/** Sets the featuremap, is done when an entry is added to the featuremap */
 	public void setFeatureMap(FeatureMap.Internal featureMap) {
 		owningMap = featureMap;

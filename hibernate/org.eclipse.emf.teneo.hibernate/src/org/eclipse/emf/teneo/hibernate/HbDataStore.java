@@ -636,13 +636,9 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 					referedTo);
 			for (Object obj : list) {
 				if (obj instanceof HibernateFeatureMapEntry) {
-					// search then again with the
-					final ArrayList<Object> fms = getCrossReferencers(sessionWrapper, obj, false);
-					if (fms.size() == 0) {
-						new AssertionError("The featuremap for featuremap entry " + obj.getClass().getName()
-								+ " can not be found");
-					}
-					obj = fms.get(0);
+					// get the owner of the featuremap
+					HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) obj;
+					obj = fme.getFeatureMap().getEObject();
 				}
 
 				// AssertUtil.assertTrue("Getting refersto of " +
