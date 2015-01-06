@@ -75,4 +75,6 @@ public class HbConstants {
 	public final static String EAV_COLLECTIONLAZY_REGEX = "\\{collectionLazySetting\\}";
 
 	public final static String SYNTHETIC_PROPERTY_INDICATOR = "synthetic-property";
+
+	public final static String SYNTHETIC_INDEX_PROPERTY_INDICATOR = "synthetic-index-property";
 }

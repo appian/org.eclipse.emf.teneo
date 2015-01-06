@@ -73,6 +73,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticIndexPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
@@ -869,12 +870,14 @@ public abstract class HbDataStore implements DataStore, AuditDataStore {
 						indexProperty.setName(StoreUtil.getExtraLazyInverseIndexPropertyName(ef));
 						final Map<Object, Object> metas = new HashMap<Object, Object>();
 						final MetaAttribute metaAttribute = new MetaAttribute(
-								HbConstants.SYNTHETIC_PROPERTY_INDICATOR);
+								HbConstants.SYNTHETIC_INDEX_PROPERTY_INDICATOR);
 						metaAttribute.addValue("true");
-						metas.put(HbConstants.SYNTHETIC_PROPERTY_INDICATOR, metaAttribute);
+						metas.put(HbConstants.SYNTHETIC_INDEX_PROPERTY_INDICATOR, metaAttribute);
+
 						indexProperty.setMetaAttributes(metas);
 						indexProperty.setNodeName(indexProperty.getName());
-						indexProperty.setPropertyAccessorName(SyntheticPropertyHandler.class.getName());
+						indexProperty.setPropertyAccessorName(SyntheticIndexPropertyHandler.class
+										.getName());
 						// always make this nullable, nullability is controlled
 						// by the main property
 						indexProperty.setOptional(true);

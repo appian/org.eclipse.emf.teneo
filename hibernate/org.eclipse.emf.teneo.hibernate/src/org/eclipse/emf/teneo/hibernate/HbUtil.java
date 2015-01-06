@@ -42,6 +42,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHand
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticIndexPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
@@ -240,6 +241,8 @@ public class HbUtil {
 			String entityName, EClass mappedEClass) {
 		if (mappedProperty.getMetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR) != null) { // synthetic
 			return new SyntheticPropertyHandler(mappedProperty.getName());
+		} else if (mappedProperty.getMetaAttribute(HbConstants.SYNTHETIC_INDEX_PROPERTY_INDICATOR) != null) { // synthetic
+			return new SyntheticIndexPropertyHandler(mappedProperty.getName());
 		} else if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic
 			// ID
 			return new IdentifierPropertyHandler();
