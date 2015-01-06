@@ -16,13 +16,13 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`MYSTR`" unique-key="c0"/>
+			<column not-null="false" unique="false" name="`MYSTR`" unique-key="item_c_0"/>
 		</property>
 		<many-to-one name="project" entity-name="Project" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ITEM_PROJECT" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MYPROJECT`" unique-key="c0"/>
+			<column not-null="false" unique="false" name="`MYPROJECT`" unique-key="item_c_0"/>
 		</many-to-one>
 		<property name="age" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`MYINT`" unique-key="c0"/>
+			<column not-null="false" unique="false" name="`MYINT`" unique-key="item_c_0"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl.ProjectImpl" entity-name="Project" abstract="false" lazy="false" discriminator-value="Project" table="`PROJECT`">
