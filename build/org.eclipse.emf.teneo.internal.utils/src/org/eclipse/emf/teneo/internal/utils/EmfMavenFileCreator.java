@@ -41,13 +41,15 @@ public class EmfMavenFileCreator {
 
 	public static void main(String[] args) throws Exception {
 		final EmfMavenFileCreator creator = new EmfMavenFileCreator();
-		creator.setDirName("2.10.1");
+		creator.setDirName("2.11.0M5");
 		creator.setSnapShot(false);
+		creator.setWithBuildNumber(true);
 		creator.process();
 	}
 
 	private String dirName;
 	private boolean isSnapShot;
+	private boolean withBuildNumber;
 
 	private void process() throws Exception {
 		final String outDirPath = BASE_DIR + dirName + File.separator;
@@ -132,6 +134,8 @@ public class EmfMavenFileCreator {
 			version = version.substring(0, vIndex - 1) + "-" + version.substring(vIndex);
 			final int lastDashIndex = version.lastIndexOf("-");
 			version = version.substring(0, lastDashIndex) + "-SNAPSHOT";
+		} else if (isWithBuildNumber()) {
+			version = version.substring(0, vIndex - 1) + "-" + version.substring(vIndex);
 		} else {
 			version = version.substring(0, vIndex - 1);
 		}
@@ -152,6 +156,14 @@ public class EmfMavenFileCreator {
 
 	public void setSnapShot(boolean isSnapShot) {
 		this.isSnapShot = isSnapShot;
+	}
+
+	public boolean isWithBuildNumber() {
+		return withBuildNumber;
+	}
+
+	public void setWithBuildNumber(boolean withBuildNumber) {
+		this.withBuildNumber = withBuildNumber;
 	}
 
 }
