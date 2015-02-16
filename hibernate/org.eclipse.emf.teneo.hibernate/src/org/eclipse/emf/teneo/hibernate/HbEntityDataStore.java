@@ -41,6 +41,7 @@ import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.metamodel.Metamodel;
+import javax.persistence.spi.PersistenceUnitTransactionType;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -55,12 +56,13 @@ import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.event.service.spi.EventListenerRegistry;
 import org.hibernate.event.spi.EventType;
 import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.jpa.AvailableSettings;
 import org.hibernate.jpa.boot.internal.SettingsImpl;
 import org.hibernate.jpa.internal.EntityManagerFactoryImpl;
+import org.hibernate.jpa.internal.util.PersistenceUnitTransactionTypeHelper;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.EntityType;
 
@@ -280,13 +282,25 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		return new StringBufferInputStream(processEAVMapping(is));
 	}
 
+	private void applyTransactionProperties(SettingsImpl settings) {
+		PersistenceUnitTransactionType txnType = PersistenceUnitTransactionTypeHelper
+				.interpretTransactionType(getConfiguration()
+						.getProperty(AvailableSettings.TRANSACTION_TYPE));
+		if (txnType == null) {
+			// is it more appropriate to have this be based on bootstrap entry point (EE vs SE)?
+			txnType = PersistenceUnitTransactionType.RESOURCE_LOCAL;
+		}
+		settings.setTransactionType(txnType);
+	}
+
 	/** Build the session factory */
 	protected EntityManagerFactory buildEntityManagerFactory() {
 		final SessionFactoryImpl sfi = (SessionFactoryImpl) getConfiguration().buildSessionFactory();
 
-		final EntityManagerFactory emf = new EntityManagerFactoryImpl("teneo",
-				(SessionFactoryImplementor) sfi, new SettingsImpl(), getConfiguration().getProperties(),
-				getConfiguration());
+		SettingsImpl settings = new SettingsImpl();
+		applyTransactionProperties(settings);
+		final EntityManagerFactory emf = new EntityManagerFactoryImpl("teneo", sfi, settings,
+				getConfiguration().getProperties(), getConfiguration());
 		return new WrappedEntityManagerFactory(emf);
 	}
 
