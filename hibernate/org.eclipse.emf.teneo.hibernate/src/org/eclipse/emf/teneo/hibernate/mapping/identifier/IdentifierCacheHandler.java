@@ -12,6 +12,9 @@ import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,34 +28,52 @@ import org.apache.commons.logging.LogFactory;
  */
 
 public class IdentifierCacheHandler {
-	/** The logger */
-	private static Log log = LogFactory.getLog(IdentifierCacheHandler.class);
 
-	/** At this count the maps will be purged for stale entries */
-	public static final int PURGE_TRESHOLD = 100;
+	private static final Log LOG = LogFactory.getLog(IdentifierCacheHandler.class);
 
-	private static IdentifierCacheHandler instance = new IdentifierCacheHandler();
+	private static final int DEFAULT_PURGING_PERIOD = 60;
+	private static final String PURGING_PROPERTY = "org.eclipse.teneo.hibernate.identifierPurgingPeriod";
+	private static final int PURGING_PERIOD = Integer.parseInt(System.getProperty(PURGING_PROPERTY,
+			"" + DEFAULT_PURGING_PERIOD));
 
-	public static IdentifierCacheHandler getInstance() {
-		return instance;
-	}
-
-	public static void setInstance(IdentifierCacheHandler identifierCacheHandler) {
-		instance = identifierCacheHandler;
-	}
+	private static final IdentifierCacheHandler INSTANCE = new IdentifierCacheHandler();
 
 	private Map<Key, Object> idMap = new ConcurrentHashMap<Key, Object>();
-	private int idModCount = 0;
-
 	private Map<Key, Object> versionMap = new ConcurrentHashMap<Key, Object>();
-	private int versionModCount = 0;
+	
+	private IdentifierCacheCleaningRunnable idCacheCleaner;
+	private IdentifierCacheCleaningRunnable versionCacheCleaner;
+
+	public static IdentifierCacheHandler getInstance() {
+		return INSTANCE;
+	}
+
+	private IdentifierCacheHandler() {
+		// private to prevent instantiation
+		startPurgingThreads();
+	}
+
+	private void startPurgingThreads() {
+		idCacheCleaner = startPurgingThread(idMap, "teneoHibernateIdMapPurging", PURGING_PERIOD,
+				PURGING_PERIOD);
+		versionCacheCleaner = startPurgingThread(versionMap, "teneoHibernateVersionMapPurging",
+				PURGING_PERIOD / 2,
+				PURGING_PERIOD);
+		LOG.info("Started teneo purging threads with period " + PURGING_PERIOD);
+	}
+
+	private IdentifierCacheCleaningRunnable startPurgingThread(Map<Key, Object> map, String name, int initialDelay, int period) {
+		ScheduledExecutorService ex = Executors.newSingleThreadScheduledExecutor(new LoggingThreadFactory(name));
+		final IdentifierCacheCleaningRunnable runnable = new IdentifierCacheCleaningRunnable(map, name);
+		ex.scheduleAtFixedRate(runnable, initialDelay, period,
+				TimeUnit.SECONDS);
+		return runnable;
+	}
 
 	/** Clear the identifier cache */
 	public void clear() {
 		idMap.clear();
-		idModCount = 0;
 		versionMap.clear();
-		versionModCount = 0;
 	}
 
 	public Map<Key, Object> getIdMap() {
@@ -63,17 +84,12 @@ public class IdentifierCacheHandler {
 		return versionMap;
 	}
 
-	public void purgeMaps() {
-		purgeIDMap();
-		purgeVersionMap();
-	}
-
 	/** Get an identifier from the cache */
 	public Object getID(Object obj) {
 		final Object id = idMap.get(new Key(obj));
 		if (id == null) {
-			if (log.isDebugEnabled()) {
-				log.debug("ID for object " + obj.getClass().getName() + " not found in id cache");
+			if (LOG.isDebugEnabled()) {
+				LOG.debug("ID for object " + obj.getClass().getName() + " not found in id cache");
 			}
 			return null;
 		}
@@ -85,8 +101,8 @@ public class IdentifierCacheHandler {
 
 	/** Set an identifier in the cache */
 	public void setID(Object obj, Object id) {
-		if (log.isDebugEnabled()) {
-			log.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
 		}
 
 		if (id == null) { // actually a remove of the id
@@ -110,11 +126,6 @@ public class IdentifierCacheHandler {
 		// ((XMLResource) res).setID(eobj, id.toString());
 		// }
 		// }
-
-		idModCount++;
-		if (idModCount > getPurgeTreshold()) {
-			purgeIDMap();
-		}
 	}
 
 	/** Gets a version from the cache */
@@ -136,47 +147,16 @@ public class IdentifierCacheHandler {
 		return true;
 	}
 
-	protected int getPurgeTreshold() {
-		return PURGE_TRESHOLD;
-	}
-
 	/** Sets a version in the cache */
 	public void setVersion(Object obj, Object version) {
-		if (log.isDebugEnabled()) {
-			log.debug("Setting version: " + version + " for object " + obj.getClass().getName()
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Setting version: " + version + " for object " + obj.getClass().getName()
 					+ " in idcache ");
 		}
 		if (version == null) {
 			versionMap.remove(new Key(obj));
 		} else {
 			versionMap.put(new Key(obj), version);
-		}
-		versionModCount++;
-		if (versionModCount > getPurgeTreshold()) {
-			purgeVersionMap();
-		}
-	}
-
-	/** Purge the versionmap for stale entries */
-	private void purgeIDMap() {
-		purgeMap(idMap);
-		idModCount = 0;
-	}
-
-	/** Purge the versionmap for stale entries */
-	protected void purgeVersionMap() {
-		purgeMap(versionMap);
-		versionModCount = 0;
-	}
-
-	/** Purges the passed map for stale entries */
-	protected void purgeMap(Map<Key, Object> map) {
-		final Iterator<Key> it = map.keySet().iterator();
-		while (it.hasNext()) {
-			final Key key = it.next();
-			if (!key.isValid()) {
-				it.remove();
-			}
 		}
 	}
 
@@ -258,5 +238,13 @@ public class IdentifierCacheHandler {
 		public boolean isValid() {
 			return weakRef.get() != null;
 		}
+	}
+
+	public IdentifierCacheCleaningRunnable getIdCacheCleaner() {
+		return idCacheCleaner;
+	}
+
+	public IdentifierCacheCleaningRunnable getVersionCacheCleaner() {
+		return versionCacheCleaner;
 	}
 }

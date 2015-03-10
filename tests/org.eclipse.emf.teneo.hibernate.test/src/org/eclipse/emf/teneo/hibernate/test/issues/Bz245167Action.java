@@ -32,33 +32,32 @@ public class Bz245167Action extends AbstractTestAction {
 	@Override
 	public void doAction(TestStore store) {
 
-		final int staticSize = (int) (IdentifierCacheHandler.PURGE_TRESHOLD * 0.1);
-
-		final IdentifierCacheHandler ich = new IdentifierCacheHandler();
+		final int size = 1000;
+		final IdentifierCacheHandler ich = IdentifierCacheHandler.getInstance();
 		assertEquals(0, ich.getIdMap().size());
 		assertEquals(0, ich.getVersionMap().size());
 
 		List<Library> statPart = new ArrayList<Library>();
-		for (int i = 0; i < staticSize; i++) {
+		for (int i = 0; i < size; i++) {
 			Library library = bz242995Factory.eINSTANCE.createLibrary();
 			statPart.add(library);
 			ich.setID(library, i);
 			ich.setVersion(library, i);
 		}
-		for (int i = 0; i < (10 * IdentifierCacheHandler.PURGE_TRESHOLD); i++) {
+
+		for (int i = 0; i < size; i++) {
 			Library library = bz242995Factory.eINSTANCE.createLibrary();
-			if ((i % (IdentifierCacheHandler.PURGE_TRESHOLD - 1) == 0)) {
+			if ((i % 100) == 0) {
 				System.gc();
 			}
 			ich.setID(library, i + statPart.size() + 1);
 			ich.setVersion(library, i);
 		}
-		assertTrue(ich.getIdMap().size() < (2 * IdentifierCacheHandler.PURGE_TRESHOLD));
-		assertTrue(ich.getVersionMap().size() < (2 * IdentifierCacheHandler.PURGE_TRESHOLD));
 		System.gc();
-		ich.purgeMaps();
-		assertEquals(staticSize, ich.getIdMap().size());
-		assertEquals(staticSize, ich.getVersionMap().size());
+		ich.getIdCacheCleaner().purgeMap();
+		ich.getVersionCacheCleaner().purgeMap();
+		assertEquals(size, ich.getIdMap().size());
+		assertEquals(size, ich.getVersionMap().size());
 
 		// note that the statPart arraylist needs to be used after the above
 		// assertEquals
