@@ -31,7 +31,7 @@ public class IdentifierCacheHandler {
 
 	private static final Log LOG = LogFactory.getLog(IdentifierCacheHandler.class);
 
-	private static final int DEFAULT_PURGING_PERIOD = 30;
+	private static final int DEFAULT_PURGING_PERIOD = 60;
 	private static final String PURGING_PROPERTY = "org.eclipse.teneo.hibernate.identifierPurgingPeriod";
 	private static final int PURGING_PERIOD = Integer.parseInt(System.getProperty(PURGING_PROPERTY,
 			"" + DEFAULT_PURGING_PERIOD));
