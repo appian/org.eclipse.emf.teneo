@@ -55,6 +55,7 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
 
+		suite.addTestSuite(Bz245167Action.class);
 		suite.addTestSuite(Bz417855Action.class);
 		suite.addTestSuite(Bz401710Action.class);
 		suite.addTestSuite(Bz400088Action.class);
@@ -107,8 +108,6 @@ public class AllTests {
 		suite.addTestSuite(BZ277546Action.class);
 		suite.addTestSuite(BZ258266Action.class);
 		suite.addTestSuite(BZ253799Action.class);
-
-		suite.addTestSuite(Bz245167Action.class);
 
 		suite.addTestSuite(BZ249246Action.class);
 		suite.addTestSuite(BZ249440Action.class);
