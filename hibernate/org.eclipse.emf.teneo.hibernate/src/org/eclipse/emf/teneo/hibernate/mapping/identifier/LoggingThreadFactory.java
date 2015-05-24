@@ -35,6 +35,7 @@ public class LoggingThreadFactory implements ThreadFactory {
 		ThreadFactory defaultThreadFactory = Executors.defaultThreadFactory();
 		Thread thread = defaultThreadFactory.newThread(r);
 		thread.setUncaughtExceptionHandler(eh);
+		thread.setDaemon(true);
 		thread.setName(name + "-" + thread.getId());
 		return thread;
 	}
