@@ -163,6 +163,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="rootPath: ${rootPath}" />
 		<echo message="buildRoot: ${buildRoot}" />
 		<echo message="testRoot: ${testRoot}" />
+		<echo message="toolsPath: ${toolsPath}" />
 		<echo message="mavenPath: ${mavenPath}" />
 		<echo message="buildSitePath: ${buildSitePath}" />
 		<echo message="buildZipsPath: ${buildZipsPath}" />
