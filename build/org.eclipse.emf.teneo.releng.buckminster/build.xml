@@ -177,8 +177,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${testResultsPath}" />
 		<mkdir dir="${testResultsPath}/output" />
 
-		<available file="${tools}/director/director" property="director.exists" />
-		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
+		<available file="${toolsPath}/director/director" property="director.exists" />
+		<available file="${toolsPath}/buckminster/buckminster" property="buckminster.exists" />
 
 		<echo message="Using eclipse download: ${eclipse.download}"/>
 
@@ -188,7 +188,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Fetching headless director application" />
 		<tempfile destdir="${java.io.tmpdir}" prefix="director-" suffix=".zip" property="director.zip" deleteonexit="true" />
 		<get src="${director.url}" dest="${director.zip}" />
-		<mkdir dir="${tools}" />
+		<mkdir dir="${toolsPath}" />
 		<unzip src="${director.zip}" dest="${toolsPath}" />
 		<delete file="${director.zip}" />
 	</target>
