@@ -60,6 +60,16 @@
   	</searchPath>
 
   	<searchPath name="target.platform">
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Mars)">
+      		<uri format="{0}/releases/mars">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Mars)">
+      		<uri format="{0}/eclipse/updates/4.5">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
     	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Luna)">
       		<uri format="{0}/releases/luna">
 				<bc:propertyRef key="eclipse.download"/>
