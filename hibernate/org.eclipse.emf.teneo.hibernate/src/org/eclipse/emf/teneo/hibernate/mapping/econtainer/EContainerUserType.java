@@ -220,7 +220,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 
 	/** From parent */
 	public ForeignKeyDirection getForeignKeyDirection() {
-		return ForeignKeyDirection.FOREIGN_KEY_FROM_PARENT;
+		return ForeignKeyDirection.FOREIGN_KEY_TO_PARENT;
 	}
 
 	/** Returns null */

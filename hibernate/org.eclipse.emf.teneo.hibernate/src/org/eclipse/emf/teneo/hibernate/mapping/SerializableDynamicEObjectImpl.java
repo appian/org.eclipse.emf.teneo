@@ -9,9 +9,11 @@
 package org.eclipse.emf.teneo.hibernate.mapping;
 
 import java.io.Serializable;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -76,7 +78,10 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 	}
 
 	public Object get(Object key) {
-		return eGet(eClass().getEStructuralFeature((String) key));
+		EStructuralFeature sf = eClass().getEStructuralFeature((String) key);
+		if (sf == null)
+			return null;
+		return eGet(sf);
 	}
 
 	public Object put(String key, Object value) {
@@ -117,7 +122,13 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 		return values;
 	}
 
-	public Set<java.util.Map.Entry<String, Object>> entrySet() {
-		throw new UnsupportedOperationException();
+	public Set<Entry<String, Object>> entrySet() {
+		Set<Entry<String, Object>> result = new LinkedHashSet<Entry<String, Object>>();
+		for (Object key : keySet()) {
+			Entry<String, Object> entry = new AbstractMap.SimpleImmutableEntry<String, Object>(
+					(String) key, get(key));
+			result.add(entry);
+		}
+		return result;
 	}
 }
