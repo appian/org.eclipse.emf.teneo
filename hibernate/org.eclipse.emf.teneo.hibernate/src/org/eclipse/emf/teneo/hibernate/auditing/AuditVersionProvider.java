@@ -58,6 +58,19 @@ public class AuditVersionProvider implements ExtensionPoint {
 
 	private static final String URI_STR = "http://www.eclipse.org/teneo/auditing";
 
+	public static int getContainingFeatureId(EObject eObject, EObject container,
+			EStructuralFeature eContainingFeature) {
+		if (eContainingFeature instanceof EReference) {
+			EReference eContainingReference = (EReference) eContainingFeature;
+			EReference eOpposite = eContainingReference.getEOpposite();
+			if (eOpposite != null) {
+				return eObject.eClass().getFeatureID(eOpposite);
+			}
+		}
+		return InternalEObject.EOPPOSITE_FEATURE_BASE
+				- container.eClass().getFeatureID(eContainingFeature);
+	}
+
 	private Session session;
 	private AuditResource auditResource;
 	private ResourceSet resourceSet;
@@ -131,10 +144,6 @@ public class AuditVersionProvider implements ExtensionPoint {
 	 * 
 	 * The {@link TeneoAuditEntry} gives version information and times, see also the associated
 	 * {@link TeneoAuditCommitInfo} object which can be reached from the {@link TeneoAuditEntry}.
-	 * 
-	 * From an audit entry you can iterate to the next and previous entries. See:
-	 * {@link TeneoAuditEntry#getTeneo_next_entry()} and
-	 * {@link TeneoAuditEntry#getTeneo_previous_entry()}.
 	 */
 	public List<TeneoAuditEntry> getAllAuditEntries(EObject entity) {
 		final EClass eClass = entity.eClass();
@@ -144,9 +153,6 @@ public class AuditVersionProvider implements ExtensionPoint {
 		return getAllAuditEntries(eClass, id);
 	}
 
-	/**
-	 * @see AuditVersionProvider#getAllVersions(EObject)
-	 */
 	public List<TeneoAuditEntry> getAllAuditEntries(EClass eClass, long timeStamp) {
 		checkState();
 
@@ -422,11 +428,22 @@ public class AuditVersionProvider implements ExtensionPoint {
 			}
 		}
 
-		if (auditEntry.getTeneo_container_id() != null) {
+		if (auditEntry.getTeneo_container_feature_name() != null
+				|| auditEntry.getTeneo_container_id() != null) {
 			final InternalEObject container = (InternalEObject) createProxyEObject(
 					auditEntry.getTeneo_container_id(), timeStamp);
-			((InternalEObject) target).eBasicSetContainer(container,
-					auditEntry.getTeneo_container_feature_id(), null);
+			if (container != null) {
+				if (auditEntry.getTeneo_container_feature_name() != null) {
+					final EStructuralFeature eContainingFeature = container.eClass().getEStructuralFeature(
+							auditEntry.getTeneo_container_feature_name());
+					final int containerFeatureId = getContainingFeatureId(target, container,
+							eContainingFeature);
+					((InternalEObject) target).eBasicSetContainer(container, containerFeatureId, null);
+				} else {
+					((InternalEObject) target).eBasicSetContainer(container,
+							auditEntry.getTeneo_container_feature_id(), null);
+				}
+			}
 		}
 
 		if (target.eResource() == null) {

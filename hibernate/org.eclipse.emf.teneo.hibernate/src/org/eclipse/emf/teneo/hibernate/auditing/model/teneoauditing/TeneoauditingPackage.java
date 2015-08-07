@@ -151,13 +151,22 @@ public interface TeneoauditingPackage extends EPackage {
 	int TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID = 9;
 
 	/**
+	 * The feature id for the '<em><b>Teneo container feature name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME = 10;
+
+	/**
 	 * The feature id for the '<em><b>Teneo previous start</b></em>' attribute.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START = 10;
+	int TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START = 11;
 
 	/**
 	 * The feature id for the '<em><b>Teneo object version</b></em>' attribute.
@@ -166,7 +175,7 @@ public interface TeneoauditingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION = 11;
+	int TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Teneo resourceid</b></em>' attribute.
@@ -175,7 +184,7 @@ public interface TeneoauditingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_ENTRY__TENEO_RESOURCEID = 12;
+	int TENEO_AUDIT_ENTRY__TENEO_RESOURCEID = 13;
 
 	/**
 	 * The number of structural features of the '<em>Teneo Audit Entry</em>' class. <!--
@@ -184,7 +193,7 @@ public interface TeneoauditingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TENEO_AUDIT_ENTRY_FEATURE_COUNT = 13;
+	int TENEO_AUDIT_ENTRY_FEATURE_COUNT = 14;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditCommitInfoImpl <em>Teneo Audit Commit Info</em>}' class.
@@ -366,6 +375,17 @@ public interface TeneoauditingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTeneoAuditEntry_Teneo_container_feature_id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_container_feature_name <em>Teneo container feature name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Teneo container feature name</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_container_feature_name()
+	 * @see #getTeneoAuditEntry()
+	 * @generated
+	 */
+	EAttribute getTeneoAuditEntry_Teneo_container_feature_name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry#getTeneo_previous_start <em>Teneo previous start</em>}'.
@@ -575,6 +595,14 @@ public interface TeneoauditingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID = eINSTANCE.getTeneoAuditEntry_Teneo_container_feature_id();
+
+		/**
+		 * The meta object literal for the '<em><b>Teneo container feature name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME = eINSTANCE.getTeneoAuditEntry_Teneo_container_feature_name();
 
 		/**
 		 * The meta object literal for the '<em><b>Teneo previous start</b></em>' attribute feature.

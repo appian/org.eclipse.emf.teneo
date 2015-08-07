@@ -116,6 +116,9 @@
 		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
 		</property>
+		<property name="teneo_container_feature_name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_NAME`"/>
+		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
 		</property>
@@ -170,6 +173,9 @@
 		</property>
 		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
+		</property>
+		<property name="teneo_container_feature_name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_NAME`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>
@@ -231,6 +237,9 @@
 		</property>
 		<property name="teneo_container_feature_id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_ID`"/>
+		</property>
+		<property name="teneo_container_feature_name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TENEO_CONTAINER_FEATURE_NAME`"/>
 		</property>
 		<property name="teneo_previous_start" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
 			<column not-null="false" unique="false" name="`TENEO_PREVIOUS_START`" unique-key="c2"/>

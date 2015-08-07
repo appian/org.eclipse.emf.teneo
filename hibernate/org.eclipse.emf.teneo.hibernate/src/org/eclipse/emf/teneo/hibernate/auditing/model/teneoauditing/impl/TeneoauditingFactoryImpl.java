@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.*;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditCommitInfo;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditEntry;
 import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.TeneoAuditKind;
@@ -26,7 +27,7 @@ public class TeneoauditingFactoryImpl extends EFactoryImpl implements Teneoaudit
 	 */
 	public static TeneoauditingFactory init() {
 		try {
-			TeneoauditingFactory theTeneoauditingFactory = (TeneoauditingFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/hibernate/auditing"); 
+			TeneoauditingFactory theTeneoauditingFactory = (TeneoauditingFactory)EPackage.Registry.INSTANCE.getEFactory(TeneoauditingPackage.eNS_URI);
 			if (theTeneoauditingFactory != null) {
 				return theTeneoauditingFactory;
 			}

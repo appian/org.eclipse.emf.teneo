@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.Teneoauditin
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_audit_kind <em>Teneo audit kind</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_container_id <em>Teneo container id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_container_feature_id <em>Teneo container feature id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_container_feature_name <em>Teneo container feature name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_previous_start <em>Teneo previous start</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_object_version <em>Teneo object version</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.auditing.model.teneoauditing.impl.TeneoAuditEntryImpl#getTeneo_resourceid <em>Teneo resourceid</em>}</li>
@@ -215,6 +216,26 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 	 * @ordered
 	 */
 	protected int teneo_container_feature_id = TENEO_CONTAINER_FEATURE_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTeneo_container_feature_name() <em>Teneo container feature name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_container_feature_name()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TENEO_CONTAINER_FEATURE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTeneo_container_feature_name() <em>Teneo container feature name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTeneo_container_feature_name()
+	 * @generated
+	 * @ordered
+	 */
+	protected String teneo_container_feature_name = TENEO_CONTAINER_FEATURE_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTeneo_previous_start() <em>Teneo previous start</em>}' attribute.
@@ -498,6 +519,27 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTeneo_container_feature_name() {
+		return teneo_container_feature_name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTeneo_container_feature_name(String newTeneo_container_feature_name) {
+		String oldTeneo_container_feature_name = teneo_container_feature_name;
+		teneo_container_feature_name = newTeneo_container_feature_name;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME, oldTeneo_container_feature_name, teneo_container_feature_name));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -586,6 +628,8 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 				return getTeneo_container_id();
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID:
 				return getTeneo_container_feature_id();
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME:
+				return getTeneo_container_feature_name();
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				return getTeneo_previous_start();
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION:
@@ -632,6 +676,9 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 				return;
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID:
 				setTeneo_container_feature_id((Integer)newValue);
+				return;
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME:
+				setTeneo_container_feature_name((String)newValue);
 				return;
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				setTeneo_previous_start((Long)newValue);
@@ -683,6 +730,9 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID:
 				setTeneo_container_feature_id(TENEO_CONTAINER_FEATURE_ID_EDEFAULT);
 				return;
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME:
+				setTeneo_container_feature_name(TENEO_CONTAINER_FEATURE_NAME_EDEFAULT);
+				return;
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				setTeneo_previous_start(TENEO_PREVIOUS_START_EDEFAULT);
 				return;
@@ -723,6 +773,8 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 				return TENEO_CONTAINER_ID_EDEFAULT == null ? teneo_container_id != null : !TENEO_CONTAINER_ID_EDEFAULT.equals(teneo_container_id);
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_ID:
 				return teneo_container_feature_id != TENEO_CONTAINER_FEATURE_ID_EDEFAULT;
+			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_CONTAINER_FEATURE_NAME:
+				return TENEO_CONTAINER_FEATURE_NAME_EDEFAULT == null ? teneo_container_feature_name != null : !TENEO_CONTAINER_FEATURE_NAME_EDEFAULT.equals(teneo_container_feature_name);
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_PREVIOUS_START:
 				return teneo_previous_start != TENEO_PREVIOUS_START_EDEFAULT;
 			case TeneoauditingPackage.TENEO_AUDIT_ENTRY__TENEO_OBJECT_VERSION:
@@ -760,6 +812,8 @@ public class TeneoAuditEntryImpl extends EObjectImpl implements TeneoAuditEntry 
 		result.append(teneo_container_id);
 		result.append(", teneo_container_feature_id: ");
 		result.append(teneo_container_feature_id);
+		result.append(", teneo_container_feature_name: ");
+		result.append(teneo_container_feature_name);
 		result.append(", teneo_previous_start: ");
 		result.append(teneo_previous_start);
 		result.append(", teneo_object_version: ");

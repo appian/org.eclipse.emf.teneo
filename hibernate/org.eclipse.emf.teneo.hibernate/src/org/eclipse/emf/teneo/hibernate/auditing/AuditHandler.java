@@ -21,6 +21,8 @@ import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -58,6 +60,7 @@ import org.hibernate.engine.spi.SessionImplementor;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
 public class AuditHandler implements ExtensionPoint {
+	private static Log log = LogFactory.getLog(AuditHandler.class);
 
 	public static final String ID_SEPARATOR = ";";
 
@@ -66,12 +69,41 @@ public class AuditHandler implements ExtensionPoint {
 
 	private AuditDataStore dataStore;
 
+	private static boolean inTest = false;
+
+	/**
+	 * Internal method used by Teneo testing
+	 */
+	public static void inTest() {
+		inTest = true;
+	}
+
 	public void setContainerInfo(Session session, TeneoAuditEntry teneoAuditEntry, Object object) {
 		final EObject eObject = (EObject) object;
 		if (null != eObject.eContainer()) {
 			teneoAuditEntry.setTeneo_container_id(entityToIdString(session, eObject.eContainer()));
-			teneoAuditEntry.setTeneo_container_feature_id(((InternalEObject) eObject)
-					.eContainerFeatureID());
+			final int containerFeatureId = ((InternalEObject) eObject).eContainerFeatureID();
+			teneoAuditEntry.setTeneo_container_feature_id(containerFeatureId);
+
+			// defensive coding
+			final EStructuralFeature eContainingFeature = eObject.eContainingFeature();
+			int computedContainingFeatureId = AuditVersionProvider.getContainingFeatureId(eObject,
+					eObject.eContainer(), eContainingFeature);
+			if (computedContainingFeatureId != containerFeatureId) {
+				if (inTest) {
+					throw new IllegalStateException(
+							"Container feature id computation is not working correctly, "
+									+ computedContainingFeatureId + " - " + containerFeatureId
+									+ eObject.eClass().getName() + " - " + eObject.eClass().getName() + " - "
+									+ eObject.eContainingFeature().getName());
+				} else {
+					log.error("Container feature id computation is not working correctly, "
+							+ computedContainingFeatureId + " - " + containerFeatureId
+							+ eObject.eClass().getName() + " - " + eObject.eClass().getName() + " - "
+							+ eObject.eContainingFeature().getName());
+				}
+			}
+			teneoAuditEntry.setTeneo_container_feature_name(eObject.eContainingFeature().getName());
 		}
 	}
 
