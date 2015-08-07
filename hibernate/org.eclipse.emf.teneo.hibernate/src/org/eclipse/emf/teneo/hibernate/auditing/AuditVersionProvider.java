@@ -58,6 +58,18 @@ public class AuditVersionProvider implements ExtensionPoint {
 
 	private static final String URI_STR = "http://www.eclipse.org/teneo/auditing";
 
+	public static int getContainingFeatureId(EObject container, EStructuralFeature eContainingFeature) {
+		if (eContainingFeature instanceof EReference) {
+			EReference eContainingReference = (EReference) eContainingFeature;
+			EReference eOpposite = eContainingReference.getEOpposite();
+			if (eOpposite != null) {
+				return container.eClass().getFeatureID(eOpposite);
+			}
+		}
+		return InternalEObject.EOPPOSITE_FEATURE_BASE
+				- container.eClass().getFeatureID(eContainingFeature);
+	}
+
 	private Session session;
 	private AuditResource auditResource;
 	private ResourceSet resourceSet;
@@ -422,11 +434,21 @@ public class AuditVersionProvider implements ExtensionPoint {
 			}
 		}
 
-		if (auditEntry.getTeneo_container_id() != null) {
+		if (auditEntry.getTeneo_container_feature_name() != null
+				|| auditEntry.getTeneo_container_id() != null) {
 			final InternalEObject container = (InternalEObject) createProxyEObject(
 					auditEntry.getTeneo_container_id(), timeStamp);
-			((InternalEObject) target).eBasicSetContainer(container,
-					auditEntry.getTeneo_container_feature_id(), null);
+			if (container != null) {
+				if (auditEntry.getTeneo_container_feature_name() != null) {
+					final EStructuralFeature eContainingFeature = container.eClass().getEStructuralFeature(
+							auditEntry.getTeneo_container_feature_name());
+					final int containerFeatureId = getContainingFeatureId(container, eContainingFeature);
+					((InternalEObject) target).eBasicSetContainer(container, containerFeatureId, null);
+				} else {
+					((InternalEObject) target).eBasicSetContainer(container,
+							auditEntry.getTeneo_container_feature_id(), null);
+				}
+			}
 		}
 
 		if (target.eResource() == null) {

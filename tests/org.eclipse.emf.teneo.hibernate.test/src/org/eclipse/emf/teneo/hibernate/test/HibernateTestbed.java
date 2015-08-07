@@ -23,6 +23,8 @@ import java.io.IOException;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
+import org.eclipse.emf.teneo.hibernate.auditing.AuditHandler;
+import org.eclipse.emf.teneo.hibernate.auditing.AuditVersionProvider;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStoreFactory;
 import org.eclipse.emf.teneo.test.AbstractTest;
@@ -97,6 +99,7 @@ public class HibernateTestbed extends Testbed {
 	private HibernateTestbed() {
 		super(propFileName);
 		storeFactory = new HibernateTestStoreFactory();
+		AuditHandler.inTest();
 	}
 
 	/**
