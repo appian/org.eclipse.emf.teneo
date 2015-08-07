@@ -86,8 +86,9 @@ public class AuditHandler implements ExtensionPoint {
 			teneoAuditEntry.setTeneo_container_feature_id(containerFeatureId);
 
 			// defensive coding
-			int computedContainingFeatureId = AuditVersionProvider.getContainingFeatureId(
-					eObject.eContainer(), eObject.eContainingFeature());
+			final EStructuralFeature eContainingFeature = eObject.eContainingFeature();
+			int computedContainingFeatureId = AuditVersionProvider.getContainingFeatureId(eObject,
+					eObject.eContainer(), eContainingFeature);
 			if (computedContainingFeatureId != containerFeatureId) {
 				if (inTest) {
 					throw new IllegalStateException(

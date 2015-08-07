@@ -58,12 +58,13 @@ public class AuditVersionProvider implements ExtensionPoint {
 
 	private static final String URI_STR = "http://www.eclipse.org/teneo/auditing";
 
-	public static int getContainingFeatureId(EObject container, EStructuralFeature eContainingFeature) {
+	public static int getContainingFeatureId(EObject eObject, EObject container,
+			EStructuralFeature eContainingFeature) {
 		if (eContainingFeature instanceof EReference) {
 			EReference eContainingReference = (EReference) eContainingFeature;
 			EReference eOpposite = eContainingReference.getEOpposite();
 			if (eOpposite != null) {
-				return container.eClass().getFeatureID(eOpposite);
+				return eObject.eClass().getFeatureID(eOpposite);
 			}
 		}
 		return InternalEObject.EOPPOSITE_FEATURE_BASE
@@ -143,10 +144,6 @@ public class AuditVersionProvider implements ExtensionPoint {
 	 * 
 	 * The {@link TeneoAuditEntry} gives version information and times, see also the associated
 	 * {@link TeneoAuditCommitInfo} object which can be reached from the {@link TeneoAuditEntry}.
-	 * 
-	 * From an audit entry you can iterate to the next and previous entries. See:
-	 * {@link TeneoAuditEntry#getTeneo_next_entry()} and
-	 * {@link TeneoAuditEntry#getTeneo_previous_entry()}.
 	 */
 	public List<TeneoAuditEntry> getAllAuditEntries(EObject entity) {
 		final EClass eClass = entity.eClass();
@@ -156,9 +153,6 @@ public class AuditVersionProvider implements ExtensionPoint {
 		return getAllAuditEntries(eClass, id);
 	}
 
-	/**
-	 * @see AuditVersionProvider#getAllVersions(EObject)
-	 */
 	public List<TeneoAuditEntry> getAllAuditEntries(EClass eClass, long timeStamp) {
 		checkState();
 
@@ -442,7 +436,8 @@ public class AuditVersionProvider implements ExtensionPoint {
 				if (auditEntry.getTeneo_container_feature_name() != null) {
 					final EStructuralFeature eContainingFeature = container.eClass().getEStructuralFeature(
 							auditEntry.getTeneo_container_feature_name());
-					final int containerFeatureId = getContainingFeatureId(container, eContainingFeature);
+					final int containerFeatureId = getContainingFeatureId(target, container,
+							eContainingFeature);
 					((InternalEObject) target).eBasicSetContainer(container, containerFeatureId, null);
 				} else {
 					((InternalEObject) target).eBasicSetContainer(container,
