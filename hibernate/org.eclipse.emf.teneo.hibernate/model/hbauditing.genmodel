@@ -22,6 +22,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_audit_kind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_feature_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_container_feature_name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_previous_start"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_object_version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbauditing.ecore#//TeneoAuditEntry/teneo_resourceid"/>
