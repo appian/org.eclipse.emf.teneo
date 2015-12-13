@@ -41,7 +41,7 @@ public class EmfMavenFileCreator {
 
 	public static void main(String[] args) throws Exception {
 		final EmfMavenFileCreator creator = new EmfMavenFileCreator();
-		creator.setDirName("2.11.0M5");
+		creator.setDirName("2.11.1");
 		creator.setSnapShot(false);
 		creator.setWithBuildNumber(true);
 		creator.process();
@@ -82,16 +82,16 @@ public class EmfMavenFileCreator {
 
 				// copy the source
 				final String sourceOriginFileName = fileName.replace("_", ".source_");
-				copyFile(sourceDirPath + sourceOriginFileName, outDirPath + plugin + "-" + version
-						+ "-sources.jar");
+				copyFile(sourceDirPath + sourceOriginFileName,
+						outDirPath + plugin + "-" + version + "-sources.jar");
 
 				// copy the javadoc template
-				copyResource(JAVADOC_TEMPLATE_JAR_FILE, outDirPath + plugin + "-" + version
-						+ "-javadoc.jar");
+				copyResource(JAVADOC_TEMPLATE_JAR_FILE,
+						outDirPath + plugin + "-" + version + "-javadoc.jar");
 
 				// copy the pom
-				String pom = new String(Files.readAllBytes(Paths.get(this.getClass()
-						.getResource(POM_TEMPLATE_FILE).toURI())));
+				String pom = new String(
+						Files.readAllBytes(Paths.get(this.getClass().getResource(POM_TEMPLATE_FILE).toURI())));
 				pom = pom.replace("${version}", version);
 				pom = pom.replace("${name}", plugin);
 				pom = pom.replace("${artifactId}", plugin);
