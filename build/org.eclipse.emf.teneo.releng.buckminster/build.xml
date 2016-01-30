@@ -65,6 +65,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</condition>
 
 	<property name="buildsPath" location="${hudsonWorkSpacePath}/build" />
+	<property name="resultP2Site" location="/jobs/genie.teneo/emf-teneo-nightly/lastSuccessful/archive/build/result/p2site" />	
 	<property name="gitPath" location="${hudsonWorkSpacePath}/git" />
 
 	<!--property name="rootPath" location="${buildsPath}/${build.type}${buildTimestamp}"/-->
@@ -88,6 +89,19 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<import file="ant_common.xml" />
 
 	<import file="ant_maven.xml" />
+
+	<target name="publish">
+		<mkdir dir="/home/data/httpd/archive.eclipse.org/modeling/emf/texo/updates/interim/${buildTimestamp}"/>
+		<!-- if previous copy failed it is possible that interim build has been removed -->
+		<mkdir dir="/home/data/httpd/download.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim"/>
+		<move todir="/home/data/httpd/archive.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim/${buildTimestamp}">
+		    <fileset dir="/home/data/httpd/download.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim"/>
+		</move>
+		<mkdir dir="/home/data/httpd/download.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim"/>
+		<copy todir="/home/data/httpd/download.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim">
+			<fileset dir="${resultP2Site}/"/>
+		</copy>
+	</target>
 
 	<target name="build.and.test" depends="get.thirdparty, init, init.checks, install.buckminster">
 
