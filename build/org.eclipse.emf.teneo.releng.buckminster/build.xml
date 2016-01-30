@@ -14,7 +14,7 @@ Some important parts have been copied from Buckminster's own
 build setup:
 http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
 -->
-<project default="build.and.test" name="Texo Builds">
+<project default="build.and.test" name="Teneo Builds">
 	<!-- load properties and set timestamp for the build -->
 	<property environment="env" />
 
@@ -91,7 +91,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<import file="ant_maven.xml" />
 
 	<target name="publish">
-		<mkdir dir="/home/data/httpd/archive.eclipse.org/modeling/emf/texo/updates/interim/${buildTimestamp}"/>
+		<mkdir dir="/home/data/httpd/archive.eclipse.org/modeling/emf/teneo/updates/interim/${buildTimestamp}"/>
 		<!-- if previous copy failed it is possible that interim build has been removed -->
 		<mkdir dir="/home/data/httpd/download.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim"/>
 		<move todir="/home/data/httpd/archive.eclipse.org/modeling/emf/teneo/updates/2.1.0/interim/${buildTimestamp}">
