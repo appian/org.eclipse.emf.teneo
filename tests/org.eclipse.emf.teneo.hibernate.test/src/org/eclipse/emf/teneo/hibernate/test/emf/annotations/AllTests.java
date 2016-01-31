@@ -8,9 +8,6 @@
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.annotations.AssociationOverrideAction;
@@ -18,6 +15,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.AttributeOverridesAction;
 import org.eclipse.emf.teneo.test.emf.annotations.BasicAction;
 import org.eclipse.emf.teneo.test.emf.annotations.BookAction;
 import org.eclipse.emf.teneo.test.emf.annotations.CascadeNotallAction;
+import org.eclipse.emf.teneo.test.emf.annotations.CompositeFKIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.CompositeIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.DuplicatesAction;
 import org.eclipse.emf.teneo.test.emf.annotations.EDataTypeAction;
@@ -49,6 +47,9 @@ import org.eclipse.emf.teneo.test.emf.annotations.TransientAction;
 import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
 import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
 /**
  * All tests
  * 
@@ -59,8 +60,10 @@ public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite(
-				"Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
-						.instance().getConfigurations());
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
+				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(CompositeFKIdAction.class);
 		suite.addTestSuite(IdAction.class);
 		suite.addTestSuite(UserTypeAction.class);
 		suite.addTestSuite(ExternalAction.class);

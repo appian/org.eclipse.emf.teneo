@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
@@ -256,25 +257,36 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 	/**
 	 * Add property to the mapped id element
 	 */
-	public void processIdProperty(PAnnotatedEAttribute id) {
-		final PAnnotatedEClass aClass = id.getPaEClass();
+	public void processIdProperty(PAnnotatedEStructuralFeature idFeature) {
+		final PAnnotatedEClass aClass = idFeature.getPaEClass();
 		// check precondition
 		if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().hasIdAnnotatedFeature()) {
 			log.error("The annotated eclass: "
 					+ aClass
 					+ " has an id-annotated feature: "
-					+ id
+					+ idFeature
 					+ " while it has a "
 					+ "superclass/type, id properties should always be specified in the top of the inheritance structure");
 			throw new MappingException(
 					"The annotated eclass: "
 							+ aClass
 							+ " has an id-annotated feature: "
-							+ id
+							+ idFeature
 							+ " while it has a "
 							+ "superclass/type, id properties should always be specified in the top of the inheritance structure");
 		}
 
+
+		final Element idElement = getCreateIdElement(getHbmContext().getCurrent(), aClass);
+		final boolean isCompositeId = aClass.getIdClass() != null;
+
+		if (isCompositeId && idFeature instanceof PAnnotatedEReference) {
+			PAnnotatedEReference idReference = (PAnnotatedEReference)idFeature;
+			addKeyManyToOne(idElement, (PAnnotatedEReference) idFeature);
+			return;
+		}
+
+		PAnnotatedEAttribute id = (PAnnotatedEAttribute)idFeature;
 		final EAttribute eAttribute = id.getModelEAttribute();
 		final List<Column> columns = getColumns(id);
 		final GeneratedValue generatedValue = id.getGeneratedValue();
@@ -289,9 +301,6 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		// log.error("Unsupported, SecondaryTable in " + column);
 		// throw new MappingException("Unsupported, SecondaryTable", column);
 		// }
-
-		final Element idElement = getCreateIdElement(getHbmContext().getCurrent(), aClass);
-		final boolean isCompositeId = aClass.getIdClass() != null;
 
 		final Element usedIdElement;
 		if (isCompositeId) {

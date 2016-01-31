@@ -51,6 +51,7 @@ public class FeatureMapper implements ExtensionPoint {
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_Embedded(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_EmbeddedId(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToMany(),
+			PamodelPackage.eINSTANCE.getPAnnotatedEStructuralFeature_Id(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToOne(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_OneToOne() };
 
@@ -183,6 +184,9 @@ public class FeatureMapper implements ExtensionPoint {
 				break;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
 				embeddedMapper.process(pAnnotatedEReference);
+				break;
+			case PamodelPackage.PANNOTATED_EREFERENCE__ID:
+				idMapper.processIdProperty(pAnnotatedEReference);
 				break;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
 				idMapper.processEmbeddedId(pAnnotatedEReference);
