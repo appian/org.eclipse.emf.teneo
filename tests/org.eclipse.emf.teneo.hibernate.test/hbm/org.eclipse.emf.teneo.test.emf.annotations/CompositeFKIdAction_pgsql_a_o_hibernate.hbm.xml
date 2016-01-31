@@ -29,7 +29,7 @@
 				<column name="`myparentlastname`" unique="false"/>
 			</key>
 			<list-index column="`parent_children_idx`"/>
-			<one-to-many entity-name="Child"/>
+			<one-to-many entity-name="Person"/>
 		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.compositefkid.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" extends="Person" discriminator-value="Child">
