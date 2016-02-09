@@ -13,8 +13,12 @@
  *
  * $Id: BasicAction.java,v 1.4 2008/02/28 07:08:14 mtaal Exp $
  */
-package org.eclipse.emf.teneo.test.emf.annotations;
+package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
+import java.io.Serializable;
+
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
+import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.Basic;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage;
@@ -27,13 +31,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.4 $
  */
-public class BasicAction extends AbstractTestAction {
+public class GetFindSessionBasicAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
 	 * @param arg0
 	 */
-	public BasicAction() {
+	public GetFindSessionBasicAction() {
 		super(BasicPackage.eINSTANCE);
 	}
 
@@ -53,11 +57,23 @@ public class BasicAction extends AbstractTestAction {
 		}
 
 		// read back and check it
+		Object id = null;
 		{
 			store.beginTransaction();
 			final Basic basic = (Basic) store.getObject(Basic.class);
 			assertTrue("Transient field should not be set", basic.getMyTransient() == null);
 			store.commitTransaction();
+			id = IdentifierCacheHandler.getInstance().getID(basic);
+		}
+
+		{
+			HibernateTestStore hts = (HibernateTestStore) store;
+			store.beginTransaction();
+			Basic b1 = (Basic) hts.getSession().get(BasicPackage.eINSTANCE.getBasic().getName(),
+					(Serializable) id);
+			Basic b2 = (Basic) hts.getSession().load(BasicPackage.eINSTANCE.getBasic().getName(),
+					(Serializable) id);
+			assertTrue(b1 == b2);
 		}
 	}
 }

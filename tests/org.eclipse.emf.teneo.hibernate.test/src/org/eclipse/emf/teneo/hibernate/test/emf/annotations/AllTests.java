@@ -63,6 +63,7 @@ public class AllTests {
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
 
+		suite.addTestSuite(GetFindSessionBasicAction.class);
 		suite.addTestSuite(CompositeFKIdAction.class);
 		suite.addTestSuite(IdAction.class);
 		suite.addTestSuite(UserTypeAction.class);
