@@ -65,4 +65,18 @@
             type="rental"
             class="org.eclipse.emf.teneo.rental.util.RentalResourceFactoryImpl"/>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated refreshextra -->
+      <package
+            uri="http://www.eclipse.org/emf/teneo/samples/issues/refreshextra"
+            class="org.eclipse.emf.teneo.samples.issues.refreshextra.RefreshextraPackage"
+            genModel="src/org/eclipse/emf/teneo/samples/issues/refreshextra/model/refreshextra.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated refreshextra -->
+      <parser
+            type="refreshextra"
+            class="org.eclipse.emf.teneo.samples.issues.refreshextra.util.RefreshextraResourceFactoryImpl"/>
+   </extension>
 </plugin>

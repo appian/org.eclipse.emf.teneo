@@ -24,6 +24,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.FlushModeType;
+import javax.persistence.LockModeType;
 import javax.persistence.Query;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -221,14 +222,15 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 
 	/** Refresh the object */
 	public void refresh(Object obj) {
-		getEntityManager().refresh(obj);
+		// pass this special lock type to prevent hibernate from using a
+		// cascade entity loader, gives
+		getEntityManager().refresh(obj, LockModeType.PESSIMISTIC_READ);
 	}
 
 	/** Check if a certain class is mapped using a certain inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy) {
 		final String name = cls.getName();
 		final String realName = name.substring(name.lastIndexOf('.') + 1, name.length() - 4);
-		@SuppressWarnings("deprecation")
 		final PersistentClass cmd = hbEntityDataStore.getConfiguration().getClassMapping(realName);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE)) {
 			return cmd instanceof SingleTableSubclass;

@@ -183,7 +183,7 @@ public class HbSessionWrapper implements SessionWrapper {
 
 	/** Refresh the object */
 	public void refresh(Object obj) {
-		getSessionInternal().refresh(obj, LockOptions.NONE);
+		getSessionInternal().refresh(obj, LockOptions.UPGRADE);
 	}
 
 	/** Check if a certain class is mapped using a certain inheritance strategy */

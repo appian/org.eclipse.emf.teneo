@@ -645,7 +645,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionElement.addAttribute("fetch", hbFeature.getHbFetch().getValue().getName()
 					.toLowerCase());
 		}
-
+				
 		if (hasOrderBy) {
 			final PAnnotatedEClass aClass = paReference.getAReferenceType();
 			final String name;

@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.emf.teneo.samples;singleton:=true
 Bundle-Version: 1.1.2.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport,
- org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
@@ -2220,8 +2220,10 @@ Export-Package: com.example.car;
  testinheritance.validation;
   uses:="testinheritance,
    org.eclipse.emf.common.util",
- compositefkid.util,
  org.eclipse.emf.teneo.samples.emf.annotations.compositefkid,
- org.eclipse.emf.teneo.samples.emf.annotations.compositefkid.impl
+ org.eclipse.emf.teneo.samples.emf.annotations.compositefkid.impl,
+ org.eclipse.emf.teneo.samples.issues.refreshextra,
+ org.eclipse.emf.teneo.samples.issues.refreshextra.impl,
+ org.eclipse.emf.teneo.samples.issues.refreshextra.util
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

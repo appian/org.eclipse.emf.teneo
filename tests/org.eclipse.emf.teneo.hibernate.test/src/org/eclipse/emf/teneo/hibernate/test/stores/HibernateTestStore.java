@@ -18,8 +18,6 @@ import java.util.Properties;
 
 import javax.persistence.EntityManager;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
@@ -54,6 +52,8 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
+
+import junit.framework.TestCase;
 
 /**
  * The hibernate test store encapsulates the datastore actions to a hibernate store.

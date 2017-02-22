@@ -8,9 +8,6 @@
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.issues.AbstractReferenceAction;
@@ -43,6 +40,9 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
 import org.eclipse.emf.teneo.test.issues.SupInterfacesAction;
 import org.eclipse.emf.teneo.test.issues.TopClassesAction;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
 /**
  * All tests
  * 
@@ -54,7 +54,10 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
-
+		suite.addTestSuite(RefreshObjectNoResourceTestAction.class);
+		suite.addTestSuite(RefreshObjectLibraryNoResourceTestAction.class);
+		suite.addTestSuite(RefreshObjectLibraryWithResourceTestAction.class);
+		suite.addTestSuite(RefreshObjectNoResourceTestAction.class);
 		suite.addTestSuite(Bz245167Action.class);
 		suite.addTestSuite(Bz417855Action.class);
 		suite.addTestSuite(Bz401710Action.class);
