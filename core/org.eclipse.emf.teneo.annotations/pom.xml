@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.eclipse.emf</groupId>
+  <artifactId>org.eclipse.emf.teneo.annotations</artifactId>
+  <version>1.2.0.v201203052207-appian-1.0</version>
+  <name>EMF Teneo Annotations</name>
+  <description>
+    Note: We uploaded a local copy because this specific version is not present in repositories.
+    This version comes from: https://hudson.eclipse.org/hudson/job/emf-teneo-nightly/336/artifact/build/result/p2site/plugins/
+  </description>
+</project>
