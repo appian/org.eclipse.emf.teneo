@@ -66,15 +66,13 @@ public class XSDDateTime extends MutableType {
 	}
 
 	/*
-	 * Copy the XMLGregorianCalendar object
+	 * Just return the original value.
 	 * 
 	 * @see org.hibernate.type.MutableType#deepCopyNotNull(java.lang.Object)
 	 */
 	@Override
 	public Object deepCopyNotNull(Object value) {
-		return dataTypeFactory
-				.newXMLGregorianCalendar(((XMLGregorianCalendar) value)
-						.toGregorianCalendar());
+		return value;
 	}
 
 	/*
